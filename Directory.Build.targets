@@ -1,0 +1,6 @@
+<Project>
+  <!-- Override Mono WASM SDK target to allow Native AOT build -->
+  <Target Name="PrepareInputsForWasmBuild" />
+  <!-- Override componentize-dotnet target to avoid circular dependency in .NET 10 -->
+  <Target Name="PublishAfterBuild" />
+</Project>
