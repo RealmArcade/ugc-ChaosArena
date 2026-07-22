@@ -7,50 +7,31 @@
     <WasmGenerateAppBundle>false</WasmGenerateAppBundle>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NativeLib>Shared</NativeLib>
-    <WasmComponentWorld>game-client</WasmComponentWorld>
-    <RootAllApplicationAssemblies>true</RootAllApplicationAssemblies>
-    <NoWarn>$(NoWarn);0436;1591</NoWarn>
+    <RunAOTCompilation>true</RunAOTCompilation>
+    <PublishTrimmed>true</PublishTrimmed>
+    <TrimMode>link</TrimMode>
+    <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
-
   <ItemGroup>
-    <Compile Remove="runner\**" />
-    <None Remove="runner\**" />
+    <ProjectReference Include="..\Realm\Realm.MapAPI\Realm.MapAPI.csproj" />
   </ItemGroup>
-
   <ItemGroup>
-    <RdXmlFile Include="RuntimeDirectives.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="D:/git/Realm/Realm/Realm.MapAPI/Realm.MapAPI.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Wit Remove="wit\game.g.wit" />
-    <Wit Remove="wit/game.g.wit" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <DirectPInvoke Include="custom:game/game-api" />
+    <DirectPInvoke Include="env" />
     <LinkerArg Include="-Wl,--allow-undefined" />
   </ItemGroup>
-
-  <!-- Force WASI Preview 1 target and strip all component-type flags right before linking -->
-  <Target Name="OverrideIlcLlvmTarget" BeforeTargets="LinkNative;LinkNativeLlvm">
+  <Target Name="EnableAotLate" BeforeTargets="ImportRuntimeIlcPackageTarget;IlcCompile;_ComputeAssembliesToCompileToNative">
     <PropertyGroup>
+      <PublishAot>true</PublishAot>
       <IlcLlvmTarget>wasm32-unknown-wasi</IlcLlvmTarget>
     </PropertyGroup>
+  </Target>
+  <Target Name="ClearComponentWit" BeforeTargets="LinkNative;LinkNativeLlvm">
     <ItemGroup>
       <WasmComponentTypeWit Remove="@(WasmComponentTypeWit)" />
-      <CustomLinkerArg Remove="@(CustomLinkerArg)" Condition="$([System.String]::Copy('%(Identity)').Contains('--component-type'))" />
-      <LinkerArg Remove="@(LinkerArg)" Condition="$([System.String]::Copy('%(Identity)').Contains('--component-type'))" />
     </ItemGroup>
   </Target>
-
   <ItemGroup>
-    <PackageReference Include="BytecodeAlliance.Componentize.DotNet.Wasm.SDK" Version="0.8.0-preview00011" />
-    <PackageReference Include="BytecodeAlliance.Componentize.DotNet.WitBindgen" Version="0.8.0-preview00011" />
+    <PackageReference Include="Microsoft.DotNet.ILCompiler.LLVM" Version="10.0.0-rc.1.26357.1" />
     <PackageReference Include="runtime.win-x64.Microsoft.DotNet.ILCompiler.LLVM" Version="10.0.0-rc.1.26357.1" />
   </ItemGroup>
 </Project>
