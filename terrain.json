@@ -1,1 +1,14 @@
-{"Width":158,"Depth":126,"Units":[{"UnitId":"res://Assets/3d/Characters/adventurer.glb","PosX":-113.85116,"PosY":0,"PosZ":-54.043503,"RotationY":-90,"Scale":1,"IsEnemy":false},{"UnitId":"res://Assets/3d/Characters/adventurer.glb","PosX":-112.314384,"PosY":0,"PosZ":53.092316,"RotationY":-90,"Scale":1,"IsEnemy":false},{"UnitId":"res://Assets/3d/Characters/adventurer.glb","PosX":-123.03567,"PosY":0,"PosZ":-1.192818,"RotationY":-90,"Scale":1,"IsEnemy":false},{"UnitId":"res://Assets/3d/Characters/adventurer.glb","PosX":109.851166,"PosY":0,"PosZ":50.043503,"RotationY":90,"Scale":1,"IsEnemy":false},{"UnitId":"res://Assets/3d/Characters/adventurer.glb","PosX":108.31438,"PosY":0,"PosZ":-57.092316,"RotationY":90,"Scale":1,"IsEnemy":false},{"UnitId":"res://Assets/3d/Characters/adventurer.glb","PosX":119.03567,"PosY":0,"PosZ":-2.8071826,"RotationY":90,"Scale":1,"IsEnemy":false},{"UnitId":"res://Assets/3d/Characters/adventurer.glb","PosX":50.043503,"PosY":0,"PosZ":-89.85116,"RotationY":179.9999,"Scale":1,"IsEnemy":false},{"UnitId":"res://Assets/3d/Characters/adventurer.glb","PosX":-57.092316,"PosY":0,"PosZ":-88.314384,"RotationY":179.9999,"Scale":1,"IsEnemy":false},{"UnitId":"res://Assets/3d/Characters/adventurer.glb","PosX":-2.8071816,"PosY":0,"PosZ":-99.03567,"RotationY":179.9999,"Scale":1,"IsEnemy":false},{"UnitId":"res://Assets/3d/Characters/adventurer.glb","PosX":-1.1928177,"PosY":0,"PosZ":99.03567,"RotationY":0,"Scale":1,"IsEnemy":false},{"UnitId":"res://Assets/3d/Characters/adventurer.glb","PosX":53.092316,"PosY":0,"PosZ":88.31438,"RotationY":0,"Scale":1,"IsEnemy":false},{"UnitId":"res://Assets/3d/Characters/adventurer.glb","PosX":-54.043503,"PosY":0,"PosZ":89.851166,"RotationY":0,"Scale":1,"IsEnemy":false}],"Props":[],"Decals":[],"WaterEnabled":true,"WaterHeight":-2,"CameraBoundsLeft":-185,"CameraBoundsRight":180,"CameraBoundsTop":-140,"CameraBoundsBottom":140,"SkyboxPath":"res://Assets/skybox_panoramic.jpg","Coordinates":[]}
+{
+	"CameraBoundsBottom": 157,
+	"CameraBoundsLeft": -127,
+	"CameraBoundsRight": 127,
+	"CameraBoundsTop": -127,
+	"Coordinates": [],
+	"Decals": [],
+	"Depth": 160,
+	"Props": [],
+	"SkyboxPath": "Assets/skyboxes/jade_shrine.rtex",
+	"Units": [],
+	"Vfx": [],
+	"Width": 160
+}
