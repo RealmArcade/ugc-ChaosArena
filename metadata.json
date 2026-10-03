@@ -422,7 +422,7 @@
 			"DespawnShader": null,
 			"DespillPlayerColor": false,
 			"GoldBounty": 0,
-			"IgnorePlayerColor": false,
+			"IgnorePlayerColor": true,
 			"IsHero": false,
 			"MaxHp": 100,
 			"ModelPath": "crystal_cluster_29.rmesh",
@@ -759,6 +759,14 @@
 		"WeatherType": null
 	},
 	"Models": {
+		"builder.rmesh": {
+			"Brightness": 0.5,
+			"CollisionCircleRatios": 0,
+			"DespillPlayerColor": false,
+			"NormalizeLuminance": true,
+			"Offsets": 0.909,
+			"Scales": 1
+		},
 		"chad.rmesh": {
 			"Brightness": 0.5,
 			"CollisionCircleRatios": 0.75,
@@ -768,6 +776,14 @@
 			"NormalizeLuminance": true,
 			"Offsets": 0.85000014,
 			"Scales": 1
+		},
+		"circleofpower.rmesh": {
+			"Brightness": 0.5,
+			"CollisionCircleRatios": 0,
+			"DespillPlayerColor": false,
+			"NormalizeLuminance": true,
+			"Offsets": 0.6,
+			"Scales": 0.6
 		},
 		"clock_tower_building.rmesh": {
 			"CollisionCircleRatios": 0.8,

@@ -110,7 +110,6 @@ public class MapScript : IWasmModule
     private const float EnemyAcquisitionRange = 1000f / WorldUnitsPerRealmUnit;
     private const float SoulSiphonRadius = 175f / WorldUnitsPerRealmUnit;
     private const float HealingWaveRadius = 350f / WorldUnitsPerRealmUnit;
-    private const float FallbackBaseRingRadius = 60f;
     private const int WaveIntervalSeconds = 45;
     private const int WaveCountdownVisibleSeconds = 30;
     private const int TilesPerPlayer = 9;
@@ -121,7 +120,7 @@ public class MapScript : IWasmModule
     private const string AntiSnowballPoisonBuffId = "anti_snowball_poison";
     private const string CriticalStrikeTechId = "critical_strike";
 
-    private static readonly Vector3 ArenaCenter = new(0f, 0f, 15f);
+    private static readonly Vector3 ArenaCenter = Vector3.Zero;
 
     private static readonly Dictionary<Element, Vector3> ElementColors = new()
     {
@@ -311,7 +310,7 @@ public class MapScript : IWasmModule
         if (startLocation.LengthSquared() > 0.0001f)
             return startLocation;
 
-        return gameApi.GetRingPosition(ArenaCenter, FallbackBaseRingRadius, playerIndex, RealPlayerSlotCount);
+        return gameApi.GetCoordinate($"PlayerStart{playerIndex + 1}").Center;
     }
 
     private static Vector3 GetSpawnOffset(Vector3 basePosition)
