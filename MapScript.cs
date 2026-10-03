@@ -96,6 +96,9 @@ public class PlayerState
     public int NextDraftSeconds { get; set; }
     public Vector3 BasePosition { get; set; }
     public Vector3 SpawnOffset { get; set; }
+    public int CountdownTextHandle { get; set; }
+    public float SpawnAtSeconds { get; set; }
+    public bool HasSpawnedThisRound { get; set; } = true;
     public Dictionary<int, List<IUnit>> SpawnedUnitsPerWave { get; } = new();
     public Dictionary<string, Dictionary<int, float>> DamageDealtPerUnitTypePerWave { get; } = new();
 }
@@ -112,7 +115,10 @@ public class MapScript : IWasmModule
     private const float HealingWaveRadius = 350f / WorldUnitsPerRealmUnit;
     private const int WaveIntervalSeconds = 45;
     private const int WaveCountdownVisibleSeconds = 30;
+    private const int SpawnSlotCount = 12;
     private const int TilesPerPlayer = 9;
+    private const int CountdownFontSize = 216;
+    private const float CountdownDistanceMultiplier = 3.75f;
     private const string BuilderUnitTypeId = "Builder";
     private const string CircleUnitTypeId = "CircleOfPower";
     private const string SoulSiphonAbilityId = "soul_siphon";
@@ -169,7 +175,9 @@ public class MapScript : IWasmModule
 
     private IGameAPI gameApi = null!;
     private int waveNumber;
-    private int waveCountdownSeconds = WaveIntervalSeconds;
+    private float roundClockSeconds;
+    private readonly List<float> spawnOffsetSlots = new();
+    private readonly List<int> spawnSlotOrder = new();
     private int gameSecondsElapsed;
     private int foodCap;
     private int nextFoodCapIncreaseSeconds;
@@ -192,7 +200,13 @@ public class MapScript : IWasmModule
 
         gameApi.ShowSummaryTable("Chaos Arena", true);
         gameApi.SetSummaryTableHeaders("Player", "Kills", "Best Average Damage");
-        gameApi.StartCountdownTimer(WaveIntervalSeconds, "Next wave");
+        for (int slotIndex = 0; slotIndex < SpawnSlotCount; slotIndex++)
+        {
+            spawnOffsetSlots.Add(slotIndex * (float)WaveIntervalSeconds / SpawnSlotCount);
+            spawnSlotOrder.Add(slotIndex);
+        }
+
+        gameApi.StartCountdownTimer(WaveIntervalSeconds, "Next wave round");
 
         gameApi.ScheduleRepeatingTimer(1f, HandleSpawnTimerTick);
         gameApi.ScheduleRepeatingTimer(1f, HandleGameTimerTick);
@@ -290,6 +304,12 @@ public class MapScript : IWasmModule
             playerStates[playerIndex] = playerState;
             playerState.BasePosition = GetPlayerBasePosition(playerIndex);
             playerState.SpawnOffset = GetSpawnOffset(playerState.BasePosition);
+            playerState.CountdownTextHandle = gameApi.CreateStaticText(
+                string.Empty,
+                ToCoordinatePosition(playerState.BasePosition, playerState.SpawnOffset * CountdownDistanceMultiplier),
+                Vector3.One,
+                CountdownFontSize);
+            gameApi.SetStaticTextVisible(playerState.CountdownTextHandle, false);
         }
 
         foreach (int playerIndex in activePlayerIndices)
@@ -751,36 +771,57 @@ public class MapScript : IWasmModule
 
     private void HandleSpawnTimerTick()
     {
-        waveCountdownSeconds--;
+        roundClockSeconds += 1f;
 
-        if (waveCountdownSeconds <= 0)
+        if (roundClockSeconds >= WaveIntervalSeconds)
         {
-            SpawnWaveAllPlayers();
-            waveCountdownSeconds = WaveIntervalSeconds;
-            gameApi.StartCountdownTimer(WaveIntervalSeconds, "Next wave");
+            roundClockSeconds -= WaveIntervalSeconds;
+            StartWaveRound();
+            gameApi.StartCountdownTimer(WaveIntervalSeconds, "Next wave round");
         }
-
-        if (waveCountdownSeconds > WaveCountdownVisibleSeconds)
-            return;
 
         foreach (KeyValuePair<int, PlayerState> entry in playerStates)
         {
-            Vector3 labelPosition = ToCoordinatePosition(entry.Value.BasePosition, entry.Value.SpawnOffset * 2f);
-            gameApi.CreateFloatingText(waveCountdownSeconds.ToString(), labelPosition, Vector3.One, 1f);
+            PlayerState playerState = entry.Value;
+
+            if (!playerState.HasSpawnedThisRound && roundClockSeconds >= playerState.SpawnAtSeconds)
+            {
+                playerState.HasSpawnedThisRound = true;
+                if (gameApi.IsPlayerActive(entry.Key))
+                    SpawnWaveForPlayer(entry.Key);
+            }
+
+            float secondsUntilSpawn = playerState.SpawnAtSeconds - roundClockSeconds;
+            bool isCountdownVisible = !playerState.HasSpawnedThisRound && secondsUntilSpawn <= WaveCountdownVisibleSeconds;
+            if (isCountdownVisible)
+                gameApi.SetStaticText(playerState.CountdownTextHandle, ((int)MathF.Ceiling(secondsUntilSpawn)).ToString());
+            gameApi.SetStaticTextVisible(playerState.CountdownTextHandle, isCountdownVisible);
         }
     }
 
-    private void SpawnWaveAllPlayers()
+    private void StartWaveRound()
     {
         waveNumber++;
 
-        foreach (PlayerState playerState in playerStates.Values)
+        gameApi.Shuffle(spawnSlotOrder);
+
+        int slotCursor = 0;
+        foreach (int playerIndex in playerStates.Keys.OrderBy(index => index))
+        {
+            PlayerState playerState = playerStates[playerIndex];
             playerState.SpawnedUnitsPerWave[waveNumber] = new List<IUnit>();
 
-        foreach (int playerIndex in playerStates.Keys)
-            SpawnWaveForPlayer(playerIndex);
-    }
+            if (!gameApi.IsPlayerActive(playerIndex))
+            {
+                playerState.HasSpawnedThisRound = true;
+                continue;
+            }
 
+            playerState.SpawnAtSeconds = spawnOffsetSlots[spawnSlotOrder[slotCursor]];
+            playerState.HasSpawnedThisRound = false;
+            slotCursor++;
+        }
+    }
     private void SpawnWaveForPlayer(int playerIndex)
     {
         PlayerState playerState = playerStates[playerIndex];
