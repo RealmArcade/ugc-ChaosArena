@@ -11,7 +11,8 @@
 		},
 		"decals": {
 			"acid_drip.rtex": "303aa61310bae34e7f40ed4d2614d772e6fe3a313e1c2bcd7255c2f1c47a5884",
-			"arcane_spark.rtex": "af0f579d808584b4080c97ab2fe6d7a30e24cff6970a37de55ffe79819612aec"
+			"arcane_spark.rtex": "af0f579d808584b4080c97ab2fe6d7a30e24cff6970a37de55ffe79819612aec",
+			"dragon_breath.rtex": "64bf689a798e9a9e1bfd6aa57dd98852c8165b5ec52bdb23c66da2af75385af4"
 		},
 		"glb": {
 			"buildings": {

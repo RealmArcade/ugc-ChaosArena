@@ -5,11 +5,32 @@
 	"CameraBoundsTop": -127,
 	"Coordinates": [
 		{
+			"MaxX": 2,
+			"MaxZ": 130,
+			"MinX": -2,
+			"MinZ": 126,
+			"Name": "PlayerStart1"
+		},
+		{
+			"MaxX": -126,
+			"MaxZ": 2,
+			"MinX": -130,
+			"MinZ": -2,
+			"Name": "PlayerStart10"
+		},
+		{
 			"MaxX": -114,
 			"MaxZ": 54,
 			"MinX": -118,
 			"MinZ": 50,
 			"Name": "PlayerStart11"
+		},
+		{
+			"MaxX": -62,
+			"MaxZ": 112.9,
+			"MinX": -66,
+			"MinZ": 108.9,
+			"Name": "PlayerStart12"
 		},
 		{
 			"MaxX": 58,
@@ -26,6 +47,13 @@
 			"Name": "PlayerStart3"
 		},
 		{
+			"MaxX": 130,
+			"MaxZ": 2,
+			"MinX": 126,
+			"MinZ": -2,
+			"Name": "PlayerStart4"
+		},
+		{
 			"MaxX": 120,
 			"MaxZ": -48,
 			"MinX": 116,
@@ -40,6 +68,13 @@
 			"Name": "PlayerStart6"
 		},
 		{
+			"MaxX": 2,
+			"MaxZ": -126,
+			"MinX": -2,
+			"MinZ": -130,
+			"Name": "PlayerStart7"
+		},
+		{
 			"MaxX": -52,
 			"MaxZ": -114,
 			"MinX": -56,
@@ -52,41 +87,6 @@
 			"MinX": -118,
 			"MinZ": -54,
 			"Name": "PlayerStart9"
-		},
-		{
-			"MaxX": 2,
-			"MaxZ": 130,
-			"MinX": -2,
-			"MinZ": 126,
-			"Name": "PlayerStart1"
-		},
-		{
-			"MaxX": -126,
-			"MaxZ": 2,
-			"MinX": -130,
-			"MinZ": -2,
-			"Name": "PlayerStart10"
-		},
-		{
-			"MaxX": -62,
-			"MaxZ": 112.9,
-			"MinX": -66,
-			"MinZ": 108.9,
-			"Name": "PlayerStart12"
-		},
-		{
-			"MaxX": 130,
-			"MaxZ": 2,
-			"MinX": 126,
-			"MinZ": -2,
-			"Name": "PlayerStart4"
-		},
-		{
-			"MaxX": 2,
-			"MaxZ": -126,
-			"MinX": -2,
-			"MinZ": -130,
-			"Name": "PlayerStart7"
 		}
 	],
 	"Decals": [],
