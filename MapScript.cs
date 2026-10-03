@@ -68,6 +68,7 @@ public record UnitMetaData(
     AbilityMetaData? WaterAbility,
     AbilityMetaData? EarthAbility,
     AbilityMetaData? FireAbility,
+    AbilityMetaData? UltimateAbility,
     UnitBaseStats BaseStats)
 {
     public AbilityMetaData? GetAbility(Element element) => element switch
@@ -76,6 +77,14 @@ public record UnitMetaData(
         Element.Earth => EarthAbility,
         _ => FireAbility
     };
+
+    public IEnumerable<AbilityMetaData> GetAllAbilities()
+    {
+        if (WaterAbility != null) yield return WaterAbility;
+        if (EarthAbility != null) yield return EarthAbility;
+        if (FireAbility != null) yield return FireAbility;
+        if (UltimateAbility != null) yield return UltimateAbility;
+    }
 }
 
 public class TileState
@@ -123,6 +132,7 @@ public class MapScript : IWasmModule
     private const string CircleUnitTypeId = "CircleOfPower";
     private const string SoulSiphonAbilityId = "soul_siphon";
     private const string HealingWaveAbilityId = "healing_wave";
+    private const string AncestralSpiritAbilityId = "ancestral_spirit";
     private const string AntiSnowballPoisonBuffId = "anti_snowball_poison";
     private const string CriticalStrikeTechId = "critical_strike";
 
@@ -153,19 +163,166 @@ public class MapScript : IWasmModule
     private static readonly UnitMetaData[] DraftableUnits =
     {
         new(
-            "Chad",
-            "Chad",
-            new AbilityMetaData("holylight", 12f, AbilityTargeting.GroundPlayerUnits, 0f),
-            new AbilityMetaData(SoulSiphonAbilityId, 12f, AbilityTargeting.GroundEnemy, 0f),
-            new AbilityMetaData("fireball", 12f, AbilityTargeting.GroundEnemy, 0f),
+            "Shadow Strider",
+            "shadow_strider",
+            new AbilityMetaData("searing_aura", 8f, AbilityTargeting.Self, 25f),
+            new AbilityMetaData("hardened_carapace", 0f, AbilityTargeting.Self, 45f),
+            new AbilityMetaData("challengers_roar", 8f, AbilityTargeting.GroundEnemy, 70f),
+            new AbilityMetaData("shadow_veil", 12f, AbilityTargeting.Self, 120f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Agility, 0f, new BalancePointAllocations(7, 8, 9, 5, 3, 4, 2, 9, 3))),
         new(
-            "Kevin",
-            "Kevin",
-            new AbilityMetaData(HealingWaveAbilityId, 12f, AbilityTargeting.GroundPlayerUnits, 0f),
-            new AbilityMetaData("lightning", 12f, AbilityTargeting.GroundEnemy, 0f),
-            null,
-            BalanceBaseStatsByPoints(PrimaryAttribute.Strength, 0f, new BalancePointAllocations(2, 4, 6, 9, 6, 5, 8, 3, 3)))
+            "Vanguard Sentinel",
+            "vanguard_sentinel",
+            new AbilityMetaData("shield_bash", 2f, AbilityTargeting.Enemy, 30f),
+            new AbilityMetaData("fortress_stance", 0f, AbilityTargeting.Self, 45f),
+            new AbilityMetaData("banner_of_valor", 8f, AbilityTargeting.PlayerUnits, 65f),
+            new AbilityMetaData("earth_shatter", 10f, AbilityTargeting.GroundEnemy, 120f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Strength, 0f, new BalancePointAllocations(2, 5, 8, 9, 7, 3, 8, 4, 2))),
+        new(
+            "Flame Archon",
+            "flame_archon",
+            new AbilityMetaData("pyro_blast", 10f, AbilityTargeting.GroundEnemy, 35f),
+            new AbilityMetaData("blazing_shield", 0f, AbilityTargeting.Self, 50f),
+            new AbilityMetaData("infernal_surge", 0f, AbilityTargeting.Self, 70f),
+            new AbilityMetaData("supernova", 12f, AbilityTargeting.GroundEnemy, 150f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Intelligence, 100f, new BalancePointAllocations(8, 6, 7, 4, 2, 8, 2, 3, 9))),
+        new(
+            "Frost Warden",
+            "frost_warden",
+            new AbilityMetaData("ice_shard", 10f, AbilityTargeting.Enemy, 30f),
+            new AbilityMetaData("glacial_barrier", 8f, AbilityTargeting.PlayerUnits, 50f),
+            new AbilityMetaData("frost_nova", 8f, AbilityTargeting.GroundEnemy, 65f),
+            new AbilityMetaData("absolute_zero", 12f, AbilityTargeting.GroundEnemy, 140f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Intelligence, 100f, new BalancePointAllocations(7, 5, 6, 5, 4, 7, 3, 3, 8))),
+        new(
+            "Storm Caller",
+            "storm_caller",
+            new AbilityMetaData("chain_lightning", 10f, AbilityTargeting.Enemy, 40f),
+            new AbilityMetaData("wind_step", 8f, AbilityTargeting.GroundRandom, 45f),
+            new AbilityMetaData("static_field", 8f, AbilityTargeting.GroundEnemy, 75f),
+            new AbilityMetaData("tempest_cataclysm", 12f, AbilityTargeting.GroundEnemy, 150f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Intelligence, 100f, new BalancePointAllocations(8, 7, 7, 4, 3, 8, 2, 4, 8))),
+        new(
+            "Verdant Druid",
+            "verdant_druid",
+            new AbilityMetaData("tangle_vines", 8f, AbilityTargeting.Enemy, 35f),
+            new AbilityMetaData("soothing_bloom", 8f, AbilityTargeting.PlayerUnits, 45f),
+            new AbilityMetaData("thorn_armor", 0f, AbilityTargeting.Self, 60f),
+            new AbilityMetaData("wrath_of_nature", 12f, AbilityTargeting.GroundEnemy, 130f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Strength, 50f, new BalancePointAllocations(3, 4, 6, 8, 6, 6, 7, 3, 5))),
+        new(
+            "Iron Warlord",
+            "iron_warlord",
+            new AbilityMetaData("heavy_strike", 2f, AbilityTargeting.Enemy, 25f),
+            new AbilityMetaData("battle_cry", 8f, AbilityTargeting.PlayerUnits, 50f),
+            new AbilityMetaData("iron_will", 0f, AbilityTargeting.Self, 60f),
+            new AbilityMetaData("war_stomp", 6f, AbilityTargeting.NoTarget, 110f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Strength, 0f, new BalancePointAllocations(2, 6, 9, 8, 8, 3, 9, 3, 1))),
+        new(
+            "Arcane Scholar",
+            "arcane_scholar",
+            new AbilityMetaData("arcane_missiles", 10f, AbilityTargeting.Enemy, 30f),
+            new AbilityMetaData("spell_shield", 0f, AbilityTargeting.Self, 45f),
+            new AbilityMetaData("mana_drain", 8f, AbilityTargeting.Enemy, 20f),
+            new AbilityMetaData("time_dilation", 10f, AbilityTargeting.GroundEnemy, 140f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Intelligence, 120f, new BalancePointAllocations(8, 5, 8, 4, 2, 9, 2, 2, 10))),
+        new(
+            "Nether Assassin",
+            "nether_assassin",
+            new AbilityMetaData("poison_blade", 2f, AbilityTargeting.Enemy, 25f),
+            new AbilityMetaData("shadow_step", 8f, AbilityTargeting.Enemy, 40f),
+            new AbilityMetaData("smoke_screen", 8f, AbilityTargeting.GroundEnemy, 55f),
+            new AbilityMetaData("death_mark", 10f, AbilityTargeting.Enemy, 90f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Agility, 0f, new BalancePointAllocations(2, 9, 10, 4, 3, 4, 2, 10, 2))),
+        new(
+            "Sun Priest",
+            "sun_priest",
+            new AbilityMetaData("solar_flare", 10f, AbilityTargeting.GroundEnemy, 35f),
+            new AbilityMetaData("radiant_blessing", 8f, AbilityTargeting.PlayerUnits, 50f),
+            new AbilityMetaData("blinding_ray", 8f, AbilityTargeting.Enemy, 60f),
+            new AbilityMetaData("dawn_judgement", 12f, AbilityTargeting.GroundEnemy, 135f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Intelligence, 100f, new BalancePointAllocations(6, 5, 5, 6, 4, 8, 3, 2, 9))),
+        new(
+            "Blood Berserker",
+            "blood_berserker",
+            new AbilityMetaData("frenzy_slash", 2f, AbilityTargeting.Enemy, 20f),
+            new AbilityMetaData("blood_lust", 0f, AbilityTargeting.Self, 35f),
+            new AbilityMetaData("sanguine_leap", 8f, AbilityTargeting.GroundEnemy, 50f),
+            new AbilityMetaData("unending_rage", 0f, AbilityTargeting.Self, 100f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Strength, 0f, new BalancePointAllocations(1, 8, 10, 7, 4, 2, 8, 6, 1))),
+        new(
+            "Stone Guardian",
+            "stone_guardian",
+            new AbilityMetaData("boulder_toss", 8f, AbilityTargeting.Enemy, 35f),
+            new AbilityMetaData("hardened_crust", 0f, AbilityTargeting.Self, 40f),
+            new AbilityMetaData("seismic_pulse", 6f, AbilityTargeting.NoTarget, 60f),
+            new AbilityMetaData("granite_avatar", 0f, AbilityTargeting.Self, 120f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Strength, 0f, new BalancePointAllocations(1, 3, 7, 10, 9, 3, 10, 2, 1))),
+        new(
+            "Chrono Weaver",
+            "chrono_weaver",
+            new AbilityMetaData("temporal_strike", 8f, AbilityTargeting.Enemy, 40f),
+            new AbilityMetaData("haste_field", 8f, AbilityTargeting.PlayerUnits, 55f),
+            new AbilityMetaData("stasis_bubble", 8f, AbilityTargeting.Enemy, 70f),
+            new AbilityMetaData("time_reversal", 0f, AbilityTargeting.Self, 150f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Intelligence, 100f, new BalancePointAllocations(6, 6, 6, 5, 3, 8, 2, 4, 8))),
+        new(
+            "Dune Skirmisher",
+            "dune_skirmisher",
+            new AbilityMetaData("sand_bolt", 10f, AbilityTargeting.Enemy, 25f),
+            new AbilityMetaData("quick_roll", 6f, AbilityTargeting.GroundRandom, 30f),
+            new AbilityMetaData("sandstorm_veil", 8f, AbilityTargeting.GroundPlayerUnits, 60f),
+            new AbilityMetaData("quicksand_trap", 10f, AbilityTargeting.GroundEnemy, 110f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Agility, 0f, new BalancePointAllocations(8, 9, 8, 5, 3, 4, 3, 9, 2))),
+        new(
+            "Coral Vanguard",
+            "coral_vanguard",
+            new AbilityMetaData("wave_crash", 8f, AbilityTargeting.GroundEnemy, 35f),
+            new AbilityMetaData("coral_shield", 8f, AbilityTargeting.PlayerUnits, 45f),
+            new AbilityMetaData("tidal_pull", 8f, AbilityTargeting.Enemy, 55f),
+            new AbilityMetaData("whirlpool_surge", 10f, AbilityTargeting.GroundEnemy, 125f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Strength, 50f, new BalancePointAllocations(3, 6, 7, 8, 7, 4, 7, 5, 2))),
+        new(
+            "Crystal Weaver",
+            "crystal_weaver",
+            new AbilityMetaData("prism_beam", 10f, AbilityTargeting.GroundEnemy, 35f),
+            new AbilityMetaData("crystal_ward", 8f, AbilityTargeting.GroundRandom, 40f),
+            new AbilityMetaData("refractive_shield", 0f, AbilityTargeting.Self, 65f),
+            new AbilityMetaData("crystalline_explosion", 12f, AbilityTargeting.GroundEnemy, 140f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Intelligence, 100f, new BalancePointAllocations(7, 6, 7, 5, 4, 7, 2, 3, 8))),
+        new(
+            "Astral Paragon",
+            "astral_paragon",
+            new AbilityMetaData("star_fall", 10f, AbilityTargeting.GroundEnemy, 40f),
+            new AbilityMetaData("astral_grace", 8f, AbilityTargeting.PlayerUnits, 50f),
+            new AbilityMetaData("cosmic_binding", 8f, AbilityTargeting.Enemy, 70f),
+            new AbilityMetaData("supernova_burst", 12f, AbilityTargeting.GroundEnemy, 160f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Intelligence, 100f, new BalancePointAllocations(7, 7, 8, 5, 3, 7, 3, 4, 7))),
+        new(
+            "Lightbringer Monk",
+            "lightbringer_monk",
+            new AbilityMetaData("radiant_fist", 2f, AbilityTargeting.Enemy, 25f),
+            new AbilityMetaData("mantra_of_healing", 8f, AbilityTargeting.PlayerUnits, 45f),
+            new AbilityMetaData("sanctuary_aura", 0f, AbilityTargeting.Self, 50f),
+            new AbilityMetaData("divine_intervention", 8f, AbilityTargeting.PlayerUnits, 130f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Strength, 50f, new BalancePointAllocations(2, 7, 7, 8, 6, 5, 7, 6, 3))),
+        new(
+            "Shadow Weaver",
+            "shadow_weaver",
+            new AbilityMetaData("gloom_bolt", 8f, AbilityTargeting.Enemy, 30f),
+            new AbilityMetaData("veil_of_shadows", 0f, AbilityTargeting.Self, 40f),
+            new AbilityMetaData("soul_tether", 8f, AbilityTargeting.Enemy, 60f),
+            new AbilityMetaData("abyssal_realm", 10f, AbilityTargeting.GroundEnemy, 120f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Agility, 50f, new BalancePointAllocations(5, 8, 8, 5, 4, 5, 3, 8, 5))),
+        new(
+            "Tempest Chaser",
+            "tempest_chaser",
+            new AbilityMetaData("gale_strike", 8f, AbilityTargeting.GroundEnemy, 25f),
+            new AbilityMetaData("wind_barrier", 0f, AbilityTargeting.Self, 35f),
+            new AbilityMetaData("cyclone_kick", 4f, AbilityTargeting.NoTarget, 50f),
+            new AbilityMetaData("tornado_storm", 10f, AbilityTargeting.GroundEnemy, 115f),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Agility, 0f, new BalancePointAllocations(6, 10, 8, 5, 3, 4, 3, 10, 2)))
+
     };
 
     private readonly Dictionary<string, UnitMetaData> unitMetaDataByTypeId = new();
@@ -279,14 +436,13 @@ public class MapScript : IWasmModule
     {
         gameApi.RegisterAbility(SoulSiphonAbilityId, "Soul Siphon", "Low health enemies in the area may be executed, granting wood.");
         gameApi.RegisterAbility(HealingWaveAbilityId, "Healing Wave", "Heals allied units in the area based on missing health.");
+        gameApi.RegisterAbility(AncestralSpiritAbilityId, "Ancestral Spirit", "Invokes a spirit of ancient ancestors to mend and protect allied ground forces in the targeted area.");
 
         foreach (UnitMetaData metaData in DraftableUnits)
         {
-            foreach (Element element in Enum.GetValues<Element>())
+            foreach (AbilityMetaData ability in metaData.GetAllAbilities())
             {
-                AbilityMetaData? ability = metaData.GetAbility(element);
-                if (ability != null)
-                    gameApi.AddUnitTypeAbility(metaData.UnitTypeId, ability.AbilityId);
+                gameApi.AddUnitTypeAbility(metaData.UnitTypeId, ability.AbilityId);
             }
         }
     }
@@ -822,6 +978,7 @@ public class MapScript : IWasmModule
             slotCursor++;
         }
     }
+
     private void SpawnWaveForPlayer(int playerIndex)
     {
         PlayerState playerState = playerStates[playerIndex];
