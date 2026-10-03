@@ -40,9 +40,11 @@ public record AbilityMetaData(string AbilityId, float Range, AbilityTargeting Ta
 
 public record BalancePointAllocations(
     float AttackRange,
+    float AttackSpeed,
     float AttackDamage,
     float MaxLife,
     float Armor,
+    float ManaRegen,
     float StrengthPerLevel,
     float AgilityPerLevel,
     float IntelligencePerLevel);
@@ -51,9 +53,11 @@ public record UnitBaseStats(
     PrimaryAttribute PrimaryAttribute,
     float StartingMana,
     float AttackRange,
+    float AttackSpeed,
     float AttackDamage,
     float MaxLife,
     float Armor,
+    float ManaRegen,
     float StrengthPerLevel,
     float AgilityPerLevel,
     float IntelligencePerLevel);
@@ -149,14 +153,14 @@ public class MapScript : IWasmModule
             new AbilityMetaData("holylight", 12f, AbilityTargeting.GroundPlayerUnits, 0f),
             new AbilityMetaData(SoulSiphonAbilityId, 12f, AbilityTargeting.GroundEnemy, 0f),
             new AbilityMetaData("fireball", 12f, AbilityTargeting.GroundEnemy, 0f),
-            BalanceBaseStatsByPoints(PrimaryAttribute.Agility, 0f, new BalancePointAllocations(7, 9, 5, 3, 2, 9, 3))),
+            BalanceBaseStatsByPoints(PrimaryAttribute.Agility, 0f, new BalancePointAllocations(7, 8, 9, 5, 3, 4, 2, 9, 3))),
         new(
             "Kevin",
             "Kevin",
             new AbilityMetaData(HealingWaveAbilityId, 12f, AbilityTargeting.GroundPlayerUnits, 0f),
             new AbilityMetaData("lightning", 12f, AbilityTargeting.GroundEnemy, 0f),
             null,
-            BalanceBaseStatsByPoints(PrimaryAttribute.Strength, 0f, new BalancePointAllocations(2, 6, 9, 6, 8, 3, 3)))
+            BalanceBaseStatsByPoints(PrimaryAttribute.Strength, 0f, new BalancePointAllocations(2, 4, 6, 9, 6, 5, 8, 3, 3)))
     };
 
     private readonly Dictionary<string, UnitMetaData> unitMetaDataByTypeId = new();
@@ -211,27 +215,33 @@ public class MapScript : IWasmModule
         BalancePointAllocations points)
     {
         const float attackRangeScalingPerPoint = 100f;
+        const float attackSpeedScalingPerPoint = 0.1f;
         const float attackDamageScalingPerPoint = 10f;
         const float maxLifeScalingPerPoint = 100f;
         const float armorScalingPerPoint = 1f;
+        const float manaRegenScalingPerPoint = 0.01f;
         const float attributePerLevelScalingPerPoint = 0.25f;
         const float attackRangeBaseValue = 100f;
+        const float attackSpeedBaseValue = 0.1f;
         const float attackDamageBaseValue = 1f;
         const float maxLifeBaseValue = 100f;
         const float armorBaseValue = 0f;
+        const float manaRegenBaseValue = 0.01f;
         const float attributeBaseValue = 1f;
 
-        float totalPoints = points.AttackRange + points.AttackDamage + points.MaxLife + points.Armor
-            + points.StrengthPerLevel + points.AgilityPerLevel + points.IntelligencePerLevel;
+        float totalPoints = points.AttackRange + points.AttackSpeed + points.AttackDamage + points.MaxLife + points.Armor
+            + points.ManaRegen + points.StrengthPerLevel + points.AgilityPerLevel + points.IntelligencePerLevel;
         float normalizedScaling = 10f / totalPoints;
 
         return new UnitBaseStats(
             primaryAttribute,
             startingMana,
             MathF.Ceiling(normalizedScaling * points.AttackRange * attackRangeScalingPerPoint + attackRangeBaseValue) / WorldUnitsPerRealmUnit,
+            MathF.Ceiling(normalizedScaling * points.AttackSpeed * attackSpeedScalingPerPoint + attackSpeedBaseValue),
             MathF.Ceiling(normalizedScaling * points.AttackDamage * attackDamageScalingPerPoint + attackDamageBaseValue),
             MathF.Ceiling(normalizedScaling * points.MaxLife * maxLifeScalingPerPoint + maxLifeBaseValue),
             MathF.Ceiling(normalizedScaling * points.Armor * armorScalingPerPoint + armorBaseValue),
+            normalizedScaling * points.ManaRegen * manaRegenScalingPerPoint + manaRegenBaseValue,
             normalizedScaling * points.StrengthPerLevel * attributePerLevelScalingPerPoint + attributeBaseValue,
             normalizedScaling * points.AgilityPerLevel * attributePerLevelScalingPerPoint + attributeBaseValue,
             normalizedScaling * points.IntelligencePerLevel * attributePerLevelScalingPerPoint + attributeBaseValue);
@@ -497,6 +507,8 @@ public class MapScript : IWasmModule
         unit.Armor = stats.Armor + levelsGained * stats.AgilityPerLevel * armorPerAgility;
         unit.Damage = stats.AttackDamage + levelsGained * primaryAttributeGain;
         unit.Range = stats.AttackRange;
+        unit.AttackSpeed = stats.AttackSpeed;
+        unit.ManaRegen = stats.ManaRegen;
 
         if (unit.IsHero)
             unit.Level = Math.Max(level, 1);
@@ -507,6 +519,7 @@ public class MapScript : IWasmModule
         unit.Invulnerable = true;
         unit.Speed = 0f;
         unit.Damage = 0f;
+        unit.ManaRegen = 0f;
     }
 
     private void ConfigureDraftedHero(IUnit hero, UnitMetaData metaData, int level, IEnumerable<string> itemIds, Element element)
