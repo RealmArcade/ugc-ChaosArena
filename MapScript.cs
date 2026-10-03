@@ -442,7 +442,10 @@ public class MapScript : IWasmModule
         {
             foreach (AbilityMetaData ability in metaData.GetAllAbilities())
             {
-                gameApi.AddUnitTypeAbility(metaData.UnitTypeId, ability.AbilityId);
+                gameApi.AddUnitTypeAbility(CircleUnitTypeId, ability.AbilityId);
+                gameApi.AddUnitTypeAbility("CircleOfPowerWater", ability.AbilityId);
+                gameApi.AddUnitTypeAbility("CircleOfPowerEarth", ability.AbilityId);
+                gameApi.AddUnitTypeAbility("CircleOfPowerFire", ability.AbilityId);
             }
         }
     }
@@ -580,7 +583,43 @@ public class MapScript : IWasmModule
             return;
 
         string offerList = string.Join(", ", playerState.Offers.Select((typeId, index) => $"{index + 1}: {typeId}"));
-        gameApi.SendMessageToPlayer(playerIndex, $"Draft offers - {offerList}. Select a Circle of Power and type 'draft <number>'.");
+        gameApi.SendMessageToPlayer(playerIndex, $"Draft offers - {offerList}. Select a Circle of Power and click hero ability or type 'draft <number>'.");
+
+        UpdateCircleDraftAbilities(playerIndex);
+    }
+
+    private void UpdateCircleDraftAbilities(int playerIndex)
+    {
+        PlayerState playerState = playerStates[playerIndex];
+        HashSet<string> offeredAbilityIds = new();
+
+        foreach (string offerTypeId in playerState.Offers)
+        {
+            if (unitMetaDataByTypeId.TryGetValue(offerTypeId, out UnitMetaData? metaData))
+            {
+                foreach (AbilityMetaData ability in metaData.GetAllAbilities())
+                {
+                    offeredAbilityIds.Add(ability.AbilityId);
+                }
+            }
+        }
+
+        IEnumerable<IUnit> circles = GetPlayerCircles(playerIndex);
+        foreach (IUnit circle in circles)
+        {
+            foreach (UnitMetaData metaData in DraftableUnits)
+            {
+                foreach (AbilityMetaData ability in metaData.GetAllAbilities())
+                {
+                    bool isOffered = offeredAbilityIds.Contains(ability.AbilityId);
+                    gameApi.SetAbilityState(circle, ability.AbilityId, !isOffered, !isOffered);
+                    if (isOffered)
+                    {
+                        gameApi.SetAbilityManaCost(circle, ability.AbilityId, 0f);
+                    }
+                }
+            }
+        }
     }
 
     private void UnlockPlayerTiles(int playerIndex, int count)
@@ -604,6 +643,8 @@ public class MapScript : IWasmModule
             PerformItemReroll(circle);
             PerformElementReroll(circle, state);
         }
+
+        UpdateCircleDraftAbilities(playerIndex);
     }
 
     private void PerformItemReroll(IUnit unit)
@@ -712,7 +753,7 @@ public class MapScript : IWasmModule
     }
 
     private IEnumerable<IUnit> GetPlayerCircles(int playerIndex) =>
-        gameApi.GetUnitsOwnedByPlayer(playerIndex, unit => unit.UnitId == CircleUnitTypeId && !unit.IsDead);
+        gameApi.GetUnitsOwnedByPlayer(playerIndex, unit => (unit.UnitId.StartsWith("CircleOfPower", StringComparison.OrdinalIgnoreCase) || (tileStatesByUnitId.TryGetValue(unit.UniqueId, out TileState? state) && state.Kind == TileKind.Circle)) && !unit.IsDead);
 
     private HashSet<string> GetPlayerDraftedUnitTypeIds(int playerIndex)
     {
@@ -771,7 +812,7 @@ public class MapScript : IWasmModule
             return false;
         }
 
-        IUnit? circle = selectedUnit != null && selectedUnit.UnitId == CircleUnitTypeId && selectedUnit.Player == playerIndex
+        IUnit? circle = selectedUnit != null && (selectedUnit.UnitId.StartsWith("CircleOfPower", StringComparison.OrdinalIgnoreCase) || (tileStatesByUnitId.TryGetValue(selectedUnit.UniqueId, out TileState? s) && s.Kind == TileKind.Circle)) && selectedUnit.Player == playerIndex
             ? selectedUnit
             : null;
 
@@ -1213,6 +1254,54 @@ public class MapScript : IWasmModule
             ApplySoulSiphon(caster, targetPosition);
         else if (spellId == HealingWaveAbilityId)
             ApplyHealingWave(caster, targetPosition);
+        else
+            TryDraftFromAbilityCast(caster, spellId);
+    }
+
+    private void TryDraftFromAbilityCast(IUnit caster, string spellId)
+    {
+        int playerIndex = ResolveRealPlayerIndex(caster.Player);
+        if (!playerStates.TryGetValue(playerIndex, out PlayerState? playerState))
+            return;
+
+        bool isCircle = (tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? state) && state.Kind == TileKind.Circle)
+            || caster.UnitId.StartsWith("CircleOfPower", StringComparison.OrdinalIgnoreCase);
+
+        if (!isCircle)
+            return;
+
+        UnitMetaData? matchedUnitMeta = null;
+        foreach (UnitMetaData metaData in DraftableUnits)
+        {
+            if (metaData.GetAllAbilities().Any(a => a.AbilityId == spellId))
+            {
+                matchedUnitMeta = metaData;
+                break;
+            }
+        }
+
+        if (matchedUnitMeta == null)
+            return;
+
+        if (!playerState.Offers.Contains(matchedUnitMeta.UnitTypeId))
+        {
+            gameApi.SendMessageToPlayer(playerIndex, $"{matchedUnitMeta.Name} is not currently offered for draft.");
+            return;
+        }
+
+        if (playerState.DraftedCount >= foodCap)
+        {
+            gameApi.SendMessageToPlayer(playerIndex, "Food Cap Exceeded");
+            return;
+        }
+
+        if (gameSecondsElapsed < playerState.NextDraftSeconds)
+        {
+            gameApi.SendMessageToPlayer(playerIndex, $"Draft is on cooldown for {playerState.NextDraftSeconds - gameSecondsElapsed} more seconds.");
+            return;
+        }
+
+        DraftUnit(playerIndex, matchedUnitMeta.UnitTypeId, caster);
     }
 
     private void ApplySoulSiphon(IUnit caster, Vector3 targetPosition)
