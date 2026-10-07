@@ -1,99 +1,99 @@
 {
-	"CameraBoundsBottom": 157,
-	"CameraBoundsLeft": -127,
-	"CameraBoundsRight": 127,
-	"CameraBoundsTop": -127,
-	"Coordinates": [
-		{
-			"MaxX": 2,
-			"MaxZ": 130,
-			"MinX": -2,
-			"MinZ": 126,
-			"Name": "PlayerStart1"
-		},
-		{
-			"MaxX": -126,
-			"MaxZ": 2,
-			"MinX": -130,
-			"MinZ": -2,
-			"Name": "PlayerStart10"
-		},
-		{
-			"MaxX": -114,
-			"MaxZ": 54,
-			"MinX": -118,
-			"MinZ": 50,
-			"Name": "PlayerStart11"
-		},
-		{
-			"MaxX": -62,
-			"MaxZ": 112.9,
-			"MinX": -66,
-			"MinZ": 108.9,
-			"Name": "PlayerStart12"
-		},
-		{
-			"MaxX": 58,
-			"MaxZ": 118,
-			"MinX": 54,
-			"MinZ": 114,
-			"Name": "PlayerStart2"
-		},
-		{
-			"MaxX": 118,
-			"MaxZ": 56,
-			"MinX": 114,
-			"MinZ": 52,
-			"Name": "PlayerStart3"
-		},
-		{
-			"MaxX": 130,
-			"MaxZ": 2,
-			"MinX": 126,
-			"MinZ": -2,
-			"Name": "PlayerStart4"
-		},
-		{
-			"MaxX": 120,
-			"MaxZ": -48,
-			"MinX": 116,
-			"MinZ": -52,
-			"Name": "PlayerStart5"
-		},
-		{
-			"MaxX": 56,
-			"MaxZ": -114,
-			"MinX": 52,
-			"MinZ": -118,
-			"Name": "PlayerStart6"
-		},
-		{
-			"MaxX": 2,
-			"MaxZ": -126,
-			"MinX": -2,
-			"MinZ": -130,
-			"Name": "PlayerStart7"
-		},
-		{
-			"MaxX": -52,
-			"MaxZ": -114,
-			"MinX": -56,
-			"MinZ": -118,
-			"Name": "PlayerStart8"
-		},
-		{
-			"MaxX": -114,
-			"MaxZ": -50,
-			"MinX": -118,
-			"MinZ": -54,
-			"Name": "PlayerStart9"
-		}
-	],
-	"Decals": [],
-	"Depth": 160,
-	"Props": [],
-	"SkyboxPath": "Assets/skyboxes/jade_shrine.rtex",
-	"Units": [],
-	"Vfx": [],
-	"Width": 160
+  "Width": 160,
+  "Depth": 160,
+  "Units": [],
+  "Props": [],
+  "Decals": [],
+  "Vfx": [],
+  "CameraBoundsLeft": -127,
+  "CameraBoundsRight": 127,
+  "CameraBoundsTop": -127,
+  "CameraBoundsBottom": 157,
+  "SkyboxPath": "Assets/skyboxes/jade_shrine.rtex",
+  "Coordinates": [
+    {
+      "Name": "PlayerStart1",
+      "MinX": -2,
+      "MinZ": 126,
+      "MaxX": 2,
+      "MaxZ": 130
+    },
+    {
+      "Name": "PlayerStart10",
+      "MinX": -130,
+      "MinZ": -2,
+      "MaxX": -126,
+      "MaxZ": 2
+    },
+    {
+      "Name": "PlayerStart11",
+      "MinX": -118,
+      "MinZ": 50,
+      "MaxX": -114,
+      "MaxZ": 54
+    },
+    {
+      "Name": "PlayerStart12",
+      "MinX": -66,
+      "MinZ": 108.9,
+      "MaxX": -62,
+      "MaxZ": 112.9
+    },
+    {
+      "Name": "PlayerStart2",
+      "MinX": 54,
+      "MinZ": 114,
+      "MaxX": 58,
+      "MaxZ": 118
+    },
+    {
+      "Name": "PlayerStart3",
+      "MinX": 114,
+      "MinZ": 52,
+      "MaxX": 118,
+      "MaxZ": 56
+    },
+    {
+      "Name": "PlayerStart4",
+      "MinX": 126,
+      "MinZ": -2,
+      "MaxX": 130,
+      "MaxZ": 2
+    },
+    {
+      "Name": "PlayerStart5",
+      "MinX": 116,
+      "MinZ": -52,
+      "MaxX": 120,
+      "MaxZ": -48
+    },
+    {
+      "Name": "PlayerStart6",
+      "MinX": 52,
+      "MinZ": -118,
+      "MaxX": 56,
+      "MaxZ": -114
+    },
+    {
+      "Name": "PlayerStart7",
+      "MinX": -2,
+      "MinZ": -130,
+      "MaxX": 2,
+      "MaxZ": -126
+    },
+    {
+      "Name": "PlayerStart8",
+      "MinX": -56,
+      "MinZ": -118,
+      "MaxX": -52,
+      "MaxZ": -114
+    },
+    {
+      "Name": "PlayerStart9",
+      "MinX": -118,
+      "MinZ": -54,
+      "MaxX": -114,
+      "MaxZ": -50
+    }
+  ]
 }

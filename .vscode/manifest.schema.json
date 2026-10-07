@@ -1,96 +1,270 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "MapManifest",
-  "type": "object",
+  "type": [
+    "object",
+    "null"
+  ],
   "properties": {
+    "MapName": {
+      "type": "string"
+    },
+    "Author": {
+      "type": "string"
+    },
+    "Version": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    },
+    "Tags": {
+      "type": "array",
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "Maintainers": {
+      "type": "array",
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "GreenlitReferences": {
+      "type": "array",
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
     "Assets": {
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "properties": {
-        "animations": {
-          "type": "object",
-          "additionalProperties": { "type": "string" }
-        },
-        "decals": {
-          "type": "object",
-          "additionalProperties": { "type": "string" }
-        },
-        "glb": {
-          "type": "object",
-          "properties": {
-            "buildings": {
-              "type": "object",
-              "additionalProperties": { "type": "string" }
-            },
-            "projectiles": {
-              "type": "object",
-              "additionalProperties": { "type": "string" }
-            },
-            "props": {
-              "type": "object",
-              "additionalProperties": { "type": "string" }
-            },
-            "resources": {
-              "type": "object",
-              "additionalProperties": { "type": "string" }
-            },
-            "units": {
-              "type": "object",
-              "additionalProperties": { "type": "string" }
-            }
-          },
+        "Animation": {
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": {
-            "type": "object",
-            "additionalProperties": { "type": "string" }
+            "type": [
+              "string",
+              "null"
+            ]
           }
         },
-        "icons": {
-          "type": "object",
-          "additionalProperties": { "type": "string" }
+        "Building": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         },
-        "music": {
-          "type": "object",
-          "additionalProperties": { "type": "string" }
+        "Character": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         },
-        "noise_textures": {
-          "type": "object",
-          "additionalProperties": { "type": "string" }
+        "Decal": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         },
-        "ribbons": {
-          "type": "object",
-          "additionalProperties": { "type": "string" }
+        "Icon": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         },
-        "sfx": {
-          "type": "object",
-          "additionalProperties": { "type": "string" }
+        "Item": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         },
-        "shaders": {
-          "type": "object",
-          "additionalProperties": { "type": "string" }
+        "Music": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         },
-        "skyboxes": {
-          "type": "object",
-          "additionalProperties": { "type": "string" }
+        "Noise": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         },
-        "textures": {
-          "type": "object",
-          "additionalProperties": { "type": "string" }
+        "Prop": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Ribbon": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Shader": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Skybox": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "SoundEffect": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Spritesheet": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Terrain": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         },
         "vfx_radial": {
-          "type": "object",
-          "additionalProperties": { "type": "string" }
-        },
-        "vfx_spritesheets": {
-          "type": "object",
-          "additionalProperties": { "type": "string" }
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         },
         "vfx_vertical": {
-          "type": "object",
-          "additionalProperties": { "type": "string" }
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "Other": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         }
-      },
-      "additionalProperties": {
-        "type": "object",
-        "additionalProperties": { "type": "string" }
       }
     }
   }
