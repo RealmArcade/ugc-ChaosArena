@@ -98,6 +98,8 @@ public class TileState
 public class PlayerState
 {
     public IUnit? Builder { get; set; }
+    public IUnit? Altar { get; set; }
+    public IUnit? Blacksmith { get; set; }
     public List<string> Deck { get; } = new();
     public List<string> Offers { get; } = new();
     public List<Vector3> RemainingTilePositions { get; } = new();
@@ -119,6 +121,7 @@ public class MapScript : IWasmModule
     private const float WorldUnitsPerRealmUnit = 50f;
     private const float SpawnOffsetDistance = 500f / WorldUnitsPerRealmUnit;
     private const float TileSpacing = 125f / WorldUnitsPerRealmUnit;
+    private const float BuildingSpacing = 200f / WorldUnitsPerRealmUnit;
     private const float EnemyAcquisitionRange = 1000f / WorldUnitsPerRealmUnit;
     private const float SoulSiphonRadius = 175f / WorldUnitsPerRealmUnit;
     private const float HealingWaveRadius = 350f / WorldUnitsPerRealmUnit;
@@ -128,11 +131,24 @@ public class MapScript : IWasmModule
     private const int TilesPerPlayer = 9;
     private const int CountdownFontSize = 216;
     private const float CountdownDistanceMultiplier = 3.75f;
-    private const string BuilderUnitTypeId = "Builder";
-    private const string CircleUnitTypeId = "CircleOfPower";
-    private const string SoulSiphonAbilityId = "soul_siphon";
-    private const string HealingWaveAbilityId = "healing_wave";
-    private const string AncestralSpiritAbilityId = "ancestral_spirit";
+
+    private const string BuilderUnitTypeId = "unit/builder";
+    private const string AltarBuildingTypeId = "building/altar";
+    private const string BlacksmithBuildingTypeId = "building/blacksmith";
+    private const string CircleEarthUnitTypeId = "unit/circle_of_power_earth";
+    private const string CircleFireUnitTypeId = "unit/circle_of_power_fire";
+    private const string CircleWaterUnitTypeId = "unit/circle_of_power_water";
+
+    private const string RerollItemAbilityId = "ability/reroll_item";
+    private const string RerollElementAbilityId = "ability/reroll_element";
+    private const string RerollHeroAbilityId = "ability/reroll_hero";
+    private const string RerollAllAbilityId = "ability/reroll_all";
+    private const string SwapTileUnitsAbilityId = "ability/swap_tile_units";
+    private const string UpgradeCriticalStrikeAbilityId = "ability/upgrade_critical_strike";
+
+    private const string SoulSiphonAbilityId = "ability/soul_siphon";
+    private const string HealingWaveAbilityId = "ability/healing_wave";
+    private const string AncestralSpiritAbilityId = "ability/ancestral_spirit";
     private const string AntiSnowballPoisonBuffId = "anti_snowball_poison";
     private const string CriticalStrikeTechId = "critical_strike";
 
@@ -149,180 +165,179 @@ public class MapScript : IWasmModule
 
     private static readonly string[] ItemPool =
     {
-        "belt_of_giant_strength",
-        "boots_of_quelthalas",
-        "circlet_of_nobility",
-        "claws_of_attack",
-        "gloves_of_haste",
-        "pendant_of_mana",
-        "periapt_of_vitality",
-        "ring_of_protection",
-        "robe_of_the_magi"
+        "item/titan_belt",
+        "item/swiftness_boots",
+        "item/cowl_of_the_wise",
+        "item/iron_claws",
+        "item/gauntlets_of_power",
+        "item/crystal_pendant",
+        "item/vitality_ring",
+        "item/ring_of_protection",
+        "item/tome_of_knowledge"
     };
 
     private static readonly UnitMetaData[] DraftableUnits =
     {
         new(
             "Shadow Strider",
-            "shadow_strider",
-            new AbilityMetaData("searing_aura", 8f, AbilityTargeting.Self, 25f),
-            new AbilityMetaData("hardened_carapace", 0f, AbilityTargeting.Self, 45f),
-            new AbilityMetaData("challengers_roar", 8f, AbilityTargeting.GroundEnemy, 70f),
-            new AbilityMetaData("shadow_veil", 12f, AbilityTargeting.Self, 120f),
+            "unit/shadow_strider",
+            new AbilityMetaData("ability/searing_aura", 8f, AbilityTargeting.Self, 25f),
+            new AbilityMetaData("ability/hardened_carapace", 0f, AbilityTargeting.Self, 45f),
+            new AbilityMetaData("ability/challengers_roar", 8f, AbilityTargeting.GroundEnemy, 70f),
+            new AbilityMetaData("ability/shadow_veil", 12f, AbilityTargeting.Self, 120f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Agility, 0f, new BalancePointAllocations(7, 8, 9, 5, 3, 4, 2, 9, 3))),
         new(
             "Vanguard Sentinel",
-            "vanguard_sentinel",
-            new AbilityMetaData("shield_bash", 2f, AbilityTargeting.Enemy, 30f),
-            new AbilityMetaData("fortress_stance", 0f, AbilityTargeting.Self, 45f),
-            new AbilityMetaData("banner_of_valor", 8f, AbilityTargeting.PlayerUnits, 65f),
-            new AbilityMetaData("earth_shatter", 10f, AbilityTargeting.GroundEnemy, 120f),
+            "unit/vanguard_sentinel",
+            new AbilityMetaData("ability/shield_bash", 2f, AbilityTargeting.Enemy, 30f),
+            new AbilityMetaData("ability/fortress_stance", 0f, AbilityTargeting.Self, 45f),
+            new AbilityMetaData("ability/banner_of_valor", 8f, AbilityTargeting.PlayerUnits, 65f),
+            new AbilityMetaData("ability/earth_shatter", 10f, AbilityTargeting.GroundEnemy, 120f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Strength, 0f, new BalancePointAllocations(2, 5, 8, 9, 7, 3, 8, 4, 2))),
         new(
             "Flame Archon",
-            "flame_archon",
-            new AbilityMetaData("pyro_blast", 10f, AbilityTargeting.GroundEnemy, 35f),
-            new AbilityMetaData("blazing_shield", 0f, AbilityTargeting.Self, 50f),
-            new AbilityMetaData("infernal_surge", 0f, AbilityTargeting.Self, 70f),
-            new AbilityMetaData("supernova", 12f, AbilityTargeting.GroundEnemy, 150f),
+            "unit/flame_archon",
+            new AbilityMetaData("ability/pyro_blast", 10f, AbilityTargeting.GroundEnemy, 35f),
+            new AbilityMetaData("ability/blazing_shield", 0f, AbilityTargeting.Self, 50f),
+            new AbilityMetaData("ability/infernal_surge", 0f, AbilityTargeting.Self, 70f),
+            new AbilityMetaData("ability/supernova", 12f, AbilityTargeting.GroundEnemy, 150f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Intelligence, 100f, new BalancePointAllocations(8, 6, 7, 4, 2, 8, 2, 3, 9))),
         new(
             "Frost Warden",
-            "frost_warden",
-            new AbilityMetaData("ice_shard", 10f, AbilityTargeting.Enemy, 30f),
-            new AbilityMetaData("glacial_barrier", 8f, AbilityTargeting.PlayerUnits, 50f),
-            new AbilityMetaData("frost_nova", 8f, AbilityTargeting.GroundEnemy, 65f),
-            new AbilityMetaData("absolute_zero", 12f, AbilityTargeting.GroundEnemy, 140f),
+            "unit/frost_warden",
+            new AbilityMetaData("ability/ice_shard", 10f, AbilityTargeting.Enemy, 30f),
+            new AbilityMetaData("ability/glacial_barrier", 8f, AbilityTargeting.PlayerUnits, 50f),
+            new AbilityMetaData("ability/frost_nova", 8f, AbilityTargeting.GroundEnemy, 65f),
+            new AbilityMetaData("ability/absolute_zero", 12f, AbilityTargeting.GroundEnemy, 140f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Intelligence, 100f, new BalancePointAllocations(7, 5, 6, 5, 4, 7, 3, 3, 8))),
         new(
             "Storm Caller",
-            "storm_caller",
-            new AbilityMetaData("chain_lightning", 10f, AbilityTargeting.Enemy, 40f),
-            new AbilityMetaData("wind_step", 8f, AbilityTargeting.GroundRandom, 45f),
-            new AbilityMetaData("static_field", 8f, AbilityTargeting.GroundEnemy, 75f),
-            new AbilityMetaData("tempest_cataclysm", 12f, AbilityTargeting.GroundEnemy, 150f),
+            "unit/storm_caller",
+            new AbilityMetaData("ability/chain_lightning", 10f, AbilityTargeting.Enemy, 40f),
+            new AbilityMetaData("ability/wind_step", 8f, AbilityTargeting.GroundRandom, 45f),
+            new AbilityMetaData("ability/static_field", 8f, AbilityTargeting.GroundEnemy, 75f),
+            new AbilityMetaData("ability/tempest_cataclysm", 12f, AbilityTargeting.GroundEnemy, 150f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Intelligence, 100f, new BalancePointAllocations(8, 7, 7, 4, 3, 8, 2, 4, 8))),
         new(
             "Verdant Druid",
-            "verdant_druid",
-            new AbilityMetaData("tangle_vines", 8f, AbilityTargeting.Enemy, 35f),
-            new AbilityMetaData("soothing_bloom", 8f, AbilityTargeting.PlayerUnits, 45f),
-            new AbilityMetaData("thorn_armor", 0f, AbilityTargeting.Self, 60f),
-            new AbilityMetaData("wrath_of_nature", 12f, AbilityTargeting.GroundEnemy, 130f),
+            "unit/verdant_druid",
+            new AbilityMetaData("ability/tangle_vines", 8f, AbilityTargeting.Enemy, 35f),
+            new AbilityMetaData("ability/soothing_bloom", 8f, AbilityTargeting.PlayerUnits, 45f),
+            new AbilityMetaData("ability/thorn_armor", 0f, AbilityTargeting.Self, 60f),
+            new AbilityMetaData("ability/wrath_of_nature", 12f, AbilityTargeting.GroundEnemy, 130f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Strength, 50f, new BalancePointAllocations(3, 4, 6, 8, 6, 6, 7, 3, 5))),
         new(
             "Iron Warlord",
-            "iron_warlord",
-            new AbilityMetaData("heavy_strike", 2f, AbilityTargeting.Enemy, 25f),
-            new AbilityMetaData("battle_cry", 8f, AbilityTargeting.PlayerUnits, 50f),
-            new AbilityMetaData("iron_will", 0f, AbilityTargeting.Self, 60f),
-            new AbilityMetaData("war_stomp", 6f, AbilityTargeting.NoTarget, 110f),
+            "unit/iron_warlord",
+            new AbilityMetaData("ability/heavy_strike", 2f, AbilityTargeting.Enemy, 25f),
+            new AbilityMetaData("ability/battle_cry", 8f, AbilityTargeting.PlayerUnits, 50f),
+            new AbilityMetaData("ability/iron_will", 0f, AbilityTargeting.Self, 60f),
+            new AbilityMetaData("ability/war_stomp", 6f, AbilityTargeting.NoTarget, 110f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Strength, 0f, new BalancePointAllocations(2, 6, 9, 8, 8, 3, 9, 3, 1))),
         new(
             "Arcane Scholar",
-            "arcane_scholar",
-            new AbilityMetaData("arcane_missiles", 10f, AbilityTargeting.Enemy, 30f),
-            new AbilityMetaData("spell_shield", 0f, AbilityTargeting.Self, 45f),
-            new AbilityMetaData("mana_drain", 8f, AbilityTargeting.Enemy, 20f),
-            new AbilityMetaData("time_dilation", 10f, AbilityTargeting.GroundEnemy, 140f),
+            "unit/arcane_scholar",
+            new AbilityMetaData("ability/arcane_missiles", 10f, AbilityTargeting.Enemy, 30f),
+            new AbilityMetaData("ability/spell_shield", 0f, AbilityTargeting.Self, 45f),
+            new AbilityMetaData("ability/mana_drain", 8f, AbilityTargeting.Enemy, 20f),
+            new AbilityMetaData("ability/time_dilation", 10f, AbilityTargeting.GroundEnemy, 140f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Intelligence, 120f, new BalancePointAllocations(8, 5, 8, 4, 2, 9, 2, 2, 10))),
         new(
             "Nether Assassin",
-            "nether_assassin",
-            new AbilityMetaData("poison_blade", 2f, AbilityTargeting.Enemy, 25f),
-            new AbilityMetaData("shadow_step", 8f, AbilityTargeting.Enemy, 40f),
-            new AbilityMetaData("smoke_screen", 8f, AbilityTargeting.GroundEnemy, 55f),
-            new AbilityMetaData("death_mark", 10f, AbilityTargeting.Enemy, 90f),
+            "unit/nether_assassin",
+            new AbilityMetaData("ability/poison_blade", 2f, AbilityTargeting.Enemy, 25f),
+            new AbilityMetaData("ability/shadow_step", 8f, AbilityTargeting.Enemy, 40f),
+            new AbilityMetaData("ability/smoke_screen", 8f, AbilityTargeting.GroundEnemy, 55f),
+            new AbilityMetaData("ability/death_mark", 10f, AbilityTargeting.Enemy, 90f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Agility, 0f, new BalancePointAllocations(2, 9, 10, 4, 3, 4, 2, 10, 2))),
         new(
             "Sun Priest",
-            "sun_priest",
-            new AbilityMetaData("solar_flare", 10f, AbilityTargeting.GroundEnemy, 35f),
-            new AbilityMetaData("radiant_blessing", 8f, AbilityTargeting.PlayerUnits, 50f),
-            new AbilityMetaData("blinding_ray", 8f, AbilityTargeting.Enemy, 60f),
-            new AbilityMetaData("dawn_judgement", 12f, AbilityTargeting.GroundEnemy, 135f),
+            "unit/sun_priest",
+            new AbilityMetaData("ability/solar_flare", 10f, AbilityTargeting.GroundEnemy, 35f),
+            new AbilityMetaData("ability/radiant_blessing", 8f, AbilityTargeting.PlayerUnits, 50f),
+            new AbilityMetaData("ability/blinding_ray", 8f, AbilityTargeting.Enemy, 60f),
+            new AbilityMetaData("ability/dawn_judgement", 12f, AbilityTargeting.GroundEnemy, 135f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Intelligence, 100f, new BalancePointAllocations(6, 5, 5, 6, 4, 8, 3, 2, 9))),
         new(
             "Blood Berserker",
-            "blood_berserker",
-            new AbilityMetaData("frenzy_slash", 2f, AbilityTargeting.Enemy, 20f),
-            new AbilityMetaData("blood_lust", 0f, AbilityTargeting.Self, 35f),
-            new AbilityMetaData("sanguine_leap", 8f, AbilityTargeting.GroundEnemy, 50f),
-            new AbilityMetaData("unending_rage", 0f, AbilityTargeting.Self, 100f),
+            "unit/blood_berserker",
+            new AbilityMetaData("ability/frenzy_slash", 2f, AbilityTargeting.Enemy, 20f),
+            new AbilityMetaData("ability/blood_lust", 0f, AbilityTargeting.Self, 35f),
+            new AbilityMetaData("ability/sanguine_leap", 8f, AbilityTargeting.GroundEnemy, 50f),
+            new AbilityMetaData("ability/unending_rage", 0f, AbilityTargeting.Self, 100f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Strength, 0f, new BalancePointAllocations(1, 8, 10, 7, 4, 2, 8, 6, 1))),
         new(
             "Stone Guardian",
-            "stone_guardian",
-            new AbilityMetaData("boulder_toss", 8f, AbilityTargeting.Enemy, 35f),
-            new AbilityMetaData("hardened_crust", 0f, AbilityTargeting.Self, 40f),
-            new AbilityMetaData("seismic_pulse", 6f, AbilityTargeting.NoTarget, 60f),
-            new AbilityMetaData("granite_avatar", 0f, AbilityTargeting.Self, 120f),
+            "unit/stone_guardian",
+            new AbilityMetaData("ability/boulder_toss", 8f, AbilityTargeting.Enemy, 35f),
+            new AbilityMetaData("ability/hardened_crust", 0f, AbilityTargeting.Self, 40f),
+            new AbilityMetaData("ability/seismic_pulse", 6f, AbilityTargeting.NoTarget, 60f),
+            new AbilityMetaData("ability/granite_avatar", 0f, AbilityTargeting.Self, 120f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Strength, 0f, new BalancePointAllocations(1, 3, 7, 10, 9, 3, 10, 2, 1))),
         new(
             "Chrono Weaver",
-            "chrono_weaver",
-            new AbilityMetaData("temporal_strike", 8f, AbilityTargeting.Enemy, 40f),
-            new AbilityMetaData("haste_field", 8f, AbilityTargeting.PlayerUnits, 55f),
-            new AbilityMetaData("stasis_bubble", 8f, AbilityTargeting.Enemy, 70f),
-            new AbilityMetaData("time_reversal", 0f, AbilityTargeting.Self, 150f),
+            "unit/chrono_weaver",
+            new AbilityMetaData("ability/temporal_strike", 8f, AbilityTargeting.Enemy, 40f),
+            new AbilityMetaData("ability/haste_field", 8f, AbilityTargeting.PlayerUnits, 55f),
+            new AbilityMetaData("ability/stasis_bubble", 8f, AbilityTargeting.Enemy, 70f),
+            new AbilityMetaData("ability/time_reversal", 0f, AbilityTargeting.Self, 150f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Intelligence, 100f, new BalancePointAllocations(6, 6, 6, 5, 3, 8, 2, 4, 8))),
         new(
             "Dune Skirmisher",
-            "dune_skirmisher",
-            new AbilityMetaData("sand_bolt", 10f, AbilityTargeting.Enemy, 25f),
-            new AbilityMetaData("quick_roll", 6f, AbilityTargeting.GroundRandom, 30f),
-            new AbilityMetaData("sandstorm_veil", 8f, AbilityTargeting.GroundPlayerUnits, 60f),
-            new AbilityMetaData("quicksand_trap", 10f, AbilityTargeting.GroundEnemy, 110f),
+            "unit/dune_skirmisher",
+            new AbilityMetaData("ability/sand_bolt", 10f, AbilityTargeting.Enemy, 25f),
+            new AbilityMetaData("ability/quick_roll", 6f, AbilityTargeting.GroundRandom, 30f),
+            new AbilityMetaData("ability/sandstorm_veil", 8f, AbilityTargeting.GroundPlayerUnits, 60f),
+            new AbilityMetaData("ability/quicksand_trap", 10f, AbilityTargeting.GroundEnemy, 110f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Agility, 0f, new BalancePointAllocations(8, 9, 8, 5, 3, 4, 3, 9, 2))),
         new(
             "Coral Vanguard",
-            "coral_vanguard",
-            new AbilityMetaData("wave_crash", 8f, AbilityTargeting.GroundEnemy, 35f),
-            new AbilityMetaData("coral_shield", 8f, AbilityTargeting.PlayerUnits, 45f),
-            new AbilityMetaData("tidal_pull", 8f, AbilityTargeting.Enemy, 55f),
-            new AbilityMetaData("whirlpool_surge", 10f, AbilityTargeting.GroundEnemy, 125f),
+            "unit/coral_vanguard",
+            new AbilityMetaData("ability/wave_crash", 8f, AbilityTargeting.GroundEnemy, 35f),
+            new AbilityMetaData("ability/coral_shield", 8f, AbilityTargeting.PlayerUnits, 45f),
+            new AbilityMetaData("ability/tidal_pull", 8f, AbilityTargeting.Enemy, 55f),
+            new AbilityMetaData("ability/whirlpool_surge", 10f, AbilityTargeting.GroundEnemy, 125f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Strength, 50f, new BalancePointAllocations(3, 6, 7, 8, 7, 4, 7, 5, 2))),
         new(
             "Crystal Weaver",
-            "crystal_weaver",
-            new AbilityMetaData("prism_beam", 10f, AbilityTargeting.GroundEnemy, 35f),
-            new AbilityMetaData("crystal_ward", 8f, AbilityTargeting.GroundRandom, 40f),
-            new AbilityMetaData("refractive_shield", 0f, AbilityTargeting.Self, 65f),
-            new AbilityMetaData("crystalline_explosion", 12f, AbilityTargeting.GroundEnemy, 140f),
+            "unit/crystal_weaver",
+            new AbilityMetaData("ability/prism_beam", 10f, AbilityTargeting.GroundEnemy, 35f),
+            new AbilityMetaData("ability/crystal_ward", 8f, AbilityTargeting.GroundRandom, 40f),
+            new AbilityMetaData("ability/refractive_shield", 0f, AbilityTargeting.Self, 65f),
+            new AbilityMetaData("ability/crystalline_explosion", 12f, AbilityTargeting.GroundEnemy, 140f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Intelligence, 100f, new BalancePointAllocations(7, 6, 7, 5, 4, 7, 2, 3, 8))),
         new(
             "Astral Paragon",
-            "astral_paragon",
-            new AbilityMetaData("star_fall", 10f, AbilityTargeting.GroundEnemy, 40f),
-            new AbilityMetaData("astral_grace", 8f, AbilityTargeting.PlayerUnits, 50f),
-            new AbilityMetaData("cosmic_binding", 8f, AbilityTargeting.Enemy, 70f),
-            new AbilityMetaData("supernova_burst", 12f, AbilityTargeting.GroundEnemy, 160f),
+            "unit/astral_paragon",
+            new AbilityMetaData("ability/star_fall", 10f, AbilityTargeting.GroundEnemy, 40f),
+            new AbilityMetaData("ability/astral_grace", 8f, AbilityTargeting.PlayerUnits, 50f),
+            new AbilityMetaData("ability/cosmic_binding", 8f, AbilityTargeting.Enemy, 70f),
+            new AbilityMetaData("ability/supernova_burst", 12f, AbilityTargeting.GroundEnemy, 160f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Intelligence, 100f, new BalancePointAllocations(7, 7, 8, 5, 3, 7, 3, 4, 7))),
         new(
             "Lightbringer Monk",
-            "lightbringer_monk",
-            new AbilityMetaData("radiant_fist", 2f, AbilityTargeting.Enemy, 25f),
-            new AbilityMetaData("mantra_of_healing", 8f, AbilityTargeting.PlayerUnits, 45f),
-            new AbilityMetaData("sanctuary_aura", 0f, AbilityTargeting.Self, 50f),
-            new AbilityMetaData("divine_intervention", 8f, AbilityTargeting.PlayerUnits, 130f),
+            "unit/lightbringer_monk",
+            new AbilityMetaData("ability/radiant_fist", 2f, AbilityTargeting.Enemy, 25f),
+            new AbilityMetaData("ability/mantra_of_healing", 8f, AbilityTargeting.PlayerUnits, 45f),
+            new AbilityMetaData("ability/sanctuary_aura", 0f, AbilityTargeting.Self, 50f),
+            new AbilityMetaData("ability/divine_intervention", 8f, AbilityTargeting.PlayerUnits, 130f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Strength, 50f, new BalancePointAllocations(2, 7, 7, 8, 6, 5, 7, 6, 3))),
         new(
             "Shadow Weaver",
-            "shadow_weaver",
-            new AbilityMetaData("gloom_bolt", 8f, AbilityTargeting.Enemy, 30f),
-            new AbilityMetaData("veil_of_shadows", 0f, AbilityTargeting.Self, 40f),
-            new AbilityMetaData("soul_tether", 8f, AbilityTargeting.Enemy, 60f),
-            new AbilityMetaData("abyssal_realm", 10f, AbilityTargeting.GroundEnemy, 120f),
+            "unit/shadow_weaver",
+            new AbilityMetaData("ability/gloom_bolt", 8f, AbilityTargeting.Enemy, 30f),
+            new AbilityMetaData("ability/veil_of_shadows", 0f, AbilityTargeting.Self, 40f),
+            new AbilityMetaData("ability/soul_tether", 8f, AbilityTargeting.Enemy, 60f),
+            new AbilityMetaData("ability/abyssal_realm", 10f, AbilityTargeting.GroundEnemy, 120f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Agility, 50f, new BalancePointAllocations(5, 8, 8, 5, 4, 5, 3, 8, 5))),
         new(
             "Tempest Chaser",
-            "tempest_chaser",
-            new AbilityMetaData("gale_strike", 8f, AbilityTargeting.GroundEnemy, 25f),
-            new AbilityMetaData("wind_barrier", 0f, AbilityTargeting.Self, 35f),
-            new AbilityMetaData("cyclone_kick", 4f, AbilityTargeting.NoTarget, 50f),
-            new AbilityMetaData("tornado_storm", 10f, AbilityTargeting.GroundEnemy, 115f),
+            "unit/tempest_chaser",
+            new AbilityMetaData("ability/gale_strike", 8f, AbilityTargeting.GroundEnemy, 25f),
+            new AbilityMetaData("ability/wind_barrier", 0f, AbilityTargeting.Self, 35f),
+            new AbilityMetaData("ability/cyclone_kick", 4f, AbilityTargeting.NoTarget, 50f),
+            new AbilityMetaData("ability/tornado_storm", 10f, AbilityTargeting.GroundEnemy, 115f),
             BalanceBaseStatsByPoints(PrimaryAttribute.Agility, 0f, new BalancePointAllocations(6, 10, 8, 5, 3, 4, 3, 10, 2)))
-
     };
 
     private readonly Dictionary<string, UnitMetaData> unitMetaDataByTypeId = new();
@@ -345,7 +360,13 @@ public class MapScript : IWasmModule
         gameApi = api;
 
         foreach (UnitMetaData metaData in DraftableUnits)
+        {
             unitMetaDataByTypeId[metaData.UnitTypeId] = metaData;
+            if (metaData.UnitTypeId.StartsWith("unit/", StringComparison.OrdinalIgnoreCase))
+                unitMetaDataByTypeId[metaData.UnitTypeId.Substring(5)] = metaData;
+            else
+                unitMetaDataByTypeId[$"unit/{metaData.UnitTypeId}"] = metaData;
+        }
 
         RegisterAbilities();
         InitializePlayers();
@@ -353,10 +374,10 @@ public class MapScript : IWasmModule
         gameApi.OnUnitDied += HandleUnitDied;
         gameApi.OnUnitDamaged += HandleUnitDamaged;
         gameApi.OnSpellCast += HandleSpellCast;
-        gameApi.OnPlayerChatMessage += HandlePlayerChatMessage;
 
-        gameApi.ShowSummaryTable("Chaos Arena", true);
-        gameApi.SetSummaryTableHeaders("Player", "Kills", "Best Average Damage");
+        gameApi.ShowSummaryTable("Chaos Arena - Combat Statistics", true);
+        gameApi.SetSummaryTableHeaders("Player", "Kills", "Top Average Damage (Unit / Waves)");
+
         for (int slotIndex = 0; slotIndex < SpawnSlotCount; slotIndex++)
         {
             spawnOffsetSlots.Add(slotIndex * (float)WaveIntervalSeconds / SpawnSlotCount);
@@ -432,22 +453,69 @@ public class MapScript : IWasmModule
     private static Vector3 ToCoordinatePosition(Vector3 position, Vector3 offset) =>
         new(position.X + offset.X, position.Y, position.Z + offset.Z);
 
+    private static string GetCircleUnitTypeId(Element element) => element switch
+    {
+        Element.Water => CircleWaterUnitTypeId,
+        Element.Fire => CircleFireUnitTypeId,
+        _ => CircleEarthUnitTypeId
+    };
+
     private void RegisterAbilities()
     {
         gameApi.RegisterAbility(SoulSiphonAbilityId, "Soul Siphon", "Low health enemies in the area may be executed, granting wood.");
         gameApi.RegisterAbility(HealingWaveAbilityId, "Healing Wave", "Heals allied units in the area based on missing health.");
         gameApi.RegisterAbility(AncestralSpiritAbilityId, "Ancestral Spirit", "Invokes a spirit of ancient ancestors to mend and protect allied ground forces in the targeted area.");
 
+        gameApi.RegisterAbility(RerollItemAbilityId, "Reroll Item", "Rerolls the item on this tile into a different random item.", isInstant: true);
+        gameApi.RegisterAbility(RerollElementAbilityId, "Reroll Element", "Rerolls to a different element affinity (guaranteed different).", isInstant: true);
+        gameApi.RegisterAbility(RerollHeroAbilityId, "Reroll Hero", "Rerolls into a different available hero candidate, preserving level, item, and element.", isInstant: true);
+        gameApi.RegisterAbility(RerollAllAbilityId, "Reroll All", "Rerolls item, element, and hero type for this tile.", isInstant: true);
+        gameApi.RegisterAbility(SwapTileUnitsAbilityId, "Swap Units", "Select another player-owned tile unit to swap positions.");
+        gameApi.RegisterAbility(UpgradeCriticalStrikeAbilityId, "Upgrade Critical Strike", "Researches Critical Strike for all spawned units.", isInstant: true);
+
         foreach (UnitMetaData metaData in DraftableUnits)
         {
+            if (metaData.WaterAbility != null)
+            {
+                gameApi.SetAbilityGridPosition(metaData.WaterAbility.AbilityId, 0, 0);
+                gameApi.SetAbilityHotkey(metaData.WaterAbility.AbilityId, "W");
+            }
+            if (metaData.EarthAbility != null)
+            {
+                gameApi.SetAbilityGridPosition(metaData.EarthAbility.AbilityId, 1, 0);
+                gameApi.SetAbilityHotkey(metaData.EarthAbility.AbilityId, "E");
+            }
+            if (metaData.FireAbility != null)
+            {
+                gameApi.SetAbilityGridPosition(metaData.FireAbility.AbilityId, 2, 0);
+                gameApi.SetAbilityHotkey(metaData.FireAbility.AbilityId, "R");
+            }
+
             foreach (AbilityMetaData ability in metaData.GetAllAbilities())
             {
-                gameApi.AddUnitTypeAbility(CircleUnitTypeId, ability.AbilityId);
-                gameApi.AddUnitTypeAbility("CircleOfPowerWater", ability.AbilityId);
-                gameApi.AddUnitTypeAbility("CircleOfPowerEarth", ability.AbilityId);
-                gameApi.AddUnitTypeAbility("CircleOfPowerFire", ability.AbilityId);
+                gameApi.AddUnitTypeAbility(CircleEarthUnitTypeId, ability.AbilityId);
+                gameApi.AddUnitTypeAbility(CircleFireUnitTypeId, ability.AbilityId);
+                gameApi.AddUnitTypeAbility(CircleWaterUnitTypeId, ability.AbilityId);
+                gameApi.AddUnitTypeAbility(AltarBuildingTypeId, ability.AbilityId);
             }
+
+            gameApi.AddUnitTypeAbility(metaData.UnitTypeId, RerollItemAbilityId);
+            gameApi.AddUnitTypeAbility(metaData.UnitTypeId, RerollElementAbilityId);
+            gameApi.AddUnitTypeAbility(metaData.UnitTypeId, RerollHeroAbilityId);
+            gameApi.AddUnitTypeAbility(metaData.UnitTypeId, RerollAllAbilityId);
+            gameApi.AddUnitTypeAbility(metaData.UnitTypeId, SwapTileUnitsAbilityId);
         }
+
+        string[] allCircleUnitTypes = { CircleEarthUnitTypeId, CircleFireUnitTypeId, CircleWaterUnitTypeId };
+        foreach (string circleType in allCircleUnitTypes)
+        {
+            gameApi.AddUnitTypeAbility(circleType, RerollItemAbilityId);
+            gameApi.AddUnitTypeAbility(circleType, RerollElementAbilityId);
+            gameApi.AddUnitTypeAbility(circleType, SwapTileUnitsAbilityId);
+        }
+
+        gameApi.AddUnitTypeAbility(AltarBuildingTypeId, RerollAllAbilityId);
+        gameApi.AddUnitTypeAbility(BlacksmithBuildingTypeId, UpgradeCriticalStrikeAbilityId);
     }
 
     private void InitializePlayers()
@@ -548,11 +616,36 @@ public class MapScript : IWasmModule
     private void InitializePlayerBase(int playerIndex)
     {
         PlayerState playerState = playerStates[playerIndex];
+        Vector3 startLocation = playerState.BasePosition;
+        Vector3 offset = playerState.SpawnOffset;
 
-        IUnit builder = gameApi.SpawnUnitForPlayer(BuilderUnitTypeId, playerState.BasePosition, playerIndex);
+        IUnit builder = gameApi.SpawnUnitForPlayer(BuilderUnitTypeId, startLocation, playerIndex);
         builder.Damage = 0f;
         builder.Invulnerable = true;
+        builder.Speed = 0f;
+        gameApi.SetUnitFacing(builder, ArenaCenter);
         playerState.Builder = builder;
+
+        Vector3 buildingStart = new(startLocation.X - offset.X * 0.5f, startLocation.Y, startLocation.Z - offset.Z * 0.5f);
+        Vector3 altarOffset = MathF.Abs(offset.X) > MathF.Abs(offset.Z)
+            ? new Vector3(0f, 0f, BuildingSpacing)
+            : new Vector3(BuildingSpacing, 0f, 0f);
+
+        Vector3 blacksmithOffset = MathF.Abs(offset.X) > MathF.Abs(offset.Z)
+            ? new Vector3(0f, 0f, -BuildingSpacing)
+            : new Vector3(-BuildingSpacing, 0f, 0f);
+
+        IUnit altar = gameApi.SpawnUnitForPlayer(AltarBuildingTypeId, buildingStart + altarOffset, playerIndex);
+        altar.Damage = 0f;
+        altar.Invulnerable = true;
+        gameApi.SetUnitFacing(altar, ArenaCenter);
+        playerState.Altar = altar;
+
+        IUnit blacksmith = gameApi.SpawnUnitForPlayer(BlacksmithBuildingTypeId, buildingStart + blacksmithOffset, playerIndex);
+        blacksmith.Damage = 0f;
+        blacksmith.Invulnerable = true;
+        gameApi.SetUnitFacing(blacksmith, ArenaCenter);
+        playerState.Blacksmith = blacksmith;
 
         UnlockPlayerTiles(playerIndex, 1);
 
@@ -582,13 +675,18 @@ public class MapScript : IWasmModule
         if (playerState.Offers.Count == 0)
             return;
 
-        string offerList = string.Join(", ", playerState.Offers.Select((typeId, index) => $"{index + 1}: {typeId}"));
-        gameApi.SendMessageToPlayer(playerIndex, $"Draft offers - {offerList}. Select a Circle of Power and click hero ability or type 'draft <number>'.");
+        string offerList = string.Join(", ", playerState.Offers.Select((typeId, index) =>
+        {
+            string unitName = unitMetaDataByTypeId.TryGetValue(typeId, out UnitMetaData? m) ? m.Name : typeId;
+            return $"{index + 1}: {unitName}";
+        }));
 
-        UpdateCircleDraftAbilities(playerIndex);
+        gameApi.SendMessageToPlayer(playerIndex, $"Draft offers at Altar: {offerList}. Select a Circle of Power or Altar to draft.");
+
+        UpdateDraftOfferAbilities(playerIndex);
     }
 
-    private void UpdateCircleDraftAbilities(int playerIndex)
+    private void UpdateDraftOfferAbilities(int playerIndex)
     {
         PlayerState playerState = playerStates[playerIndex];
         HashSet<string> offeredAbilityIds = new();
@@ -598,25 +696,24 @@ public class MapScript : IWasmModule
             if (unitMetaDataByTypeId.TryGetValue(offerTypeId, out UnitMetaData? metaData))
             {
                 foreach (AbilityMetaData ability in metaData.GetAllAbilities())
-                {
                     offeredAbilityIds.Add(ability.AbilityId);
-                }
             }
         }
 
-        IEnumerable<IUnit> circles = GetPlayerCircles(playerIndex);
-        foreach (IUnit circle in circles)
+        var unitsToConfigure = GetPlayerCircles(playerIndex).ToList();
+        if (playerState.Altar != null && !playerState.Altar.IsDead)
+            unitsToConfigure.Add(playerState.Altar);
+
+        foreach (IUnit unit in unitsToConfigure)
         {
             foreach (UnitMetaData metaData in DraftableUnits)
             {
                 foreach (AbilityMetaData ability in metaData.GetAllAbilities())
                 {
                     bool isOffered = offeredAbilityIds.Contains(ability.AbilityId);
-                    gameApi.SetAbilityState(circle, ability.AbilityId, !isOffered, !isOffered);
+                    gameApi.SetAbilityState(unit, ability.AbilityId, !isOffered, !isOffered);
                     if (isOffered)
-                    {
-                        gameApi.SetAbilityManaCost(circle, ability.AbilityId, 0f);
-                    }
+                        gameApi.SetAbilityManaCost(unit, ability.AbilityId, 0f);
                 }
             }
         }
@@ -632,19 +729,29 @@ public class MapScript : IWasmModule
             Vector3 position = playerState.RemainingTilePositions[0];
             playerState.RemainingTilePositions.RemoveAt(0);
 
-            IUnit circle = gameApi.SpawnUnitForPlayer(CircleUnitTypeId, position, playerIndex);
+            Element initialElement = gameApi.PickRandom(Enum.GetValues<Element>().ToList());
+            string circleTypeId = GetCircleUnitTypeId(initialElement);
+            IUnit circle = gameApi.SpawnUnitForPlayer(circleTypeId, position, playerIndex);
             circle.Damage = 0f;
             circle.Speed = 0f;
             circle.Invulnerable = true;
+            circle.HideHealthAndManaBars = true;
+            gameApi.SetUnitFacing(circle, ArenaCenter);
 
-            var state = new TileState { Kind = TileKind.Circle, CircleLevel = tileLevel };
+            var state = new TileState
+            {
+                Kind = TileKind.Circle,
+                CircleLevel = tileLevel,
+                Element = initialElement,
+                ElementAssigned = true
+            };
             tileStatesByUnitId[circle.UniqueId] = state;
 
             PerformItemReroll(circle);
-            PerformElementReroll(circle, state);
+            ApplyElement(circle, state, true);
         }
 
-        UpdateCircleDraftAbilities(playerIndex);
+        UpdateDraftOfferAbilities(playerIndex);
     }
 
     private void PerformItemReroll(IUnit unit)
@@ -659,7 +766,11 @@ public class MapScript : IWasmModule
         List<string> availableItemIds = ItemPool.Where(itemId => itemId != previousItemId).ToList();
         string? newItemId = gameApi.PickRandom(availableItemIds) ?? previousItemId;
         if (newItemId != null)
-            unit.AddItem(newItemId);
+        {
+            int charges = Math.Max(unit.Level, 1);
+            unit.AddItem(newItemId, charges);
+            unit.SetItemCharges(newItemId, charges);
+        }
     }
 
     private void PerformElementReroll(IUnit unit, TileState state)
@@ -670,6 +781,36 @@ public class MapScript : IWasmModule
 
         state.Element = gameApi.PickRandom(candidateElements);
         state.ElementAssigned = true;
+
+        if (state.Kind == TileKind.Circle)
+        {
+            string newCircleTypeId = GetCircleUnitTypeId(state.Element);
+            if (!unit.UnitId.Equals(newCircleTypeId, StringComparison.OrdinalIgnoreCase))
+            {
+                int playerIndex = unit.Player;
+                Vector3 position = unit.Position;
+                var items = unit.GetItems().Select(id => (id, unit.GetItemCharges(id))).ToList();
+                tileStatesByUnitId.Remove(unit.UniqueId);
+                gameApi.DestroyUnit(unit, false, false);
+
+                IUnit newCircle = gameApi.SpawnUnitForPlayer(newCircleTypeId, position, playerIndex);
+                newCircle.Damage = 0f;
+                newCircle.Speed = 0f;
+                newCircle.Invulnerable = true;
+                newCircle.HideHealthAndManaBars = true;
+                gameApi.SetUnitFacing(newCircle, ArenaCenter);
+
+                foreach (var (itemId, charges) in items)
+                {
+                    newCircle.AddItem(itemId, charges);
+                    newCircle.SetItemCharges(itemId, charges);
+                }
+
+                tileStatesByUnitId[newCircle.UniqueId] = state;
+                unit = newCircle;
+            }
+        }
+
         ApplyElement(unit, state, true);
     }
 
@@ -696,7 +837,14 @@ public class MapScript : IWasmModule
 
             gameApi.SetAbilityState(unit, ability.AbilityId, !isActive, false);
             if (isActive)
+            {
                 gameApi.SetAbilityManaCost(unit, ability.AbilityId, ability.ManaCost);
+                gameApi.SetAbilityTooltip(ability.AbilityId, $"[{element}] {ability.AbilityId}");
+            }
+            else
+            {
+                gameApi.SetAbilityTooltip(ability.AbilityId, $"[{element}] {ability.AbilityId} (disabled)");
+            }
         }
     }
 
@@ -736,6 +884,8 @@ public class MapScript : IWasmModule
         unit.Speed = 0f;
         unit.Damage = 0f;
         unit.ManaRegen = 0f;
+        unit.HideHealthAndManaBars = true;
+        gameApi.SetUnitFacing(unit, ArenaCenter);
     }
 
     private void ConfigureDraftedHero(IUnit hero, UnitMetaData metaData, int level, IEnumerable<string> itemIds, Element element)
@@ -743,7 +893,11 @@ public class MapScript : IWasmModule
         ApplyHeroStats(hero, metaData, level);
 
         foreach (string itemId in itemIds)
-            hero.AddItem(itemId);
+        {
+            int charges = Math.Max(level, 1);
+            hero.AddItem(itemId, charges);
+            hero.SetItemCharges(itemId, charges);
+        }
 
         var state = new TileState { Kind = TileKind.Hero, Element = element, ElementAssigned = true };
         tileStatesByUnitId[hero.UniqueId] = state;
@@ -752,8 +906,13 @@ public class MapScript : IWasmModule
         LockTileUnit(hero);
     }
 
+    private bool IsCircleUnit(IUnit unit) =>
+        (tileStatesByUnitId.TryGetValue(unit.UniqueId, out TileState? state) && state.Kind == TileKind.Circle)
+        || unit.UnitId.Contains("circle_of_power", StringComparison.OrdinalIgnoreCase)
+        || unit.UnitId.Contains("CircleOfPower", StringComparison.OrdinalIgnoreCase);
+
     private IEnumerable<IUnit> GetPlayerCircles(int playerIndex) =>
-        gameApi.GetUnitsOwnedByPlayer(playerIndex, unit => (unit.UnitId.StartsWith("CircleOfPower", StringComparison.OrdinalIgnoreCase) || (tileStatesByUnitId.TryGetValue(unit.UniqueId, out TileState? state) && state.Kind == TileKind.Circle)) && !unit.IsDead);
+        gameApi.GetUnitsOwnedByPlayer(playerIndex, unit => !unit.IsDead && IsCircleUnit(unit));
 
     private HashSet<string> GetPlayerDraftedUnitTypeIds(int playerIndex)
     {
@@ -790,42 +949,6 @@ public class MapScript : IWasmModule
         UnlockPlayerTiles(playerIndex, 1);
     }
 
-    private bool TryDraftFromOffer(int playerIndex, int offerNumber, IUnit? selectedUnit)
-    {
-        PlayerState playerState = playerStates[playerIndex];
-
-        if (offerNumber < 1 || offerNumber > playerState.Offers.Count)
-        {
-            gameApi.SendMessageToPlayer(playerIndex, "Invalid draft offer.");
-            return false;
-        }
-
-        if (playerState.DraftedCount >= foodCap)
-        {
-            gameApi.SendMessageToPlayer(playerIndex, "Food Cap Exceeded");
-            return false;
-        }
-
-        if (gameSecondsElapsed < playerState.NextDraftSeconds)
-        {
-            gameApi.SendMessageToPlayer(playerIndex, $"Draft is on cooldown for {playerState.NextDraftSeconds - gameSecondsElapsed} more seconds.");
-            return false;
-        }
-
-        IUnit? circle = selectedUnit != null && (selectedUnit.UnitId.StartsWith("CircleOfPower", StringComparison.OrdinalIgnoreCase) || (tileStatesByUnitId.TryGetValue(selectedUnit.UniqueId, out TileState? s) && s.Kind == TileKind.Circle)) && selectedUnit.Player == playerIndex
-            ? selectedUnit
-            : null;
-
-        if (circle == null)
-        {
-            gameApi.SendMessageToPlayer(playerIndex, "Must build on Circle of Power");
-            return false;
-        }
-
-        DraftUnit(playerIndex, playerState.Offers[offerNumber - 1], circle);
-        return true;
-    }
-
     private void PerformComputerDraft(int playerIndex)
     {
         PlayerState playerState = playerStates[playerIndex];
@@ -856,7 +979,8 @@ public class MapScript : IWasmModule
         List<string> itemIds = unit.GetItems().ToList();
 
         PlayerState playerState = playerStates[playerIndex];
-        playerState.DamageDealtPerUnitTypePerWave.Remove(unit.UnitId);
+        if (playerState.DamageDealtPerUnitTypePerWave.TryGetValue(unit.UnitId, out Dictionary<int, float>? damageRecords))
+            damageRecords.Clear();
 
         tileStatesByUnitId.Remove(unit.UniqueId);
         gameApi.DestroyUnit(unit, false, false);
@@ -870,100 +994,21 @@ public class MapScript : IWasmModule
     {
         PerformItemReroll(unit);
         PerformElementReroll(unit, state);
-        PerformHeroReroll(unit, playerIndex);
+        if (state.Kind == TileKind.Hero)
+            PerformHeroReroll(unit, playerIndex);
     }
 
     private void SwapTileUnits(IUnit caster, IUnit target, int playerIndex)
     {
         PlayerState playerState = playerStates[playerIndex];
-        playerState.DamageDealtPerUnitTypePerWave.Remove(caster.UnitId);
-        playerState.DamageDealtPerUnitTypePerWave.Remove(target.UnitId);
+
+        if (playerState.DamageDealtPerUnitTypePerWave.TryGetValue(caster.UnitId, out Dictionary<int, float>? casterDamage))
+            casterDamage.Clear();
+        if (playerState.DamageDealtPerUnitTypePerWave.TryGetValue(target.UnitId, out Dictionary<int, float>? targetDamage))
+            targetDamage.Clear();
 
         gameApi.SwapUnitPositions(caster, target);
         gameApi.SelectUnit(caster);
-    }
-
-    private void HandlePlayerChatMessage(string message, IUnit? selectedUnit)
-    {
-        int playerIndex = selectedUnit != null && IsRealPlayerSlot(selectedUnit.Player)
-            ? selectedUnit.Player
-            : playerStates.Keys.OrderBy(index => index).FirstOrDefault(-1);
-
-        if (playerIndex < 0 || !playerStates.ContainsKey(playerIndex))
-            return;
-
-        string[] tokens = message.Trim().ToLowerInvariant().Split(' ', StringSplitOptions.RemoveEmptyEntries);
-        if (tokens.Length == 0)
-            return;
-
-        switch (tokens[0])
-        {
-            case "draft" when tokens.Length > 1 && int.TryParse(tokens[1], out int offerNumber):
-                TryDraftFromOffer(playerIndex, offerNumber, selectedUnit);
-                break;
-            case "reroll" when tokens.Length > 1:
-                HandleRerollCommand(playerIndex, tokens[1], selectedUnit);
-                break;
-            case "swap":
-                HandleSwapCommand(playerIndex);
-                break;
-            case "upgrade" when tokens.Length > 1 && tokens[1] == "critical":
-                gameApi.AddPlayerTechLevel(playerIndex, CriticalStrikeTechId);
-                gameApi.AddPlayerTechLevel(playerIndex + ProxyPlayerOffset, CriticalStrikeTechId);
-                gameApi.SendMessageToPlayer(playerIndex, "Critical Strike upgraded.");
-                break;
-            case "help":
-                gameApi.SendMessageToPlayer(playerIndex, "Commands: draft <n>, reroll <item|element|hero|all>, swap (select two units), upgrade critical.");
-                break;
-        }
-    }
-
-    private void HandleRerollCommand(int playerIndex, string rerollKind, IUnit? selectedUnit)
-    {
-        if (selectedUnit == null
-            || selectedUnit.Player != playerIndex
-            || !tileStatesByUnitId.TryGetValue(selectedUnit.UniqueId, out TileState? state))
-        {
-            gameApi.SendMessageToPlayer(playerIndex, "Select one of your units or circles to reroll.");
-            return;
-        }
-
-        bool isHero = state.Kind == TileKind.Hero;
-
-        switch (rerollKind)
-        {
-            case "item":
-                PerformItemReroll(selectedUnit);
-                break;
-            case "element":
-                PerformElementReroll(selectedUnit, state);
-                break;
-            case "hero" when isHero:
-                PerformHeroReroll(selectedUnit, playerIndex);
-                break;
-            case "all" when isHero:
-                PerformAllReroll(selectedUnit, state, playerIndex);
-                break;
-            default:
-                gameApi.SendMessageToPlayer(playerIndex, "Usage: reroll <item|element|hero|all> (hero and all require a drafted unit).");
-                break;
-        }
-    }
-
-    private void HandleSwapCommand(int playerIndex)
-    {
-        List<IUnit> selectedTileUnits = gameApi.GetSelectedUnits()
-            .Where(unit => unit.Player == playerIndex && tileStatesByUnitId.ContainsKey(unit.UniqueId))
-            .Take(2)
-            .ToList();
-
-        if (selectedTileUnits.Count < 2)
-        {
-            gameApi.SendMessageToPlayer(playerIndex, "Select two of your units or circles to swap.");
-            return;
-        }
-
-        SwapTileUnits(selectedTileUnits[0], selectedTileUnits[1], playerIndex);
     }
 
     private void HandleSpawnTimerTick()
@@ -1029,6 +1074,8 @@ public class MapScript : IWasmModule
             .GetUnitsOwnedByPlayer(playerIndex, unit => !unit.IsDead && unitMetaDataByTypeId.ContainsKey(unit.UnitId))
             .ToList();
 
+        int techLevel = gameApi.GetPlayerTechLevel(playerIndex, CriticalStrikeTechId);
+
         foreach (IUnit draftedUnit in draftedUnits)
         {
             UnitMetaData metaData = unitMetaDataByTypeId[draftedUnit.UnitId];
@@ -1037,8 +1084,15 @@ public class MapScript : IWasmModule
             IUnit clone = gameApi.SpawnUnitForPlayer(draftedUnit.UnitId, spawnPosition, proxyPlayerIndex);
             ApplyHeroStats(clone, metaData, draftedUnit.Level);
 
+            if (techLevel > 0)
+                gameApi.SetPlayerTechLevel(proxyPlayerIndex, CriticalStrikeTechId, techLevel);
+
             foreach (string itemId in draftedUnit.GetItems())
-                clone.AddItem(itemId);
+            {
+                int charges = draftedUnit.GetItemCharges(itemId);
+                clone.AddItem(itemId, charges);
+                clone.SetItemCharges(itemId, charges);
+            }
 
             Element element = tileStatesByUnitId.TryGetValue(draftedUnit.UniqueId, out TileState? tileState)
                 ? tileState.Element
@@ -1048,6 +1102,7 @@ public class MapScript : IWasmModule
             waveUnitStatesByUnitId[clone.UniqueId] = cloneState;
             ApplyElement(clone, cloneState, false);
 
+            gameApi.SetUnitFacing(clone, ArenaCenter);
             clone.AttackMove(ArenaCenter);
             playerState.SpawnedUnitsPerWave[waveNumber].Add(clone);
         }
@@ -1162,13 +1217,7 @@ public class MapScript : IWasmModule
             return;
         }
 
-        if (!waveUnitStatesByUnitId.TryGetValue(unit.UniqueId, out TileState? state))
-            return;
-
         Element cycleElement = (Element)(aiCycle - 1);
-        if (cycleElement != state.Element)
-            return;
-
         AbilityMetaData? ability = metaData.GetAbility(cycleElement);
         if (ability == null || ability.Targeting == AbilityTargeting.Passive)
             return;
@@ -1250,12 +1299,49 @@ public class MapScript : IWasmModule
         if (caster == null)
             return;
 
-        if (spellId == SoulSiphonAbilityId)
-            ApplySoulSiphon(caster, targetPosition);
-        else if (spellId == HealingWaveAbilityId)
-            ApplyHealingWave(caster, targetPosition);
-        else
-            TryDraftFromAbilityCast(caster, spellId);
+        int playerIndex = ResolveRealPlayerIndex(caster.Player);
+
+        switch (spellId)
+        {
+            case SoulSiphonAbilityId:
+                ApplySoulSiphon(caster, targetPosition);
+                break;
+            case HealingWaveAbilityId:
+                ApplyHealingWave(caster, targetPosition);
+                break;
+            case RerollItemAbilityId:
+                PerformItemReroll(caster);
+                break;
+            case RerollElementAbilityId when tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? state):
+                PerformElementReroll(caster, state);
+                break;
+            case RerollHeroAbilityId when tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? state) && state.Kind == TileKind.Hero:
+                PerformHeroReroll(caster, playerIndex);
+                break;
+            case RerollAllAbilityId when tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? state):
+                PerformAllReroll(caster, state, playerIndex);
+                break;
+            case SwapTileUnitsAbilityId:
+                HandleSwapAbilityCast(caster, targetPosition, playerIndex);
+                break;
+            case UpgradeCriticalStrikeAbilityId:
+                gameApi.AddPlayerTechLevel(playerIndex, CriticalStrikeTechId);
+                gameApi.AddPlayerTechLevel(playerIndex + ProxyPlayerOffset, CriticalStrikeTechId);
+                gameApi.SendMessageToPlayer(playerIndex, $"Critical Strike upgraded (Level {gameApi.GetPlayerTechLevel(playerIndex, CriticalStrikeTechId)}).");
+                break;
+            default:
+                TryDraftFromAbilityCast(caster, spellId);
+                break;
+        }
+    }
+
+    private void HandleSwapAbilityCast(IUnit caster, Vector3 targetPosition, int playerIndex)
+    {
+        IUnit? targetTileUnit = gameApi.GetUnitsInRadius(targetPosition, 2f)
+            .FirstOrDefault(u => u.Player == playerIndex && u.UniqueId != caster.UniqueId && tileStatesByUnitId.ContainsKey(u.UniqueId));
+
+        if (targetTileUnit != null)
+            SwapTileUnits(caster, targetTileUnit, playerIndex);
     }
 
     private void TryDraftFromAbilityCast(IUnit caster, string spellId)
@@ -1264,16 +1350,31 @@ public class MapScript : IWasmModule
         if (!playerStates.TryGetValue(playerIndex, out PlayerState? playerState))
             return;
 
-        bool isCircle = (tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? state) && state.Kind == TileKind.Circle)
-            || caster.UnitId.StartsWith("CircleOfPower", StringComparison.OrdinalIgnoreCase);
+        bool isCircle = IsCircleUnit(caster);
+        bool isAltar = caster.UnitId.Equals(AltarBuildingTypeId, StringComparison.OrdinalIgnoreCase)
+            || caster.UnitId.Equals("building/altar", StringComparison.OrdinalIgnoreCase)
+            || caster.UnitId.Equals("altar", StringComparison.OrdinalIgnoreCase);
 
-        if (!isCircle)
+        IUnit? draftTargetCircle = null;
+
+        if (isCircle)
+        {
+            draftTargetCircle = caster;
+        }
+        else if (isAltar)
+        {
+            draftTargetCircle = GetPlayerCircles(playerIndex).FirstOrDefault();
+        }
+
+        if (draftTargetCircle == null)
             return;
 
         UnitMetaData? matchedUnitMeta = null;
         foreach (UnitMetaData metaData in DraftableUnits)
         {
-            if (metaData.GetAllAbilities().Any(a => a.AbilityId == spellId))
+            if (metaData.GetAllAbilities().Any(a => a.AbilityId.Equals(spellId, StringComparison.OrdinalIgnoreCase)
+                || a.AbilityId.EndsWith($"/{spellId}", StringComparison.OrdinalIgnoreCase)
+                || spellId.EndsWith($"/{a.AbilityId}", StringComparison.OrdinalIgnoreCase)))
             {
                 matchedUnitMeta = metaData;
                 break;
@@ -1283,7 +1384,8 @@ public class MapScript : IWasmModule
         if (matchedUnitMeta == null)
             return;
 
-        if (!playerState.Offers.Contains(matchedUnitMeta.UnitTypeId))
+        if (!playerState.Offers.Contains(matchedUnitMeta.UnitTypeId)
+            && !playerState.Offers.Any(o => matchedUnitMeta.UnitTypeId.EndsWith(o, StringComparison.OrdinalIgnoreCase)))
         {
             gameApi.SendMessageToPlayer(playerIndex, $"{matchedUnitMeta.Name} is not currently offered for draft.");
             return;
@@ -1301,7 +1403,7 @@ public class MapScript : IWasmModule
             return;
         }
 
-        DraftUnit(playerIndex, matchedUnitMeta.UnitTypeId, caster);
+        DraftUnit(playerIndex, matchedUnitMeta.UnitTypeId, draftTargetCircle);
     }
 
     private void ApplySoulSiphon(IUnit caster, Vector3 targetPosition)
@@ -1382,17 +1484,19 @@ public class MapScript : IWasmModule
 
         foreach ((int playerIndex, int kills) in rankedPlayers)
         {
+            string coloredPlayerName = gameApi.FormatColoredPlayerName(playerIndex);
+            string topDamageBreakdown = GetTopDamageBreakdown(playerStates[playerIndex]);
+
             gameApi.SetSummaryTableRow(
-                gameApi.GetPlayerName(playerIndex),
+                coloredPlayerName,
                 kills.ToString(),
-                GetBestAverageDamageDescription(playerStates[playerIndex]));
+                topDamageBreakdown);
         }
     }
 
-    private string GetBestAverageDamageDescription(PlayerState playerState)
+    private string GetTopDamageBreakdown(PlayerState playerState)
     {
-        string bestUnitTypeId = string.Empty;
-        float bestAverageDamage = 0f;
+        var summaries = new List<(string UnitName, float AvgDamage)>();
 
         foreach (KeyValuePair<string, Dictionary<int, float>> entry in playerState.DamageDealtPerUnitTypePerWave)
         {
@@ -1412,13 +1516,17 @@ public class MapScript : IWasmModule
                 continue;
 
             float averageDamage = totalDamage / wavesCounted;
-            if (averageDamage > bestAverageDamage)
-            {
-                bestAverageDamage = averageDamage;
-                bestUnitTypeId = entry.Key;
-            }
+            string displayName = unitMetaDataByTypeId.TryGetValue(entry.Key, out UnitMetaData? meta)
+                ? meta.Name
+                : entry.Key;
+
+            summaries.Add((displayName, averageDamage));
         }
 
-        return bestUnitTypeId.Length == 0 ? "-" : $"{bestUnitTypeId}: {(int)bestAverageDamage}";
+        if (summaries.Count == 0)
+            return "-";
+
+        var ordered = summaries.OrderByDescending(s => s.AvgDamage).Take(3);
+        return string.Join(" | ", ordered.Select(s => $"{s.UnitName}: {(int)s.AvgDamage}"));
     }
 }
