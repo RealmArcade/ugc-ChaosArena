@@ -89,10 +89,11 @@ public record UnitMetaData(
 
 public class TileState
 {
-    public TileKind Kind { get; init; }
+    public TileKind Kind { get; set; }
     public Element Element { get; set; }
     public bool ElementAssigned { get; set; }
-    public int CircleLevel { get; init; }
+    public int CircleLevel { get; set; } = 1;
+    public Vector3 AnchorPosition { get; set; }
 }
 
 public class PlayerState
@@ -398,6 +399,18 @@ public class MapScript : IWasmModule
 
     public void Update(IGameAPI api, float delta)
     {
+        foreach (KeyValuePair<int, TileState> entry in tileStatesByUnitId)
+        {
+            IUnit? unit = gameApi.GetUnitById(entry.Key);
+            if (unit != null && !unit.IsDead)
+            {
+                if (Vector3.DistanceSquared(unit.Position, entry.Value.AnchorPosition) > 0.04f)
+                {
+                    unit.Teleport(entry.Value.AnchorPosition);
+                    unit.HoldPosition();
+                }
+            }
+        }
     }
 
     private static UnitBaseStats BalanceBaseStatsByPoints(
@@ -447,8 +460,10 @@ public class MapScript : IWasmModule
     private static int ResolveRealPlayerIndex(int playerIndex) =>
         IsProxyPlayerSlot(playerIndex) ? playerIndex - ProxyPlayerOffset : playerIndex;
 
-    private static int GetDraftCooldownMinutes(int foodUsed) =>
-        FoodCapIncreaseMinutes[Math.Min(foodUsed, FoodCapIncreaseMinutes.Length - 1)];
+    private static int GetNextDraftUnlockTimestamp(int draftedCount) =>
+        draftedCount < FoodCapIncreaseMinutes.Length
+            ? FoodCapIncreaseMinutes[draftedCount] * 60
+            : int.MaxValue;
 
     private static Vector3 ToCoordinatePosition(Vector3 position, Vector3 offset) =>
         new(position.X + offset.X, position.Y, position.Z + offset.Z);
@@ -459,6 +474,16 @@ public class MapScript : IWasmModule
         Element.Fire => CircleFireUnitTypeId,
         _ => CircleEarthUnitTypeId
     };
+
+    private void ResetPlayerSelection(int playerIndex)
+    {
+        if (playerStates.TryGetValue(playerIndex, out PlayerState? playerState)
+            && playerState.Builder != null
+            && !playerState.Builder.IsDead)
+        {
+            gameApi.SelectUnit(playerState.Builder);
+        }
+    }
 
     private void RegisterAbilities()
     {
@@ -504,6 +529,7 @@ public class MapScript : IWasmModule
             gameApi.AddUnitTypeAbility(metaData.UnitTypeId, RerollHeroAbilityId);
             gameApi.AddUnitTypeAbility(metaData.UnitTypeId, RerollAllAbilityId);
             gameApi.AddUnitTypeAbility(metaData.UnitTypeId, SwapTileUnitsAbilityId);
+            gameApi.AddUnitTypeAbility(metaData.UnitTypeId, UpgradeCriticalStrikeAbilityId);
         }
 
         string[] allCircleUnitTypes = { CircleEarthUnitTypeId, CircleFireUnitTypeId, CircleWaterUnitTypeId };
@@ -514,7 +540,6 @@ public class MapScript : IWasmModule
             gameApi.AddUnitTypeAbility(circleType, SwapTileUnitsAbilityId);
         }
 
-        gameApi.AddUnitTypeAbility(AltarBuildingTypeId, RerollAllAbilityId);
         gameApi.AddUnitTypeAbility(BlacksmithBuildingTypeId, UpgradeCriticalStrikeAbilityId);
     }
 
@@ -554,7 +579,7 @@ public class MapScript : IWasmModule
     private Vector3 GetPlayerBasePosition(int playerIndex)
     {
         Vector3 startLocation = gameApi.GetPlayerStartLocation(playerIndex);
-        if (startLocation.LengthSquared() > 0.0001f)
+        if (startLocation != Vector3.Zero)
             return startLocation;
 
         return gameApi.GetCoordinate($"PlayerStart{playerIndex + 1}").Center;
@@ -743,7 +768,8 @@ public class MapScript : IWasmModule
                 Kind = TileKind.Circle,
                 CircleLevel = tileLevel,
                 Element = initialElement,
-                ElementAssigned = true
+                ElementAssigned = true,
+                AnchorPosition = position
             };
             tileStatesByUnitId[circle.UniqueId] = state;
 
@@ -767,10 +793,14 @@ public class MapScript : IWasmModule
         string? newItemId = gameApi.PickRandom(availableItemIds) ?? previousItemId;
         if (newItemId != null)
         {
-            int charges = Math.Max(unit.Level, 1);
+            int charges = tileStatesByUnitId.TryGetValue(unit.UniqueId, out TileState? state)
+                ? Math.Max(state.CircleLevel, 1)
+                : Math.Max(unit.Level, 1);
             unit.AddItem(newItemId, charges);
             unit.SetItemCharges(newItemId, charges);
         }
+
+        ResetPlayerSelection(unit.Player);
     }
 
     private void PerformElementReroll(IUnit unit, TileState state)
@@ -788,7 +818,7 @@ public class MapScript : IWasmModule
             if (!unit.UnitId.Equals(newCircleTypeId, StringComparison.OrdinalIgnoreCase))
             {
                 int playerIndex = unit.Player;
-                Vector3 position = unit.Position;
+                Vector3 position = state.AnchorPosition;
                 var items = unit.GetItems().Select(id => (id, unit.GetItemCharges(id))).ToList();
                 tileStatesByUnitId.Remove(unit.UniqueId);
                 gameApi.DestroyUnit(unit, false, false);
@@ -812,6 +842,7 @@ public class MapScript : IWasmModule
         }
 
         ApplyElement(unit, state, true);
+        ResetPlayerSelection(unit.Player);
     }
 
     private void ApplyElement(IUnit unit, TileState state, bool includeDisabledAbilities)
@@ -886,9 +917,11 @@ public class MapScript : IWasmModule
         unit.ManaRegen = 0f;
         unit.HideHealthAndManaBars = true;
         gameApi.SetUnitFacing(unit, ArenaCenter);
+        unit.Stop();
+        unit.HoldPosition();
     }
 
-    private void ConfigureDraftedHero(IUnit hero, UnitMetaData metaData, int level, IEnumerable<string> itemIds, Element element)
+    private void ConfigureDraftedHero(IUnit hero, UnitMetaData metaData, int level, IEnumerable<string> itemIds, Element element, Vector3 anchorPosition)
     {
         ApplyHeroStats(hero, metaData, level);
 
@@ -899,7 +932,14 @@ public class MapScript : IWasmModule
             hero.SetItemCharges(itemId, charges);
         }
 
-        var state = new TileState { Kind = TileKind.Hero, Element = element, ElementAssigned = true };
+        var state = new TileState
+        {
+            Kind = TileKind.Hero,
+            Element = element,
+            ElementAssigned = true,
+            CircleLevel = level,
+            AnchorPosition = anchorPosition
+        };
         tileStatesByUnitId[hero.UniqueId] = state;
 
         ApplyElement(hero, state, true);
@@ -928,22 +968,26 @@ public class MapScript : IWasmModule
 
         playerState.Offers.Clear();
         playerState.DraftedCount++;
-        playerState.NextDraftSeconds = GetDraftCooldownMinutes(playerState.DraftedCount) * 60;
+        playerState.NextDraftSeconds = GetNextDraftUnlockTimestamp(playerState.DraftedCount);
 
         Vector3 position = circle.Position;
         List<string> itemIds = circle.GetItems().ToList();
-        Element element = tileStatesByUnitId.TryGetValue(circle.UniqueId, out TileState? circleState)
-            ? circleState.Element
-            : Element.Water;
+        int circleLevel = 1;
+        Element element = Element.Water;
+        if (tileStatesByUnitId.TryGetValue(circle.UniqueId, out TileState? circleState))
+        {
+            element = circleState.Element;
+            circleLevel = circleState.CircleLevel;
+            position = circleState.AnchorPosition;
+        }
 
         tileStatesByUnitId.Remove(circle.UniqueId);
         gameApi.DestroyUnit(circle, false, false);
 
         IUnit hero = gameApi.SpawnUnitForPlayer(unitTypeId, position, playerIndex);
-        ConfigureDraftedHero(hero, metaData, Math.Max(playerState.DraftedCount, 1), itemIds, element);
+        ConfigureDraftedHero(hero, metaData, circleLevel, itemIds, element, position);
 
-        if (playerState.Builder != null)
-            gameApi.SelectUnit(playerState.Builder);
+        ResetPlayerSelection(playerIndex);
 
         DrawDraftOffers(playerIndex);
         UnlockPlayerTiles(playerIndex, 1);
@@ -974,8 +1018,8 @@ public class MapScript : IWasmModule
         }
 
         TileState state = tileStatesByUnitId[unit.UniqueId];
-        Vector3 position = unit.Position;
-        int level = unit.Level;
+        Vector3 position = state.AnchorPosition;
+        int level = state.CircleLevel;
         List<string> itemIds = unit.GetItems().ToList();
 
         PlayerState playerState = playerStates[playerIndex];
@@ -986,8 +1030,8 @@ public class MapScript : IWasmModule
         gameApi.DestroyUnit(unit, false, false);
 
         IUnit newUnit = gameApi.SpawnUnitForPlayer(replacement.UnitTypeId, position, playerIndex);
-        ConfigureDraftedHero(newUnit, replacement, level, itemIds, state.Element);
-        gameApi.SelectUnit(newUnit);
+        ConfigureDraftedHero(newUnit, replacement, level, itemIds, state.Element, position);
+        ResetPlayerSelection(playerIndex);
     }
 
     private void PerformAllReroll(IUnit unit, TileState state, int playerIndex)
@@ -996,6 +1040,7 @@ public class MapScript : IWasmModule
         PerformElementReroll(unit, state);
         if (state.Kind == TileKind.Hero)
             PerformHeroReroll(unit, playerIndex);
+        ResetPlayerSelection(playerIndex);
     }
 
     private void SwapTileUnits(IUnit caster, IUnit target, int playerIndex)
@@ -1007,8 +1052,46 @@ public class MapScript : IWasmModule
         if (playerState.DamageDealtPerUnitTypePerWave.TryGetValue(target.UnitId, out Dictionary<int, float>? targetDamage))
             targetDamage.Clear();
 
+        if (tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? casterState)
+            && tileStatesByUnitId.TryGetValue(target.UniqueId, out TileState? targetState))
+        {
+            int tempLevel = casterState.CircleLevel;
+            casterState.CircleLevel = targetState.CircleLevel;
+            targetState.CircleLevel = tempLevel;
+
+            Vector3 tempPos = casterState.AnchorPosition;
+            casterState.AnchorPosition = targetState.AnchorPosition;
+            targetState.AnchorPosition = tempPos;
+
+            ApplyTileLevelToUnit(caster, casterState);
+            ApplyTileLevelToUnit(target, targetState);
+        }
+
         gameApi.SwapUnitPositions(caster, target);
-        gameApi.SelectUnit(caster);
+        ResetPlayerSelection(playerIndex);
+    }
+
+    private void ApplyTileLevelToUnit(IUnit unit, TileState state)
+    {
+        if (state.Kind == TileKind.Hero)
+        {
+            unit.Level = Math.Max(state.CircleLevel, 1);
+            if (unitMetaDataByTypeId.TryGetValue(unit.UnitId, out UnitMetaData? metaData))
+            {
+                ApplyHeroStats(unit, metaData, state.CircleLevel);
+                LockTileUnit(unit);
+            }
+        }
+        else if (state.Kind == TileKind.Circle)
+        {
+            unit.Name = $"{state.Element} [Level {state.CircleLevel}]";
+        }
+
+        foreach (string itemId in unit.GetItems().ToList())
+        {
+            int charges = Math.Max(state.CircleLevel, 1);
+            unit.SetItemCharges(itemId, charges);
+        }
     }
 
     private void HandleSpawnTimerTick()
@@ -1085,7 +1168,14 @@ public class MapScript : IWasmModule
             ApplyHeroStats(clone, metaData, draftedUnit.Level);
 
             if (techLevel > 0)
+            {
                 gameApi.SetPlayerTechLevel(proxyPlayerIndex, CriticalStrikeTechId, techLevel);
+                gameApi.SetAbilityState(clone, UpgradeCriticalStrikeAbilityId, false, false);
+            }
+            else
+            {
+                gameApi.SetAbilityState(clone, UpgradeCriticalStrikeAbilityId, true, true);
+            }
 
             foreach (string itemId in draftedUnit.GetItems())
             {
@@ -1122,7 +1212,7 @@ public class MapScript : IWasmModule
             return;
 
         foodCap++;
-        nextFoodCapIncreaseSeconds = GetDraftCooldownMinutes(foodCap) * 60;
+        nextFoodCapIncreaseSeconds = GetNextDraftUnlockTimestamp(foodCap);
 
         foreach (int playerIndex in playerStates.Keys.ToList())
         {
@@ -1174,7 +1264,8 @@ public class MapScript : IWasmModule
                         : baseDamageMultiplier * 2f;
 
                     gameApi.DealDamage(unit, unit, unit.MaxHealth * damageMultiplier);
-                    unit.AddBuff(AntiSnowballPoisonBuffId, 15f);
+                    if (!unit.HasBuff(AntiSnowballPoisonBuffId))
+                        unit.AddBuff(AntiSnowballPoisonBuffId, float.PositiveInfinity);
 
                     if (unit.IsDead)
                         waveUnits.RemoveAt(unitIndex);
