@@ -160,6 +160,7 @@ public class MapScript : IWasmModule
         _api.OnUnitDied += HandleUnitDied;
         _api.OnUnitDamaged += HandleUnitDamaged;
         _api.OnSpellCast += HandleSpellCast;
+        _api.OnConstructionFinished += HandleConstructionFinished;
 
         _api.ShowSummaryTable("Chaos Arena - Combat Statistics", true);
         _api.SetSummaryTableHeaders("Player", "Kills", "Top Average Damage (Unit / Waves)");
@@ -358,7 +359,6 @@ public class MapScript : IWasmModule
         IUnit builder = _api.SpawnUnitForPlayer(UnitIds.Builder, builderOffset, playerIndex);
         builder.Damage = 0f;
         builder.Invulnerable = true;
-        builder.Speed = 0f;
         _api.SetUnitFacing(builder, ArenaCenter);
         playerState.Builder = builder;
 
@@ -421,7 +421,7 @@ public class MapScript : IWasmModule
         string offerList = string.Join(", ", playerState.Offers.Select((typeId, index) =>
             $"{index + 1}: {_api.GetUnitName(typeId)}"));
 
-        _api.SendMessageToPlayer(playerIndex, $"Draft offers at Altar: {offerList}. Select a Circle of Power or Altar to draft.");
+        _api.SendMessageToPlayer(playerIndex, $"Draft offers: {offerList}. Use the Builder [B] Build menu or select a Circle of Power / Altar to draft.");
 
         UpdateDraftOfferAbilities(playerIndex);
     }
@@ -429,12 +429,22 @@ public class MapScript : IWasmModule
     private void UpdateDraftOfferAbilities(int playerIndex)
     {
         PlayerState playerState = playerStates[playerIndex];
+        HashSet<string> offeredUnitTypeIds = new(playerState.Offers, StringComparer.OrdinalIgnoreCase);
         HashSet<string> offeredAbilityIds = new(StringComparer.OrdinalIgnoreCase);
 
         foreach (string offerTypeId in playerState.Offers)
         {
             foreach (string abilityId in _api.GetUnitTypeAbilities(offerTypeId))
                 offeredAbilityIds.Add(abilityId);
+        }
+
+        if (playerState.Builder != null && !playerState.Builder.IsDead)
+        {
+            foreach (string unitTypeId in DraftableUnits)
+            {
+                bool isOffered = offeredUnitTypeIds.Contains(unitTypeId);
+                _api.SetAbilityState(playerState.Builder, unitTypeId, !isOffered, !isOffered);
+            }
         }
 
         var unitsToConfigure = GetPlayerCircles(playerIndex).ToList();
@@ -1125,6 +1135,68 @@ public class MapScript : IWasmModule
         }
 
         DraftUnit(playerIndex, matchedUnitTypeId, draftTargetCircle);
+    }
+
+    private void HandleConstructionFinished(IUnit constructedUnit)
+    {
+        if (constructedUnit == null || constructedUnit.IsDead)
+            return;
+
+        if (tileStatesByUnitId.ContainsKey(constructedUnit.UniqueId))
+            return;
+
+        string unitId = constructedUnit.UnitId;
+        if (!IsDraftableUnit(unitId))
+            return;
+
+        int playerIndex = ResolveRealPlayerIndex(constructedUnit.Player);
+        if (!playerStates.TryGetValue(playerIndex, out PlayerState? playerState))
+        {
+            _api.DestroyUnit(constructedUnit, false, false);
+            return;
+        }
+
+        string matchedUnitTypeId = DraftableUnits.FirstOrDefault(u =>
+            u.Equals(unitId, StringComparison.OrdinalIgnoreCase)
+            || u.EndsWith($"/{unitId}", StringComparison.OrdinalIgnoreCase)
+            || unitId.EndsWith($"/{u}", StringComparison.OrdinalIgnoreCase)) ?? unitId;
+
+        Vector3 buildPos = constructedUnit.Position;
+        _api.DestroyUnit(constructedUnit, false, false);
+
+        if (!playerState.Offers.Contains(matchedUnitTypeId, StringComparer.OrdinalIgnoreCase))
+        {
+            _api.SendMessageToPlayer(playerIndex, $"{_api.GetUnitName(matchedUnitTypeId)} is not currently offered for draft.");
+            ResetPlayerSelection(playerIndex);
+            return;
+        }
+
+        if (playerState.DraftedCount >= foodCap)
+        {
+            _api.SendMessageToPlayer(playerIndex, "Food Cap Exceeded");
+            ResetPlayerSelection(playerIndex);
+            return;
+        }
+
+        if (gameSecondsElapsed < playerState.NextDraftSeconds)
+        {
+            _api.SendMessageToPlayer(playerIndex, $"Draft is on cooldown for {playerState.NextDraftSeconds - gameSecondsElapsed} more seconds.");
+            ResetPlayerSelection(playerIndex);
+            return;
+        }
+
+        IUnit? targetCircle = GetPlayerCircles(playerIndex)
+            .OrderBy(c => Vector3.DistanceSquared(c.Position, buildPos))
+            .FirstOrDefault();
+
+        if (targetCircle == null)
+        {
+            _api.SendMessageToPlayer(playerIndex, "No available Circle of Power to draft onto.");
+            ResetPlayerSelection(playerIndex);
+            return;
+        }
+
+        DraftUnit(playerIndex, matchedUnitTypeId, targetCircle);
     }
 
     private void ApplySoulSiphon(IUnit caster, Vector3 targetPosition)
