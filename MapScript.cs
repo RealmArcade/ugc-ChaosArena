@@ -55,7 +55,7 @@ public class MapScript : IWasmModule
     private const int ProxyPlayerOffset = 12;
     private const float WorldUnitsPerRealmUnit = 50f;
     private const float SpawnOffsetDistance = 1000f / WorldUnitsPerRealmUnit;
-    private const float TileSpacing = 125f / WorldUnitsPerRealmUnit;
+    private const float TileSpacing = 250f / WorldUnitsPerRealmUnit;
     private const float BuildingSpacing = 200f / WorldUnitsPerRealmUnit;
     private const float SoulSiphonRadius = 175f / WorldUnitsPerRealmUnit;
     private const float HealingWaveRadius = 350f / WorldUnitsPerRealmUnit;
