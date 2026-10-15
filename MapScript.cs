@@ -220,9 +220,9 @@ public class MapScript : IWasmModule
 
     private static string GetCircleUnitTypeId(Element element) => element switch
     {
-        Element.Water => UnitIds.WaterElement,
-        Element.Fire => UnitIds.FireElement,
-        _ => UnitIds.EarthElement
+        Element.Water => BuildingIds.WaterElement,
+        Element.Fire => BuildingIds.FireElement,
+        _ => BuildingIds.EarthElement
     };
 
     private void ResetPlayerSelection(int playerIndex)
@@ -241,9 +241,9 @@ public class MapScript : IWasmModule
         {
             foreach (string abilityId in _api.GetUnitTypeAbilities(unitTypeId))
             {
-                _api.AddUnitTypeAbility(UnitIds.EarthElement, abilityId);
-                _api.AddUnitTypeAbility(UnitIds.FireElement, abilityId);
-                _api.AddUnitTypeAbility(UnitIds.WaterElement, abilityId);
+                _api.AddUnitTypeAbility(BuildingIds.EarthElement, abilityId);
+                _api.AddUnitTypeAbility(BuildingIds.FireElement, abilityId);
+                _api.AddUnitTypeAbility(BuildingIds.WaterElement, abilityId);
                 _api.AddUnitTypeAbility(BuildingIds.Altar, abilityId);
             }
         }

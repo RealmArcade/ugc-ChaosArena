@@ -9,9 +9,6 @@ namespace Realm.Maps;
 
 public static class UnitIds
 {
-	public const string EarthElement = "unit/earth_element";
-	public const string FireElement = "unit/fire_element";
-	public const string WaterElement = "unit/water_element";
 	public const string ArcaneScholar = "unit/arcane_scholar";
 	public const string AstralParagon = "unit/astral_paragon";
 	public const string BloodBerserker = "unit/blood_berserker";
@@ -39,6 +36,9 @@ public static class UnitIds
 
 public static class BuildingIds
 {
+	public const string EarthElement = "building/earth_element";
+	public const string FireElement = "building/fire_element";
+	public const string WaterElement = "building/water_element";
 	public const string Altar = "building/altar";
 	public const string Blacksmith = "building/blacksmith";
 	public const string ClockTower = "building/clock_tower";
