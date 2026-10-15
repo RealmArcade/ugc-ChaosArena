@@ -136,6 +136,7 @@ public class MapScript : IWasmModule
     private readonly Dictionary<int, PlayerState> playerStates = new();
     private readonly Dictionary<int, TileState> tileStatesByUnitId = new();
     private readonly Dictionary<int, TileState> waveUnitStatesByUnitId = new();
+    private readonly Dictionary<int, float> waveUnitSpawnTimes = new();
 
     private IGameAPI _api = null!;
     private int waveNumber;
@@ -396,6 +397,14 @@ public class MapScript : IWasmModule
         PlayerState playerState = playerStates[playerIndex];
         playerState.Offers.Clear();
 
+        if (playerState.Deck.Count < 3)
+        {
+            HashSet<string> placedHeroTypes = GetPlayerPlacedHeroes(playerIndex).Select(u => u.UnitId).ToHashSet(StringComparer.OrdinalIgnoreCase);
+            List<string> replenishments = DraftableUnits.Where(u => !placedHeroTypes.Contains(u) && !playerState.Deck.Contains(u)).ToList();
+            _api.Shuffle(replenishments);
+            playerState.Deck.AddRange(replenishments);
+        }
+
         for (int drawIndex = 0; drawIndex < 3 && playerState.Deck.Count > 0; drawIndex++)
         {
             playerState.Offers.Add(playerState.Deck[0]);
@@ -550,7 +559,8 @@ public class MapScript : IWasmModule
             ? $"{state.Element} [Level {state.CircleLevel}]"
             : state.Element.ToString();
 
-        _api.SetUnitColor(unit, ElementColors[state.Element]);
+        if (state.Kind != TileKind.Hero)
+            return;
 
         IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unit.UnitId);
         // Ordered abilities: [0]=Water, [1]=Earth, [2]=Fire, [3]=Ultimate
@@ -617,16 +627,39 @@ public class MapScript : IWasmModule
         LockTileUnit(hero);
     }
 
+    private IEnumerable<IUnit> GetPlayerPlacedHeroes(int playerIndex)
+    {
+        foreach (KeyValuePair<int, TileState> entry in tileStatesByUnitId)
+        {
+            if (entry.Value.Kind != TileKind.Hero)
+                continue;
+
+            IUnit? unit = _api.GetUnitById(entry.Key);
+            if (unit != null && !unit.IsDead && unit.Player == playerIndex)
+                yield return unit;
+        }
+    }
+
     private bool IsCircleUnit(IUnit unit) =>
         (tileStatesByUnitId.TryGetValue(unit.UniqueId, out TileState? state) && state.Kind == TileKind.Circle)
         || unit.UnitId.Contains("circle_of_power", StringComparison.OrdinalIgnoreCase)
         || unit.UnitId.Contains("CircleOfPower", StringComparison.OrdinalIgnoreCase);
 
-    private IEnumerable<IUnit> GetPlayerCircles(int playerIndex) =>
-        _api.GetUnitsOwnedByPlayer(playerIndex, unit => !unit.IsDead && IsCircleUnit(unit));
+    private IEnumerable<IUnit> GetPlayerCircles(int playerIndex)
+    {
+        foreach (KeyValuePair<int, TileState> entry in tileStatesByUnitId)
+        {
+            if (entry.Value.Kind != TileKind.Circle)
+                continue;
+
+            IUnit? unit = _api.GetUnitById(entry.Key);
+            if (unit != null && !unit.IsDead && unit.Player == playerIndex)
+                yield return unit;
+        }
+    }
 
     private HashSet<string> GetPlayerDraftedUnitTypeIds(int playerIndex) =>
-        _api.GetUnitsOwnedByPlayer(playerIndex, unit => IsDraftableUnit(unit.UnitId))
+        GetPlayerPlacedHeroes(playerIndex)
             .Select(unit => unit.UnitId)
             .ToHashSet(StringComparer.OrdinalIgnoreCase);
 
@@ -664,6 +697,9 @@ public class MapScript : IWasmModule
     private void PerformComputerDraft(int playerIndex)
     {
         PlayerState playerState = playerStates[playerIndex];
+        if (playerState.Offers.Count == 0)
+            DrawDraftOffers(playerIndex);
+
         string? chosenUnitTypeId = _api.PickRandom(playerState.Offers);
         IUnit? chosenCircle = _api.PickRandom(GetPlayerCircles(playerIndex).ToList());
 
@@ -817,9 +853,7 @@ public class MapScript : IWasmModule
         PlayerState playerState = playerStates[playerIndex];
         int proxyPlayerIndex = playerIndex + ProxyPlayerOffset;
 
-        List<IUnit> draftedUnits = _api
-            .GetUnitsOwnedByPlayer(playerIndex, unit => !unit.IsDead && IsDraftableUnit(unit.UnitId))
-            .ToList();
+        List<IUnit> draftedUnits = GetPlayerPlacedHeroes(playerIndex).ToList();
 
         foreach (IUnit draftedUnit in draftedUnits)
         {
@@ -861,6 +895,7 @@ public class MapScript : IWasmModule
             _api.SetUnitFacing(clone, ArenaCenter);
             clone.AttackMove(ArenaCenter);
             playerState.SpawnedUnitsPerWave[waveNumber].Add(clone);
+            waveUnitSpawnTimes[clone.UniqueId] = gameSecondsElapsed;
         }
     }
 
@@ -870,6 +905,18 @@ public class MapScript : IWasmModule
 
         if (gameSecondsElapsed >= nextFoodCapIncreaseSeconds)
             IncreaseFoodCap();
+
+        foreach (int playerIndex in playerStates.Keys)
+        {
+            if (_api.IsPlayerComputer(playerIndex))
+            {
+                PlayerState playerState = playerStates[playerIndex];
+                while (playerState.DraftedCount < foodCap && GetPlayerCircles(playerIndex).Any())
+                {
+                    PerformComputerDraft(playerIndex);
+                }
+            }
+        }
     }
 
     private void IncreaseFoodCap()
@@ -885,7 +932,13 @@ public class MapScript : IWasmModule
             _api.SetPlayerMaxPopulation(playerIndex, foodCap);
 
             if (_api.IsPlayerComputer(playerIndex))
-                PerformComputerDraft(playerIndex);
+            {
+                PlayerState playerState = playerStates[playerIndex];
+                while (playerState.DraftedCount < foodCap && GetPlayerCircles(playerIndex).Any())
+                {
+                    PerformComputerDraft(playerIndex);
+                }
+            }
         }
     }
 
@@ -908,22 +961,31 @@ public class MapScript : IWasmModule
     {
         foreach (PlayerState playerState in playerStates.Values)
         {
-            for (int waveIndex = waveNumber - 1; waveIndex >= 1; waveIndex--)
+            foreach (List<IUnit> waveUnits in playerState.SpawnedUnitsPerWave.Values)
             {
-                if (!playerState.SpawnedUnitsPerWave.TryGetValue(waveIndex, out List<IUnit>? waveUnits))
-                    continue;
-
-                int ageOfWave = waveNumber - waveIndex;
-                float baseDamageMultiplier = MathF.Pow(1.1f, ageOfWave) - 1f;
-
                 for (int unitIndex = waveUnits.Count - 1; unitIndex >= 0; unitIndex--)
                 {
                     IUnit unit = waveUnits[unitIndex];
                     if (unit.IsDead)
                     {
+                        waveUnitSpawnTimes.Remove(unit.UniqueId);
                         waveUnits.RemoveAt(unitIndex);
                         continue;
                     }
+
+                    if (!waveUnitSpawnTimes.TryGetValue(unit.UniqueId, out float spawnTime))
+                    {
+                        spawnTime = gameSecondsElapsed;
+                        waveUnitSpawnTimes[unit.UniqueId] = spawnTime;
+                    }
+
+                    float battleDuration = gameSecondsElapsed - spawnTime;
+                    if (battleDuration <= WaveIntervalSeconds)
+                        continue;
+
+                    float overtimeSeconds = battleDuration - WaveIntervalSeconds;
+                    float overtimeWaves = overtimeSeconds / WaveIntervalSeconds;
+                    float baseDamageMultiplier = MathF.Pow(1.1f, MathF.Max(1f, overtimeWaves)) - 1f;
 
                     float damageMultiplier = IsDraftableUnit(unit.UnitId)
                         ? baseDamageMultiplier
@@ -934,7 +996,10 @@ public class MapScript : IWasmModule
                         unit.AddBuff(AntiSnowballPoisonBuffId, float.PositiveInfinity);
 
                     if (unit.IsDead)
+                    {
+                        waveUnitSpawnTimes.Remove(unit.UniqueId);
                         waveUnits.RemoveAt(unitIndex);
+                    }
                 }
             }
         }
@@ -1097,6 +1162,7 @@ public class MapScript : IWasmModule
     {
         tileStatesByUnitId.Remove(dyingUnit.UniqueId);
         waveUnitStatesByUnitId.Remove(dyingUnit.UniqueId);
+        waveUnitSpawnTimes.Remove(dyingUnit.UniqueId);
 
         if (killer == null)
             return;
