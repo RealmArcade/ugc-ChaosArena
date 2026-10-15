@@ -4328,7 +4328,7 @@
       {
         "TemplateID": "ability/upgrade_critical_strike",
         "Name": "Upgrade Critical Strike",
-        "Description": "Researches Critical Strike tech at the Blacksmith, granting +15% crit chance.",
+        "Description": "Researches Critical Strike tech at the Blacksmith, granting \u002B15% crit chance.",
         "AbilityType": "instant_spell",
         "IconPath": null,
         "ManaCost": 0,
@@ -5598,6 +5598,22 @@
     },
     "orc_warrior_7.rmesh": {
       "Scales": 1
+    },
+    "building/altar": {
+      "Brightness": 0.5,
+      "CollisionCircleRatios": 1.5,
+      "DespillPlayerColor": false,
+      "NormalizeLuminance": true,
+      "Offsets": 1.5,
+      "Scales": 1.5
+    },
+    "building/blacksmith": {
+      "Brightness": 0.5,
+      "CollisionCircleRatios": 1.5,
+      "DespillPlayerColor": false,
+      "NormalizeLuminance": true,
+      "Offsets": 1.5,
+      "Scales": 1.5
     }
   },
   "textures": {
