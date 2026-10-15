@@ -34,16 +34,16 @@
     },
     {
       "Name": "PlayerStart12",
-      "MinX": -66,
-      "MinZ": 108.9,
-      "MaxX": -62,
-      "MaxZ": 112.9
+      "MinX": -56,
+      "MinZ": 114,
+      "MaxX": -52,
+      "MaxZ": 118
     },
     {
       "Name": "PlayerStart2",
-      "MinX": 54,
+      "MinX": 52,
       "MinZ": 114,
-      "MaxX": 58,
+      "MaxX": 56,
       "MaxZ": 118
     },
     {
