@@ -118,6 +118,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -202,6 +204,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -286,6 +290,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -379,6 +385,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -472,6 +480,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -565,6 +575,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -645,6 +657,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -727,6 +741,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -820,6 +836,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -913,6 +931,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -1006,6 +1026,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -1099,6 +1121,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -1192,6 +1216,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -1285,6 +1311,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -1378,6 +1406,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -1460,6 +1490,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -1553,6 +1585,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -1646,6 +1680,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -1739,6 +1775,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -1832,6 +1870,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -1925,6 +1965,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -2018,6 +2060,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -2111,6 +2155,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -2204,6 +2250,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -2297,6 +2345,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -2390,6 +2440,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       }
     ],
@@ -2472,6 +2524,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -2554,6 +2608,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -2634,6 +2690,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       },
       {
@@ -2714,6 +2772,8 @@
         "SoundEvents": null,
         "SpawnShader": null,
         "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
         "DespawnShader": null
       }
     ],
@@ -6855,6 +6915,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -6873,6 +6935,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -6891,6 +6955,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -6909,6 +6975,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -6927,6 +6995,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -6945,6 +7015,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -6963,6 +7035,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -6981,6 +7055,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -6999,6 +7075,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7017,6 +7095,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7035,6 +7115,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7053,6 +7135,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7071,6 +7155,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7089,6 +7175,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7107,6 +7195,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7125,6 +7215,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7143,6 +7235,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7161,6 +7255,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7179,6 +7275,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7197,6 +7295,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7215,6 +7315,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7233,6 +7335,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7251,6 +7355,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7269,6 +7375,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7287,6 +7395,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7305,6 +7415,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7323,6 +7435,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7341,6 +7455,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7359,6 +7475,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7377,6 +7495,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7395,6 +7515,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7413,6 +7535,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7431,6 +7555,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7449,6 +7575,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7467,6 +7595,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7485,6 +7615,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7503,6 +7635,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7521,6 +7655,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7539,6 +7675,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7557,6 +7695,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7575,6 +7715,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7593,6 +7735,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7611,6 +7755,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7629,6 +7775,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7647,6 +7795,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7665,6 +7815,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7683,6 +7835,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7701,6 +7855,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7719,6 +7875,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7737,6 +7895,8 @@
         "IconPath": null,
         "PassiveStatusEffects": null,
         "GrantedWeapons": null,
+        "GrantedAbilities": null,
+        "GrantedUpgrades": null,
         "IsContainer": false,
         "ContainerSize": 0,
         "Requirements": null
@@ -7749,366 +7909,6 @@
   "CustomWaterProfiles": [],
   "CustomEnvironmentPresets": [],
   "DefaultEnvironmentPreset": null,
-  "Models": {
-    "building/clock_tower": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0,
-      "DespillPlayerColor": false,
-      "IgnorePlayerColor": false,
-      "NormalizeLuminance": true,
-      "Offsets": 1.5021,
-      "Scales": 1.5
-    },
-    "building/timber_framed_house": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 1.25,
-      "ColorTint": "#ffffff",
-      "DespillPlayerColor": false,
-      "IgnorePlayerColor": false,
-      "NormalizeLuminance": true,
-      "Offsets": 1.5000001,
-      "Scales": 1.5
-    },
-    "circleofpowerearth.rmesh": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0,
-      "ColorTint": "#3fdc4a",
-      "DespillPlayerColor": false,
-      "NormalizeLuminance": true,
-      "Offsets": 0.6,
-      "Scales": 0.6
-    },
-    "circleofpowerfire.rmesh": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0,
-      "ColorTint": "#ff4a2a",
-      "DespillPlayerColor": false,
-      "NormalizeLuminance": true,
-      "Offsets": 0.6,
-      "Scales": 0.6
-    },
-    "circleofpowerwater.rmesh": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0,
-      "ColorTint": "#3a7bff",
-      "DespillPlayerColor": false,
-      "NormalizeLuminance": true,
-      "Offsets": 0.6,
-      "Scales": 0.6
-    },
-    "clocktower.rmesh": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0,
-      "DespillPlayerColor": false,
-      "NormalizeLuminance": true,
-      "Offsets": 1.5021,
-      "Scales": 1.5
-    },
-    "ornate_spear_1.rmesh": {
-      "DespillPlayerColor": false,
-      "IgnorePlayerColor": false
-    },
-    "prop/crystal_cluster_29": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 1,
-      "ColorTint": "#ffffff",
-      "DespillPlayerColor": false,
-      "IgnorePlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 1.2500001,
-      "Scales": 1.25
-    },
-    "prop/spiked_wooden_stake": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.45000002,
-      "ColorTint": "#ffffff",
-      "DespillPlayerColor": false,
-      "IgnorePlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 1.2000002,
-      "Scales": 1.25
-    },
-    "resource/coniferous_tree_1": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 1,
-      "ColorTint": "#ffffff",
-      "DespillPlayerColor": false,
-      "IgnorePlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 2.7491,
-      "Scales": 2.75
-    },
-    "resource/palm_tree": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 1,
-      "ColorTint": "#ffffff",
-      "DespillPlayerColor": false,
-      "IgnorePlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 2.7498,
-      "Scales": 2.75
-    },
-    "unit/arcane_scholar": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "IgnorePlayerColor": false,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/astral_paragon": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/blood_berserker": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/builder": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0,
-      "DespillPlayerColor": false,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/chad": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0,
-      "DespillPlayerColor": true,
-      "IgnorePlayerColor": false,
-      "NormalizeLuminance": true,
-      "Offsets": 0.8367,
-      "Scales": 1
-    },
-    "unit/chrono_weaver": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/circle_of_power_earth": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0,
-      "ColorTint": "#3fdc4a",
-      "DespillPlayerColor": false,
-      "NormalizeLuminance": true,
-      "Offsets": 0.6,
-      "Scales": 0.6
-    },
-    "unit/coral_vanguard": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/crystal_weaver": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/dune_skirmisher": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/flame_archon": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/frost_warden": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/iron_warlord": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/kevin": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0,
-      "DespillPlayerColor": false,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/lightbringer_monk": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/nether_assassin": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/shadow_strider": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/shadow_weaver": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/stone_guardian": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/storm_caller": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/sun_priest": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/tempest_chaser": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/vanguard_sentinel": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "unit/verdant_druid": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0.75,
-      "DespillPlayerColor": true,
-      "NormalizeLuminance": true,
-      "Offsets": 0.909,
-      "Scales": 1
-    },
-    "wooden_spear_2.rmesh": {
-      "DespillPlayerColor": false,
-      "IgnorePlayerColor": false
-    },
-    "unit/circle_of_power_fire": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0,
-      "ColorTint": "#ff4a2a",
-      "DespillPlayerColor": false,
-      "NormalizeLuminance": true,
-      "Offsets": 0.6,
-      "Scales": 0.6
-    },
-    "unit/circle_of_power_water": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 0,
-      "ColorTint": "#3a7bff",
-      "DespillPlayerColor": false,
-      "NormalizeLuminance": true,
-      "Offsets": 0.6,
-      "Scales": 0.6
-    },
-    "coniferous_tree_1.rmesh": {
-      "Scales": 2.75
-    },
-    "palm_tree.rmesh": {
-      "Scales": 2.75
-    },
-    "clock_tower_building.rmesh": {
-      "Scales": 1.5
-    },
-    "timber_framed_house.rmesh": {
-      "Scales": 1.5
-    },
-    "crystal_cluster_29.rmesh": {
-      "Scales": 1.25
-    },
-    "spiked_wooden_stake.rmesh": {
-      "Scales": 1.25
-    },
-    "dragon_breath.rtex": {
-      "Scales": 0.6
-    },
-    "fantasy_warrior_unit_1.rmesh": {
-      "Scales": 1
-    },
-    "orc_warrior_7.rmesh": {
-      "Scales": 1
-    },
-    "building/altar": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 1.5,
-      "DespillPlayerColor": false,
-      "NormalizeLuminance": true,
-      "Offsets": 1.5,
-      "Scales": 1.5
-    },
-    "building/blacksmith": {
-      "Brightness": 0.5,
-      "CollisionCircleRatios": 1.5,
-      "DespillPlayerColor": false,
-      "NormalizeLuminance": true,
-      "Offsets": 1.5,
-      "Scales": 1.5
-    }
-  },
   "textures": {
     "terrain/abyssal_trench_void_clay": {
       "SwatchIndex": 0,
