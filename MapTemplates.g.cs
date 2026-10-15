@@ -9,9 +9,9 @@ namespace Realm.Maps;
 
 public static class UnitIds
 {
-	public const string CircleOfPowerEarth = "unit/circle_of_power_earth";
-	public const string CircleOfPowerFire = "unit/circle_of_power_fire";
-	public const string CircleOfPowerWater = "unit/circle_of_power_water";
+	public const string EarthElement = "unit/earth_element";
+	public const string FireElement = "unit/fire_element";
+	public const string WaterElement = "unit/water_element";
 	public const string ArcaneScholar = "unit/arcane_scholar";
 	public const string AstralParagon = "unit/astral_paragon";
 	public const string BloodBerserker = "unit/blood_berserker";

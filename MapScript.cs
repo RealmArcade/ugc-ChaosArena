@@ -54,7 +54,7 @@ public class MapScript : IWasmModule
     private const int RealPlayerSlotCount = 12;
     private const int ProxyPlayerOffset = 12;
     private const float WorldUnitsPerRealmUnit = 50f;
-    private const float SpawnOffsetDistance = 500f / WorldUnitsPerRealmUnit;
+    private const float SpawnOffsetDistance = 1000f / WorldUnitsPerRealmUnit;
     private const float TileSpacing = 125f / WorldUnitsPerRealmUnit;
     private const float BuildingSpacing = 200f / WorldUnitsPerRealmUnit;
     private const float SoulSiphonRadius = 175f / WorldUnitsPerRealmUnit;
@@ -220,9 +220,9 @@ public class MapScript : IWasmModule
 
     private static string GetCircleUnitTypeId(Element element) => element switch
     {
-        Element.Water => UnitIds.CircleOfPowerWater,
-        Element.Fire => UnitIds.CircleOfPowerFire,
-        _ => UnitIds.CircleOfPowerEarth
+        Element.Water => UnitIds.WaterElement,
+        Element.Fire => UnitIds.FireElement,
+        _ => UnitIds.EarthElement
     };
 
     private void ResetPlayerSelection(int playerIndex)
@@ -241,9 +241,9 @@ public class MapScript : IWasmModule
         {
             foreach (string abilityId in _api.GetUnitTypeAbilities(unitTypeId))
             {
-                _api.AddUnitTypeAbility(UnitIds.CircleOfPowerEarth, abilityId);
-                _api.AddUnitTypeAbility(UnitIds.CircleOfPowerFire, abilityId);
-                _api.AddUnitTypeAbility(UnitIds.CircleOfPowerWater, abilityId);
+                _api.AddUnitTypeAbility(UnitIds.EarthElement, abilityId);
+                _api.AddUnitTypeAbility(UnitIds.FireElement, abilityId);
+                _api.AddUnitTypeAbility(UnitIds.WaterElement, abilityId);
                 _api.AddUnitTypeAbility(BuildingIds.Altar, abilityId);
             }
         }
