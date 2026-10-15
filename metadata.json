@@ -2828,9 +2828,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/abyssal_realm",
@@ -2850,9 +2850,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/ancestral_spirit",
@@ -2894,9 +2894,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/astral_grace",
@@ -2916,9 +2916,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/banner_of_valor",
@@ -2938,9 +2938,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/battle_cry",
@@ -2960,9 +2960,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/blazing_shield",
@@ -2982,9 +2982,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/blinding_ray",
@@ -3004,9 +3004,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/blood_lust",
@@ -3026,9 +3026,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/boulder_toss",
@@ -3048,9 +3048,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/chain_lightning",
@@ -3070,9 +3070,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/challengers_roar",
@@ -3092,9 +3092,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/coral_shield",
@@ -3114,9 +3114,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/cosmic_binding",
@@ -3136,9 +3136,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/crystal_ward",
@@ -3158,9 +3158,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/crystalline_explosion",
@@ -3180,9 +3180,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/cyclone_kick",
@@ -3202,9 +3202,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/dawn_judgement",
@@ -3224,9 +3224,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/death_mark",
@@ -3246,9 +3246,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/divine_intervention",
@@ -3268,9 +3268,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/earth_shatter",
@@ -3290,9 +3290,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/fireball",
@@ -3334,9 +3334,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/frenzy_slash",
@@ -3356,9 +3356,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/frost_nova",
@@ -3378,9 +3378,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/gale_strike",
@@ -3400,9 +3400,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/glacial_barrier",
@@ -3422,9 +3422,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/gloom_bolt",
@@ -3444,9 +3444,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/granite_avatar",
@@ -3466,9 +3466,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/hardened_carapace",
@@ -3488,9 +3488,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/hardened_crust",
@@ -3510,9 +3510,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/haste_field",
@@ -3532,9 +3532,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/heavy_strike",
@@ -3554,9 +3554,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/holylight",
@@ -3598,9 +3598,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/infernal_surge",
@@ -3620,9 +3620,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/iron_will",
@@ -3642,9 +3642,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/lightning",
@@ -3686,9 +3686,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/mantra_of_healing",
@@ -3708,9 +3708,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/poison_blade",
@@ -3730,9 +3730,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/prism_beam",
@@ -3752,9 +3752,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/pyro_blast",
@@ -3774,9 +3774,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/quick_roll",
@@ -3796,9 +3796,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/quicksand_trap",
@@ -3818,9 +3818,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/radiant_blessing",
@@ -3840,9 +3840,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/radiant_fist",
@@ -3862,9 +3862,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/refractive_shield",
@@ -3884,9 +3884,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/sanctuary_aura",
@@ -3906,9 +3906,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/sand_bolt",
@@ -3928,9 +3928,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/sandstorm_veil",
@@ -3950,9 +3950,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/sanguine_leap",
@@ -3972,9 +3972,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/searing_aura",
@@ -3994,9 +3994,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/seismic_pulse",
@@ -4016,9 +4016,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/shadow_step",
@@ -4038,9 +4038,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/shadow_veil",
@@ -4060,9 +4060,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/shield_bash",
@@ -4082,9 +4082,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/smoke_screen",
@@ -4104,9 +4104,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/solar_flare",
@@ -4126,9 +4126,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/soothing_bloom",
@@ -4148,9 +4148,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/soul_tether",
@@ -4170,9 +4170,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/spell_shield",
@@ -4192,9 +4192,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/star_fall",
@@ -4214,9 +4214,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/stasis_bubble",
@@ -4236,9 +4236,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/static_field",
@@ -4258,9 +4258,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/supernova",
@@ -4280,9 +4280,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/supernova_burst",
@@ -4302,9 +4302,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/tangle_vines",
@@ -4324,9 +4324,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/tempest_cataclysm",
@@ -4346,9 +4346,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/temporal_strike",
@@ -4368,9 +4368,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/thorn_armor",
@@ -4390,9 +4390,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/tidal_pull",
@@ -4412,9 +4412,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R"
       },
       {
         "TemplateID": "ability/time_dilation",
@@ -4434,9 +4434,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/time_reversal",
@@ -4456,9 +4456,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/tornado_storm",
@@ -4478,9 +4478,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/unending_rage",
@@ -4500,9 +4500,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/veil_of_shadows",
@@ -4522,9 +4522,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/war_stomp",
@@ -4544,9 +4544,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/wave_crash",
@@ -4566,9 +4566,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W"
       },
       {
         "TemplateID": "ability/whirlpool_surge",
@@ -4588,9 +4588,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/wind_barrier",
@@ -4610,9 +4610,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/wind_step",
@@ -4632,9 +4632,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E"
       },
       {
         "TemplateID": "ability/wrath_of_nature",
@@ -4654,9 +4654,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 0,
+        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/reroll_item",
@@ -4676,9 +4676,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 1,
+        "Hotkey": "Q"
       },
       {
         "TemplateID": "ability/reroll_element",
@@ -4698,9 +4698,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 1,
+        "GridY": 1,
+        "Hotkey": "A"
       },
       {
         "TemplateID": "ability/reroll_hero",
@@ -4720,9 +4720,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 2,
+        "GridY": 1,
+        "Hotkey": "S"
       },
       {
         "TemplateID": "ability/reroll_all",
@@ -4742,9 +4742,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 3,
+        "GridY": 1,
+        "Hotkey": "D"
       },
       {
         "TemplateID": "ability/swap_tile_units",
@@ -4764,9 +4764,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 2,
+        "Hotkey": "Z"
       },
       {
         "TemplateID": "ability/upgrade_critical_strike",
@@ -4786,9 +4786,9 @@
         "SummonedUnitId": null,
         "SummonCount": 0,
         "SummonDuration": 0,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "C"
       },
       {
         "TemplateID": "ability/soul_siphon",

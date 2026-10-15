@@ -19,7 +19,7 @@ public enum TileKind
     Hero
 }
 
-public record UpgradeDefinition(string TechId, string AbilityId, string Name);
+public record UpgradeDefinition(string TechId, string AbilityId);
 
 public class TileState
 {
@@ -57,7 +57,6 @@ public class MapScript : IWasmModule
     private const float SpawnOffsetDistance = 500f / WorldUnitsPerRealmUnit;
     private const float TileSpacing = 125f / WorldUnitsPerRealmUnit;
     private const float BuildingSpacing = 200f / WorldUnitsPerRealmUnit;
-    private const float EnemyAcquisitionRange = 1000f / WorldUnitsPerRealmUnit;
     private const float SoulSiphonRadius = 175f / WorldUnitsPerRealmUnit;
     private const float HealingWaveRadius = 350f / WorldUnitsPerRealmUnit;
     private const int WaveIntervalSeconds = 45;
@@ -66,13 +65,6 @@ public class MapScript : IWasmModule
     private const int TilesPerPlayer = 9;
     private const int CountdownFontSize = 216;
     private const float CountdownDistanceMultiplier = 3.75f;
-
-    private const string BuilderUnitTypeId = "unit/builder";
-    private const string AltarBuildingTypeId = "building/altar";
-    private const string BlacksmithBuildingTypeId = "building/blacksmith";
-    private const string CircleEarthUnitTypeId = "unit/circle_of_power_earth";
-    private const string CircleFireUnitTypeId = "unit/circle_of_power_fire";
-    private const string CircleWaterUnitTypeId = "unit/circle_of_power_water";
 
     private const string RerollItemAbilityId = "ability/reroll_item";
     private const string RerollElementAbilityId = "ability/reroll_element";
@@ -83,7 +75,6 @@ public class MapScript : IWasmModule
 
     private const string SoulSiphonAbilityId = "ability/soul_siphon";
     private const string HealingWaveAbilityId = "ability/healing_wave";
-    private const string AncestralSpiritAbilityId = "ability/ancestral_spirit";
     private const string AntiSnowballPoisonBuffId = "anti_snowball_poison";
     private const string CriticalStrikeTechId = "critical_strike";
 
@@ -100,69 +91,46 @@ public class MapScript : IWasmModule
 
     private static readonly string[] ItemPool =
     {
-        "item/titan_belt",
-        "item/swiftness_boots",
-        "item/cowl_of_the_wise",
-        "item/iron_claws",
-        "item/gauntlets_of_power",
-        "item/crystal_pendant",
-        "item/vitality_ring",
-        "item/ring_of_protection",
-        "item/tome_of_knowledge"
+        ItemIds.TitanBelt,
+        ItemIds.SwiftnessBoots,
+        ItemIds.CowlOfTheWise,
+        ItemIds.IronClaws,
+        ItemIds.GauntletsOfPower,
+        ItemIds.CrystalPendant,
+        ItemIds.VitalityRing,
+        ItemIds.RingOfProtection,
+        ItemIds.TomeOfKnowledge
     };
 
     private static readonly string[] DraftableUnits =
     {
-        "unit/shadow_strider",
-        "unit/vanguard_sentinel",
-        "unit/flame_archon",
-        "unit/frost_warden",
-        "unit/storm_caller",
-        "unit/verdant_druid",
-        "unit/iron_warlord",
-        "unit/arcane_scholar",
-        "unit/nether_assassin",
-        "unit/sun_priest",
-        "unit/blood_berserker",
-        "unit/stone_guardian",
-        "unit/chrono_weaver",
-        "unit/dune_skirmisher",
-        "unit/coral_vanguard",
-        "unit/crystal_weaver",
-        "unit/astral_paragon",
-        "unit/lightbringer_monk",
-        "unit/shadow_weaver",
-        "unit/tempest_chaser"
+        UnitIds.ShadowStrider,
+        UnitIds.VanguardSentinel,
+        UnitIds.FlameArchon,
+        UnitIds.FrostWarden,
+        UnitIds.StormCaller,
+        UnitIds.VerdantDruid,
+        UnitIds.IronWarlord,
+        UnitIds.ArcaneScholar,
+        UnitIds.NetherAssassin,
+        UnitIds.SunPriest,
+        UnitIds.BloodBerserker,
+        UnitIds.StoneGuardian,
+        UnitIds.ChronoWeaver,
+        UnitIds.DuneSkirmisher,
+        UnitIds.CoralVanguard,
+        UnitIds.CrystalWeaver,
+        UnitIds.AstralParagon,
+        UnitIds.LightbringerMonk,
+        UnitIds.ShadowWeaver,
+        UnitIds.TempestChaser
     };
+
+    private static readonly HashSet<string> DraftableUnitSet = new(DraftableUnits, StringComparer.OrdinalIgnoreCase);
 
     private static readonly UpgradeDefinition[] DraftableUpgrades =
     {
-        new(CriticalStrikeTechId, UpgradeCriticalStrikeAbilityId, "Critical Strike")
-    };
-
-    // Ordered elemental abilities: [0]=Water, [1]=Earth, [2]=Fire, [3]=Ultimate
-    private static readonly Dictionary<string, string[]> DraftableUnitAbilities = new(StringComparer.OrdinalIgnoreCase)
-    {
-        ["unit/shadow_strider"] = new[] { "ability/searing_aura", "ability/hardened_carapace", "ability/challengers_roar", "ability/shadow_veil" },
-        ["unit/vanguard_sentinel"] = new[] { "ability/shield_bash", "ability/fortress_stance", "ability/banner_of_valor", "ability/earth_shatter" },
-        ["unit/flame_archon"] = new[] { "ability/pyro_blast", "ability/blazing_shield", "ability/infernal_surge", "ability/supernova" },
-        ["unit/frost_warden"] = new[] { "ability/ice_shard", "ability/glacial_barrier", "ability/frost_nova", "ability/absolute_zero" },
-        ["unit/storm_caller"] = new[] { "ability/chain_lightning", "ability/wind_step", "ability/static_field", "ability/tempest_cataclysm" },
-        ["unit/verdant_druid"] = new[] { "ability/tangle_vines", "ability/soothing_bloom", "ability/thorn_armor", "ability/wrath_of_nature" },
-        ["unit/iron_warlord"] = new[] { "ability/heavy_strike", "ability/battle_cry", "ability/iron_will", "ability/war_stomp" },
-        ["unit/arcane_scholar"] = new[] { "ability/arcane_missiles", "ability/spell_shield", "ability/mana_drain", "ability/time_dilation" },
-        ["unit/nether_assassin"] = new[] { "ability/poison_blade", "ability/shadow_step", "ability/smoke_screen", "ability/death_mark" },
-        ["unit/sun_priest"] = new[] { "ability/solar_flare", "ability/radiant_blessing", "ability/blinding_ray", "ability/dawn_judgement" },
-        ["unit/blood_berserker"] = new[] { "ability/frenzy_slash", "ability/blood_lust", "ability/sanguine_leap", "ability/unending_rage" },
-        ["unit/stone_guardian"] = new[] { "ability/boulder_toss", "ability/hardened_crust", "ability/seismic_pulse", "ability/granite_avatar" },
-        ["unit/chrono_weaver"] = new[] { "ability/temporal_strike", "ability/haste_field", "ability/stasis_bubble", "ability/time_reversal" },
-        ["unit/dune_skirmisher"] = new[] { "ability/sand_bolt", "ability/quick_roll", "ability/sandstorm_veil", "ability/quicksand_trap" },
-        ["unit/coral_vanguard"] = new[] { "ability/wave_crash", "ability/coral_shield", "ability/tidal_pull", "ability/whirlpool_surge" },
-        ["unit/crystal_weaver"] = new[] { "ability/prism_beam", "ability/crystal_ward", "ability/refractive_shield", "ability/crystalline_explosion" },
-        ["unit/astral_paragon"] = new[] { "ability/star_fall", "ability/astral_grace", "ability/cosmic_binding", "ability/supernova_burst" },
-        ["unit/lightbringer_monk"] = new[] { "ability/radiant_fist", "ability/mantra_of_healing", "ability/sanctuary_aura", "ability/divine_intervention" },
-        ["unit/shadow_weaver"] = new[] { "ability/gloom_bolt", "ability/veil_of_shadows", "ability/soul_tether", "ability/abyssal_realm" },
-        ["unit/tempest_chaser"] = new[] { "ability/gale_strike", "ability/wind_barrier", "ability/cyclone_kick", "ability/tornado_storm" }
+        new(CriticalStrikeTechId, UpgradeCriticalStrikeAbilityId)
     };
 
     private readonly Dictionary<int, PlayerState> playerStates = new();
@@ -177,13 +145,11 @@ public class MapScript : IWasmModule
     private int gameSecondsElapsed;
     private int foodCap;
     private int nextFoodCapIncreaseSeconds;
-    private int aiCycle;
 
     public void Initialize(IGameAPI api)
     {
         gameApi = api;
 
-        ConfigureAbilityHotkeys();
         ConfigureDraftChoicesOnTiles();
         InitializePlayers();
 
@@ -204,7 +170,6 @@ public class MapScript : IWasmModule
 
         gameApi.ScheduleRepeatingTimer(1f, HandleSpawnTimerTick);
         gameApi.ScheduleRepeatingTimer(1f, HandleGameTimerTick);
-        gameApi.ScheduleRepeatingTimer(1f, RunAiLoop);
         gameApi.ScheduleRepeatingTimer(5f, GrantWoodPassive);
         gameApi.ScheduleRepeatingTimer(15f, ApplyNegativeHealthRegen);
         gameApi.ScheduleRepeatingTimer(60f, GrantPassiveExperience);
@@ -228,33 +193,10 @@ public class MapScript : IWasmModule
         }
     }
 
-    private static bool TryGetUnitAbilities(string unitId, out string[] abilities)
-    {
-        if (DraftableUnitAbilities.TryGetValue(unitId, out abilities!))
-            return true;
-        if (unitId.StartsWith("unit/", StringComparison.OrdinalIgnoreCase)
-            && DraftableUnitAbilities.TryGetValue(unitId.Substring(5), out abilities!))
-            return true;
-        if (!unitId.StartsWith("unit/", StringComparison.OrdinalIgnoreCase)
-            && DraftableUnitAbilities.TryGetValue($"unit/{unitId}", out abilities!))
-            return true;
-
-        abilities = Array.Empty<string>();
-        return false;
-    }
-
     private static bool IsDraftableUnit(string unitId) =>
-        TryGetUnitAbilities(unitId, out _);
-
-    private static string GetUnitDisplayName(string unitId)
-    {
-        string slug = unitId.StartsWith("unit/", StringComparison.OrdinalIgnoreCase)
-            ? unitId.Substring(5)
-            : unitId;
-        return string.Join(" ", slug.Split('_')
-            .Where(word => !string.IsNullOrEmpty(word))
-            .Select(word => char.ToUpperInvariant(word[0]) + (word.Length > 1 ? word.Substring(1).ToLowerInvariant() : string.Empty)));
-    }
+        DraftableUnitSet.Contains(unitId)
+        || (unitId.StartsWith("unit/", StringComparison.OrdinalIgnoreCase) && DraftableUnitSet.Contains(unitId))
+        || (!unitId.StartsWith("unit/", StringComparison.OrdinalIgnoreCase) && DraftableUnitSet.Contains($"unit/{unitId}"));
 
     private static bool IsRealPlayerSlot(int playerIndex) =>
         playerIndex >= 0 && playerIndex < RealPlayerSlotCount;
@@ -275,9 +217,9 @@ public class MapScript : IWasmModule
 
     private static string GetCircleUnitTypeId(Element element) => element switch
     {
-        Element.Water => CircleWaterUnitTypeId,
-        Element.Fire => CircleFireUnitTypeId,
-        _ => CircleEarthUnitTypeId
+        Element.Water => UnitIds.CircleOfPowerWater,
+        Element.Fire => UnitIds.CircleOfPowerFire,
+        _ => UnitIds.CircleOfPowerEarth
     };
 
     private void ResetPlayerSelection(int playerIndex)
@@ -290,38 +232,16 @@ public class MapScript : IWasmModule
         }
     }
 
-    private void ConfigureAbilityHotkeys()
-    {
-        foreach ((_, string[] abilities) in DraftableUnitAbilities)
-        {
-            if (abilities.Length > 0 && !string.IsNullOrEmpty(abilities[0]))
-            {
-                gameApi.SetAbilityGridPosition(abilities[0], 0, 0);
-                gameApi.SetAbilityHotkey(abilities[0], "W");
-            }
-            if (abilities.Length > 1 && !string.IsNullOrEmpty(abilities[1]))
-            {
-                gameApi.SetAbilityGridPosition(abilities[1], 1, 0);
-                gameApi.SetAbilityHotkey(abilities[1], "E");
-            }
-            if (abilities.Length > 2 && !string.IsNullOrEmpty(abilities[2]))
-            {
-                gameApi.SetAbilityGridPosition(abilities[2], 2, 0);
-                gameApi.SetAbilityHotkey(abilities[2], "R");
-            }
-        }
-    }
-
     private void ConfigureDraftChoicesOnTiles()
     {
-        foreach ((_, string[] abilities) in DraftableUnitAbilities)
+        foreach (string unitTypeId in DraftableUnits)
         {
-            foreach (string abilityId in abilities)
+            foreach (string abilityId in gameApi.GetUnitTypeAbilities(unitTypeId))
             {
-                gameApi.AddUnitTypeAbility(CircleEarthUnitTypeId, abilityId);
-                gameApi.AddUnitTypeAbility(CircleFireUnitTypeId, abilityId);
-                gameApi.AddUnitTypeAbility(CircleWaterUnitTypeId, abilityId);
-                gameApi.AddUnitTypeAbility(AltarBuildingTypeId, abilityId);
+                gameApi.AddUnitTypeAbility(UnitIds.CircleOfPowerEarth, abilityId);
+                gameApi.AddUnitTypeAbility(UnitIds.CircleOfPowerFire, abilityId);
+                gameApi.AddUnitTypeAbility(UnitIds.CircleOfPowerWater, abilityId);
+                gameApi.AddUnitTypeAbility(BuildingIds.Altar, abilityId);
             }
         }
     }
@@ -427,7 +347,7 @@ public class MapScript : IWasmModule
         Vector3 startLocation = playerState.BasePosition;
         Vector3 offset = playerState.SpawnOffset;
 
-        IUnit builder = gameApi.SpawnUnitForPlayer(BuilderUnitTypeId, startLocation, playerIndex);
+        IUnit builder = gameApi.SpawnUnitForPlayer(UnitIds.Builder, startLocation, playerIndex);
         builder.Damage = 0f;
         builder.Invulnerable = true;
         builder.Speed = 0f;
@@ -443,13 +363,13 @@ public class MapScript : IWasmModule
             ? new Vector3(0f, 0f, -BuildingSpacing)
             : new Vector3(-BuildingSpacing, 0f, 0f);
 
-        IUnit altar = gameApi.SpawnUnitForPlayer(AltarBuildingTypeId, buildingStart + altarOffset, playerIndex);
+        IUnit altar = gameApi.SpawnUnitForPlayer(BuildingIds.Altar, buildingStart + altarOffset, playerIndex);
         altar.Damage = 0f;
         altar.Invulnerable = true;
         gameApi.SetUnitFacing(altar, ArenaCenter);
         playerState.Altar = altar;
 
-        IUnit blacksmith = gameApi.SpawnUnitForPlayer(BlacksmithBuildingTypeId, buildingStart + blacksmithOffset, playerIndex);
+        IUnit blacksmith = gameApi.SpawnUnitForPlayer(BuildingIds.Blacksmith, buildingStart + blacksmithOffset, playerIndex);
         blacksmith.Damage = 0f;
         blacksmith.Invulnerable = true;
         gameApi.SetUnitFacing(blacksmith, ArenaCenter);
@@ -484,7 +404,7 @@ public class MapScript : IWasmModule
             return;
 
         string offerList = string.Join(", ", playerState.Offers.Select((typeId, index) =>
-            $"{index + 1}: {GetUnitDisplayName(typeId)}"));
+            $"{index + 1}: {gameApi.GetUnitName(typeId)}"));
 
         gameApi.SendMessageToPlayer(playerIndex, $"Draft offers at Altar: {offerList}. Select a Circle of Power or Altar to draft.");
 
@@ -498,11 +418,8 @@ public class MapScript : IWasmModule
 
         foreach (string offerTypeId in playerState.Offers)
         {
-            if (TryGetUnitAbilities(offerTypeId, out string[] abilities))
-            {
-                foreach (string abilityId in abilities)
-                    offeredAbilityIds.Add(abilityId);
-            }
+            foreach (string abilityId in gameApi.GetUnitTypeAbilities(offerTypeId))
+                offeredAbilityIds.Add(abilityId);
         }
 
         var unitsToConfigure = GetPlayerCircles(playerIndex).ToList();
@@ -511,9 +428,9 @@ public class MapScript : IWasmModule
 
         foreach (IUnit unit in unitsToConfigure)
         {
-            foreach ((_, string[] abilities) in DraftableUnitAbilities)
+            foreach (string unitTypeId in DraftableUnits)
             {
-                foreach (string abilityId in abilities)
+                foreach (string abilityId in gameApi.GetUnitTypeAbilities(unitTypeId))
                 {
                     bool isOffered = offeredAbilityIds.Contains(abilityId);
                     gameApi.SetAbilityState(unit, abilityId, !isOffered, !isOffered);
@@ -633,11 +550,9 @@ public class MapScript : IWasmModule
 
         gameApi.SetUnitColor(unit, ElementColors[state.Element]);
 
-        if (!TryGetUnitAbilities(unit.UnitId, out string[] abilities))
-            return;
-
-        // abilities: [0]=Water, [1]=Earth, [2]=Fire, [3]=Ultimate
-        for (int i = 0; i < 3 && i < abilities.Length; i++)
+        IReadOnlyList<string> abilities = gameApi.GetUnitTypeAbilities(unit.UnitId);
+        // Ordered abilities: [0]=Water, [1]=Earth, [2]=Fire, [3]=Ultimate
+        for (int i = 0; i < 3 && i < abilities.Count; i++)
         {
             Element element = (Element)i;
             string abilityId = abilities[i];
@@ -649,10 +564,11 @@ public class MapScript : IWasmModule
                 continue;
 
             gameApi.SetAbilityState(unit, abilityId, !isActive, false);
+            string abilityName = gameApi.GetAbilityName(abilityId);
             if (isActive)
-                gameApi.SetAbilityTooltip(abilityId, $"[{element}] {abilityId}");
+                gameApi.SetAbilityTooltip(abilityId, $"[{element}] {abilityName}");
             else
-                gameApi.SetAbilityTooltip(abilityId, $"[{element}] {abilityId} (disabled)");
+                gameApi.SetAbilityTooltip(abilityId, $"[{element}] {abilityName} (disabled)");
         }
     }
 
@@ -909,6 +825,7 @@ public class MapScript : IWasmModule
 
             IUnit clone = gameApi.SpawnUnitForPlayer(draftedUnit.UnitId, spawnPosition, proxyPlayerIndex);
             ApplyHeroStats(clone, draftedUnit.Level);
+            gameApi.EnableUnitAutoCombat(clone, true);
 
             foreach (UpgradeDefinition upgrade in DraftableUpgrades)
             {
@@ -1021,66 +938,6 @@ public class MapScript : IWasmModule
         }
     }
 
-    private void RunAiLoop()
-    {
-        aiCycle = (aiCycle + 1) % 4;
-
-        foreach (int playerIndex in playerStates.Keys)
-        {
-            List<IUnit> proxyUnits = gameApi
-                .GetUnitsOwnedByPlayer(playerIndex + ProxyPlayerOffset, unit => !unit.IsDead)
-                .ToList();
-
-            foreach (IUnit unit in proxyUnits)
-                RunUnitAi(unit, playerIndex);
-        }
-    }
-
-    private void RunUnitAi(IUnit unit, int realPlayerIndex)
-    {
-        if (aiCycle == 0)
-        {
-            unit.AttackMove(ArenaCenter);
-            return;
-        }
-
-        if (!waveUnitStatesByUnitId.TryGetValue(unit.UniqueId, out TileState? state)
-            || !TryGetUnitAbilities(unit.UnitId, out string[] abilities))
-        {
-            PlayerState playerState = playerStates[realPlayerIndex];
-            if (playerState.SpawnedUnitsPerWave.TryGetValue(waveNumber, out List<IUnit>? currentWaveUnits)
-                && !currentWaveUnits.Any(existing => existing.UniqueId == unit.UniqueId))
-            {
-                currentWaveUnits.Add(unit);
-            }
-            return;
-        }
-
-        int elementIndex = (int)state.Element;
-        string activeAbilityId = elementIndex < abilities.Length ? abilities[elementIndex] : string.Empty;
-        if (string.IsNullOrEmpty(activeAbilityId))
-            return;
-
-        int team = gameApi.GetPlayerTeam(unit.Player);
-        IUnit? enemyTarget = FindEnemyInRange(unit, team, EnemyAcquisitionRange);
-        if (enemyTarget != null)
-        {
-            gameApi.CastAbility(unit, activeAbilityId, enemyTarget.Position);
-        }
-        else
-        {
-            gameApi.CastAbility(unit, activeAbilityId, unit.Position);
-        }
-    }
-
-    private IUnit? FindEnemyInRange(IUnit unit, int team, float range)
-    {
-        return gameApi.GetRandomUnitInRadius(
-            unit.Position,
-            range,
-            candidate => IsProxyPlayerSlot(candidate.Player) && gameApi.GetPlayerTeam(candidate.Player) != team);
-    }
-
     private void HandleSpellCast(IUnit? caster, string spellId, Vector3 targetPosition)
     {
         if (caster == null)
@@ -1093,7 +950,8 @@ public class MapScript : IWasmModule
         {
             gameApi.AddPlayerTechLevel(playerIndex, upgrade.TechId);
             gameApi.AddPlayerTechLevel(playerIndex + ProxyPlayerOffset, upgrade.TechId);
-            gameApi.SendMessageToPlayer(playerIndex, $"{upgrade.Name} upgraded (Level {gameApi.GetPlayerTechLevel(playerIndex, upgrade.TechId)}).");
+            string upgradeName = gameApi.GetAbilityName(upgrade.AbilityId);
+            gameApi.SendMessageToPlayer(playerIndex, $"{upgradeName} upgraded (Level {gameApi.GetPlayerTechLevel(playerIndex, upgrade.TechId)}).");
             return;
         }
 
@@ -1142,8 +1000,7 @@ public class MapScript : IWasmModule
             return;
 
         bool isCircle = IsCircleUnit(caster);
-        bool isAltar = caster.UnitId.Equals(AltarBuildingTypeId, StringComparison.OrdinalIgnoreCase)
-            || caster.UnitId.Equals("building/altar", StringComparison.OrdinalIgnoreCase)
+        bool isAltar = caster.UnitId.Equals(BuildingIds.Altar, StringComparison.OrdinalIgnoreCase)
             || caster.UnitId.Equals("altar", StringComparison.OrdinalIgnoreCase);
 
         IUnit? draftTargetCircle = null;
@@ -1161,13 +1018,14 @@ public class MapScript : IWasmModule
             return;
 
         string? matchedUnitTypeId = null;
-        foreach ((string unitId, string[] abilities) in DraftableUnitAbilities)
+        foreach (string unitTypeId in DraftableUnits)
         {
+            var abilities = gameApi.GetUnitTypeAbilities(unitTypeId);
             if (abilities.Any(a => a.Equals(spellId, StringComparison.OrdinalIgnoreCase)
                 || a.EndsWith($"/{spellId}", StringComparison.OrdinalIgnoreCase)
                 || spellId.EndsWith($"/{a}", StringComparison.OrdinalIgnoreCase)))
             {
-                matchedUnitTypeId = unitId;
+                matchedUnitTypeId = unitTypeId;
                 break;
             }
         }
@@ -1178,7 +1036,7 @@ public class MapScript : IWasmModule
         if (!playerState.Offers.Contains(matchedUnitTypeId)
             && !playerState.Offers.Any(o => matchedUnitTypeId.EndsWith(o, StringComparison.OrdinalIgnoreCase)))
         {
-            gameApi.SendMessageToPlayer(playerIndex, $"{GetUnitDisplayName(matchedUnitTypeId)} is not currently offered for draft.");
+            gameApi.SendMessageToPlayer(playerIndex, $"{gameApi.GetUnitName(matchedUnitTypeId)} is not currently offered for draft.");
             return;
         }
 
@@ -1307,7 +1165,7 @@ public class MapScript : IWasmModule
                 continue;
 
             float averageDamage = totalDamage / wavesCounted;
-            string displayName = GetUnitDisplayName(entry.Key);
+            string displayName = gameApi.GetUnitName(entry.Key);
 
             summaries.Add((displayName, averageDamage));
         }
