@@ -14,85 +14,85 @@
     {
       "Name": "PlayerStart1",
       "MinX": -2,
-      "MinZ": 126,
+      "MinZ": 116,
       "MaxX": 2,
-      "MaxZ": 130
+      "MaxZ": 120
     },
     {
       "Name": "PlayerStart10",
-      "MinX": -130,
+      "MinX": -120,
       "MinZ": -2,
-      "MaxX": -126,
+      "MaxX": -116,
       "MaxZ": 2
     },
     {
       "Name": "PlayerStart11",
-      "MinX": -118,
+      "MinX": -108,
       "MinZ": 50,
-      "MaxX": -114,
+      "MaxX": -104,
       "MaxZ": 54
     },
     {
       "Name": "PlayerStart12",
       "MinX": -56,
-      "MinZ": 114,
+      "MinZ": 104,
       "MaxX": -52,
-      "MaxZ": 118
+      "MaxZ": 108
     },
     {
       "Name": "PlayerStart2",
       "MinX": 52,
-      "MinZ": 114,
+      "MinZ": 104,
       "MaxX": 56,
-      "MaxZ": 118
+      "MaxZ": 108
     },
     {
       "Name": "PlayerStart3",
-      "MinX": 114,
+      "MinX": 104,
       "MinZ": 52,
-      "MaxX": 118,
+      "MaxX": 108,
       "MaxZ": 56
     },
     {
       "Name": "PlayerStart4",
-      "MinX": 126,
+      "MinX": 106,
       "MinZ": -2,
-      "MaxX": 130,
+      "MaxX": 100,
       "MaxZ": 2
     },
     {
       "Name": "PlayerStart5",
-      "MinX": 116,
+      "MinX": 106,
       "MinZ": -52,
-      "MaxX": 120,
+      "MaxX": 110,
       "MaxZ": -48
     },
     {
       "Name": "PlayerStart6",
       "MinX": 52,
-      "MinZ": -118,
+      "MinZ": -108,
       "MaxX": 56,
-      "MaxZ": -114
+      "MaxZ": -104
     },
     {
       "Name": "PlayerStart7",
       "MinX": -2,
-      "MinZ": -130,
+      "MinZ": -120,
       "MaxX": 2,
-      "MaxZ": -126
+      "MaxZ": -116
     },
     {
       "Name": "PlayerStart8",
       "MinX": -56,
-      "MinZ": -118,
+      "MinZ": -108,
       "MaxX": -52,
-      "MaxZ": -114
+      "MaxZ": -104
     },
     {
       "Name": "PlayerStart9",
-      "MinX": -118,
+      "MinX": -108,
       "MinZ": -54,
-      "MaxX": -114,
+      "MaxX": -104,
       "MaxZ": -50
     }
   ]

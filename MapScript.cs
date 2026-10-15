@@ -37,11 +37,11 @@ public class PlayerState
     public IUnit? Blacksmith { get; set; }
     public List<string> Deck { get; } = new();
     public List<string> Offers { get; } = new();
-    public List<Vector3> RemainingTilePositions { get; } = new();
+    public List<Vector3> TilePositions { get; } = new();
     public int DraftedCount { get; set; }
     public int NextDraftSeconds { get; set; }
     public Vector3 BasePosition { get; set; }
-    public Vector3 SpawnOffset { get; set; }
+    public Vector3 SpawnPosition { get; set; }
     public int CountdownTextHandle { get; set; }
     public float SpawnAtSeconds { get; set; }
     public bool HasSpawnedThisRound { get; set; } = true;
@@ -53,18 +53,19 @@ public class MapScript : IWasmModule
 {
     private const int RealPlayerSlotCount = 12;
     private const int ProxyPlayerOffset = 12;
-    private const float WorldUnitsPerRealmUnit = 50f;
-    private const float SpawnOffsetDistance = 1000f / WorldUnitsPerRealmUnit;
-    private const float TileSpacing = 250f / WorldUnitsPerRealmUnit;
-    private const float BuildingSpacing = 200f / WorldUnitsPerRealmUnit;
-    private const float SoulSiphonRadius = 175f / WorldUnitsPerRealmUnit;
-    private const float HealingWaveRadius = 350f / WorldUnitsPerRealmUnit;
+    private const float SpawnOffset = 30f;
+    private const float TileOffset = 10f;
+    private const float BuilderOffset = -5f;
+    private const float BuildingOffset = -15f;
+    private const float TileSpacing = 6.5f;
+    private const float BuildingSpacing = 4f;
+    private const float SoulSiphonRadius = 3f;
+    private const float HealingWaveRadius = 6f;
     private const int WaveIntervalSeconds = 45;
     private const int WaveCountdownVisibleSeconds = 30;
     private const int SpawnSlotCount = 12;
     private const int TilesPerPlayer = 9;
     private const int CountdownFontSize = 216;
-    private const float CountdownDistanceMultiplier = 3.75f;
 
     private const string RerollItemAbilityId = "ability/reroll_item";
     private const string RerollElementAbilityId = "ability/reroll_element";
@@ -169,8 +170,6 @@ public class MapScript : IWasmModule
             spawnSlotOrder.Add(slotIndex);
         }
 
-        _api.StartCountdownTimer(WaveIntervalSeconds, "Next wave round");
-
         _api.ScheduleRepeatingTimer(1f, HandleSpawnTimerTick);
         _api.ScheduleRepeatingTimer(1f, HandleGameTimerTick);
         _api.ScheduleRepeatingTimer(5f, GrantWoodPassive);
@@ -261,10 +260,10 @@ public class MapScript : IWasmModule
             var playerState = new PlayerState();
             playerStates[playerIndex] = playerState;
             playerState.BasePosition = GetPlayerBasePosition(playerIndex);
-            playerState.SpawnOffset = GetSpawnOffset(playerState.BasePosition);
+            playerState.SpawnPosition = GetPlayerOffset(playerState.BasePosition, SpawnOffset);
             playerState.CountdownTextHandle = _api.CreateStaticText(
                 string.Empty,
-                ToCoordinatePosition(playerState.BasePosition, playerState.SpawnOffset * CountdownDistanceMultiplier),
+                playerState.SpawnPosition,
                 Vector3.One,
                 CountdownFontSize);
             _api.SetStaticTextVisible(playerState.CountdownTextHandle, false);
@@ -291,15 +290,20 @@ public class MapScript : IWasmModule
         return _api.GetCoordinate($"PlayerStart{playerIndex + 1}").Center;
     }
 
-    private static Vector3 GetSpawnOffset(Vector3 basePosition)
+    private static Vector3 GetPlayerOffset(Vector3 basePosition, float delta)
+    {
+        return ToCoordinatePosition(basePosition, GetPlayerRelativeOffset(basePosition, delta));
+    }
+
+    private static Vector3 GetPlayerRelativeOffset(Vector3 basePosition, float delta)
     {
         float relativeX = basePosition.X - ArenaCenter.X;
         float relativeZ = basePosition.Z - ArenaCenter.Z;
 
         if (MathF.Abs(relativeX) >= MathF.Abs(relativeZ))
-            return new Vector3(relativeX > 0f ? -SpawnOffsetDistance : SpawnOffsetDistance, 0f, 0f);
+            return new Vector3(relativeX > 0f ? -delta : delta, 0f, 0f);
 
-        return new Vector3(0f, 0f, relativeZ > 0f ? -SpawnOffsetDistance : SpawnOffsetDistance);
+        return new Vector3(0f, 0f, relativeZ > 0f ? -delta : delta);
     }
 
     private void InitializePlayerAlliances(List<int> activePlayerIndices)
@@ -328,51 +332,51 @@ public class MapScript : IWasmModule
     private void InitializePlayerTiles(int playerIndex)
     {
         PlayerState playerState = playerStates[playerIndex];
-        Vector3 tileCenter = ToCoordinatePosition(playerState.BasePosition, playerState.SpawnOffset);
+        Vector3 tileCenter = GetPlayerOffset(playerState.BasePosition, TileOffset);
 
         for (int columnIndex = -1; columnIndex <= 1; columnIndex++)
         {
             for (int rowIndex = -1; rowIndex <= 1; rowIndex++)
             {
-                playerState.RemainingTilePositions.Add(new Vector3(
+                playerState.TilePositions.Add(new Vector3(
                     tileCenter.X + columnIndex * TileSpacing,
                     tileCenter.Y,
                     tileCenter.Z + rowIndex * TileSpacing));
             }
         }
 
-        _api.Shuffle(playerState.RemainingTilePositions);
+        _api.Shuffle(playerState.TilePositions);
     }
 
     private void InitializePlayerBase(int playerIndex)
     {
         PlayerState playerState = playerStates[playerIndex];
         Vector3 startLocation = playerState.BasePosition;
-        Vector3 offset = playerState.SpawnOffset;
+        Vector3 buildingOffset = GetPlayerOffset(startLocation, BuildingOffset);
+        Vector3 builderOffset = GetPlayerOffset(startLocation, BuilderOffset);
 
-        IUnit builder = _api.SpawnUnitForPlayer(UnitIds.Builder, startLocation, playerIndex);
+        IUnit builder = _api.SpawnUnitForPlayer(UnitIds.Builder, builderOffset, playerIndex);
         builder.Damage = 0f;
         builder.Invulnerable = true;
         builder.Speed = 0f;
         _api.SetUnitFacing(builder, ArenaCenter);
         playerState.Builder = builder;
 
-        Vector3 buildingStart = new(startLocation.X - offset.X * 0.5f, startLocation.Y, startLocation.Z - offset.Z * 0.5f);
-        Vector3 altarOffset = MathF.Abs(offset.X) > MathF.Abs(offset.Z)
+        Vector3 altarOffset = MathF.Abs(buildingOffset.X) > MathF.Abs(buildingOffset.Z)
             ? new Vector3(0f, 0f, BuildingSpacing)
             : new Vector3(BuildingSpacing, 0f, 0f);
 
-        Vector3 blacksmithOffset = MathF.Abs(offset.X) > MathF.Abs(offset.Z)
+        Vector3 blacksmithOffset = MathF.Abs(buildingOffset.X) > MathF.Abs(buildingOffset.Z)
             ? new Vector3(0f, 0f, -BuildingSpacing)
             : new Vector3(-BuildingSpacing, 0f, 0f);
 
-        IUnit altar = _api.SpawnUnitForPlayer(BuildingIds.Altar, buildingStart + altarOffset, playerIndex);
+        IUnit altar = _api.SpawnUnitForPlayer(BuildingIds.Altar, ToCoordinatePosition(buildingOffset, altarOffset), playerIndex);
         altar.Damage = 0f;
         altar.Invulnerable = true;
         _api.SetUnitFacing(altar, ArenaCenter);
         playerState.Altar = altar;
 
-        IUnit blacksmith = _api.SpawnUnitForPlayer(BuildingIds.Blacksmith, buildingStart + blacksmithOffset, playerIndex);
+        IUnit blacksmith = _api.SpawnUnitForPlayer(BuildingIds.Blacksmith, ToCoordinatePosition(buildingOffset, blacksmithOffset), playerIndex);
         blacksmith.Damage = 0f;
         blacksmith.Invulnerable = true;
         _api.SetUnitFacing(blacksmith, ArenaCenter);
@@ -456,11 +460,11 @@ public class MapScript : IWasmModule
     {
         PlayerState playerState = playerStates[playerIndex];
 
-        for (int tileCount = 0; tileCount < count && playerState.RemainingTilePositions.Count > 0; tileCount++)
+        for (int tileCount = 0; tileCount < count && playerState.TilePositions.Count > 0; tileCount++)
         {
-            int tileLevel = TilesPerPlayer - playerState.RemainingTilePositions.Count + 1;
-            Vector3 position = playerState.RemainingTilePositions[0];
-            playerState.RemainingTilePositions.RemoveAt(0);
+            int tileLevel = TilesPerPlayer - playerState.TilePositions.Count + 1;
+            Vector3 position = playerState.TilePositions[0];
+            playerState.TilePositions.RemoveAt(0);
 
             Element initialElement = _api.PickRandom(Enum.GetValues<Element>().ToList());
             string circleTypeId = GetCircleUnitTypeId(initialElement);
@@ -802,7 +806,6 @@ public class MapScript : IWasmModule
         {
             roundClockSeconds -= WaveIntervalSeconds;
             StartWaveRound();
-            _api.StartCountdownTimer(WaveIntervalSeconds, "Next wave round");
         }
 
         foreach (KeyValuePair<int, PlayerState> entry in playerStates)
@@ -854,10 +857,12 @@ public class MapScript : IWasmModule
         int proxyPlayerIndex = playerIndex + ProxyPlayerOffset;
 
         List<IUnit> draftedUnits = GetPlayerPlacedHeroes(playerIndex).ToList();
+        Vector3 tileCenter = GetPlayerOffset(playerState.BasePosition, TileOffset);
 
         foreach (IUnit draftedUnit in draftedUnits)
         {
-            Vector3 spawnPosition = ToCoordinatePosition(draftedUnit.Position, playerState.SpawnOffset);
+            var unitOffset = draftedUnit.Position - tileCenter;
+            Vector3 spawnPosition = ToCoordinatePosition(playerState.SpawnPosition, unitOffset);
 
             IUnit clone = _api.SpawnUnitForPlayer(draftedUnit.UnitId, spawnPosition, proxyPlayerIndex);
             ApplyHeroStats(clone, draftedUnit.Level);
