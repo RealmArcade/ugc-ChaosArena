@@ -116,6 +116,53 @@ public class WasmEntryPoint
         if (_gameApi is GameAPI_WasmModule api) api.TriggerOnTimerExpired(timerHandle);
     }
 
+    [UnmanagedCallersOnly(EntryPoint = "on-unit-selected")]
+    public static void OnUnitSelected(int unitId)
+    {
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnUnitSelected(unitId);
+    }
+
+    [UnmanagedCallersOnly(EntryPoint = "on-unit-attacked")]
+    public static void OnUnitAttacked(int attackerId, int targetId)
+    {
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnUnitAttacked(attackerId, targetId);
+    }
+
+    [UnmanagedCallersOnly(EntryPoint = "on-unit-enter-zone")]
+    public static void OnUnitEnterZone(int unitId, int zoneHandle)
+    {
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnUnitEnterZone(unitId, zoneHandle);
+    }
+
+    [UnmanagedCallersOnly(EntryPoint = "on-item-sold")]
+    public static void OnItemSold(int unitId, nint itemIdPtr, int itemIdLen)
+    {
+        string itemId = ReadString(itemIdPtr, itemIdLen);
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnItemSold(unitId, itemId);
+    }
+
+    [UnmanagedCallersOnly(EntryPoint = "on-construction-finished")]
+    public static void OnConstructionFinished(int unitId)
+    {
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnConstructionFinished(unitId);
+    }
+
+    [UnmanagedCallersOnly(EntryPoint = "on-unit-ordered")]
+    public static void OnUnitOrdered(int unitId, nint orderIdPtr, int orderIdLen, float tx, float ty, float tz)
+    {
+        string orderId = ReadString(orderIdPtr, orderIdLen);
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnUnitOrdered(unitId, orderId, new Vector3(tx, ty, tz));
+    }
+
+    [UnmanagedCallersOnly(EntryPoint = "on-bot-custom-action-executed")]
+    public static void OnBotCustomActionExecuted(int playerIndex, nint actionIdPtr, int actionIdLen, nint intentPtr, int intentLen, float tx, float ty, float tz, nint payloadPtr, int payloadLen)
+    {
+        string actionId = ReadString(actionIdPtr, actionIdLen);
+        string intent = ReadString(intentPtr, intentLen);
+        string payload = ReadString(payloadPtr, payloadLen);
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnBotCustomActionExecuted(playerIndex, actionId, intent, new Vector3(tx, ty, tz), payload);
+    }
+
     [UnmanagedCallersOnly(EntryPoint = "cabi_realloc")]
     public static unsafe nint CabiRealloc(nint ptr, int oldSize, int alignment, int newSize)
     {

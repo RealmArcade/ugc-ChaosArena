@@ -157,6 +157,9 @@ public class MapScript : IWasmModule
         ConfigureDraftChoicesOnTiles();
         InitializePlayers();
 
+        if (gameSecondsElapsed >= nextFoodCapIncreaseSeconds)
+            IncreaseFoodCap();
+
         _api.OnUnitDied += HandleUnitDied;
         _api.OnUnitDamaged += HandleUnitDamaged;
         _api.OnSpellCast += HandleSpellCast;
