@@ -55,9 +55,9 @@
     },
     {
       "Name": "PlayerStart4",
-      "MinX": 106,
+      "MinX": 116,
       "MinZ": -2,
-      "MaxX": 100,
+      "MaxX": 120,
       "MaxZ": 2
     },
     {
