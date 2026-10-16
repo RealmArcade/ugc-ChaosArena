@@ -183,6 +183,8 @@ public class MapScript : IWasmModule
         _api.ScheduleRepeatingTimer(60f, GrantPassiveExperience);
         _api.ScheduleRepeatingTimer(5f, UpdateSummaryTable);
         _api.ScheduleTimer(0f, UpdateSummaryTable);
+        _api.ScheduleRepeatingTimer(5f, UpdateAliveUnitsLeaderboard);
+        _api.ScheduleTimer(0f, UpdateAliveUnitsLeaderboard);
     }
 
     public void Update(IGameAPI api, float delta)
@@ -1400,6 +1402,27 @@ public class MapScript : IWasmModule
                 coloredPlayerName,
                 kills.ToString(),
                 topDamageBreakdown);
+        }
+    }
+
+    private void UpdateAliveUnitsLeaderboard()
+    {
+        _api.ClearLeaderboard();
+        _api.SetLeaderboardVisible("Alive Units", true);
+
+        var rankedPlayers = playerStates.Keys
+            .Select(playerIndex =>
+            {
+                int proxyPlayerIndex = playerIndex + ProxyPlayerOffset;
+                int aliveCount = _api.GetUnitsOwnedByPlayer(proxyPlayerIndex).Count(u => !u.IsDead);
+                return (PlayerIndex: playerIndex, AliveCount: aliveCount);
+            })
+            .OrderByDescending(entry => entry.AliveCount);
+
+        foreach ((int playerIndex, int aliveCount) in rankedPlayers)
+        {
+            IPlayer player = _api.GetPlayer(playerIndex);
+            _api.AddLeaderboardRow(player.Name, aliveCount.ToString());
         }
     }
 
