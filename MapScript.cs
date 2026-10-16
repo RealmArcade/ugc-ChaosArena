@@ -164,6 +164,8 @@ public class MapScript : IWasmModule
         _api.OnUnitDamaged += HandleUnitDamaged;
         _api.OnSpellCast += HandleSpellCast;
         _api.OnConstructionFinished += HandleConstructionFinished;
+        _api.OnPlayerChatMessage += HandleChatMessage;
+        _api.OnPlayerLeft += HandlePlayerLeft;
 
         _api.ShowSummaryTable("Chaos Arena - Combat Statistics", true);
         _api.SetSummaryTableHeaders("Player", "Kills", "Top Average Damage (Unit / Waves)");
@@ -205,10 +207,10 @@ public class MapScript : IWasmModule
         || (!unitId.StartsWith("unit/", StringComparison.OrdinalIgnoreCase) && DraftableUnitSet.Contains($"unit/{unitId}"));
 
     private static bool IsRealPlayerSlot(int playerIndex) =>
-        playerIndex >= 0 && playerIndex < RealPlayerSlotCount;
+        playerIndex >= 1 && playerIndex <= RealPlayerSlotCount;
 
     private static bool IsProxyPlayerSlot(int playerIndex) =>
-        playerIndex >= ProxyPlayerOffset && playerIndex < ProxyPlayerOffset + RealPlayerSlotCount;
+        playerIndex > ProxyPlayerOffset && playerIndex <= ProxyPlayerOffset + RealPlayerSlotCount;
 
     private static int ResolveRealPlayerIndex(int playerIndex) =>
         IsProxyPlayerSlot(playerIndex) ? playerIndex - ProxyPlayerOffset : playerIndex;
@@ -252,37 +254,136 @@ public class MapScript : IWasmModule
         }
     }
 
+    private void InitializeSinglePlayer(int playerIndex)
+    {
+        if (playerStates.ContainsKey(playerIndex)) return;
+
+        int proxyPlayerIndex = playerIndex + ProxyPlayerOffset;
+        _api.GetPlayer(proxyPlayerIndex).IsComputer = true;
+
+        var playerState = new PlayerState();
+        playerStates[playerIndex] = playerState;
+        playerState.BasePosition = GetPlayerBasePosition(playerIndex);
+        playerState.SpawnPosition = GetPlayerOffset(playerState.BasePosition, SpawnOffset);
+        playerState.CountdownTextHandle = _api.CreateStaticText(
+            string.Empty,
+            playerState.SpawnPosition,
+            Vector3.One,
+            CountdownFontSize);
+        _api.SetStaticTextVisible(playerState.CountdownTextHandle, false);
+
+        InitializePlayerTiles(playerIndex);
+        InitializePlayerBase(playerIndex);
+        InitializePlayerDeck(playerIndex);
+
+        InitializePlayerAlliances(playerStates.Keys.ToList());
+    }
+
     private void InitializePlayers()
     {
-        List<int> activePlayerIndices = _api.GetActivePlayerIndices(RealPlayerSlotCount).ToList();
+        List<int> activePlayerIndices = _api.GetActivePlayerIndices().Where(IsRealPlayerSlot).ToList();
 
         foreach (int playerIndex in activePlayerIndices)
         {
-            int proxyPlayerIndex = playerIndex + ProxyPlayerOffset;
-            _api.GetPlayer(proxyPlayerIndex).IsComputer = true;
-
-            var playerState = new PlayerState();
-            playerStates[playerIndex] = playerState;
-            playerState.BasePosition = GetPlayerBasePosition(playerIndex);
-            playerState.SpawnPosition = GetPlayerOffset(playerState.BasePosition, SpawnOffset);
-            playerState.CountdownTextHandle = _api.CreateStaticText(
-                string.Empty,
-                playerState.SpawnPosition,
-                Vector3.One,
-                CountdownFontSize);
-            _api.SetStaticTextVisible(playerState.CountdownTextHandle, false);
+            InitializeSinglePlayer(playerIndex);
         }
+    }
 
-        foreach (int playerIndex in activePlayerIndices)
-            InitializePlayerTiles(playerIndex);
+    private void HandleChatMessage(string message, IUnit? senderUnit)
+    {
+        if (string.IsNullOrWhiteSpace(message)) return;
+        string trimmed = message.Trim();
 
-        foreach (int playerIndex in activePlayerIndices)
-            InitializePlayerBase(playerIndex);
+        if (trimmed.StartsWith("-kick", StringComparison.OrdinalIgnoreCase))
+        {
+            var parts = trimmed.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length > 1 && int.TryParse(parts[1], out int targetSlot))
+            {
+                if (IsRealPlayerSlot(targetSlot))
+                {
+                    _api.KickPlayer(targetSlot, "Kicked by host");
+                    CleanupPlayer(targetSlot);
+                    _api.BroadcastMessage($"Player {targetSlot} was kicked.");
+                }
+                else
+                {
+                    _api.BroadcastMessage($"Invalid slot {targetSlot}. Must be 1-{RealPlayerSlotCount}.");
+                }
+            }
+            else
+            {
+                _api.BroadcastMessage("Usage: -kick <slot>");
+            }
+        }
+        else if (trimmed.StartsWith("-addai", StringComparison.OrdinalIgnoreCase))
+        {
+            var parts = trimmed.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            int targetSlot = -1;
+            if (parts.Length > 1 && int.TryParse(parts[1], out int parsedSlot))
+            {
+                targetSlot = parsedSlot;
+            }
+            else
+            {
+                for (int slot = 1; slot <= RealPlayerSlotCount; slot++)
+                {
+                    if (!playerStates.ContainsKey(slot) && !_api.IsPlayerActive(slot))
+                    {
+                        targetSlot = slot;
+                        break;
+                    }
+                }
+            }
 
-        foreach (int playerIndex in activePlayerIndices)
-            InitializePlayerDeck(playerIndex);
+            if (targetSlot >= 1 && targetSlot <= RealPlayerSlotCount)
+            {
+                if (_api.AddComputerPlayer(targetSlot, $"Bot {targetSlot}"))
+                {
+                    InitializeSinglePlayer(targetSlot);
+                    _api.BroadcastMessage($"AI player added to slot {targetSlot}.");
+                }
+                else
+                {
+                    _api.BroadcastMessage($"Could not add AI to slot {targetSlot}.");
+                }
+            }
+            else
+            {
+                _api.BroadcastMessage("No available slot found for AI.");
+            }
+        }
+    }
 
-        InitializePlayerAlliances(activePlayerIndices);
+    private void HandlePlayerLeft(int playerIndex)
+    {
+        int realSlot = ResolveRealPlayerIndex(playerIndex);
+        if (playerStates.ContainsKey(realSlot))
+        {
+            CleanupPlayer(realSlot);
+            _api.BroadcastMessage($"Player {realSlot} left the game.");
+        }
+    }
+
+    private void CleanupPlayer(int playerIndex)
+    {
+        if (playerStates.TryGetValue(playerIndex, out PlayerState? playerState))
+        {
+            if (playerState.Builder != null && !playerState.Builder.IsDead) _api.DestroyUnit(playerState.Builder);
+            if (playerState.Altar != null && !playerState.Altar.IsDead) _api.DestroyUnit(playerState.Altar);
+            if (playerState.Blacksmith != null && !playerState.Blacksmith.IsDead) _api.DestroyUnit(playerState.Blacksmith);
+            if (playerState.CountdownTextHandle >= 0) _api.DestroyStaticText(playerState.CountdownTextHandle);
+
+            foreach (var unit in _api.GetUnitsOwnedByPlayer(playerIndex).ToList())
+            {
+                _api.DestroyUnit(unit);
+            }
+            foreach (var unit in _api.GetUnitsOwnedByPlayer(playerIndex + ProxyPlayerOffset).ToList())
+            {
+                _api.DestroyUnit(unit);
+            }
+
+            playerStates.Remove(playerIndex);
+        }
     }
 
     private Vector3 GetPlayerBasePosition(int playerIndex)
@@ -291,7 +392,7 @@ public class MapScript : IWasmModule
         if (startLocation != Vector3.Zero)
             return startLocation;
 
-        return _api.GetCoordinate($"PlayerStart{playerIndex + 1}").Center;
+        return _api.GetCoordinate($"PlayerStart{playerIndex}").Center;
     }
 
     private static Vector3 GetPlayerOffset(Vector3 basePosition, float delta)
