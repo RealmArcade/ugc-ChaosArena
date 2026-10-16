@@ -108,8 +108,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -204,8 +203,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -300,8 +298,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -585,8 +582,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -681,8 +677,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -777,8 +772,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -873,8 +867,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -969,8 +962,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -1065,8 +1057,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -1161,8 +1152,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -1342,8 +1332,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -1438,8 +1427,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -1534,8 +1522,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -1630,8 +1617,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -1726,8 +1712,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -1822,8 +1807,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -1918,8 +1902,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -2014,8 +1997,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -2110,8 +2092,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -2206,8 +2187,7 @@
           "reroll_element",
           "reroll_hero",
           "reroll_all",
-          "swap_tile_units",
-          "upgrade_critical_strike"
+          "swap_tile_units"
         ],
         "XpBounty": 25,
         "PathingCapabilities": null,
@@ -2408,7 +2388,7 @@
         "DespawnShader": null,
         "ConstructionRange": 4
       },
-	  {
+      {
         "TemplateID": "building/water_element",
         "Name": "Water Element",
         "Description": "",

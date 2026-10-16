@@ -251,7 +251,6 @@ public class MapScript : IWasmModule
                 _api.AddUnitTypeAbility(BuildingIds.EarthElement, abilityId);
                 _api.AddUnitTypeAbility(BuildingIds.FireElement, abilityId);
                 _api.AddUnitTypeAbility(BuildingIds.WaterElement, abilityId);
-                _api.AddUnitTypeAbility(BuildingIds.Altar, abilityId);
             }
         }
     }
@@ -556,8 +555,6 @@ public class MapScript : IWasmModule
         }
 
         var unitsToConfigure = GetPlayerCircles(playerIndex).ToList();
-        if (playerState.Altar != null && !playerState.Altar.IsDead)
-            unitsToConfigure.Add(playerState.Altar);
 
         foreach (IUnit unit in unitsToConfigure)
         {
@@ -625,7 +622,7 @@ public class MapScript : IWasmModule
         {
             int charges = tileStatesByUnitId.TryGetValue(unit.UniqueId, out TileState? state)
                 ? Math.Max(state.CircleLevel, 1)
-                : Math.Max(unit.Level, 1);
+                : 1;
             unit.AddItem(newItemId, charges);
             unit.SetItemCharges(newItemId, charges);
         }
