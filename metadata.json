@@ -31,7 +31,9 @@
     "PlayerSlots": null,
     "Teams": null,
     "Tags": null,
-    "MapType": null
+    "MapType": null,
+    "TestAiPlayerCount": 1,
+    "TestRandomizeSlots": false
   },
   "Dependencies": [],
   "Templates": {

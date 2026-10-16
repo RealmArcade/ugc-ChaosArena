@@ -70,7 +70,7 @@ public class WasmEntryPoint
     {
         try
         {
-            if (_mapScript != null && _gameApi != null)
+			if (_mapScript != null && _gameApi != null)
                 _mapScript.Update(_gameApi, delta);
         }
         catch (Exception ex)
@@ -85,12 +85,12 @@ public class WasmEntryPoint
     }
 
     [UnmanagedCallersOnly(EntryPoint = "on-bot-custom-action-executed")]
-    public static void OnBotCustomActionExecuted(int playerIndex, nint actionIdPtr, int actionIdLen, nint intentPtr, int intentLen, float targetPositionX, float targetPositionY, float targetPositionZ, nint payloadPtr, int payloadLen)
+    public static void OnBotCustomActionExecuted(int value, nint text1Ptr, int text1Len, nint text2Ptr, int text2Len, float positionX, float positionY, float positionZ, nint text3Ptr, int text3Len)
     {
-        string actionId = ReadString(actionIdPtr, actionIdLen);
-        string intent = ReadString(intentPtr, intentLen);
-        string payload = ReadString(payloadPtr, payloadLen);
-        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnBotCustomActionExecuted(playerIndex, actionId, intent, new Vector3(targetPositionX, targetPositionY, targetPositionZ), payload);
+        string text1 = ReadString(text1Ptr, text1Len);
+        string text2 = ReadString(text2Ptr, text2Len);
+        string text3 = ReadString(text3Ptr, text3Len);
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnBotCustomActionExecuted(value, text1, text2, new Vector3(positionX, positionY, positionZ), text3);
     }
 
     [UnmanagedCallersOnly(EntryPoint = "on-construction-finished")]
@@ -100,42 +100,42 @@ public class WasmEntryPoint
     }
 
     [UnmanagedCallersOnly(EntryPoint = "on-item-sold")]
-    public static void OnItemSold(int unitId, nint itemIdPtr, int itemIdLen)
+    public static void OnItemSold(int unitId, nint textPtr, int textLen)
     {
-        string itemId = ReadString(itemIdPtr, itemIdLen);
-        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnItemSold(unitId, itemId);
+        string text = ReadString(textPtr, textLen);
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnItemSold(unitId, text);
     }
 
     [UnmanagedCallersOnly(EntryPoint = "on-player-chat-message")]
-    public static void OnPlayerChatMessage(nint msgPtr, int msgLen, int senderId)
+    public static void OnPlayerChatMessage(nint textPtr, int textLen, int unitId)
     {
-        string msg = ReadString(msgPtr, msgLen);
-        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnPlayerChatMessage(msg, senderId);
+        string text = ReadString(textPtr, textLen);
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnPlayerChatMessage(text, unitId);
     }
 
     [UnmanagedCallersOnly(EntryPoint = "on-player-left")]
-    public static void OnPlayerLeft(int playerIndex)
+    public static void OnPlayerLeft(int value)
     {
-        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnPlayerLeft(playerIndex);
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnPlayerLeft(value);
     }
 
     [UnmanagedCallersOnly(EntryPoint = "on-spell-cast")]
-    public static void OnSpellCast(int casterId, nint spellIdPtr, int spellIdLen, float targetPositionX, float targetPositionY, float targetPositionZ)
+    public static void OnSpellCast(int unitId, nint textPtr, int textLen, float positionX, float positionY, float positionZ)
     {
-        string spellId = ReadString(spellIdPtr, spellIdLen);
-        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnSpellCast(casterId, spellId, new Vector3(targetPositionX, targetPositionY, targetPositionZ));
+        string text = ReadString(textPtr, textLen);
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnSpellCast(unitId, text, new Vector3(positionX, positionY, positionZ));
     }
 
     [UnmanagedCallersOnly(EntryPoint = "on-timer-expired")]
-    public static void OnTimerExpired(int timerHandle)
+    public static void OnTimerExpired(int value)
     {
-        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnTimerExpired(timerHandle);
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnTimerExpired(value);
     }
 
     [UnmanagedCallersOnly(EntryPoint = "on-unit-attacked")]
-    public static void OnUnitAttacked(int attackerId, int targetId)
+    public static void OnUnitAttacked(int sourceUnitId, int targetUnitId)
     {
-        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnUnitAttacked(attackerId, targetId);
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnUnitAttacked(sourceUnitId, targetUnitId);
     }
 
     [UnmanagedCallersOnly(EntryPoint = "on-unit-created")]
@@ -145,28 +145,28 @@ public class WasmEntryPoint
     }
 
     [UnmanagedCallersOnly(EntryPoint = "on-unit-damaged")]
-    public static void OnUnitDamaged(int victimId, int attackerId, float damage)
+    public static void OnUnitDamaged(int sourceUnitId, int targetUnitId, float amount)
     {
-        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnUnitDamaged(victimId, attackerId, damage);
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnUnitDamaged(sourceUnitId, targetUnitId, amount);
     }
 
     [UnmanagedCallersOnly(EntryPoint = "on-unit-died")]
-    public static void OnUnitDied(int unitId, int killerId)
+    public static void OnUnitDied(int sourceUnitId, int targetUnitId)
     {
-        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnUnitDied(unitId, killerId);
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnUnitDied(sourceUnitId, targetUnitId);
     }
 
     [UnmanagedCallersOnly(EntryPoint = "on-unit-enter-zone")]
-    public static void OnUnitEnterZone(int unitId, int zoneHandle)
+    public static void OnUnitEnterZone(int unitId, int value)
     {
-        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnUnitEnterZone(unitId, zoneHandle);
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnUnitEnterZone(unitId, value);
     }
 
     [UnmanagedCallersOnly(EntryPoint = "on-unit-ordered")]
-    public static void OnUnitOrdered(int unitId, nint orderIdPtr, int orderIdLen, float targetPositionX, float targetPositionY, float targetPositionZ)
+    public static void OnUnitOrdered(int unitId, nint textPtr, int textLen, float positionX, float positionY, float positionZ)
     {
-        string orderId = ReadString(orderIdPtr, orderIdLen);
-        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnUnitOrdered(unitId, orderId, new Vector3(targetPositionX, targetPositionY, targetPositionZ));
+        string text = ReadString(textPtr, textLen);
+        if (_gameApi is GameAPI_WasmModule api) api.TriggerOnUnitOrdered(unitId, text, new Vector3(positionX, positionY, positionZ));
     }
 
     [UnmanagedCallersOnly(EntryPoint = "on-unit-selected")]
