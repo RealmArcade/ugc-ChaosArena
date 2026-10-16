@@ -406,7 +406,7 @@
         "Abilities": null,
         "XpBounty": 0,
         "PathingCapabilities": null,
-        "PathingType": 9,
+        "PathingType": 2,
         "ObstacleRadius": null,
         "Targets": null,
         "Weapons": null,
