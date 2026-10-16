@@ -242,6 +242,12 @@ public class MapScript : IWasmModule
         }
     }
 
+    private void SelectUnitForPlayer(int playerIndex, IUnit unit)
+    {
+        if (!unit.IsDead)
+            _api.GetPlayer(playerIndex).SelectUnit(unit);
+    }
+
     private void ConfigureDraftChoicesOnTiles()
     {
         foreach (string unitTypeId in DraftableUnits)
@@ -624,13 +630,12 @@ public class MapScript : IWasmModule
                 ? Math.Max(state.CircleLevel, 1)
                 : 1;
             unit.AddItem(newItemId, charges);
-            unit.SetItemCharges(newItemId, charges);
         }
 
-        ResetPlayerSelection(unit.Player);
+        SelectUnitForPlayer(unit.Player, unit);
     }
 
-    private void PerformElementReroll(IUnit unit, TileState state)
+    private IUnit PerformElementReroll(IUnit unit, TileState state)
     {
         List<Element> candidateElements = Enum.GetValues<Element>().ToList();
         if (state.ElementAssigned)
@@ -660,7 +665,6 @@ public class MapScript : IWasmModule
                 foreach (var (itemId, charges) in items)
                 {
                     newCircle.AddItem(itemId, charges);
-                    newCircle.SetItemCharges(itemId, charges);
                 }
 
                 tileStatesByUnitId[newCircle.UniqueId] = state;
@@ -669,7 +673,8 @@ public class MapScript : IWasmModule
         }
 
         ApplyElement(unit, state, true);
-        ResetPlayerSelection(unit.Player);
+        SelectUnitForPlayer(unit.Player, unit);
+        return unit;
     }
 
     private void ApplyElement(IUnit unit, TileState state, bool includeDisabledAbilities)
@@ -729,7 +734,6 @@ public class MapScript : IWasmModule
         {
             int charges = Math.Max(level, 1);
             hero.AddItem(itemId, charges);
-            hero.SetItemCharges(itemId, charges);
         }
 
         var state = new TileState
@@ -828,7 +832,7 @@ public class MapScript : IWasmModule
         DraftUnit(playerIndex, chosenUnitTypeId, chosenCircle);
     }
 
-    private void PerformHeroReroll(IUnit unit, int playerIndex)
+    private IUnit PerformHeroReroll(IUnit unit, int playerIndex)
     {
         IPlayer player = _api.GetPlayer(playerIndex);
         HashSet<string> draftedUnitTypeIds = GetPlayerDraftedUnitTypeIds(playerIndex);
@@ -838,7 +842,7 @@ public class MapScript : IWasmModule
         if (replacement == null)
         {
             player.SendMessage("No other heroes are available to reroll into.");
-            return;
+            return unit;
         }
 
         TileState state = tileStatesByUnitId[unit.UniqueId];
@@ -855,16 +859,17 @@ public class MapScript : IWasmModule
 
         IUnit newUnit = player.SpawnUnit(replacement, position);
         ConfigureDraftedHero(newUnit, level, itemIds, state.Element, position);
-        ResetPlayerSelection(playerIndex);
+        SelectUnitForPlayer(playerIndex, newUnit);
+        return newUnit;
     }
 
     private void PerformAllReroll(IUnit unit, TileState state, int playerIndex)
     {
         PerformItemReroll(unit);
-        PerformElementReroll(unit, state);
+        IUnit currentUnit = PerformElementReroll(unit, state);
         if (state.Kind == TileKind.Hero)
-            PerformHeroReroll(unit, playerIndex);
-        ResetPlayerSelection(playerIndex);
+            currentUnit = PerformHeroReroll(currentUnit, playerIndex);
+        SelectUnitForPlayer(playerIndex, currentUnit);
     }
 
     private void SwapTileUnits(IUnit caster, IUnit target, int playerIndex)
@@ -1003,7 +1008,6 @@ public class MapScript : IWasmModule
             {
                 int charges = draftedUnit.GetItemCharges(itemId);
                 clone.AddItem(itemId, charges);
-                clone.SetItemCharges(itemId, charges);
             }
 
             Element element = tileStatesByUnitId.TryGetValue(draftedUnit.UniqueId, out TileState? tileState)
@@ -1136,7 +1140,7 @@ public class MapScript : IWasmModule
         int playerIndex = ResolveRealPlayerIndex(caster.Player);
         IPlayer player = _api.GetPlayer(playerIndex);
 
-        UpgradeDefinition? upgrade = DraftableUpgrades.FirstOrDefault(u => u.AbilityId.Equals(spellId, StringComparison.OrdinalIgnoreCase));
+        UpgradeDefinition? upgrade = DraftableUpgrades.FirstOrDefault(u => SlugsEqual(u.AbilityId, spellId));
         if (upgrade != null)
         {
             player.AddTechLevel(upgrade.TechId);
@@ -1146,33 +1150,56 @@ public class MapScript : IWasmModule
             return;
         }
 
-        switch (spellId)
+        if (SlugsEqual(spellId, SoulSiphonAbilityId))
         {
-            case SoulSiphonAbilityId:
-                ApplySoulSiphon(caster, targetPosition);
-                break;
-            case HealingWaveAbilityId:
-                ApplyHealingWave(caster, targetPosition);
-                break;
-            case RerollItemAbilityId:
-                PerformItemReroll(caster);
-                break;
-            case RerollElementAbilityId when tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? state):
-                PerformElementReroll(caster, state);
-                break;
-            case RerollHeroAbilityId when tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? state) && state.Kind == TileKind.Hero:
-                PerformHeroReroll(caster, playerIndex);
-                break;
-            case RerollAllAbilityId when tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? state):
-                PerformAllReroll(caster, state, playerIndex);
-                break;
-            case SwapTileUnitsAbilityId:
-                HandleSwapAbilityCast(caster, targetPosition, playerIndex);
-                break;
-            default:
-                TryDraftFromAbilityCast(caster, spellId);
-                break;
+            ApplySoulSiphon(caster, targetPosition);
         }
+        else if (SlugsEqual(spellId, HealingWaveAbilityId))
+        {
+            ApplyHealingWave(caster, targetPosition);
+        }
+        else if (SlugsEqual(spellId, RerollItemAbilityId))
+        {
+            PerformItemReroll(caster);
+        }
+        else if (SlugsEqual(spellId, RerollElementAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? elementState))
+        {
+            PerformElementReroll(caster, elementState);
+        }
+        else if (SlugsEqual(spellId, RerollHeroAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? heroState) && heroState.Kind == TileKind.Hero)
+        {
+            PerformHeroReroll(caster, playerIndex);
+        }
+        else if (SlugsEqual(spellId, RerollAllAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? allState))
+        {
+            PerformAllReroll(caster, allState, playerIndex);
+        }
+        else if (SlugsEqual(spellId, SwapTileUnitsAbilityId))
+        {
+            HandleSwapAbilityCast(caster, targetPosition, playerIndex);
+        }
+        else
+        {
+            TryDraftFromAbilityCast(caster, spellId);
+        }
+    }
+
+    private static string StripSlugPrefix(string slug)
+    {
+        string trimmed = slug.Trim();
+        int separatorIndex = trimmed.LastIndexOf('/');
+        return separatorIndex >= 0 ? trimmed[(separatorIndex + 1)..] : trimmed;
+    }
+
+    private static bool SlugsEqual(string? first, string? second)
+    {
+        if (first == null || second == null)
+            return false;
+
+        return string.Equals(
+            StripSlugPrefix(first).Trim(),
+            StripSlugPrefix(second).Trim(),
+            StringComparison.OrdinalIgnoreCase);
     }
 
     private void HandleSwapAbilityCast(IUnit caster, Vector3 targetPosition, int playerIndex)
