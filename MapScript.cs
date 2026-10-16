@@ -234,7 +234,7 @@ public class MapScript : IWasmModule
             && playerState.Builder != null
             && !playerState.Builder.IsDead)
         {
-            _api.SelectUnit(playerState.Builder);
+            _api.GetPlayer(playerIndex).SelectUnit(playerState.Builder);
         }
     }
 
@@ -259,7 +259,7 @@ public class MapScript : IWasmModule
         foreach (int playerIndex in activePlayerIndices)
         {
             int proxyPlayerIndex = playerIndex + ProxyPlayerOffset;
-            _api.SetPlayerComputerControlled(proxyPlayerIndex, true);
+            _api.GetPlayer(proxyPlayerIndex).IsComputer = true;
 
             var playerState = new PlayerState();
             playerStates[playerIndex] = playerState;
@@ -287,7 +287,7 @@ public class MapScript : IWasmModule
 
     private Vector3 GetPlayerBasePosition(int playerIndex)
     {
-        Vector3 startLocation = _api.GetPlayerStartLocation(playerIndex);
+        Vector3 startLocation = _api.GetPlayer(playerIndex).StartLocation;
         if (startLocation != Vector3.Zero)
             return startLocation;
 
@@ -314,21 +314,22 @@ public class MapScript : IWasmModule
     {
         foreach (int playerIndex in activePlayerIndices)
         {
-            int proxyPlayerIndex = playerIndex + ProxyPlayerOffset;
-            int team = _api.GetPlayerTeam(playerIndex);
+            IPlayer player = _api.GetPlayer(playerIndex);
+            IPlayer proxyPlayer = _api.GetPlayer(playerIndex + ProxyPlayerOffset);
+            int team = player.Team;
 
-            _api.SetPlayersAllied(playerIndex, proxyPlayerIndex, true);
-            _api.SetPlayersAllied(proxyPlayerIndex, playerIndex, true);
-            _api.SetPlayerTeam(proxyPlayerIndex, team);
+            player.SetAllied(proxyPlayer, true);
+            proxyPlayer.SetAllied(player, true);
+            proxyPlayer.Team = team;
 
             foreach (int otherPlayerIndex in activePlayerIndices)
             {
-                if (otherPlayerIndex == playerIndex || _api.GetPlayerTeam(otherPlayerIndex) != team)
+                if (otherPlayerIndex == playerIndex || _api.GetPlayer(otherPlayerIndex).Team != team)
                     continue;
 
-                int otherProxyPlayerIndex = otherPlayerIndex + ProxyPlayerOffset;
-                _api.SetPlayersAllied(otherProxyPlayerIndex, proxyPlayerIndex, true);
-                _api.SetPlayersAllied(proxyPlayerIndex, otherProxyPlayerIndex, true);
+                IPlayer otherProxyPlayer = _api.GetPlayer(otherPlayerIndex + ProxyPlayerOffset);
+                otherProxyPlayer.SetAllied(proxyPlayer, true);
+                proxyPlayer.SetAllied(otherProxyPlayer, true);
             }
         }
     }
@@ -354,12 +355,13 @@ public class MapScript : IWasmModule
 
     private void InitializePlayerBase(int playerIndex)
     {
+        IPlayer player = _api.GetPlayer(playerIndex);
         PlayerState playerState = playerStates[playerIndex];
         Vector3 startLocation = playerState.BasePosition;
         Vector3 buildingOffset = GetPlayerOffset(startLocation, BuildingOffset);
         Vector3 builderOffset = GetPlayerOffset(startLocation, BuilderOffset);
 
-        IUnit builder = _api.SpawnUnitForPlayer(UnitIds.Builder, builderOffset, playerIndex);
+        IUnit builder = player.SpawnUnit(UnitIds.Builder, builderOffset);
         builder.Damage = 0f;
         builder.Invulnerable = true;
         _api.SetUnitFacing(builder, ArenaCenter);
@@ -373,13 +375,13 @@ public class MapScript : IWasmModule
             ? new Vector3(0f, 0f, -BuildingSpacing)
             : new Vector3(-BuildingSpacing, 0f, 0f);
 
-        IUnit altar = _api.SpawnUnitForPlayer(BuildingIds.Altar, ToCoordinatePosition(buildingOffset, altarOffset), playerIndex);
+        IUnit altar = player.SpawnUnit(BuildingIds.Altar, ToCoordinatePosition(buildingOffset, altarOffset));
         altar.Damage = 0f;
         altar.Invulnerable = true;
         _api.SetUnitFacing(altar, ArenaCenter);
         playerState.Altar = altar;
 
-        IUnit blacksmith = _api.SpawnUnitForPlayer(BuildingIds.Blacksmith, ToCoordinatePosition(buildingOffset, blacksmithOffset), playerIndex);
+        IUnit blacksmith = player.SpawnUnit(BuildingIds.Blacksmith, ToCoordinatePosition(buildingOffset, blacksmithOffset));
         blacksmith.Damage = 0f;
         blacksmith.Invulnerable = true;
         _api.SetUnitFacing(blacksmith, ArenaCenter);
@@ -387,8 +389,8 @@ public class MapScript : IWasmModule
 
         UnlockPlayerTiles(playerIndex, 1);
 
-        _api.PanCameraTo(builder.Position, 0f);
-        _api.SelectUnit(builder);
+        player.PanCameraTo(builder.Position, 0f);
+        player.SelectUnit(builder);
     }
 
     private void InitializePlayerDeck(int playerIndex)
@@ -424,7 +426,7 @@ public class MapScript : IWasmModule
         string offerList = string.Join(", ", playerState.Offers.Select((typeId, index) =>
             $"{index + 1}: {_api.GetUnitName(typeId)}"));
 
-        _api.SendMessageToPlayer(playerIndex, $"Draft offers: {offerList}. Use the Builder [B] Build menu or select a Circle of Power / Altar to draft.");
+        _api.GetPlayer(playerIndex).SendMessage($"Draft offers: {offerList}. Use the Builder [B] Build menu or select a Circle of Power / Altar to draft.");
 
         UpdateDraftOfferAbilities(playerIndex);
     }
@@ -481,7 +483,7 @@ public class MapScript : IWasmModule
 
             Element initialElement = _api.PickRandom(Enum.GetValues<Element>().ToList());
             string circleTypeId = GetCircleUnitTypeId(initialElement);
-            IUnit circle = _api.SpawnUnitForPlayer(circleTypeId, position, playerIndex);
+            IUnit circle = _api.GetPlayer(playerIndex).SpawnUnit(circleTypeId, position);
             circle.Damage = 0f;
             circle.Speed = 0f;
             circle.Invulnerable = true;
@@ -548,7 +550,7 @@ public class MapScript : IWasmModule
                 tileStatesByUnitId.Remove(unit.UniqueId);
                 _api.DestroyUnit(unit, false, false);
 
-                IUnit newCircle = _api.SpawnUnitForPlayer(newCircleTypeId, position, playerIndex);
+                IUnit newCircle = _api.GetPlayer(playerIndex).SpawnUnit(newCircleTypeId, position);
                 newCircle.Damage = 0f;
                 newCircle.Speed = 0f;
                 newCircle.Invulnerable = true;
@@ -702,7 +704,7 @@ public class MapScript : IWasmModule
         tileStatesByUnitId.Remove(circle.UniqueId);
         _api.DestroyUnit(circle, false, false);
 
-        IUnit hero = _api.SpawnUnitForPlayer(unitTypeId, position, playerIndex);
+        IUnit hero = _api.GetPlayer(playerIndex).SpawnUnit(unitTypeId, position);
         ConfigureDraftedHero(hero, circleLevel, itemIds, element, position);
 
         ResetPlayerSelection(playerIndex);
@@ -728,13 +730,14 @@ public class MapScript : IWasmModule
 
     private void PerformHeroReroll(IUnit unit, int playerIndex)
     {
+        IPlayer player = _api.GetPlayer(playerIndex);
         HashSet<string> draftedUnitTypeIds = GetPlayerDraftedUnitTypeIds(playerIndex);
         List<string> candidates = DraftableUnits.Where(id => !draftedUnitTypeIds.Contains(id)).ToList();
         string? replacement = _api.PickRandom(candidates);
 
         if (replacement == null)
         {
-            _api.SendMessageToPlayer(playerIndex, "No other heroes are available to reroll into.");
+            player.SendMessage("No other heroes are available to reroll into.");
             return;
         }
 
@@ -750,7 +753,7 @@ public class MapScript : IWasmModule
         tileStatesByUnitId.Remove(unit.UniqueId);
         _api.DestroyUnit(unit, false, false);
 
-        IUnit newUnit = _api.SpawnUnitForPlayer(replacement, position, playerIndex);
+        IUnit newUnit = player.SpawnUnit(replacement, position);
         ConfigureDraftedHero(newUnit, level, itemIds, state.Element, position);
         ResetPlayerSelection(playerIndex);
     }
@@ -828,7 +831,7 @@ public class MapScript : IWasmModule
             if (!playerState.HasSpawnedThisRound && roundClockSeconds >= playerState.SpawnAtSeconds)
             {
                 playerState.HasSpawnedThisRound = true;
-                if (_api.IsPlayerActive(entry.Key))
+                if (_api.GetPlayer(entry.Key).IsActive)
                     SpawnWaveForPlayer(entry.Key);
             }
 
@@ -852,7 +855,7 @@ public class MapScript : IWasmModule
             PlayerState playerState = playerStates[playerIndex];
             playerState.SpawnedUnitsPerWave[waveNumber] = new List<IUnit>();
 
-            if (!_api.IsPlayerActive(playerIndex))
+            if (!_api.GetPlayer(playerIndex).IsActive)
             {
                 playerState.HasSpawnedThisRound = true;
                 continue;
@@ -867,7 +870,8 @@ public class MapScript : IWasmModule
     private void SpawnWaveForPlayer(int playerIndex)
     {
         PlayerState playerState = playerStates[playerIndex];
-        int proxyPlayerIndex = playerIndex + ProxyPlayerOffset;
+        IPlayer player = _api.GetPlayer(playerIndex);
+        IPlayer proxyPlayer = _api.GetPlayer(playerIndex + ProxyPlayerOffset);
 
         List<IUnit> draftedUnits = GetPlayerPlacedHeroes(playerIndex).ToList();
         Vector3 tileCenter = GetPlayerOffset(playerState.BasePosition, TileOffset);
@@ -877,16 +881,16 @@ public class MapScript : IWasmModule
             var unitOffset = draftedUnit.Position - tileCenter;
             Vector3 spawnPosition = ToCoordinatePosition(playerState.SpawnPosition, unitOffset);
 
-            IUnit clone = _api.SpawnUnitForPlayer(draftedUnit.UnitId, spawnPosition, proxyPlayerIndex);
+            IUnit clone = proxyPlayer.SpawnUnit(draftedUnit.UnitId, spawnPosition);
             ApplyHeroStats(clone, draftedUnit.Level);
             _api.EnableUnitAutoCombat(clone, true);
 
             foreach (UpgradeDefinition upgrade in DraftableUpgrades)
             {
-                int techLevel = _api.GetPlayerTechLevel(playerIndex, upgrade.TechId);
+                int techLevel = player.GetTechLevel(upgrade.TechId);
                 if (techLevel > 0)
                 {
-                    _api.SetPlayerTechLevel(proxyPlayerIndex, upgrade.TechId, techLevel);
+                    proxyPlayer.SetTechLevel(upgrade.TechId, techLevel);
                     _api.SetAbilityState(clone, upgrade.AbilityId, false, false);
                 }
                 else
@@ -926,7 +930,7 @@ public class MapScript : IWasmModule
 
         foreach (int playerIndex in playerStates.Keys)
         {
-            if (_api.IsPlayerComputer(playerIndex))
+            if (_api.GetPlayer(playerIndex).IsComputer)
             {
                 PlayerState playerState = playerStates[playerIndex];
                 while (playerState.DraftedCount < foodCap && GetPlayerCircles(playerIndex).Any())
@@ -947,9 +951,10 @@ public class MapScript : IWasmModule
 
         foreach (int playerIndex in playerStates.Keys.ToList())
         {
-            _api.SetPlayerMaxPopulation(playerIndex, foodCap);
+            IPlayer player = _api.GetPlayer(playerIndex);
+            player.SetMaxPopulation(foodCap);
 
-            if (_api.IsPlayerComputer(playerIndex))
+            if (player.IsComputer)
             {
                 PlayerState playerState = playerStates[playerIndex];
                 while (playerState.DraftedCount < foodCap && GetPlayerCircles(playerIndex).Any())
@@ -963,7 +968,7 @@ public class MapScript : IWasmModule
     private void GrantWoodPassive()
     {
         foreach (int playerIndex in playerStates.Keys)
-            _api.AdjustPlayerWood(playerIndex, 1f);
+            _api.GetPlayer(playerIndex).AdjustWood(1f);
     }
 
     private void GrantPassiveExperience()
@@ -1029,14 +1034,15 @@ public class MapScript : IWasmModule
             return;
 
         int playerIndex = ResolveRealPlayerIndex(caster.Player);
+        IPlayer player = _api.GetPlayer(playerIndex);
 
         UpgradeDefinition? upgrade = DraftableUpgrades.FirstOrDefault(u => u.AbilityId.Equals(spellId, StringComparison.OrdinalIgnoreCase));
         if (upgrade != null)
         {
-            _api.AddPlayerTechLevel(playerIndex, upgrade.TechId);
-            _api.AddPlayerTechLevel(playerIndex + ProxyPlayerOffset, upgrade.TechId);
+            player.AddTechLevel(upgrade.TechId);
+            _api.GetPlayer(playerIndex + ProxyPlayerOffset).AddTechLevel(upgrade.TechId);
             string upgradeName = _api.GetAbilityName(upgrade.AbilityId);
-            _api.SendMessageToPlayer(playerIndex, $"{upgradeName} upgraded (Level {_api.GetPlayerTechLevel(playerIndex, upgrade.TechId)}).");
+            player.SendMessage($"{upgradeName} upgraded (Level {player.GetTechLevel(upgrade.TechId)}).");
             return;
         }
 
@@ -1084,6 +1090,8 @@ public class MapScript : IWasmModule
         if (!playerStates.TryGetValue(playerIndex, out PlayerState? playerState))
             return;
 
+        IPlayer player = _api.GetPlayer(playerIndex);
+
         bool isCircle = IsCircleUnit(caster);
         bool isAltar = caster.UnitId.Equals(BuildingIds.Altar, StringComparison.OrdinalIgnoreCase)
             || caster.UnitId.Equals("altar", StringComparison.OrdinalIgnoreCase);
@@ -1121,19 +1129,19 @@ public class MapScript : IWasmModule
         if (!playerState.Offers.Contains(matchedUnitTypeId)
             && !playerState.Offers.Any(o => matchedUnitTypeId.EndsWith(o, StringComparison.OrdinalIgnoreCase)))
         {
-            _api.SendMessageToPlayer(playerIndex, $"{_api.GetUnitName(matchedUnitTypeId)} is not currently offered for draft.");
+            player.SendMessage($"{_api.GetUnitName(matchedUnitTypeId)} is not currently offered for draft.");
             return;
         }
 
         if (playerState.DraftedCount >= foodCap)
         {
-            _api.SendMessageToPlayer(playerIndex, "Food Cap Exceeded");
+            player.SendMessage("Food Cap Exceeded");
             return;
         }
 
         if (gameSecondsElapsed < playerState.NextDraftSeconds)
         {
-            _api.SendMessageToPlayer(playerIndex, $"Draft is on cooldown for {playerState.NextDraftSeconds - gameSecondsElapsed} more seconds.");
+            player.SendMessage($"Draft is on cooldown for {playerState.NextDraftSeconds - gameSecondsElapsed} more seconds.");
             return;
         }
 
@@ -1159,6 +1167,8 @@ public class MapScript : IWasmModule
             return;
         }
 
+        IPlayer player = _api.GetPlayer(playerIndex);
+
         string matchedUnitTypeId = DraftableUnits.FirstOrDefault(u =>
             u.Equals(unitId, StringComparison.OrdinalIgnoreCase)
             || u.EndsWith($"/{unitId}", StringComparison.OrdinalIgnoreCase)
@@ -1169,21 +1179,21 @@ public class MapScript : IWasmModule
 
         if (!playerState.Offers.Contains(matchedUnitTypeId, StringComparer.OrdinalIgnoreCase))
         {
-            _api.SendMessageToPlayer(playerIndex, $"{_api.GetUnitName(matchedUnitTypeId)} is not currently offered for draft.");
+            player.SendMessage($"{_api.GetUnitName(matchedUnitTypeId)} is not currently offered for draft.");
             ResetPlayerSelection(playerIndex);
             return;
         }
 
         if (playerState.DraftedCount >= foodCap)
         {
-            _api.SendMessageToPlayer(playerIndex, "Food Cap Exceeded");
+            player.SendMessage("Food Cap Exceeded");
             ResetPlayerSelection(playerIndex);
             return;
         }
 
         if (gameSecondsElapsed < playerState.NextDraftSeconds)
         {
-            _api.SendMessageToPlayer(playerIndex, $"Draft is on cooldown for {playerState.NextDraftSeconds - gameSecondsElapsed} more seconds.");
+            player.SendMessage($"Draft is on cooldown for {playerState.NextDraftSeconds - gameSecondsElapsed} more seconds.");
             ResetPlayerSelection(playerIndex);
             return;
         }
@@ -1194,7 +1204,7 @@ public class MapScript : IWasmModule
 
         if (targetCircle == null)
         {
-            _api.SendMessageToPlayer(playerIndex, "No available Circle of Power to draft onto.");
+            player.SendMessage("No available Circle of Power to draft onto.");
             ResetPlayerSelection(playerIndex);
             return;
         }
@@ -1204,12 +1214,12 @@ public class MapScript : IWasmModule
 
     private void ApplySoulSiphon(IUnit caster, Vector3 targetPosition)
     {
-        int casterTeam = _api.GetPlayerTeam(caster.Player);
+        int casterTeam = _api.GetPlayer(caster.Player).Team;
         int rewardedPlayerIndex = ResolveRealPlayerIndex(caster.Player);
 
         foreach (IUnit target in _api.GetUnitsInRadius(targetPosition, SoulSiphonRadius).ToList())
         {
-            if (target.IsDead || _api.GetPlayerTeam(target.Player) == casterTeam)
+            if (target.IsDead || _api.GetPlayer(target.Player).Team == casterTeam)
                 continue;
 
             float healthPercent = 100f * target.Health / target.MaxHealth;
@@ -1220,7 +1230,7 @@ public class MapScript : IWasmModule
             if (_api.RandomInt(1, 100) <= executeChance)
             {
                 _api.KillUnit(target);
-                _api.AdjustPlayerWood(rewardedPlayerIndex, 1f);
+                _api.GetPlayer(rewardedPlayerIndex).AdjustWood(1f);
             }
         }
     }
@@ -1251,8 +1261,9 @@ public class MapScript : IWasmModule
         if (!playerStates.ContainsKey(killerPlayerIndex))
             return;
 
-        _api.SetPlayerKills(killerPlayerIndex, _api.GetPlayerKills(killerPlayerIndex) + 1);
-        _api.AdjustPlayerGold(killerPlayerIndex, 1f);
+        IPlayer killerPlayer = _api.GetPlayer(killerPlayerIndex);
+        killerPlayer.SetKills(killerPlayer.GetKills() + 1);
+        killerPlayer.AdjustGold(1f);
     }
 
     private void HandleUnitDamaged(IUnit victim, IUnit attacker, float damage)
@@ -1276,12 +1287,12 @@ public class MapScript : IWasmModule
         _api.ClearSummaryTable();
 
         var rankedPlayers = playerStates.Keys
-            .Select(playerIndex => (PlayerIndex: playerIndex, Kills: _api.GetPlayerKills(playerIndex)))
+            .Select(playerIndex => (PlayerIndex: playerIndex, Kills: _api.GetPlayer(playerIndex).GetKills()))
             .OrderByDescending(entry => entry.Kills);
 
         foreach ((int playerIndex, int kills) in rankedPlayers)
         {
-            string coloredPlayerName = _api.FormatColoredPlayerName(playerIndex);
+            string coloredPlayerName = _api.GetPlayer(playerIndex).ColoredName;
             string topDamageBreakdown = GetTopDamageBreakdown(playerStates[playerIndex]);
 
             _api.SetSummaryTableRow(
