@@ -266,7 +266,9 @@ public class MapScript : IWasmModule
         if (playerStates.ContainsKey(playerIndex)) return;
 
         int proxyPlayerIndex = playerIndex + ProxyPlayerOffset;
-        _api.GetPlayer(proxyPlayerIndex).IsComputer = true;
+        IPlayer proxyPlayer = _api.GetPlayer(proxyPlayerIndex);
+        proxyPlayer.SetActive(true);
+        proxyPlayer.IsComputer = true;
 
         var playerState = new PlayerState();
         playerStates[playerIndex] = playerState;
@@ -424,6 +426,8 @@ public class MapScript : IWasmModule
         {
             IPlayer player = _api.GetPlayer(playerIndex);
             IPlayer proxyPlayer = _api.GetPlayer(playerIndex + ProxyPlayerOffset);
+            proxyPlayer.SetActive(true);
+            proxyPlayer.IsComputer = true;
             int team = player.Team;
 
             player.SetAllied(proxyPlayer, true);
@@ -976,7 +980,8 @@ public class MapScript : IWasmModule
     {
         PlayerState playerState = playerStates[playerIndex];
         IPlayer player = _api.GetPlayer(playerIndex);
-        IPlayer proxyPlayer = _api.GetPlayer(playerIndex + ProxyPlayerOffset);
+        int proxyPlayerIndex = playerIndex + ProxyPlayerOffset;
+        IPlayer proxyPlayer = _api.GetPlayer(proxyPlayerIndex);
 
         List<IUnit> draftedUnits = GetPlayerPlacedHeroes(playerIndex).ToList();
         Vector3 tileCenter = GetPlayerOffset(playerState.BasePosition, TileOffset);
@@ -986,7 +991,9 @@ public class MapScript : IWasmModule
             var unitOffset = draftedUnit.Position - tileCenter;
             Vector3 spawnPosition = ToCoordinatePosition(playerState.SpawnPosition, unitOffset);
 
-            IUnit clone = proxyPlayer.SpawnUnit(draftedUnit.UnitId, spawnPosition);
+            IUnit clone = proxyPlayer.SpawnUnit(draftedUnit.UnitId, spawnPosition, executeSpawnShader: true, bypassPopulation: true);
+            _api.SetUnitOwner(clone, proxyPlayerIndex);
+            clone.Player = proxyPlayerIndex;
             ApplyHeroStats(clone, draftedUnit.Level);
             _api.EnableUnitAutoCombat(clone, true);
 
@@ -1099,6 +1106,9 @@ public class MapScript : IWasmModule
                         waveUnits.RemoveAt(unitIndex);
                         continue;
                     }
+
+                    if (!IsProxyPlayerSlot(unit.Player))
+                        continue;
 
                     if (!waveUnitSpawnTimes.TryGetValue(unit.UniqueId, out float spawnTime))
                     {
