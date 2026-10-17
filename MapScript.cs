@@ -90,6 +90,8 @@ public class MapScript : IWasmModule
         [Element.Fire] = new Vector3(1f, 0f, 0f)
     };
 
+    private static readonly Element[] AllElements = Enum.GetValues<Element>();
+
     private static readonly int[] FoodCapIncreaseMinutes = { 0, 1, 2, 3, 5, 8, 12, 17, 23 };
 
     private static readonly string[] ItemPool =
@@ -161,7 +163,7 @@ public class MapScript : IWasmModule
         ConfigureDraftChoicesOnTiles();
         InitializePlayers();
 
-        if (gameSecondsElapsed >= nextFoodCapIncreaseSeconds)
+        while (foodCap < FoodCapIncreaseMinutes.Length && gameSecondsElapsed >= nextFoodCapIncreaseSeconds)
             IncreaseFoodCap();
 
         _api.OnUnitDied += HandleUnitDied;
@@ -244,6 +246,9 @@ public class MapScript : IWasmModule
 
     private void ResetPlayerSelection(int playerIndex)
     {
+        if (_api.GetPlayer(playerIndex).IsComputer)
+            return;
+
         if (playerStates.TryGetValue(playerIndex, out PlayerState? playerState)
             && playerState.Builder.IsValid
             && !playerState.Builder.IsDead)
@@ -254,6 +259,9 @@ public class MapScript : IWasmModule
 
     private void SelectUnitForPlayer(int playerIndex, UnitId unit)
     {
+        if (_api.GetPlayer(playerIndex).IsComputer)
+            return;
+
         if (unit.IsValid && !unit.IsDead)
             _api.GetPlayer(playerIndex).SelectUnit(unit);
     }
@@ -271,7 +279,7 @@ public class MapScript : IWasmModule
         }
     }
 
-    private void InitializeSinglePlayer(int playerIndex)
+    private void InitializeSinglePlayer(int playerIndex, bool updateAlliances = true)
     {
         if (playerStates.ContainsKey(playerIndex)) return;
 
@@ -295,7 +303,8 @@ public class MapScript : IWasmModule
         InitializePlayerBase(playerIndex);
         InitializePlayerDeck(playerIndex);
 
-        InitializePlayerAlliances(playerStates.Keys.ToList());
+        if (updateAlliances)
+            InitializePlayerAlliances(playerStates.Keys.ToList());
     }
 
     private void InitializePlayers()
@@ -304,8 +313,10 @@ public class MapScript : IWasmModule
 
         foreach (int playerIndex in activePlayerIndices)
         {
-            InitializeSinglePlayer(playerIndex);
+            InitializeSinglePlayer(playerIndex, false);
         }
+
+        InitializePlayerAlliances(playerStates.Keys.ToList());
     }
 
     private void HandleChatMessage(string message, UnitId senderUnit)
@@ -607,7 +618,7 @@ public class MapScript : IWasmModule
             Vector3 position = playerState.TilePositions[0];
             playerState.TilePositions.RemoveAt(0);
 
-            Element initialElement = _api.PickRandom(Enum.GetValues<Element>().ToList());
+            Element initialElement = AllElements[Random.Shared.Next(AllElements.Length)];
             string circleTypeId = GetCircleUnitTypeId(initialElement);
             UnitId circle = _api.GetPlayer(playerIndex).SpawnUnit(circleTypeId, position);
             circle.Damage = 0f;
@@ -837,10 +848,16 @@ public class MapScript : IWasmModule
         if (playerState.Offers.Count == 0)
             DrawDraftOffers(playerIndex);
 
-        string? chosenUnitTypeId = _api.PickRandom(playerState.Offers);
-        UnitId chosenCircle = _api.PickRandom(GetPlayerCircles(playerIndex).ToList());
+        if (playerState.Offers.Count == 0)
+            return;
 
-        if (chosenUnitTypeId == null || !chosenCircle.IsValid)
+        string chosenUnitTypeId = playerState.Offers[Random.Shared.Next(playerState.Offers.Count)];
+        List<UnitId> circles = GetPlayerCircles(playerIndex).ToList();
+        if (circles.Count == 0)
+            return;
+
+        UnitId chosenCircle = circles[Random.Shared.Next(circles.Count)];
+        if (!chosenCircle.IsValid)
             return;
 
         DraftUnit(playerIndex, chosenUnitTypeId, chosenCircle);
@@ -1048,7 +1065,7 @@ public class MapScript : IWasmModule
     {
         gameSecondsElapsed++;
 
-        if (gameSecondsElapsed >= nextFoodCapIncreaseSeconds)
+        while (foodCap < FoodCapIncreaseMinutes.Length && gameSecondsElapsed >= nextFoodCapIncreaseSeconds)
             IncreaseFoodCap();
 
         foreach (int playerIndex in playerStates.Keys)

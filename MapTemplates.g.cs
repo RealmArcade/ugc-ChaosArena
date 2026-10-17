@@ -13,7 +13,6 @@ public static class UnitIds
 	public const string AstralParagon = "unit/astral_paragon";
 	public const string BloodBerserker = "unit/blood_berserker";
 	public const string Builder = "unit/builder";
-	public const string Chad = "unit/chad";
 	public const string ChronoWeaver = "unit/chrono_weaver";
 	public const string CoralVanguard = "unit/coral_vanguard";
 	public const string CrystalWeaver = "unit/crystal_weaver";
@@ -21,7 +20,6 @@ public static class UnitIds
 	public const string FlameArchon = "unit/flame_archon";
 	public const string FrostWarden = "unit/frost_warden";
 	public const string IronWarlord = "unit/iron_warlord";
-	public const string Kevin = "unit/kevin";
 	public const string LightbringerMonk = "unit/lightbringer_monk";
 	public const string NetherAssassin = "unit/nether_assassin";
 	public const string ShadowStrider = "unit/shadow_strider";
@@ -41,8 +39,6 @@ public static class BuildingIds
 	public const string WaterElement = "building/water_element";
 	public const string Altar = "building/altar";
 	public const string Blacksmith = "building/blacksmith";
-	public const string ClockTower = "building/clock_tower";
-	public const string TimberFramedHouse = "building/timber_framed_house";
 }
 
 public static class ResourceIds
