@@ -357,7 +357,7 @@ public class MapScript : IWasmModule
             {
                 for (int slot = 1; slot <= RealPlayerSlotCount; slot++)
                 {
-                    if (!playerStates.ContainsKey(slot) && !_api.IsPlayerActive(slot))
+                    if (!playerStates.ContainsKey(slot) && !_api.GetPlayer(slot).IsActive)
                     {
                         targetSlot = slot;
                         break;
