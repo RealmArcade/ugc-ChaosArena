@@ -33,7 +33,8 @@
     "Tags": null,
     "MapType": null,
     "TestAiPlayerCount": 1,
-    "TestRandomizeSlots": false
+    "TestRandomizeSlots": false,
+    "TestRandomSeed": null
   },
   "Dependencies": [],
   "Templates": {
