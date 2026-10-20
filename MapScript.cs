@@ -663,8 +663,6 @@ public class MapScript : IWasmModule
                 : 1;
             unit.AddItem(newItemId, charges);
         }
-
-        SelectUnitForPlayer(unit.Player, unit);
     }
 
     private UnitId PerformElementReroll(UnitId unit, TileState state)
@@ -705,7 +703,6 @@ public class MapScript : IWasmModule
         }
 
         ApplyElement(unit, state, true);
-        SelectUnitForPlayer(unit.Player, unit);
         return unit;
     }
 
@@ -899,8 +896,7 @@ public class MapScript : IWasmModule
         PerformItemReroll(unit);
         UnitId currentUnit = PerformElementReroll(unit, state);
         if (state.Kind == TileKind.Hero)
-            currentUnit = PerformHeroReroll(currentUnit, playerIndex);
-        SelectUnitForPlayer(playerIndex, currentUnit);
+            PerformHeroReroll(currentUnit, playerIndex);
     }
 
     private void SwapTileUnits(UnitId caster, UnitId target, int playerIndex)
