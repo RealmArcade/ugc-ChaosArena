@@ -120,7 +120,29 @@
           "weapon/arcane_seeker"
         ],
         "ProjectileModelPath": "mech_warrior_unit_8.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -216,7 +238,29 @@
           "weapon/stellar_glaive"
         ],
         "ProjectileModelPath": "armored_warrior_hero_5.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -312,7 +356,29 @@
           "weapon/sanguine_scythe"
         ],
         "ProjectileModelPath": "armored_warrior_hero_3.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -417,7 +483,29 @@
         "Targets": null,
         "Weapons": null,
         "ProjectileModelPath": null,
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -513,7 +601,29 @@
           "weapon/temporal_pendulum"
         ],
         "ProjectileModelPath": "chinese_mystic_warrior.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -609,7 +719,29 @@
           "weapon/coral_harpoon"
         ],
         "ProjectileModelPath": "armored_warrior_33.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -705,7 +837,29 @@
           "weapon/prism_shard"
         ],
         "ProjectileModelPath": "ancient_warrior_hero.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -801,7 +955,29 @@
           "weapon/sandstorm_shortbow"
         ],
         "ProjectileModelPath": "frost_mage_warrior.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -897,7 +1073,29 @@
           "weapon/pyro_orb"
         ],
         "ProjectileModelPath": "fantasy_warrior_unit_10.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -993,7 +1191,29 @@
           "weapon/glacial_icicle"
         ],
         "ProjectileModelPath": "ice_warrior_unit.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1089,7 +1309,29 @@
           "weapon/iron_cleaver"
         ],
         "ProjectileModelPath": "armored_warrior_humanoid.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1185,7 +1427,29 @@
           "weapon/radiant_cesti"
         ],
         "ProjectileModelPath": "ancient_warrior_hero.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1281,7 +1545,29 @@
           "weapon/nether_stiletto"
         ],
         "ProjectileModelPath": "fantasy_armored_warrior_10.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1377,7 +1663,29 @@
           "weapon/shadow_kunai"
         ],
         "ProjectileModelPath": "warrior_hero_unit_8.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1473,7 +1781,29 @@
           "weapon/void_spindle"
         ],
         "ProjectileModelPath": "armored_knight_unit.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1569,7 +1899,29 @@
           "weapon/granite_crusher"
         ],
         "ProjectileModelPath": "ice_golem_warrior_2.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1665,7 +2017,29 @@
           "weapon/thunder_javelin"
         ],
         "ProjectileModelPath": "armored_warrior_female.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1761,7 +2135,29 @@
           "weapon/solar_lance"
         ],
         "ProjectileModelPath": "warrior_hero.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1857,7 +2253,29 @@
           "weapon/zephyr_chakram"
         ],
         "ProjectileModelPath": "warrior_soldier.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1953,7 +2371,29 @@
           "weapon/vanguard_halberd"
         ],
         "ProjectileModelPath": "fantasy_warrior_hero_3.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -2049,7 +2489,29 @@
           "weapon/bramble_thorn"
         ],
         "ProjectileModelPath": "frost_warrior_unit.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
