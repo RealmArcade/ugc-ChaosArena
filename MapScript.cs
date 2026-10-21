@@ -29,6 +29,7 @@ public class TileState
     public int CircleLevel { get; set; } = 1;
     public Vector3 AnchorPosition { get; set; }
     public int PlayerIndex { get; set; }
+    public int LabelHandle { get; set; } = -1;
 }
 
 public class PlayerState
@@ -68,6 +69,7 @@ public class MapScript : IWasmModule
     private const int SpawnSlotCount = 12;
     private const int TilesPerPlayer = 9;
     private const int CountdownFontSize = 216;
+    private const int TileLabelFontSize = 36;
 
     private const string RerollItemAbilityId = "ability/reroll_item";
     private const string RerollElementAbilityId = "ability/reroll_element";
@@ -412,6 +414,7 @@ public class MapScript : IWasmModule
                 _api.DestroyUnit(unit);
             }
 
+            DestroyPlayerTileLabels(playerIndex);
             playerStates.Remove(playerIndex);
         }
     }
@@ -640,6 +643,7 @@ public class MapScript : IWasmModule
 
             PerformItemReroll(circle);
             ApplyElement(circle, state, true);
+            CreateTileLabel(state);
         }
 
         UpdateDraftOfferAbilities(playerIndex);
@@ -735,6 +739,8 @@ public class MapScript : IWasmModule
             else
                 _api.SetAbilityTooltip(abilityId, $"[{element}] {abilityName} (disabled)");
         }
+
+        RecreateTileLabel(state);
     }
 
     private static void ApplyHeroStats(UnitId unit, int level)
@@ -944,7 +950,72 @@ public class MapScript : IWasmModule
             int charges = Math.Max(state.CircleLevel, 1);
             unit.SetItemCharges(itemId, charges);
         }
+
+        RefreshTileLabel(state);
     }
+
+    private void CreateTileLabel(TileState state)
+    {
+        if (state.LabelHandle >= 0 || state.Kind != TileKind.Hero)
+            return;
+
+        state.LabelHandle = _api.CreateStaticText(
+            GetTileLabelText(state),
+            state.AnchorPosition + new Vector3(0f, 2.5f, 0f),
+            GetTileLabelColor(state),
+            TileLabelFontSize);
+    }
+
+    private void RefreshTileLabel(TileState state)
+    {
+        if (state.LabelHandle < 0)
+        {
+            CreateTileLabel(state);
+            return;
+        }
+
+        _api.SetStaticText(state.LabelHandle, GetTileLabelText(state));
+    }
+
+    private void RecreateTileLabel(TileState state)
+    {
+        if (state.Kind != TileKind.Hero)
+            return;
+
+        if (state.LabelHandle >= 0)
+        {
+            _api.DestroyStaticText(state.LabelHandle);
+            state.LabelHandle = -1;
+        }
+
+        CreateTileLabel(state);
+    }
+
+    private void DestroyPlayerTileLabels(int playerIndex)
+    {
+        foreach (KeyValuePair<int, TileState> entry in tileStatesByUnitId)
+        {
+            TileState state = entry.Value;
+            if (state.PlayerIndex != playerIndex || state.LabelHandle < 0)
+                continue;
+
+            _api.DestroyStaticText(state.LabelHandle);
+            state.LabelHandle = -1;
+        }
+    }
+
+    private static string GetTileLabelText(TileState state) =>
+        $"{GetElementGlyph(state.Element)}{Math.Max(state.CircleLevel, 1)}";
+
+    private static string GetElementGlyph(Element element) => element switch
+    {
+        Element.Water => "W",
+        Element.Earth => "E",
+        _ => "F"
+    };
+
+    private static Vector3 GetTileLabelColor(TileState state) =>
+        ElementColors.TryGetValue(state.Element, out Vector3 color) ? color : Vector3.One;
 
     private void HandleSpawnTimerTick()
     {
