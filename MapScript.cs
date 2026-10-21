@@ -75,6 +75,7 @@ public class MapScript : IWasmModule
     private const int TileLabelFontSize = 36;
     private const int WaveIndicatorFontSize = 32;
     private const int MaxDamageLeaderboardRows = 12;
+    private const int ElementalAbilityCount = 3;
     private const float WaveArrivalRadius = 4f;
 
     private const string RerollItemAbilityId = "ability/reroll_item";
@@ -780,7 +781,7 @@ public class MapScript : IWasmModule
 
         IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unit.TemplateID);
         // Ordered abilities: [0]=Water, [1]=Earth, [2]=Fire, [3]=Ultimate
-        for (int i = 0; i < 3 && i < abilities.Count; i++)
+        for (int i = 0; i < ElementalAbilityCount && i < abilities.Count; i++)
         {
             Element element = (Element)i;
             string abilityId = abilities[i];
@@ -815,9 +816,22 @@ public class MapScript : IWasmModule
         unit.Damage = 0f;
         unit.ManaRegen = 0f;
         unit.HideHealthAndManaBars = true;
+        _api.EnableUnitAutoCombat(unit, false);
         _api.SetUnitFacing(unit, ArenaCenter);
         unit.Stop();
         unit.HoldPosition();
+        DisableTileUnitAbilities(unit);
+    }
+
+    private void DisableTileUnitAbilities(UnitId unit)
+    {
+        IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unit.TemplateID);
+        for (int index = 0; index < ElementalAbilityCount && index < abilities.Count; index++)
+        {
+            string abilityId = abilities[index];
+            if (!string.IsNullOrEmpty(abilityId))
+                _api.SetAbilityState(unit, abilityId, true, true);
+        }
     }
 
     private void ConfigureDraftedHero(UnitId hero, int level, IEnumerable<string> itemIds, Element element, Vector3 anchorPosition, int playerIndex)
