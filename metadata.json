@@ -34,7 +34,8 @@
     "MapType": null,
     "TestAiPlayerCount": 1,
     "TestRandomizeSlots": false,
-    "TestRandomSeed": null
+    "TestRandomSeed": null,
+    "PlayablePlayerSlots": 12
   },
   "Dependencies": [],
   "Templates": {
