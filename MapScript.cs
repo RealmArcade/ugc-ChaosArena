@@ -529,14 +529,9 @@ public class MapScript : IWasmModule
         var state = new TargetDummyState { UnitTypeId = unitTypeId };
 
         ApplyHeroStats(dummy, state.Level);
+        dummy.Frozen = true;
         dummy.Invulnerable = true;
-        dummy.Speed = 0f;
-        dummy.Damage = 0f;
-        dummy.ManaRegen = 0f;
         dummy.HideHealthAndManaBars = true;
-        _api.EnableUnitAutoCombat(dummy, false);
-        dummy.Stop();
-        dummy.HoldPosition();
 
         IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unitTypeId);
         for (int index = 0; index < abilities.Count; index++)
@@ -1026,15 +1021,11 @@ public class MapScript : IWasmModule
 
     private void LockTileUnit(UnitId unit)
     {
+        unit.Frozen = true;
         unit.Invulnerable = true;
-        unit.Speed = 0f;
-        unit.Damage = 0f;
-        unit.ManaRegen = 0f;
         unit.HideHealthAndManaBars = true;
         _api.EnableUnitAutoCombat(unit, false);
         _api.SetUnitFacing(unit, ArenaCenter);
-        unit.Stop();
-        unit.HoldPosition();
         DisableTileUnitAbilities(unit);
         HideDebugAbilities(unit);
     }
