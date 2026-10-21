@@ -2918,8 +2918,11 @@
         "DespillPlayerColor": false,
         "BuildOptions": null,
         "IsHero": false,
-        "Abilities": [
-          "upgrade_critical_strike"
+        "Abilities": [],
+        "Upgrades": [
+          "upgrade/critical_strike",
+          "upgrade/iron_plating",
+          "upgrade/swift_stride"
         ],
         "XpBounty": 0,
         "PathingCapabilities": null,
@@ -2933,7 +2936,6 @@
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
-        "Upgrades": null,
         "StatusEffects": null,
         "SoundEvents": null,
         "SpawnShader": null,
@@ -6628,7 +6630,77 @@
         }
       }
     ],
-    "Upgrades": [],
+"Upgrades": [
+      {
+        "TemplateID": "upgrade/critical_strike",
+        "Name": "Critical Strike",
+        "Description": "Sharpened weapon edges grant every wave unit bonus attack damage.",
+        "IconPath": null,
+        "Hotkey": "C",
+        "CostGold": 80,
+        "CostWood": 0,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 3,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "Attack",
+            "Type": "Flat",
+            "Value": 4,
+            "WASMFunctionName": "",
+            "PerLevelScaling": 4
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/iron_plating",
+        "Name": "Iron Plating",
+        "Description": "Reinforced armour plating reduces incoming damage for every wave unit.",
+        "IconPath": null,
+        "Hotkey": "P",
+        "CostGold": 70,
+        "CostWood": 0,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 2,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "Armor",
+            "Type": "Flat",
+            "Value": 2,
+            "WASMFunctionName": "",
+            "PerLevelScaling": 2
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/swift_stride",
+        "Name": "Swift Stride",
+        "Description": "Lighter boots let every wave unit close the distance faster.",
+        "IconPath": null,
+        "Hotkey": "S",
+        "CostGold": 60,
+        "CostWood": 0,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 3,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "MovementSpeed",
+            "Type": "Percentage",
+            "Value": 1.08,
+            "WASMFunctionName": "",
+            "PerLevelScaling": 0.04
+          }
+        ]
+      }
+    ],
     "Items": [
       {
         "TemplateID": "item/assassin_dagger",

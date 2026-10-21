@@ -21,6 +21,8 @@ public enum TileKind
 
 public record UpgradeDefinition(string TechId, string AbilityId);
 
+public record UpgradeResearchRule(string TechId, float CostGold, int MaxLevel);
+
 public class TileState
 {
     public TileKind Kind { get; set; }
@@ -76,6 +78,7 @@ public class MapScript : IWasmModule
     private const int WaveIndicatorFontSize = 32;
     private const int MaxDamageLeaderboardRows = 12;
     private const int ElementalAbilityCount = 3;
+    private const int ComputerResearchIntervalSeconds = 15;
     private const float WaveArrivalRadius = 4f;
 
     private const string RerollItemAbilityId = "ability/reroll_item";
@@ -88,7 +91,9 @@ public class MapScript : IWasmModule
     private const string SoulSiphonAbilityId = "ability/soul_siphon";
     private const string HealingWaveAbilityId = "ability/healing_wave";
     private const string AntiSnowballPoisonBuffId = "anti_snowball_poison";
-    private const string CriticalStrikeTechId = "critical_strike";
+    private const string CriticalStrikeTechId = "upgrade/critical_strike";
+    private const string IronPlatingTechId = "upgrade/iron_plating";
+    private const string SwiftStrideTechId = "upgrade/swift_stride";
 
     private static readonly Vector3 ArenaCenter = Vector3.Zero;
 
@@ -114,7 +119,7 @@ public class MapScript : IWasmModule
 
     private static readonly Element[] AllElements = Enum.GetValues<Element>();
 
-    private static readonly int[] FoodCapIncreaseMinutes = { 0, 1, 2, 3, 5, 8, 12, 17, 23 };
+    private static readonly int[] FoodCapIncreaseMinutes = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
     private static readonly string[] ItemPool =
     {
@@ -157,7 +162,16 @@ public class MapScript : IWasmModule
 
     private static readonly UpgradeDefinition[] DraftableUpgrades =
     {
-        new(CriticalStrikeTechId, UpgradeCriticalStrikeAbilityId)
+        new(CriticalStrikeTechId, UpgradeCriticalStrikeAbilityId),
+        new(IronPlatingTechId, string.Empty),
+        new(SwiftStrideTechId, string.Empty)
+    };
+
+    private static readonly UpgradeResearchRule[] UpgradeResearchRules =
+    {
+        new(CriticalStrikeTechId, 80, 3),
+        new(IronPlatingTechId, 70, 2),
+        new(SwiftStrideTechId, 60, 3)
     };
 
     private readonly Dictionary<int, PlayerState> playerStates = new();
@@ -940,6 +954,16 @@ public class MapScript : IWasmModule
         DraftUnit(playerIndex, chosenUnitTypeId, chosenCircle);
     }
 
+    private void ApplyPlayerTechToProxy(PlayerId player, PlayerId proxyPlayer)
+    {
+        foreach (UpgradeDefinition upgrade in DraftableUpgrades)
+        {
+            int techLevel = player.GetTechLevel(upgrade.TechId);
+            if (techLevel > 0)
+                proxyPlayer.SetTechLevel(upgrade.TechId, techLevel);
+        }
+    }
+
     private UnitId PerformHeroReroll(UnitId unit, int playerIndex)
     {
         PlayerId player = _api.GetPlayer(playerIndex);
@@ -1223,12 +1247,7 @@ public class MapScript : IWasmModule
         Vector3 waveTargetPosition = ResolveWaveTargetPosition(playerIndex);
         UpdateWaveIndicator(playerState, playerIndex, waveTargetPosition);
 
-        foreach (UpgradeDefinition upgrade in DraftableUpgrades)
-        {
-            int techLevel = player.GetTechLevel(upgrade.TechId);
-            if (techLevel > 0)
-                proxyPlayer.SetTechLevel(upgrade.TechId, techLevel);
-        }
+        ApplyPlayerTechToProxy(player, proxyPlayer);
 
         foreach (UnitId draftedUnit in draftedUnits)
         {
@@ -1243,6 +1262,9 @@ public class MapScript : IWasmModule
 
             foreach (UpgradeDefinition upgrade in DraftableUpgrades)
             {
+                if (string.IsNullOrEmpty(upgrade.AbilityId))
+                    continue;
+
                 int techLevel = player.GetTechLevel(upgrade.TechId);
                 _api.SetAbilityState(clone, upgrade.AbilityId, techLevel <= 0, techLevel <= 0);
             }
@@ -1274,6 +1296,24 @@ public class MapScript : IWasmModule
         }
     }
 
+    private void PerformComputerResearch(int playerIndex)
+    {
+        PlayerId player = _api.GetPlayer(playerIndex);
+
+        foreach (UpgradeResearchRule rule in UpgradeResearchRules)
+        {
+            if (player.GetTechLevel(rule.TechId) >= rule.MaxLevel)
+                continue;
+
+            if (player.Gold < rule.CostGold)
+                continue;
+
+            player.AdjustGold(-rule.CostGold);
+            player.AddTechLevel(rule.TechId);
+            return;
+        }
+    }
+
     private void HandleGameTimerTick()
     {
         gameSecondsElapsed++;
@@ -1290,6 +1330,9 @@ public class MapScript : IWasmModule
                 {
                     PerformComputerDraft(playerIndex);
                 }
+
+                if (gameSecondsElapsed % ComputerResearchIntervalSeconds == 0)
+                    PerformComputerResearch(playerIndex);
             }
         }
     }
@@ -1396,7 +1439,7 @@ public class MapScript : IWasmModule
         int playerIndex = ResolveRealPlayerIndex(caster.Player);
         PlayerId player = _api.GetPlayer(playerIndex);
 
-        UpgradeDefinition? upgrade = DraftableUpgrades.FirstOrDefault(u => SlugsEqual(u.AbilityId, spellId));
+        UpgradeDefinition? upgrade = DraftableUpgrades.FirstOrDefault(u => !string.IsNullOrEmpty(u.AbilityId) && SlugsEqual(u.AbilityId, spellId));
         if (upgrade != null)
         {
             player.AddTechLevel(upgrade.TechId);
