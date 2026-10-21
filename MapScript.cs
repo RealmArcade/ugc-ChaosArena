@@ -74,6 +74,7 @@ public class MapScript : IWasmModule
     private const int CountdownFontSize = 216;
     private const int TileLabelFontSize = 36;
     private const int WaveIndicatorFontSize = 32;
+    private const int MaxDamageLeaderboardRows = 12;
     private const float WaveArrivalRadius = 4f;
 
     private const string RerollItemAbilityId = "ability/reroll_item";
@@ -161,6 +162,7 @@ public class MapScript : IWasmModule
     private readonly Dictionary<int, PlayerState> playerStates = new();
     private readonly Dictionary<int, TileState> tileStatesByUnitId = new();
     private readonly Dictionary<int, TileState> waveUnitStatesByUnitId = new();
+    private readonly List<(string PlayerName, string UnitTypeId, float Damage)> _damageLeaderboardEntries = new();
     private readonly Dictionary<int, float> waveUnitSpawnTimes = new();
     private readonly Dictionary<int, (int Player, string TemplateId)> _unitInfoCache = new();
     private int _tileUpdateTick;
@@ -1664,6 +1666,35 @@ public class MapScript : IWasmModule
         {
             PlayerId player = _api.GetPlayer(playerIndex);
             _api.AddLeaderboardRow(player.Name, aliveCount.ToString());
+        }
+
+        AppendDamageLeaderboardRows();
+    }
+
+    private void AppendDamageLeaderboardRows()
+    {
+        _damageLeaderboardEntries.Clear();
+
+        foreach (KeyValuePair<int, PlayerState> playerEntry in playerStates)
+        {
+            string playerName = _api.GetPlayer(playerEntry.Key).Name;
+
+            foreach (KeyValuePair<string, Dictionary<int, float>> unitEntry in playerEntry.Value.DamageDealtPerUnitTypePerWave)
+            {
+                if (!unitEntry.Value.TryGetValue(waveNumber, out float damage) || damage <= 0f)
+                    continue;
+
+                _damageLeaderboardEntries.Add((playerName, unitEntry.Key, damage));
+            }
+        }
+
+        _damageLeaderboardEntries.Sort((left, right) => right.Damage.CompareTo(left.Damage));
+
+        int rowCount = Math.Min(_damageLeaderboardEntries.Count, MaxDamageLeaderboardRows);
+        for (int index = 0; index < rowCount; index++)
+        {
+            (string playerName, string unitTypeId, float damage) = _damageLeaderboardEntries[index];
+            _api.AddLeaderboardRow($"{playerName} - {_api.GetUnitName(unitTypeId)}", ((int)damage).ToString());
         }
     }
 
