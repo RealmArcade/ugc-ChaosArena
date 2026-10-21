@@ -84,7 +84,8 @@ public class MapScript : IWasmModule
     private const int CountdownFontSize = 216;
     private const int TileLabelFontSize = 36;
     private const int WaveIndicatorFontSize = 32;
-    private const int MaxDamageLeaderboardRows = 12;
+    private const string AliveUnitsLeaderboardId = "alive_units";
+    private const string DamageLeaderboardId = "damage";
     private const int ElementalAbilityCount = 3;
     private const int ComputerResearchIntervalSeconds = 15;
     private const float WaveArrivalRadius = 4f;
@@ -247,8 +248,8 @@ public class MapScript : IWasmModule
         _api.ScheduleRepeatingTimer(60f, GrantPassiveExperience);
         _api.ScheduleRepeatingTimer(5f, UpdateSummaryTable);
         _api.ScheduleTimer(0f, UpdateSummaryTable);
-        _api.ScheduleRepeatingTimer(5f, UpdateAliveUnitsLeaderboard);
-        _api.ScheduleTimer(0f, UpdateAliveUnitsLeaderboard);
+        _api.ScheduleRepeatingTimer(5f, UpdateLeaderboards);
+        _api.ScheduleTimer(0f, UpdateLeaderboards);
     }
 
     public void Update(IGameAPI api, float delta)
@@ -1951,10 +1952,10 @@ public class MapScript : IWasmModule
         }
     }
 
-    private void UpdateAliveUnitsLeaderboard()
+    private void UpdateLeaderboards()
     {
-        _api.ClearLeaderboard();
-        _api.SetLeaderboardVisible("Alive Units", true);
+        _api.SetLeaderboardBoard(AliveUnitsLeaderboardId, "Alive Units", true);
+        _api.ClearLeaderboardBoard(AliveUnitsLeaderboardId);
 
         var rankedPlayers = playerStates.Keys
             .Select(playerIndex =>
@@ -1968,36 +1969,38 @@ public class MapScript : IWasmModule
         foreach ((int playerIndex, int aliveCount) in rankedPlayers)
         {
             PlayerId player = _api.GetPlayer(playerIndex);
-            _api.AddLeaderboardRow(player.Name, aliveCount.ToString());
+            _api.AddLeaderboardBoardRow(AliveUnitsLeaderboardId, -1, string.Empty, player.Name, aliveCount.ToString());
         }
 
-        AppendDamageLeaderboardRows();
+        UpdateDamageLeaderboard();
     }
 
-    private void AppendDamageLeaderboardRows()
+    private void UpdateDamageLeaderboard()
     {
-        _damageLeaderboardEntries.Clear();
+        _api.SetLeaderboardBoard(DamageLeaderboardId, "Damage", true);
+        _api.ClearLeaderboardBoard(DamageLeaderboardId);
 
         foreach (KeyValuePair<int, PlayerState> playerEntry in playerStates)
         {
-            string playerName = _api.GetPlayer(playerEntry.Key).Name;
+            _damageLeaderboardEntries.Clear();
 
             foreach (KeyValuePair<string, Dictionary<int, float>> unitEntry in playerEntry.Value.DamageDealtPerUnitTypePerWave)
             {
                 if (!unitEntry.Value.TryGetValue(waveNumber, out float damage) || damage <= 0f)
                     continue;
 
-                _damageLeaderboardEntries.Add((playerName, unitEntry.Key, damage));
+                _damageLeaderboardEntries.Add((string.Empty, unitEntry.Key, damage));
             }
-        }
 
-        _damageLeaderboardEntries.Sort((left, right) => right.Damage.CompareTo(left.Damage));
+            _damageLeaderboardEntries.Sort((left, right) => right.Damage.CompareTo(left.Damage));
 
-        int rowCount = Math.Min(_damageLeaderboardEntries.Count, MaxDamageLeaderboardRows);
-        for (int index = 0; index < rowCount; index++)
-        {
-            (string playerName, string unitTypeId, float damage) = _damageLeaderboardEntries[index];
-            _api.AddLeaderboardRow($"{playerName} - {_api.GetUnitName(unitTypeId)}", ((int)damage).ToString());
+            string playerName = _api.GetPlayer(playerEntry.Key).Name;
+            _api.SetLeaderboardBoardGroup(DamageLeaderboardId, playerEntry.Key, playerName);
+
+            foreach ((_, string unitTypeId, float damage) in _damageLeaderboardEntries)
+            {
+                _api.AddLeaderboardBoardRow(DamageLeaderboardId, playerEntry.Key, playerName, _api.GetUnitName(unitTypeId), ((int)damage).ToString());
+            }
         }
     }
 
