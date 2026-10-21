@@ -30,6 +30,8 @@ public class TileState
     public Vector3 AnchorPosition { get; set; }
     public int PlayerIndex { get; set; }
     public int LabelHandle { get; set; } = -1;
+    public Vector3 AssignedDestination { get; set; }
+    public bool RetargetedToCenter { get; set; }
 }
 
 public class PlayerState
@@ -49,6 +51,7 @@ public class PlayerState
     public bool HasSpawnedThisRound { get; set; } = true;
     public bool IsCountdownVisible { get; set; }
     public Dictionary<int, List<UnitId>> SpawnedUnitsPerWave { get; } = new();
+    public int WaveIndicatorHandle { get; set; } = -1;
     public Dictionary<string, Dictionary<int, float>> DamageDealtPerUnitTypePerWave { get; } = new();
 }
 
@@ -70,6 +73,8 @@ public class MapScript : IWasmModule
     private const int TilesPerPlayer = 9;
     private const int CountdownFontSize = 216;
     private const int TileLabelFontSize = 36;
+    private const int WaveIndicatorFontSize = 32;
+    private const float WaveArrivalRadius = 4f;
 
     private const string RerollItemAbilityId = "ability/reroll_item";
     private const string RerollElementAbilityId = "ability/reroll_element";
@@ -84,6 +89,19 @@ public class MapScript : IWasmModule
     private const string CriticalStrikeTechId = "critical_strike";
 
     private static readonly Vector3 ArenaCenter = Vector3.Zero;
+
+    // Round routing: the player in slot RoundTargetSlotOrder[n] attacks the player listed here.
+    private static readonly int[] RoundTargetSlotOrder = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1 };
+
+    private static readonly Vector3[] RoundSpawnIndicatorColors =
+    {
+        new(1f, 0.35f, 0.25f),
+        new(0.25f, 0.6f, 1f),
+        new(0.35f, 0.9f, 0.4f),
+        new(1f, 0.85f, 0.25f),
+        new(0.8f, 0.4f, 1f),
+        new(0.25f, 0.95f, 0.9f)
+    };
 
     private static readonly Dictionary<Element, Vector3> ElementColors = new()
     {
@@ -404,6 +422,7 @@ public class MapScript : IWasmModule
             if (playerState.Altar.IsValid && !playerState.Altar.IsDead) _api.DestroyUnit(playerState.Altar);
             if (playerState.Blacksmith.IsValid && !playerState.Blacksmith.IsDead) _api.DestroyUnit(playerState.Blacksmith);
             if (playerState.CountdownTextHandle >= 0) _api.DestroyStaticText(playerState.CountdownTextHandle);
+            if (playerState.WaveIndicatorHandle >= 0) _api.DestroyStaticText(playerState.WaveIndicatorHandle);
 
             foreach (var unit in _api.GetUnitsOwnedByPlayer(playerIndex))
             {
@@ -1049,6 +1068,68 @@ public class MapScript : IWasmModule
                 _api.SetStaticTextVisible(playerState.CountdownTextHandle, isCountdownVisible);
             }
         }
+
+        AdvanceWaveRetargeting();
+    }
+
+    private void AdvanceWaveRetargeting()
+    {
+        float arrivalRadiusSquared = WaveArrivalRadius * WaveArrivalRadius;
+
+        foreach (KeyValuePair<int, TileState> entry in waveUnitStatesByUnitId)
+        {
+            TileState state = entry.Value;
+            if (state.RetargetedToCenter)
+                continue;
+
+            UnitId unit = entry.Key;
+            if (unit.IsDead)
+                continue;
+
+            if (Vector3.DistanceSquared(unit.Position, state.AssignedDestination) > arrivalRadiusSquared)
+                continue;
+
+            unit.AttackMove(ArenaCenter);
+            state.AssignedDestination = ArenaCenter;
+            state.RetargetedToCenter = true;
+        }
+    }
+
+    private static int ResolveRoundTargetPlayerIndex(int playerIndex) =>
+        RoundTargetSlotOrder[(playerIndex - 1) % RoundTargetSlotOrder.Length];
+
+    private Vector3 ResolveWaveTargetPosition(int playerIndex)
+    {
+        int targetPlayerIndex = ResolveRoundTargetPlayerIndex(playerIndex);
+        if (targetPlayerIndex == playerIndex)
+            return ArenaCenter;
+
+        if (!playerStates.TryGetValue(targetPlayerIndex, out PlayerState? targetState) || !_api.GetPlayer(targetPlayerIndex).IsActive)
+            return ArenaCenter;
+
+        return targetState.SpawnPosition;
+    }
+
+    private void UpdateWaveIndicator(PlayerState playerState, int playerIndex, Vector3 waveTargetPosition)
+    {
+        if (playerState.WaveIndicatorHandle >= 0)
+        {
+            _api.DestroyStaticText(playerState.WaveIndicatorHandle);
+            playerState.WaveIndicatorHandle = -1;
+        }
+
+        int targetPlayerIndex = ResolveRoundTargetPlayerIndex(playerIndex);
+        string targetName = _api.GetPlayer(targetPlayerIndex).Name;
+        string indicatorText = waveTargetPosition == ArenaCenter
+            ? $"Wave {waveNumber}: center"
+            : $"Wave {waveNumber}: {targetName}";
+
+        Vector3 indicatorColor = RoundSpawnIndicatorColors[Math.Abs(waveNumber) % RoundSpawnIndicatorColors.Length];
+        playerState.WaveIndicatorHandle = _api.CreateStaticText(
+            indicatorText,
+            playerState.SpawnPosition + new Vector3(0f, 4f, 0f),
+            indicatorColor,
+            WaveIndicatorFontSize);
     }
 
     private void StartWaveRound()
@@ -1084,6 +1165,8 @@ public class MapScript : IWasmModule
 
         List<UnitId> draftedUnits = GetPlayerPlacedHeroes(playerIndex).ToList();
         Vector3 tileCenter = GetPlayerOffset(playerState.BasePosition, TileOffset);
+        Vector3 waveTargetPosition = ResolveWaveTargetPosition(playerIndex);
+        UpdateWaveIndicator(playerState, playerIndex, waveTargetPosition);
 
         foreach (UpgradeDefinition upgrade in DraftableUpgrades)
         {
@@ -1117,12 +1200,20 @@ public class MapScript : IWasmModule
 
             Element element = tileState?.Element ?? Element.Water;
 
-            var cloneState = new TileState { Kind = TileKind.Hero, Element = element, ElementAssigned = true, PlayerIndex = proxyPlayerIndex };
+            var cloneState = new TileState
+            {
+                Kind = TileKind.Hero,
+                Element = element,
+                ElementAssigned = true,
+                PlayerIndex = proxyPlayerIndex,
+                AssignedDestination = waveTargetPosition,
+                RetargetedToCenter = waveTargetPosition == ArenaCenter
+            };
             waveUnitStatesByUnitId[clone.UniqueId] = cloneState;
             ApplyElement(clone, cloneState, false);
 
             _api.SetUnitFacing(clone, ArenaCenter);
-            clone.AttackMove(ArenaCenter);
+            clone.AttackMove(waveTargetPosition);
             playerState.SpawnedUnitsPerWave[waveNumber].Add(clone);
             waveUnitSpawnTimes[clone.UniqueId] = gameSecondsElapsed;
         }
