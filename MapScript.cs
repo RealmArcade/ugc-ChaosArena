@@ -36,6 +36,14 @@ public class TileState
     public bool RetargetedToCenter { get; set; }
 }
 
+public class TargetDummyState
+{
+    public string UnitTypeId { get; set; } = string.Empty;
+    public int Level { get; set; } = 1;
+    public int ItemIndex { get; set; }
+    public int LabelHandle { get; set; } = -1;
+}
+
 public class PlayerState
 {
     public UnitId Builder { get; set; } = UnitId.Invalid;
@@ -80,6 +88,12 @@ public class MapScript : IWasmModule
     private const int ElementalAbilityCount = 3;
     private const int ComputerResearchIntervalSeconds = 15;
     private const float WaveArrivalRadius = 4f;
+    private const int TargetDummyMaxLevel = 5;
+    private const int TargetDummyRowLength = 10;
+    private const float TargetDummySpacing = 4.5f;
+    private const float TargetDummyRowOffset = 4f;
+    private const float TargetDummyRowHeight = 5f;
+    private const int TargetDummyLabelFontSize = 28;
 
     private const string RerollItemAbilityId = "ability/reroll_item";
     private const string RerollElementAbilityId = "ability/reroll_element";
@@ -87,6 +101,10 @@ public class MapScript : IWasmModule
     private const string RerollAllAbilityId = "ability/reroll_all";
     private const string SwapTileUnitsAbilityId = "ability/swap_tile_units";
     private const string UpgradeCriticalStrikeAbilityId = "ability/upgrade_critical_strike";
+
+    private const string DebugCycleLevelAbilityId = "ability/debug_cycle_level";
+    private const string DebugCycleItemAbilityId = "ability/debug_cycle_item";
+    private const string TargetDummyCommand = "-target_dummy";
 
     private const string SoulSiphonAbilityId = "ability/soul_siphon";
     private const string HealingWaveAbilityId = "ability/healing_wave";
@@ -180,6 +198,9 @@ public class MapScript : IWasmModule
     private readonly List<(string PlayerName, string UnitTypeId, float Damage)> _damageLeaderboardEntries = new();
     private readonly Dictionary<int, float> waveUnitSpawnTimes = new();
     private readonly Dictionary<int, (int Player, string TemplateId)> _unitInfoCache = new();
+    private readonly Dictionary<int, List<UnitId>> targetDummiesByPlayer = new();
+    private readonly Dictionary<int, TargetDummyState> targetDummyStates = new();
+    private bool debugAbilitiesRegistered;
     private int _tileUpdateTick;
 
     private IGameAPI _api = null!;
@@ -382,6 +403,10 @@ public class MapScript : IWasmModule
                 _api.BroadcastMessage("Usage: -kick <slot>");
             }
         }
+        else if (trimmed.StartsWith(TargetDummyCommand, StringComparison.OrdinalIgnoreCase))
+        {
+            HandleTargetDummyCommand(senderUnit);
+        }
         else if (trimmed.StartsWith("-addai", StringComparison.OrdinalIgnoreCase))
         {
             var parts = trimmed.Split(' ', StringSplitOptions.RemoveEmptyEntries);
@@ -421,6 +446,181 @@ public class MapScript : IWasmModule
         }
     }
 
+    private void HandleTargetDummyCommand(UnitId senderUnit)
+    {
+        int playerIndex = ResolveRealPlayerIndex(senderUnit.Player);
+        if (!senderUnit.IsValid || !IsRealPlayerSlot(playerIndex) || !playerStates.ContainsKey(playerIndex))
+        {
+            _api.BroadcastMessage($"Usage: {TargetDummyCommand} (select one of your units first)");
+            return;
+        }
+
+        DestroyTargetDummies(playerIndex);
+        RegisterDebugAbilities();
+        HideDebugAbilitiesOnExistingUnits();
+
+        PlayerId player = _api.GetPlayer(playerIndex);
+        PlayerState playerState = playerStates[playerIndex];
+        var dummies = new List<UnitId>(DraftableUnits.Length);
+
+        for (int index = 0; index < DraftableUnits.Length; index++)
+        {
+            int row = index / TargetDummyRowLength;
+            int column = index % TargetDummyRowLength;
+            float offsetX = (column - (TargetDummyRowLength - 1) * 0.5f) * TargetDummySpacing;
+            float offsetZ = TargetDummyRowOffset + row * TargetDummyRowHeight;
+            Vector3 spawnPosition = ToCoordinatePosition(playerState.BasePosition, new Vector3(offsetX, 0f, offsetZ));
+
+            UnitId dummy = player.SpawnUnit(DraftableUnits[index], spawnPosition, executeSpawnShader: false, bypassPopulation: true);
+            if (!dummy.IsValid)
+                continue;
+
+            ConfigureTargetDummy(dummy, DraftableUnits[index]);
+            dummies.Add(dummy);
+        }
+
+        targetDummiesByPlayer[playerIndex] = dummies;
+        player.SendMessage($"{dummies.Count} target dummies spawned. Select a dummy and use its debug buttons to cycle level and item.");
+    }
+
+    private void RegisterDebugAbilities()
+    {
+        if (debugAbilitiesRegistered)
+            return;
+
+        debugAbilitiesRegistered = true;
+
+        _api.RegisterAbility(DebugCycleLevelAbilityId, "Debug: Cycle Level", "Cycles the target dummy between levels 1 and 5.", string.Empty, true);
+        _api.RegisterAbility(DebugCycleItemAbilityId, "Debug: Cycle Item", "Cycles the target dummy through the map's item pool.", string.Empty, true);
+
+        foreach (string unitTypeId in DraftableUnits)
+        {
+            _api.AddUnitTypeAbility(unitTypeId, DebugCycleLevelAbilityId);
+            _api.AddUnitTypeAbility(unitTypeId, DebugCycleItemAbilityId);
+        }
+    }
+
+    private void HideDebugAbilitiesOnExistingUnits()
+    {
+        foreach (int playerIndex in playerStates.Keys)
+        {
+            HideDebugAbilities(_api.GetPlayer(playerIndex).GetUnits());
+            HideDebugAbilities(_api.GetPlayer(playerIndex + ProxyPlayerOffset).GetUnits());
+        }
+    }
+
+    private void HideDebugAbilities(ReadOnlySpan<UnitId> units)
+    {
+        foreach (UnitId unit in units)
+        {
+            if (!targetDummyStates.ContainsKey(unit.UniqueId))
+                HideDebugAbilities(unit);
+        }
+    }
+
+    private void HideDebugAbilities(UnitId unit)
+    {
+        _api.SetAbilityState(unit, DebugCycleLevelAbilityId, true, true);
+        _api.SetAbilityState(unit, DebugCycleItemAbilityId, true, true);
+    }
+
+    private void ConfigureTargetDummy(UnitId dummy, string unitTypeId)
+    {
+        var state = new TargetDummyState { UnitTypeId = unitTypeId };
+
+        ApplyHeroStats(dummy, state.Level);
+        dummy.Invulnerable = true;
+        dummy.Speed = 0f;
+        dummy.Damage = 0f;
+        dummy.ManaRegen = 0f;
+        dummy.HideHealthAndManaBars = true;
+        _api.EnableUnitAutoCombat(dummy, false);
+        dummy.Stop();
+        dummy.HoldPosition();
+
+        IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unitTypeId);
+        for (int index = 0; index < abilities.Count; index++)
+        {
+            string abilityId = abilities[index];
+            if (string.IsNullOrEmpty(abilityId))
+                continue;
+
+            bool isDebugAbility = SlugsEqual(abilityId, DebugCycleLevelAbilityId) || SlugsEqual(abilityId, DebugCycleItemAbilityId);
+            bool isVisible = isDebugAbility || index == (int)Element.Fire;
+            _api.SetAbilityState(dummy, abilityId, !isVisible, !isVisible);
+        }
+
+        targetDummyStates[dummy.UniqueId] = state;
+        ApplyTargetDummyItem(dummy, state);
+        RefreshTargetDummyLabel(dummy, state);
+        state.LabelHandle = _api.CreateStaticText(
+            GetTargetDummyLabelText(state),
+            dummy.Position + new Vector3(0f, 3f, 0f),
+            ElementColors[Element.Fire],
+            TargetDummyLabelFontSize);
+    }
+
+    private void ApplyTargetDummyItem(UnitId dummy, TargetDummyState state)
+    {
+        foreach (string itemId in dummy.GetItems().ToList())
+            dummy.RemoveItem(itemId);
+
+        dummy.AddItem(ItemPool[state.ItemIndex % ItemPool.Length], Math.Max(state.Level, 1));
+    }
+
+    private void CycleTargetDummyLevel(UnitId dummy)
+    {
+        if (!targetDummyStates.TryGetValue(dummy.UniqueId, out TargetDummyState? state))
+            return;
+
+        state.Level = state.Level >= TargetDummyMaxLevel ? 1 : state.Level + 1;
+        ApplyHeroStats(dummy, state.Level);
+        ApplyTargetDummyItem(dummy, state);
+        RefreshTargetDummyLabel(dummy, state);
+    }
+
+    private void CycleTargetDummyItem(UnitId dummy)
+    {
+        if (!targetDummyStates.TryGetValue(dummy.UniqueId, out TargetDummyState? state))
+            return;
+
+        state.ItemIndex = (state.ItemIndex + 1) % ItemPool.Length;
+        ApplyTargetDummyItem(dummy, state);
+        RefreshTargetDummyLabel(dummy, state);
+    }
+
+    private void RefreshTargetDummyLabel(UnitId dummy, TargetDummyState state)
+    {
+        dummy.Name = GetTargetDummyLabelText(state);
+        if (state.LabelHandle >= 0)
+            _api.SetStaticText(state.LabelHandle, GetTargetDummyLabelText(state));
+    }
+
+    private string GetTargetDummyLabelText(TargetDummyState state) =>
+        $"{_api.GetUnitName(state.UnitTypeId)} [L{state.Level}]";
+
+    private void DestroyTargetDummies(int playerIndex)
+    {
+        if (!targetDummiesByPlayer.TryGetValue(playerIndex, out List<UnitId>? dummies))
+            return;
+
+        foreach (UnitId dummy in dummies)
+        {
+            if (targetDummyStates.TryGetValue(dummy.UniqueId, out TargetDummyState? state))
+            {
+                if (state.LabelHandle >= 0)
+                    _api.DestroyStaticText(state.LabelHandle);
+                targetDummyStates.Remove(dummy.UniqueId);
+            }
+
+            if (dummy.IsValid && !dummy.IsDead)
+                _api.DestroyUnit(dummy);
+        }
+
+        dummies.Clear();
+        targetDummiesByPlayer.Remove(playerIndex);
+    }
+
     private void HandlePlayerLeft(int playerIndex)
     {
         int realSlot = ResolveRealPlayerIndex(playerIndex);
@@ -451,6 +651,7 @@ public class MapScript : IWasmModule
             }
 
             DestroyPlayerTileLabels(playerIndex);
+            DestroyTargetDummies(playerIndex);
             playerStates.Remove(playerIndex);
         }
     }
@@ -835,6 +1036,7 @@ public class MapScript : IWasmModule
         unit.Stop();
         unit.HoldPosition();
         DisableTileUnitAbilities(unit);
+        HideDebugAbilities(unit);
     }
 
     private void DisableTileUnitAbilities(UnitId unit)
@@ -1289,6 +1491,7 @@ public class MapScript : IWasmModule
             waveUnitStatesByUnitId[clone.UniqueId] = cloneState;
             ApplyElement(clone, cloneState, false);
 
+            HideDebugAbilities(clone);
             _api.SetUnitFacing(clone, ArenaCenter);
             clone.AttackMove(waveTargetPosition);
             playerState.SpawnedUnitsPerWave[waveNumber].Add(clone);
@@ -1438,6 +1641,18 @@ public class MapScript : IWasmModule
 
         int playerIndex = ResolveRealPlayerIndex(caster.Player);
         PlayerId player = _api.GetPlayer(playerIndex);
+
+        if (SlugsEqual(spellId, DebugCycleLevelAbilityId))
+        {
+            CycleTargetDummyLevel(caster);
+            return;
+        }
+
+        if (SlugsEqual(spellId, DebugCycleItemAbilityId))
+        {
+            CycleTargetDummyItem(caster);
+            return;
+        }
 
         UpgradeDefinition? upgrade = DraftableUpgrades.FirstOrDefault(u => !string.IsNullOrEmpty(u.AbilityId) && SlugsEqual(u.AbilityId, spellId));
         if (upgrade != null)

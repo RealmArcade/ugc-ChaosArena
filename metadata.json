@@ -24,7 +24,10 @@
     "LoadingTitle": null,
     "LoadingSubtitle": null,
     "LoadingBodyText": null,
-    "HowToPlayInstructions": null,
+    "HowToPlayInstructions": [
+      "Chat commands: -target_dummy spawns an invulnerable debug row for the selected player, -addai [slot] adds a computer player, -kick <slot> removes a player.",
+      "Select a target dummy to use its Debug: Cycle Level and Debug: Cycle Item buttons while testing abilities."
+    ],
     "HowToPlayObjective": null,
     "Version": "1.0.0",
     "Changelog": null,
