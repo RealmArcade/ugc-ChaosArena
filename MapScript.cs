@@ -668,6 +668,44 @@ public class MapScript : IWasmModule
         }
 
         UpdateDraftOfferAbilities(playerIndex);
+        ApplyDraftCooldown(playerIndex);
+    }
+
+    private void ApplyDraftCooldownToAllPlayers()
+    {
+        foreach (int playerIndex in playerStates.Keys.ToList())
+            ApplyDraftCooldown(playerIndex);
+    }
+
+    private void ApplyDraftCooldown(int playerIndex)
+    {
+        if (!playerStates.TryGetValue(playerIndex, out PlayerState? playerState))
+            return;
+
+        float remainingSeconds = GetDraftCooldownRemainingSeconds(playerState);
+
+        ApplyDraftCooldownToUnit(playerState.Builder, remainingSeconds);
+
+        foreach (UnitId circle in GetPlayerCircles(playerIndex))
+            ApplyDraftCooldownToUnit(circle, remainingSeconds);
+    }
+
+    private void ApplyDraftCooldownToUnit(UnitId unit, float remainingSeconds)
+    {
+        if (!unit.IsValid || unit.IsDead)
+            return;
+
+        foreach (string unitTypeId in DraftableUnits)
+            unit.SetAbilityCooldown(unitTypeId, remainingSeconds);
+    }
+
+    private float GetDraftCooldownRemainingSeconds(PlayerState playerState)
+    {
+        int unlockAtSeconds = GetNextDraftUnlockTimestamp(playerState.DraftedCount);
+        if (unlockAtSeconds == int.MaxValue)
+            return 0f;
+
+        return Math.Max(0f, unlockAtSeconds - gameSecondsElapsed);
     }
 
     private void PerformItemReroll(UnitId unit)
@@ -864,6 +902,7 @@ public class MapScript : IWasmModule
 
         DrawDraftOffers(playerIndex);
         UnlockPlayerTiles(playerIndex, 1);
+        ApplyDraftCooldown(playerIndex);
     }
 
     private void PerformComputerDraft(int playerIndex)
@@ -1248,6 +1287,7 @@ public class MapScript : IWasmModule
 
         foodCap++;
         nextFoodCapIncreaseSeconds = GetNextDraftUnlockTimestamp(foodCap);
+        ApplyDraftCooldownToAllPlayers();
 
         foreach (int playerIndex in playerStates.Keys.ToList())
         {
