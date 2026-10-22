@@ -1010,7 +1010,7 @@ public class MapScript : IWasmModule
 
     private void LockTileUnit(UnitId unit)
     {
-        unit.Frozen = true;
+        unit.AnimationsFrozen = true;
         unit.Invulnerable = true;
         unit.HideHealthAndManaBars = true;
         _api.EnableUnitAutoCombat(unit, false);
@@ -1021,13 +1021,7 @@ public class MapScript : IWasmModule
 
     private void DisableTileUnitAbilities(UnitId unit)
     {
-        IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unit.TemplateID);
-        for (int index = 0; index < ElementalAbilityCount && index < abilities.Count; index++)
-        {
-            string abilityId = abilities[index];
-            if (!string.IsNullOrEmpty(abilityId))
-                _api.SetAbilityState(unit, abilityId, true, true);
-        }
+        unit.CommandsFrozen = true;
     }
 
     private void ConfigureDraftedHero(UnitId hero, int level, IEnumerable<string> itemIds, Element element, Vector3 anchorPosition, int playerIndex)
