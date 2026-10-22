@@ -41,7 +41,7 @@ public class TargetDummyState
     public string UnitTypeId { get; set; } = string.Empty;
     public int Level { get; set; } = 1;
     public int ItemIndex { get; set; }
-    public int LabelHandle { get; set; } = -1;
+    public Element Element { get; set; } = Element.Fire;
 }
 
 public class PlayerState
@@ -57,7 +57,6 @@ public class PlayerState
     public Vector3 BasePosition { get; set; }
     public Vector3 SpawnPosition { get; set; }
     public int CountdownTextHandle { get; set; }
-    public bool IsWaveIndicatorVisible { get; set; }
     public float SpawnAtSeconds { get; set; }
     public bool HasSpawnedThisRound { get; set; } = true;
     public bool IsCountdownVisible { get; set; }
@@ -88,12 +87,11 @@ public class MapScript : IWasmModule
     private const int ElementalAbilityCount = 3;
     private const int ComputerResearchIntervalSeconds = 15;
     private const float WaveArrivalRadius = 4f;
-    private const int TargetDummyMaxLevel = 5;
+    private const int TargetDummyMaxLevel = 9;
     private const int TargetDummyRowLength = 10;
     private const float TargetDummySpacing = 4.5f;
     private const float TargetDummyRowOffset = 4f;
     private const float TargetDummyRowHeight = 5f;
-    private const int TargetDummyLabelFontSize = 28;
     private const int TargetDummyHealthResetSeconds = 60;
 
     private const string RerollItemAbilityId = "ability/reroll_item";
@@ -105,6 +103,7 @@ public class MapScript : IWasmModule
 
     private const string DebugCycleLevelAbilityId = "ability/debug_cycle_level";
     private const string DebugCycleItemAbilityId = "ability/debug_cycle_item";
+    private const string DebugCycleElementAbilityId = "ability/debug_cycle_element";
     private const string TargetDummyCommand = "-target_dummy";
 
     private const string SoulSiphonAbilityId = "ability/soul_siphon";
@@ -115,6 +114,8 @@ public class MapScript : IWasmModule
     private const string SwiftStrideTechId = "upgrade/swift_stride";
 
     private static readonly Vector3 ArenaCenter = Vector3.Zero;
+
+    private static readonly Vector3 ColorWhite = Vector3.One;
 
     // Round routing: the player in slot RoundTargetSlotOrder[n] attacks the player listed here.
     private static readonly int[] RoundTargetSlotOrder = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1 };
@@ -346,7 +347,7 @@ public class MapScript : IWasmModule
         playerState.CountdownTextHandle = _api.CreateStaticText(
             string.Empty,
             playerState.SpawnPosition,
-            Vector3.One,
+            ColorWhite,
             CountdownFontSize);
         _api.SetStaticTextVisible(playerState.CountdownTextHandle, false);
 
@@ -522,13 +523,15 @@ public class MapScript : IWasmModule
 
         debugAbilitiesRegistered = true;
 
-        _api.RegisterAbility(DebugCycleLevelAbilityId, "Debug: Cycle Level", "Cycles the target dummy between levels 1 and 5.", string.Empty, true);
+        _api.RegisterAbility(DebugCycleLevelAbilityId, "Debug: Cycle Level", "Cycles the target dummy between levels 1 and 9.", string.Empty, true);
         _api.RegisterAbility(DebugCycleItemAbilityId, "Debug: Cycle Item", "Cycles the target dummy through the map's item pool.", string.Empty, true);
+        _api.RegisterAbility(DebugCycleElementAbilityId, "Debug: Cycle Element", "Cycles the target dummy between Water, Earth and Fire.", string.Empty, true);
 
         foreach (string unitTypeId in DraftableUnits)
         {
             _api.AddUnitTypeAbility(unitTypeId, DebugCycleLevelAbilityId);
             _api.AddUnitTypeAbility(unitTypeId, DebugCycleItemAbilityId);
+            _api.AddUnitTypeAbility(unitTypeId, DebugCycleElementAbilityId);
         }
     }
 
@@ -554,6 +557,7 @@ public class MapScript : IWasmModule
     {
         _api.SetAbilityState(unit, DebugCycleLevelAbilityId, true, true);
         _api.SetAbilityState(unit, DebugCycleItemAbilityId, true, true);
+        _api.SetAbilityState(unit, DebugCycleElementAbilityId, true, true);
     }
 
     private void ConfigureTargetDummy(UnitId dummy, string unitTypeId)
@@ -563,27 +567,47 @@ public class MapScript : IWasmModule
         ApplyHeroStats(dummy, state.Level);
         dummy.HideHealthAndManaBars = true;
 
-        IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unitTypeId);
+        targetDummyStates[dummy.UniqueId] = state;
+        ApplyTargetDummyItem(dummy, state);
+        ApplyTargetDummyElement(dummy, state);
+        RefreshTargetDummyName(dummy, state);
+    }
+
+    private void ApplyTargetDummyElement(UnitId dummy, TargetDummyState state)
+    {
+        IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(state.UnitTypeId);
         for (int index = 0; index < abilities.Count; index++)
         {
             string abilityId = abilities[index];
             if (string.IsNullOrEmpty(abilityId))
                 continue;
 
-            bool isDebugAbility = SlugsEqual(abilityId, DebugCycleLevelAbilityId) || SlugsEqual(abilityId, DebugCycleItemAbilityId);
-            bool isVisible = isDebugAbility || index == (int)Element.Fire;
-            _api.SetAbilityState(dummy, abilityId, !isVisible, !isVisible);
-        }
+            if (IsDebugAbility(abilityId))
+            {
+                _api.SetAbilityState(dummy, abilityId, false, false);
+                continue;
+            }
 
-        targetDummyStates[dummy.UniqueId] = state;
-        ApplyTargetDummyItem(dummy, state);
-        RefreshTargetDummyLabel(dummy, state);
-        state.LabelHandle = _api.CreateStaticText(
-            GetTargetDummyLabelText(state),
-            dummy.Position + new Vector3(0f, 3f, 0f),
-            ElementColors[Element.Fire],
-            TargetDummyLabelFontSize);
+            if (index >= ElementalAbilityCount)
+            {
+                _api.SetAbilityState(dummy, abilityId, true, true);
+                continue;
+            }
+
+            bool isActive = index == (int)state.Element;
+            _api.SetAbilityState(dummy, abilityId, !isActive, !isActive);
+            string abilityName = _api.GetAbilityName(abilityId);
+            if (isActive)
+                _api.SetAbilityTooltip(abilityId, $"[{state.Element}] {abilityName}");
+            else
+                _api.SetAbilityTooltip(abilityId, $"[{(Element)index}] {abilityName} (disabled)");
+        }
     }
+
+    private static bool IsDebugAbility(string abilityId) =>
+        SlugsEqual(abilityId, DebugCycleLevelAbilityId)
+        || SlugsEqual(abilityId, DebugCycleItemAbilityId)
+        || SlugsEqual(abilityId, DebugCycleElementAbilityId);
 
     private void ApplyTargetDummyItem(UnitId dummy, TargetDummyState state)
     {
@@ -601,7 +625,7 @@ public class MapScript : IWasmModule
         state.Level = state.Level >= TargetDummyMaxLevel ? 1 : state.Level + 1;
         ApplyHeroStats(dummy, state.Level);
         ApplyTargetDummyItem(dummy, state);
-        RefreshTargetDummyLabel(dummy, state);
+        RefreshTargetDummyName(dummy, state);
     }
 
     private void CycleTargetDummyItem(UnitId dummy)
@@ -611,17 +635,25 @@ public class MapScript : IWasmModule
 
         state.ItemIndex = (state.ItemIndex + 1) % ItemPool.Length;
         ApplyTargetDummyItem(dummy, state);
-        RefreshTargetDummyLabel(dummy, state);
+        RefreshTargetDummyName(dummy, state);
     }
 
-    private void RefreshTargetDummyLabel(UnitId dummy, TargetDummyState state)
+    private void CycleTargetDummyElement(UnitId dummy)
     {
-        dummy.Name = GetTargetDummyLabelText(state);
-        if (state.LabelHandle >= 0)
-            _api.SetStaticText(state.LabelHandle, GetTargetDummyLabelText(state));
+        if (!targetDummyStates.TryGetValue(dummy.UniqueId, out TargetDummyState? state))
+            return;
+
+        state.Element = (Element)(((int)state.Element + 1) % AllElements.Length);
+        ApplyTargetDummyElement(dummy, state);
+        RefreshTargetDummyName(dummy, state);
     }
 
-    private string GetTargetDummyLabelText(TargetDummyState state) =>
+    private void RefreshTargetDummyName(UnitId dummy, TargetDummyState state)
+    {
+        dummy.Name = GetTargetDummyName(state);
+    }
+
+    private string GetTargetDummyName(TargetDummyState state) =>
         $"{_api.GetUnitName(state.UnitTypeId)} [L{state.Level}]";
 
     private void DestroyTargetDummies(int playerIndex)
@@ -631,12 +663,7 @@ public class MapScript : IWasmModule
 
         foreach (UnitId dummy in dummies)
         {
-            if (targetDummyStates.TryGetValue(dummy.UniqueId, out TargetDummyState? state))
-            {
-                if (state.LabelHandle >= 0)
-                    _api.DestroyStaticText(state.LabelHandle);
-                targetDummyStates.Remove(dummy.UniqueId);
-            }
+            targetDummyStates.Remove(dummy.UniqueId);
 
             if (dummy.IsValid && !dummy.IsDead)
                 _api.DestroyUnit(dummy);
@@ -1354,16 +1381,14 @@ public class MapScript : IWasmModule
                 if (!playerState.IsCountdownVisible)
                 {
                     playerState.IsCountdownVisible = true;
-                    playerState.IsWaveIndicatorVisible = false;
-                    _api.SetStaticTextColor(playerState.CountdownTextHandle, Vector3.One);
+                    _api.SetStaticTextColor(playerState.CountdownTextHandle, ResolveWaveTextColor(entry.Key));
                     _api.SetStaticTextVisible(playerState.CountdownTextHandle, true);
                 }
             }
             else if (playerState.IsCountdownVisible)
             {
                 playerState.IsCountdownVisible = false;
-                if (!playerState.IsWaveIndicatorVisible)
-                    _api.SetStaticTextVisible(playerState.CountdownTextHandle, false);
+                _api.SetStaticTextVisible(playerState.CountdownTextHandle, false);
             }
         }
 
@@ -1396,32 +1421,30 @@ public class MapScript : IWasmModule
     private static int ResolveRoundTargetPlayerIndex(int playerIndex) =>
         RoundTargetSlotOrder[(playerIndex - 1) % RoundTargetSlotOrder.Length];
 
-    private Vector3 ResolveWaveTargetPosition(int playerIndex)
+    private bool TryResolveWaveTargetPlayerIndex(int playerIndex, out int targetPlayerIndex)
     {
-        int targetPlayerIndex = ResolveRoundTargetPlayerIndex(playerIndex);
+        targetPlayerIndex = ResolveRoundTargetPlayerIndex(playerIndex);
         if (targetPlayerIndex == playerIndex)
-            return ArenaCenter;
+            return false;
 
-        if (!playerStates.TryGetValue(targetPlayerIndex, out PlayerState? targetState) || !_api.GetPlayer(targetPlayerIndex).IsActive)
-            return ArenaCenter;
+        if (!playerStates.ContainsKey(targetPlayerIndex) || !_api.GetPlayer(targetPlayerIndex).IsActive)
+            return false;
 
-        return targetState.SpawnPosition;
+        return true;
     }
 
-    private void UpdateWaveIndicator(PlayerState playerState, int playerIndex, Vector3 waveTargetPosition)
+    private Vector3 ResolveWaveTargetPosition(int playerIndex)
     {
-        int targetPlayerIndex = ResolveRoundTargetPlayerIndex(playerIndex);
-        PlayerId targetPlayer = _api.GetPlayer(targetPlayerIndex);
-        string indicatorText = waveTargetPosition == ArenaCenter
-            ? $"Wave {waveNumber}: center"
-            : $"Wave {waveNumber}: {targetPlayer.Name}";
+        return TryResolveWaveTargetPlayerIndex(playerIndex, out int targetPlayerIndex)
+            ? playerStates[targetPlayerIndex].SpawnPosition
+            : ArenaCenter;
+    }
 
-        _api.SetStaticText(playerState.CountdownTextHandle, indicatorText);
-        _api.SetStaticTextColor(playerState.CountdownTextHandle, targetPlayer.Color);
-        _api.SetStaticTextVisible(playerState.CountdownTextHandle, true);
-
-        playerState.IsCountdownVisible = false;
-        playerState.IsWaveIndicatorVisible = true;
+    private Vector3 ResolveWaveTextColor(int playerIndex)
+    {
+        return TryResolveWaveTargetPlayerIndex(playerIndex, out int targetPlayerIndex)
+            ? _api.GetPlayer(targetPlayerIndex).Color
+            : ColorWhite;
     }
 
     private void StartWaveRound()
@@ -1458,7 +1481,6 @@ public class MapScript : IWasmModule
         List<UnitId> draftedUnits = GetPlayerPlacedHeroes(playerIndex).ToList();
         Vector3 tileCenter = GetPlayerOffset(playerState.BasePosition, TileOffset);
         Vector3 waveTargetPosition = ResolveWaveTargetPosition(playerIndex);
-        UpdateWaveIndicator(playerState, playerIndex, waveTargetPosition);
 
         ApplyPlayerTechToProxy(player, proxyPlayer);
 
@@ -1662,6 +1684,12 @@ public class MapScript : IWasmModule
         if (SlugsEqual(spellId, DebugCycleItemAbilityId))
         {
             CycleTargetDummyItem(caster);
+            return;
+        }
+
+        if (SlugsEqual(spellId, DebugCycleElementAbilityId))
+        {
+            CycleTargetDummyElement(caster);
             return;
         }
 
