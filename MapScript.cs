@@ -94,6 +94,7 @@ public class MapScript : IWasmModule
     private const float TargetDummyRowOffset = 4f;
     private const float TargetDummyRowHeight = 5f;
     private const int TargetDummyLabelFontSize = 28;
+    private const int TargetDummyHealthResetSeconds = 60;
 
     private const string RerollItemAbilityId = "ability/reroll_item";
     private const string RerollElementAbilityId = "ability/reroll_element";
@@ -190,6 +191,7 @@ public class MapScript : IWasmModule
     private readonly Dictionary<int, (int Player, string TemplateId)> _unitInfoCache = new();
     private readonly Dictionary<int, List<UnitId>> targetDummiesByPlayer = new();
     private readonly Dictionary<int, TargetDummyState> targetDummyStates = new();
+    private UnitId gaiaTargetBuilder = UnitId.Invalid;
     private bool debugAbilitiesRegistered;
     private int _tileUpdateTick;
 
@@ -239,6 +241,7 @@ public class MapScript : IWasmModule
         _api.ScheduleTimer(0f, UpdateSummaryTable);
         _api.ScheduleRepeatingTimer(5f, UpdateLeaderboards);
         _api.ScheduleTimer(0f, UpdateLeaderboards);
+        _api.ScheduleRepeatingTimer(TargetDummyHealthResetSeconds, RestoreGaiaTargetBuilderHealth);
     }
 
     public void Update(IGameAPI api, float delta)
@@ -438,6 +441,12 @@ public class MapScript : IWasmModule
 
     private void HandleTargetDummyCommand(UnitId senderUnit)
     {
+        if (!_api.CheatsEnabled)
+        {
+            _api.BroadcastMessage($"{TargetDummyCommand} is only available when cheats are enabled.");
+            return;
+        }
+
         int playerIndex = ResolveRealPlayerIndex(senderUnit.Player);
         if (!senderUnit.IsValid || !IsRealPlayerSlot(playerIndex) || !playerStates.ContainsKey(playerIndex))
         {
@@ -446,11 +455,11 @@ public class MapScript : IWasmModule
         }
 
         DestroyTargetDummies(playerIndex);
+        DestroyGaiaTargetBuilder();
         RegisterDebugAbilities();
         HideDebugAbilitiesOnExistingUnits();
 
         PlayerId player = _api.GetPlayer(playerIndex);
-        PlayerState playerState = playerStates[playerIndex];
         var dummies = new List<UnitId>(DraftableUnits.Length);
 
         for (int index = 0; index < DraftableUnits.Length; index++)
@@ -459,7 +468,7 @@ public class MapScript : IWasmModule
             int column = index % TargetDummyRowLength;
             float offsetX = (column - (TargetDummyRowLength - 1) * 0.5f) * TargetDummySpacing;
             float offsetZ = TargetDummyRowOffset + row * TargetDummyRowHeight;
-            Vector3 spawnPosition = ToCoordinatePosition(playerState.BasePosition, new Vector3(offsetX, 0f, offsetZ));
+            Vector3 spawnPosition = ToCoordinatePosition(ArenaCenter, new Vector3(offsetX, 0f, offsetZ));
 
             UnitId dummy = player.SpawnUnit(DraftableUnits[index], spawnPosition, executeSpawnShader: false, bypassPopulation: true);
             if (!dummy.IsValid)
@@ -469,8 +478,41 @@ public class MapScript : IWasmModule
             dummies.Add(dummy);
         }
 
+        SpawnGaiaTargetBuilder();
+
         targetDummiesByPlayer[playerIndex] = dummies;
-        player.SendMessage($"{dummies.Count} target dummies spawned. Select a dummy and use its debug buttons to cycle level and item.");
+        player.SendMessage($"{dummies.Count} target dummies spawned at the map centre. Select a dummy and use its debug buttons to cycle level and item.");
+    }
+
+    private void SpawnGaiaTargetBuilder()
+    {
+        Vector3 spawnPosition = ToCoordinatePosition(ArenaCenter, new Vector3(0f, 0f, -TargetDummyRowOffset));
+        UnitId builder = _api.GetPlayer(0).SpawnUnit(UnitIds.Builder, spawnPosition, executeSpawnShader: false, bypassPopulation: true);
+        if (!builder.IsValid)
+            return;
+
+        builder.MaxHealth = int.MaxValue;
+        builder.Health = int.MaxValue;
+        builder.Frozen = true;
+        _api.SetUnitFacing(builder, ArenaCenter);
+        _api.EnableUnitAutoCombat(builder, false);
+        gaiaTargetBuilder = builder;
+    }
+
+    private void RestoreGaiaTargetBuilderHealth()
+    {
+        if (!gaiaTargetBuilder.IsValid || gaiaTargetBuilder.IsDead)
+            return;
+
+        gaiaTargetBuilder.Health = int.MaxValue;
+    }
+
+    private void DestroyGaiaTargetBuilder()
+    {
+        if (gaiaTargetBuilder.IsValid && !gaiaTargetBuilder.IsDead)
+            _api.DestroyUnit(gaiaTargetBuilder);
+
+        gaiaTargetBuilder = UnitId.Invalid;
     }
 
     private void RegisterDebugAbilities()
@@ -519,8 +561,6 @@ public class MapScript : IWasmModule
         var state = new TargetDummyState { UnitTypeId = unitTypeId };
 
         ApplyHeroStats(dummy, state.Level);
-        dummy.Frozen = true;
-        dummy.Invulnerable = true;
         dummy.HideHealthAndManaBars = true;
 
         IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unitTypeId);
