@@ -21,6 +21,8 @@ public enum TileKind
 
 public record UpgradeDefinition(string TechId, string AbilityId);
 
+public record UpgradeResearchRule(string TechId, float CostGold, int MaxLevel);
+
 public class TileState
 {
     public TileKind Kind { get; set; }
@@ -29,6 +31,17 @@ public class TileState
     public int CircleLevel { get; set; } = 1;
     public Vector3 AnchorPosition { get; set; }
     public int PlayerIndex { get; set; }
+    public int LabelHandle { get; set; } = -1;
+    public Vector3 AssignedDestination { get; set; }
+    public bool RetargetedToCenter { get; set; }
+}
+
+public class TargetDummyState
+{
+    public string UnitTypeId { get; set; } = string.Empty;
+    public int Level { get; set; } = 1;
+    public int ItemIndex { get; set; }
+    public Element Element { get; set; } = Element.Fire;
 }
 
 public class PlayerState
@@ -68,6 +81,18 @@ public class MapScript : IWasmModule
     private const int SpawnSlotCount = 12;
     private const int TilesPerPlayer = 9;
     private const int CountdownFontSize = 216;
+    private const int TileLabelFontSize = 36;
+    private const string AliveUnitsLeaderboardId = "alive_units";
+    private const string DamageLeaderboardId = "damage";
+    private const int ElementalAbilityCount = 3;
+    private const int ComputerResearchIntervalSeconds = 15;
+    private const float WaveArrivalRadius = 4f;
+    private const int TargetDummyMaxLevel = 9;
+    private const int TargetDummyRowLength = 10;
+    private const float TargetDummySpacing = 4.5f;
+    private const float TargetDummyRowOffset = 4f;
+    private const float TargetDummyRowHeight = 5f;
+    private const int TargetDummyHealthResetSeconds = 60;
 
     private const string RerollItemAbilityId = "ability/reroll_item";
     private const string RerollElementAbilityId = "ability/reroll_element";
@@ -76,12 +101,22 @@ public class MapScript : IWasmModule
     private const string SwapTileUnitsAbilityId = "ability/swap_tile_units";
     private const string UpgradeCriticalStrikeAbilityId = "ability/upgrade_critical_strike";
 
+    private const string DebugCycleLevelAbilityId = "ability/debug_cycle_level";
+    private const string DebugCycleItemAbilityId = "ability/debug_cycle_item";
+    private const string DebugCycleElementAbilityId = "ability/debug_cycle_element";
+    private const string TargetDummyCommand = "-targetDummy";
+    private const string UnlockTilesCommand = "-unlockTiles";
+
     private const string SoulSiphonAbilityId = "ability/soul_siphon";
     private const string HealingWaveAbilityId = "ability/healing_wave";
     private const string AntiSnowballPoisonBuffId = "anti_snowball_poison";
-    private const string CriticalStrikeTechId = "critical_strike";
+    private const string CriticalStrikeTechId = "upgrade/critical_strike";
+    private const string IronPlatingTechId = "upgrade/iron_plating";
+    private const string SwiftStrideTechId = "upgrade/swift_stride";
 
     private static readonly Vector3 ArenaCenter = Vector3.Zero;
+
+    private static readonly Vector3 ColorWhite = Vector3.One;
 
     private static readonly Dictionary<Element, Vector3> ElementColors = new()
     {
@@ -135,14 +170,28 @@ public class MapScript : IWasmModule
 
     private static readonly UpgradeDefinition[] DraftableUpgrades =
     {
-        new(CriticalStrikeTechId, UpgradeCriticalStrikeAbilityId)
+        new(CriticalStrikeTechId, UpgradeCriticalStrikeAbilityId),
+        new(IronPlatingTechId, string.Empty),
+        new(SwiftStrideTechId, string.Empty)
+    };
+
+    private static readonly UpgradeResearchRule[] UpgradeResearchRules =
+    {
+        new(CriticalStrikeTechId, 80, 3),
+        new(IronPlatingTechId, 70, 2),
+        new(SwiftStrideTechId, 60, 3)
     };
 
     private readonly Dictionary<int, PlayerState> playerStates = new();
     private readonly Dictionary<int, TileState> tileStatesByUnitId = new();
     private readonly Dictionary<int, TileState> waveUnitStatesByUnitId = new();
+    private readonly List<(string PlayerName, string UnitTypeId, float Damage)> _damageLeaderboardEntries = new();
     private readonly Dictionary<int, float> waveUnitSpawnTimes = new();
     private readonly Dictionary<int, (int Player, string TemplateId)> _unitInfoCache = new();
+    private readonly Dictionary<int, List<UnitId>> targetDummiesByPlayer = new();
+    private readonly Dictionary<int, TargetDummyState> targetDummyStates = new();
+    private UnitId gaiaTargetBuilder = UnitId.Invalid;
+    private bool debugAbilitiesRegistered;
     private int _tileUpdateTick;
 
     private IGameAPI _api = null!;
@@ -150,6 +199,7 @@ public class MapScript : IWasmModule
     private float roundClockSeconds;
     private readonly List<float> spawnOffsetSlots = new();
     private readonly List<int> spawnSlotOrder = new();
+    private readonly List<int> roundTargetSlotOrder = new();
     private int gameSecondsElapsed;
     private int foodCap;
     private int nextFoodCapIncreaseSeconds;
@@ -182,6 +232,9 @@ public class MapScript : IWasmModule
             spawnSlotOrder.Add(slotIndex);
         }
 
+        for (int playerIndex = 1; playerIndex <= RealPlayerSlotCount; playerIndex++)
+            roundTargetSlotOrder.Add(playerIndex);
+
         _api.ScheduleRepeatingTimer(1f, HandleSpawnTimerTick);
         _api.ScheduleRepeatingTimer(1f, HandleGameTimerTick);
         _api.ScheduleRepeatingTimer(5f, GrantWoodPassive);
@@ -189,8 +242,9 @@ public class MapScript : IWasmModule
         _api.ScheduleRepeatingTimer(60f, GrantPassiveExperience);
         _api.ScheduleRepeatingTimer(5f, UpdateSummaryTable);
         _api.ScheduleTimer(0f, UpdateSummaryTable);
-        _api.ScheduleRepeatingTimer(5f, UpdateAliveUnitsLeaderboard);
-        _api.ScheduleTimer(0f, UpdateAliveUnitsLeaderboard);
+        _api.ScheduleRepeatingTimer(5f, UpdateLeaderboards);
+        _api.ScheduleTimer(0f, UpdateLeaderboards);
+        _api.ScheduleRepeatingTimer(TargetDummyHealthResetSeconds, RestoreGaiaTargetBuilderHealth);
     }
 
     public void Update(IGameAPI api, float delta)
@@ -295,7 +349,7 @@ public class MapScript : IWasmModule
         playerState.CountdownTextHandle = _api.CreateStaticText(
             string.Empty,
             playerState.SpawnPosition,
-            Vector3.One,
+            ColorWhite,
             CountdownFontSize);
         _api.SetStaticTextVisible(playerState.CountdownTextHandle, false);
 
@@ -345,6 +399,14 @@ public class MapScript : IWasmModule
                 _api.BroadcastMessage("Usage: -kick <slot>");
             }
         }
+        else if (trimmed.StartsWith(TargetDummyCommand, StringComparison.OrdinalIgnoreCase))
+        {
+            HandleTargetDummyCommand(senderUnit);
+        }
+        else if (trimmed.StartsWith(UnlockTilesCommand, StringComparison.OrdinalIgnoreCase))
+        {
+            HandleUnlockTilesCommand();
+        }
         else if (trimmed.StartsWith("-addai", StringComparison.OrdinalIgnoreCase))
         {
             var parts = trimmed.Split(' ', StringSplitOptions.RemoveEmptyEntries);
@@ -384,6 +446,263 @@ public class MapScript : IWasmModule
         }
     }
 
+    private void HandleTargetDummyCommand(UnitId senderUnit)
+    {
+        if (!_api.CheatsEnabled)
+        {
+            _api.BroadcastMessage($"{TargetDummyCommand} is only available when cheats are enabled.");
+            return;
+        }
+
+        int playerIndex = ResolveRealPlayerIndex(senderUnit.Player);
+        if (!senderUnit.IsValid || !IsRealPlayerSlot(playerIndex) || !playerStates.ContainsKey(playerIndex))
+        {
+            _api.BroadcastMessage($"Usage: {TargetDummyCommand} (select one of your units first)");
+            return;
+        }
+
+        DestroyTargetDummies(playerIndex);
+        DestroyGaiaTargetBuilder();
+        RegisterDebugAbilities();
+        HideDebugAbilitiesOnExistingUnits();
+
+        PlayerId player = _api.GetPlayer(playerIndex);
+        var dummies = new List<UnitId>(DraftableUnits.Length);
+
+        for (int index = 0; index < DraftableUnits.Length; index++)
+        {
+            int row = index / TargetDummyRowLength;
+            int column = index % TargetDummyRowLength;
+            float offsetX = (column - (TargetDummyRowLength - 1) * 0.5f) * TargetDummySpacing;
+            float offsetZ = TargetDummyRowOffset + row * TargetDummyRowHeight;
+            Vector3 spawnPosition = ToCoordinatePosition(ArenaCenter, new Vector3(offsetX, 0f, offsetZ));
+
+            UnitId dummy = player.SpawnUnit(DraftableUnits[index], spawnPosition, executeSpawnShader: false, bypassPopulation: true);
+            if (!dummy.IsValid)
+                continue;
+
+            ConfigureTargetDummy(dummy, DraftableUnits[index]);
+            dummies.Add(dummy);
+        }
+
+        SpawnGaiaTargetBuilder();
+
+        targetDummiesByPlayer[playerIndex] = dummies;
+        player.SendMessage($"{dummies.Count} target dummies spawned at the map centre. Select a dummy and use its debug buttons to cycle level and item.");
+    }
+
+    private void SpawnGaiaTargetBuilder()
+    {
+        Vector3 spawnPosition = ToCoordinatePosition(ArenaCenter, new Vector3(0f, 0f, -TargetDummyRowOffset));
+        UnitId builder = _api.GetPlayer(0).SpawnUnit(UnitIds.Builder, spawnPosition, executeSpawnShader: false, bypassPopulation: true);
+        if (!builder.IsValid)
+            return;
+
+        builder.MaxHealth = int.MaxValue;
+        builder.Health = int.MaxValue;
+        builder.Frozen = true;
+        _api.SetUnitFacing(builder, ArenaCenter);
+        _api.EnableUnitAutoCombat(builder, false);
+        gaiaTargetBuilder = builder;
+    }
+
+    private void RestoreGaiaTargetBuilderHealth()
+    {
+        if (!gaiaTargetBuilder.IsValid || gaiaTargetBuilder.IsDead)
+            return;
+
+        gaiaTargetBuilder.Health = int.MaxValue;
+    }
+
+    private void DestroyGaiaTargetBuilder()
+    {
+        if (gaiaTargetBuilder.IsValid && !gaiaTargetBuilder.IsDead)
+            _api.DestroyUnit(gaiaTargetBuilder);
+
+        gaiaTargetBuilder = UnitId.Invalid;
+    }
+
+    private void HandleUnlockTilesCommand()
+    {
+        if (!_api.CheatsEnabled)
+        {
+            _api.BroadcastMessage($"{UnlockTilesCommand} is only available when cheats are enabled.");
+            return;
+        }
+
+        Array.Fill(FoodCapIncreaseMinutes, 0);
+        foodCap = FoodCapIncreaseMinutes.Length;
+        nextFoodCapIncreaseSeconds = GetNextDraftUnlockTimestamp(foodCap);
+
+        foreach (int playerIndex in playerStates.Keys.ToList())
+        {
+            PlayerId player = _api.GetPlayer(playerIndex);
+            player.SetMaxPopulation(foodCap);
+
+            playerStates[playerIndex].NextDraftSeconds = 0;
+            ApplyDraftCooldown(playerIndex);
+        }
+
+        _api.BroadcastMessage($"All {FoodCapIncreaseMinutes.Length} tiles unlocked.");
+    }
+
+    private void RegisterDebugAbilities()
+    {
+        if (debugAbilitiesRegistered)
+            return;
+
+        debugAbilitiesRegistered = true;
+
+        _api.RegisterAbility(DebugCycleLevelAbilityId, "Debug: Cycle Level", "Cycles the target dummy between levels 1 and 9.", string.Empty, true);
+        _api.RegisterAbility(DebugCycleItemAbilityId, "Debug: Cycle Item", "Cycles the target dummy through the map's item pool.", string.Empty, true);
+        _api.RegisterAbility(DebugCycleElementAbilityId, "Debug: Cycle Element", "Cycles the target dummy between Water, Earth and Fire.", string.Empty, true);
+
+        foreach (string unitTypeId in DraftableUnits)
+        {
+            _api.AddUnitTypeAbility(unitTypeId, DebugCycleLevelAbilityId);
+            _api.AddUnitTypeAbility(unitTypeId, DebugCycleItemAbilityId);
+            _api.AddUnitTypeAbility(unitTypeId, DebugCycleElementAbilityId);
+        }
+    }
+
+    private void HideDebugAbilitiesOnExistingUnits()
+    {
+        foreach (int playerIndex in playerStates.Keys)
+        {
+            HideDebugAbilities(_api.GetPlayer(playerIndex).GetUnits());
+            HideDebugAbilities(_api.GetPlayer(playerIndex + ProxyPlayerOffset).GetUnits());
+        }
+    }
+
+    private void HideDebugAbilities(ReadOnlySpan<UnitId> units)
+    {
+        foreach (UnitId unit in units)
+        {
+            if (!targetDummyStates.ContainsKey(unit.UniqueId))
+                HideDebugAbilities(unit);
+        }
+    }
+
+    private void HideDebugAbilities(UnitId unit)
+    {
+        _api.SetAbilityState(unit, DebugCycleLevelAbilityId, true, true);
+        _api.SetAbilityState(unit, DebugCycleItemAbilityId, true, true);
+        _api.SetAbilityState(unit, DebugCycleElementAbilityId, true, true);
+    }
+
+    private void ConfigureTargetDummy(UnitId dummy, string unitTypeId)
+    {
+        var state = new TargetDummyState { UnitTypeId = unitTypeId };
+
+        ApplyHeroStats(dummy, state.Level);
+        dummy.HideHealthAndManaBars = true;
+
+        targetDummyStates[dummy.UniqueId] = state;
+        ApplyTargetDummyItem(dummy, state);
+        ApplyTargetDummyElement(dummy, state);
+        RefreshTargetDummyName(dummy, state);
+    }
+
+    private void ApplyTargetDummyElement(UnitId dummy, TargetDummyState state)
+    {
+        IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(state.UnitTypeId);
+        for (int index = 0; index < abilities.Count; index++)
+        {
+            string abilityId = abilities[index];
+            if (string.IsNullOrEmpty(abilityId))
+                continue;
+
+            if (IsDebugAbility(abilityId))
+            {
+                _api.SetAbilityState(dummy, abilityId, false, false);
+                continue;
+            }
+
+            if (index >= ElementalAbilityCount)
+            {
+                _api.SetAbilityState(dummy, abilityId, true, true);
+                continue;
+            }
+
+            bool isActive = index == (int)state.Element;
+            _api.SetAbilityState(dummy, abilityId, !isActive, !isActive);
+            string abilityName = _api.GetAbilityName(abilityId);
+            if (isActive)
+                _api.SetAbilityTooltip(abilityId, $"[{state.Element}] {abilityName}");
+            else
+                _api.SetAbilityTooltip(abilityId, $"[{(Element)index}] {abilityName} (disabled)");
+        }
+    }
+
+    private static bool IsDebugAbility(string abilityId) =>
+        SlugsEqual(abilityId, DebugCycleLevelAbilityId)
+        || SlugsEqual(abilityId, DebugCycleItemAbilityId)
+        || SlugsEqual(abilityId, DebugCycleElementAbilityId);
+
+    private void ApplyTargetDummyItem(UnitId dummy, TargetDummyState state)
+    {
+        foreach (string itemId in dummy.GetItems().ToList())
+            dummy.RemoveItem(itemId);
+
+        dummy.AddItem(ItemPool[state.ItemIndex % ItemPool.Length], Math.Max(state.Level, 1));
+    }
+
+    private void CycleTargetDummyLevel(UnitId dummy)
+    {
+        if (!targetDummyStates.TryGetValue(dummy.UniqueId, out TargetDummyState? state))
+            return;
+
+        state.Level = state.Level >= TargetDummyMaxLevel ? 1 : state.Level + 1;
+        ApplyHeroStats(dummy, state.Level);
+        ApplyTargetDummyItem(dummy, state);
+        RefreshTargetDummyName(dummy, state);
+    }
+
+    private void CycleTargetDummyItem(UnitId dummy)
+    {
+        if (!targetDummyStates.TryGetValue(dummy.UniqueId, out TargetDummyState? state))
+            return;
+
+        state.ItemIndex = (state.ItemIndex + 1) % ItemPool.Length;
+        ApplyTargetDummyItem(dummy, state);
+        RefreshTargetDummyName(dummy, state);
+    }
+
+    private void CycleTargetDummyElement(UnitId dummy)
+    {
+        if (!targetDummyStates.TryGetValue(dummy.UniqueId, out TargetDummyState? state))
+            return;
+
+        state.Element = (Element)(((int)state.Element + 1) % AllElements.Length);
+        ApplyTargetDummyElement(dummy, state);
+        RefreshTargetDummyName(dummy, state);
+    }
+
+    private void RefreshTargetDummyName(UnitId dummy, TargetDummyState state)
+    {
+        dummy.Name = GetTargetDummyName(state);
+    }
+
+    private string GetTargetDummyName(TargetDummyState state) =>
+        $"{_api.GetUnitName(state.UnitTypeId)} [L{state.Level}]";
+
+    private void DestroyTargetDummies(int playerIndex)
+    {
+        if (!targetDummiesByPlayer.TryGetValue(playerIndex, out List<UnitId>? dummies))
+            return;
+
+        foreach (UnitId dummy in dummies)
+        {
+            targetDummyStates.Remove(dummy.UniqueId);
+
+            if (dummy.IsValid && !dummy.IsDead)
+                _api.DestroyUnit(dummy);
+        }
+
+        dummies.Clear();
+        targetDummiesByPlayer.Remove(playerIndex);
+    }
+
     private void HandlePlayerLeft(int playerIndex)
     {
         int realSlot = ResolveRealPlayerIndex(playerIndex);
@@ -412,6 +731,8 @@ public class MapScript : IWasmModule
                 _api.DestroyUnit(unit);
             }
 
+            DestroyPlayerTileLabels(playerIndex);
+            DestroyTargetDummies(playerIndex);
             playerStates.Remove(playerIndex);
         }
     }
@@ -640,9 +961,48 @@ public class MapScript : IWasmModule
 
             PerformItemReroll(circle);
             ApplyElement(circle, state, true);
+            CreateTileLabel(state);
         }
 
         UpdateDraftOfferAbilities(playerIndex);
+        ApplyDraftCooldown(playerIndex);
+    }
+
+    private void ApplyDraftCooldownToAllPlayers()
+    {
+        foreach (int playerIndex in playerStates.Keys.ToList())
+            ApplyDraftCooldown(playerIndex);
+    }
+
+    private void ApplyDraftCooldown(int playerIndex)
+    {
+        if (!playerStates.TryGetValue(playerIndex, out PlayerState? playerState))
+            return;
+
+        float remainingSeconds = GetDraftCooldownRemainingSeconds(playerState);
+
+        ApplyDraftCooldownToUnit(playerState.Builder, remainingSeconds);
+
+        foreach (UnitId circle in GetPlayerCircles(playerIndex))
+            ApplyDraftCooldownToUnit(circle, remainingSeconds);
+    }
+
+    private void ApplyDraftCooldownToUnit(UnitId unit, float remainingSeconds)
+    {
+        if (!unit.IsValid || unit.IsDead)
+            return;
+
+        foreach (string unitTypeId in DraftableUnits)
+            unit.SetAbilityCooldown(unitTypeId, remainingSeconds);
+    }
+
+    private float GetDraftCooldownRemainingSeconds(PlayerState playerState)
+    {
+        int unlockAtSeconds = GetNextDraftUnlockTimestamp(playerState.DraftedCount);
+        if (unlockAtSeconds == int.MaxValue)
+            return 0f;
+
+        return Math.Max(0f, unlockAtSeconds - gameSecondsElapsed);
     }
 
     private void PerformItemReroll(UnitId unit)
@@ -663,8 +1023,6 @@ public class MapScript : IWasmModule
                 : 1;
             unit.AddItem(newItemId, charges);
         }
-
-        SelectUnitForPlayer(unit.Player, unit);
     }
 
     private UnitId PerformElementReroll(UnitId unit, TileState state)
@@ -705,7 +1063,6 @@ public class MapScript : IWasmModule
         }
 
         ApplyElement(unit, state, true);
-        SelectUnitForPlayer(unit.Player, unit);
         return unit;
     }
 
@@ -720,7 +1077,7 @@ public class MapScript : IWasmModule
 
         IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unit.TemplateID);
         // Ordered abilities: [0]=Water, [1]=Earth, [2]=Fire, [3]=Ultimate
-        for (int i = 0; i < 3 && i < abilities.Count; i++)
+        for (int i = 0; i < ElementalAbilityCount && i < abilities.Count; i++)
         {
             Element element = (Element)i;
             string abilityId = abilities[i];
@@ -738,6 +1095,8 @@ public class MapScript : IWasmModule
             else
                 _api.SetAbilityTooltip(abilityId, $"[{element}] {abilityName} (disabled)");
         }
+
+        RecreateTileLabel(state);
     }
 
     private static void ApplyHeroStats(UnitId unit, int level)
@@ -748,14 +1107,18 @@ public class MapScript : IWasmModule
 
     private void LockTileUnit(UnitId unit)
     {
+        unit.AnimationsFrozen = true;
         unit.Invulnerable = true;
-        unit.Speed = 0f;
-        unit.Damage = 0f;
-        unit.ManaRegen = 0f;
         unit.HideHealthAndManaBars = true;
+        _api.EnableUnitAutoCombat(unit, false);
         _api.SetUnitFacing(unit, ArenaCenter);
-        unit.Stop();
-        unit.HoldPosition();
+        DisableTileUnitAbilities(unit);
+        HideDebugAbilities(unit);
+    }
+
+    private void DisableTileUnitAbilities(UnitId unit)
+    {
+        unit.CommandsFrozen = true;
     }
 
     private void ConfigureDraftedHero(UnitId hero, int level, IEnumerable<string> itemIds, Element element, Vector3 anchorPosition, int playerIndex)
@@ -840,6 +1203,7 @@ public class MapScript : IWasmModule
 
         DrawDraftOffers(playerIndex);
         UnlockPlayerTiles(playerIndex, 1);
+        ApplyDraftCooldown(playerIndex);
     }
 
     private void PerformComputerDraft(int playerIndex)
@@ -861,6 +1225,16 @@ public class MapScript : IWasmModule
             return;
 
         DraftUnit(playerIndex, chosenUnitTypeId, chosenCircle);
+    }
+
+    private void ApplyPlayerTechToProxy(PlayerId player, PlayerId proxyPlayer)
+    {
+        foreach (UpgradeDefinition upgrade in DraftableUpgrades)
+        {
+            int techLevel = player.GetTechLevel(upgrade.TechId);
+            if (techLevel > 0)
+                proxyPlayer.SetTechLevel(upgrade.TechId, techLevel);
+        }
     }
 
     private UnitId PerformHeroReroll(UnitId unit, int playerIndex)
@@ -899,8 +1273,7 @@ public class MapScript : IWasmModule
         PerformItemReroll(unit);
         UnitId currentUnit = PerformElementReroll(unit, state);
         if (state.Kind == TileKind.Hero)
-            currentUnit = PerformHeroReroll(currentUnit, playerIndex);
-        SelectUnitForPlayer(playerIndex, currentUnit);
+            PerformHeroReroll(currentUnit, playerIndex);
     }
 
     private void SwapTileUnits(UnitId caster, UnitId target, int playerIndex)
@@ -948,7 +1321,65 @@ public class MapScript : IWasmModule
             int charges = Math.Max(state.CircleLevel, 1);
             unit.SetItemCharges(itemId, charges);
         }
+
+        RefreshTileLabel(state);
     }
+
+    private void CreateTileLabel(TileState state)
+    {
+        if (state.LabelHandle >= 0 || state.Kind != TileKind.Hero)
+            return;
+
+        state.LabelHandle = _api.CreateStaticText(
+            GetTileLabelText(state),
+            state.AnchorPosition + new Vector3(0f, 2.5f, 0f),
+            GetTileLabelColor(state),
+            TileLabelFontSize);
+    }
+
+    private void RefreshTileLabel(TileState state)
+    {
+        if (state.LabelHandle < 0)
+        {
+            CreateTileLabel(state);
+            return;
+        }
+
+        _api.SetStaticText(state.LabelHandle, GetTileLabelText(state));
+    }
+
+    private void RecreateTileLabel(TileState state)
+    {
+        if (state.Kind != TileKind.Hero)
+            return;
+
+        if (state.LabelHandle >= 0)
+        {
+            _api.DestroyStaticText(state.LabelHandle);
+            state.LabelHandle = -1;
+        }
+
+        CreateTileLabel(state);
+    }
+
+    private void DestroyPlayerTileLabels(int playerIndex)
+    {
+        foreach (KeyValuePair<int, TileState> entry in tileStatesByUnitId)
+        {
+            TileState state = entry.Value;
+            if (state.PlayerIndex != playerIndex || state.LabelHandle < 0)
+                continue;
+
+            _api.DestroyStaticText(state.LabelHandle);
+            state.LabelHandle = -1;
+        }
+    }
+
+    private static string GetTileLabelText(TileState state) =>
+        Math.Max(state.CircleLevel, 1).ToString();
+
+    private static Vector3 GetTileLabelColor(TileState state) =>
+        ElementColors.TryGetValue(state.Element, out Vector3 color) ? color : Vector3.One;
 
     private void HandleSpawnTimerTick()
     {
@@ -974,14 +1405,76 @@ public class MapScript : IWasmModule
             float secondsUntilSpawn = playerState.SpawnAtSeconds - roundClockSeconds;
             bool isCountdownVisible = !playerState.HasSpawnedThisRound && secondsUntilSpawn <= WaveCountdownVisibleSeconds;
             if (isCountdownVisible)
+            {
                 _api.SetStaticText(playerState.CountdownTextHandle, ((int)MathF.Ceiling(secondsUntilSpawn)).ToString());
 
-            if (playerState.IsCountdownVisible != isCountdownVisible)
+                if (!playerState.IsCountdownVisible)
+                {
+                    playerState.IsCountdownVisible = true;
+                    _api.SetStaticTextColor(playerState.CountdownTextHandle, ResolveWaveTextColor(entry.Key));
+                    _api.SetStaticTextVisible(playerState.CountdownTextHandle, true);
+                }
+            }
+            else if (playerState.IsCountdownVisible)
             {
-                playerState.IsCountdownVisible = isCountdownVisible;
-                _api.SetStaticTextVisible(playerState.CountdownTextHandle, isCountdownVisible);
+                playerState.IsCountdownVisible = false;
+                _api.SetStaticTextVisible(playerState.CountdownTextHandle, false);
             }
         }
+
+        AdvanceWaveRetargeting();
+    }
+
+    private void AdvanceWaveRetargeting()
+    {
+        float arrivalRadiusSquared = WaveArrivalRadius * WaveArrivalRadius;
+
+        foreach (KeyValuePair<int, TileState> entry in waveUnitStatesByUnitId)
+        {
+            TileState state = entry.Value;
+            if (state.RetargetedToCenter)
+                continue;
+
+            UnitId unit = entry.Key;
+            if (unit.IsDead)
+                continue;
+
+            if (Vector3.DistanceSquared(unit.Position, state.AssignedDestination) > arrivalRadiusSquared)
+                continue;
+
+            unit.AttackMove(ArenaCenter);
+            state.AssignedDestination = ArenaCenter;
+            state.RetargetedToCenter = true;
+        }
+    }
+
+    private int ResolveRoundTargetPlayerIndex(int playerIndex) =>
+        roundTargetSlotOrder[(playerIndex - 1) % roundTargetSlotOrder.Count];
+
+    private bool TryResolveWaveTargetPlayerIndex(int playerIndex, out int targetPlayerIndex)
+    {
+        targetPlayerIndex = ResolveRoundTargetPlayerIndex(playerIndex);
+        if (targetPlayerIndex == playerIndex)
+            return false;
+
+        if (!playerStates.ContainsKey(targetPlayerIndex) || !_api.GetPlayer(targetPlayerIndex).IsActive)
+            return false;
+
+        return true;
+    }
+
+    private Vector3 ResolveWaveTargetPosition(int playerIndex)
+    {
+        return TryResolveWaveTargetPlayerIndex(playerIndex, out int targetPlayerIndex)
+            ? playerStates[targetPlayerIndex].SpawnPosition
+            : ArenaCenter;
+    }
+
+    private Vector3 ResolveWaveTextColor(int playerIndex)
+    {
+        return TryResolveWaveTargetPlayerIndex(playerIndex, out int targetPlayerIndex)
+            ? _api.GetPlayer(targetPlayerIndex).Color
+            : ColorWhite;
     }
 
     private void StartWaveRound()
@@ -989,6 +1482,7 @@ public class MapScript : IWasmModule
         waveNumber++;
 
         _api.Shuffle(spawnSlotOrder);
+        _api.Shuffle(roundTargetSlotOrder);
 
         int slotCursor = 0;
         foreach (int playerIndex in playerStates.Keys.OrderBy(index => index))
@@ -1017,13 +1511,9 @@ public class MapScript : IWasmModule
 
         List<UnitId> draftedUnits = GetPlayerPlacedHeroes(playerIndex).ToList();
         Vector3 tileCenter = GetPlayerOffset(playerState.BasePosition, TileOffset);
+        Vector3 waveTargetPosition = ResolveWaveTargetPosition(playerIndex);
 
-        foreach (UpgradeDefinition upgrade in DraftableUpgrades)
-        {
-            int techLevel = player.GetTechLevel(upgrade.TechId);
-            if (techLevel > 0)
-                proxyPlayer.SetTechLevel(upgrade.TechId, techLevel);
-        }
+        ApplyPlayerTechToProxy(player, proxyPlayer);
 
         foreach (UnitId draftedUnit in draftedUnits)
         {
@@ -1038,6 +1528,9 @@ public class MapScript : IWasmModule
 
             foreach (UpgradeDefinition upgrade in DraftableUpgrades)
             {
+                if (string.IsNullOrEmpty(upgrade.AbilityId))
+                    continue;
+
                 int techLevel = player.GetTechLevel(upgrade.TechId);
                 _api.SetAbilityState(clone, upgrade.AbilityId, techLevel <= 0, techLevel <= 0);
             }
@@ -1050,14 +1543,41 @@ public class MapScript : IWasmModule
 
             Element element = tileState?.Element ?? Element.Water;
 
-            var cloneState = new TileState { Kind = TileKind.Hero, Element = element, ElementAssigned = true, PlayerIndex = proxyPlayerIndex };
+            var cloneState = new TileState
+            {
+                Kind = TileKind.Hero,
+                Element = element,
+                ElementAssigned = true,
+                PlayerIndex = proxyPlayerIndex,
+                AssignedDestination = waveTargetPosition,
+                RetargetedToCenter = waveTargetPosition == ArenaCenter
+            };
             waveUnitStatesByUnitId[clone.UniqueId] = cloneState;
             ApplyElement(clone, cloneState, false);
 
+            HideDebugAbilities(clone);
             _api.SetUnitFacing(clone, ArenaCenter);
-            clone.AttackMove(ArenaCenter);
+            clone.AttackMove(waveTargetPosition);
             playerState.SpawnedUnitsPerWave[waveNumber].Add(clone);
             waveUnitSpawnTimes[clone.UniqueId] = gameSecondsElapsed;
+        }
+    }
+
+    private void PerformComputerResearch(int playerIndex)
+    {
+        PlayerId player = _api.GetPlayer(playerIndex);
+
+        foreach (UpgradeResearchRule rule in UpgradeResearchRules)
+        {
+            if (player.GetTechLevel(rule.TechId) >= rule.MaxLevel)
+                continue;
+
+            if (player.Gold < rule.CostGold)
+                continue;
+
+            player.AdjustGold(-rule.CostGold);
+            player.AddTechLevel(rule.TechId);
+            return;
         }
     }
 
@@ -1077,6 +1597,9 @@ public class MapScript : IWasmModule
                 {
                     PerformComputerDraft(playerIndex);
                 }
+
+                if (gameSecondsElapsed % ComputerResearchIntervalSeconds == 0)
+                    PerformComputerResearch(playerIndex);
             }
         }
     }
@@ -1088,6 +1611,7 @@ public class MapScript : IWasmModule
 
         foodCap++;
         nextFoodCapIncreaseSeconds = GetNextDraftUnlockTimestamp(foodCap);
+        ApplyDraftCooldownToAllPlayers();
 
         foreach (int playerIndex in playerStates.Keys.ToList())
         {
@@ -1182,7 +1706,25 @@ public class MapScript : IWasmModule
         int playerIndex = ResolveRealPlayerIndex(caster.Player);
         PlayerId player = _api.GetPlayer(playerIndex);
 
-        UpgradeDefinition? upgrade = DraftableUpgrades.FirstOrDefault(u => SlugsEqual(u.AbilityId, spellId));
+        if (SlugsEqual(spellId, DebugCycleLevelAbilityId))
+        {
+            CycleTargetDummyLevel(caster);
+            return;
+        }
+
+        if (SlugsEqual(spellId, DebugCycleItemAbilityId))
+        {
+            CycleTargetDummyItem(caster);
+            return;
+        }
+
+        if (SlugsEqual(spellId, DebugCycleElementAbilityId))
+        {
+            CycleTargetDummyElement(caster);
+            return;
+        }
+
+        UpgradeDefinition? upgrade = DraftableUpgrades.FirstOrDefault(u => !string.IsNullOrEmpty(u.AbilityId) && SlugsEqual(u.AbilityId, spellId));
         if (upgrade != null)
         {
             player.AddTechLevel(upgrade.TechId);
@@ -1488,10 +2030,10 @@ public class MapScript : IWasmModule
         }
     }
 
-    private void UpdateAliveUnitsLeaderboard()
+    private void UpdateLeaderboards()
     {
-        _api.ClearLeaderboard();
-        _api.SetLeaderboardVisible("Alive Units", true);
+        _api.SetLeaderboardBoard(AliveUnitsLeaderboardId, "Alive Units", true);
+        _api.ClearLeaderboardBoard(AliveUnitsLeaderboardId);
 
         var rankedPlayers = playerStates.Keys
             .Select(playerIndex =>
@@ -1505,7 +2047,38 @@ public class MapScript : IWasmModule
         foreach ((int playerIndex, int aliveCount) in rankedPlayers)
         {
             PlayerId player = _api.GetPlayer(playerIndex);
-            _api.AddLeaderboardRow(player.Name, aliveCount.ToString());
+            _api.AddLeaderboardBoardRow(AliveUnitsLeaderboardId, -1, string.Empty, player.Name, aliveCount.ToString());
+        }
+
+        UpdateDamageLeaderboard();
+    }
+
+    private void UpdateDamageLeaderboard()
+    {
+        _api.SetLeaderboardBoard(DamageLeaderboardId, "Damage", true);
+        _api.ClearLeaderboardBoard(DamageLeaderboardId);
+
+        foreach (KeyValuePair<int, PlayerState> playerEntry in playerStates)
+        {
+            _damageLeaderboardEntries.Clear();
+
+            foreach (KeyValuePair<string, Dictionary<int, float>> unitEntry in playerEntry.Value.DamageDealtPerUnitTypePerWave)
+            {
+                if (!unitEntry.Value.TryGetValue(waveNumber, out float damage) || damage <= 0f)
+                    continue;
+
+                _damageLeaderboardEntries.Add((string.Empty, unitEntry.Key, damage));
+            }
+
+            _damageLeaderboardEntries.Sort((left, right) => right.Damage.CompareTo(left.Damage));
+
+            string playerName = _api.GetPlayer(playerEntry.Key).Name;
+            _api.SetLeaderboardBoardGroup(DamageLeaderboardId, playerEntry.Key, playerName);
+
+            foreach ((_, string unitTypeId, float damage) in _damageLeaderboardEntries)
+            {
+                _api.AddLeaderboardBoardRow(DamageLeaderboardId, playerEntry.Key, playerName, _api.GetUnitName(unitTypeId), ((int)damage).ToString());
+            }
         }
     }
 

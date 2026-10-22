@@ -7,7 +7,7 @@
     "Author": null,
     "SuggestedPlayers": null,
     "MinimapImage": null,
-    "ShroudType": null,
+    "ShroudType": "Revealed",
     "WeatherType": null,
     "TerrainBaseHeight": null,
     "ShadowIntensity": null,
@@ -24,7 +24,10 @@
     "LoadingTitle": null,
     "LoadingSubtitle": null,
     "LoadingBodyText": null,
-    "HowToPlayInstructions": null,
+    "HowToPlayInstructions": [
+      "Chat commands: -target_dummy spawns an invulnerable debug row for the selected player, -addai [slot] adds a computer player, -kick <slot> removes a player.",
+      "Select a target dummy to use its Debug: Cycle Level and Debug: Cycle Item buttons while testing abilities."
+    ],
     "HowToPlayObjective": null,
     "Version": "1.0.0",
     "Changelog": null,
@@ -34,7 +37,8 @@
     "MapType": null,
     "TestAiPlayerCount": 1,
     "TestRandomizeSlots": false,
-    "TestRandomSeed": null
+    "TestRandomSeed": null,
+    "PlayablePlayerSlots": 12
   },
   "Dependencies": [],
   "Templates": {
@@ -104,7 +108,6 @@
           "arcane_missiles",
           "spell_shield",
           "mana_drain",
-          "time_dilation",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -120,7 +123,29 @@
           "weapon/arcane_seeker"
         ],
         "ProjectileModelPath": "mech_warrior_unit_8.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -200,7 +225,6 @@
           "star_fall",
           "astral_grace",
           "cosmic_binding",
-          "supernova_burst",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -216,7 +240,29 @@
           "weapon/stellar_glaive"
         ],
         "ProjectileModelPath": "armored_warrior_hero_5.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -296,7 +342,6 @@
           "frenzy_slash",
           "blood_lust",
           "sanguine_leap",
-          "unending_rage",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -312,7 +357,29 @@
           "weapon/sanguine_scythe"
         ],
         "ProjectileModelPath": "armored_warrior_hero_3.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -417,7 +484,29 @@
         "Targets": null,
         "Weapons": null,
         "ProjectileModelPath": null,
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -497,7 +586,6 @@
           "temporal_strike",
           "haste_field",
           "stasis_bubble",
-          "time_reversal",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -513,7 +601,29 @@
           "weapon/temporal_pendulum"
         ],
         "ProjectileModelPath": "chinese_mystic_warrior.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -593,7 +703,6 @@
           "wave_crash",
           "coral_shield",
           "tidal_pull",
-          "whirlpool_surge",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -609,7 +718,29 @@
           "weapon/coral_harpoon"
         ],
         "ProjectileModelPath": "armored_warrior_33.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -689,7 +820,6 @@
           "prism_beam",
           "crystal_ward",
           "refractive_shield",
-          "crystalline_explosion",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -705,7 +835,29 @@
           "weapon/prism_shard"
         ],
         "ProjectileModelPath": "ancient_warrior_hero.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -785,7 +937,6 @@
           "sand_bolt",
           "quick_roll",
           "sandstorm_veil",
-          "quicksand_trap",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -801,7 +952,29 @@
           "weapon/sandstorm_shortbow"
         ],
         "ProjectileModelPath": "frost_mage_warrior.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -881,7 +1054,6 @@
           "pyro_blast",
           "blazing_shield",
           "infernal_surge",
-          "supernova",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -897,7 +1069,29 @@
           "weapon/pyro_orb"
         ],
         "ProjectileModelPath": "fantasy_warrior_unit_10.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -977,7 +1171,6 @@
           "ice_shard",
           "glacial_barrier",
           "frost_nova",
-          "absolute_zero",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -993,7 +1186,29 @@
           "weapon/glacial_icicle"
         ],
         "ProjectileModelPath": "ice_warrior_unit.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1073,7 +1288,6 @@
           "heavy_strike",
           "battle_cry",
           "iron_will",
-          "war_stomp",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1089,7 +1303,29 @@
           "weapon/iron_cleaver"
         ],
         "ProjectileModelPath": "armored_warrior_humanoid.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1169,7 +1405,6 @@
           "radiant_fist",
           "mantra_of_healing",
           "sanctuary_aura",
-          "divine_intervention",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1185,7 +1420,29 @@
           "weapon/radiant_cesti"
         ],
         "ProjectileModelPath": "ancient_warrior_hero.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1265,7 +1522,6 @@
           "poison_blade",
           "shadow_step",
           "smoke_screen",
-          "death_mark",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1281,7 +1537,29 @@
           "weapon/nether_stiletto"
         ],
         "ProjectileModelPath": "fantasy_armored_warrior_10.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1361,7 +1639,6 @@
           "searing_aura",
           "hardened_carapace",
           "challengers_roar",
-          "shadow_veil",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1377,7 +1654,29 @@
           "weapon/shadow_kunai"
         ],
         "ProjectileModelPath": "warrior_hero_unit_8.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1457,7 +1756,6 @@
           "gloom_bolt",
           "veil_of_shadows",
           "soul_tether",
-          "abyssal_realm",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1473,7 +1771,29 @@
           "weapon/void_spindle"
         ],
         "ProjectileModelPath": "armored_knight_unit.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1553,7 +1873,6 @@
           "boulder_toss",
           "hardened_crust",
           "seismic_pulse",
-          "granite_avatar",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1569,7 +1888,29 @@
           "weapon/granite_crusher"
         ],
         "ProjectileModelPath": "ice_golem_warrior_2.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1649,7 +1990,6 @@
           "chain_lightning",
           "wind_step",
           "static_field",
-          "tempest_cataclysm",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1665,7 +2005,29 @@
           "weapon/thunder_javelin"
         ],
         "ProjectileModelPath": "armored_warrior_female.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1745,7 +2107,6 @@
           "solar_flare",
           "radiant_blessing",
           "blinding_ray",
-          "dawn_judgement",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1761,7 +2122,29 @@
           "weapon/solar_lance"
         ],
         "ProjectileModelPath": "warrior_hero.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1841,7 +2224,6 @@
           "gale_strike",
           "wind_barrier",
           "cyclone_kick",
-          "tornado_storm",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1857,7 +2239,29 @@
           "weapon/zephyr_chakram"
         ],
         "ProjectileModelPath": "warrior_soldier.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1937,7 +2341,6 @@
           "shield_bash",
           "fortress_stance",
           "banner_of_valor",
-          "earth_shatter",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1953,7 +2356,29 @@
           "weapon/vanguard_halberd"
         ],
         "ProjectileModelPath": "fantasy_warrior_hero_3.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -2033,7 +2458,6 @@
           "tangle_vines",
           "soothing_bloom",
           "thorn_armor",
-          "wrath_of_nature",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -2049,7 +2473,29 @@
           "weapon/bramble_thorn"
         ],
         "ProjectileModelPath": "frost_warrior_unit.rmesh",
-        "Animations": null,
+        "Animations": {
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -2475,8 +2921,11 @@
         "DespillPlayerColor": false,
         "BuildOptions": null,
         "IsHero": false,
-        "Abilities": [
-          "upgrade_critical_strike"
+        "Abilities": [],
+        "Upgrades": [
+          "upgrade/critical_strike",
+          "upgrade/iron_plating",
+          "upgrade/swift_stride"
         ],
         "XpBounty": 0,
         "PathingCapabilities": null,
@@ -2490,7 +2939,6 @@
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
-        "Upgrades": null,
         "StatusEffects": null,
         "SoundEvents": null,
         "SpawnShader": null,
@@ -2503,17 +2951,17 @@
     ],
     "Resources": [
       {
+        "MaxCapacity": 0,
+        "HarvestRate": 0,
+        "GrowthRate": 0,
+        "MaxWorkers": 0,
+        "Scale": 2.75,
         "TemplateID": "resource/coniferous_tree_1",
         "Name": "Tree",
         "Description": "",
         "ModelPath": "bull_horn_ornament.rmesh",
         "PortraitModelPath": "fantasy_tower_3.rmesh",
         "VisualMode": "Mesh",
-        "MaxCapacity": 0,
-        "HarvestRate": 0,
-        "GrowthRate": 0,
-        "MaxWorkers": 0,
-        "Scale": 2.75,
         "YOffset": 2.7491,
         "CollisionCircle": 1,
         "Brightness": 0.5,
@@ -2527,17 +2975,17 @@
         "DespawnShader": null
       },
       {
+        "MaxCapacity": 0,
+        "HarvestRate": 0,
+        "GrowthRate": 0,
+        "MaxWorkers": 0,
+        "Scale": 2.75,
         "TemplateID": "resource/palm_tree",
         "Name": "Palm Tree",
         "Description": "",
         "ModelPath": "frost_pine_tree.rmesh",
         "PortraitModelPath": "banana_plant.rmesh",
         "VisualMode": "Mesh",
-        "MaxCapacity": 0,
-        "HarvestRate": 0,
-        "GrowthRate": 0,
-        "MaxWorkers": 0,
-        "Scale": 2.75,
         "YOffset": 2.7498,
         "CollisionCircle": 1,
         "Brightness": 0.5,
@@ -2553,13 +3001,13 @@
     ],
     "Props": [
       {
+        "Scale": 1.25,
         "TemplateID": "prop/crystal_cluster_29",
         "Name": "Crystals",
         "Description": "",
         "ModelPath": "crystal_shard_prop_16.rmesh",
         "PortraitModelPath": "crystal_cluster_41.rmesh",
         "VisualMode": "Mesh",
-        "Scale": 1.25,
         "YOffset": 1.2500001,
         "CollisionCircle": 1,
         "Brightness": 0.5,
@@ -2573,13 +3021,13 @@
         "DespawnShader": null
       },
       {
+        "Scale": 1.25,
         "TemplateID": "prop/spiked_wooden_stake",
         "Name": "Spike Pole",
         "Description": "",
         "ModelPath": "wooden_fence.rmesh",
         "PortraitModelPath": "spiked_fence_segment.rmesh",
         "VisualMode": "Mesh",
-        "Scale": 1.25,
         "YOffset": 1.2000002,
         "CollisionCircle": 0.45000002,
         "Brightness": 0.5,
@@ -2594,50 +3042,6 @@
       }
     ],
     "Abilities": [
-      {
-        "TemplateID": "ability/absolute_zero",
-        "Name": "Absolute Zero",
-        "Description": "Ultimate ability of Frost Warden. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "flaming_gun.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "frost_veil_sheet.rtex",
-        "CastSound": "spell_cast_hum.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
-      },
-      {
-        "TemplateID": "ability/abyssal_realm",
-        "Name": "Abyssal Realm",
-        "Description": "Ultimate ability of Shadow Weaver. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "purple_lightning_fist.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "mineral_geology_rock_grit.rtex",
-        "CastSound": "blade_armor_clink.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
-      },
       {
         "TemplateID": "ability/ancestral_spirit",
         "Name": "Ancestral Spirit",
@@ -2947,28 +3351,6 @@
         "Hotkey": "E"
       },
       {
-        "TemplateID": "ability/crystalline_explosion",
-        "Name": "Crystalline Explosion",
-        "Description": "Ultimate ability of Crystal Weaver. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "crystal_shield.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "shadow_sting_sheet.rtex",
-        "CastSound": "ancient_ruins_Death.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
-      },
-      {
         "TemplateID": "ability/cyclone_kick",
         "Name": "Cyclone Kick",
         "Description": "Heavy tactical spell of Tempest Chaser. Deals 90 damage in area.",
@@ -2990,94 +3372,7 @@
         "GridY": 0,
         "Hotkey": "R"
       },
-      {
-        "TemplateID": "ability/dawn_judgement",
-        "Name": "Dawn Judgement",
-        "Description": "Ultimate ability of Sun Priest. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "eagle_ring.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "mineral_geology_spark_crystal.rtex",
-        "CastSound": "scroll_of_town_portal.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
-      },
-      {
-        "TemplateID": "ability/death_mark",
-        "Name": "Death Mark",
-        "Description": "Ultimate ability of Nether Assassin. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "golden_coin_fragment.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "death_spark_sheet.rtex",
-        "CastSound": "grass_rustle_soft.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
-      },
-      {
-        "TemplateID": "ability/divine_intervention",
-        "Name": "Divine Intervention",
-        "Description": "Ultimate ability of Lightbringer Monk. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "glowing_magic_sword.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "mineral_geology_glow.rtex",
-        "CastSound": "chain_link_rattle.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
-      },
-      {
-        "TemplateID": "ability/earth_shatter",
-        "Name": "Earth Shatter",
-        "Description": "Ultimate ability of Vanguard Sentinel. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "glowing_mushroom.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "weapon_fins_arcane_wing.rtex",
-        "CastSound": "chainmail_rattle_light.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
-      },
+
       {
         "TemplateID": "ability/fireball",
         "Name": "Bola de fuego",
@@ -3231,28 +3526,6 @@
         "GridX": 0,
         "GridY": 0,
         "Hotkey": "W"
-      },
-      {
-        "TemplateID": "ability/granite_avatar",
-        "Name": "Granite Avatar",
-        "Description": "Ultimate ability of Stone Guardian. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "purple_magic_spell.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "mineral_geology_gem_glint.rtex",
-        "CastSound": "assassin_LastHit.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/hardened_carapace",
@@ -3585,28 +3858,6 @@
         "Hotkey": "E"
       },
       {
-        "TemplateID": "ability/quicksand_trap",
-        "Name": "Quicksand Trap",
-        "Description": "Ultimate ability of Dune Skirmisher. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "ice_skeleton_king.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "mineral_geology_spark_crystal.rtex",
-        "CastSound": "ancient_ruins_Death.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
-      },
-      {
         "TemplateID": "ability/radiant_blessing",
         "Name": "Radiant Blessing",
         "Description": "Tactical defense spell of Sun Priest. Protects or boosts nearby allies.",
@@ -3827,28 +4078,6 @@
         "Hotkey": "E"
       },
       {
-        "TemplateID": "ability/shadow_veil",
-        "Name": "Shadow Veil",
-        "Description": "Ultimate ability of Shadow Strider. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "battering_ram.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "shadow_streak_sheet.rtex",
-        "CastSound": "burning_torch_crackle.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
-      },
-      {
         "TemplateID": "ability/shield_bash",
         "Name": "Shield Bash",
         "Description": "Basic ability of Vanguard Sentinel. Deals 45 damage to enemy target.",
@@ -4047,50 +4276,6 @@
         "Hotkey": "R"
       },
       {
-        "TemplateID": "ability/supernova",
-        "Name": "Supernova",
-        "Description": "Ultimate ability of Flame Archon. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "flame_knight.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "soul_bind_sheet.rtex",
-        "CastSound": "gate_iron_swing.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
-      },
-      {
-        "TemplateID": "ability/supernova_burst",
-        "Name": "Supernova Burst",
-        "Description": "Ultimate ability of Astral Paragon. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "scroll_of_magic.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "wind_whirl_sheet.rtex",
-        "CastSound": "gold_collect_jingle.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
-      },
-      {
         "TemplateID": "ability/tangle_vines",
         "Name": "Tangle Vines",
         "Description": "Basic ability of Verdant Druid. Deals 45 damage to enemy target.",
@@ -4111,28 +4296,6 @@
         "GridX": 0,
         "GridY": 0,
         "Hotkey": "W"
-      },
-      {
-        "TemplateID": "ability/tempest_cataclysm",
-        "Name": "Tempest Cataclysm",
-        "Description": "Ultimate ability of Storm Caller. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "eagle_ring_1.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "mineral_geology_amber_dust.rtex",
-        "CastSound": "ancient_ruin_drone.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/temporal_strike",
@@ -4200,94 +4363,7 @@
         "GridY": 0,
         "Hotkey": "R"
       },
-      {
-        "TemplateID": "ability/time_dilation",
-        "Name": "Time Dilation",
-        "Description": "Ultimate ability of Arcane Scholar. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "lightning_spell.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "arcane_spike_sheet.rtex",
-        "CastSound": "alert_warning_buzz.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
-      },
-      {
-        "TemplateID": "ability/time_reversal",
-        "Name": "Time Reversal",
-        "Description": "Ultimate ability of Chrono Weaver. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "shield_of_light.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "mineral_geology_crystal_shard.rtex",
-        "CastSound": "burning_village_crackle.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
-      },
-      {
-        "TemplateID": "ability/tornado_storm",
-        "Name": "Tornado Storm",
-        "Description": "Ultimate ability of Tempest Chaser. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "engineer_goggles.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "mineral_geology_spark_crystal.rtex",
-        "CastSound": "chain_link_rattle.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
-      },
-      {
-        "TemplateID": "ability/unending_rage",
-        "Name": "Unending Rage",
-        "Description": "Ultimate ability of Blood Berserker. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "lightning_castle.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "soul_drain_sheet.rtex",
-        "CastSound": "armor_plate_clink.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
-      },
+
       {
         "TemplateID": "ability/veil_of_shadows",
         "Name": "Veil Of Shadows",
@@ -4311,28 +4387,6 @@
         "Hotkey": "E"
       },
       {
-        "TemplateID": "ability/war_stomp",
-        "Name": "War Stomp",
-        "Description": "Ultimate ability of Iron Warlord. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "dwarf_warlord.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "mineral_geology_crust_crack.rtex",
-        "CastSound": "target_dummy.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
-      },
-      {
         "TemplateID": "ability/wave_crash",
         "Name": "Wave Crash",
         "Description": "Basic ability of Coral Vanguard. Deals 45 damage to enemy target.",
@@ -4353,28 +4407,6 @@
         "GridX": 0,
         "GridY": 0,
         "Hotkey": "W"
-      },
-      {
-        "TemplateID": "ability/whirlpool_surge",
-        "Name": "Whirlpool Surge",
-        "Description": "Ultimate ability of Coral Vanguard. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "floating_stump.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "wind_spin_sheet.rtex",
-        "CastSound": "griffin.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/wind_barrier",
@@ -4419,28 +4451,6 @@
         "GridX": 1,
         "GridY": 0,
         "Hotkey": "E"
-      },
-      {
-        "TemplateID": "ability/wrath_of_nature",
-        "Name": "Wrath Of Nature",
-        "Description": "Ultimate ability of Verdant Druid. Unleashes a massive effect in target area.",
-        "AbilityType": "target_spell",
-        "IconPath": "flaming_skull_1.rtex",
-        "ManaCost": 120,
-        "Cooldown": 75,
-        "TargetRange": 12,
-        "VisualEffect": "mineral_geology_spark_crystal.rtex",
-        "CastSound": "mage_spell_incant.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 8,
-        "Damage": 180,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 3,
-        "GridY": 0,
-        "Hotkey": "T"
       },
       {
         "TemplateID": "ability/reroll_item",
@@ -6623,7 +6633,77 @@
         }
       }
     ],
-    "Upgrades": [],
+"Upgrades": [
+      {
+        "TemplateID": "upgrade/critical_strike",
+        "Name": "Critical Strike",
+        "Description": "Sharpened weapon edges grant every wave unit bonus attack damage.",
+        "IconPath": null,
+        "Hotkey": "C",
+        "CostGold": 80,
+        "CostWood": 0,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 3,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "Attack",
+            "Type": "Flat",
+            "Value": 4,
+            "WASMFunctionName": "",
+            "PerLevelScaling": 4
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/iron_plating",
+        "Name": "Iron Plating",
+        "Description": "Reinforced armour plating reduces incoming damage for every wave unit.",
+        "IconPath": null,
+        "Hotkey": "P",
+        "CostGold": 70,
+        "CostWood": 0,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 2,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "Armor",
+            "Type": "Flat",
+            "Value": 2,
+            "WASMFunctionName": "",
+            "PerLevelScaling": 2
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/swift_stride",
+        "Name": "Swift Stride",
+        "Description": "Lighter boots let every wave unit close the distance faster.",
+        "IconPath": null,
+        "Hotkey": "S",
+        "CostGold": 60,
+        "CostWood": 0,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 3,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "MovementSpeed",
+            "Type": "Percentage",
+            "Value": 1.08,
+            "WASMFunctionName": "",
+            "PerLevelScaling": 0.04
+          }
+        ]
+      }
+    ],
     "Items": [
       {
         "TemplateID": "item/assassin_dagger",
