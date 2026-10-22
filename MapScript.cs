@@ -1285,14 +1285,7 @@ public class MapScript : IWasmModule
     }
 
     private static string GetTileLabelText(TileState state) =>
-        $"{GetElementGlyph(state.Element)}{Math.Max(state.CircleLevel, 1)}";
-
-    private static string GetElementGlyph(Element element) => element switch
-    {
-        Element.Water => "W",
-        Element.Earth => "E",
-        _ => "F"
-    };
+        Math.Max(state.CircleLevel, 1).ToString();
 
     private static Vector3 GetTileLabelColor(TileState state) =>
         ElementColors.TryGetValue(state.Element, out Vector3 color) ? color : Vector3.One;
