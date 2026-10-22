@@ -105,6 +105,7 @@ public class MapScript : IWasmModule
     private const string DebugCycleItemAbilityId = "ability/debug_cycle_item";
     private const string DebugCycleElementAbilityId = "ability/debug_cycle_element";
     private const string TargetDummyCommand = "-target_dummy";
+    private const string UnlockTilesCommand = "-unlockTiles";
 
     private const string SoulSiphonAbilityId = "ability/soul_siphon";
     private const string HealingWaveAbilityId = "ability/healing_wave";
@@ -117,9 +118,6 @@ public class MapScript : IWasmModule
 
     private static readonly Vector3 ColorWhite = Vector3.One;
 
-    // Round routing: the player in slot RoundTargetSlotOrder[n] attacks the player listed here.
-    private static readonly int[] RoundTargetSlotOrder = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1 };
-
     private static readonly Dictionary<Element, Vector3> ElementColors = new()
     {
         [Element.Water] = new Vector3(0f, 0f, 1f),
@@ -129,7 +127,7 @@ public class MapScript : IWasmModule
 
     private static readonly Element[] AllElements = Enum.GetValues<Element>();
 
-    private static readonly int[] FoodCapIncreaseMinutes = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    private static readonly int[] FoodCapIncreaseMinutes = { 0, 1, 2, 3, 5, 8, 12, 17, 23 };
 
     private static readonly string[] ItemPool =
     {
@@ -201,6 +199,7 @@ public class MapScript : IWasmModule
     private float roundClockSeconds;
     private readonly List<float> spawnOffsetSlots = new();
     private readonly List<int> spawnSlotOrder = new();
+    private readonly List<int> roundTargetSlotOrder = new();
     private int gameSecondsElapsed;
     private int foodCap;
     private int nextFoodCapIncreaseSeconds;
@@ -232,6 +231,9 @@ public class MapScript : IWasmModule
             spawnOffsetSlots.Add(slotIndex * (float)WaveIntervalSeconds / SpawnSlotCount);
             spawnSlotOrder.Add(slotIndex);
         }
+
+        for (int playerIndex = 1; playerIndex <= RealPlayerSlotCount; playerIndex++)
+            roundTargetSlotOrder.Add(playerIndex);
 
         _api.ScheduleRepeatingTimer(1f, HandleSpawnTimerTick);
         _api.ScheduleRepeatingTimer(1f, HandleGameTimerTick);
@@ -401,6 +403,10 @@ public class MapScript : IWasmModule
         {
             HandleTargetDummyCommand(senderUnit);
         }
+        else if (trimmed.StartsWith(UnlockTilesCommand, StringComparison.OrdinalIgnoreCase))
+        {
+            HandleUnlockTilesCommand();
+        }
         else if (trimmed.StartsWith("-addai", StringComparison.OrdinalIgnoreCase))
         {
             var parts = trimmed.Split(' ', StringSplitOptions.RemoveEmptyEntries);
@@ -514,6 +520,30 @@ public class MapScript : IWasmModule
             _api.DestroyUnit(gaiaTargetBuilder);
 
         gaiaTargetBuilder = UnitId.Invalid;
+    }
+
+    private void HandleUnlockTilesCommand()
+    {
+        if (!_api.CheatsEnabled)
+        {
+            _api.BroadcastMessage($"{UnlockTilesCommand} is only available when cheats are enabled.");
+            return;
+        }
+
+        Array.Fill(FoodCapIncreaseMinutes, 0);
+        foodCap = FoodCapIncreaseMinutes.Length;
+        nextFoodCapIncreaseSeconds = GetNextDraftUnlockTimestamp(foodCap);
+
+        foreach (int playerIndex in playerStates.Keys.ToList())
+        {
+            PlayerId player = _api.GetPlayer(playerIndex);
+            player.SetMaxPopulation(foodCap);
+
+            playerStates[playerIndex].NextDraftSeconds = 0;
+            ApplyDraftCooldown(playerIndex);
+        }
+
+        _api.BroadcastMessage($"All {FoodCapIncreaseMinutes.Length} tiles unlocked.");
     }
 
     private void RegisterDebugAbilities()
@@ -1418,8 +1448,8 @@ public class MapScript : IWasmModule
         }
     }
 
-    private static int ResolveRoundTargetPlayerIndex(int playerIndex) =>
-        RoundTargetSlotOrder[(playerIndex - 1) % RoundTargetSlotOrder.Length];
+    private int ResolveRoundTargetPlayerIndex(int playerIndex) =>
+        roundTargetSlotOrder[(playerIndex - 1) % roundTargetSlotOrder.Count];
 
     private bool TryResolveWaveTargetPlayerIndex(int playerIndex, out int targetPlayerIndex)
     {
@@ -1452,6 +1482,7 @@ public class MapScript : IWasmModule
         waveNumber++;
 
         _api.Shuffle(spawnSlotOrder);
+        _api.Shuffle(roundTargetSlotOrder);
 
         int slotCursor = 0;
         foreach (int playerIndex in playerStates.Keys.OrderBy(index => index))
