@@ -57,11 +57,11 @@ public class PlayerState
     public Vector3 BasePosition { get; set; }
     public Vector3 SpawnPosition { get; set; }
     public int CountdownTextHandle { get; set; }
+    public bool IsWaveIndicatorVisible { get; set; }
     public float SpawnAtSeconds { get; set; }
     public bool HasSpawnedThisRound { get; set; } = true;
     public bool IsCountdownVisible { get; set; }
     public Dictionary<int, List<UnitId>> SpawnedUnitsPerWave { get; } = new();
-    public int WaveIndicatorHandle { get; set; } = -1;
     public Dictionary<string, Dictionary<int, float>> DamageDealtPerUnitTypePerWave { get; } = new();
 }
 
@@ -83,7 +83,6 @@ public class MapScript : IWasmModule
     private const int TilesPerPlayer = 9;
     private const int CountdownFontSize = 216;
     private const int TileLabelFontSize = 36;
-    private const int WaveIndicatorFontSize = 32;
     private const string AliveUnitsLeaderboardId = "alive_units";
     private const string DamageLeaderboardId = "damage";
     private const int ElementalAbilityCount = 3;
@@ -118,16 +117,6 @@ public class MapScript : IWasmModule
 
     // Round routing: the player in slot RoundTargetSlotOrder[n] attacks the player listed here.
     private static readonly int[] RoundTargetSlotOrder = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1 };
-
-    private static readonly Vector3[] RoundSpawnIndicatorColors =
-    {
-        new(1f, 0.35f, 0.25f),
-        new(0.25f, 0.6f, 1f),
-        new(0.35f, 0.9f, 0.4f),
-        new(1f, 0.85f, 0.25f),
-        new(0.8f, 0.4f, 1f),
-        new(0.25f, 0.95f, 0.9f)
-    };
 
     private static readonly Dictionary<Element, Vector3> ElementColors = new()
     {
@@ -635,7 +624,6 @@ public class MapScript : IWasmModule
             if (playerState.Altar.IsValid && !playerState.Altar.IsDead) _api.DestroyUnit(playerState.Altar);
             if (playerState.Blacksmith.IsValid && !playerState.Blacksmith.IsDead) _api.DestroyUnit(playerState.Blacksmith);
             if (playerState.CountdownTextHandle >= 0) _api.DestroyStaticText(playerState.CountdownTextHandle);
-            if (playerState.WaveIndicatorHandle >= 0) _api.DestroyStaticText(playerState.WaveIndicatorHandle);
 
             foreach (var unit in _api.GetUnitsOwnedByPlayer(playerIndex))
             {
@@ -1333,12 +1321,22 @@ public class MapScript : IWasmModule
             float secondsUntilSpawn = playerState.SpawnAtSeconds - roundClockSeconds;
             bool isCountdownVisible = !playerState.HasSpawnedThisRound && secondsUntilSpawn <= WaveCountdownVisibleSeconds;
             if (isCountdownVisible)
+            {
                 _api.SetStaticText(playerState.CountdownTextHandle, ((int)MathF.Ceiling(secondsUntilSpawn)).ToString());
 
-            if (playerState.IsCountdownVisible != isCountdownVisible)
+                if (!playerState.IsCountdownVisible)
+                {
+                    playerState.IsCountdownVisible = true;
+                    playerState.IsWaveIndicatorVisible = false;
+                    _api.SetStaticTextColor(playerState.CountdownTextHandle, Vector3.One);
+                    _api.SetStaticTextVisible(playerState.CountdownTextHandle, true);
+                }
+            }
+            else if (playerState.IsCountdownVisible)
             {
-                playerState.IsCountdownVisible = isCountdownVisible;
-                _api.SetStaticTextVisible(playerState.CountdownTextHandle, isCountdownVisible);
+                playerState.IsCountdownVisible = false;
+                if (!playerState.IsWaveIndicatorVisible)
+                    _api.SetStaticTextVisible(playerState.CountdownTextHandle, false);
             }
         }
 
@@ -1385,24 +1383,18 @@ public class MapScript : IWasmModule
 
     private void UpdateWaveIndicator(PlayerState playerState, int playerIndex, Vector3 waveTargetPosition)
     {
-        if (playerState.WaveIndicatorHandle >= 0)
-        {
-            _api.DestroyStaticText(playerState.WaveIndicatorHandle);
-            playerState.WaveIndicatorHandle = -1;
-        }
-
         int targetPlayerIndex = ResolveRoundTargetPlayerIndex(playerIndex);
-        string targetName = _api.GetPlayer(targetPlayerIndex).Name;
+        PlayerId targetPlayer = _api.GetPlayer(targetPlayerIndex);
         string indicatorText = waveTargetPosition == ArenaCenter
             ? $"Wave {waveNumber}: center"
-            : $"Wave {waveNumber}: {targetName}";
+            : $"Wave {waveNumber}: {targetPlayer.Name}";
 
-        Vector3 indicatorColor = RoundSpawnIndicatorColors[Math.Abs(waveNumber) % RoundSpawnIndicatorColors.Length];
-        playerState.WaveIndicatorHandle = _api.CreateStaticText(
-            indicatorText,
-            playerState.SpawnPosition + new Vector3(0f, 4f, 0f),
-            indicatorColor,
-            WaveIndicatorFontSize);
+        _api.SetStaticText(playerState.CountdownTextHandle, indicatorText);
+        _api.SetStaticTextColor(playerState.CountdownTextHandle, targetPlayer.Color);
+        _api.SetStaticTextVisible(playerState.CountdownTextHandle, true);
+
+        playerState.IsCountdownVisible = false;
+        playerState.IsWaveIndicatorVisible = true;
     }
 
     private void StartWaveRound()
