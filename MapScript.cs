@@ -104,7 +104,7 @@ public class MapScript : IWasmModule
     private const string DebugCycleLevelAbilityId = "ability/debug_cycle_level";
     private const string DebugCycleItemAbilityId = "ability/debug_cycle_item";
     private const string DebugCycleElementAbilityId = "ability/debug_cycle_element";
-    private const string TargetDummyCommand = "-target_dummy";
+    private const string TargetDummyCommand = "-targetDummy";
     private const string UnlockTilesCommand = "-unlockTiles";
 
     private const string SoulSiphonAbilityId = "ability/soul_siphon";
