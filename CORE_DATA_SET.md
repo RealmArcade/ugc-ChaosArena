@@ -181,9 +181,11 @@ Each upgrade is one engine stat modifier on a canonical stat key — no new mech
 
 ## 7. Rerolls and swaps
 
-All reroll and swap abilities: **30 s per-unit cooldown**, paid in **stone**. Cost bands: reroll item 3, reroll element 3, reroll hero 5, reroll all 8, swap 5. No mana cost.
+All reroll and swap abilities: **30 s cooldown per tile**, paid in **stone**. Cost bands: reroll item 3, reroll element 3, reroll hero 5, reroll all 8, swap 5. No mana cost.
 
 Stone income: **+1 per kill and +1 per 10 s, capped at 40**. Nothing else spends it.
+
+The cooldown belongs to the tile, not to the body standing on it: an element reroll replaces the circle, and the replacement inherits whatever cooldown was still running. Abilities that cannot do anything are hidden — reroll hero on a circle or with no undrafted hero left, swap with a single tile, every action once the player is out.
 
 ---
 

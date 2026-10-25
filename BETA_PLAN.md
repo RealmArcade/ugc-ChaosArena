@@ -16,7 +16,7 @@ Working plan for launch. One task at a time, each ending in a build plus a commi
 | Elixirs | 20 scripted permanent passives, one per unit, inherited by clones, plus a flush consumable. |
 | Blacksmith | 20 distinct one-shot upgrades. |
 | Match end | Waves stop at 25:00 and nothing is eliminated before then. From 25:00 on, a player whose last fielded wave has lost its final unit is eliminated on the next one-second match tick; placement is reverse elimination order, so the first field to empty is last. Any field still standing at 30:00 is ranked by living units, then kills, then slot. |
-| Rerolls | 30 s cooldown, paid in stone. Stone accrues +1 per kill and +1 per 10 s, cap 40. |
+| Rerolls | 30 s cooldown **per tile**, paid in stone (item 3, element 3, hero 5, all 8, swap 5). Stone accrues +1 per kill and +1 per 10 s, cap 40. A tile action that cannot do anything — a hero reroll with no undrafted hero, a swap with one tile, any action for an eliminated player — is hidden rather than left as a dead button. |
 
 Two invariants for all engine work: the engine stays a **generic RTS** (no Chaos Arena rules), and map-specific behaviour enters through metadata, `IGameAPI`, or map script — never through `if (mapName == ...)` branches.
 
@@ -96,7 +96,7 @@ Circles hold three element-description abilities, one visible, plus the item ico
 Each wave clone inherits level, items with stacks, element selection, elixir and team upgrades, and gets autocast enabled for exactly one ability.
 
 ### M5. Rerolls and swaps
-30 s per-unit cooldown, stone cost, correct ability hiding after each change.
+Shipped in `MapScript.Rerolls.cs`. The tile owns the cooldown (kept in `TileState` so it survives the body being replaced) and charges the stone; the engine's own cooldown gate is per player per ability, so the map writes the caster's cooldown during the cast and the engine's check then passes over it. Ability visibility is refreshed after every change: inactive element abilities are hidden on a hero, a circle hides reroll-hero, one tile hides swap, and an eliminated player's tiles hide every action.
 
 ### M6. Altar — elixirs
 Gold purchases, one per hero, permanent buff with tooltip, flush consumable, clone inheritance.

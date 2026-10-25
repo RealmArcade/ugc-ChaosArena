@@ -4630,7 +4630,7 @@
       {
         "TemplateID": "ability/reroll_item",
         "Name": "Reroll Item",
-        "Description": "Rerolls the item held by this unit or circle into another random item.",
+        "Description": "Rerolls this tile's item into another random item. 3 stone, 30 s cooldown.",
         "AbilityType": "instant_spell",
         "IconPath": "dragon_lord_1.rtex",
         "ManaCost": 0,
@@ -4652,7 +4652,7 @@
       {
         "TemplateID": "ability/reroll_element",
         "Name": "Reroll Element",
-        "Description": "Rerolls the elemental affinity to a different element.",
+        "Description": "Rerolls this tile's element. 3 stone, 30 s cooldown.",
         "AbilityType": "instant_spell",
         "IconPath": "purple_magic_spell.rtex",
         "ManaCost": 0,
@@ -4674,7 +4674,7 @@
       {
         "TemplateID": "ability/reroll_hero",
         "Name": "Reroll Hero",
-        "Description": "Rerolls into a different available hero, preserving level, item, and element.",
+        "Description": "Rerolls this tile into a different undrafted hero, keeping level, item and element. 5 stone, 30 s cooldown.",
         "AbilityType": "instant_spell",
         "IconPath": "sorcerers_spellbook.rtex",
         "ManaCost": 0,
@@ -4696,7 +4696,7 @@
       {
         "TemplateID": "ability/reroll_all",
         "Name": "Reroll All",
-        "Description": "Rerolls the item, element, and hero type for this tile.",
+        "Description": "Rerolls this tile's item, element and hero. 8 stone, 30 s cooldown.",
         "AbilityType": "instant_spell",
         "IconPath": "fire_elemental_red_panda.rtex",
         "ManaCost": 0,
@@ -4718,7 +4718,7 @@
       {
         "TemplateID": "ability/swap_tile_units",
         "Name": "Swap Units",
-        "Description": "Target another friendly tile unit to exchange positions.",
+        "Description": "Swaps this tile with another of your tiles, exchanging levels and positions. 5 stone, 30 s cooldown.",
         "AbilityType": "target_spell",
         "IconPath": "golden_tower.rtex",
         "ManaCost": 0,

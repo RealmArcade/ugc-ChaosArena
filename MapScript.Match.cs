@@ -74,6 +74,7 @@ public partial class MapScript
         state.Eliminated = true;
         state.Placement = standingCount;
         state.IsCountdownVisible = false;
+        RefreshTileAbilityVisibility(playerIndex);
         if (state.CountdownTextHandle >= 0)
             _api.SetStaticTextVisible(state.CountdownTextHandle, false);
 
@@ -101,6 +102,9 @@ public partial class MapScript
             return;
 
         matchComplete = true;
+
+        foreach (int playerIndex in playerStates.Keys)
+            RefreshTileAbilityVisibility(playerIndex);
 
         CollectStandingPlayers();
         _standingsOrder.Clear();

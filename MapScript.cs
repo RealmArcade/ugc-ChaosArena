@@ -33,6 +33,12 @@ public class TileState
     public Vector3 AssignedDestination { get; set; }
     public bool RetargetedToCenter { get; set; }
     public string? ElixirId { get; set; }
+
+    /// <summary>
+    /// Reroll and swap cooldowns in match seconds, keyed by ability slug. Kept on the tile rather
+    /// than on the unit so the cooldown survives the tile being replaced by a fresh body.
+    /// </summary>
+    public Dictionary<string, int> AbilityReadyAtSeconds { get; } = new();
 }
 
 public class TargetDummyState
@@ -998,7 +1004,7 @@ public partial class MapScript : IWasmModule
             CreateTileLabel(state);
         }
 
-        UpdateDraftOfferAbilities(playerIndex);
+        RefreshPlayerTileAbilities(playerIndex);
         ApplyDraftCooldown(playerIndex);
     }
 
@@ -1093,6 +1099,10 @@ public partial class MapScript : IWasmModule
 
                 tileStatesByUnitId[newCircle.UniqueId] = state;
                 unit = newCircle;
+                ReapplyTileAbilityCooldowns(unit, state);
+                // The replacement body starts with every hero ability visible again, so the draft
+                // offers have to be re-hidden on it.
+                UpdateDraftOfferAbilities(playerIndex);
             }
         }
 
@@ -1122,7 +1132,9 @@ public partial class MapScript : IWasmModule
             if (!isActive && !includeDisabledAbilities)
                 continue;
 
-            _api.SetAbilityState(unit, abilityId, !isActive, false);
+            // Only the drafted element is a live ability; the other two are hidden rather than left
+            // on the card as dead buttons.
+            _api.SetAbilityState(unit, abilityId, !isActive, !isActive);
             string abilityName = _api.GetAbilityName(abilityId);
             if (isActive)
                 _api.SetAbilityTooltip(abilityId, $"[{element}] {abilityName}");
@@ -1155,7 +1167,7 @@ public partial class MapScript : IWasmModule
         unit.CommandsFrozen = true;
     }
 
-    private void ConfigureDraftedHero(UnitId hero, int level, IEnumerable<string> itemIds, Element element, Vector3 anchorPosition, int playerIndex)
+    private TileState ConfigureDraftedHero(UnitId hero, int level, IEnumerable<string> itemIds, Element element, Vector3 anchorPosition, int playerIndex)
     {
         ApplyHeroStats(hero, level);
 
@@ -1178,6 +1190,7 @@ public partial class MapScript : IWasmModule
 
         ApplyElement(hero, state, true);
         LockTileUnit(hero);
+        return state;
     }
 
     private IEnumerable<UnitId> GetPlayerPlacedHeroes(int playerIndex)
@@ -1220,7 +1233,8 @@ public partial class MapScript : IWasmModule
         List<string> itemIds = circle.GetItems().ToList();
         int circleLevel = 1;
         Element element = Element.Water;
-        if (tileStatesByUnitId.TryGetValue(circle.UniqueId, out TileState? circleState))
+        TileState? circleState = null;
+        if (tileStatesByUnitId.TryGetValue(circle.UniqueId, out circleState))
         {
             element = circleState.Element;
             circleLevel = circleState.CircleLevel;
@@ -1231,7 +1245,9 @@ public partial class MapScript : IWasmModule
         _api.DestroyUnit(circle, false, false);
 
         UnitId hero = _api.GetPlayer(playerIndex).SpawnUnit(unitTypeId, position);
-        ConfigureDraftedHero(hero, circleLevel, itemIds, element, position, playerIndex);
+        TileState heroState = ConfigureDraftedHero(hero, circleLevel, itemIds, element, position, playerIndex);
+        CarryTileAbilityCooldowns(heroState, circleState);
+        ReapplyTileAbilityCooldowns(hero, heroState);
 
         ResetPlayerSelection(playerIndex);
 
@@ -1274,9 +1290,7 @@ public partial class MapScript : IWasmModule
     private UnitId PerformHeroReroll(UnitId unit, int playerIndex)
     {
         PlayerId player = _api.GetPlayer(playerIndex);
-        HashSet<string> draftedUnitTypeIds = GetPlayerDraftedUnitTypeIds(playerIndex);
-        List<string> candidates = DraftableUnits.Where(id => !draftedUnitTypeIds.Contains(id)).ToList();
-        string? replacement = _api.PickRandom(candidates);
+        string? replacement = _api.PickRandom(GetHeroRerollCandidates(playerIndex));
 
         if (replacement == null)
         {
@@ -1297,17 +1311,34 @@ public partial class MapScript : IWasmModule
         _api.DestroyUnit(unit, false, false);
 
         UnitId newUnit = player.SpawnUnit(replacement, position);
-        ConfigureDraftedHero(newUnit, level, itemIds, state.Element, position, playerIndex);
+        ApplyHeroStats(newUnit, level);
+        foreach (string itemId in itemIds)
+            newUnit.AddItem(itemId, Math.Max(level, 1));
+
+        // The tile keeps its state object: the reroll cooldown, the label handle and the level
+        // belong to the tile, not to the body standing on it.
+        tileStatesByUnitId[newUnit.UniqueId] = state;
+        ApplyElement(newUnit, state, true);
+        LockTileUnit(newUnit);
+        ReapplyTileAbilityCooldowns(newUnit, state);
         SelectUnitForPlayer(playerIndex, newUnit);
         return newUnit;
     }
 
-    private void PerformAllReroll(UnitId unit, TileState state, int playerIndex)
+    private UnitId PerformAllReroll(UnitId unit, TileState state, int playerIndex)
     {
         PerformItemReroll(unit);
         UnitId currentUnit = PerformElementReroll(unit, state);
-        if (state.Kind == TileKind.Hero)
-            PerformHeroReroll(currentUnit, playerIndex);
+
+        // With every hero already drafted there is nothing to reroll into, but the item and element
+        // halves of the action still apply.
+        if (state.Kind == TileKind.Hero && HasHeroRerollCandidate(playerIndex))
+            return PerformHeroReroll(currentUnit, playerIndex);
+
+        // A circle keeps the same body unless the element changed its template, in which case the
+        // selection follows the replacement.
+        SelectUnitForPlayer(playerIndex, currentUnit);
+        return currentUnit;
     }
 
     private void SwapTileUnits(UnitId caster, UnitId target, int playerIndex)
@@ -1356,7 +1387,9 @@ public partial class MapScript : IWasmModule
             unit.SetItemCharges(itemId, charges);
         }
 
-        RefreshTileLabel(state);
+        // Swapping two tiles moves their levels and anchors, so the label has to be rebuilt at the
+        // position the level actually moved to rather than edited in place.
+        RecreateTileLabel(state);
     }
 
     private void CreateTileLabel(TileState state)
@@ -1369,17 +1402,6 @@ public partial class MapScript : IWasmModule
             state.AnchorPosition + new Vector3(0f, 2.5f, 0f),
             GetTileLabelColor(state),
             TileLabelFontSize);
-    }
-
-    private void RefreshTileLabel(TileState state)
-    {
-        if (state.LabelHandle < 0)
-        {
-            CreateTileLabel(state);
-            return;
-        }
-
-        _api.SetStaticText(state.LabelHandle, GetTileLabelText(state));
     }
 
     private void RecreateTileLabel(TileState state)
@@ -1884,25 +1906,59 @@ public partial class MapScript : IWasmModule
         {
             ApplyHealingWave(caster, targetPosition);
         }
-        else if (SlugsEqual(spellId, RerollItemAbilityId))
+        else if (SlugsEqual(spellId, RerollItemAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? itemState))
         {
-            PerformItemReroll(caster);
+            if (TryPayTileAbility(caster, itemState, spellId, playerIndex))
+            {
+                PerformItemReroll(caster);
+                RefreshTileAbilityVisibility(playerIndex);
+            }
         }
         else if (SlugsEqual(spellId, RerollElementAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? elementState))
         {
-            PerformElementReroll(caster, elementState);
+            if (TryPayTileAbility(caster, elementState, spellId, playerIndex))
+            {
+                // An element reroll replaces the circle, so the selection has to follow the new
+                // body or the player is left looking at a card for a unit that no longer exists.
+                UnitId rerolledUnit = PerformElementReroll(caster, elementState);
+                SelectUnitForPlayer(playerIndex, rerolledUnit);
+                RefreshTileAbilityVisibility(playerIndex);
+            }
         }
         else if (SlugsEqual(spellId, RerollHeroAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? heroState) && heroState.Kind == TileKind.Hero)
         {
-            PerformHeroReroll(caster, playerIndex);
+            if (!HasHeroRerollCandidate(playerIndex))
+            {
+                player.SendMessage("No other heroes are available to reroll into.");
+            }
+            else if (TryPayTileAbility(caster, heroState, spellId, playerIndex))
+            {
+                PerformHeroReroll(caster, playerIndex);
+                RefreshTileAbilityVisibility(playerIndex);
+            }
         }
         else if (SlugsEqual(spellId, RerollAllAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? allState))
         {
-            PerformAllReroll(caster, allState, playerIndex);
+            if (TryPayTileAbility(caster, allState, spellId, playerIndex))
+            {
+                PerformAllReroll(caster, allState, playerIndex);
+                RefreshTileAbilityVisibility(playerIndex);
+            }
         }
         else if (SlugsEqual(spellId, SwapTileUnitsAbilityId))
         {
-            HandleSwapAbilityCast(caster, targetPosition, playerIndex);
+            if (!tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? casterState))
+                return;
+
+            if (!TryGetSwapTarget(caster, targetPosition, playerIndex, out UnitId swapTarget))
+            {
+                player.SendMessage("Select another of your own tiles to swap with.");
+            }
+            else if (TryPayTileAbility(caster, casterState, spellId, playerIndex))
+            {
+                SwapTileUnits(caster, swapTarget, playerIndex);
+                RefreshTileAbilityVisibility(playerIndex);
+            }
         }
         else
         {
@@ -1926,22 +1982,6 @@ public partial class MapScript : IWasmModule
             StripSlugPrefix(first).Trim(),
             StripSlugPrefix(second).Trim(),
             StringComparison.OrdinalIgnoreCase);
-    }
-
-    private void HandleSwapAbilityCast(UnitId caster, Vector3 targetPosition, int playerIndex)
-    {
-        UnitId targetTileUnit = UnitId.Invalid;
-        foreach (UnitId u in _api.GetUnitsInRadius(targetPosition, 2f))
-        {
-            if (u.Player == playerIndex && u.UniqueId != caster.UniqueId && tileStatesByUnitId.ContainsKey(u.UniqueId))
-            {
-                targetTileUnit = u;
-                break;
-            }
-        }
-
-        if (targetTileUnit.IsValid)
-            SwapTileUnits(caster, targetTileUnit, playerIndex);
     }
 
     private void TryDraftFromAbilityCast(UnitId caster, string spellId)
