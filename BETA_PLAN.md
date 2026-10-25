@@ -15,7 +15,7 @@ Working plan for launch. One task at a time, each ending in a build plus a commi
 | Items | Pure stats, 1–3 modifiers (2 most common), negatives allowed, **stacks are literal copies**, no passives. |
 | Elixirs | 20 scripted permanent passives, one per unit, inherited by clones, plus a flush consumable. |
 | Blacksmith | 20 distinct one-shot upgrades. |
-| Match end | Waves stop at 25:00; first wave that ends with zero survivors eliminates that player; placement is reverse elimination order. |
+| Match end | Waves stop at 25:00. A player whose living wave units reach zero (once they have fielded a wave) is eliminated on the next one-second match tick; placement is reverse elimination order, so the first player out is last. Any field remaining at 30:00 is ranked by living units, then kills, then slot. |
 | Rerolls | 30 s cooldown, paid in stone. Stone accrues +1 per kill and +1 per 10 s, cap 40. |
 
 Two invariants for all engine work: the engine stays a **generic RTS** (no Chaos Arena rules), and map-specific behaviour enters through metadata, `IGameAPI`, or map script — never through `if (mapName == ...)` branches.

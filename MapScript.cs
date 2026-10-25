@@ -59,6 +59,10 @@ public class PlayerState
     public float SpawnAtSeconds { get; set; }
     public bool HasSpawnedThisRound { get; set; } = true;
     public bool IsCountdownVisible { get; set; }
+    public bool HasFieldedWave { get; set; }
+    public bool Eliminated { get; set; }
+    public int Placement { get; set; }
+    public int WaveTargetPlayerIndex { get; set; } = -1;
     public Dictionary<int, List<UnitId>> SpawnedUnitsPerWave { get; } = new();
     public Dictionary<string, Dictionary<int, float>> DamageDealtPerUnitTypePerWave { get; } = new();
 }
@@ -215,7 +219,6 @@ public partial class MapScript : IWasmModule
     private float roundClockSeconds;
     private readonly List<float> spawnOffsetSlots = new();
     private readonly List<int> spawnSlotOrder = new();
-    private readonly List<int> roundTargetSlotOrder = new();
     private int gameSecondsElapsed;
     private int foodCap;
     private int nextFoodCapIncreaseSeconds;
@@ -241,7 +244,7 @@ public partial class MapScript : IWasmModule
         _api.OnPlayerLeft += HandlePlayerLeft;
 
         _api.ShowSummaryTable("Chaos Arena - Combat Statistics", true);
-        _api.SetSummaryTableHeaders("Player", "Kills", "Top Average Damage (Unit / Waves)");
+        _api.SetSummaryTableHeaders("Player", "Kills", "Placement", "Top Average Damage (Unit / Waves)");
 
         for (int slotIndex = 0; slotIndex < SpawnSlotCount; slotIndex++)
         {
@@ -249,11 +252,9 @@ public partial class MapScript : IWasmModule
             spawnSlotOrder.Add(slotIndex);
         }
 
-        for (int playerIndex = 1; playerIndex <= RealPlayerSlotCount; playerIndex++)
-            roundTargetSlotOrder.Add(playerIndex);
-
         _api.ScheduleRepeatingTimer(1f, HandleSpawnTimerTick);
         _api.ScheduleRepeatingTimer(1f, HandleGameTimerTick);
+        _api.ScheduleRepeatingTimer(1f, EvaluateEliminations);
         _api.ScheduleRepeatingTimer(0.25f, FlushElixirDamage);
         _api.ScheduleRepeatingTimer(5f, GrantWoodPassive);
         _api.ScheduleRepeatingTimer(15f, ApplyNegativeHealthRegen);
@@ -1401,23 +1402,57 @@ public partial class MapScript : IWasmModule
 
     private void HandleSpawnTimerTick()
     {
+        if (matchComplete)
+            return;
+
+        if (gameSecondsElapsed >= MatchHardEndSeconds)
+        {
+            EndMatch("time limit reached");
+            return;
+        }
+
+        bool wavesOpen = gameSecondsElapsed < MatchWaveCutoffSeconds;
+        if (!wavesOpen && !wavesClosedAnnounced)
+        {
+            wavesClosedAnnounced = true;
+            _api.BroadcastMessage(
+                $"No more waves at {MatchWaveCutoffSeconds / 60}:00. Hold the arena with what you have left.");
+        }
+
         roundClockSeconds += 1f;
 
         if (roundClockSeconds >= WaveIntervalSeconds)
         {
             roundClockSeconds -= WaveIntervalSeconds;
-            StartWaveRound();
+
+            if (wavesOpen)
+                StartWaveRound();
         }
 
         foreach (KeyValuePair<int, PlayerState> entry in playerStates)
         {
             PlayerState playerState = entry.Value;
 
+            if (playerState.Eliminated)
+                continue;
+
             if (!playerState.HasSpawnedThisRound && roundClockSeconds >= playerState.SpawnAtSeconds)
             {
                 playerState.HasSpawnedThisRound = true;
                 if (_api.GetPlayer(entry.Key).IsActive)
                     SpawnWaveForPlayer(entry.Key);
+            }
+
+            if (!wavesOpen)
+            {
+                // The last round still delivers its pending spawns, but no new countdown starts.
+                if (playerState.IsCountdownVisible)
+                {
+                    playerState.IsCountdownVisible = false;
+                    _api.SetStaticTextVisible(playerState.CountdownTextHandle, false);
+                }
+
+                continue;
             }
 
             float secondsUntilSpawn = playerState.SpawnAtSeconds - roundClockSeconds;
@@ -1466,18 +1501,24 @@ public partial class MapScript : IWasmModule
         }
     }
 
-    private int ResolveRoundTargetPlayerIndex(int playerIndex) =>
-        roundTargetSlotOrder[(playerIndex - 1) % roundTargetSlotOrder.Count];
-
     private bool TryResolveWaveTargetPlayerIndex(int playerIndex, out int targetPlayerIndex)
     {
-        targetPlayerIndex = ResolveRoundTargetPlayerIndex(playerIndex);
-        if (targetPlayerIndex == playerIndex)
+        targetPlayerIndex = playerIndex;
+
+        if (!playerStates.TryGetValue(playerIndex, out PlayerState? playerState))
             return false;
 
-        if (!playerStates.ContainsKey(targetPlayerIndex) || !_api.GetPlayer(targetPlayerIndex).IsActive)
+        int candidateIndex = playerState.WaveTargetPlayerIndex;
+        if (candidateIndex == playerIndex)
             return false;
 
+        if (!playerStates.TryGetValue(candidateIndex, out PlayerState? targetState) || targetState.Eliminated)
+            return false;
+
+        if (!_api.GetPlayer(candidateIndex).IsActive)
+            return false;
+
+        targetPlayerIndex = candidateIndex;
         return true;
     }
 
@@ -1500,7 +1541,7 @@ public partial class MapScript : IWasmModule
         waveNumber++;
 
         _api.Shuffle(spawnSlotOrder);
-        _api.Shuffle(roundTargetSlotOrder);
+        ResolveRoundWaveTargets();
 
         int slotCursor = 0;
         foreach (int playerIndex in playerStates.Keys.OrderBy(index => index))
@@ -1508,7 +1549,7 @@ public partial class MapScript : IWasmModule
             PlayerState playerState = playerStates[playerIndex];
             playerState.SpawnedUnitsPerWave[waveNumber] = new List<UnitId>();
 
-            if (!_api.GetPlayer(playerIndex).IsActive)
+            if (playerState.Eliminated || !_api.GetPlayer(playerIndex).IsActive)
             {
                 playerState.HasSpawnedThisRound = true;
                 continue;
@@ -1523,6 +1564,9 @@ public partial class MapScript : IWasmModule
     private void SpawnWaveForPlayer(int playerIndex)
     {
         PlayerState playerState = playerStates[playerIndex];
+        if (playerState.Eliminated)
+            return;
+
         PlayerId player = _api.GetPlayer(playerIndex);
         int proxyPlayerIndex = playerIndex + ProxyPlayerOffset;
         PlayerId proxyPlayer = _api.GetPlayer(proxyPlayerIndex);
@@ -1572,6 +1616,9 @@ public partial class MapScript : IWasmModule
             playerState.SpawnedUnitsPerWave[waveNumber].Add(clone);
             waveUnitSpawnTimes[clone.UniqueId] = gameSecondsElapsed;
         }
+
+        if (playerState.SpawnedUnitsPerWave[waveNumber].Count > 0)
+            playerState.HasFieldedWave = true;
     }
 
     private void PerformComputerResearch(int playerIndex)
@@ -1603,6 +1650,9 @@ public partial class MapScript : IWasmModule
 
         foreach (int playerIndex in playerStates.Keys)
         {
+            if (playerStates[playerIndex].Eliminated)
+                continue;
+
             if (_api.GetPlayer(playerIndex).IsComputer)
             {
                 PlayerState playerState = playerStates[playerIndex];
@@ -1628,6 +1678,9 @@ public partial class MapScript : IWasmModule
 
         foreach (int playerIndex in playerStates.Keys.ToList())
         {
+            if (playerStates[playerIndex].Eliminated)
+                continue;
+
             PlayerId player = _api.GetPlayer(playerIndex);
             player.SetMaxPopulation(foodCap);
 
@@ -1644,14 +1697,20 @@ public partial class MapScript : IWasmModule
 
     private void GrantWoodPassive()
     {
-        foreach (int playerIndex in playerStates.Keys)
-            _api.GetPlayer(playerIndex).AdjustWood(1f);
+        foreach (KeyValuePair<int, PlayerState> entry in playerStates)
+        {
+            if (!entry.Value.Eliminated)
+                _api.GetPlayer(entry.Key).AdjustWood(1f);
+        }
     }
 
     private void GrantPassiveExperience()
     {
         foreach (PlayerState playerState in playerStates.Values)
         {
+            if (playerState.Eliminated)
+                continue;
+
             if (playerState.Builder.IsValid && !playerState.Builder.IsDead)
             {
                 var builder = playerState.Builder;
@@ -2028,19 +2087,39 @@ public partial class MapScript : IWasmModule
     {
         _api.ClearSummaryTable();
 
-        var rankedPlayers = playerStates.Keys
-            .Select(playerIndex => (PlayerIndex: playerIndex, Kills: _api.GetPlayer(playerIndex).GetKills()))
-            .OrderByDescending(entry => entry.Kills);
-
-        foreach ((int playerIndex, int kills) in rankedPlayers)
+        _standingsOrder.Clear();
+        for (int playerIndex = 1; playerIndex <= RealPlayerSlotCount; playerIndex++)
         {
-            string coloredPlayerName = _api.GetPlayer(playerIndex).ColoredName;
-            string topDamageBreakdown = GetTopDamageBreakdown(playerStates[playerIndex]);
+            if (playerStates.ContainsKey(playerIndex))
+                _standingsOrder.Add(playerIndex);
+        }
+
+        // Placed players lead in placement order; the rest follow by kills.
+        _standingsOrder.Sort((left, right) =>
+        {
+            int leftPlacement = playerStates[left].Placement;
+            int rightPlacement = playerStates[right].Placement;
+            int leftKey = leftPlacement > 0 ? leftPlacement : int.MaxValue;
+            int rightKey = rightPlacement > 0 ? rightPlacement : int.MaxValue;
+
+            if (leftKey != rightKey)
+                return leftKey.CompareTo(rightKey);
+
+            int killCompare = _api.GetPlayer(right).GetKills().CompareTo(_api.GetPlayer(left).GetKills());
+            return killCompare != 0 ? killCompare : left.CompareTo(right);
+        });
+
+        foreach (int playerIndex in _standingsOrder)
+        {
+            PlayerId player = _api.GetPlayer(playerIndex);
+            PlayerState playerState = playerStates[playerIndex];
+            string placementText = playerState.Placement > 0 ? FormatPlacement(playerState.Placement) : "-";
 
             _api.SetSummaryTableRow(
-                coloredPlayerName,
-                kills.ToString(),
-                topDamageBreakdown);
+                player.ColoredName,
+                player.GetKills().ToString(),
+                placementText,
+                GetTopDamageBreakdown(playerState));
         }
     }
 
@@ -2065,6 +2144,7 @@ public partial class MapScript : IWasmModule
         }
 
         UpdateDamageLeaderboard();
+        UpdatePlacementLeaderboard();
     }
 
     private void UpdateDamageLeaderboard()
