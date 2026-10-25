@@ -32,6 +32,7 @@ public class TileState
     public int LabelHandle { get; set; } = -1;
     public Vector3 AssignedDestination { get; set; }
     public bool RetargetedToCenter { get; set; }
+    public string? ElixirId { get; set; }
 }
 
 public class TargetDummyState
@@ -62,7 +63,7 @@ public class PlayerState
     public Dictionary<string, Dictionary<int, float>> DamageDealtPerUnitTypePerWave { get; } = new();
 }
 
-public class MapScript : IWasmModule
+public partial class MapScript : IWasmModule
 {
     private const int RealPlayerSlotCount = 12;
     private const int ProxyPlayerOffset = 12;
@@ -226,6 +227,7 @@ public class MapScript : IWasmModule
         _api.DisableShroud();
 
         ConfigureDraftChoicesOnTiles();
+        ConfigureElixirsOnAltar();
         InitializePlayers();
 
         while (foodCap < FoodCapIncreaseMinutes.Length && gameSecondsElapsed >= nextFoodCapIncreaseSeconds)
@@ -252,6 +254,7 @@ public class MapScript : IWasmModule
 
         _api.ScheduleRepeatingTimer(1f, HandleSpawnTimerTick);
         _api.ScheduleRepeatingTimer(1f, HandleGameTimerTick);
+        _api.ScheduleRepeatingTimer(0.25f, FlushElixirDamage);
         _api.ScheduleRepeatingTimer(5f, GrantWoodPassive);
         _api.ScheduleRepeatingTimer(15f, ApplyNegativeHealthRegen);
         _api.ScheduleRepeatingTimer(60f, GrantPassiveExperience);
@@ -1561,6 +1564,8 @@ public class MapScript : IWasmModule
             waveUnitStatesByUnitId[clone.UniqueId] = cloneState;
             ApplyElement(clone, cloneState, false);
 
+            ApplyInheritedElixir(clone, tileState);
+
             HideDebugAbilities(clone);
             _api.SetUnitFacing(clone, ArenaCenter);
             clone.AttackMove(waveTargetPosition);
@@ -1590,6 +1595,8 @@ public class MapScript : IWasmModule
     private void HandleGameTimerTick()
     {
         gameSecondsElapsed++;
+
+        HandleElixirTick();
 
         while (foodCap < FoodCapIncreaseMinutes.Length && gameSecondsElapsed >= nextFoodCapIncreaseSeconds)
             IncreaseFoodCap();
@@ -1711,6 +1718,11 @@ public class MapScript : IWasmModule
 
         int playerIndex = ResolveRealPlayerIndex(caster.Player);
         PlayerId player = _api.GetPlayer(playerIndex);
+
+        if (TryBuyElixir(caster, spellId, targetPosition, playerIndex))
+            return;
+
+        OnElixirCast(caster, spellId);
 
         if (SlugsEqual(spellId, DebugCycleLevelAbilityId))
         {
@@ -1964,6 +1976,10 @@ public class MapScript : IWasmModule
 
     private void HandleUnitDied(UnitId dyingUnit, UnitId killer)
     {
+        if (killer.IsValid && killer.UniqueId != dyingUnit.UniqueId)
+            OnElixirKill(killer);
+
+        RemoveElixirState(dyingUnit);
         tileStatesByUnitId.Remove(dyingUnit.UniqueId);
         waveUnitStatesByUnitId.Remove(dyingUnit.UniqueId);
         waveUnitSpawnTimes.Remove(dyingUnit.UniqueId);
@@ -1983,6 +1999,8 @@ public class MapScript : IWasmModule
 
     private void HandleUnitDamaged(UnitId victim, UnitId attacker, float damage)
     {
+        RunElixirDamageHooks(victim, attacker, damage);
+
         if (!attacker.IsValid)
             return;
 
