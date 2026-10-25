@@ -50,7 +50,7 @@
         "MaxHp": 1295,
         "Damage": 66,
         "Range": 2.44,
-        "Armor": 2.6,
+        "Armor": 6.0,
         "Speed": 3,
         "AttackCooldown": 1.45,
         "ScanRadius": 0,
@@ -164,7 +164,7 @@
           "WisdomPerLevel": 0.4,
           "FortunePerLevel": 0.2
         },
-        "MagicResistance": 0
+        "MagicResistance": 2.5
       },
       {
         "TemplateID": "unit/iron_warlord",
@@ -173,7 +173,7 @@
         "MaxHp": 1062,
         "Damage": 71,
         "Range": 2.82,
-        "Armor": 2,
+        "Armor": 5.0,
         "Speed": 3,
         "AttackCooldown": 1.35,
         "ScanRadius": 0,
@@ -287,7 +287,7 @@
           "WisdomPerLevel": 0.4,
           "FortunePerLevel": 0.2
         },
-        "MagicResistance": 0
+        "MagicResistance": 2.0
       },
       {
         "TemplateID": "unit/nether_assassin",
@@ -296,7 +296,7 @@
         "MaxHp": 549,
         "Damage": 80,
         "Range": 2.88,
-        "Armor": 1,
+        "Armor": 2.5,
         "Speed": 3,
         "AttackCooldown": 0.95,
         "ScanRadius": 0,
@@ -410,7 +410,7 @@
           "WisdomPerLevel": 0.4,
           "FortunePerLevel": 0.8
         },
-        "MagicResistance": 0
+        "MagicResistance": 1.5
       },
       {
         "TemplateID": "unit/shadow_weaver",
@@ -419,7 +419,7 @@
         "MaxHp": 556,
         "Damage": 63,
         "Range": 3.98,
-        "Armor": 0.9,
+        "Armor": 2.5,
         "Speed": 3,
         "AttackCooldown": 1.3,
         "ScanRadius": 0,
@@ -533,7 +533,7 @@
           "WisdomPerLevel": 0.4,
           "FortunePerLevel": 0.8
         },
-        "MagicResistance": 0
+        "MagicResistance": 3.0
       },
       {
         "TemplateID": "unit/verdant_druid",
@@ -542,7 +542,7 @@
         "MaxHp": 823,
         "Damage": 53,
         "Range": 3.26,
-        "Armor": 1.6,
+        "Armor": 3.0,
         "Speed": 3,
         "AttackCooldown": 1.3,
         "ScanRadius": 0,
@@ -656,7 +656,7 @@
           "WisdomPerLevel": 1.0,
           "FortunePerLevel": 0.3
         },
-        "MagicResistance": 0
+        "MagicResistance": 3.0
       },
       {
         "TemplateID": "unit/thornback_behemoth",
@@ -665,7 +665,7 @@
         "MaxHp": 1260,
         "Damage": 67,
         "Range": 2.5,
-        "Armor": 2.6,
+        "Armor": 6.0,
         "Speed": 3,
         "AttackCooldown": 1.5,
         "ScanRadius": 0,
@@ -779,7 +779,7 @@
           "WisdomPerLevel": 1.0,
           "FortunePerLevel": 0.3
         },
-        "MagicResistance": 0
+        "MagicResistance": 2.5
       },
       {
         "TemplateID": "unit/coral_vanguard",
@@ -788,7 +788,7 @@
         "MaxHp": 1013,
         "Damage": 69,
         "Range": 3.24,
-        "Armor": 2,
+        "Armor": 4.5,
         "Speed": 3,
         "AttackCooldown": 1.3,
         "ScanRadius": 0,
@@ -902,7 +902,7 @@
           "WisdomPerLevel": 0.7,
           "FortunePerLevel": 0.3
         },
-        "MagicResistance": 0
+        "MagicResistance": 2.0
       },
       {
         "TemplateID": "unit/tidecaller",
@@ -911,7 +911,7 @@
         "MaxHp": 650,
         "Damage": 91,
         "Range": 6.1,
-        "Armor": 1.1,
+        "Armor": 2.0,
         "Speed": 3,
         "AttackCooldown": 1.4,
         "ScanRadius": 0,
@@ -1025,7 +1025,7 @@
           "WisdomPerLevel": 0.7,
           "FortunePerLevel": 0.3
         },
-        "MagicResistance": 0
+        "MagicResistance": 3.0
       },
       {
         "TemplateID": "unit/flame_archon",
@@ -1034,7 +1034,7 @@
         "MaxHp": 538,
         "Damage": 68,
         "Range": 5.28,
-        "Armor": 0.9,
+        "Armor": 2.0,
         "Speed": 3,
         "AttackCooldown": 1.3,
         "ScanRadius": 0,
@@ -1148,7 +1148,7 @@
           "WisdomPerLevel": 1.0,
           "FortunePerLevel": 0.4
         },
-        "MagicResistance": 0
+        "MagicResistance": 3.0
       },
       {
         "TemplateID": "unit/magma_smith",
@@ -1157,7 +1157,7 @@
         "MaxHp": 994,
         "Damage": 73,
         "Range": 2.7,
-        "Armor": 2,
+        "Armor": 4.5,
         "Speed": 3,
         "AttackCooldown": 1.35,
         "ScanRadius": 0,
@@ -1271,7 +1271,7 @@
           "WisdomPerLevel": 1.0,
           "FortunePerLevel": 0.4
         },
-        "MagicResistance": 0
+        "MagicResistance": 2.0
       },
       {
         "TemplateID": "unit/frost_warden",
@@ -1280,7 +1280,7 @@
         "MaxHp": 636,
         "Damage": 96,
         "Range": 5.2,
-        "Armor": 0.9,
+        "Armor": 3.0,
         "Speed": 3,
         "AttackCooldown": 1.25,
         "ScanRadius": 0,
@@ -1394,7 +1394,7 @@
           "WisdomPerLevel": 1.1,
           "FortunePerLevel": 0.3
         },
-        "MagicResistance": 0
+        "MagicResistance": 3.0
       },
       {
         "TemplateID": "unit/glacier_sentinel",
@@ -1403,7 +1403,7 @@
         "MaxHp": 1283,
         "Damage": 66,
         "Range": 2.8,
-        "Armor": 2.6,
+        "Armor": 6.0,
         "Speed": 3,
         "AttackCooldown": 1.55,
         "ScanRadius": 0,
@@ -1517,7 +1517,7 @@
           "WisdomPerLevel": 1.1,
           "FortunePerLevel": 0.3
         },
-        "MagicResistance": 0
+        "MagicResistance": 2.5
       },
       {
         "TemplateID": "unit/storm_caller",
@@ -1526,7 +1526,7 @@
         "MaxHp": 540,
         "Damage": 67,
         "Range": 5.14,
-        "Armor": 0.9,
+        "Armor": 2.0,
         "Speed": 3,
         "AttackCooldown": 1.3,
         "ScanRadius": 0,
@@ -1640,7 +1640,7 @@
           "WisdomPerLevel": 0.6,
           "FortunePerLevel": 0.6
         },
-        "MagicResistance": 0
+        "MagicResistance": 3.0
       },
       {
         "TemplateID": "unit/tempest_chaser",
@@ -1649,7 +1649,7 @@
         "MaxHp": 685,
         "Damage": 72,
         "Range": 4.36,
-        "Armor": 1.3,
+        "Armor": 2.5,
         "Speed": 3,
         "AttackCooldown": 1.05,
         "ScanRadius": 0,
@@ -1763,7 +1763,7 @@
           "WisdomPerLevel": 0.6,
           "FortunePerLevel": 0.6
         },
-        "MagicResistance": 0
+        "MagicResistance": 1.5
       },
       {
         "TemplateID": "unit/arcane_scholar",
@@ -1772,7 +1772,7 @@
         "MaxHp": 547,
         "Damage": 62,
         "Range": 5.2,
-        "Armor": 0.9,
+        "Armor": 2.0,
         "Speed": 3,
         "AttackCooldown": 1.3,
         "ScanRadius": 0,
@@ -1886,7 +1886,7 @@
           "WisdomPerLevel": 1.2,
           "FortunePerLevel": 0.3
         },
-        "MagicResistance": 0
+        "MagicResistance": 3.0
       },
       {
         "TemplateID": "unit/rune_scribe",
@@ -1895,7 +1895,7 @@
         "MaxHp": 633,
         "Damage": 102,
         "Range": 6.4,
-        "Armor": 1.1,
+        "Armor": 2.0,
         "Speed": 3,
         "AttackCooldown": 1.45,
         "ScanRadius": 0,
@@ -2009,7 +2009,7 @@
           "WisdomPerLevel": 1.2,
           "FortunePerLevel": 0.3
         },
-        "MagicResistance": 0
+        "MagicResistance": 3.0
       },
       {
         "TemplateID": "unit/sun_priest",
@@ -2018,7 +2018,7 @@
         "MaxHp": 829,
         "Damage": 54,
         "Range": 4.6,
-        "Armor": 1.6,
+        "Armor": 2.5,
         "Speed": 3,
         "AttackCooldown": 1.45,
         "ScanRadius": 0,
@@ -2132,7 +2132,7 @@
           "WisdomPerLevel": 1.8,
           "FortunePerLevel": 0.4
         },
-        "MagicResistance": 0
+        "MagicResistance": 3.0
       },
       {
         "TemplateID": "unit/lightbringer_monk",
@@ -2141,7 +2141,7 @@
         "MaxHp": 1036,
         "Damage": 69,
         "Range": 2.8,
-        "Armor": 2,
+        "Armor": 4.0,
         "Speed": 3,
         "AttackCooldown": 1.15,
         "ScanRadius": 0,
@@ -2255,7 +2255,7 @@
           "WisdomPerLevel": 1.8,
           "FortunePerLevel": 0.4
         },
-        "MagicResistance": 0
+        "MagicResistance": 2.5
       },
       {
         "TemplateID": "unit/pack_alpha",
@@ -2264,7 +2264,7 @@
         "MaxHp": 977,
         "Damage": 72,
         "Range": 2.8,
-        "Armor": 2,
+        "Armor": 4.0,
         "Speed": 3,
         "AttackCooldown": 1.25,
         "ScanRadius": 0,
@@ -2378,7 +2378,7 @@
           "WisdomPerLevel": 0.4,
           "FortunePerLevel": 0.6
         },
-        "MagicResistance": 0
+        "MagicResistance": 2.0
       },
       {
         "TemplateID": "unit/razor_dervish",
@@ -2387,7 +2387,7 @@
         "MaxHp": 599,
         "Damage": 80,
         "Range": 2.6,
-        "Armor": 1,
+        "Armor": 2.5,
         "Speed": 3,
         "AttackCooldown": 1,
         "ScanRadius": 0,
@@ -2501,7 +2501,7 @@
           "WisdomPerLevel": 0.4,
           "FortunePerLevel": 0.6
         },
-        "MagicResistance": 0
+        "MagicResistance": 1.5
       },
       {
         "TemplateID": "unit/builder",
@@ -4794,7 +4794,7 @@
       {
         "TemplateID": "ability/storm_caller_stormfront",
         "Name": "Stormfront",
-        "Description": "Allies within 4 gain 25% attack speed and 6 spell power for 4 s, plus 0.25 s per 20 Intelligence (max 9 s).",
+        "Description": "Allies within 4 gain 25% attack speed and 6% spell power for 4 s, plus 0.25 s per 20 Intelligence (max 9 s).",
         "Role": "Support",
         "AbilityType": "instant_spell",
         "IconPath": "elder_sorcerer.rtex",
@@ -4829,7 +4829,7 @@
               {
                 "StatKey": "SpellPower",
                 "Type": "Flat",
-                "Value": 6,
+                "Value": 0.06,
                 "PerLevelScaling": 0,
                 "WASMFunctionName": ""
               }
@@ -5001,7 +5001,7 @@
       {
         "TemplateID": "ability/arcane_scholar_mana_bloom",
         "Name": "Mana Bloom",
-        "Description": "Allies within 4 gain 10 spell power, 10% cooldown reduction and 2 mana per second for 3 s, rising toward 9 s with Intelligence.",
+        "Description": "Allies within 4 gain 10% spell power, 10% cooldown reduction and 2 mana per second for 3 s, rising toward 9 s with Intelligence.",
         "Role": "Support",
         "AbilityType": "instant_spell",
         "IconPath": "magic_chess_piece.rtex",
@@ -5029,7 +5029,7 @@
               {
                 "StatKey": "SpellPower",
                 "Type": "Flat",
-                "Value": 10,
+                "Value": 0.1,
                 "PerLevelScaling": 0,
                 "WASMFunctionName": ""
               },
@@ -8378,7 +8378,7 @@
       {
         "TemplateID": "upgrade/item_ring_of_protection",
         "Name": "Guardian Band",
-        "Description": "Armor and crowd-control resistance.",
+        "Description": "Armor, magic resistance and crowd-control resistance.",
         "CostGold": 0,
         "CostWood": 0,
         "CostStone": 0,
@@ -8389,7 +8389,14 @@
           {
             "StatKey": "Armor",
             "Type": "Flat",
-            "Value": 3,
+            "Value": 2.0,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          },
+          {
+            "StatKey": "MagicResistance",
+            "Type": "Flat",
+            "Value": 2.0,
             "PerLevelScaling": 0,
             "WASMFunctionName": ""
           },
@@ -8540,7 +8547,7 @@
       {
         "TemplateID": "upgrade/item_bulwark_sigil",
         "Name": "Bulwark Sigil",
-        "Description": "Health and armor in exchange for speed.",
+        "Description": "Health, armor and magic resistance in exchange for speed.",
         "CostGold": 0,
         "CostWood": 0,
         "CostStone": 0,
@@ -8551,14 +8558,21 @@
           {
             "StatKey": "MaxHp",
             "Type": "Flat",
-            "Value": 90,
+            "Value": 90.0,
             "PerLevelScaling": 0,
             "WASMFunctionName": ""
           },
           {
             "StatKey": "Armor",
             "Type": "Flat",
-            "Value": 2,
+            "Value": 1.5,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          },
+          {
+            "StatKey": "MagicResistance",
+            "Type": "Flat",
+            "Value": 2.0,
             "PerLevelScaling": 0,
             "WASMFunctionName": ""
           },
@@ -8844,7 +8858,7 @@
       {
         "TemplateID": "upgrade/bs_arcane_resonance",
         "Name": "Arcane Resonance",
-        "Description": "Raises spell power for every cast.",
+        "Description": "Grants every hero 8% spell power.",
         "IconPath": null,
         "Hotkey": null,
         "CostGold": 0,
@@ -8858,7 +8872,7 @@
           {
             "StatKey": "SpellPower",
             "Type": "Flat",
-            "Value": 8.0,
+            "Value": 0.08,
             "PerLevelScaling": 0,
             "WASMFunctionName": ""
           }
@@ -9331,7 +9345,7 @@
       {
         "TemplateID": "item/ring_of_protection",
         "Name": "Guardian Band",
-        "Description": "Armor and crowd-control resistance.",
+        "Description": "Armor, magic resistance and crowd-control resistance.",
         "ItemClass": "equippable",
         "CostGold": 0,
         "ItemLevel": 1,
@@ -9451,7 +9465,7 @@
       {
         "TemplateID": "item/bulwark_sigil",
         "Name": "Bulwark Sigil",
-        "Description": "Health and armor in exchange for speed.",
+        "Description": "Health, armor and magic resistance in exchange for speed.",
         "ItemClass": "equippable",
         "CostGold": 0,
         "ItemLevel": 1,
