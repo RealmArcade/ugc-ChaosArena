@@ -181,7 +181,8 @@ public partial class MapScript
         int executions = 0;
         int wood = 0;
 
-        foreach (UnitId target in _api.GetUnitsInRadius(targetPosition, SoulSiphonRadius))
+        List<UnitId> candidates = new(_api.GetUnitsInRadius(targetPosition, SoulSiphonRadius).ToArray());
+        foreach (UnitId target in candidates)
         {
             if (executions >= SoulSiphonMaxExecutions)
                 break;
@@ -222,7 +223,8 @@ public partial class MapScript
     {
         int healed = 0;
 
-        foreach (UnitId target in _api.GetUnitsInRadius(targetPosition, HealingWaveRadius))
+        List<UnitId> candidates = new(_api.GetUnitsInRadius(targetPosition, HealingWaveRadius).ToArray());
+        foreach (UnitId target in candidates)
         {
             if (!target.IsValid || target.IsDead)
                 continue;
