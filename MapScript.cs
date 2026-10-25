@@ -96,6 +96,10 @@ public partial class MapScript : IWasmModule
     private const float TargetDummyRowOffset = 4f;
     private const float TargetDummyRowHeight = 5f;
     private const int TargetDummyHealthResetSeconds = 60;
+    private const float StoneCap = 40f;
+    private const float StonePerKill = 1f;
+    private const float StonePerIncomeTick = 1f;
+    private const int StoneIncomeIntervalSeconds = 10;
 
     private const string RerollItemAbilityId = "ability/reroll_item";
     private const string RerollElementAbilityId = "ability/reroll_element";
@@ -257,6 +261,8 @@ public partial class MapScript : IWasmModule
         _api.ScheduleRepeatingTimer(1f, EvaluateEliminations);
         _api.ScheduleRepeatingTimer(0.25f, FlushElixirDamage);
         _api.ScheduleRepeatingTimer(5f, GrantWoodPassive);
+        _api.ScheduleRepeatingTimer(StoneIncomeIntervalSeconds, GrantStoneIncome);
+        _api.ScheduleRepeatingTimer(1f, SweepProxyResources);
         _api.ScheduleRepeatingTimer(15f, ApplyNegativeHealthRegen);
         _api.ScheduleRepeatingTimer(60f, GrantPassiveExperience);
         _api.ScheduleRepeatingTimer(5f, UpdateSummaryTable);
@@ -301,6 +307,15 @@ public partial class MapScript : IWasmModule
 
     private static int ResolveRealPlayerIndex(int playerIndex) =>
         IsProxyPlayerSlot(playerIndex) ? playerIndex - ProxyPlayerOffset : playerIndex;
+
+    /// <summary>
+    /// True when the source and the victim answer to the same real player, or are the same unit.
+    /// Wave clones fight under a hidden proxy slot, so ownership has to be resolved first or an
+    /// anti-snowball self-tick reads as one player damaging another.
+    /// </summary>
+    private static bool IsFriendlySource(UnitId source, UnitId victim) =>
+        source.UniqueId == victim.UniqueId
+        || ResolveRealPlayerIndex(source.Player) == ResolveRealPlayerIndex(victim.Player);
 
     private static int GetNextDraftUnlockTimestamp(int draftedCount) =>
         draftedCount < FoodCapIncreaseMinutes.Length
@@ -1705,6 +1720,65 @@ public partial class MapScript : IWasmModule
         }
     }
 
+    private void GrantStoneIncome()
+    {
+        foreach (KeyValuePair<int, PlayerState> entry in playerStates)
+        {
+            if (!entry.Value.Eliminated)
+                GrantStone(_api.GetPlayer(entry.Key), StonePerIncomeTick);
+        }
+    }
+
+    private static void GrantStone(PlayerId player, float amount)
+    {
+        if (amount <= 0f)
+            return;
+
+        player.SetStone(MathF.Min(player.Stone + amount, StoneCap));
+    }
+
+    /// <summary>
+    /// Wave clones fight for a hidden proxy player, so the engine pays kill bounties to that proxy
+    /// and nothing there ever spends them. Move any gold, wood or stone the proxy collected to the
+    /// player the wave actually belongs to.
+    /// </summary>
+    private void SweepProxyResources()
+    {
+        foreach (int playerIndex in playerStates.Keys)
+        {
+            if (playerStates[playerIndex].Eliminated)
+                continue;
+
+            PlayerId proxyPlayer = _api.GetPlayer(playerIndex + ProxyPlayerOffset);
+            float gold = proxyPlayer.Gold;
+            float wood = proxyPlayer.Wood;
+            float stone = proxyPlayer.Stone;
+
+            if (gold <= 0f && wood <= 0f && stone <= 0f)
+                continue;
+
+            PlayerId player = _api.GetPlayer(playerIndex);
+
+            if (gold > 0f)
+            {
+                proxyPlayer.AdjustGold(-gold);
+                player.AdjustGold(gold);
+            }
+
+            if (wood > 0f)
+            {
+                proxyPlayer.AdjustWood(-wood);
+                player.AdjustWood(wood);
+            }
+
+            if (stone > 0f)
+            {
+                proxyPlayer.SetStone(0f);
+                GrantStone(player, stone);
+            }
+        }
+    }
+
     private void GrantPassiveExperience()
     {
         foreach (PlayerState playerState in playerStates.Values)
@@ -2036,32 +2110,38 @@ public partial class MapScript : IWasmModule
 
     private void HandleUnitDied(UnitId dyingUnit, UnitId killer)
     {
-        if (killer.IsValid && killer.UniqueId != dyingUnit.UniqueId)
-            OnElixirKill(killer);
-
         RemoveElixirState(dyingUnit);
         tileStatesByUnitId.Remove(dyingUnit.UniqueId);
         waveUnitStatesByUnitId.Remove(dyingUnit.UniqueId);
         waveUnitSpawnTimes.Remove(dyingUnit.UniqueId);
         _unitInfoCache.Remove(dyingUnit.UniqueId);
 
-        if (!killer.IsValid)
+        // A unit that took its own life off the anti-snowball timer, or was finished off by its
+        // own side, is not a kill: crediting it inflated both the kill count and the damage record.
+        if (!killer.IsValid || IsFriendlySource(killer, dyingUnit))
             return;
 
+        OnElixirKill(killer);
+
         int killerPlayerIndex = ResolveRealPlayerIndex(killer.Player);
-        if (!playerStates.ContainsKey(killerPlayerIndex))
+        if (!playerStates.ContainsKey(killerPlayerIndex) || playerStates[killerPlayerIndex].Eliminated)
             return;
 
         PlayerId killerPlayer = _api.GetPlayer(killerPlayerIndex);
         killerPlayer.SetKills(killerPlayer.GetKills() + 1);
         killerPlayer.AdjustGold(1f);
+        GrantStone(killerPlayer, StonePerKill);
+        SweepProxyResources();
     }
 
     private void HandleUnitDamaged(UnitId victim, UnitId attacker, float damage)
     {
-        RunElixirDamageHooks(victim, attacker, damage);
+        bool isFriendlySource = attacker.IsValid && IsFriendlySource(attacker, victim);
 
-        if (!attacker.IsValid)
+        if (!isFriendlySource)
+            RunElixirDamageHooks(victim, attacker, damage);
+
+        if (!attacker.IsValid || isFriendlySource)
             return;
 
         if (!_unitInfoCache.TryGetValue(attacker.UniqueId, out var info))
