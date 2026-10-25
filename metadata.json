@@ -1,6 +1,6 @@
 ﻿{
   "license": "https://www.realm-game.com/RealmPlatform_UGC_License_v1.txt",
-  "GameBuildNumber": "v0.0.5",
+  "GameBuildNumber": "v0.0.6",
   "MapProperties": {
     "MapName": "Chaos Arena",
     "MapDescription": null,
@@ -59,8 +59,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "normal",
-        "ArmorType": "heavy",
         "Strength": 22,
         "Agility": 8,
         "Vitality": 20,
@@ -71,11 +69,10 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 0,
         "ManaRegen": 8.031,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 5,
-        "DamageType": "normal",
+        "DamageType": "physical",
         "CritChance": 0,
         "CritMultiplier": 1.75,
         "SplashType": "RadialStep",
@@ -166,7 +163,8 @@
           "IntelligencePerLevel": 0.4,
           "WisdomPerLevel": 0.4,
           "FortunePerLevel": 0.2
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/iron_warlord",
@@ -184,8 +182,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "normal",
-        "ArmorType": "heavy",
         "Strength": 18,
         "Agility": 12,
         "Vitality": 15,
@@ -196,11 +192,10 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 0,
         "ManaRegen": 8.323,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 6,
-        "DamageType": "normal",
+        "DamageType": "physical",
         "CritChance": 0,
         "CritMultiplier": 1.75,
         "SplashType": "RadialStep",
@@ -291,7 +286,8 @@
           "IntelligencePerLevel": 0.4,
           "WisdomPerLevel": 0.4,
           "FortunePerLevel": 0.2
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/nether_assassin",
@@ -309,8 +305,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "normal",
-        "ArmorType": "light",
         "Strength": 14,
         "Agility": 20,
         "Vitality": 12,
@@ -321,11 +315,10 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 28,
         "ManaRegen": 9.42,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 6,
-        "DamageType": "normal",
+        "DamageType": "physical",
         "CritChance": 0,
         "CritMultiplier": 1.75,
         "SplashType": "None",
@@ -416,7 +409,8 @@
           "IntelligencePerLevel": 0.6,
           "WisdomPerLevel": 0.4,
           "FortunePerLevel": 0.8
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/shadow_weaver",
@@ -434,8 +428,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "pierce",
-        "ArmorType": "medium",
         "Strength": 8,
         "Agility": 11,
         "Vitality": 13,
@@ -446,11 +438,10 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 6,
         "ManaRegen": 7.479,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 5,
-        "DamageType": "shadow",
+        "DamageType": "magic",
         "CritChance": 0,
         "CritMultiplier": 1.75,
         "SplashType": "None",
@@ -541,7 +532,8 @@
           "IntelligencePerLevel": 0.6,
           "WisdomPerLevel": 0.4,
           "FortunePerLevel": 0.8
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/verdant_druid",
@@ -559,8 +551,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "normal",
-        "ArmorType": "light",
         "Strength": 11,
         "Agility": 11,
         "Vitality": 16,
@@ -571,11 +561,10 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 0,
         "ManaRegen": 7.826,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 4,
-        "DamageType": "nature",
+        "DamageType": "magic",
         "CritChance": 0,
         "CritMultiplier": 1.75,
         "SplashType": "None",
@@ -666,7 +655,8 @@
           "IntelligencePerLevel": 1.2,
           "WisdomPerLevel": 1.0,
           "FortunePerLevel": 0.3
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/thornback_behemoth",
@@ -684,8 +674,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "normal",
-        "ArmorType": "light",
         "Strength": 21,
         "Agility": 8,
         "Vitality": 20,
@@ -696,11 +684,10 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 0,
         "ManaRegen": 7.684,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 5,
-        "DamageType": "nature",
+        "DamageType": "physical",
         "CritChance": 0,
         "CritMultiplier": 1.75,
         "SplashType": "RadialStep",
@@ -791,7 +778,8 @@
           "IntelligencePerLevel": 1.2,
           "WisdomPerLevel": 1.0,
           "FortunePerLevel": 0.3
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/coral_vanguard",
@@ -809,8 +797,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "normal",
-        "ArmorType": "medium",
         "Strength": 17,
         "Agility": 12,
         "Vitality": 17,
@@ -821,11 +807,10 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 0,
         "ManaRegen": 7.951,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 6,
-        "DamageType": "frost",
+        "DamageType": "physical",
         "CritChance": 0,
         "CritMultiplier": 1.75,
         "SplashType": "None",
@@ -916,7 +901,8 @@
           "IntelligencePerLevel": 1.0,
           "WisdomPerLevel": 0.7,
           "FortunePerLevel": 0.3
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/tidecaller",
@@ -934,8 +920,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "pierce",
-        "ArmorType": "medium",
         "Strength": 8,
         "Agility": 10,
         "Vitality": 13,
@@ -946,11 +930,10 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 7,
         "ManaRegen": 7.457,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 7,
-        "DamageType": "frost",
+        "DamageType": "magic",
         "CritChance": 0,
         "CritMultiplier": 1.75,
         "SplashType": "None",
@@ -1041,7 +1024,8 @@
           "IntelligencePerLevel": 1.0,
           "WisdomPerLevel": 0.7,
           "FortunePerLevel": 0.3
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/flame_archon",
@@ -1059,8 +1043,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "pierce",
-        "ArmorType": "light",
         "Strength": 8,
         "Agility": 11,
         "Vitality": 12,
@@ -1071,11 +1053,10 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 20,
         "ManaRegen": 7.853,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 5,
-        "DamageType": "fire",
+        "DamageType": "magic",
         "CritChance": 0,
         "CritMultiplier": 1.75,
         "SplashType": "None",
@@ -1166,7 +1147,8 @@
           "IntelligencePerLevel": 1.8,
           "WisdomPerLevel": 1.0,
           "FortunePerLevel": 0.4
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/magma_smith",
@@ -1184,8 +1166,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "normal",
-        "ArmorType": "light",
         "Strength": 18,
         "Agility": 11,
         "Vitality": 16,
@@ -1196,11 +1176,10 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 0,
         "ManaRegen": 8.018,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 6,
-        "DamageType": "fire",
+        "DamageType": "physical",
         "CritChance": 0,
         "CritMultiplier": 1.75,
         "SplashType": "RadialStep",
@@ -1291,7 +1270,8 @@
           "IntelligencePerLevel": 1.8,
           "WisdomPerLevel": 1.0,
           "FortunePerLevel": 0.4
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/frost_warden",
@@ -1309,8 +1289,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "pierce",
-        "ArmorType": "medium",
         "Strength": 11,
         "Agility": 13,
         "Vitality": 15,
@@ -1321,11 +1299,10 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 0,
         "ManaRegen": 7.611,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 8,
-        "DamageType": "frost",
+        "DamageType": "magic",
         "CritChance": 0,
         "CritMultiplier": 1.75,
         "SplashType": "None",
@@ -1416,7 +1393,8 @@
           "IntelligencePerLevel": 1.7,
           "WisdomPerLevel": 1.1,
           "FortunePerLevel": 0.3
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/glacier_sentinel",
@@ -1434,8 +1412,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "normal",
-        "ArmorType": "medium",
         "Strength": 21,
         "Agility": 8,
         "Vitality": 20,
@@ -1446,11 +1422,10 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 0,
         "ManaRegen": 7.888,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 5,
-        "DamageType": "frost",
+        "DamageType": "physical",
         "CritChance": 0,
         "CritMultiplier": 1.75,
         "SplashType": "RadialStep",
@@ -1541,7 +1516,8 @@
           "IntelligencePerLevel": 1.7,
           "WisdomPerLevel": 1.1,
           "FortunePerLevel": 0.3
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/storm_caller",
@@ -1559,8 +1535,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "pierce",
-        "ArmorType": "unarmored",
         "Strength": 7,
         "Agility": 12,
         "Vitality": 13,
@@ -1571,7 +1545,6 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 7,
         "ManaRegen": 7.491,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 5,
@@ -1666,7 +1639,8 @@
           "IntelligencePerLevel": 1.4,
           "WisdomPerLevel": 0.6,
           "FortunePerLevel": 0.6
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/tempest_chaser",
@@ -1684,8 +1658,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "pierce",
-        "ArmorType": "unarmored",
         "Strength": 12,
         "Agility": 20,
         "Vitality": 12,
@@ -1696,11 +1668,10 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 18,
         "ManaRegen": 8.47,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 6,
-        "DamageType": "magic",
+        "DamageType": "physical",
         "CritChance": 0,
         "CritMultiplier": 1.75,
         "SplashType": "None",
@@ -1791,7 +1762,8 @@
           "IntelligencePerLevel": 1.4,
           "WisdomPerLevel": 0.6,
           "FortunePerLevel": 0.6
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/arcane_scholar",
@@ -1809,8 +1781,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "pierce",
-        "ArmorType": "unarmored",
         "Strength": 8,
         "Agility": 10,
         "Vitality": 12,
@@ -1821,7 +1791,6 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 19,
         "ManaRegen": 7.83,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 5,
@@ -1916,7 +1885,8 @@
           "IntelligencePerLevel": 2.0,
           "WisdomPerLevel": 1.2,
           "FortunePerLevel": 0.3
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/rune_scribe",
@@ -1934,8 +1904,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "pierce",
-        "ArmorType": "unarmored",
         "Strength": 7,
         "Agility": 9,
         "Vitality": 12,
@@ -1946,7 +1914,6 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 13,
         "ManaRegen": 7.186,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 8,
@@ -2041,7 +2008,8 @@
           "IntelligencePerLevel": 2.0,
           "WisdomPerLevel": 1.2,
           "FortunePerLevel": 0.3
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/sun_priest",
@@ -2059,8 +2027,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "pierce",
-        "ArmorType": "medium",
         "Strength": 9,
         "Agility": 10,
         "Vitality": 16,
@@ -2071,11 +2037,10 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 0,
         "ManaRegen": 7.326,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 4,
-        "DamageType": "holy",
+        "DamageType": "magic",
         "CritChance": 0,
         "CritMultiplier": 1.75,
         "SplashType": "None",
@@ -2166,7 +2131,8 @@
           "IntelligencePerLevel": 1.2,
           "WisdomPerLevel": 1.8,
           "FortunePerLevel": 0.4
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/lightbringer_monk",
@@ -2184,8 +2150,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "normal",
-        "ArmorType": "medium",
         "Strength": 16,
         "Agility": 16,
         "Vitality": 15,
@@ -2196,11 +2160,10 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 0,
         "ManaRegen": 8.261,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 6,
-        "DamageType": "holy",
+        "DamageType": "physical",
         "CritChance": 0,
         "CritMultiplier": 1.75,
         "SplashType": "None",
@@ -2291,7 +2254,8 @@
           "IntelligencePerLevel": 1.2,
           "WisdomPerLevel": 1.8,
           "FortunePerLevel": 0.4
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/pack_alpha",
@@ -2309,8 +2273,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "normal",
-        "ArmorType": "light",
         "Strength": 18,
         "Agility": 14,
         "Vitality": 16,
@@ -2321,11 +2283,10 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 0,
         "ManaRegen": 8.362,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 6,
-        "DamageType": "nature",
+        "DamageType": "physical",
         "CritChance": 0,
         "CritMultiplier": 1.75,
         "SplashType": "RadialStep",
@@ -2416,7 +2377,8 @@
           "IntelligencePerLevel": 0.4,
           "WisdomPerLevel": 0.4,
           "FortunePerLevel": 0.6
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/razor_dervish",
@@ -2434,8 +2396,6 @@
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "AttackType": "normal",
-        "ArmorType": "light",
         "Strength": 15,
         "Agility": 19,
         "Vitality": 12,
@@ -2446,11 +2406,10 @@
         "HpRegenCombatDelay": 3,
         "MaxMana": 26,
         "ManaRegen": 9.34,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 6,
-        "DamageType": "normal",
+        "DamageType": "physical",
         "CritChance": 0,
         "CritMultiplier": 1.75,
         "SplashType": "RadialStep",
@@ -2541,7 +2500,8 @@
           "IntelligencePerLevel": 0.4,
           "WisdomPerLevel": 0.4,
           "FortunePerLevel": 0.6
-        }
+        },
+        "MagicResistance": 0
       },
       {
         "TemplateID": "unit/builder",
@@ -2559,8 +2519,6 @@
         "CostStone": 0,
         "PopCost": 0,
         "ProductionTime": 0,
-        "AttackType": null,
-        "ArmorType": null,
         "Strength": 0,
         "Agility": 0,
         "Vitality": 0,
@@ -2571,11 +2529,10 @@
         "HpRegenCombatDelay": 0,
         "MaxMana": 0,
         "ManaRegen": 0,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 0,
-        "DamageType": "normal",
+        "DamageType": "physical",
         "CritChance": 0,
         "CritMultiplier": 1,
         "SplashType": "None",
@@ -2668,7 +2625,8 @@
         "ProceduralAnimation": null,
         "EnableProceduralAnimation": null,
         "DespawnShader": null,
-        "ConstructionRange": 16
+        "ConstructionRange": 16,
+        "MagicResistance": 0
       }
     ],
     "Buildings": [
@@ -2704,7 +2662,7 @@
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 0,
-        "DamageType": "normal",
+        "DamageType": "physical",
         "CritChance": 0,
         "CritMultiplier": 1,
         "SplashType": "None",
@@ -2792,7 +2750,7 @@
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 0,
-        "DamageType": "normal",
+        "DamageType": "physical",
         "CritChance": 0,
         "CritMultiplier": 1,
         "SplashType": "None",
@@ -2880,7 +2838,7 @@
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 0,
-        "DamageType": "normal",
+        "DamageType": "physical",
         "CritChance": 0,
         "CritMultiplier": 1,
         "SplashType": "None",
@@ -2968,7 +2926,7 @@
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 0,
-        "DamageType": "normal",
+        "DamageType": "physical",
         "CritChance": 0,
         "CritMultiplier": 1,
         "SplashType": "None",
@@ -3052,7 +3010,7 @@
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 0,
-        "DamageType": "normal",
+        "DamageType": "physical",
         "CritChance": 0,
         "CritMultiplier": 1,
         "SplashType": "None",
@@ -4534,7 +4492,7 @@
       {
         "TemplateID": "ability/frost_warden_frost_bulwark",
         "Name": "Frost Bulwark",
-        "Description": "Ice plate grants 8 armor and 12% spell ward for 6 s, rising toward 9 s with Wisdom.",
+        "Description": "Ice plate grants 8 armor and 2.3 magic resistance for 6 s, rising toward 9 s with Wisdom.",
         "Role": "Tank",
         "AbilityType": "instant_spell",
         "IconPath": "heavy_armor_crawler.rtex",
@@ -4566,9 +4524,9 @@
                 "WASMFunctionName": ""
               },
               {
-                "StatKey": "SpellWard",
+                "StatKey": "MagicResistance",
                 "Type": "Flat",
-                "Value": 0.12,
+                "Value": 2.3,
                 "PerLevelScaling": 0,
                 "WASMFunctionName": ""
               }
@@ -5496,7 +5454,7 @@
       {
         "TemplateID": "ability/lightbringer_monk_sanctified_ground",
         "Name": "Sanctified Ground",
-        "Description": "Consecrates the ground: allies within 3.5 gain 6 armor, 10% spell ward and 8% tenacity for 5 s, rising toward 8 s with Wisdom.",
+        "Description": "Consecrates the ground: allies within 3.5 gain 6 armor, 1.9 magic resistance and 8% tenacity for 5 s, rising toward 8 s with Wisdom.",
         "Role": "Tank",
         "AbilityType": "target_spell",
         "IconPath": "orc_tower.rtex",
@@ -5529,9 +5487,9 @@
                 "WASMFunctionName": ""
               },
               {
-                "StatKey": "SpellWard",
+                "StatKey": "MagicResistance",
                 "Type": "Flat",
-                "Value": 0.1,
+                "Value": 1.9,
                 "PerLevelScaling": 0,
                 "WASMFunctionName": ""
               },
@@ -8932,7 +8890,7 @@
       {
         "TemplateID": "upgrade/bs_arcane_piercing",
         "Name": "Arcane Piercing",
-        "Description": "Spell damage ignores part of spell ward.",
+        "Description": "Spell damage ignores part of the target's magic resistance.",
         "IconPath": null,
         "Hotkey": null,
         "CostGold": 0,
@@ -8944,7 +8902,7 @@
         "AffectedUnitIds": null,
         "Modifiers": [
           {
-            "StatKey": "MagicPenetration",
+            "StatKey": "PercentMagicPenetration",
             "Type": "Flat",
             "Value": 0.1,
             "PerLevelScaling": 0,
@@ -9023,8 +8981,8 @@
       },
       {
         "TemplateID": "upgrade/bs_spell_ward",
-        "Name": "Spell Ward",
-        "Description": "Reduces incoming spell damage.",
+        "Name": "Arcane Warding",
+        "Description": "Grants every hero 1.5 magic resistance.",
         "IconPath": null,
         "Hotkey": null,
         "CostGold": 0,
@@ -9036,9 +8994,9 @@
         "AffectedUnitIds": null,
         "Modifiers": [
           {
-            "StatKey": "SpellWard",
+            "StatKey": "MagicResistance",
             "Type": "Flat",
-            "Value": 0.08,
+            "Value": 1.4,
             "PerLevelScaling": 0,
             "WASMFunctionName": ""
           }
@@ -9635,190 +9593,8 @@
     "Vfx": []
   },
   "CombatTuning": {
-    "DamageMatrix": [
-      {
-        "DamageType": "physical",
-        "ArmorType": "light",
-        "Multiplier": 1.0
-      },
-      {
-        "DamageType": "physical",
-        "ArmorType": "medium",
-        "Multiplier": 0.9
-      },
-      {
-        "DamageType": "physical",
-        "ArmorType": "heavy",
-        "Multiplier": 0.75
-      },
-      {
-        "DamageType": "physical",
-        "ArmorType": "unarmored",
-        "Multiplier": 1.2
-      },
-      {
-        "DamageType": "normal",
-        "ArmorType": "light",
-        "Multiplier": 1.0
-      },
-      {
-        "DamageType": "normal",
-        "ArmorType": "medium",
-        "Multiplier": 0.9
-      },
-      {
-        "DamageType": "normal",
-        "ArmorType": "heavy",
-        "Multiplier": 0.75
-      },
-      {
-        "DamageType": "normal",
-        "ArmorType": "unarmored",
-        "Multiplier": 1.2
-      },
-      {
-        "DamageType": "magic",
-        "ArmorType": "light",
-        "Multiplier": 1.1
-      },
-      {
-        "DamageType": "magic",
-        "ArmorType": "medium",
-        "Multiplier": 1.0
-      },
-      {
-        "DamageType": "magic",
-        "ArmorType": "heavy",
-        "Multiplier": 0.9
-      },
-      {
-        "DamageType": "magic",
-        "ArmorType": "unarmored",
-        "Multiplier": 1.05
-      },
-      {
-        "DamageType": "fire",
-        "ArmorType": "light",
-        "Multiplier": 1.1
-      },
-      {
-        "DamageType": "fire",
-        "ArmorType": "medium",
-        "Multiplier": 1.0
-      },
-      {
-        "DamageType": "fire",
-        "ArmorType": "heavy",
-        "Multiplier": 0.9
-      },
-      {
-        "DamageType": "fire",
-        "ArmorType": "unarmored",
-        "Multiplier": 1.05
-      },
-      {
-        "DamageType": "frost",
-        "ArmorType": "light",
-        "Multiplier": 1.1
-      },
-      {
-        "DamageType": "frost",
-        "ArmorType": "medium",
-        "Multiplier": 1.0
-      },
-      {
-        "DamageType": "frost",
-        "ArmorType": "heavy",
-        "Multiplier": 0.9
-      },
-      {
-        "DamageType": "frost",
-        "ArmorType": "unarmored",
-        "Multiplier": 1.05
-      },
-      {
-        "DamageType": "nature",
-        "ArmorType": "light",
-        "Multiplier": 1.1
-      },
-      {
-        "DamageType": "nature",
-        "ArmorType": "medium",
-        "Multiplier": 1.0
-      },
-      {
-        "DamageType": "nature",
-        "ArmorType": "heavy",
-        "Multiplier": 0.9
-      },
-      {
-        "DamageType": "nature",
-        "ArmorType": "unarmored",
-        "Multiplier": 1.05
-      },
-      {
-        "DamageType": "holy",
-        "ArmorType": "light",
-        "Multiplier": 1.1
-      },
-      {
-        "DamageType": "holy",
-        "ArmorType": "medium",
-        "Multiplier": 1.0
-      },
-      {
-        "DamageType": "holy",
-        "ArmorType": "heavy",
-        "Multiplier": 0.9
-      },
-      {
-        "DamageType": "holy",
-        "ArmorType": "unarmored",
-        "Multiplier": 1.05
-      },
-      {
-        "DamageType": "shadow",
-        "ArmorType": "light",
-        "Multiplier": 1.1
-      },
-      {
-        "DamageType": "shadow",
-        "ArmorType": "medium",
-        "Multiplier": 1.0
-      },
-      {
-        "DamageType": "shadow",
-        "ArmorType": "heavy",
-        "Multiplier": 0.9
-      },
-      {
-        "DamageType": "shadow",
-        "ArmorType": "unarmored",
-        "Multiplier": 1.05
-      },
-      {
-        "DamageType": "pure",
-        "ArmorType": "light",
-        "Multiplier": 1.0
-      },
-      {
-        "DamageType": "pure",
-        "ArmorType": "medium",
-        "Multiplier": 1.0
-      },
-      {
-        "DamageType": "pure",
-        "ArmorType": "heavy",
-        "Multiplier": 1.0
-      },
-      {
-        "DamageType": "pure",
-        "ArmorType": "unarmored",
-        "Multiplier": 1.0
-      }
-    ],
-    "UndefinedPairMultiplier": 1.0,
-    "ArmorTuningConstantK": 16.67,
+    "ResistTuningConstantK": 16.67,
+    "MaxResistMitigation": 0.9,
     "MinDamageFloor": 1.0
   },
   "CustomProceduralAnimations": [],
