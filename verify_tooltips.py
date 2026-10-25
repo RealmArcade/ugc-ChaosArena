@@ -14,29 +14,35 @@ from decimal import Decimal, ROUND_HALF_UP
 SRC = "metadata.json"
 TOKEN = re.compile(r"\{\{(.+?)\}\}")
 
-# Must stay in step with MapScript.Elixirs.cs: the script publishes these four values per elixir.
-ELIXIR_KEYS = ("Amount", "Cap", "Procs", "Cost")
+# Must stay in step with MapScript.Elixirs.cs: the script publishes the amount and stack cap per
+# elixir, while the purchase price is authored in Templates.Consumables.
 ELIXIR_SOURCE = {
-    "elixir_blood_debt": (0.4, 30, 40),
-    "elixir_siphon_sigil": (5, 25, 30),
-    "elixir_rending_edge": (45, 5, 45),
-    "elixir_executioner": (12, 20, 50),
-    "elixir_warded_hide": (0.25, 16, 35),
-    "elixir_retaliation": (20, 10, 40),
-    "elixir_phantom_step": (0.02, 10, 30),
-    "elixir_soul_harvest": (0.04, 10, 45),
-    "elixir_trophy_hunter": (1, 20, 30),
-    "elixir_feeding_frenzy": (1, 15, 45),
-    "elixir_void_pact": (18, 20, 40),
-    "elixir_arcane_echo": (10, 6, 40),
-    "elixir_swift_incantation": (1.5, 8, 45),
-    "elixir_ritual_echo": (30, 5, 50),
-    "elixir_opening_gambit": (4, 1, 35),
-    "elixir_vanguards_oath": (8, 1, 40),
-    "elixir_slow_regeneration": (2, 90, 35),
-    "elixir_battle_trance": (1.5, 8, 50),
-    "elixir_iron_constitution": (22, 10, 45),
-    "elixir_flush": (0, 0, 10),
+    "elixir_blood_debt": (0.4, 30),
+    "elixir_siphon_sigil": (5, 25),
+    "elixir_rending_edge": (45, 5),
+    "elixir_executioner": (12, 20),
+    "elixir_warded_hide": (0.25, 16),
+    "elixir_retaliation": (20, 10),
+    "elixir_phantom_step": (0.02, 10),
+    "elixir_soul_harvest": (0.04, 10),
+    "elixir_trophy_hunter": (1, 20),
+    "elixir_feeding_frenzy": (1, 15),
+    "elixir_void_pact": (18, 20),
+    "elixir_arcane_echo": (10, 6),
+    "elixir_swift_incantation": (1.5, 8),
+    "elixir_ritual_echo": (30, 5),
+    "elixir_opening_gambit": (4, 1),
+    "elixir_vanguards_oath": (8, 1),
+    "elixir_slow_regeneration": (2, 90),
+    "elixir_battle_trance": (1.5, 8),
+    "elixir_iron_constitution": (22, 10),
+    "elixir_flush": (0, 0),
+}
+
+# Values the script publishes for abilities that are handled in code rather than by effect data.
+SCRIPTED_ABILITIES = {
+    "ability/soul_siphon": {"Threshold": 30, "Amount": 1, "Cap": 3},
+    "ability/healing_wave": {"Percent": 25},
 }
 
 
@@ -99,33 +105,60 @@ def effect_values(ability):
     return values
 
 
-def elixir_values(template_id):
+def elixir_values(template_id, consumables):
     slug = template_id.split("/", 1)[1]
     if slug not in ELIXIR_SOURCE:
         return None
-    amount, stacks, cost = ELIXIR_SOURCE[slug]
+
+    amount, stacks = ELIXIR_SOURCE[slug]
+    purchase = consumables.get(template_id) or {}
     return {
         "Amount": amount,
         "Cap": amount * stacks,
         "Procs": stacks,
-        "Cost": cost,
+        "Cost": purchase.get("CostGold", 0),
         "Name": slug.replace("elixir_", "").replace("_", " ").title(),
     }
 
 
-def resolve(description, values):
+def consumable_values(consumables, ability_id):
+    purchase = consumables.get(ability_id)
+    if not purchase:
+        return None
+
+    return {
+        "Cost": purchase.get("CostGold", 0),
+        "CostGold": purchase.get("CostGold", 0),
+        "CostWood": purchase.get("CostWood", 0),
+        "CostStone": purchase.get("CostStone", 0),
+        "MaxPerUnit": purchase.get("MaxPerUnit", 0),
+        "Range": purchase.get("PurchaseRange", 0),
+        "SlotGroup": purchase.get("SlotGroup", ""),
+    }
+
+
+def resolve(description, values, scoped=None):
     missing = []
+    scoped = scoped or {}
 
     def substitute(match):
         body = match.group(1)
         path, _, spec = body.partition(":")
         path = path.strip()
-        if path.startswith("Ability."):
-            path = path[len("Ability."):]
-        if path not in values:
-            missing.append(path)
+        scope = None
+        if "." in path:
+            scope, _, path = path.partition(".")
+
+        if scope is not None and scope not in ("Ability", "Consumable"):
+            missing.append(match.group(1))
             return match.group(0)
-        value = values[path]
+
+        active = values if scope != "Consumable" else scoped
+        if active is None or path not in active:
+            missing.append(match.group(1))
+            return match.group(0)
+
+        value = active[path]
         if isinstance(value, str):
             return value
         return dotnet_format(value, spec.strip() or None)
@@ -137,6 +170,11 @@ def main():
     with open(SRC, encoding="utf-8-sig") as handle:
         metadata = json.load(handle)
 
+    consumables = {
+        entry.get("AbilityId") or entry["TemplateID"]: entry
+        for entry in metadata["Templates"].get("Consumables", [])
+    }
+
     show = "--print" in sys.argv
     problems = []
     checked = 0
@@ -147,8 +185,11 @@ def main():
         if "{{" not in description:
             continue
 
-        values = elixir_values(template_id) or effect_values(ability)
-        resolved, missing = resolve(description, values)
+        values = elixir_values(template_id, consumables) or effect_values(ability)
+        for key, value in SCRIPTED_ABILITIES.get(template_id, {}).items():
+            values[key] = value
+
+        resolved, missing = resolve(description, values, consumable_values(consumables, template_id))
         checked += 1
 
         if missing:

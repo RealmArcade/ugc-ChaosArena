@@ -236,7 +236,7 @@ public partial class MapScript : IWasmModule
         _api.DisableShroud();
 
         ConfigureDraftChoicesOnTiles();
-        ConfigureElixirsOnAltar();
+        ConfigureAltarAbilities();
         InitializePlayers();
 
         while (foodCap < FoodCapIncreaseMinutes.Length && gameSecondsElapsed >= nextFoodCapIncreaseSeconds)
@@ -245,6 +245,7 @@ public partial class MapScript : IWasmModule
         _api.OnUnitDied += HandleUnitDied;
         _api.OnUnitDamaged += HandleUnitDamaged;
         _api.OnSpellCast += HandleSpellCast;
+        _api.OnConsumableChanged += HandleConsumableChanged;
         _api.OnConstructionFinished += HandleConstructionFinished;
         _api.OnPlayerChatMessage += HandleChatMessage;
         _api.OnPlayerLeft += HandlePlayerLeft;
@@ -1891,10 +1892,19 @@ public partial class MapScript : IWasmModule
         int playerIndex = ResolveRealPlayerIndex(caster.Player);
         PlayerId player = _api.GetPlayer(playerIndex);
 
-        if (TryBuyElixir(caster, spellId, targetPosition, playerIndex))
-            return;
-
         OnElixirCast(caster, spellId);
+
+        if (SlugsEqual(spellId, SoulSiphonAbilityId))
+        {
+            ApplySoulSiphon(caster, targetPosition, playerIndex);
+            return;
+        }
+
+        if (SlugsEqual(spellId, HealingWaveAbilityId))
+        {
+            ApplyHealingWave(caster, targetPosition, playerIndex);
+            return;
+        }
 
         if (SlugsEqual(spellId, DebugCycleLevelAbilityId))
         {

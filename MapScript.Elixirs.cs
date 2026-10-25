@@ -5,9 +5,6 @@ using System.Collections.Generic;
 using System.Numerics;
 using Realm.MapAPI;
 
-/// <summary>
-/// When an elixir's passive is allowed to fire. The hook decides which map callback drives it.
-/// </summary>
 public enum ElixirHook
 {
     HitDealt,
@@ -18,26 +15,16 @@ public enum ElixirHook
     Always
 }
 
-/// <summary>
-/// One altar elixir. The hook and the cap live here so an effect cannot scale past its budget,
-/// and every value an author would want to tune is on this record rather than buried in a switch.
-/// </summary>
 public sealed record ElixirDefinition(
     string Id,
-    string Name,
     ElixirHook Hook,
     float Amount,
-    int MaxStacks,
-    float CostGold)
+    int MaxStacks)
 {
     public string AbilityId => $"ability/{Id}";
     public string SourceId => $"elixir/{Id}";
 }
 
-/// <summary>
-/// Live state for the elixir a unit is carrying. Clones get a fresh state at spawn, so stacks
-/// never compound across waves.
-/// </summary>
 public sealed class ElixirState
 {
     public ElixirDefinition Definition { get; init; } = null!;
@@ -49,34 +36,40 @@ public sealed class ElixirState
 
 public partial class MapScript
 {
-    private const float ElixirPurchaseRadius = 4f;
+    private const string SoulSiphonAbilityId = "ability/soul_siphon";
+    private const string HealingWaveAbilityId = "ability/healing_wave";
+    private const float SoulSiphonRadius = 4f;
+    private const float HealingWaveRadius = 7f;
+    private const float SoulSiphonThresholdPercent = 30f;
+    private const float SoulSiphonWoodPerExecution = 1f;
+    private const int SoulSiphonMaxExecutions = 3;
+    private const float HealingWaveMissingHealthFraction = 0.25f;
 
     private static readonly ElixirDefinition[] Elixirs =
     {
-        new("elixir_blood_debt", "Blood Debt", ElixirHook.HitDealt, 0.4f, 30, 40f),
-        new("elixir_siphon_sigil", "Siphon Sigil", ElixirHook.HitDealt, 5f, 25, 30f),
-        new("elixir_rending_edge", "Rending Edge", ElixirHook.HitDealt, 45f, 5, 45f),
-        new("elixir_executioner", "Executioner", ElixirHook.HitDealt, 12f, 20, 50f),
-        new("elixir_warded_hide", "Warded Hide", ElixirHook.HitTaken, 0.25f, 16, 35f),
-        new("elixir_retaliation", "Retaliation", ElixirHook.HitTaken, 20f, 10, 40f),
-        new("elixir_phantom_step", "Phantom Step", ElixirHook.HitTaken, 0.02f, 10, 30f),
-        new("elixir_soul_harvest", "Soul Harvest", ElixirHook.Kill, 0.04f, 10, 45f),
-        new("elixir_trophy_hunter", "Trophy Hunter", ElixirHook.Kill, 1f, 20, 30f),
-        new("elixir_feeding_frenzy", "Feeding Frenzy", ElixirHook.Kill, 1f, 15, 45f),
-        new("elixir_void_pact", "Void Pact", ElixirHook.Kill, 18f, 20, 40f),
-        new("elixir_arcane_echo", "Arcane Echo", ElixirHook.Cast, 10f, 6, 40f),
-        new("elixir_swift_incantation", "Swift Incantation", ElixirHook.Cast, 1.5f, 8, 45f),
-        new("elixir_ritual_echo", "Ritual Echo", ElixirHook.Cast, 30f, 5, 50f),
-        new("elixir_opening_gambit", "Opening Gambit", ElixirHook.WaveStart, 4f, 1, 35f),
-        new("elixir_vanguards_oath", "Vanguard's Oath", ElixirHook.WaveStart, 8f, 1, 40f),
-        new("elixir_slow_regeneration", "Slow Regeneration", ElixirHook.Always, 2f, 90, 35f),
-        new("elixir_battle_trance", "Battle Trance", ElixirHook.Always, 1.5f, 8, 50f),
-        new("elixir_iron_constitution", "Iron Constitution", ElixirHook.Always, 22f, 10, 45f),
-        new("elixir_flush", "Flush", ElixirHook.Always, 0f, 0, 10f),
+        new("elixir_blood_debt", ElixirHook.HitDealt, 0.4f, 30),
+        new("elixir_siphon_sigil", ElixirHook.HitDealt, 5f, 25),
+        new("elixir_rending_edge", ElixirHook.HitDealt, 45f, 5),
+        new("elixir_executioner", ElixirHook.HitDealt, 12f, 20),
+        new("elixir_warded_hide", ElixirHook.HitTaken, 0.25f, 16),
+        new("elixir_retaliation", ElixirHook.HitTaken, 20f, 10),
+        new("elixir_phantom_step", ElixirHook.HitTaken, 0.02f, 10),
+        new("elixir_soul_harvest", ElixirHook.Kill, 0.04f, 10),
+        new("elixir_trophy_hunter", ElixirHook.Kill, 1f, 20),
+        new("elixir_feeding_frenzy", ElixirHook.Kill, 1f, 15),
+        new("elixir_void_pact", ElixirHook.Kill, 18f, 20),
+        new("elixir_arcane_echo", ElixirHook.Cast, 10f, 6),
+        new("elixir_swift_incantation", ElixirHook.Cast, 1.5f, 8),
+        new("elixir_ritual_echo", ElixirHook.Cast, 30f, 5),
+        new("elixir_opening_gambit", ElixirHook.WaveStart, 4f, 1),
+        new("elixir_vanguards_oath", ElixirHook.WaveStart, 8f, 1),
+        new("elixir_slow_regeneration", ElixirHook.Always, 2f, 90),
+        new("elixir_battle_trance", ElixirHook.Always, 1.5f, 8),
+        new("elixir_iron_constitution", ElixirHook.Always, 22f, 10),
+        new("elixir_flush", ElixirHook.Always, 0f, 0),
     };
 
     private static readonly Dictionary<string, ElixirDefinition> ElixirById = BuildElixirLookup();
-    private static readonly string FlushElixirId = "elixir_flush";
 
     private readonly Dictionary<int, ElixirState> elixirStatesByUnitId = new();
 
@@ -101,116 +94,50 @@ public partial class MapScript
         return ElixirById.TryGetValue(StripSlugPrefix(spellId), out definition!);
     }
 
-    /// <summary>
-    /// Puts the elixir shop on the altar. The altar is a building, so the same ability-bar paging
-    /// the command card already does for buildings handles the twenty entries.
-    /// </summary>
-    private void ConfigureElixirsOnAltar()
+    private void ConfigureAltarAbilities()
     {
         foreach (ElixirDefinition elixir in Elixirs)
         {
             _api.AddUnitTypeAbility(BuildingIds.Altar, elixir.AbilityId);
             PublishElixirTooltipValues(elixir);
         }
+
+        _api.AddUnitTypeAbility(BuildingIds.Altar, SoulSiphonAbilityId);
+        _api.AddUnitTypeAbility(BuildingIds.Altar, HealingWaveAbilityId);
+
+        _api.SetAbilityTooltipValue(SoulSiphonAbilityId, "Threshold", SoulSiphonThresholdPercent);
+        _api.SetAbilityTooltipValue(SoulSiphonAbilityId, "Amount", SoulSiphonWoodPerExecution);
+        _api.SetAbilityTooltipValue(SoulSiphonAbilityId, "Cap", SoulSiphonMaxExecutions);
+        _api.SetAbilityTooltipValue(HealingWaveAbilityId, "Percent", HealingWaveMissingHealthFraction * 100f);
     }
 
-    /// <summary>
-    /// Hands the altar card the numbers this elixir is applied with, so the sentence on the card
-    /// and the effect on the unit read the same fields. Amount is per stack, Cap is the total the
-    /// cap allows, Procs is the stack count, and Cost is what the altar charges.
-    /// </summary>
     private void PublishElixirTooltipValues(ElixirDefinition elixir)
     {
         _api.SetAbilityTooltipValue(elixir.AbilityId, "Amount", elixir.Amount);
         _api.SetAbilityTooltipValue(elixir.AbilityId, "Cap", elixir.Amount * elixir.MaxStacks);
         _api.SetAbilityTooltipValue(elixir.AbilityId, "Procs", elixir.MaxStacks);
-        _api.SetAbilityTooltipValue(elixir.AbilityId, "Cost", elixir.CostGold);
     }
 
-    /// <summary>
-    /// Handles an elixir ability cast from the altar. The player targets one of their own board
-    /// heroes; the elixir is paid for in gold and replaces nothing but an empty slot.
-    /// </summary>
-    private bool TryBuyElixir(UnitId altar, string spellId, Vector3 targetPosition, int playerIndex)
+    private void HandleConsumableChanged(UnitId unit, string consumableId)
     {
-        if (!altar.IsValid || !TryResolveElixir(spellId, out ElixirDefinition elixir))
-            return false;
+        if (!unit.IsValid)
+            return;
 
-        PlayerId player = _api.GetPlayer(playerIndex);
-        bool isFlush = string.Equals(elixir.Id, FlushElixirId, StringComparison.OrdinalIgnoreCase);
+        int playerIndex = ResolveRealPlayerIndex(unit.Player);
 
-        UnitId target = FindElixirTarget(playerIndex, targetPosition);
-        if (!target.IsValid)
+        if (string.IsNullOrEmpty(consumableId))
         {
-            player.SendMessage($"{elixir.Name}: target one of your own board heroes.");
-            return true;
+            ClearElixir(unit);
+            _api.GetPlayer(playerIndex).SendMessage($"{unit.Name} no longer carries an elixir.");
+            return;
         }
 
-        bool hasElixir = elixirStatesByUnitId.ContainsKey(target.UniqueId);
+        if (!TryResolveElixir(consumableId, out ElixirDefinition definition))
+            return;
 
-        if (isFlush)
-        {
-            if (!hasElixir)
-            {
-                player.SendMessage("Flush: that hero is not carrying an elixir.");
-                return true;
-            }
-
-            if (player.Gold < elixir.CostGold)
-            {
-                player.SendMessage($"Flush costs {elixir.CostGold:F0} gold.");
-                return true;
-            }
-
-            player.AdjustGold(-elixir.CostGold);
-            ClearElixir(target);
-            player.SendMessage("Elixir flushed. The hero can carry a different one now.");
-            return true;
-        }
-
-        if (hasElixir)
-        {
-            player.SendMessage($"{elixir.Name} not applied: that hero already carries an elixir. Buy a Flush first.");
-            return true;
-        }
-
-        if (player.Gold < elixir.CostGold)
-        {
-            player.SendMessage($"{elixir.Name} costs {elixir.CostGold:F0} gold.");
-            return true;
-        }
-
-        player.AdjustGold(-elixir.CostGold);
-        ApplyElixir(target, elixir, playerIndex);
-        player.SendMessage($"{elixir.Name} bound to {target.Name}. Every wave clone it spawns inherits it.");
-        return true;
-    }
-
-    private UnitId FindElixirTarget(int playerIndex, Vector3 position)
-    {
-        UnitId best = UnitId.Invalid;
-        float bestDistance = ElixirPurchaseRadius;
-
-        foreach (UnitId candidate in _api.GetUnitsInRadius(position, ElixirPurchaseRadius))
-        {
-            if (!candidate.IsValid || candidate.IsDead)
-                continue;
-
-            if (ResolveRealPlayerIndex(candidate.Player) != playerIndex)
-                continue;
-
-            if (!tileStatesByUnitId.ContainsKey(candidate.UniqueId))
-                continue;
-
-            float distance = Vector3.Distance(candidate.Position, position);
-            if (distance > bestDistance)
-                continue;
-
-            bestDistance = distance;
-            best = candidate;
-        }
-
-        return best;
+        ApplyElixir(unit, definition, playerIndex);
+        _api.GetPlayer(playerIndex).SendMessage(
+            $"{_api.GetAbilityName(definition.AbilityId)} bound to {unit.Name}. Every wave clone it spawns inherits it.");
     }
 
     private void ApplyElixir(UnitId unit, ElixirDefinition definition, int playerIndex)
@@ -236,10 +163,6 @@ public partial class MapScript
 
     private void RemoveElixirState(UnitId unit) => elixirStatesByUnitId.Remove(unit.UniqueId);
 
-    /// <summary>
-    /// Carries an elixir from a board hero onto the wave clone it spawned. Stacks start empty so
-    /// a long match does not inflate them.
-    /// </summary>
     private void ApplyInheritedElixir(UnitId clone, TileState? tileState)
     {
         if (tileState?.ElixirId == null)
@@ -252,16 +175,76 @@ public partial class MapScript
         OnElixirWaveStart(clone);
     }
 
-    // ---- Hooks ---------------------------------------------------------------------------
+    private void ApplySoulSiphon(UnitId caster, Vector3 targetPosition, int playerIndex)
+    {
+        PlayerId player = _api.GetPlayer(playerIndex);
+        int executions = 0;
+        int wood = 0;
+
+        foreach (UnitId target in _api.GetUnitsInRadius(targetPosition, SoulSiphonRadius))
+        {
+            if (executions >= SoulSiphonMaxExecutions)
+                break;
+
+            if (!target.IsValid || target.IsDead || target.Invulnerable)
+                continue;
+
+            if (ResolveRealPlayerIndex(target.Player) == playerIndex)
+                continue;
+
+            if (target.UniqueId == caster.UniqueId)
+                continue;
+
+            float healthPercent = target.MaxHealth > 0f ? 100f * target.Health / target.MaxHealth : 0f;
+            if (healthPercent > SoulSiphonThresholdPercent)
+                continue;
+
+            float executeChance = SoulSiphonThresholdPercent - healthPercent;
+            if (_api.RandomInt(0, 100) > executeChance)
+                continue;
+
+            _api.KillUnit(target);
+            executions++;
+            wood += (int)SoulSiphonWoodPerExecution;
+        }
+
+        if (wood <= 0)
+        {
+            player.SendMessage("Soul Siphon found no soul within reach.");
+            return;
+        }
+
+        player.AdjustWood(wood);
+        player.SendMessage($"Soul Siphon executed {executions} and recovered {wood} wood.");
+    }
+
+    private void ApplyHealingWave(UnitId caster, Vector3 targetPosition, int playerIndex)
+    {
+        int healed = 0;
+
+        foreach (UnitId target in _api.GetUnitsInRadius(targetPosition, HealingWaveRadius))
+        {
+            if (!target.IsValid || target.IsDead)
+                continue;
+
+            if (ResolveRealPlayerIndex(target.Player) != playerIndex)
+                continue;
+
+            float missing = MathF.Max(0f, target.MaxHealth - target.Health);
+            if (missing <= 0f)
+                continue;
+
+            _api.HealUnit(target, missing * HealingWaveMissingHealthFraction);
+            healed++;
+        }
+
+        if (healed == 0)
+            _api.GetPlayer(playerIndex).SendMessage("Healing Wave found nothing to mend.");
+    }
 
     private bool _elixirHookActive;
     private readonly List<(UnitId Attacker, UnitId Target, float Damage, string DamageType)> _pendingElixirDamage = new();
 
-    /// <summary>
-    /// Elixir procs land inside the engine's damage callback, which is inside an entity query.
-    /// Killing a unit there would despawn entities mid-iteration, so procs that deal damage are
-    /// queued and applied a fraction of a second later instead.
-    /// </summary>
     private void QueueElixirDamage(UnitId attacker, UnitId target, float damage, string damageType)
     {
         if (damage <= 0f || !target.IsValid || target.IsDead)
@@ -278,8 +261,6 @@ public partial class MapScript
         var pending = _pendingElixirDamage.ToArray();
         _pendingElixirDamage.Clear();
 
-        // Damage an elixir proc deals must not trigger another elixir proc, exactly as with the
-        // synchronous path.
         _elixirHookActive = true;
         try
         {
@@ -297,10 +278,6 @@ public partial class MapScript
         }
     }
 
-    /// <summary>
-    /// Runs the damage hooks once per real hit. Bonus damage the elixirs themselves deal re-enters
-    /// the damage callback, so the flag stops a proc from triggering another proc in the same tick.
-    /// </summary>
     private void RunElixirDamageHooks(UnitId victim, UnitId attacker, float damage)
     {
         if (_elixirHookActive || elixirStatesByUnitId.Count == 0)
@@ -485,12 +462,6 @@ public partial class MapScript
         }
     }
 
-    /// <summary>
-    /// Repoints the one stat modifier an elixir owns at its new stacked total. Elixirs grow a stack
-    /// at a time, so adding a fresh modifier per stack would make the total triangular (1+2+3...)
-    /// instead of the linear cap the card promises, and would also eat the entity's modifier slots.
-    /// The max-health path is safe to re-point because a recalculation keeps the health ratio.
-    /// </summary>
     private void SetElixirModifier(UnitId unit, ElixirState state, string statName, bool isPercentage, float total)
     {
         _api.RemoveStatModifiers(unit, state.Definition.SourceId);
@@ -513,9 +484,6 @@ public partial class MapScript
             state.Definition.SourceId);
     }
 
-    /// <summary>
-    /// One-second tick for the elixirs whose effect is time based rather than event based.
-    /// </summary>
     private void HandleElixirTick()
     {
         FlushElixirDamage();
