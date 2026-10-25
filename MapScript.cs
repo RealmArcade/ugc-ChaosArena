@@ -1141,6 +1141,24 @@ public partial class MapScript : IWasmModule
         RecreateTileLabel(state);
     }
 
+    /// <summary>
+    /// Turns autocast on for exactly one of the three element abilities, so a wave clone fights with
+    /// the element it drafted. The other two get an explicit off rather than being left to default,
+    /// because "nothing casts" and "everything casts" are both failures of this card.
+    /// </summary>
+    private void EnableElementAutocast(UnitId unit, Element element)
+    {
+        IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unit.TemplateID);
+        for (int i = 0; i < ElementalAbilityCount && i < abilities.Count; i++)
+        {
+            string abilityId = abilities[i];
+            if (string.IsNullOrEmpty(abilityId))
+                continue;
+
+            _api.SetAbilityAutoCast(unit, abilityId, i == (int)element);
+        }
+    }
+
     private static void ApplyHeroStats(UnitId unit, int level)
     {
         if (unit.IsHero)
@@ -1641,6 +1659,7 @@ public partial class MapScript : IWasmModule
             };
             waveUnitStatesByUnitId[clone.UniqueId] = cloneState;
             ApplyElement(clone, cloneState, false);
+            EnableElementAutocast(clone, element);
 
             ApplyInheritedElixir(clone, tileState);
 

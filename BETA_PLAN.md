@@ -36,7 +36,7 @@ Two invariants for all engine work: the engine stays a **generic RTS** (no Chaos
 | M1 hero roster, items, upgrades, elixirs | done |
 | M2 60 ability definitions, map tuning | done |
 | M3 circle UX | **open** |
-| M4 clone loadout | **open — autocast never enabled** |
+| M4 clone loadout | done |
 | M5 rerolls and swaps | done |
 | M6 altar elixirs | done |
 | M7 blacksmith upgrades | done |
@@ -45,7 +45,7 @@ Two invariants for all engine work: the engine stays a **generic RTS** (no Chaos
 
 ## Open defects found in the 25 Oct audit
 
-1. **Nothing casts an ability in a real match.** `MapScript` calls `EnableUnitAutoCombat`, which sets `AutoCombatState` (auto-attack). The engine's autocast pass iterates `AutoCastQuery`, which requires `AutoCastState`, and only `SetAbilityAutoCast` creates it. The map never calls it, so the 60 kits, the mana gating and three elixir Cast hooks are all unobservable. One call per clone in `SpawnWaveForPlayer`; no engine change.
+1. ~~**Nothing casts an ability in a real match.**~~ Fixed in M4b: `SpawnWaveForPlayer` now calls `EnableElementAutocast`, which turns the bit on for the drafted element and explicitly off for the other two. The mana gating, the autocast policies and the elixir Cast hooks are live as a result.
 2. **Mana pools are authored as residuals.** The committed `MaxMana` values are what is left after subtracting `Vitality × VitalityManaPerPoint`, so a hero's real pool is `authored + Vitality × 8`. Stone Guardian authors 0 and carries 14–22 mana abilities. Fix by authoring absolute pools and pinning `VitalityManaPerPoint` to 0 in the map's tuning block.
 3. **"Per wave" means "per clone life" — wording fixed in T1.** Wave clones are never cycled between waves, so an elixir cap of 25 heals is really 25 heals for as long as that clone lives — and a clone that survives three waves banks three waves of allowance. Cards now say "per unit" / "the whole life of the unit"; resetting elixir state at wave start is still an open design question if the caps should refresh.
 4. **Real players are not allied to each other.** `MapScript` sets real↔proxy and proxy↔proxy but never real↔real. Decide between finishing the alliance graph and declaring free-for-all.
@@ -70,8 +70,10 @@ Chaos Arena authors exactly four tuning values: `ResistTuningConstantK`, `MaxRes
 ### M3. Circle UX — open
 Circles hold three element-description abilities, one visible, plus the item icon with its stack count. No more 60-ability bars, no global `SetAbilityTooltip` writes; the element name becomes `{{Source.Element}}` published per unit, and each card's numbers come from the ability template.
 
-### M4b. Enable autocast on clones — open
-Call `SetAbilityAutoCast(clone, activeElementAbility, true)` after the element is applied, and leave the two inactive slots off. Done when a clone casts its active ability and never the hidden ones. This is the difference between a beta and a benchmark.
+### M4b. Enable autocast on clones — done
+`EnableElementAutocast` runs after `ApplyElement` on every clone: the drafted element's ability gets an autocast bit, the other two get an explicit off. Every hero carries its three element abilities in Water/Earth/Fire order, which is the same order `ApplyElement` uses, so the bit and the visible button agree.
+
+Unverified until a match is run: the cast itself. The engine path (query, range, mana, cooldown, the per-ability policy authored in M2) is what the verification pass watches.
 
 ### T1. Tooltip templates — done
 Shipped in two commits (engine, then this map). Cards author `{{Scope.Key}}` tokens and the string is produced on hover from the stat snapshot and the authored effect list, so a card cannot quote a number the game is not using.
@@ -88,10 +90,10 @@ Not beta-blocking except for obvious errors. Move one knob at a time: damage per
 ## Execution order
 
 ```
-M4b → M3 → balance pass → verification pass
+M3 → balance pass → verification pass
 ```
 
-M4b first because every later judgement about the kits is made on a match where nothing casts anything.
+Everything feature-side before M3 is done, so the next change is the draft surface the player actually touches, then the balance pass, then one end-to-end verification.
 
 ## Verification pass (end of the list, run once)
 
