@@ -149,13 +149,18 @@ Purchased at the **Altar with gold**, consumed by a board hero. Renamed from "Re
 
 Wood-purchased, bought once each, team-wide, applied to wave clones. No tiers.
 
-**Offense (7):** Sharpened Blades (+flat damage) · Brutal Edge (+% damage) · Swift Hands (+attack speed) · Deadly Precision (+crit chance) · Piercing Rounds (+armor pen) · Arcane Resonance (+spell power) · Overload (+proc rate)
+**Offense (8):** Sharpened Blades (+6 flat attack, 45w) · Brutal Edge (+10% attack, 95w) · Swift Hands (+7% attack speed, 70w) · Deadly Precision (+5% crit chance, 80w) · Piercing Rounds (+3 armor pen, 55w) · Arcane Resonance (+8 spell power, 65w) · Overload (+0.2 proc rate, 50w) · Arcane Piercing (+0.1 magic pen, 70w)
 
-**Defense (6):** Reinforced Plate (+armor) · Bulwark (+% max HP) · Second Wind (+HP regen) · Spell Ward (+magic resist) · Tenacity (+CC reduction) · Evasion Drill (+evasion)
+**Defense (6):** Reinforced Plate (+3 armor, 50w) · Bulwark (+12% max HP, 90w) · Second Wind (+1.5 HP regen, 45w) · Spell Ward (+0.08 spell ward, 60w) · Tenacity (+0.08 tenacity, 55w) · Evasion Drill (+0.06 evasion, 70w)
 
-**Utility (5):** Forced March (+move speed) · Battle Rhythm (+cooldown reduction) · Bloodthirst (+lifesteal) · Scavenger (+wood per wave) · Ritual Focus (+starting mana)
+**Utility (5):** Forced March (+6% move speed, 50w) · Battle Rhythm (+0.08 cooldown reduction, 75w) · Bloodthirst (+0.05 lifesteal, 65w) · Ritual Focus (+25 max mana, 40w) · Field Medic (+12% healing, 60w)
 
-**Economy (2):** Bounty Ledger (+gold per kill) · War Industry (+% gold)
+**Economy (1):** Bounty Ledger (+20% gold per kill, 65w)
+
+The full set costs 1,255 wood, against roughly 300 wood of passive income plus kill wood in a
+25-minute match, so a player buys about five of the twenty. Every entry is one modifier on one
+canonical stat key; `Scavenger` (wood income) and `War Industry` (gold income) were dropped because
+they duplicated `Bounty Ledger` and had no stat key of their own.
 
 Each upgrade is one engine stat modifier on a canonical stat key — no new mechanics.
 

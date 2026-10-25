@@ -1,4 +1,4 @@
-{
+﻿{
   "license": "https://www.realm-game.com/RealmPlatform_UGC_License_v1.txt",
   "GameBuildNumber": "v0.0.4",
   "MapProperties": {
@@ -3083,9 +3083,26 @@
         "IsHero": false,
         "Abilities": [],
         "Upgrades": [
-          "upgrade/critical_strike",
-          "upgrade/iron_plating",
-          "upgrade/swift_stride"
+          "upgrade/bs_sharpened_blades",
+          "upgrade/bs_brutal_edge",
+          "upgrade/bs_swift_hands",
+          "upgrade/bs_deadly_precision",
+          "upgrade/bs_piercing_rounds",
+          "upgrade/bs_arcane_resonance",
+          "upgrade/bs_overload",
+          "upgrade/bs_arcane_piercing",
+          "upgrade/bs_reinforced_plate",
+          "upgrade/bs_bulwark",
+          "upgrade/bs_second_wind",
+          "upgrade/bs_spell_ward",
+          "upgrade/bs_tenacity",
+          "upgrade/bs_evasion_drill",
+          "upgrade/bs_forced_march",
+          "upgrade/bs_battle_rhythm",
+          "upgrade/bs_bloodthirst",
+          "upgrade/bs_ritual_focus",
+          "upgrade/bs_field_medic",
+          "upgrade/bs_bounty_ledger"
         ],
         "XpBounty": 0,
         "PathingCapabilities": null,
@@ -4719,28 +4736,6 @@
         "GridX": 0,
         "GridY": 2,
         "Hotkey": "Z"
-      },
-      {
-        "TemplateID": "ability/upgrade_critical_strike",
-        "Name": "Upgrade Critical Strike",
-        "Description": "Researches Critical Strike tech at the Blacksmith, granting +15% crit chance.",
-        "AbilityType": "instant_spell",
-        "IconPath": "ancient_spell_tower.rtex",
-        "ManaCost": 0,
-        "Cooldown": 0,
-        "TargetRange": 0,
-        "VisualEffect": "storm_strike_sheet.rtex",
-        "CastSound": "bat.raud",
-        "AppliedStatusEffects": null,
-        "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "C"
       },
       {
         "TemplateID": "ability/soul_siphon",
@@ -6793,75 +6788,6 @@
     ],
     "Upgrades": [
       {
-        "TemplateID": "upgrade/critical_strike",
-        "Name": "Critical Strike",
-        "Description": "Sharpened weapon edges grant every wave unit bonus attack damage.",
-        "IconPath": null,
-        "Hotkey": "C",
-        "CostGold": 80,
-        "CostWood": 0,
-        "CostStone": 0,
-        "ResearchTime": 0,
-        "Requirement": "",
-        "MaxLevel": 3,
-        "AffectedUnitIds": null,
-        "Modifiers": [
-          {
-            "StatKey": "Attack",
-            "Type": "Flat",
-            "Value": 4,
-            "WASMFunctionName": "",
-            "PerLevelScaling": 4
-          }
-        ]
-      },
-      {
-        "TemplateID": "upgrade/iron_plating",
-        "Name": "Iron Plating",
-        "Description": "Reinforced armour plating reduces incoming damage for every wave unit.",
-        "IconPath": null,
-        "Hotkey": "P",
-        "CostGold": 70,
-        "CostWood": 0,
-        "CostStone": 0,
-        "ResearchTime": 0,
-        "Requirement": "",
-        "MaxLevel": 2,
-        "AffectedUnitIds": null,
-        "Modifiers": [
-          {
-            "StatKey": "Armor",
-            "Type": "Flat",
-            "Value": 2,
-            "WASMFunctionName": "",
-            "PerLevelScaling": 2
-          }
-        ]
-      },
-      {
-        "TemplateID": "upgrade/swift_stride",
-        "Name": "Swift Stride",
-        "Description": "Lighter boots let every wave unit close the distance faster.",
-        "IconPath": null,
-        "Hotkey": "S",
-        "CostGold": 60,
-        "CostWood": 0,
-        "CostStone": 0,
-        "ResearchTime": 0,
-        "Requirement": "",
-        "MaxLevel": 3,
-        "AffectedUnitIds": null,
-        "Modifiers": [
-          {
-            "StatKey": "MovementSpeed",
-            "Type": "Percentage",
-            "Value": 1.08,
-            "WASMFunctionName": "",
-            "PerLevelScaling": 0.04
-          }
-        ]
-      },
-      {
         "TemplateID": "upgrade/item_titan_belt",
         "Name": "Girdle of Might",
         "Description": "Strength and vitality for frontliners.",
@@ -7396,6 +7322,466 @@
             "StatKey": "MaxHp",
             "Type": "Flat",
             "Value": 100,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_sharpened_blades",
+        "Name": "Sharpened Blades",
+        "Description": "Whetted edges add flat attack damage to every wave unit.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 45,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "Attack",
+            "Type": "Flat",
+            "Value": 6.0,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_brutal_edge",
+        "Name": "Brutal Edge",
+        "Description": "A heavier swing multiplies the hero's own attack damage.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 95,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "Attack",
+            "Type": "Percentage",
+            "Value": 0.1,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_swift_hands",
+        "Name": "Swift Hands",
+        "Description": "Shortens the gap between attacks.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 70,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "AttackSpeed",
+            "Type": "Percentage",
+            "Value": 0.07,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_deadly_precision",
+        "Name": "Deadly Precision",
+        "Description": "Every strike has a chance to land critically.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 80,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "CritChance",
+            "Type": "Flat",
+            "Value": 0.05,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_piercing_rounds",
+        "Name": "Piercing Rounds",
+        "Description": "Attacks ignore a flat amount of enemy armor.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 55,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "FlatArmorPenetration",
+            "Type": "Flat",
+            "Value": 3.0,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_arcane_resonance",
+        "Name": "Arcane Resonance",
+        "Description": "Raises spell power for every cast.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 65,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "SpellPower",
+            "Type": "Flat",
+            "Value": 8.0,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_overload",
+        "Name": "Overload",
+        "Description": "On-hit effects trigger more often.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 50,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "ProcRateMultiplier",
+            "Type": "Flat",
+            "Value": 0.2,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_arcane_piercing",
+        "Name": "Arcane Piercing",
+        "Description": "Spell damage ignores part of spell ward.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 70,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "MagicPenetration",
+            "Type": "Flat",
+            "Value": 0.1,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_reinforced_plate",
+        "Name": "Reinforced Plate",
+        "Description": "Thickens the armour of every wave unit.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 50,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "Armor",
+            "Type": "Flat",
+            "Value": 3.0,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_bulwark",
+        "Name": "Bulwark",
+        "Description": "Raises maximum health by a percentage.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 90,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "MaxHp",
+            "Type": "Percentage",
+            "Value": 0.12,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_second_wind",
+        "Name": "Second Wind",
+        "Description": "Regenerates health continuously.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 45,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "HpRegen",
+            "Type": "Flat",
+            "Value": 1.5,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_spell_ward",
+        "Name": "Spell Ward",
+        "Description": "Reduces incoming spell damage.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 60,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "SpellWard",
+            "Type": "Flat",
+            "Value": 0.08,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_tenacity",
+        "Name": "Tenacity",
+        "Description": "Shortens crowd control applied to wave units.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 55,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "Tenacity",
+            "Type": "Flat",
+            "Value": 0.08,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_evasion_drill",
+        "Name": "Evasion Drill",
+        "Description": "Grants a chance to dodge incoming attacks.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 70,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "Evasion",
+            "Type": "Flat",
+            "Value": 0.06,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_forced_march",
+        "Name": "Forced March",
+        "Description": "Wave units move faster to reach the next fight.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 50,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "MovementSpeed",
+            "Type": "Percentage",
+            "Value": 0.06,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_battle_rhythm",
+        "Name": "Battle Rhythm",
+        "Description": "Reduces ability cooldowns.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 75,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "CooldownReduction",
+            "Type": "Flat",
+            "Value": 0.08,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_bloodthirst",
+        "Name": "Bloodthirst",
+        "Description": "Heals a fraction of damage dealt.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 65,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "LifeSteal",
+            "Type": "Flat",
+            "Value": 0.05,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_ritual_focus",
+        "Name": "Ritual Focus",
+        "Description": "Expands maximum mana for mana-gated abilities.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 40,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "MaxMana",
+            "Type": "Flat",
+            "Value": 25.0,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_field_medic",
+        "Name": "Field Medic",
+        "Description": "Increases all healing the hero performs.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 60,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "HealingMultiplier",
+            "Type": "Flat",
+            "Value": 0.12,
+            "PerLevelScaling": 0,
+            "WASMFunctionName": ""
+          }
+        ]
+      },
+      {
+        "TemplateID": "upgrade/bs_bounty_ledger",
+        "Name": "Bounty Ledger",
+        "Description": "Increases gold earned from kills.",
+        "IconPath": null,
+        "Hotkey": null,
+        "CostGold": 0,
+        "CostWood": 65,
+        "CostStone": 0,
+        "ResearchTime": 0,
+        "Requirement": "",
+        "MaxLevel": 1,
+        "AffectedUnitIds": null,
+        "Modifiers": [
+          {
+            "StatKey": "BountyMultiplier",
+            "Type": "Flat",
+            "Value": 0.2,
             "PerLevelScaling": 0,
             "WASMFunctionName": ""
           }
