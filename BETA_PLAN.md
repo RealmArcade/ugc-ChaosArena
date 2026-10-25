@@ -41,13 +41,13 @@ Two invariants for all engine work: the engine stays a **generic RTS** (no Chaos
 | M6 altar elixirs | done |
 | M7 blacksmith upgrades | done |
 | M8 match end and economy | done |
-| T1 tooltip templates | **open** |
+| T1 tooltip templates | done |
 
 ## Open defects found in the 25 Oct audit
 
 1. **Nothing casts an ability in a real match.** `MapScript` calls `EnableUnitAutoCombat`, which sets `AutoCombatState` (auto-attack). The engine's autocast pass iterates `AutoCastQuery`, which requires `AutoCastState`, and only `SetAbilityAutoCast` creates it. The map never calls it, so the 60 kits, the mana gating and three elixir Cast hooks are all unobservable. One call per clone in `SpawnWaveForPlayer`; no engine change.
 2. **Mana pools are authored as residuals.** The committed `MaxMana` values are what is left after subtracting `Vitality × VitalityManaPerPoint`, so a hero's real pool is `authored + Vitality × 8`. Stone Guardian authors 0 and carries 14–22 mana abilities. Fix by authoring absolute pools and pinning `VitalityManaPerPoint` to 0 in the map's tuning block.
-3. **"Per wave" means "per clone life".** Wave clones are never cycled between waves, so an elixir cap of 25 heals is really 25 heals for as long as that clone lives — and a clone that survives three waves banks three waves of allowance. Either reset elixir state at wave start or reword the cards.
+3. **"Per wave" means "per clone life" — wording fixed in T1.** Wave clones are never cycled between waves, so an elixir cap of 25 heals is really 25 heals for as long as that clone lives — and a clone that survives three waves banks three waves of allowance. Cards now say "per unit" / "the whole life of the unit"; resetting elixir state at wave start is still an open design question if the caps should refresh.
 4. **Real players are not allied to each other.** `MapScript` sets real↔proxy and proxy↔proxy but never real↔real. Decide between finishing the alliance graph and declaring free-for-all.
 5. **Generated constants are stale.** `MapTemplates.g.cs` still exports dropped heroes, `ability/upgrade_critical_strike`, and an empty `UpgradeIds`. Nothing reads them yet, which is the only reason this is cosmetic.
 6. **Debug command naming is inconsistent.** `-targetDummy` is implemented; the deleted instructions documented `-target_dummy`. Keep one spelling and record it here, not in player-facing text.
@@ -73,8 +73,14 @@ Circles hold three element-description abilities, one visible, plus the item ico
 ### M4b. Enable autocast on clones — open
 Call `SetAbilityAutoCast(clone, activeElementAbility, true)` after the element is applied, and leave the two inactive slots off. Done when a clone casts its active ability and never the hidden ones. This is the difference between a beta and a benchmark.
 
-### T1. Tooltip templates — open
-Per `TOOLTIP_TEMPLATES.md`: parser and context, hover-time resolution on the four hovering surfaces, modifier-rendered stat blocks for items and upgrades, `IGameAPI` value publishing with a MapAPI refresh, conversion of the 60 ability and 19 elixir descriptions to templates, and a validator in the editor and the map build.
+### T1. Tooltip templates — done
+Shipped in two commits (engine, then this map). Cards author `{{Scope.Key}}` tokens and the string is produced on hover from the stat snapshot and the authored effect list, so a card cannot quote a number the game is not using.
+
+- Engine: `TooltipTemplate`, `TooltipContext`, `TooltipValueStore`, hover-time resolution in `CommandCardButton`, item and upgrade cards rendering their own modifier block, and single-value publishing through `IGameAPI` (arrays cannot cross the wasm boundary).
+- Map: 60 ability descriptions quote `Ability.Effect{N}.*` fields; the 20 elixir cards quote the four values the script publishes from `ElixirDefinition` (`Amount`, `Cap`, `Procs`, `Cost`), so the price and the cap now come from one place.
+- `verify_tooltips.py` resolves every card against the map's own data and fails on a token the data cannot answer; it reports 80 cards, 0 problems.
+
+Still open from the design (T2): `Target` scope and computed damage previews, a `Map` scope, conditionals, and the editor-side validation panel.
 
 ### Balance pass — after T1
 Not beta-blocking except for obvious errors. Move one knob at a time: damage per gold, effective health per armor point, mana per second of regeneration, elixir value per wave. Record each change in `CORE_DATA_SET.md`.
@@ -82,7 +88,7 @@ Not beta-blocking except for obvious errors. Move one knob at a time: damage per
 ## Execution order
 
 ```
-M4b → M3 → T1 → balance pass → verification pass
+M4b → M3 → balance pass → verification pass
 ```
 
 M4b first because every later judgement about the kits is made on a match where nothing casts anything.

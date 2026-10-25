@@ -3166,7 +3166,7 @@
       {
         "TemplateID": "ability/stone_guardian_granite_fist",
         "Name": "Granite Fist",
-        "Description": "One enemy takes 45 physical damage, plus 0.9 per point of Strength, up to 140.",
+        "Description": "One enemy takes {{Ability.Effect0.Amount}} physical damage, plus {{Ability.Effect0.Coefficient}} per point of Strength, up to {{Ability.Effect0.Cap}}.",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "heavy_knight.rtex",
@@ -3200,7 +3200,7 @@
       {
         "TemplateID": "ability/stone_guardian_hardened_crust",
         "Name": "Hardened Crust",
-        "Description": "Wraps itself in stone for 8 s, absorbing 30 damage plus 0.5 per Vitality (max 120).",
+        "Description": "Wraps itself in stone for {{Ability.Effect0.Duration}} s, absorbing {{Ability.Effect0.Amount}} damage plus {{Ability.Effect0.Coefficient}} per Vitality (max {{Ability.Effect0.Cap}}).",
         "Role": "Tank",
         "AbilityType": "instant_spell",
         "IconPath": "dragon_king_gauntlet.rtex",
@@ -3238,7 +3238,7 @@
       {
         "TemplateID": "ability/stone_guardian_seismic_rupture",
         "Name": "Seismic Rupture",
-        "Description": "Cracked ground deals 20 damage plus 0.4 per Strength (max 90) and slows everything in a 3 radius by 35% for 3 s.",
+        "Description": "Cracked ground deals {{Ability.Effect0.Amount}} damage plus {{Ability.Effect0.Coefficient}} per Strength (max {{Ability.Effect0.Cap}}) and applies {{Ability.Effect1.Modifier0:0%}} movement speed in a {{Ability.Effect0.Radius}} radius for {{Ability.Effect1.Duration}} s.",
         "Role": "Control",
         "AbilityType": "target_spell",
         "IconPath": "red_cloth_shield.rtex",
@@ -3290,7 +3290,7 @@
       {
         "TemplateID": "ability/iron_warlord_cleaver_arc",
         "Name": "Cleaver Arc",
-        "Description": "A 130 degree swing hits everything in front for 55 physical damage, plus 1.1 per Strength (max 170).",
+        "Description": "A {{Ability.Effect0.Angle}} degree swing hits everything in front for {{Ability.Effect0.Amount}} physical damage, plus {{Ability.Effect0.Coefficient}} per Strength (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "orc_warlord_5.rtex",
@@ -3326,7 +3326,7 @@
       {
         "TemplateID": "ability/iron_warlord_war_engine_roar",
         "Name": "War Engine Roar",
-        "Description": "Allies within 4 gain 8 attack and 2 armor for 5 s, plus 1 s per 40 Wisdom (max 9 s).",
+        "Description": "Allies within {{Ability.Effect0.Radius}} gain {{Ability.Effect0.Modifier0}} attack and {{Ability.Effect0.Modifier1}} armor for {{Ability.Effect0.Duration}} s, growing with Wisdom (max {{Ability.Effect0.Cap}} s).",
         "Role": "Support",
         "AbilityType": "instant_spell",
         "IconPath": "orc_warlock.rtex",
@@ -3379,7 +3379,7 @@
       {
         "TemplateID": "ability/iron_warlord_earthsplitter",
         "Name": "Earthsplitter",
-        "Description": "A 6 unit fissure deals 35 physical damage and stuns for 0.8 s, plus 0.15 s per 20 Strength (max 2 s).",
+        "Description": "A {{Ability.Effect0.Length}} unit fissure deals {{Ability.Effect0.Amount}} physical damage and stuns for {{Ability.Effect1.Duration}} s, plus {{Ability.Effect1.Coefficient}} s per {{Ability.Effect1.Divisor}} Strength (max {{Ability.Effect1.Cap}} s).",
         "Role": "Control",
         "AbilityType": "target_spell",
         "IconPath": "stone_lich.rtex",
@@ -3423,7 +3423,7 @@
       {
         "TemplateID": "ability/nether_assassin_nether_sting",
         "Name": "Nether Sting",
-        "Description": "A single stab for up to 130 physical damage, growing with Agility and diminishing as it climbs.",
+        "Description": "A single stab for up to {{Ability.Effect0.Cap}} physical damage, growing with Agility and diminishing as it climbs.",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "dark_hooded_warrior.rtex",
@@ -3457,7 +3457,7 @@
       {
         "TemplateID": "ability/nether_assassin_shadow_mark",
         "Name": "Shadow Mark",
-        "Description": "Marks one enemy for 4 s, plus 1 s per 25 Fortune (max 8 s): 3 less armor and 20% slower.",
+        "Description": "Marks one enemy for {{Ability.Effect0.Duration}} s, growing with Fortune (max {{Ability.Effect0.Cap}} s): {{Ability.Effect0.Modifier0}} armor and {{Ability.Effect0.Modifier1:0%}} movement speed.",
         "Role": "Control",
         "AbilityType": "target_spell",
         "IconPath": "flaming_skull_1.rtex",
@@ -3506,7 +3506,7 @@
       {
         "TemplateID": "ability/nether_assassin_silent_verdict",
         "Name": "Silent Verdict",
-        "Description": "Blinks up to 6 units toward the target, then strikes 40% faster for 1.5 s, plus 0.2 s per 10 Agility (max 3 s).",
+        "Description": "Blinks up to {{Ability.Effect0.Amount}} units toward the target, then strikes {{Ability.Effect1.Modifier0:0%}} faster for {{Ability.Effect1.Duration}} s, plus {{Ability.Effect1.Coefficient}} s per {{Ability.Effect1.Divisor}} Agility (max {{Ability.Effect1.Cap}} s).",
         "Role": "Mobility",
         "AbilityType": "target_spell",
         "IconPath": "dark_elf_warlord_1.rtex",
@@ -3553,7 +3553,7 @@
       {
         "TemplateID": "ability/shadow_weaver_dusk_bolt",
         "Name": "Dusk Bolt",
-        "Description": "40 magic damage, growing by 1 per 20 Intelligence, capped at 120.",
+        "Description": "{{Ability.Effect0.Amount}} magic damage, growing with Intelligence, capped at {{Ability.Effect0.Cap}}.",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "purple_magic_spell.rtex",
@@ -3587,7 +3587,7 @@
       {
         "TemplateID": "ability/shadow_weaver_void_bloom",
         "Name": "Void Bloom",
-        "Description": "A 3 radius bloom deals 15 magic damage and silences for 2 s, plus 0.08 s per Intelligence (max 5 s).",
+        "Description": "{{Ability.Effect0.Amount}} magic damage in a {{Ability.Effect0.Radius}} radius and silences for {{Ability.Effect1.Duration}} s, plus {{Ability.Effect1.Coefficient}} s per Intelligence (max {{Ability.Effect1.Cap}} s).",
         "Role": "Control",
         "AbilityType": "target_spell",
         "IconPath": "cosmic_orb.rtex",
@@ -3630,7 +3630,7 @@
       {
         "TemplateID": "ability/shadow_weaver_devouring_dark",
         "Name": "Devouring Dark",
-        "Description": "Allies within 4 are healed for 12, plus 0.5 per Intelligence (max 60).",
+        "Description": "Allies within {{Ability.Effect0.Radius}} are healed for {{Ability.Effect0.Amount}}, plus {{Ability.Effect0.Coefficient}} per Intelligence (max {{Ability.Effect0.Cap}}).",
         "Role": "Support",
         "AbilityType": "instant_spell",
         "IconPath": "sorcerers_spellbook.rtex",
@@ -3668,7 +3668,7 @@
       {
         "TemplateID": "ability/verdant_druid_thorn_lash",
         "Name": "Thorn Lash",
-        "Description": "A 100 degree whip of thorns deals up to 120 magic damage, growing and flattening with Wisdom.",
+        "Description": "A {{Ability.Effect0.Angle}} degree whip of thorns deals up to {{Ability.Effect0.Cap}} magic damage, growing and flattening with Wisdom.",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "fox_warrior.rtex",
@@ -3704,7 +3704,7 @@
       {
         "TemplateID": "ability/verdant_druid_verdant_surge",
         "Name": "Verdant Surge",
-        "Description": "Heals every ally within 3 for 35, plus 1 per 30 Wisdom (max 90).",
+        "Description": "Heals every ally within {{Ability.Effect0.Radius}} for {{Ability.Effect0.Amount}}, growing with Wisdom (max {{Ability.Effect0.Cap}}).",
         "Role": "Support",
         "AbilityType": "target_spell",
         "IconPath": "magic_healing_light.rtex",
@@ -3738,7 +3738,7 @@
       {
         "TemplateID": "ability/verdant_druid_bloomtide",
         "Name": "Bloomtide",
-        "Description": "Allies within 3.5 gain 6 armor and 1.5 health per second for 4 s, plus 0.12 s per Vitality (max 10 s).",
+        "Description": "Allies within {{Ability.Effect0.Radius}} gain {{Ability.Effect0.Modifier0}} armor and {{Ability.Effect0.Modifier1}} health per second for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} s per Vitality (max {{Ability.Effect0.Cap}} s).",
         "Role": "Tank",
         "AbilityType": "instant_spell",
         "IconPath": "green_power_hand.rtex",
@@ -3791,7 +3791,7 @@
       {
         "TemplateID": "ability/thornback_behemoth_bramble_slam",
         "Name": "Bramble Slam",
-        "Description": "Slams the ground for 50 physical damage in a 2.6 radius, plus 1 per Strength (max 150).",
+        "Description": "Slams the ground for {{Ability.Effect0.Amount}} physical damage in a {{Ability.Effect0.Radius}} radius, plus {{Ability.Effect0.Coefficient}} per Strength (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "battering_ram.rtex",
@@ -3826,7 +3826,7 @@
       {
         "TemplateID": "ability/thornback_behemoth_rooted_vigor",
         "Name": "Rooted Vigor",
-        "Description": "Every ally within 3.2 gains a 25 point shield for 6 s, plus 0.6 per Vitality (max 140).",
+        "Description": "Every ally within {{Ability.Effect0.Radius}} gains a {{Ability.Effect0.Amount}} point shield for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} per Vitality (max {{Ability.Effect0.Cap}}).",
         "Role": "Tank",
         "AbilityType": "instant_spell",
         "IconPath": "blue_magic_shield_2.rtex",
@@ -3865,7 +3865,7 @@
       {
         "TemplateID": "ability/thornback_behemoth_overgrowth",
         "Name": "Overgrowth",
-        "Description": "Roots everything within 3.5 for 0.5 s, plus 0.05 s per Vitality (max 2 s), then slows it by 30% for 3 s.",
+        "Description": "Roots everything within {{Ability.Effect0.Radius}} for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} s per Vitality (max {{Ability.Effect0.Cap}} s), then applies {{Ability.Effect1.Modifier0:0%}} movement speed for {{Ability.Effect1.Duration}} s.",
         "Role": "Control",
         "AbilityType": "instant_spell",
         "IconPath": "crystal_terrain.rtex",
@@ -3929,7 +3929,7 @@
       {
         "TemplateID": "ability/coral_vanguard_harpoon_jab",
         "Name": "Harpoon Jab",
-        "Description": "A 5 unit harpoon line deals 35 physical damage, plus 0.8 per Strength (max 120).",
+        "Description": "A {{Ability.Effect0.Length}} unit harpoon line deals {{Ability.Effect0.Amount}} physical damage, plus {{Ability.Effect0.Coefficient}} per Strength (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "water_spell.rtex",
@@ -3965,7 +3965,7 @@
       {
         "TemplateID": "ability/coral_vanguard_tidal_sweep",
         "Name": "Tidal Sweep",
-        "Description": "A 120 degree wave pushes enemies up to 6 units back and deals 20 physical damage.",
+        "Description": "A {{Ability.Effect0.Angle}} degree wave pushes enemies back up to {{Ability.Effect0.Cap}} units and deals {{Ability.Effect1.Amount}} physical damage.",
         "Role": "Control",
         "AbilityType": "target_spell",
         "IconPath": "blue_undead_warrior.rtex",
@@ -4009,7 +4009,7 @@
       {
         "TemplateID": "ability/coral_vanguard_undertow",
         "Name": "Undertow",
-        "Description": "Rides the current for 3 s, plus 1 s per 30 Agility (max 7 s): 50% faster and 20% attack speed, and enemies within 3.5 are dragged 25% slower.",
+        "Description": "Rides the current for {{Ability.Effect0.Duration}} s, growing with Agility (max {{Ability.Effect0.Cap}} s): {{Ability.Effect0.Modifier0:0%}} movement speed and {{Ability.Effect0.Modifier1:0%}} attack speed, while enemies within {{Ability.Effect1.Radius}} take {{Ability.Effect1.Modifier0:0%}} movement speed.",
         "Role": "Mobility",
         "AbilityType": "instant_spell",
         "IconPath": "blue_dragon_warlord.rtex",
@@ -4078,7 +4078,7 @@
       {
         "TemplateID": "ability/tidecaller_wave_dart",
         "Name": "Wave Dart",
-        "Description": "30 magic damage, plus 12 per 20 Intelligence (max 150), at long range.",
+        "Description": "{{Ability.Effect0.Amount}} magic damage, plus {{Ability.Effect0.Coefficient}} per {{Ability.Effect0.Divisor}} Intelligence (max {{Ability.Effect0.Cap}}), at long range.",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "starlight_missile.rtex",
@@ -4112,7 +4112,7 @@
       {
         "TemplateID": "ability/tidecaller_riptide_crush",
         "Name": "Riptide Crush",
-        "Description": "20 magic damage in a 2.8 radius, and everything inside is stopped for 1.2 s, plus 0.2 s per 25 Wisdom (max 2.5 s).",
+        "Description": "{{Ability.Effect0.Amount}} magic damage in a {{Ability.Effect0.Radius}} radius, and everything inside is stopped for {{Ability.Effect1.Duration}} s, plus {{Ability.Effect1.Coefficient}} s per {{Ability.Effect1.Divisor}} Wisdom (max {{Ability.Effect1.Cap}} s).",
         "Role": "Control",
         "AbilityType": "target_spell",
         "IconPath": "island_tower_complex.rtex",
@@ -4163,7 +4163,7 @@
       {
         "TemplateID": "ability/tidecaller_maelstrom",
         "Name": "Maelstrom",
-        "Description": "A 4.5 radius whirlpool deals 40 magic damage, plus 1 per 25 Intelligence (max 160).",
+        "Description": "A {{Ability.Effect0.Radius}} radius whirlpool deals {{Ability.Effect0.Amount}} magic damage, growing with Intelligence (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "ancient_gate.rtex",
@@ -4198,7 +4198,7 @@
       {
         "TemplateID": "ability/flame_archon_ember_lance",
         "Name": "Ember Lance",
-        "Description": "A 7 unit lance of fire deals 1.7 magic damage per point of Intelligence, capped at 130.",
+        "Description": "A {{Ability.Effect0.Length}} unit lance of fire deals {{Ability.Effect0.Coefficient}} magic damage per point of Intelligence, capped at {{Ability.Effect0.Cap}}.",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "fire_elemental_red_panda.rtex",
@@ -4234,7 +4234,7 @@
       {
         "TemplateID": "ability/flame_archon_firestorm",
         "Name": "Firestorm",
-        "Description": "A 90 degree cone deals 25 magic damage, plus 0.3 per Intelligence (max 90), and burns for 25% slow over 3 s.",
+        "Description": "A {{Ability.Effect0.Angle}} degree cone deals {{Ability.Effect0.Amount}} magic damage, plus {{Ability.Effect0.Coefficient}} per Intelligence (max {{Ability.Effect0.Cap}}), and applies {{Ability.Effect1.Modifier0:0%}} movement speed for {{Ability.Effect1.Duration}} s.",
         "Role": "Control",
         "AbilityType": "target_spell",
         "IconPath": "infernal_dragon.rtex",
@@ -4288,7 +4288,7 @@
       {
         "TemplateID": "ability/flame_archon_pyroclasm",
         "Name": "Pyroclasm",
-        "Description": "Detonates for 1.8 magic damage per Intelligence (max 170) in a 3.6 radius.",
+        "Description": "Detonates for {{Ability.Effect0.Coefficient}} magic damage per Intelligence (max {{Ability.Effect0.Cap}}) in a {{Ability.Effect0.Radius}} radius.",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "infernal_warlord.rtex",
@@ -4323,7 +4323,7 @@
       {
         "TemplateID": "ability/magma_smith_forge_hammer",
         "Name": "Forge Hammer",
-        "Description": "A 110 degree hammer blow deals 40 physical damage, plus 10 per 20 Strength (max 140).",
+        "Description": "A {{Ability.Effect0.Angle}} degree hammer blow deals {{Ability.Effect0.Amount}} physical damage, plus {{Ability.Effect0.Coefficient}} per {{Ability.Effect0.Divisor}} Strength (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "lightning_hammer_1.rtex",
@@ -4359,7 +4359,7 @@
       {
         "TemplateID": "ability/magma_smith_molten_quench",
         "Name": "Molten Quench",
-        "Description": "Quenches itself for 6 s with a 30 point shield, plus 1.4 per Strength (max 140), and 4 armor.",
+        "Description": "Quenches itself for {{Ability.Effect0.Duration}} s with a {{Ability.Effect0.Amount}} point shield, plus {{Ability.Effect0.Coefficient}} per Strength (max {{Ability.Effect0.Cap}}), and {{Ability.Effect1.Modifier0}} armor.",
         "Role": "Tank",
         "AbilityType": "instant_spell",
         "IconPath": "eagle_ring_1.rtex",
@@ -4412,7 +4412,7 @@
       {
         "TemplateID": "ability/magma_smith_eruption",
         "Name": "Eruption",
-        "Description": "The ground bursts for 30 magic damage in a 3 radius and throws enemies back up to 5 units.",
+        "Description": "The ground bursts for {{Ability.Effect1.Amount}} magic damage in a {{Ability.Effect0.Radius}} radius and throws enemies back up to {{Ability.Effect0.Cap}} units.",
         "Role": "Control",
         "AbilityType": "target_spell",
         "IconPath": "stone_forge.rtex",
@@ -4454,7 +4454,7 @@
       {
         "TemplateID": "ability/frost_warden_rime_bolt",
         "Name": "Rime Bolt",
-        "Description": "36 magic damage, plus 1.2 per Intelligence (max 145).",
+        "Description": "{{Ability.Effect0.Amount}} magic damage, plus {{Ability.Effect0.Coefficient}} per Intelligence (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "ice_spirit_spell.rtex",
@@ -4488,7 +4488,7 @@
       {
         "TemplateID": "ability/frost_warden_frost_bulwark",
         "Name": "Frost Bulwark",
-        "Description": "Ice plate grants 8 armor and 2.3 magic resistance for 6 s, plus 0.12 s per Wisdom (max 9 s).",
+        "Description": "Ice plate grants {{Ability.Effect0.Modifier0}} armor and {{Ability.Effect0.Modifier1}} magic resistance for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} s per Wisdom (max {{Ability.Effect0.Cap}} s).",
         "Role": "Tank",
         "AbilityType": "instant_spell",
         "IconPath": "heavy_armor_crawler.rtex",
@@ -4541,7 +4541,7 @@
       {
         "TemplateID": "ability/frost_warden_glacier_break",
         "Name": "Glacier Break",
-        "Description": "18 magic damage in a 3.2 radius and a 45% slow for 2.5 s, plus 0.3 s per 20 Intelligence (max 6 s).",
+        "Description": "{{Ability.Effect0.Amount}} magic damage in a {{Ability.Effect0.Radius}} radius and {{Ability.Effect1.Modifier0:0%}} movement speed for {{Ability.Effect1.Duration}} s, plus {{Ability.Effect1.Coefficient}} s per {{Ability.Effect1.Divisor}} Intelligence (max {{Ability.Effect1.Cap}} s).",
         "Role": "Control",
         "AbilityType": "target_spell",
         "IconPath": "stone_gate.rtex",
@@ -4592,7 +4592,7 @@
       {
         "TemplateID": "ability/glacier_sentinel_ice_hammer",
         "Name": "Ice Hammer",
-        "Description": "A 120 degree swing deals 2.2 physical damage per Strength (max 160).",
+        "Description": "A {{Ability.Effect0.Angle}} degree swing deals {{Ability.Effect0.Coefficient}} physical damage per Strength (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "spike_ring.rtex",
@@ -4628,7 +4628,7 @@
       {
         "TemplateID": "ability/glacier_sentinel_permafrost",
         "Name": "Permafrost",
-        "Description": "Allies within 3 gain a 25 point shield for 7 s, plus 1 per 25 Vitality (max 120).",
+        "Description": "Allies within {{Ability.Effect0.Radius}} gain a {{Ability.Effect0.Amount}} point shield for {{Ability.Effect0.Duration}} s, growing with Vitality (max {{Ability.Effect0.Cap}}).",
         "Role": "Tank",
         "AbilityType": "instant_spell",
         "IconPath": "gate_of_light.rtex",
@@ -4667,7 +4667,7 @@
       {
         "TemplateID": "ability/glacier_sentinel_avalanche",
         "Name": "Avalanche",
-        "Description": "24 physical damage in a 4 radius, and everything inside is thrown back up to 6 units.",
+        "Description": "{{Ability.Effect1.Amount}} physical damage in a {{Ability.Effect0.Radius}} radius, and everything inside is thrown back up to {{Ability.Effect0.Cap}} units.",
         "Role": "Control",
         "AbilityType": "target_spell",
         "IconPath": "magic_spell_core.rtex",
@@ -4709,7 +4709,7 @@
       {
         "TemplateID": "ability/storm_caller_static_bolt",
         "Name": "Static Bolt",
-        "Description": "A 6 unit bolt deals 30 magic damage, plus 14 per 20 Intelligence (max 150).",
+        "Description": "A {{Ability.Effect0.Length}} unit bolt deals {{Ability.Effect0.Amount}} magic damage, plus {{Ability.Effect0.Coefficient}} per {{Ability.Effect0.Divisor}} Intelligence (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "lightning_strike_1.rtex",
@@ -4745,7 +4745,7 @@
       {
         "TemplateID": "ability/storm_caller_thunder_clap",
         "Name": "Thunder Clap",
-        "Description": "18 magic damage around the caster and a 0.5 s stun, plus 0.1 s per 25 Intelligence (max 2 s).",
+        "Description": "{{Ability.Effect0.Amount}} magic damage around the caster and a {{Ability.Effect1.Duration}} s stun, plus {{Ability.Effect1.Coefficient}} s per {{Ability.Effect1.Divisor}} Intelligence (max {{Ability.Effect1.Cap}} s).",
         "Role": "Control",
         "AbilityType": "instant_spell",
         "IconPath": "energy_explosion.rtex",
@@ -4791,7 +4791,7 @@
       {
         "TemplateID": "ability/storm_caller_stormfront",
         "Name": "Stormfront",
-        "Description": "Allies within 4 gain 25% attack speed and 6% spell power for 4 s, plus 0.25 s per 20 Intelligence (max 9 s).",
+        "Description": "Allies within {{Ability.Effect0.Radius}} gain {{Ability.Effect0.Modifier0:0%}} attack speed and {{Ability.Effect0.Modifier1:0%}} spell power for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} s per {{Ability.Effect0.Divisor}} Intelligence (max {{Ability.Effect0.Cap}} s).",
         "Role": "Support",
         "AbilityType": "instant_spell",
         "IconPath": "elder_sorcerer.rtex",
@@ -4844,7 +4844,7 @@
       {
         "TemplateID": "ability/tempest_chaser_quick_slash",
         "Name": "Quick Slash",
-        "Description": "A fast arc deals 28 physical damage, growing by 1 per 25 Agility (max 110).",
+        "Description": "A fast arc deals {{Ability.Effect0.Amount}} physical damage, growing with Agility (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "cyber_warrior.rtex",
@@ -4880,7 +4880,7 @@
       {
         "TemplateID": "ability/tempest_chaser_gust_step",
         "Name": "Gust Step",
-        "Description": "Blinks up to 7 units toward the target and rides the gust 40% faster for 1.2 s, plus 1 s per 25 Agility (max 3 s).",
+        "Description": "Blinks up to {{Ability.Effect0.Amount}} units toward the target and rides the gust {{Ability.Effect1.Modifier0:0%}} faster for {{Ability.Effect1.Duration}} s, growing with Agility (max {{Ability.Effect1.Cap}} s).",
         "Role": "Mobility",
         "AbilityType": "target_spell",
         "IconPath": "forest_goblin.rtex",
@@ -4927,7 +4927,7 @@
       {
         "TemplateID": "ability/tempest_chaser_cyclone_rush",
         "Name": "Cyclone Rush",
-        "Description": "A 3.2 radius cyclone deals up to 150 physical damage, scaling with Agility as it flattens.",
+        "Description": "A {{Ability.Effect0.Radius}} radius cyclone deals up to {{Ability.Effect0.Cap}} physical damage, scaling with Agility as it flattens.",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "sunstone_core_2.rtex",
@@ -4962,7 +4962,7 @@
       {
         "TemplateID": "ability/arcane_scholar_arcane_lance",
         "Name": "Arcane Lance",
-        "Description": "A 7 unit lance deals 30 magic damage, plus 1 per 20 Intelligence (max 140).",
+        "Description": "A {{Ability.Effect0.Length}} unit lance deals {{Ability.Effect0.Amount}} magic damage, growing with Intelligence (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "golden_tower.rtex",
@@ -4998,7 +4998,7 @@
       {
         "TemplateID": "ability/arcane_scholar_mana_bloom",
         "Name": "Mana Bloom",
-        "Description": "Allies within 4 gain 10% spell power, 10% cooldown reduction and 3 mana per second for 3 s, plus 0.2 s per Intelligence (max 9 s).",
+        "Description": "Allies within {{Ability.Effect0.Radius}} gain {{Ability.Effect0.Modifier0:0%}} spell power, {{Ability.Effect0.Modifier1:0%}} cooldown reduction and {{Ability.Effect0.Modifier2}} mana per second for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} s per Intelligence (max {{Ability.Effect0.Cap}} s).",
         "Role": "Support",
         "AbilityType": "instant_spell",
         "IconPath": "magic_chess_piece.rtex",
@@ -5059,7 +5059,7 @@
       {
         "TemplateID": "ability/arcane_scholar_arcane_cataclysm",
         "Name": "Arcane Cataclysm",
-        "Description": "45 magic damage in a 4 radius, plus 15 per 20 Intelligence (max 190).",
+        "Description": "{{Ability.Effect0.Amount}} magic damage in a {{Ability.Effect0.Radius}} radius, plus {{Ability.Effect0.Coefficient}} per {{Ability.Effect0.Divisor}} Intelligence (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "magic_observatory.rtex",
@@ -5094,7 +5094,7 @@
       {
         "TemplateID": "ability/rune_scribe_rune_dart",
         "Name": "Rune Dart",
-        "Description": "An 8 unit rune line deals up to 150 magic damage, growing and flattening with Intelligence.",
+        "Description": "An {{Ability.Effect0.Length}} unit rune line deals up to {{Ability.Effect0.Cap}} magic damage, growing and flattening with Intelligence.",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "magic_damage.rtex",
@@ -5130,7 +5130,7 @@
       {
         "TemplateID": "ability/rune_scribe_sigil_detonation",
         "Name": "Sigil Detonation",
-        "Description": "20 magic damage in a 2.6 radius, and enemies inside lose 3 armor and 50% speed for 2.5 s, plus 1 s per 25 Intelligence (max 6 s).",
+        "Description": "{{Ability.Effect0.Amount}} magic damage in a {{Ability.Effect0.Radius}} radius, and enemies inside are at {{Ability.Effect1.Modifier0}} armor and {{Ability.Effect1.Modifier1:0%}} movement speed for {{Ability.Effect1.Duration}} s, growing with Intelligence (max {{Ability.Effect1.Cap}} s).",
         "Role": "Control",
         "AbilityType": "target_spell",
         "IconPath": "purple_energy_ring.rtex",
@@ -5188,7 +5188,7 @@
       {
         "TemplateID": "ability/rune_scribe_grand_inscription",
         "Name": "Grand Inscription",
-        "Description": "Allies within 4 gain 4 armor, 10% tenacity and 2 health per second for 4 s, plus 0.12 s per Wisdom (max 9 s).",
+        "Description": "Allies within {{Ability.Effect0.Radius}} gain {{Ability.Effect0.Modifier0}} armor, {{Ability.Effect0.Modifier1:0%}} tenacity and {{Ability.Effect0.Modifier2}} health per second for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} s per Wisdom (max {{Ability.Effect0.Cap}} s).",
         "Role": "Support",
         "AbilityType": "instant_spell",
         "IconPath": "castle_tower.rtex",
@@ -5249,7 +5249,7 @@
       {
         "TemplateID": "ability/sun_priest_solar_spark",
         "Name": "Solar Spark",
-        "Description": "A spark of sunlight deals 1.9 magic damage per point of Wisdom, capped at 125.",
+        "Description": "A spark of sunlight deals {{Ability.Effect0.Coefficient}} magic damage per point of Wisdom, capped at {{Ability.Effect0.Cap}}.",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "elf_king.rtex",
@@ -5283,7 +5283,7 @@
       {
         "TemplateID": "ability/sun_priest_sunlit_mend",
         "Name": "Sunlit Mend",
-        "Description": "Heals every ally within 2 of the target for 35, plus 1 per Wisdom (max 110).",
+        "Description": "Heals every ally within {{Ability.Effect0.Radius}} of the target for {{Ability.Effect0.Amount}}, plus {{Ability.Effect0.Coefficient}} per Wisdom (max {{Ability.Effect0.Cap}}).",
         "Role": "Support",
         "AbilityType": "target_spell",
         "IconPath": "forest_goblin_1.rtex",
@@ -5317,7 +5317,7 @@
       {
         "TemplateID": "ability/sun_priest_radiant_chorus",
         "Name": "Radiant Chorus",
-        "Description": "Allies within 4 are healed for 20, plus 1 per 25 Wisdom (max 80), and regenerate 1.5 health per second for 6 s.",
+        "Description": "Allies within {{Ability.Effect0.Radius}} are healed for {{Ability.Effect0.Amount}}, growing with Wisdom (max {{Ability.Effect0.Cap}}), and regenerate {{Ability.Effect1.Modifier0}} health per second for {{Ability.Effect1.Duration}} s.",
         "Role": "Support",
         "AbilityType": "instant_spell",
         "IconPath": "gold_star_coin.rtex",
@@ -5371,7 +5371,7 @@
       {
         "TemplateID": "ability/lightbringer_monk_palm_strike",
         "Name": "Palm Strike",
-        "Description": "A focused palm deals 30 physical damage, plus 0.9 per Agility (max 115).",
+        "Description": "A focused palm deals {{Ability.Effect0.Amount}} physical damage, plus {{Ability.Effect0.Coefficient}} per Agility (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "green_eyed_hooded_enemy.rtex",
@@ -5405,7 +5405,7 @@
       {
         "TemplateID": "ability/lightbringer_monk_inner_light",
         "Name": "Inner Light",
-        "Description": "Heals one ally for 30, plus 1.2 per Wisdom (max 100), and grants 3 armor for 5 s.",
+        "Description": "Heals one ally for {{Ability.Effect0.Amount}}, plus {{Ability.Effect0.Coefficient}} per Wisdom (max {{Ability.Effect0.Cap}}), and grants {{Ability.Effect1.Modifier0}} armor for {{Ability.Effect1.Duration}} s.",
         "Role": "Support",
         "AbilityType": "target_spell",
         "IconPath": "flame_trident_1.rtex",
@@ -5453,7 +5453,7 @@
       {
         "TemplateID": "ability/lightbringer_monk_sanctified_ground",
         "Name": "Sanctified Ground",
-        "Description": "Consecrates the ground: allies within 3.5 gain 6 armor, 1.9 magic resistance and 8% tenacity for 5 s, plus 0.15 s per Wisdom (max 8 s).",
+        "Description": "Consecrates the ground: allies within {{Ability.Effect0.Radius}} gain {{Ability.Effect0.Modifier0}} armor, {{Ability.Effect0.Modifier1}} magic resistance and {{Ability.Effect0.Modifier2:0%}} tenacity for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} s per Wisdom (max {{Ability.Effect0.Cap}} s).",
         "Role": "Tank",
         "AbilityType": "target_spell",
         "IconPath": "orc_tower.rtex",
@@ -5514,7 +5514,7 @@
       {
         "TemplateID": "ability/pack_alpha_savage_maul",
         "Name": "Savage Maul",
-        "Description": "35 physical damage, plus 10 per 20 Strength (max 140), and the target is 15% slower for 3 s.",
+        "Description": "{{Ability.Effect0.Amount}} physical damage, plus {{Ability.Effect0.Coefficient}} per {{Ability.Effect0.Divisor}} Strength (max {{Ability.Effect0.Cap}}), and the target takes {{Ability.Effect1.Modifier0:0%}} movement speed for {{Ability.Effect1.Duration}} s.",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "roof_lantern.rtex",
@@ -5564,7 +5564,7 @@
       {
         "TemplateID": "ability/pack_alpha_howl",
         "Name": "Howl",
-        "Description": "The pack gains 6 attack and 15% attack speed for 3 s, plus 0.2 s per 10 Fortune (max 8 s).",
+        "Description": "The pack gains {{Ability.Effect0.Modifier0}} attack and {{Ability.Effect0.Modifier1:0%}} attack speed for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} s per {{Ability.Effect0.Divisor}} Fortune (max {{Ability.Effect0.Cap}} s).",
         "Role": "Support",
         "AbilityType": "instant_spell",
         "IconPath": "wooden_door.rtex",
@@ -5617,7 +5617,7 @@
       {
         "TemplateID": "ability/pack_alpha_blood_hunt",
         "Name": "Blood Hunt",
-        "Description": "Lopes up to 8 units to the target and bites for 30 physical damage, plus 0.8 per Agility (max 110).",
+        "Description": "Lopes up to {{Ability.Effect0.Amount}} units to the target and bites for {{Ability.Effect1.Amount}} physical damage, plus {{Ability.Effect1.Coefficient}} per Agility (max {{Ability.Effect1.Cap}}).",
         "Role": "Mobility",
         "AbilityType": "target_spell",
         "IconPath": "wooden_tower_house.rtex",
@@ -5657,7 +5657,7 @@
       {
         "TemplateID": "ability/razor_dervish_whirling_cut",
         "Name": "Whirling Cut",
-        "Description": "A wide slash deals 30 physical damage, plus 1 per 25 Agility (max 110).",
+        "Description": "A wide slash deals {{Ability.Effect0.Amount}} physical damage, growing with Agility (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "blood_heart.rtex",
@@ -5693,7 +5693,7 @@
       {
         "TemplateID": "ability/razor_dervish_bleeding_waltz",
         "Name": "Bleeding Waltz",
-        "Description": "Spins through nearby enemies for 12 physical damage and leaves them 30% slower for 2.5 s, plus 1 s per 30 Agility (max 6 s).",
+        "Description": "Spins through nearby enemies for {{Ability.Effect0.Amount}} physical damage and leaves them at {{Ability.Effect1.Modifier0:0%}} movement speed for {{Ability.Effect1.Duration}} s, growing with Agility (max {{Ability.Effect1.Cap}} s).",
         "Role": "Control",
         "AbilityType": "instant_spell",
         "IconPath": "blue_orc_warrior.rtex",
@@ -5748,7 +5748,7 @@
       {
         "TemplateID": "ability/razor_dervish_thousand_edge",
         "Name": "Thousand Edge",
-        "Description": "A storm of blades around the dervish, dealing up to 140 physical damage that flattens as Agility climbs.",
+        "Description": "A storm of blades around the dervish, dealing up to {{Ability.Effect0.Cap}} physical damage that flattens as Agility climbs.",
         "Role": "Damage",
         "AbilityType": "instant_spell",
         "IconPath": "dragon_lord_1.rtex",
@@ -5863,7 +5863,7 @@
       {
         "TemplateID": "ability/elixir_blood_debt",
         "Name": "Blood Debt",
-        "Description": "Each hit this unit lands grants +0.4 attack damage, up to +12. 40 gold. One elixir per hero.",
+        "Description": "Each hit this unit lands grants {{Ability.Amount:+0.#}} attack damage, up to {{Ability.Cap:+0.#}}. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "blood_heart.rtex",
         "ManaCost": 0,
@@ -5879,7 +5879,7 @@
       {
         "TemplateID": "ability/elixir_siphon_sigil",
         "Name": "Siphon Sigil",
-        "Description": "Each hit this unit lands heals it 5 health, up to 25 heals per wave. 30 gold. One elixir per hero.",
+        "Description": "Each hit this unit lands heals it {{Ability.Amount:0}} health, up to {{Ability.Procs:0}} times. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "purple_energy_ring.rtex",
         "ManaCost": 0,
@@ -5895,7 +5895,7 @@
       {
         "TemplateID": "ability/elixir_rending_edge",
         "Name": "Rending Edge",
-        "Description": "Every sixth hit lands an extra 45 damage, up to 5 times per wave. 45 gold. One elixir per hero.",
+        "Description": "Every sixth hit lands an extra {{Ability.Amount:0}} damage, up to {{Ability.Procs:0}} times. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "glowing_magic_sword_1.rtex",
         "ManaCost": 0,
@@ -5911,7 +5911,7 @@
       {
         "TemplateID": "ability/elixir_executioner",
         "Name": "Executioner",
-        "Description": "Hits against targets below 35% health deal 12 extra damage, up to 20 times per wave. 50 gold. One elixir per hero.",
+        "Description": "Hits against targets below 35% health deal {{Ability.Amount:0}} extra damage, up to {{Ability.Procs:0}} times. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "flaming_skull_1.rtex",
         "ManaCost": 0,
@@ -5927,7 +5927,7 @@
       {
         "TemplateID": "ability/elixir_warded_hide",
         "Name": "Warded Hide",
-        "Description": "Each hit taken grants +0.25 armor, up to +4 armor. 35 gold. One elixir per hero.",
+        "Description": "Each hit taken grants {{Ability.Amount:+0.##}} armor, up to {{Ability.Cap:+0.##}} armor. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "red_cloth_shield.rtex",
         "ManaCost": 0,
@@ -5943,7 +5943,7 @@
       {
         "TemplateID": "ability/elixir_retaliation",
         "Name": "Retaliation",
-        "Description": "Each hit taken deals 20 damage back to the attacker, up to 10 times per wave. 40 gold. One elixir per hero.",
+        "Description": "Each hit taken deals {{Ability.Amount:0}} damage back to the attacker, up to {{Ability.Procs:0}} times. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "spike_ring.rtex",
         "ManaCost": 0,
@@ -5959,7 +5959,7 @@
       {
         "TemplateID": "ability/elixir_phantom_step",
         "Name": "Phantom Step",
-        "Description": "Each hit taken grants +2% movement speed, up to +20%. 30 gold. One elixir per hero.",
+        "Description": "Each hit taken grants +{{Ability.Amount:0%}} movement speed, up to +{{Ability.Cap:0%}}. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "eagle_ring_1.rtex",
         "ManaCost": 0,
@@ -5975,7 +5975,7 @@
       {
         "TemplateID": "ability/elixir_soul_harvest",
         "Name": "Soul Harvest",
-        "Description": "Kills heal 4% of maximum health, up to 10 kills per wave. 45 gold. One elixir per hero.",
+        "Description": "Kills heal {{Ability.Amount:0%}} of maximum health, up to {{Ability.Procs:0}} kills. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "stone_lich.rtex",
         "ManaCost": 0,
@@ -5991,7 +5991,7 @@
       {
         "TemplateID": "ability/elixir_trophy_hunter",
         "Name": "Trophy Hunter",
-        "Description": "Kills pay 1 extra gold, up to 20 kills per wave. 30 gold. One elixir per hero.",
+        "Description": "Kills pay {{Ability.Amount:0}} extra gold, up to {{Ability.Procs:0}} kills. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "gold_star_coin.rtex",
         "ManaCost": 0,
@@ -6007,7 +6007,7 @@
       {
         "TemplateID": "ability/elixir_feeding_frenzy",
         "Name": "Feeding Frenzy",
-        "Description": "Each kill grants +1 attack damage, up to +15. 45 gold. One elixir per hero.",
+        "Description": "Each kill grants {{Ability.Amount:+0.#}} attack damage, up to {{Ability.Cap:+0.#}}. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "orc_warlord_5.rtex",
         "ManaCost": 0,
@@ -6023,7 +6023,7 @@
       {
         "TemplateID": "ability/elixir_void_pact",
         "Name": "Void Pact",
-        "Description": "Each kill grants +18 maximum health, up to +360. 40 gold. One elixir per hero.",
+        "Description": "Each kill grants +{{Ability.Amount:0}} maximum health, up to +{{Ability.Cap:0}}. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "cosmic_orb.rtex",
         "ManaCost": 0,
@@ -6039,7 +6039,7 @@
       {
         "TemplateID": "ability/elixir_arcane_echo",
         "Name": "Arcane Echo",
-        "Description": "Every fifth cast refunds 10 mana, up to 6 refunds per wave. 40 gold. One elixir per hero.",
+        "Description": "Every fifth cast refunds {{Ability.Amount:0}} mana, up to {{Ability.Procs:0}} times. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "sorcerers_spellbook.rtex",
         "ManaCost": 0,
@@ -6055,7 +6055,7 @@
       {
         "TemplateID": "ability/elixir_swift_incantation",
         "Name": "Swift Incantation",
-        "Description": "Each cast cuts the caster's other cooldowns by 1.5 seconds, up to 8 times per wave. 45 gold. One elixir per hero.",
+        "Description": "Each cast cuts the caster's other cooldowns by {{Ability.Amount:0.#}} seconds, up to {{Ability.Procs:0}} times. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "purple_magic_spell.rtex",
         "ManaCost": 0,
@@ -6071,7 +6071,7 @@
       {
         "TemplateID": "ability/elixir_ritual_echo",
         "Name": "Ritual Echo",
-        "Description": "Every fourth cast erupts for 30 magic damage around the caster, up to 5 times per wave. 50 gold. One elixir per hero.",
+        "Description": "Every fourth cast erupts for {{Ability.Amount:0}} magic damage around the caster, up to {{Ability.Procs:0}} times. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "magic_observatory.rtex",
         "ManaCost": 0,
@@ -6087,7 +6087,7 @@
       {
         "TemplateID": "ability/elixir_opening_gambit",
         "Name": "Opening Gambit",
-        "Description": "Wave units start with +4 armor for the whole wave. 35 gold. One elixir per hero.",
+        "Description": "Wave units start with +{{Ability.Amount:0}} armor for the whole life of the unit. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "heavy_knight.rtex",
         "ManaCost": 0,
@@ -6103,7 +6103,7 @@
       {
         "TemplateID": "ability/elixir_vanguards_oath",
         "Name": "Vanguard's Oath",
-        "Description": "Wave units start with +8 attack damage for the whole wave. 40 gold. One elixir per hero.",
+        "Description": "Wave units start with +{{Ability.Amount:0}} attack damage for the whole life of the unit. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "blue_dragon_warlord.rtex",
         "ManaCost": 0,
@@ -6119,7 +6119,7 @@
       {
         "TemplateID": "ability/elixir_slow_regeneration",
         "Name": "Slow Regeneration",
-        "Description": "Regenerates 2 health per second, up to 180 health per wave. 35 gold. One elixir per hero.",
+        "Description": "Regenerates {{Ability.Amount:0}} health per second, up to {{Ability.Cap:0}} health. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "magic_healing_light.rtex",
         "ManaCost": 0,
@@ -6135,7 +6135,7 @@
       {
         "TemplateID": "ability/elixir_battle_trance",
         "Name": "Battle Trance",
-        "Description": "Every 10 seconds alive grants +1.5 attack damage, up to +12. 50 gold. One elixir per hero.",
+        "Description": "Every 10 seconds alive grants {{Ability.Amount:+0.#}} attack damage, up to {{Ability.Cap:+0.#}}. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "starlight_missile.rtex",
         "ManaCost": 0,
@@ -6151,7 +6151,7 @@
       {
         "TemplateID": "ability/elixir_iron_constitution",
         "Name": "Iron Constitution",
-        "Description": "Every 6 seconds alive grants +22 maximum health, up to +220. 45 gold. One elixir per hero.",
+        "Description": "Every 6 seconds alive grants +{{Ability.Amount:0}} maximum health, up to +{{Ability.Cap:0}}. {{Ability.Cost:0}} gold. One elixir per hero.",
         "AbilityType": "target_spell",
         "IconPath": "stone_gate.rtex",
         "ManaCost": 0,
@@ -6167,7 +6167,7 @@
       {
         "TemplateID": "ability/elixir_flush",
         "Name": "Flush",
-        "Description": "Clears the elixir this hero carries so a different one can be applied.",
+        "Description": "Clears the elixir this hero carries so a different one can be applied. {{Ability.Cost:0}} gold.",
         "AbilityType": "target_spell",
         "IconPath": "water_spell.rtex",
         "ManaCost": 0,

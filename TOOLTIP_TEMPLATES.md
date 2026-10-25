@@ -46,10 +46,10 @@ Rules:
 | `Source` | every canonical `StatKeys` name: `Armor`, `Attack`, `MaxHp`, `SpellPower`, `CooldownReduction`, … | `StatService.GetStatValue(entity, StatId)` — the same snapshot the combat resolver and the AI read |
 | `Source` | `Health`, `HealthPercent`, `Mana`, `ManaPercent`, `Level`, `Stacks`, `Count`, `Name` | components, read directly |
 | `Target` | the same set | the currently hovered or selected enemy, if any |
-| `Ability` | `ManaCost`, `Cooldown`, `Range`, `Radius`, `Damage`, `Healing`, `Duration`, `Charges`, `CastTime` | the runtime `AbilityDefinition`, with magnitudes already scaled for this caster |
+| `Ability` | `ManaCost`, `Cooldown`, `Range`, `Radius`, `Damage`, `Healing` | the runtime `AbilityDefinition` |
+| `Ability` | `Effect{N}.Amount`, `.Duration`, `.Radius`, `.Length`, `.Angle`, `.MaxTargets`, `.Coefficient`, `.Divisor`, `.Cap`, `.ModifierCount`, `.Modifier{M}`, and the text `.Attribute` | the authored effect list, indexed in cast order, so a card describes the entries the cast reads |
 | `Item` / `Upgrade` | `CostGold`, `CostWood`, `CostStone`, `Charges`, `ItemLevel`, `MaxLevel`, `ModifierCount` | the runtime definition |
 | `Owner` | `Gold`, `Wood`, `Stone`, `Kills`, `Wave`, `TimeRemaining`, `Alive`, `Eliminated` | the player snapshot the HUD already reads |
-| `Map` | anything the script publishes under this scope | the map |
 
 The important choice: **bind to canonical stat keys, not to component fields.** Reflection over `DerivedCombatStats` would be shorter to write, and it is wrong — it would let a tooltip read a field gameplay does not use, which is the exact drift we are removing. `StatKeys` is already the one vocabulary the pipeline, the resolver and `WarnIfUnknown` share; tooltips should read it too.
 
@@ -57,18 +57,18 @@ Percent stats (`CritChance`, `Evasion`, `CooldownReduction`, `LifeSteal`, `Tenac
 
 ### The map fills what the base game cannot know
 
-Two batched calls, so the wasm boundary costs one crossing per publication rather than one per key:
+One value per call, because the wasm type generator only marshals primitives — arrays of strings or floats cannot cross the boundary, so a batched `SetAbilityTooltipValues(id, string[], float[])` does not compile:
 
 ```csharp
-void SetAbilityTooltipValues(string abilityId, string[] keys, float[] values);
+void SetAbilityTooltipValue(string abilityId, string key, float value);
 void SetAbilityTooltipText(string abilityId, string key, string value);
-void SetUnitTooltipValues(UnitId unit, string[] keys, float[] values);
+void SetUnitTooltipValue(UnitId unit, string key, float value);
 void SetUnitTooltipText(UnitId unit, string key, string value);
-void SetItemTooltipValues(string itemId, string[] keys, float[] values);
-void SetUpgradeTooltipValues(string upgradeId, string[] keys, float[] values);
+void SetItemTooltipValue(string itemId, string key, float value);
+void SetUpgradeTooltipValue(string upgradeId, string key, float value);
 ```
 
-These merge into the corresponding scope. `SetAbilityTooltipValues` writes into `Ability`; `SetUnitTooltipValues` writes into that unit's `Source`. **Engine keys win a collision**, so a map cannot redefine `Source.Armor` and quietly disagree with the resolver.
+A map publishes its handful of values once at load, so the crossing count is bounded by the number of scripted effects, not by hover. These merge into the scope named by the call; **engine keys win a collision**, so a map cannot redefine `Source.Armor` and quietly disagree with the resolver.
 
 This is where the elixirs land. The record stays the single execution source:
 
@@ -139,13 +139,13 @@ Silent substitution failure is worse than a missing feature, because it makes a 
 1. `TooltipTemplate` (parse, compile-cache, resolve, diagnostics) + `TooltipContext` + `RichTooltip.Create(text, context)`.
 2. Wire the four hover surfaces: `CommandCardButton` (abilities, build, train), `CommandPanel` item cards, upgrade cards, `InventoryPanel` and `PortraitPanel`.
 3. Generated stat blocks for items and upgrades.
-4. `IGameAPI` value publishing (`SetAbilityTooltipValues` + text/unit/item/upgrade variants), `MapAPIBridge` plumbing, binary and XML refresh.
+4. `IGameAPI` value publishing (single-value setters, see above) with binary and XML refresh.
 5. Convert the 60 ability descriptions and 19 elixir descriptions to templates; publish elixir amounts from the record.
 6. Validator in the map editor and in the map repo's build; fix every token it reports.
 
 **T2 — after beta**
 
-`Target` scope and damage previews computed through the resolver (`"deal 96 to {{Target.Armor}} armor"`, `"stuns {{Target.Tenacity:0%}}"`), conditionals for "if the target is below 35%", pluralization, tooltip diffing in the editor, and deleting `SetAbilityTooltip`/`SetItemTooltip`'s string overrides once nothing needs them.
+A `Map` scope for values that belong to no ability (wave number, remaining time) · `Target` scope and damage previews computed through the resolver (`"deal 96 to {{Target.Armor}} armor"`, `"stuns {{Target.Tenacity:0%}}"`), conditionals for "if the target is below 35%", pluralization, tooltip diffing in the editor, and deleting `SetAbilityTooltip`/`SetItemTooltip`'s string overrides once nothing needs them.
 
 ## What I would not do
 

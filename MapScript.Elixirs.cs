@@ -108,7 +108,23 @@ public partial class MapScript
     private void ConfigureElixirsOnAltar()
     {
         foreach (ElixirDefinition elixir in Elixirs)
+        {
             _api.AddUnitTypeAbility(BuildingIds.Altar, elixir.AbilityId);
+            PublishElixirTooltipValues(elixir);
+        }
+    }
+
+    /// <summary>
+    /// Hands the altar card the numbers this elixir is applied with, so the sentence on the card
+    /// and the effect on the unit read the same fields. Amount is per stack, Cap is the total the
+    /// cap allows, Procs is the stack count, and Cost is what the altar charges.
+    /// </summary>
+    private void PublishElixirTooltipValues(ElixirDefinition elixir)
+    {
+        _api.SetAbilityTooltipValue(elixir.AbilityId, "Amount", elixir.Amount);
+        _api.SetAbilityTooltipValue(elixir.AbilityId, "Cap", elixir.Amount * elixir.MaxStacks);
+        _api.SetAbilityTooltipValue(elixir.AbilityId, "Procs", elixir.MaxStacks);
+        _api.SetAbilityTooltipValue(elixir.AbilityId, "Cost", elixir.CostGold);
     }
 
     /// <summary>
