@@ -52,17 +52,19 @@ Hero level is stored and never read. Add an authorable per-level growth table (a
 Add `DealDamage(attacker, target, amount, damageType)` that routes through the three-stage resolver (armor, mitigation, damage record) instead of subtracting HP. Keep the existing raw path for legitimate bypass cases, documented. Done when script damage against a high-armor target is reduced and produces a damage record.
 
 ### E5. Ability effect system (largest task)
-`Realm.Shared/Metadata/AbilityMetadata.cs`, `Realm.Client/Core/AbilityDefinition.cs`, `Realm.Client/Services/SimulationService.cs`, `Realm.Ecs/Services/*`, map schema + migration
+`Realm.Shared/Metadata/AbilityEffectMetadata.cs`, `Realm.Client/Core/AbilityEffectDefinition.cs`, `Realm.Client/Core/AbilityEffectFactory.cs`, `Realm.Client/Services/AbilityEffectService.cs`, `Realm.Ecs/Components/Combat/AbsorbShield.cs`, `Realm.Ecs/Components/Combat/SummonedUnit.cs`, `Migration_0_0_5_AbilityEffects.cs`
 
-Composable effects instead of `Damage XOR Healing`:
+Shipped. An ability is a list of effects instead of a single damage-or-heal number:
 
-- Effect kinds: `damage`, `heal`, `shield`, `buff`, `debuff`, `status`, `summon`, `teleport`, `knockback`, `dispel`.
-- Each effect carries its own magnitude, duration, radius, target filter and **scaling block** (primary attribute, shape, target, coefficient, cap).
-- Targeting modes: self, single target, point, line, cone, aura — resolved through one query path.
-- Summons get lifespan, count cap and ownership inheritance.
-- Every field is either consumed or removed from the schema; no dead metadata.
-- Sequential map migration plus build-version bump.
-- Done when a hero can cast a damage+buff ability, a control ability, and a summon ability, all authored purely in metadata.
+- **Kinds:** `damage` (through the resolver, with a damage type), `heal` (through the caster's healing multiplier), `shield` (an absorb pool in front of health), `buff` / `debuff` (a status id plus optional stat modifiers), `summon` (template, count, per-caster cap, lifespan), `teleport` (blink up to a distance) and `knockback` (push away from the caster, reduced by knockback resistance).
+- **Targeting:** `Delivery` (single, radius, self, cone, line) and `Targets` (self, allies, enemies, all) with `Radius`, `Length`, `AngleDegrees` and `MaxTargets`, all resolved in one query path with one ally/enemy test.
+- **Scaling:** one attribute, one shape (`linear`, `ratio`, `saturating`, `threshold`, `inverse`, `conversion`), coefficient, divisor and cap, applied to both amount and duration.
+- `AbsorbShield` is consumed by attacks, splash, spells and abilities alike, so a shield is worth the same against every damage source; pools expire on a timer or when used up.
+- Summons expire without kill credit, are capped per caster and template, and inherit their caster's ownership.
+- Every read path went to one executor: the command card, autocast and scripted casts all land in `AbilityEffectService`, and the old scalar fields are gone from the schema.
+- Migration `v0.0.5` plus the build-version bump. Chaos Arena's 91 abilities are migrated: 64 gained an effect list, 27 are scripted and carry none.
+
+Deferred with the reason that no beta kit authors it: `dispel` (needs a buff-category taxonomy nothing uses yet), multi-hit/chain/bounce shapes, persistent ground zones, and projectile-carried effects.
 
 ### E6. Autocast correctness
 `AutoCastQueryAction` in `SimulationService`, `AbilityDefinition`
@@ -114,12 +116,12 @@ Wood purchases, one-shot, applied to the proxy before each spawn.
 ## Execution order
 
 ```
-E1 → E2 → E3 → E4 → E6 → E8 → M1 → M3 → M5 → E7/M6 → M7 → M8
-                               E5 ---^        ^
-                               (E5 gates M2, and M2 gates M4)
+E1 → E2 → E3 → E4 → E6 → E8 → E5 → M1 → M3 → M5 → E7/M6 → M7 → M8
+                                                  ^
+                                     (M2 follows E5, and M4 follows M2)
 ```
 
-E5 is the long pole. M1 can start once E1/E3 land because items and upgrades only need canonical keys and levels.
+E5 is done, so M2 — authoring the 60 abilities on the effect schema — is the remaining long pole.
 
 ## Commit discipline
 

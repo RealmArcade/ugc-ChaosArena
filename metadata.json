@@ -1,6 +1,6 @@
 ﻿{
   "license": "https://www.realm-game.com/RealmPlatform_UGC_License_v1.txt",
-  "GameBuildNumber": "v0.0.4",
+  "GameBuildNumber": "v0.0.5",
   "MapProperties": {
     "MapName": "Chaos Arena",
     "MapDescription": null,
@@ -3230,16 +3230,19 @@
         "TargetRange": 7,
         "VisualEffect": "crystal_lattice_vein.rtex",
         "CastSound": "mystic_forest_whispers.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 4,
-        "Damage": 0,
-        "Healing": 50,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
-        "Hotkey": null
+        "Hotkey": null,
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 4,
+            "Amount": 50
+          }
+        ]
       },
       {
         "TemplateID": "ability/arcane_missiles",
@@ -3252,16 +3255,19 @@
         "TargetRange": 8,
         "VisualEffect": "mineral_geology_stone_fracture.rtex",
         "CastSound": "paladin_Damaged.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/astral_grace",
@@ -3274,16 +3280,19 @@
         "TargetRange": 0,
         "VisualEffect": "spirit_orb_sheet.rtex",
         "CastSound": "fortress_gate_bash.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/banner_of_valor",
@@ -3296,16 +3305,19 @@
         "TargetRange": 10,
         "VisualEffect": "mineral_geology_crust_crack.rtex",
         "CastSound": "warhammer_Damaged.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/battle_cry",
@@ -3318,16 +3330,19 @@
         "TargetRange": 0,
         "VisualEffect": "moon_orb_sheet.rtex",
         "CastSound": "armor_buckle_snap.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/blazing_shield",
@@ -3340,16 +3355,19 @@
         "TargetRange": 0,
         "VisualEffect": "storm_ray_sheet.rtex",
         "CastSound": "firelord.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/blinding_ray",
@@ -3362,16 +3380,19 @@
         "TargetRange": 10,
         "VisualEffect": "sun_spike_sheet.rtex",
         "CastSound": "soft_foot_scuff.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/blood_lust",
@@ -3384,16 +3405,19 @@
         "TargetRange": 0,
         "VisualEffect": "mana_orb_sheet.rtex",
         "CastSound": "crystal_formation_Construction.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/boulder_toss",
@@ -3406,16 +3430,19 @@
         "TargetRange": 8,
         "VisualEffect": "storm_orb_sheet.rtex",
         "CastSound": "earth_elemental_Damaged.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/chain_lightning",
@@ -3428,16 +3455,19 @@
         "TargetRange": 8,
         "VisualEffect": "light_shafts_phantom_ray.rtex",
         "CastSound": "hail_stone_impact.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/challengers_roar",
@@ -3450,16 +3480,19 @@
         "TargetRange": 10,
         "VisualEffect": "weapon_fins_iron_shard.rtex",
         "CastSound": "chainmail_jingle_soft.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/coral_shield",
@@ -3472,16 +3505,19 @@
         "TargetRange": 0,
         "VisualEffect": "moss_spore_sheet.rtex",
         "CastSound": "magical_portal_hum.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/cosmic_binding",
@@ -3494,16 +3530,19 @@
         "TargetRange": 10,
         "VisualEffect": "mineral_geology_shimmer_vein.rtex",
         "CastSound": "heavy_mace_smash.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/crystal_ward",
@@ -3516,16 +3555,19 @@
         "TargetRange": 0,
         "VisualEffect": "dark_orb_sheet.rtex",
         "CastSound": "gladiator_Aggro.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/cyclone_kick",
@@ -3538,21 +3580,24 @@
         "TargetRange": 10,
         "VisualEffect": "mineral_geology_gem_glint.rtex",
         "CastSound": "spell_weave_hum.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/fireball",
         "Name": "Bola de fuego",
-        "Description": "[X] Bola de fuego \u00e2\u20ac\u201d Da\u00c3\u00b1o 50 en \u00c3\u00a1rea (radio 4)",
+        "Description": "[X] Bola de fuego â€” DaÃ±o 50 en Ã¡rea (radio 4)",
         "AbilityType": "target_spell",
         "IconPath": "ancient_gate.rtex",
         "ManaCost": 0,
@@ -3560,16 +3605,19 @@
         "TargetRange": 12,
         "VisualEffect": "light_shafts_heavenly_touch.rtex",
         "CastSound": "phoenix.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 4,
-        "Damage": 50,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
-        "Hotkey": null
+        "Hotkey": null,
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 4,
+            "Amount": 50
+          }
+        ]
       },
       {
         "TemplateID": "ability/fortress_stance",
@@ -3582,16 +3630,19 @@
         "TargetRange": 0,
         "VisualEffect": "mineral_geology_quartz_core.rtex",
         "CastSound": "scroll_of_town_portal.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/frenzy_slash",
@@ -3604,16 +3655,19 @@
         "TargetRange": 8,
         "VisualEffect": "stone_pierce_sheet.rtex",
         "CastSound": "pause_menu_toggle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/frost_nova",
@@ -3626,16 +3680,19 @@
         "TargetRange": 10,
         "VisualEffect": "frost_grain_sheet.rtex",
         "CastSound": "spell_burst_arcane.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/gale_strike",
@@ -3648,16 +3705,19 @@
         "TargetRange": 8,
         "VisualEffect": "storm_bolt_sheet.rtex",
         "CastSound": "stone_arch_Construction.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/glacial_barrier",
@@ -3670,16 +3730,19 @@
         "TargetRange": 0,
         "VisualEffect": "storm_strike_sheet.rtex",
         "CastSound": "orc_camp_fire.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/gloom_bolt",
@@ -3692,16 +3755,19 @@
         "TargetRange": 8,
         "VisualEffect": "storm_ray_sheet.rtex",
         "CastSound": "spell_scroll_crackle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/hardened_carapace",
@@ -3714,16 +3780,19 @@
         "TargetRange": 0,
         "VisualEffect": "moon_orb_sheet.rtex",
         "CastSound": "gladiator_Move.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/hardened_crust",
@@ -3736,16 +3805,19 @@
         "TargetRange": 0,
         "VisualEffect": "storm_eye_sheet.rtex",
         "CastSound": "blade_grind_stone.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/haste_field",
@@ -3758,16 +3830,19 @@
         "TargetRange": 0,
         "VisualEffect": "iron_core_sheet.rtex",
         "CastSound": "spell_pulse_hum.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/heavy_strike",
@@ -3780,21 +3855,24 @@
         "TargetRange": 8,
         "VisualEffect": "stone_spike_sheet.rtex",
         "CastSound": "hammer_crush_stone.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/holylight",
         "Name": "Luz sagrada",
-        "Description": "[X] Luz sagrada \u00e2\u20ac\u201d Cura 60 en \u00c3\u00a1rea (radio 4)",
+        "Description": "[X] Luz sagrada â€” Cura 60 en Ã¡rea (radio 4)",
         "AbilityType": "target_spell",
         "IconPath": "green_power_hand.rtex",
         "ManaCost": 0,
@@ -3802,16 +3880,19 @@
         "TargetRange": 12,
         "VisualEffect": "weapon_fins_venom_flick.rtex",
         "CastSound": "mystic_forest_whispers.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 4,
-        "Damage": 0,
-        "Healing": 60,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
-        "Hotkey": null
+        "Hotkey": null,
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 4,
+            "Amount": 60
+          }
+        ]
       },
       {
         "TemplateID": "ability/ice_shard",
@@ -3824,16 +3905,19 @@
         "TargetRange": 8,
         "VisualEffect": "frost_hail_sheet.rtex",
         "CastSound": "quest_alert_tone.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/infernal_surge",
@@ -3846,16 +3930,19 @@
         "TargetRange": 10,
         "VisualEffect": "flame_wisp_sheet.rtex",
         "CastSound": "paladin_Damaged.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/iron_will",
@@ -3868,21 +3955,24 @@
         "TargetRange": 10,
         "VisualEffect": "mineral_geology_quartz_core.rtex",
         "CastSound": "heavy_plate_clink.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/lightning",
         "Name": "Rayo",
-        "Description": "[X] Rayo \u00e2\u20ac\u201d Da\u00c3\u00b1o 80 en \u00c3\u00a1rea (radio 2)",
+        "Description": "[X] Rayo â€” DaÃ±o 80 en Ã¡rea (radio 2)",
         "AbilityType": "target_spell",
         "IconPath": "dark_elf_warlord_1.rtex",
         "ManaCost": 0,
@@ -3890,16 +3980,19 @@
         "TargetRange": 12,
         "VisualEffect": "shadow_streak_sheet.rtex",
         "CastSound": "fire_elemental_LastHit.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 80,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
-        "Hotkey": null
+        "Hotkey": null,
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 80
+          }
+        ]
       },
       {
         "TemplateID": "ability/mana_drain",
@@ -3912,16 +4005,19 @@
         "TargetRange": 10,
         "VisualEffect": "ash_grain_sheet.rtex",
         "CastSound": "soft_foot_scuff.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/mantra_of_healing",
@@ -3934,16 +4030,19 @@
         "TargetRange": 0,
         "VisualEffect": "moon_orb_sheet.rtex",
         "CastSound": "invigorate_aura_hum.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/poison_blade",
@@ -3956,16 +4055,19 @@
         "TargetRange": 8,
         "VisualEffect": "storm_eye_sheet.rtex",
         "CastSound": "blade_slash_whoosh.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/prism_beam",
@@ -3978,16 +4080,19 @@
         "TargetRange": 8,
         "VisualEffect": "light_beam_sheet.rtex",
         "CastSound": "other_Damaged.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/pyro_blast",
@@ -4000,16 +4105,19 @@
         "TargetRange": 8,
         "VisualEffect": "stone_burst_sheet.rtex",
         "CastSound": "hammer_crush_stone.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/quick_roll",
@@ -4022,16 +4130,19 @@
         "TargetRange": 0,
         "VisualEffect": "sun_scorch_sheet.rtex",
         "CastSound": "gladiator.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/radiant_blessing",
@@ -4044,16 +4155,19 @@
         "TargetRange": 0,
         "VisualEffect": "void_orb_sheet.rtex",
         "CastSound": "dark_forest_whisper.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/radiant_fist",
@@ -4066,16 +4180,19 @@
         "TargetRange": 8,
         "VisualEffect": "storm_bolt_sheet.rtex",
         "CastSound": "stone_wall_collapse.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/refractive_shield",
@@ -4088,16 +4205,19 @@
         "TargetRange": 10,
         "VisualEffect": "wind_dart_sheet.rtex",
         "CastSound": "grass_rustle_soft.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/sanctuary_aura",
@@ -4110,16 +4230,19 @@
         "TargetRange": 10,
         "VisualEffect": "mineral_geology_geode_burst.rtex",
         "CastSound": "cape_Damaged.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/sand_bolt",
@@ -4132,16 +4255,19 @@
         "TargetRange": 8,
         "VisualEffect": "mineral_geology_stone_fracture.rtex",
         "CastSound": "stone_Construction.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/sandstorm_veil",
@@ -4154,16 +4280,19 @@
         "TargetRange": 10,
         "VisualEffect": "void_grain_sheet.rtex",
         "CastSound": "ancient_ruins_Death.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/sanguine_leap",
@@ -4176,16 +4305,19 @@
         "TargetRange": 10,
         "VisualEffect": "mineral_geology_gem_dust.rtex",
         "CastSound": "earth_elemental_Damaged.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/searing_aura",
@@ -4198,16 +4330,19 @@
         "TargetRange": 8,
         "VisualEffect": "particle_dynamics_aura_pulse.rtex",
         "CastSound": "scout_footstep_soft.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/seismic_pulse",
@@ -4220,16 +4355,19 @@
         "TargetRange": 10,
         "VisualEffect": "wind_dart_sheet.rtex",
         "CastSound": "other_Damaged.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/shadow_step",
@@ -4242,16 +4380,19 @@
         "TargetRange": 0,
         "VisualEffect": "shadow_bolt_sheet.rtex",
         "CastSound": "error_fail_thud.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/shield_bash",
@@ -4264,16 +4405,19 @@
         "TargetRange": 8,
         "VisualEffect": "storm_pulse_sheet.rtex",
         "CastSound": "shield_rim_crack.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/smoke_screen",
@@ -4286,16 +4430,19 @@
         "TargetRange": 10,
         "VisualEffect": "mineral_geology_quartz_glow.rtex",
         "CastSound": "unicorn_Damaged.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/solar_flare",
@@ -4308,16 +4455,19 @@
         "TargetRange": 8,
         "VisualEffect": "light_shafts_heavenly_touch.rtex",
         "CastSound": "mage_Damaged.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/soothing_bloom",
@@ -4330,16 +4480,19 @@
         "TargetRange": 0,
         "VisualEffect": "dark_bloom_sheet.rtex",
         "CastSound": "gladiator_LastHit.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/soul_tether",
@@ -4352,16 +4505,19 @@
         "TargetRange": 10,
         "VisualEffect": "wind_gust_sheet.rtex",
         "CastSound": "soul_drain_moan.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/spell_shield",
@@ -4374,16 +4530,19 @@
         "TargetRange": 0,
         "VisualEffect": "storm_eye_sheet.rtex",
         "CastSound": "inventory_swap_slide.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/star_fall",
@@ -4396,16 +4555,19 @@
         "TargetRange": 8,
         "VisualEffect": "stone_spike_sheet.rtex",
         "CastSound": "bear_Damaged.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/stasis_bubble",
@@ -4418,16 +4580,19 @@
         "TargetRange": 10,
         "VisualEffect": "wind_spin_sheet.rtex",
         "CastSound": "spell_shockwave_boom.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/static_field",
@@ -4440,16 +4605,19 @@
         "TargetRange": 10,
         "VisualEffect": "mineral_geology_dust_prism.rtex",
         "CastSound": "ancient_ruins_Death.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/tangle_vines",
@@ -4462,16 +4630,19 @@
         "TargetRange": 8,
         "VisualEffect": "storm_ray_sheet.rtex",
         "CastSound": "mage_Damaged.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/temporal_strike",
@@ -4484,16 +4655,19 @@
         "TargetRange": 8,
         "VisualEffect": "light_shafts_heavenly_touch.rtex",
         "CastSound": "spell_cast_hum.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/thorn_armor",
@@ -4506,16 +4680,19 @@
         "TargetRange": 10,
         "VisualEffect": "acid_rain_sheet.rtex",
         "CastSound": "mage_Damaged.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/tidal_pull",
@@ -4528,16 +4705,19 @@
         "TargetRange": 10,
         "VisualEffect": "wind_cone_sheet.rtex",
         "CastSound": "griffin_Damaged.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 5,
-        "Damage": 90,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 0,
-        "Hotkey": "R"
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 5,
+            "Amount": 90
+          }
+        ]
       },
       {
         "TemplateID": "ability/veil_of_shadows",
@@ -4550,16 +4730,19 @@
         "TargetRange": 0,
         "VisualEffect": "ash_veil_sheet.rtex",
         "CastSound": "gladiator_Attack.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/wave_crash",
@@ -4572,16 +4755,19 @@
         "TargetRange": 8,
         "VisualEffect": "frost_wave_sheet.rtex",
         "CastSound": "stone_arch_Death.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 2,
-        "Damage": 45,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 0,
-        "Hotkey": "W"
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 45
+          }
+        ]
       },
       {
         "TemplateID": "ability/wind_barrier",
@@ -4594,16 +4780,19 @@
         "TargetRange": 0,
         "VisualEffect": "star_core_sheet.rtex",
         "CastSound": "gladiator_Damaged.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/wind_step",
@@ -4616,16 +4805,19 @@
         "TargetRange": 0,
         "VisualEffect": "wind_spin_sheet.rtex",
         "CastSound": "armor_jingle_metal.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3,
-        "Damage": 0,
-        "Healing": 30,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 0,
-        "Hotkey": "E"
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30
+          }
+        ]
       },
       {
         "TemplateID": "ability/reroll_item",
@@ -4638,13 +4830,7 @@
         "TargetRange": 0,
         "VisualEffect": "storm_strike_sheet.rtex",
         "CastSound": "forest_wind_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 1,
         "Hotkey": "Q"
@@ -4660,13 +4846,7 @@
         "TargetRange": 0,
         "VisualEffect": "light_shafts_phantom_ray.rtex",
         "CastSound": "scythe_sweep_sharp.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 1,
         "GridY": 1,
         "Hotkey": "A"
@@ -4682,13 +4862,7 @@
         "TargetRange": 0,
         "VisualEffect": "lava_flash_sheet.rtex",
         "CastSound": "item_hover_tink.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 2,
         "GridY": 1,
         "Hotkey": "S"
@@ -4704,13 +4878,7 @@
         "TargetRange": 0,
         "VisualEffect": "iron_wall_sheet.rtex",
         "CastSound": "forest_fire_crackl.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 3,
         "GridY": 1,
         "Hotkey": "D"
@@ -4726,13 +4894,7 @@
         "TargetRange": 30,
         "VisualEffect": "storm_pulse_sheet.rtex",
         "CastSound": "storm_strike_crack.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": 0,
         "GridY": 2,
         "Hotkey": "Z"
@@ -4748,13 +4910,7 @@
         "TargetRange": 10,
         "VisualEffect": "wind_blade_sheet.rtex",
         "CastSound": "leather_tunic_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 3.5,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -4770,13 +4926,7 @@
         "TargetRange": 10,
         "VisualEffect": "mineral_geology_quartz_core.rtex",
         "CastSound": "blacksmith_Construction.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 7,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -4792,13 +4942,7 @@
         "TargetRange": 60,
         "VisualEffect": "flame_trident_1.rtex",
         "CastSound": "leather_tunic_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -4814,13 +4958,7 @@
         "TargetRange": 60,
         "VisualEffect": "purple_magic_spell.rtex",
         "CastSound": "forest_wind_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -4836,13 +4974,7 @@
         "TargetRange": 60,
         "VisualEffect": "wind_blade_sheet.rtex",
         "CastSound": "leather_tunic_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -4858,13 +4990,7 @@
         "TargetRange": 60,
         "VisualEffect": "energy_explosion.rtex",
         "CastSound": "leather_tunic_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -4880,13 +5006,7 @@
         "TargetRange": 60,
         "VisualEffect": "blue_magic_shield_2.rtex",
         "CastSound": "forest_wind_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -4902,13 +5022,7 @@
         "TargetRange": 60,
         "VisualEffect": "storm_strike_sheet.rtex",
         "CastSound": "leather_tunic_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -4924,13 +5038,7 @@
         "TargetRange": 60,
         "VisualEffect": "forest_wind_rustle.raud",
         "CastSound": "forest_wind_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -4946,13 +5054,7 @@
         "TargetRange": 60,
         "VisualEffect": "ice_spirit_spell.rtex",
         "CastSound": "forest_wind_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -4968,13 +5070,7 @@
         "TargetRange": 60,
         "VisualEffect": "magic_healing_light.rtex",
         "CastSound": "leather_tunic_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -4990,13 +5086,7 @@
         "TargetRange": 60,
         "VisualEffect": "infernal_dragon.rtex",
         "CastSound": "leather_tunic_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -5012,13 +5102,7 @@
         "TargetRange": 60,
         "VisualEffect": "energy_explosion.rtex",
         "CastSound": "forest_wind_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -5034,13 +5118,7 @@
         "TargetRange": 60,
         "VisualEffect": "magic_spell_core.rtex",
         "CastSound": "forest_wind_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -5056,13 +5134,7 @@
         "TargetRange": 60,
         "VisualEffect": "storm_strike_sheet.rtex",
         "CastSound": "forest_wind_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -5078,13 +5150,7 @@
         "TargetRange": 60,
         "VisualEffect": "energy_explosion.rtex",
         "CastSound": "forest_wind_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -5100,13 +5166,7 @@
         "TargetRange": 60,
         "VisualEffect": "blue_magic_shield_2.rtex",
         "CastSound": "leather_tunic_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -5122,13 +5182,7 @@
         "TargetRange": 60,
         "VisualEffect": "wind_blade_sheet.rtex",
         "CastSound": "leather_tunic_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -5144,13 +5198,7 @@
         "TargetRange": 60,
         "VisualEffect": "magic_healing_light.rtex",
         "CastSound": "forest_wind_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -5166,13 +5214,7 @@
         "TargetRange": 60,
         "VisualEffect": "magic_spell_core.rtex",
         "CastSound": "forest_wind_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -5188,13 +5230,7 @@
         "TargetRange": 60,
         "VisualEffect": "crystal_terrain.rtex",
         "CastSound": "forest_wind_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
@@ -5210,13 +5246,7 @@
         "TargetRange": 60,
         "VisualEffect": "water_spell.rtex",
         "CastSound": "forest_wind_rustle.raud",
-        "AppliedStatusEffects": null,
         "AreaOfEffectRadius": 0,
-        "Damage": 0,
-        "Healing": 0,
-        "SummonedUnitId": null,
-        "SummonCount": 0,
-        "SummonDuration": 0,
         "GridX": -1,
         "GridY": -1,
         "Hotkey": null
