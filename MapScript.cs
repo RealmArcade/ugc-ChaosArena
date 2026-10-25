@@ -1,4 +1,4 @@
-namespace Realm.Maps;
+﻿namespace Realm.Maps;
 
 using System;
 using System.Collections.Generic;
@@ -34,10 +34,6 @@ public class TileState
     public bool RetargetedToCenter { get; set; }
     public string? ElixirId { get; set; }
 
-    /// <summary>
-    /// Reroll and swap cooldowns in match seconds, keyed by ability slug. Kept on the tile rather
-    /// than on the unit so the cooldown survives the tile being replaced by a fresh body.
-    /// </summary>
     public Dictionary<string, int> AbilityReadyAtSeconds { get; } = new();
 }
 
@@ -311,11 +307,6 @@ public partial class MapScript : IWasmModule
     private static int ResolveRealPlayerIndex(int playerIndex) =>
         IsProxyPlayerSlot(playerIndex) ? playerIndex - ProxyPlayerOffset : playerIndex;
 
-    /// <summary>
-    /// True when the source and the victim answer to the same real player, or are the same unit.
-    /// Wave clones fight under a hidden proxy slot, so ownership has to be resolved first or an
-    /// anti-snowball self-tick reads as one player damaging another.
-    /// </summary>
     private static bool IsFriendlySource(UnitId source, UnitId victim) =>
         source.UniqueId == victim.UniqueId
         || ResolveRealPlayerIndex(source.Player) == ResolveRealPlayerIndex(victim.Player);
@@ -946,10 +937,6 @@ public partial class MapScript : IWasmModule
                 : Element.Water;
             int elementSlot = (int)circleElement;
 
-            // A circle offers heroes, and each button's job is to say what that hero would do with
-            // the element this circle carries. So one button per offer — that element's slot — and
-            // nothing else. The other slots are hidden rather than left on a nine-button bar, and
-            // the hero's utility actions never appear here.
             foreach (string unitTypeId in DraftableUnits)
             {
                 bool isOffered = offeredUnitTypeIds.Contains(unitTypeId);
@@ -1101,8 +1088,7 @@ public partial class MapScript : IWasmModule
                 tileStatesByUnitId[newCircle.UniqueId] = state;
                 unit = newCircle;
                 ReapplyTileAbilityCooldowns(unit, state);
-                // The replacement body starts with every hero ability visible again, so the draft
-                // offers have to be re-hidden on it.
+
                 UpdateDraftOfferAbilities(playerIndex);
             }
         }
@@ -1121,7 +1107,7 @@ public partial class MapScript : IWasmModule
             return;
 
         IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unit.TemplateID);
-        // Ordered abilities: [0]=Water, [1]=Earth, [2]=Fire, [3]=Ultimate
+
         for (int i = 0; i < ElementalAbilityCount && i < abilities.Count; i++)
         {
             Element element = (Element)i;
@@ -1133,21 +1119,12 @@ public partial class MapScript : IWasmModule
             if (!isActive && !includeDisabledAbilities)
                 continue;
 
-            // Only the drafted element is a live ability; the other two are hidden rather than left
-            // on the card as dead buttons. The card text is the ability's own template: the
-            // tooltip override is global per ability, so writing it here relabelled every other
-            // unit's copy of the same ability.
             _api.SetAbilityState(unit, abilityId, !isActive, !isActive);
         }
 
         RecreateTileLabel(state);
     }
 
-    /// <summary>
-    /// Turns autocast on for exactly one of the three element abilities, so a wave clone fights with
-    /// the element it drafted. The other two get an explicit off rather than being left to default,
-    /// because "nothing casts" and "everything casts" are both failures of this card.
-    /// </summary>
     private void EnableElementAutocast(UnitId unit, Element element)
     {
         IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unit.TemplateID);
@@ -1331,8 +1308,6 @@ public partial class MapScript : IWasmModule
         foreach (string itemId in itemIds)
             newUnit.AddItem(itemId, Math.Max(level, 1));
 
-        // The tile keeps its state object: the reroll cooldown, the label handle and the level
-        // belong to the tile, not to the body standing on it.
         tileStatesByUnitId[newUnit.UniqueId] = state;
         ApplyElement(newUnit, state, true);
         LockTileUnit(newUnit);
@@ -1346,13 +1321,9 @@ public partial class MapScript : IWasmModule
         PerformItemReroll(unit);
         UnitId currentUnit = PerformElementReroll(unit, state);
 
-        // With every hero already drafted there is nothing to reroll into, but the item and element
-        // halves of the action still apply.
         if (state.Kind == TileKind.Hero && HasHeroRerollCandidate(playerIndex))
             return PerformHeroReroll(currentUnit, playerIndex);
 
-        // A circle keeps the same body unless the element changed its template, in which case the
-        // selection follows the replacement.
         SelectUnitForPlayer(playerIndex, currentUnit);
         return currentUnit;
     }
@@ -1403,8 +1374,6 @@ public partial class MapScript : IWasmModule
             unit.SetItemCharges(itemId, charges);
         }
 
-        // Swapping two tiles moves their levels and anchors, so the label has to be rebuilt at the
-        // position the level actually moved to rather than edited in place.
         RecreateTileLabel(state);
     }
 
@@ -1499,7 +1468,7 @@ public partial class MapScript : IWasmModule
 
             if (!wavesOpen)
             {
-                // The last round still delivers its pending spawns, but no new countdown starts.
+
                 if (playerState.IsCountdownVisible)
                 {
                     playerState.IsCountdownVisible = false;
@@ -1776,11 +1745,6 @@ public partial class MapScript : IWasmModule
         player.SetStone(MathF.Min(player.Stone + amount, StoneCap));
     }
 
-    /// <summary>
-    /// Wave clones fight for a hidden proxy player, so the engine pays kill bounties to that proxy
-    /// and nothing there ever spends them. Move any gold, wood or stone the proxy collected to the
-    /// player the wave actually belongs to.
-    /// </summary>
     private void SweepProxyResources()
     {
         foreach (int playerIndex in playerStates.Keys)
@@ -1936,8 +1900,7 @@ public partial class MapScript : IWasmModule
         {
             if (TryPayTileAbility(caster, elementState, spellId, playerIndex))
             {
-                // An element reroll replaces the circle, so the selection has to follow the new
-                // body or the player is left looking at a card for a unit that no longer exists.
+
                 UnitId rerolledUnit = PerformElementReroll(caster, elementState);
                 SelectUnitForPlayer(playerIndex, rerolledUnit);
                 RefreshTileAbilityVisibility(playerIndex);
@@ -2032,8 +1995,6 @@ public partial class MapScript : IWasmModule
             ? draftCircleState.Element
             : Element.Water;
 
-        // Only the element slot the circle shows drafts a hero. The rest of a hero's bar belongs to
-        // the placed unit, and a circle that answered a reroll click with a draft was a trap.
         string? matchedUnitTypeId = null;
         foreach (string unitTypeId in DraftableUnits)
         {
@@ -2149,8 +2110,6 @@ public partial class MapScript : IWasmModule
         waveUnitSpawnTimes.Remove(dyingUnit.UniqueId);
         _unitInfoCache.Remove(dyingUnit.UniqueId);
 
-        // A unit that took its own life off the anti-snowball timer, or was finished off by its
-        // own side, is not a kill: crediting it inflated both the kill count and the damage record.
         if (!killer.IsValid || IsFriendlySource(killer, dyingUnit))
             return;
 
@@ -2208,7 +2167,6 @@ public partial class MapScript : IWasmModule
                 _standingsOrder.Add(playerIndex);
         }
 
-        // Placed players lead in placement order; the rest follow by kills.
         _standingsOrder.Sort((left, right) =>
         {
             int leftPlacement = playerStates[left].Placement;

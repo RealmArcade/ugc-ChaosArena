@@ -1,16 +1,10 @@
-namespace Realm.Maps;
+﻿namespace Realm.Maps;
 
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Realm.MapAPI;
 
-/// <summary>
-/// Match length and placement. Nobody is knocked out while waves are still being dealt: players
-/// rebuild every round. At 25:00 the waves stop and each player's last wave is their match, so
-/// from then on losing the last unit on the field is elimination. Placement is reverse
-/// elimination order — the first field to empty takes last place, the survivor takes first.
-/// </summary>
 public partial class MapScript
 {
     private const int MatchWaveCutoffSeconds = 25 * 60;
@@ -24,15 +18,9 @@ public partial class MapScript
     private bool matchComplete;
     private bool wavesClosedAnnounced;
 
-    /// <summary>
-    /// Runs once a second, not from the death callback: a unit that just died may still be
-    /// listed as alive while the death pipeline is inside the callback, and settling on a tick
-    /// keeps the survivor count honest without re-entering combat.
-    /// </summary>
     private void EvaluateEliminations()
     {
-        // The match is only decided once the waves have stopped. Before 25:00 an empty field is
-        // just the gap between rounds, and the player has another wave coming.
+
         if (matchComplete || gameSecondsElapsed < MatchWaveCutoffSeconds)
             return;
 
@@ -45,9 +33,6 @@ public partial class MapScript
             int playerIndex = _standingPlayers[standingIndex];
             PlayerState state = playerStates[playerIndex];
 
-            // Their final wave has to be on the field first: a player still waiting on the last
-            // delivered round has not had their match yet. Players who never fielded a wave at
-            // all have nothing to lose.
             if (!state.HasFieldedWave || !state.HasSpawnedThisRound)
                 continue;
 
@@ -92,10 +77,6 @@ public partial class MapScript
             EndMatch("last player standing");
     }
 
-    /// <summary>
-    /// Ranks everyone still standing once the match is over: the player with the most units
-    /// left wins, kills break a tie, and slot order breaks that.
-    /// </summary>
     private void EndMatch(string reason)
     {
         if (matchComplete)
@@ -119,8 +100,7 @@ public partial class MapScript
 
         foreach (KeyValuePair<int, PlayerState> entry in playerStates)
         {
-            // The winner gets the victory screen; everyone eliminated already saw their placement
-            // the moment they went out.
+
             if (entry.Key == winnerIndex || entry.Value.Eliminated || entry.Value.Placement <= 0)
                 continue;
 
@@ -146,10 +126,6 @@ public partial class MapScript
         return killCompare != 0 ? killCompare : left.CompareTo(right);
     }
 
-    /// <summary>
-    /// Living wave clones only. Board heroes sit on the real player and are never reachable
-    /// from the arena, so counting them would keep a wiped player in the match forever.
-    /// </summary>
     private int CountLivingUnits(int playerIndex)
     {
         int livingCount = 0;
@@ -174,11 +150,6 @@ public partial class MapScript
         }
     }
 
-    /// <summary>
-    /// Deals each standing player a wave opponent for the round. Rebuilt every round so an
-    /// eliminated player stops being a target and the remaining players keep pairing off
-    /// instead of half of the arena walking to an empty spawn.
-    /// </summary>
     private void ResolveRoundWaveTargets()
     {
         _waveTargetRoster.Clear();
