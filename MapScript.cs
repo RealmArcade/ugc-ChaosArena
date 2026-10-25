@@ -662,11 +662,6 @@ public partial class MapScript : IWasmModule
 
             bool isActive = index == (int)state.Element;
             _api.SetAbilityState(dummy, abilityId, !isActive, !isActive);
-            string abilityName = _api.GetAbilityName(abilityId);
-            if (isActive)
-                _api.SetAbilityTooltip(abilityId, $"[{state.Element}] {abilityName}");
-            else
-                _api.SetAbilityTooltip(abilityId, $"[{(Element)index}] {abilityName} (disabled)");
         }
     }
 
@@ -931,13 +926,6 @@ public partial class MapScript : IWasmModule
 
         PlayerState playerState = playerStates[playerIndex];
         HashSet<string> offeredUnitTypeIds = new(playerState.Offers, StringComparer.OrdinalIgnoreCase);
-        HashSet<string> offeredAbilityIds = new(StringComparer.OrdinalIgnoreCase);
-
-        foreach (string offerTypeId in playerState.Offers)
-        {
-            foreach (string abilityId in _api.GetUnitTypeAbilities(offerTypeId))
-                offeredAbilityIds.Add(abilityId);
-        }
 
         if (playerState.Builder.IsValid && !playerState.Builder.IsDead)
         {
@@ -952,13 +940,29 @@ public partial class MapScript : IWasmModule
 
         foreach (UnitId unit in unitsToConfigure)
         {
+            Element circleElement = tileStatesByUnitId.TryGetValue(unit.UniqueId, out TileState? circleState)
+                ? circleState.Element
+                : Element.Water;
+            int elementSlot = (int)circleElement;
+
+            // A circle offers heroes, and each button's job is to say what that hero would do with
+            // the element this circle carries. So one button per offer — that element's slot — and
+            // nothing else. The other slots are hidden rather than left on a nine-button bar, and
+            // the hero's utility actions never appear here.
             foreach (string unitTypeId in DraftableUnits)
             {
-                foreach (string abilityId in _api.GetUnitTypeAbilities(unitTypeId))
+                bool isOffered = offeredUnitTypeIds.Contains(unitTypeId);
+                IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unitTypeId);
+
+                for (int index = 0; index < abilities.Count; index++)
                 {
-                    bool isOffered = offeredAbilityIds.Contains(abilityId);
-                    _api.SetAbilityState(unit, abilityId, !isOffered, !isOffered);
-                    if (isOffered)
+                    string abilityId = abilities[index];
+                    if (string.IsNullOrEmpty(abilityId))
+                        continue;
+
+                    bool isVisible = isOffered && index == elementSlot;
+                    _api.SetAbilityState(unit, abilityId, !isVisible, !isVisible);
+                    if (isVisible)
                         _api.SetAbilityManaCost(unit, abilityId, 0f);
                 }
             }
@@ -1129,13 +1133,10 @@ public partial class MapScript : IWasmModule
                 continue;
 
             // Only the drafted element is a live ability; the other two are hidden rather than left
-            // on the card as dead buttons.
+            // on the card as dead buttons. The card text is the ability's own template: the
+            // tooltip override is global per ability, so writing it here relabelled every other
+            // unit's copy of the same ability.
             _api.SetAbilityState(unit, abilityId, !isActive, !isActive);
-            string abilityName = _api.GetAbilityName(abilityId);
-            if (isActive)
-                _api.SetAbilityTooltip(abilityId, $"[{element}] {abilityName}");
-            else
-                _api.SetAbilityTooltip(abilityId, $"[{element}] {abilityName} (disabled)");
         }
 
         RecreateTileLabel(state);
@@ -2017,13 +2018,24 @@ public partial class MapScript : IWasmModule
         if (!draftTargetCircle.IsValid)
             return;
 
+        Element circleElement = tileStatesByUnitId.TryGetValue(draftTargetCircle.UniqueId, out TileState? draftCircleState)
+            ? draftCircleState.Element
+            : Element.Water;
+
+        // Only the element slot the circle shows drafts a hero. The rest of a hero's bar belongs to
+        // the placed unit, and a circle that answered a reroll click with a draft was a trap.
         string? matchedUnitTypeId = null;
         foreach (string unitTypeId in DraftableUnits)
         {
-            var abilities = _api.GetUnitTypeAbilities(unitTypeId);
-            if (abilities.Any(a => a.Equals(spellId, StringComparison.OrdinalIgnoreCase)
-                || a.EndsWith($"/{spellId}", StringComparison.OrdinalIgnoreCase)
-                || spellId.EndsWith($"/{a}", StringComparison.OrdinalIgnoreCase)))
+            IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unitTypeId);
+            if (abilities.Count <= (int)circleElement)
+                continue;
+
+            string elementAbility = abilities[(int)circleElement];
+            if (string.IsNullOrEmpty(elementAbility))
+                continue;
+
+            if (SlugsEqual(elementAbility, spellId))
             {
                 matchedUnitTypeId = unitTypeId;
                 break;

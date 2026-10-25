@@ -35,7 +35,7 @@ Two invariants for all engine work: the engine stays a **generic RTS** (no Chaos
 | E8 map-authorable combat tuning | done |
 | M1 hero roster, items, upgrades, elixirs | done |
 | M2 60 ability definitions, map tuning | done |
-| M3 circle UX | **open** |
+| M3 circle UX | done |
 | M4 clone loadout | done |
 | M5 rerolls and swaps | done |
 | M6 altar elixirs | done |
@@ -67,8 +67,12 @@ Chaos Arena authors exactly four tuning values: `ResistTuningConstantK`, `MaxRes
 
 ## Map workstream (ugc-ChaosArena)
 
-### M3. Circle UX — open
-Circles hold three element-description abilities, one visible, plus the item icon with its stack count. No more 60-ability bars, no global `SetAbilityTooltip` writes; the element name becomes `{{Source.Element}}` published per unit, and each card's numbers come from the ability template.
+### M3. Circle UX — done
+A circle carries one visible button per offer — that hero's ability for the element the circle holds — instead of every ability every offered hero owns. The rest are hidden, so a three-card bar replaced a nine-card one and the hero's reroll and swap actions no longer appear on a circle at all.
+
+- `TryDraftFromAbilityCast` now matches only the element slot the circle shows, so an ability that belongs to a placed hero cannot draft a new one.
+- Every `SetAbilityTooltip` write is gone from the map. The override is global per ability, so labelling a circle's copy relabelled every other unit's copy of the same ability; the card is now the ability's own template and the element is in the tile's name.
+- The item and its stack number come from the existing inventory panel, which reads charges — and those charges now also scale the item's generated stat block, so a level 5 tile shows what five copies actually give.
 
 ### M4b. Enable autocast on clones — done
 `EnableElementAutocast` runs after `ApplyElement` on every clone: the drafted element's ability gets an autocast bit, the other two get an explicit off. Every hero carries its three element abilities in Water/Earth/Fire order, which is the same order `ApplyElement` uses, so the bit and the visible button agree.
@@ -90,10 +94,10 @@ Not beta-blocking except for obvious errors. Move one knob at a time: damage per
 ## Execution order
 
 ```
-M3 → balance pass → verification pass
+balance pass → verification pass
 ```
 
-Everything feature-side before M3 is done, so the next change is the draft surface the player actually touches, then the balance pass, then one end-to-end verification.
+Feature work is complete. What remains is tuning and one end-to-end run; nothing else is waiting on a design decision.
 
 ## Verification pass (end of the list, run once)
 
