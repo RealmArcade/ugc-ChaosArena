@@ -131,15 +131,26 @@ public class MapScript : IWasmModule
 
     private static readonly string[] ItemPool =
     {
-        ItemIds.TitanBelt,
-        ItemIds.SwiftnessBoots,
-        ItemIds.CowlOfTheWise,
-        ItemIds.IronClaws,
-        ItemIds.GauntletsOfPower,
-        ItemIds.CrystalPendant,
-        ItemIds.VitalityRing,
-        ItemIds.RingOfProtection,
-        ItemIds.TomeOfKnowledge
+        "item/titan_belt",
+        "item/swiftness_boots",
+        "item/cowl_of_the_wise",
+        "item/iron_claws",
+        "item/gauntlets_of_power",
+        "item/crystal_pendant",
+        "item/vitality_ring",
+        "item/ring_of_protection",
+        "item/tome_of_knowledge",
+        "item/wardens_plate",
+        "item/bloodsign_talisman",
+        "item/glass_cannon",
+        "item/assassins_mark",
+        "item/bulwark_sigil",
+        "item/duelists_gloves",
+        "item/fortune_coin",
+        "item/ember_charm",
+        "item/travelers_cloak",
+        "item/band_of_focus",
+        "item/stoneheart",
     };
 
     private static readonly string[] DraftableUnits =
