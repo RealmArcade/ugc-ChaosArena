@@ -67,8 +67,8 @@
         "Fortune": 10,
         "HpRegen": 1.3,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 0,
-        "ManaRegen": 8.031,
+        "MaxMana": 0.0,
+        "ManaRegen": 1.17,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 5,
@@ -190,8 +190,8 @@
         "Fortune": 10,
         "HpRegen": 1,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 0,
-        "ManaRegen": 8.323,
+        "MaxMana": 60.0,
+        "ManaRegen": 0.98,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 6,
@@ -313,8 +313,8 @@
         "Fortune": 20,
         "HpRegen": 0.6,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 28,
-        "ManaRegen": 9.42,
+        "MaxMana": 44.0,
+        "ManaRegen": 1.03,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 6,
@@ -436,8 +436,8 @@
         "Fortune": 11,
         "HpRegen": 0.6,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 6,
-        "ManaRegen": 7.479,
+        "MaxMana": 76.0,
+        "ManaRegen": 0.94,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 5,
@@ -559,8 +559,8 @@
         "Fortune": 11,
         "HpRegen": 1.2,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 0,
-        "ManaRegen": 7.826,
+        "MaxMana": 32.0,
+        "ManaRegen": 0.9,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 4,
@@ -682,8 +682,8 @@
         "Fortune": 10,
         "HpRegen": 1.3,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 0,
-        "ManaRegen": 7.684,
+        "MaxMana": 10.0,
+        "ManaRegen": 0.99,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 5,
@@ -805,8 +805,8 @@
         "Fortune": 10,
         "HpRegen": 1,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 0,
-        "ManaRegen": 7.951,
+        "MaxMana": 4.0,
+        "ManaRegen": 0.93,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 6,
@@ -928,8 +928,8 @@
         "Fortune": 10,
         "HpRegen": 0.6,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 7,
-        "ManaRegen": 7.457,
+        "MaxMana": 66.0,
+        "ManaRegen": 0.69,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 7,
@@ -1051,8 +1051,8 @@
         "Fortune": 12,
         "HpRegen": 0.6,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 20,
-        "ManaRegen": 7.853,
+        "MaxMana": 104.0,
+        "ManaRegen": 0.77,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 5,
@@ -1174,8 +1174,8 @@
         "Fortune": 10,
         "HpRegen": 1,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 0,
-        "ManaRegen": 8.018,
+        "MaxMana": 42.0,
+        "ManaRegen": 1.02,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 6,
@@ -1297,8 +1297,8 @@
         "Fortune": 11,
         "HpRegen": 0.6,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 0,
-        "ManaRegen": 7.611,
+        "MaxMana": 50.0,
+        "ManaRegen": 0.89,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 8,
@@ -1420,8 +1420,8 @@
         "Fortune": 10,
         "HpRegen": 1.3,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 0,
-        "ManaRegen": 7.888,
+        "MaxMana": 20.0,
+        "ManaRegen": 0.93,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 5,
@@ -1543,8 +1543,8 @@
         "Fortune": 12,
         "HpRegen": 0.6,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 7,
-        "ManaRegen": 7.491,
+        "MaxMana": 66.0,
+        "ManaRegen": 0.68,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 5,
@@ -1666,8 +1666,8 @@
         "Fortune": 16,
         "HpRegen": 0.7,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 18,
-        "ManaRegen": 8.47,
+        "MaxMana": 44.0,
+        "ManaRegen": 1.01,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 6,
@@ -1789,8 +1789,8 @@
         "Fortune": 10,
         "HpRegen": 0.6,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 19,
-        "ManaRegen": 7.83,
+        "MaxMana": 94.0,
+        "ManaRegen": 0.63,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 5,
@@ -1912,8 +1912,8 @@
         "Fortune": 10,
         "HpRegen": 0.6,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 13,
-        "ManaRegen": 7.186,
+        "MaxMana": 64.0,
+        "ManaRegen": 0.54,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 8,
@@ -2035,8 +2035,8 @@
         "Fortune": 10,
         "HpRegen": 1.2,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 0,
-        "ManaRegen": 7.326,
+        "MaxMana": 32.0,
+        "ManaRegen": 0.91,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 4,
@@ -2158,8 +2158,8 @@
         "Fortune": 12,
         "HpRegen": 1,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 0,
-        "ManaRegen": 8.261,
+        "MaxMana": 20.0,
+        "ManaRegen": 0.87,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 6,
@@ -2281,8 +2281,8 @@
         "Fortune": 12,
         "HpRegen": 1,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 0,
-        "ManaRegen": 8.362,
+        "MaxMana": 22.0,
+        "ManaRegen": 0.85,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 6,
@@ -2404,8 +2404,8 @@
         "Fortune": 17,
         "HpRegen": 0.6,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 26,
-        "ManaRegen": 9.34,
+        "MaxMana": 54.0,
+        "ManaRegen": 1.13,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 6,
@@ -3591,7 +3591,7 @@
       {
         "TemplateID": "ability/shadow_weaver_void_bloom",
         "Name": "Void Bloom",
-        "Description": "A 3 radius bloom deals 15 magic damage and silences for 2 s, rising toward 5 s with Intelligence.",
+        "Description": "A 3 radius bloom deals 15 magic damage and silences for 2 s, plus 0.08 s per Intelligence (max 5 s).",
         "Role": "Control",
         "AbilityType": "target_spell",
         "IconPath": "cosmic_orb.rtex",
@@ -3622,10 +3622,11 @@
             "BuffId": "silence",
             "Scaling": {
               "Attribute": "Intelligence",
-              "Shape": "saturating",
-              "Coefficient": 0,
-              "Divisor": 40,
-              "Cap": 5
+              "Shape": "linear",
+              "Coefficient": 0.08,
+              "Divisor": 0,
+              "Cap": 5.0,
+              "ScalesDuration": true
             }
           }
         ]
@@ -3868,7 +3869,7 @@
       {
         "TemplateID": "ability/thornback_behemoth_overgrowth",
         "Name": "Overgrowth",
-        "Description": "Roots everything within 3.5 for 0.5 s, rising toward 2 s with Vitality, then slows it by 30% for 3 s.",
+        "Description": "Roots everything within 3.5 for 0.5 s, plus 0.05 s per Vitality (max 2 s), then slows it by 30% for 3 s.",
         "Role": "Control",
         "AbilityType": "instant_spell",
         "IconPath": "crystal_terrain.rtex",
@@ -3895,10 +3896,11 @@
             "BuffId": "stun",
             "Scaling": {
               "Attribute": "Vitality",
-              "Shape": "saturating",
-              "Coefficient": 0,
-              "Divisor": 30,
-              "Cap": 2.0
+              "Shape": "linear",
+              "Coefficient": 0.05,
+              "Divisor": 0,
+              "Cap": 2.0,
+              "ScalesDuration": true
             }
           },
           {
@@ -3916,7 +3918,15 @@
                 "PerLevelScaling": 0,
                 "WASMFunctionName": ""
               }
-            ]
+            ],
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "linear",
+              "Coefficient": 0.05,
+              "Divisor": 0,
+              "Cap": 2.0,
+              "ScalesDuration": true
+            }
           }
         ]
       },
@@ -4482,7 +4492,7 @@
       {
         "TemplateID": "ability/frost_warden_frost_bulwark",
         "Name": "Frost Bulwark",
-        "Description": "Ice plate grants 8 armor and 2.3 magic resistance for 6 s, rising toward 9 s with Wisdom.",
+        "Description": "Ice plate grants 8 armor and 2.3 magic resistance for 6 s, plus 0.12 s per Wisdom (max 9 s).",
         "Role": "Tank",
         "AbilityType": "instant_spell",
         "IconPath": "heavy_armor_crawler.rtex",
@@ -4523,10 +4533,11 @@
             ],
             "Scaling": {
               "Attribute": "Wisdom",
-              "Shape": "saturating",
-              "Coefficient": 0,
-              "Divisor": 25,
-              "Cap": 9
+              "Shape": "linear",
+              "Coefficient": 0.12,
+              "Divisor": 0,
+              "Cap": 9.0,
+              "ScalesDuration": true
             }
           }
         ]
@@ -4991,7 +5002,7 @@
       {
         "TemplateID": "ability/arcane_scholar_mana_bloom",
         "Name": "Mana Bloom",
-        "Description": "Allies within 4 gain 10% spell power, 10% cooldown reduction and 2 mana per second for 3 s, rising toward 9 s with Intelligence.",
+        "Description": "Allies within 4 gain 10% spell power, 10% cooldown reduction and 3 mana per second for 3 s, plus 0.2 s per Intelligence (max 9 s).",
         "Role": "Support",
         "AbilityType": "instant_spell",
         "IconPath": "magic_chess_piece.rtex",
@@ -5033,17 +5044,18 @@
               {
                 "StatKey": "ManaRegen",
                 "Type": "Flat",
-                "Value": 2,
+                "Value": 3.0,
                 "PerLevelScaling": 0,
                 "WASMFunctionName": ""
               }
             ],
             "Scaling": {
               "Attribute": "Intelligence",
-              "Shape": "saturating",
-              "Coefficient": 0,
-              "Divisor": 25,
-              "Cap": 9
+              "Shape": "linear",
+              "Coefficient": 0.2,
+              "Divisor": 0,
+              "Cap": 9.0,
+              "ScalesDuration": true
             }
           }
         ]
@@ -5445,7 +5457,7 @@
       {
         "TemplateID": "ability/lightbringer_monk_sanctified_ground",
         "Name": "Sanctified Ground",
-        "Description": "Consecrates the ground: allies within 3.5 gain 6 armor, 1.9 magic resistance and 8% tenacity for 5 s, rising toward 8 s with Wisdom.",
+        "Description": "Consecrates the ground: allies within 3.5 gain 6 armor, 1.9 magic resistance and 8% tenacity for 5 s, plus 0.15 s per Wisdom (max 8 s).",
         "Role": "Tank",
         "AbilityType": "target_spell",
         "IconPath": "orc_tower.rtex",
@@ -5494,10 +5506,11 @@
             ],
             "Scaling": {
               "Attribute": "Wisdom",
-              "Shape": "saturating",
-              "Coefficient": 0,
-              "Divisor": 20,
-              "Cap": 8
+              "Shape": "linear",
+              "Coefficient": 0.15,
+              "Divisor": 0,
+              "Cap": 8.0,
+              "ScalesDuration": true
             }
           }
         ]
@@ -8274,7 +8287,7 @@
           {
             "StatKey": "ManaRegen",
             "Type": "Flat",
-            "Value": 1.5,
+            "Value": 0.5,
             "PerLevelScaling": 0,
             "WASMFunctionName": ""
           }
@@ -9622,7 +9635,8 @@
   "CombatTuning": {
     "ResistTuningConstantK": 16.67,
     "MaxResistMitigation": 0.9,
-    "MinDamageFloor": 1.0
+    "MinDamageFloor": 1.0,
+    "IntelligenceManaRegenPerPoint": 0.02
   },
   "CustomProceduralAnimations": [],
   "CustomWaterProfiles": [],
