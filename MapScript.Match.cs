@@ -6,9 +6,10 @@ using System.Text;
 using Realm.MapAPI;
 
 /// <summary>
-/// Match length and placement. Waves stop being dealt at 25:00; a player who loses their last
-/// unit is out, and placement is reverse elimination order — the first player out takes last
-/// place, the last player with units on the field takes first.
+/// Match length and placement. Nobody is knocked out while waves are still being dealt: players
+/// rebuild every round. At 25:00 the waves stop and each player's last wave is their match, so
+/// from then on losing the last unit on the field is elimination. Placement is reverse
+/// elimination order — the first field to empty takes last place, the survivor takes first.
 /// </summary>
 public partial class MapScript
 {
@@ -30,21 +31,27 @@ public partial class MapScript
     /// </summary>
     private void EvaluateEliminations()
     {
-        if (matchComplete)
+        // The match is only decided once the waves have stopped. Before 25:00 an empty field is
+        // just the gap between rounds, and the player has another wave coming.
+        if (matchComplete || gameSecondsElapsed < MatchWaveCutoffSeconds)
             return;
 
         CollectStandingPlayers();
         if (_standingPlayers.Count <= 1)
             return;
 
-        // Only players who have actually fielded a wave can be knocked out; someone who has not
-        // drafted yet simply has nothing on the field.
         for (int standingIndex = 0; standingIndex < _standingPlayers.Count; standingIndex++)
         {
             int playerIndex = _standingPlayers[standingIndex];
             PlayerState state = playerStates[playerIndex];
 
-            if (!state.HasFieldedWave || CountLivingUnits(playerIndex) > 0)
+            // Their final wave has to be on the field first: a player still waiting on the last
+            // delivered round has not had their match yet. Players who never fielded a wave at
+            // all have nothing to lose.
+            if (!state.HasFieldedWave || !state.HasSpawnedThisRound)
+                continue;
+
+            if (CountLivingUnits(playerIndex) > 0)
                 continue;
 
             EliminatePlayer(playerIndex);

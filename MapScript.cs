@@ -1416,7 +1416,8 @@ public partial class MapScript : IWasmModule
         {
             wavesClosedAnnounced = true;
             _api.BroadcastMessage(
-                $"No more waves at {MatchWaveCutoffSeconds / 60}:00. Hold the arena with what you have left.");
+                $"{MatchWaveCutoffSeconds / 60}:00 — no more waves. Your last wave is your match: "
+                + "the first player to lose every unit on the field is out.");
         }
 
         roundClockSeconds += 1f;
