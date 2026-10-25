@@ -75,9 +75,11 @@ Today autocast reads the unit-type ability list, ignores `SetAbilityState(disabl
 Permanent (duration ≤ 0) modifiers with source identity, visible through `GetModifiers` and a tooltip string, removable by source so the flush consumable works. Done when an elixir's effect survives wave cloning and can be cleared.
 
 ### E8. Map-level combat tuning block
-`Realm.Shared/Metadata/MapMetadata.cs`, `CombatConfig.cs`
+`Realm.Shared/Metadata/CombatTuningMetadata.cs`, `Realm.Shared/Metadata/MapMetadata.cs`, `Realm.Ecs/Services/CombatTuning.cs`, `Realm.Ecs/Services/CombatConfig.cs`, `Realm.Client/Services/MapCombatTuningService.cs`
 
-All coefficients, caps, floors and attribute conversion constants move to map-authorable configuration with defaults that preserve current behavior. Chaos Arena authors its own values here rather than in code.
+Shipped. `metadata.json` → `CombatTuning` carries every stat coefficient, cap, floor, conversion constant and the damage/armor matrix (`DamageMatrix`, `UndefinedPairMultiplier`, `ArmorTuningConstantK`, `MinDamageFloor`). Every field is optional: an absent one keeps the engine default, and the defaults reproduce the old compile-time constants exactly, so a map that authors nothing is unchanged. The loader runs on every map load, rejects out-of-range or non-finite values with a warning and falls back to the default for that field, and resets untouched state so one map's tuning never leaks into the next. The runtime values live on `ECSContext.ActiveCombatTuning` / `ActiveCombatConfig`, which the stat pipeline, the resolver and the combat service all read through — no second copy, and no ability to resolve one attack through two matrices.
+
+Chaos Arena authors its own values in M2 once the 60 abilities exist and there is something to tune.
 
 ---
 
@@ -112,9 +114,9 @@ Wood purchases, one-shot, applied to the proxy before each spawn.
 ## Execution order
 
 ```
-E1 → E2 → E3 → E4 → E6 → M1 → M3 → M5 → E7/M6 → M7 → M8
-                          E5 ---^        ^
-                          (E5 gates M2, and M2 gates M4)
+E1 → E2 → E3 → E4 → E6 → E8 → M1 → M3 → M5 → E7/M6 → M7 → M8
+                               E5 ---^        ^
+                               (E5 gates M2, and M2 gates M4)
 ```
 
 E5 is the long pole. M1 can start once E1/E3 land because items and upgrades only need canonical keys and levels.
