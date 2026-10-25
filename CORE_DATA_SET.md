@@ -148,12 +148,12 @@ the hero keeps it for the rest of the match and every clone it spawns inherits a
 
 | Hook | Elixir (gold) |
 |---|---|
-| Hit dealt | Blood Debt +0.4 attack per hit, +12 cap (40) · Siphon Sigil heal 0.6 per hit (30) · Rending Edge +18 damage every 6th hit, 5/wave (45) · Executioner +8 damage below 35% target HP, 20/wave (50) |
-| Hit taken | Warded Hide +0.2 armor, +3 cap (35) · Retaliation 3 damage back, 10/wave (40) · Phantom Step +2% speed, +20% cap (30) |
-| Kill | Soul Harvest heal 4% max HP, 10/wave (45) · Trophy Hunter +1 gold, 20/wave (30) · Feeding Frenzy +0.6 attack, +9 cap (45) · Void Pact +1.5 max HP, +25 cap (40) |
-| Cast | Arcane Echo refund 12 mana every 5th cast, 6/wave (40) · Swift Incantation −1.2 s other cooldowns, 8/wave (45) · Ritual Echo 10 magic damage in a 4 radius every 4th cast, 5/wave (50) |
-| Wave start | Opening Gambit +2 armor (35) · Vanguard's Oath +3 attack (40) |
-| Always | Slow Regeneration 0.35 HP/s, 40/wave (35) · Battle Trance +0.4 attack per 10 s, +3.2 cap (50) · Iron Constitution +1 max HP per 6 s, +30 cap (45) |
+| Hit dealt | Blood Debt +0.4 attack per hit, +12 cap (40) · Siphon Sigil heal 5 per hit (30) · Rending Edge +45 damage every 6th hit, 5/wave (45) · Executioner +12 damage below 35% target HP, 20/wave (50) |
+| Hit taken | Warded Hide +0.25 armor, +4 cap (35) · Retaliation 20 damage back, 10/wave (40) · Phantom Step +2% speed, +20% cap (30) |
+| Kill | Soul Harvest heal 4% max HP, 10/wave (45) · Trophy Hunter +1 gold, 20/wave (30) · Feeding Frenzy +1 attack, +15 cap (45) · Void Pact +18 max HP, +360 cap (40) |
+| Cast | Arcane Echo refund 10 mana every 5th cast, 6/wave (40) · Swift Incantation −1.5 s other cooldowns, 8/wave (45) · Ritual Echo 30 magic damage in a 4 radius every 4th cast, 5/wave (50) |
+| Wave start | Opening Gambit +4 armor (35) · Vanguard's Oath +8 attack (40) |
+| Always | Slow Regeneration 2 HP/s, 180/wave (35) · Battle Trance +1.5 attack per 10 s, +12 cap (50) · Iron Constitution +22 max HP per 6 s, +220 cap (45) |
 | Utility | Flush clears the carried elixir (10) |
 
 ---

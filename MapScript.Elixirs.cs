@@ -57,15 +57,15 @@ public partial class MapScript
         new("elixir_blood_debt", "Blood Debt",
             "Each hit this unit lands grants +0.4 attack damage, up to +12.", ElixirHook.HitDealt, 0.4f, 30, 40f),
         new("elixir_siphon_sigil", "Siphon Sigil",
-            "Each hit this unit lands heals it 0.6 health, up to 25 heals per wave.", ElixirHook.HitDealt, 0.6f, 25, 30f),
+            "Each hit this unit lands heals it 5 health, up to 25 heals per wave.", ElixirHook.HitDealt, 5f, 25, 30f),
         new("elixir_rending_edge", "Rending Edge",
-            "Every sixth hit lands an extra 18 damage, up to 5 times per wave.", ElixirHook.HitDealt, 18f, 5, 45f),
+            "Every sixth hit lands an extra 45 damage, up to 5 times per wave.", ElixirHook.HitDealt, 45f, 5, 45f),
         new("elixir_executioner", "Executioner",
-            "Hits against targets below 35% health deal 8 extra damage, up to 20 times per wave.", ElixirHook.HitDealt, 8f, 20, 50f),
+            "Hits against targets below 35% health deal 12 extra damage, up to 20 times per wave.", ElixirHook.HitDealt, 12f, 20, 50f),
         new("elixir_warded_hide", "Warded Hide",
-            "Each hit taken grants +0.2 armor, up to +3 armor.", ElixirHook.HitTaken, 0.2f, 15, 35f),
+            "Each hit taken grants +0.25 armor, up to +4 armor.", ElixirHook.HitTaken, 0.25f, 16, 35f),
         new("elixir_retaliation", "Retaliation",
-            "Each hit taken deals 3 damage back to the attacker, up to 10 times per wave.", ElixirHook.HitTaken, 3f, 10, 40f),
+            "Each hit taken deals 20 damage back to the attacker, up to 10 times per wave.", ElixirHook.HitTaken, 20f, 10, 40f),
         new("elixir_phantom_step", "Phantom Step",
             "Each hit taken grants +2% movement speed, up to +20%.", ElixirHook.HitTaken, 0.02f, 10, 30f),
         new("elixir_soul_harvest", "Soul Harvest",
@@ -73,27 +73,27 @@ public partial class MapScript
         new("elixir_trophy_hunter", "Trophy Hunter",
             "Kills pay 1 extra gold, up to 20 kills per wave.", ElixirHook.Kill, 1f, 20, 30f),
         new("elixir_feeding_frenzy", "Feeding Frenzy",
-            "Each kill grants +0.6 attack damage, up to +9.", ElixirHook.Kill, 0.6f, 15, 45f),
+            "Each kill grants +1 attack damage, up to +15.", ElixirHook.Kill, 1f, 15, 45f),
         new("elixir_void_pact", "Void Pact",
-            "Each kill grants +1.5 maximum health, up to +25.", ElixirHook.Kill, 1.5f, 17, 40f),
+            "Each kill grants +18 maximum health, up to +360.", ElixirHook.Kill, 18f, 20, 40f),
         new("elixir_arcane_echo", "Arcane Echo",
-            "Every fifth cast refunds 12 mana, up to 6 refunds per wave.", ElixirHook.Cast, 12f, 6, 40f),
+            "Every fifth cast refunds 10 mana, up to 6 refunds per wave.", ElixirHook.Cast, 10f, 6, 40f),
         new("elixir_swift_incantation", "Swift Incantation",
-            "Each cast cuts the caster's other cooldowns by 1.2 seconds, up to 8 times per wave.", ElixirHook.Cast, 1.2f, 8, 45f),
+            "Each cast cuts the caster's other cooldowns by 1.5 seconds, up to 8 times per wave.", ElixirHook.Cast, 1.5f, 8, 45f),
         new("elixir_ritual_echo", "Ritual Echo",
-            "Every fourth cast erupts for 10 magic damage around the caster, up to 5 times per wave.", ElixirHook.Cast, 10f, 5, 50f),
+            "Every fourth cast erupts for 30 magic damage around the caster, up to 5 times per wave.", ElixirHook.Cast, 30f, 5, 50f),
         new("elixir_opening_gambit", "Opening Gambit",
-            "Wave units start with +2 armor for the whole wave.", ElixirHook.WaveStart, 2f, 1, 35f),
+            "Wave units start with +4 armor for the whole wave.", ElixirHook.WaveStart, 4f, 1, 35f),
         new("elixir_vanguards_oath", "Vanguard's Oath",
-            "Wave units start with +3 attack damage for the whole wave.", ElixirHook.WaveStart, 3f, 1, 40f),
+            "Wave units start with +8 attack damage for the whole wave.", ElixirHook.WaveStart, 8f, 1, 40f),
         new("elixir_slow_regeneration", "Slow Regeneration",
-            "Regenerates 0.35 health per second, up to 40 health per wave.", ElixirHook.Always, 0.35f, 114, 35f),
+            "Regenerates 2 health per second, up to 180 health per wave.", ElixirHook.Always, 2f, 90, 35f),
         new("elixir_battle_trance", "Battle Trance",
-            "Every 10 seconds alive grants +0.4 attack damage, up to +3.2.", ElixirHook.Always, 0.4f, 8, 50f),
+            "Every 10 seconds alive grants +1.5 attack damage, up to +12.", ElixirHook.Always, 1.5f, 8, 50f),
         new("elixir_iron_constitution", "Iron Constitution",
-            "Every 6 seconds alive grants +1 maximum health, up to +30.", ElixirHook.Always, 1f, 30, 45f),
+            "Every 6 seconds alive grants +22 maximum health, up to +220.", ElixirHook.Always, 22f, 10, 45f),
         new("elixir_flush", "Flush",
-            "Clears the elixir this hero carries so a different one can be applied.", ElixirHook.Always, 0f, 0, 10f)
+            "Clears the elixir this hero carries so a different one can be applied.", ElixirHook.Always, 0f, 0, 10f),
     };
 
     private static readonly Dictionary<string, ElixirDefinition> ElixirById = BuildElixirLookup();
@@ -338,7 +338,7 @@ public partial class MapScript
             case "elixir_blood_debt":
                 if (state.Stacks >= state.Definition.MaxStacks) return;
                 state.Stacks++;
-                _api.AddStatModifier(attacker, "Attack", false, state.Definition.Amount * state.Stacks, state.Definition.SourceId);
+                SetElixirModifier(attacker, state, "Attack", false, state.Definition.Amount * state.Stacks);
                 break;
 
             case "elixir_siphon_sigil":
@@ -377,7 +377,7 @@ public partial class MapScript
             case "elixir_warded_hide":
                 if (state.Stacks >= state.Definition.MaxStacks) return;
                 state.Stacks++;
-                _api.AddStatModifier(victim, "Armor", false, state.Definition.Amount * state.Stacks, state.Definition.SourceId);
+                SetElixirModifier(victim, state, "Armor", false, state.Definition.Amount * state.Stacks);
                 break;
 
             case "elixir_retaliation":
@@ -390,7 +390,7 @@ public partial class MapScript
             case "elixir_phantom_step":
                 if (state.Stacks >= state.Definition.MaxStacks) return;
                 state.Stacks++;
-                _api.AddStatModifier(victim, "MovementSpeed", true, state.Definition.Amount * state.Stacks, state.Definition.SourceId);
+                SetElixirModifier(victim, state, "MovementSpeed", true, state.Definition.Amount * state.Stacks);
                 break;
         }
     }
@@ -420,14 +420,14 @@ public partial class MapScript
             case "elixir_feeding_frenzy":
                 if (state.Stacks >= state.Definition.MaxStacks) return;
                 state.Stacks++;
-                _api.AddStatModifier(killer, "Attack", false, state.Definition.Amount * state.Stacks, state.Definition.SourceId);
+                SetElixirModifier(killer, state, "Attack", false, state.Definition.Amount * state.Stacks);
                 break;
 
             case "elixir_void_pact":
                 if (state.Stacks >= state.Definition.MaxStacks) return;
                 state.Stacks++;
                 float gained = state.Definition.Amount;
-                _api.AddStatModifier(killer, "MaxHp", false, gained * state.Stacks, state.Definition.SourceId);
+                SetElixirModifier(killer, state, "MaxHp", false, gained * state.Stacks);
                 killer.Health = MathF.Min(killer.MaxHealth, killer.Health + gained);
                 break;
         }
@@ -490,6 +490,18 @@ public partial class MapScript
         }
     }
 
+    /// <summary>
+    /// Repoints the one stat modifier an elixir owns at its new stacked total. Elixirs grow a stack
+    /// at a time, so adding a fresh modifier per stack would make the total triangular (1+2+3...)
+    /// instead of the linear cap the card promises, and would also eat the entity's modifier slots.
+    /// The max-health path is safe to re-point because a recalculation keeps the health ratio.
+    /// </summary>
+    private void SetElixirModifier(UnitId unit, ElixirState state, string statName, bool isPercentage, float total)
+    {
+        _api.RemoveStatModifiers(unit, state.Definition.SourceId);
+        _api.AddStatModifier(unit, statName, isPercentage, total, state.Definition.SourceId);
+    }
+
     private void OnElixirWaveStart(UnitId unit)
     {
         if (!elixirStatesByUnitId.TryGetValue(unit.UniqueId, out ElixirState? state))
@@ -534,27 +546,27 @@ public partial class MapScript
             switch (state.Definition.Id)
             {
                 case "elixir_slow_regeneration":
-                    if (state.Procs >= state.Definition.MaxStacks) return;
+                    if (state.Procs >= state.Definition.MaxStacks) continue;
                     state.Procs++;
                     _api.HealUnit(unit, state.Definition.Amount);
                     break;
 
                 case "elixir_battle_trance":
                     state.Accumulator++;
-                    if (state.Accumulator < 10f) return;
+                    if (state.Accumulator < 10f) continue;
                     state.Accumulator = 0f;
-                    if (state.Stacks >= state.Definition.MaxStacks) return;
+                    if (state.Stacks >= state.Definition.MaxStacks) continue;
                     state.Stacks++;
-                    _api.AddStatModifier(unit, "Attack", false, state.Definition.Amount * state.Stacks, state.Definition.SourceId);
+                    SetElixirModifier(unit, state, "Attack", false, state.Definition.Amount * state.Stacks);
                     break;
 
                 case "elixir_iron_constitution":
                     state.Accumulator++;
-                    if (state.Accumulator < 6f) return;
+                    if (state.Accumulator < 6f) continue;
                     state.Accumulator = 0f;
-                    if (state.Stacks >= state.Definition.MaxStacks) return;
+                    if (state.Stacks >= state.Definition.MaxStacks) continue;
                     state.Stacks++;
-                    _api.AddStatModifier(unit, "MaxHp", false, state.Definition.Amount * state.Stacks, state.Definition.SourceId);
+                    SetElixirModifier(unit, state, "MaxHp", false, state.Definition.Amount * state.Stacks);
                     unit.Health = MathF.Min(unit.MaxHealth, unit.Health + state.Definition.Amount);
                     break;
             }
