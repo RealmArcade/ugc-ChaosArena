@@ -105,9 +105,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "boulder_toss",
-          "hardened_crust",
-          "seismic_pulse",
+          "stone_guardian_granite_fist",
+          "stone_guardian_hardened_crust",
+          "stone_guardian_seismic_rupture",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -230,9 +230,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "heavy_strike",
-          "battle_cry",
-          "iron_will",
+          "iron_warlord_cleaver_arc",
+          "iron_warlord_war_engine_roar",
+          "iron_warlord_earthsplitter",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -355,9 +355,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "poison_blade",
-          "shadow_step",
-          "smoke_screen",
+          "nether_assassin_nether_sting",
+          "nether_assassin_shadow_mark",
+          "nether_assassin_silent_verdict",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -480,9 +480,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "gloom_bolt",
-          "veil_of_shadows",
-          "soul_tether",
+          "shadow_weaver_dusk_bolt",
+          "shadow_weaver_void_bloom",
+          "shadow_weaver_devouring_dark",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -605,9 +605,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "tangle_vines",
-          "soothing_bloom",
-          "thorn_armor",
+          "verdant_druid_thorn_lash",
+          "verdant_druid_verdant_surge",
+          "verdant_druid_bloomtide",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -730,9 +730,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "boulder_toss",
-          "hardened_crust",
-          "seismic_pulse",
+          "thornback_behemoth_bramble_slam",
+          "thornback_behemoth_rooted_vigor",
+          "thornback_behemoth_overgrowth",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -855,9 +855,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "wave_crash",
-          "coral_shield",
-          "tidal_pull",
+          "coral_vanguard_harpoon_jab",
+          "coral_vanguard_tidal_sweep",
+          "coral_vanguard_undertow",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -980,9 +980,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "boulder_toss",
-          "hardened_crust",
-          "seismic_pulse",
+          "tidecaller_wave_dart",
+          "tidecaller_riptide_crush",
+          "tidecaller_maelstrom",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1105,9 +1105,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "pyro_blast",
-          "blazing_shield",
-          "infernal_surge",
+          "flame_archon_ember_lance",
+          "flame_archon_firestorm",
+          "flame_archon_pyroclasm",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1230,9 +1230,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "boulder_toss",
-          "hardened_crust",
-          "seismic_pulse",
+          "magma_smith_forge_hammer",
+          "magma_smith_molten_quench",
+          "magma_smith_eruption",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1355,9 +1355,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "ice_shard",
-          "glacial_barrier",
-          "frost_nova",
+          "frost_warden_rime_bolt",
+          "frost_warden_frost_bulwark",
+          "frost_warden_glacier_break",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1480,9 +1480,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "boulder_toss",
-          "hardened_crust",
-          "seismic_pulse",
+          "glacier_sentinel_ice_hammer",
+          "glacier_sentinel_permafrost",
+          "glacier_sentinel_avalanche",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1605,9 +1605,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "chain_lightning",
-          "wind_step",
-          "static_field",
+          "storm_caller_static_bolt",
+          "storm_caller_thunder_clap",
+          "storm_caller_stormfront",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1730,9 +1730,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "gale_strike",
-          "wind_barrier",
-          "cyclone_kick",
+          "tempest_chaser_quick_slash",
+          "tempest_chaser_gust_step",
+          "tempest_chaser_cyclone_rush",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1855,9 +1855,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "arcane_missiles",
-          "spell_shield",
-          "mana_drain",
+          "arcane_scholar_arcane_lance",
+          "arcane_scholar_mana_bloom",
+          "arcane_scholar_arcane_cataclysm",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -1980,9 +1980,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "boulder_toss",
-          "hardened_crust",
-          "seismic_pulse",
+          "rune_scribe_rune_dart",
+          "rune_scribe_sigil_detonation",
+          "rune_scribe_grand_inscription",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -2105,9 +2105,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "solar_flare",
-          "radiant_blessing",
-          "blinding_ray",
+          "sun_priest_solar_spark",
+          "sun_priest_sunlit_mend",
+          "sun_priest_radiant_chorus",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -2230,9 +2230,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "radiant_fist",
-          "mantra_of_healing",
-          "sanctuary_aura",
+          "lightbringer_monk_palm_strike",
+          "lightbringer_monk_inner_light",
+          "lightbringer_monk_sanctified_ground",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -2355,9 +2355,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "boulder_toss",
-          "hardened_crust",
-          "seismic_pulse",
+          "pack_alpha_savage_maul",
+          "pack_alpha_howl",
+          "pack_alpha_blood_hunt",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -2480,9 +2480,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "boulder_toss",
-          "hardened_crust",
-          "seismic_pulse",
+          "razor_dervish_whirling_cut",
+          "razor_dervish_bleeding_waltz",
+          "razor_dervish_thousand_edge",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -3220,317 +3220,1005 @@
     ],
     "Abilities": [
       {
-        "TemplateID": "ability/ancestral_spirit",
-        "Name": "Ancestral Spirit",
-        "Description": "Invokes a spirit of ancient ancestors to mend and protect allied ground forces in the targeted area.",
-        "AbilityType": "target_spell",
-        "IconPath": "magic_chess_piece.rtex",
-        "ManaCost": 50,
-        "Cooldown": 10,
-        "TargetRange": 7,
-        "VisualEffect": "crystal_lattice_vein.rtex",
-        "CastSound": "mystic_forest_whispers.raud",
-        "AreaOfEffectRadius": 4,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null,
-        "Effects": [
-          {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 4,
-            "Amount": 50
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/arcane_missiles",
-        "Name": "Arcane Missiles",
-        "Description": "Basic ability of Arcane Scholar. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "sunstone_core_2.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "mineral_geology_stone_fracture.rtex",
-        "CastSound": "paladin_Damaged.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/astral_grace",
-        "Name": "Astral Grace",
-        "Description": "Tactical defense spell of Astral Paragon. Protects or boosts nearby allies.",
-        "AbilityType": "instant_spell",
-        "IconPath": "roof_lantern.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
-        "TargetRange": 0,
-        "VisualEffect": "spirit_orb_sheet.rtex",
-        "CastSound": "fortress_gate_bash.raud",
-        "AreaOfEffectRadius": 3,
-        "GridX": 1,
-        "GridY": 0,
-        "Hotkey": "E",
-        "Effects": [
-          {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 3,
-            "Amount": 30
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/banner_of_valor",
-        "Name": "Banner Of Valor",
-        "Description": "Heavy tactical spell of Vanguard Sentinel. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "heavy_armor_crawler.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "mineral_geology_crust_crack.rtex",
-        "CastSound": "warhammer_Damaged.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
-        "GridY": 0,
-        "Hotkey": "R",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/battle_cry",
-        "Name": "Battle Cry",
-        "Description": "Tactical defense spell of Iron Warlord. Protects or boosts nearby allies.",
-        "AbilityType": "instant_spell",
-        "IconPath": "dark_hooded_warrior.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
-        "TargetRange": 0,
-        "VisualEffect": "moon_orb_sheet.rtex",
-        "CastSound": "armor_buckle_snap.raud",
-        "AreaOfEffectRadius": 3,
-        "GridX": 1,
-        "GridY": 0,
-        "Hotkey": "E",
-        "Effects": [
-          {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 3,
-            "Amount": 30
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/blazing_shield",
-        "Name": "Blazing Shield",
-        "Description": "Tactical defense spell of Flame Archon. Protects or boosts nearby allies.",
-        "AbilityType": "instant_spell",
-        "IconPath": "blue_magic_shield_2.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
-        "TargetRange": 0,
-        "VisualEffect": "storm_ray_sheet.rtex",
-        "CastSound": "firelord.raud",
-        "AreaOfEffectRadius": 3,
-        "GridX": 1,
-        "GridY": 0,
-        "Hotkey": "E",
-        "Effects": [
-          {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 3,
-            "Amount": 30
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/blinding_ray",
-        "Name": "Blinding Ray",
-        "Description": "Heavy tactical spell of Sun Priest. Deals 90 damage in area.",
+        "TemplateID": "ability/stone_guardian_granite_fist",
+        "Name": "Granite Fist",
+        "Description": "One enemy takes 45 physical damage, plus 0.9 per point of Strength, up to 140.",
+        "Role": "Damage",
         "AbilityType": "target_spell",
         "IconPath": "heavy_knight.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "sun_spike_sheet.rtex",
-        "CastSound": "soft_foot_scuff.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
+        "ManaCost": 14,
+        "Cooldown": 6,
+        "TargetRange": 3.2,
+        "VisualEffect": "mineral_geology_crust_crack.rtex",
+        "CastSound": "hammer_crush_stone.raud",
+        "AreaOfEffectRadius": 1.2,
+        "GridX": 0,
         "GridY": 0,
-        "Hotkey": "R",
+        "Hotkey": "W",
         "Effects": [
           {
             "Kind": "damage",
             "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
+            "Delivery": "single",
+            "Amount": 45,
+            "DamageType": "physical",
+            "Scaling": {
+              "Attribute": "Strength",
+              "Shape": "linear",
+              "Coefficient": 0.9,
+              "Divisor": 0,
+              "Cap": 140,
+              "ScalesDuration": false
+            }
           }
         ]
       },
       {
-        "TemplateID": "ability/blood_lust",
-        "Name": "Blood Lust",
-        "Description": "Tactical defense spell of Blood Berserker. Protects or boosts nearby allies.",
+        "TemplateID": "ability/stone_guardian_hardened_crust",
+        "Name": "Hardened Crust",
+        "Description": "Wraps itself in stone for 8 s, absorbing 30 damage plus 0.5 per Vitality (max 120).",
+        "Role": "Tank",
         "AbilityType": "instant_spell",
-        "IconPath": "forest_goblin.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
+        "IconPath": "dragon_king_gauntlet.rtex",
+        "ManaCost": 18,
+        "Cooldown": 14,
         "TargetRange": 0,
-        "VisualEffect": "mana_orb_sheet.rtex",
-        "CastSound": "crystal_formation_Construction.raud",
-        "AreaOfEffectRadius": 3,
+        "VisualEffect": "stone_burst_sheet.rtex",
+        "CastSound": "heavy_mace_smash.raud",
+        "AreaOfEffectRadius": 0.0,
         "GridX": 1,
         "GridY": 0,
         "Hotkey": "E",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
         "Effects": [
           {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 3,
-            "Amount": 30
+            "Kind": "shield",
+            "Targets": "self",
+            "Delivery": "self",
+            "Amount": 30,
+            "Duration": 8,
+            "Scaling": {
+              "Attribute": "Vitality",
+              "Shape": "linear",
+              "Coefficient": 0.5,
+              "Divisor": 0,
+              "Cap": 120,
+              "ScalesDuration": false
+            }
           }
         ]
       },
       {
-        "TemplateID": "ability/boulder_toss",
-        "Name": "Boulder Toss",
-        "Description": "Basic ability of Stone Guardian. Deals 45 damage to enemy target.",
+        "TemplateID": "ability/stone_guardian_seismic_rupture",
+        "Name": "Seismic Rupture",
+        "Description": "Cracked ground deals 20 damage plus 0.4 per Strength (max 90) and slows everything in a 3 radius by 35% for 3 s.",
+        "Role": "Control",
         "AbilityType": "target_spell",
-        "IconPath": "wooden_tower_house.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "storm_orb_sheet.rtex",
-        "CastSound": "earth_elemental_Damaged.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/chain_lightning",
-        "Name": "Chain Lightning",
-        "Description": "Basic ability of Storm Caller. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "lightning_hammer_1.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "light_shafts_phantom_ray.rtex",
-        "CastSound": "hail_stone_impact.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/challengers_roar",
-        "Name": "Challengers Roar",
-        "Description": "Heavy tactical spell of Shadow Strider. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "glowing_magic_sword_1.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "weapon_fins_iron_shard.rtex",
-        "CastSound": "chainmail_jingle_soft.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
-        "GridY": 0,
-        "Hotkey": "R",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/coral_shield",
-        "Name": "Coral Shield",
-        "Description": "Tactical defense spell of Coral Vanguard. Protects or boosts nearby allies.",
-        "AbilityType": "instant_spell",
         "IconPath": "red_cloth_shield.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
-        "TargetRange": 0,
-        "VisualEffect": "moss_spore_sheet.rtex",
-        "CastSound": "magical_portal_hum.raud",
+        "ManaCost": 22,
+        "Cooldown": 16,
+        "TargetRange": 6,
+        "VisualEffect": "stone_spike_sheet.rtex",
+        "CastSound": "blade_grind_stone.raud",
         "AreaOfEffectRadius": 3,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 20,
+            "DamageType": "physical",
+            "Scaling": {
+              "Attribute": "Strength",
+              "Shape": "linear",
+              "Coefficient": 0.4,
+              "Divisor": 0,
+              "Cap": 90,
+              "ScalesDuration": false
+            }
+          },
+          {
+            "Kind": "debuff",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Duration": 3,
+            "BuffId": "quake",
+            "Modifiers": [
+              {
+                "StatKey": "MovementSpeed",
+                "Type": "Percentage",
+                "Value": -0.35,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/iron_warlord_cleaver_arc",
+        "Name": "Cleaver Arc",
+        "Description": "A 130 degree swing hits everything in front for 55 physical damage, plus 1.1 per Strength (max 170).",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "orc_warlord_5.rtex",
+        "ManaCost": 15,
+        "Cooldown": 7,
+        "TargetRange": 2.9,
+        "VisualEffect": "iron_wall_sheet.rtex",
+        "CastSound": "stone_wall_collapse.raud",
+        "AreaOfEffectRadius": 3.4,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "cone",
+            "Length": 3.4,
+            "AngleDegrees": 130,
+            "Amount": 55,
+            "DamageType": "physical",
+            "Scaling": {
+              "Attribute": "Strength",
+              "Shape": "linear",
+              "Coefficient": 1.1,
+              "Divisor": 0,
+              "Cap": 170,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/iron_warlord_war_engine_roar",
+        "Name": "War Engine Roar",
+        "Description": "Allies within 4 gain 8 attack and 2 armor for 5 s, plus 1 s per 40 Wisdom (max 9 s).",
+        "Role": "Support",
+        "AbilityType": "instant_spell",
+        "IconPath": "orc_warlock.rtex",
+        "ManaCost": 20,
+        "Cooldown": 18,
+        "TargetRange": 0,
+        "VisualEffect": "mineral_geology_stone_fracture.rtex",
+        "CastSound": "fortress_gate_bash.raud",
+        "AreaOfEffectRadius": 4,
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
+        "Effects": [
+          {
+            "Kind": "buff",
+            "Targets": "allies",
+            "Delivery": "aura",
+            "Radius": 4,
+            "Duration": 5,
+            "Modifiers": [
+              {
+                "StatKey": "Attack",
+                "Type": "Flat",
+                "Value": 8,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              },
+              {
+                "StatKey": "Armor",
+                "Type": "Flat",
+                "Value": 2,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ],
+            "Scaling": {
+              "Attribute": "Wisdom",
+              "Shape": "ratio",
+              "Coefficient": 0,
+              "Divisor": 40,
+              "Cap": 9
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/iron_warlord_earthsplitter",
+        "Name": "Earthsplitter",
+        "Description": "A 6 unit fissure deals 35 physical damage and stuns for 0.8 s, plus 0.15 s per 20 Strength (max 2 s).",
+        "Role": "Control",
+        "AbilityType": "target_spell",
+        "IconPath": "stone_lich.rtex",
+        "ManaCost": 24,
+        "Cooldown": 20,
+        "TargetRange": 5.5,
+        "VisualEffect": "stone_pierce_sheet.rtex",
+        "CastSound": "armor_jingle_metal.raud",
+        "AreaOfEffectRadius": 1.4,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "line",
+            "Radius": 1.4,
+            "Length": 6,
+            "Amount": 35,
+            "DamageType": "physical"
+          },
+          {
+            "Kind": "debuff",
+            "Targets": "enemies",
+            "Delivery": "line",
+            "Radius": 1.4,
+            "Length": 6,
+            "Duration": 0.8,
+            "BuffId": "stun",
+            "Scaling": {
+              "Attribute": "Strength",
+              "Shape": "threshold",
+              "Coefficient": 0.15,
+              "Divisor": 20,
+              "Cap": 2.0
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/nether_assassin_nether_sting",
+        "Name": "Nether Sting",
+        "Description": "A single stab for up to 130 physical damage, growing with Agility and diminishing as it climbs.",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "dark_hooded_warrior.rtex",
+        "ManaCost": 12,
+        "Cooldown": 5,
+        "TargetRange": 2.9,
+        "VisualEffect": "shadow_streak_sheet.rtex",
+        "CastSound": "soul_drain_moan.raud",
+        "AreaOfEffectRadius": 1.2,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "single",
+            "Amount": 40,
+            "DamageType": "physical",
+            "Scaling": {
+              "Attribute": "Agility",
+              "Shape": "saturating",
+              "Coefficient": 0,
+              "Divisor": 15,
+              "Cap": 130,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/nether_assassin_shadow_mark",
+        "Name": "Shadow Mark",
+        "Description": "Marks one enemy for 4 s, plus 1 s per 25 Fortune (max 8 s): 3 less armor and 20% slower.",
+        "Role": "Control",
+        "AbilityType": "target_spell",
+        "IconPath": "flaming_skull_1.rtex",
+        "ManaCost": 16,
+        "Cooldown": 12,
+        "TargetRange": 7,
+        "VisualEffect": "shadow_bolt_sheet.rtex",
+        "CastSound": "dark_forest_whisper.raud",
+        "AreaOfEffectRadius": 1.2,
         "GridX": 1,
         "GridY": 0,
         "Hotkey": "E",
         "Effects": [
           {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 3,
-            "Amount": 30
+            "Kind": "debuff",
+            "Targets": "enemies",
+            "Delivery": "single",
+            "Duration": 4,
+            "BuffId": "shadow_mark",
+            "Modifiers": [
+              {
+                "StatKey": "Armor",
+                "Type": "Flat",
+                "Value": -3,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              },
+              {
+                "StatKey": "MovementSpeed",
+                "Type": "Percentage",
+                "Value": -0.2,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ],
+            "Scaling": {
+              "Attribute": "Fortune",
+              "Shape": "ratio",
+              "Coefficient": 0,
+              "Divisor": 25,
+              "Cap": 8
+            }
           }
         ]
       },
       {
-        "TemplateID": "ability/cosmic_binding",
-        "Name": "Cosmic Binding",
-        "Description": "Heavy tactical spell of Astral Paragon. Deals 90 damage in area.",
+        "TemplateID": "ability/nether_assassin_silent_verdict",
+        "Name": "Silent Verdict",
+        "Description": "Blinks up to 6 units toward the target, then strikes 40% faster for 1.5 s, plus 0.2 s per 10 Agility (max 3 s).",
+        "Role": "Mobility",
+        "AbilityType": "target_spell",
+        "IconPath": "dark_elf_warlord_1.rtex",
+        "ManaCost": 20,
+        "Cooldown": 18,
+        "TargetRange": 8,
+        "VisualEffect": "void_orb_sheet.rtex",
+        "CastSound": "mystic_forest_whispers.raud",
+        "AreaOfEffectRadius": 0,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "teleport",
+            "Targets": "self",
+            "Delivery": "self",
+            "Amount": 6
+          },
+          {
+            "Kind": "buff",
+            "Targets": "self",
+            "Delivery": "self",
+            "Duration": 1.5,
+            "Modifiers": [
+              {
+                "StatKey": "AttackSpeed",
+                "Type": "Percentage",
+                "Value": 0.4,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ],
+            "Scaling": {
+              "Attribute": "Agility",
+              "Shape": "threshold",
+              "Coefficient": 0.2,
+              "Divisor": 10,
+              "Cap": 3
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/shadow_weaver_dusk_bolt",
+        "Name": "Dusk Bolt",
+        "Description": "40 magic damage, growing by 1 per 20 Intelligence, capped at 120.",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "purple_magic_spell.rtex",
+        "ManaCost": 16,
+        "Cooldown": 7,
+        "TargetRange": 6.5,
+        "VisualEffect": "void_grain_sheet.rtex",
+        "CastSound": "soft_foot_scuff.raud",
+        "AreaOfEffectRadius": 1.2,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "single",
+            "Amount": 40,
+            "DamageType": "magic",
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "ratio",
+              "Coefficient": 0,
+              "Divisor": 20,
+              "Cap": 120,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/shadow_weaver_void_bloom",
+        "Name": "Void Bloom",
+        "Description": "A 3 radius bloom deals 15 magic damage and silences for 2 s, rising toward 5 s with Intelligence.",
+        "Role": "Control",
         "AbilityType": "target_spell",
         "IconPath": "cosmic_orb.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "mineral_geology_shimmer_vein.rtex",
-        "CastSound": "heavy_mace_smash.raud",
-        "AreaOfEffectRadius": 5,
+        "ManaCost": 24,
+        "Cooldown": 16,
+        "TargetRange": 5.5,
+        "VisualEffect": "dark_bloom_sheet.rtex",
+        "CastSound": "scout_footstep_soft.raud",
+        "AreaOfEffectRadius": 3,
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 15,
+            "DamageType": "magic"
+          },
+          {
+            "Kind": "debuff",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Duration": 2,
+            "BuffId": "silence",
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "saturating",
+              "Coefficient": 0,
+              "Divisor": 40,
+              "Cap": 5
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/shadow_weaver_devouring_dark",
+        "Name": "Devouring Dark",
+        "Description": "Allies within 4 are healed for 12, plus 0.5 per Intelligence (max 60).",
+        "Role": "Support",
+        "AbilityType": "instant_spell",
+        "IconPath": "sorcerers_spellbook.rtex",
+        "ManaCost": 20,
+        "Cooldown": 14,
+        "TargetRange": 0,
+        "VisualEffect": "dark_orb_sheet.rtex",
+        "CastSound": "spell_pulse_hum.raud",
+        "AreaOfEffectRadius": 4,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "aura",
+            "Radius": 4,
+            "Amount": 12,
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "linear",
+              "Coefficient": 0.5,
+              "Divisor": 0,
+              "Cap": 60,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/verdant_druid_thorn_lash",
+        "Name": "Thorn Lash",
+        "Description": "A 100 degree whip of thorns deals up to 120 magic damage, growing and flattening with Wisdom.",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "fox_warrior.rtex",
+        "ManaCost": 13,
+        "Cooldown": 6,
+        "TargetRange": 3.4,
+        "VisualEffect": "moss_spore_sheet.rtex",
+        "CastSound": "grass_rustle_soft.raud",
+        "AreaOfEffectRadius": 3.6,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "cone",
+            "Length": 3.6,
+            "AngleDegrees": 100,
+            "Amount": 30,
+            "DamageType": "magic",
+            "Scaling": {
+              "Attribute": "Wisdom",
+              "Shape": "saturating",
+              "Coefficient": 0,
+              "Divisor": 30,
+              "Cap": 120,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/verdant_druid_verdant_surge",
+        "Name": "Verdant Surge",
+        "Description": "Heals every ally within 3 for 35, plus 1 per 30 Wisdom (max 90).",
+        "Role": "Support",
+        "AbilityType": "target_spell",
+        "IconPath": "magic_healing_light.rtex",
+        "ManaCost": 18,
+        "Cooldown": 12,
+        "TargetRange": 6,
+        "VisualEffect": "acid_rain_sheet.rtex",
+        "CastSound": "forest_wind_rustle.raud",
+        "AreaOfEffectRadius": 3,
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 35,
+            "Scaling": {
+              "Attribute": "Wisdom",
+              "Shape": "ratio",
+              "Coefficient": 0,
+              "Divisor": 30,
+              "Cap": 90,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/verdant_druid_bloomtide",
+        "Name": "Bloomtide",
+        "Description": "Allies within 3.5 gain 6 armor and 1.5 health per second for 4 s, plus 0.12 s per Vitality (max 10 s).",
+        "Role": "Tank",
+        "AbilityType": "instant_spell",
+        "IconPath": "green_power_hand.rtex",
+        "ManaCost": 22,
+        "Cooldown": 20,
+        "TargetRange": 0,
+        "VisualEffect": "particle_dynamics_aura_pulse.rtex",
+        "CastSound": "mystic_forest_whispers.raud",
+        "AreaOfEffectRadius": 3.5,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
+        "Effects": [
+          {
+            "Kind": "buff",
+            "Targets": "allies",
+            "Delivery": "aura",
+            "Radius": 3.5,
+            "Duration": 4,
+            "Modifiers": [
+              {
+                "StatKey": "Armor",
+                "Type": "Flat",
+                "Value": 6,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              },
+              {
+                "StatKey": "HpRegen",
+                "Type": "Flat",
+                "Value": 1.5,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ],
+            "Scaling": {
+              "Attribute": "Vitality",
+              "Shape": "linear",
+              "Coefficient": 0.12,
+              "Divisor": 0,
+              "Cap": 10
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/thornback_behemoth_bramble_slam",
+        "Name": "Bramble Slam",
+        "Description": "Slams the ground for 50 physical damage in a 2.6 radius, plus 1 per Strength (max 150).",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "battering_ram.rtex",
+        "ManaCost": 14,
+        "Cooldown": 8,
+        "TargetRange": 2.8,
+        "VisualEffect": "magic_healing_light.rtex",
+        "CastSound": "invigorate_aura_hum.raud",
+        "AreaOfEffectRadius": 2.6,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2.6,
+            "Amount": 50,
+            "DamageType": "physical",
+            "Scaling": {
+              "Attribute": "Strength",
+              "Shape": "linear",
+              "Coefficient": 1.0,
+              "Divisor": 0,
+              "Cap": 150,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/thornback_behemoth_rooted_vigor",
+        "Name": "Rooted Vigor",
+        "Description": "Every ally within 3.2 gains a 25 point shield for 6 s, plus 0.6 per Vitality (max 140).",
+        "Role": "Tank",
+        "AbilityType": "instant_spell",
+        "IconPath": "blue_magic_shield_2.rtex",
+        "ManaCost": 20,
+        "Cooldown": 16,
+        "TargetRange": 0,
+        "VisualEffect": "mineral_geology_gem_dust.rtex",
+        "CastSound": "stone_arch_Construction.raud",
+        "AreaOfEffectRadius": 3.2,
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
+        "Effects": [
+          {
+            "Kind": "shield",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3.2,
+            "Amount": 25,
+            "Duration": 6,
+            "Scaling": {
+              "Attribute": "Vitality",
+              "Shape": "linear",
+              "Coefficient": 0.6,
+              "Divisor": 0,
+              "Cap": 140,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/thornback_behemoth_overgrowth",
+        "Name": "Overgrowth",
+        "Description": "Roots everything within 3.5 for 0.5 s, rising toward 2 s with Vitality, then slows it by 30% for 3 s.",
+        "Role": "Control",
+        "AbilityType": "instant_spell",
+        "IconPath": "crystal_terrain.rtex",
+        "ManaCost": 22,
+        "Cooldown": 20,
+        "TargetRange": 0,
+        "VisualEffect": "stone_spike_sheet.rtex",
+        "CastSound": "bear_Damaged.raud",
+        "AreaOfEffectRadius": 3.5,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
+        "Effects": [
+          {
+            "Kind": "debuff",
+            "Targets": "enemies",
+            "Delivery": "aura",
+            "Radius": 3.5,
+            "Duration": 0.5,
+            "BuffId": "stun",
+            "Scaling": {
+              "Attribute": "Vitality",
+              "Shape": "saturating",
+              "Coefficient": 0,
+              "Divisor": 30,
+              "Cap": 2.0
+            }
+          },
+          {
+            "Kind": "debuff",
+            "Targets": "enemies",
+            "Delivery": "aura",
+            "Radius": 3.5,
+            "Duration": 3,
+            "BuffId": "overgrowth",
+            "Modifiers": [
+              {
+                "StatKey": "MovementSpeed",
+                "Type": "Percentage",
+                "Value": -0.3,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/coral_vanguard_harpoon_jab",
+        "Name": "Harpoon Jab",
+        "Description": "A 5 unit harpoon line deals 35 physical damage, plus 0.8 per Strength (max 120).",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "water_spell.rtex",
+        "ManaCost": 13,
+        "Cooldown": 6,
+        "TargetRange": 5,
+        "VisualEffect": "water_spell.rtex",
+        "CastSound": "grass_rustle_soft.raud",
+        "AreaOfEffectRadius": 1.0,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "line",
+            "Radius": 1.0,
+            "Length": 5,
+            "Amount": 35,
+            "DamageType": "physical",
+            "Scaling": {
+              "Attribute": "Strength",
+              "Shape": "linear",
+              "Coefficient": 0.8,
+              "Divisor": 0,
+              "Cap": 120,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/coral_vanguard_tidal_sweep",
+        "Name": "Tidal Sweep",
+        "Description": "A 120 degree wave pushes enemies up to 6 units back and deals 20 physical damage.",
+        "Role": "Control",
+        "AbilityType": "target_spell",
+        "IconPath": "blue_undead_warrior.rtex",
+        "ManaCost": 18,
+        "Cooldown": 13,
+        "TargetRange": 3,
+        "VisualEffect": "frost_wave_sheet.rtex",
+        "CastSound": "spell_shockwave_boom.raud",
+        "AreaOfEffectRadius": 3.2,
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "knockback",
+            "Targets": "enemies",
+            "Delivery": "cone",
+            "Length": 3.2,
+            "AngleDegrees": 120,
+            "Amount": 2.5,
+            "Scaling": {
+              "Attribute": "Strength",
+              "Shape": "saturating",
+              "Coefficient": 0,
+              "Divisor": 40,
+              "Cap": 6,
+              "ScalesDuration": false
+            }
+          },
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "cone",
+            "Length": 3.2,
+            "AngleDegrees": 120,
+            "Amount": 20,
+            "DamageType": "physical"
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/coral_vanguard_undertow",
+        "Name": "Undertow",
+        "Description": "Rides the current for 3 s, plus 1 s per 30 Agility (max 7 s): 50% faster, and enemies within 3.5 are dragged 25% slower.",
+        "Role": "Mobility",
+        "AbilityType": "instant_spell",
+        "IconPath": "blue_dragon_warlord.rtex",
+        "ManaCost": 16,
+        "Cooldown": 16,
+        "TargetRange": 0,
+        "VisualEffect": "frost_grain_sheet.rtex",
+        "CastSound": "hail_stone_impact.raud",
+        "AreaOfEffectRadius": 3.5,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
+        "Effects": [
+          {
+            "Kind": "buff",
+            "Targets": "self",
+            "Delivery": "self",
+            "Duration": 3,
+            "Modifiers": [
+              {
+                "StatKey": "MovementSpeed",
+                "Type": "Percentage",
+                "Value": 0.5,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              },
+              {
+                "StatKey": "AttackSpeed",
+                "Type": "Percentage",
+                "Value": 0.2,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ],
+            "Scaling": {
+              "Attribute": "Agility",
+              "Shape": "ratio",
+              "Coefficient": 0,
+              "Divisor": 30,
+              "Cap": 7
+            }
+          },
+          {
+            "Kind": "debuff",
+            "Targets": "enemies",
+            "Delivery": "aura",
+            "Radius": 3.5,
+            "Duration": 3,
+            "BuffId": "undertow",
+            "Modifiers": [
+              {
+                "StatKey": "MovementSpeed",
+                "Type": "Percentage",
+                "Value": -0.25,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/tidecaller_wave_dart",
+        "Name": "Wave Dart",
+        "Description": "30 magic damage, plus 12 per 20 Intelligence (max 150), at long range.",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "starlight_missile.rtex",
+        "ManaCost": 12,
+        "Cooldown": 6,
+        "TargetRange": 8,
+        "VisualEffect": "storm_orb_sheet.rtex",
+        "CastSound": "crystal_formation_Construction.raud",
+        "AreaOfEffectRadius": 1.2,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "single",
+            "Amount": 30,
+            "DamageType": "magic",
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "threshold",
+              "Coefficient": 12,
+              "Divisor": 20,
+              "Cap": 150,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/tidecaller_riptide_crush",
+        "Name": "Riptide Crush",
+        "Description": "20 magic damage in a 2.8 radius, and everything inside is stopped for 1.2 s, plus 0.2 s per 25 Wisdom (max 2.5 s).",
+        "Role": "Control",
+        "AbilityType": "target_spell",
+        "IconPath": "island_tower_complex.rtex",
+        "ManaCost": 20,
+        "Cooldown": 15,
+        "TargetRange": 6,
+        "VisualEffect": "spirit_orb_sheet.rtex",
+        "CastSound": "magical_portal_hum.raud",
+        "AreaOfEffectRadius": 2.8,
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2.8,
+            "Amount": 20,
+            "DamageType": "magic"
+          },
+          {
+            "Kind": "debuff",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2.8,
+            "Duration": 1.2,
+            "BuffId": "riptide",
+            "Modifiers": [
+              {
+                "StatKey": "MovementSpeed",
+                "Type": "Percentage",
+                "Value": -1.0,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ],
+            "Scaling": {
+              "Attribute": "Wisdom",
+              "Shape": "threshold",
+              "Coefficient": 0.2,
+              "Divisor": 25,
+              "Cap": 2.5
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/tidecaller_maelstrom",
+        "Name": "Maelstrom",
+        "Description": "A 4.5 radius whirlpool deals 40 magic damage, plus 1 per 25 Intelligence (max 160).",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "ancient_gate.rtex",
+        "ManaCost": 26,
+        "Cooldown": 20,
+        "TargetRange": 7,
+        "VisualEffect": "storm_eye_sheet.rtex",
+        "CastSound": "spell_weave_hum.raud",
+        "AreaOfEffectRadius": 4.5,
         "GridX": 2,
         "GridY": 0,
         "Hotkey": "R",
@@ -3539,898 +4227,1579 @@
             "Kind": "damage",
             "Targets": "enemies",
             "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
+            "Radius": 4.5,
+            "Amount": 40,
+            "DamageType": "magic",
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "ratio",
+              "Coefficient": 0,
+              "Divisor": 25,
+              "Cap": 160,
+              "ScalesDuration": false
+            }
           }
         ]
       },
       {
-        "TemplateID": "ability/crystal_ward",
-        "Name": "Crystal Ward",
-        "Description": "Tactical defense spell of Crystal Weaver. Protects or boosts nearby allies.",
+        "TemplateID": "ability/flame_archon_ember_lance",
+        "Name": "Ember Lance",
+        "Description": "A 7 unit lance of fire deals 1.7 magic damage per point of Intelligence, capped at 130.",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "fire_elemental_red_panda.rtex",
+        "ManaCost": 15,
+        "Cooldown": 7,
+        "TargetRange": 7,
+        "VisualEffect": "lava_flash_sheet.rtex",
+        "CastSound": "fire_elemental_LastHit.raud",
+        "AreaOfEffectRadius": 0.8,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "line",
+            "Radius": 0.8,
+            "Length": 7,
+            "Amount": 40,
+            "DamageType": "magic",
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "conversion",
+              "Coefficient": 1.7,
+              "Divisor": 0,
+              "Cap": 130,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/flame_archon_firestorm",
+        "Name": "Firestorm",
+        "Description": "A 90 degree cone deals 25 magic damage, plus 0.3 per Intelligence (max 90), and burns for 25% slow over 3 s.",
+        "Role": "Control",
+        "AbilityType": "target_spell",
+        "IconPath": "infernal_dragon.rtex",
+        "ManaCost": 22,
+        "Cooldown": 15,
+        "TargetRange": 5,
+        "VisualEffect": "flame_wisp_sheet.rtex",
+        "CastSound": "forest_fire_crackl.raud",
+        "AreaOfEffectRadius": 5,
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "cone",
+            "Length": 5,
+            "AngleDegrees": 90,
+            "Amount": 25,
+            "DamageType": "magic",
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "linear",
+              "Coefficient": 0.3,
+              "Divisor": 0,
+              "Cap": 90,
+              "ScalesDuration": false
+            }
+          },
+          {
+            "Kind": "debuff",
+            "Targets": "enemies",
+            "Delivery": "cone",
+            "Length": 5,
+            "AngleDegrees": 90,
+            "Duration": 3,
+            "BuffId": "burning",
+            "Modifiers": [
+              {
+                "StatKey": "MovementSpeed",
+                "Type": "Percentage",
+                "Value": -0.25,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/flame_archon_pyroclasm",
+        "Name": "Pyroclasm",
+        "Description": "Detonates for 1.8 magic damage per Intelligence (max 170) in a 3.6 radius.",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "infernal_warlord.rtex",
+        "ManaCost": 28,
+        "Cooldown": 22,
+        "TargetRange": 7,
+        "VisualEffect": "ash_veil_sheet.rtex",
+        "CastSound": "phoenix.raud",
+        "AreaOfEffectRadius": 3.6,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 3.6,
+            "Amount": 60,
+            "DamageType": "magic",
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "conversion",
+              "Coefficient": 1.8,
+              "Divisor": 0,
+              "Cap": 170,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/magma_smith_forge_hammer",
+        "Name": "Forge Hammer",
+        "Description": "A 110 degree hammer blow deals 40 physical damage, plus 10 per 20 Strength (max 140).",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "lightning_hammer_1.rtex",
+        "ManaCost": 14,
+        "Cooldown": 7,
+        "TargetRange": 3,
+        "VisualEffect": "ash_grain_sheet.rtex",
+        "CastSound": "orc_camp_fire.raud",
+        "AreaOfEffectRadius": 3,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "cone",
+            "Length": 3,
+            "AngleDegrees": 110,
+            "Amount": 40,
+            "DamageType": "physical",
+            "Scaling": {
+              "Attribute": "Strength",
+              "Shape": "threshold",
+              "Coefficient": 10,
+              "Divisor": 20,
+              "Cap": 140,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/magma_smith_molten_quench",
+        "Name": "Molten Quench",
+        "Description": "Quenches itself for 6 s with a 30 point shield, plus 1.4 per Strength (max 140), and 4 armor.",
+        "Role": "Tank",
         "AbilityType": "instant_spell",
-        "IconPath": "elder_sorcerer.rtex",
-        "ManaCost": 45,
+        "IconPath": "eagle_ring_1.rtex",
+        "ManaCost": 18,
         "Cooldown": 15,
         "TargetRange": 0,
-        "VisualEffect": "dark_orb_sheet.rtex",
+        "VisualEffect": "infernal_dragon.rtex",
+        "CastSound": "firelord.raud",
+        "AreaOfEffectRadius": 0,
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
+        "Effects": [
+          {
+            "Kind": "shield",
+            "Targets": "self",
+            "Delivery": "self",
+            "Amount": 30,
+            "Duration": 6,
+            "Scaling": {
+              "Attribute": "Strength",
+              "Shape": "linear",
+              "Coefficient": 1.4,
+              "Divisor": 0,
+              "Cap": 140,
+              "ScalesDuration": false
+            }
+          },
+          {
+            "Kind": "buff",
+            "Targets": "self",
+            "Delivery": "self",
+            "Duration": 6,
+            "Modifiers": [
+              {
+                "StatKey": "Armor",
+                "Type": "Flat",
+                "Value": 4,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/magma_smith_eruption",
+        "Name": "Eruption",
+        "Description": "The ground bursts for 30 magic damage in a 3 radius and throws enemies back up to 5 units.",
+        "Role": "Control",
+        "AbilityType": "target_spell",
+        "IconPath": "stone_forge.rtex",
+        "ManaCost": 24,
+        "Cooldown": 18,
+        "TargetRange": 3.5,
+        "VisualEffect": "flame_trident_1.rtex",
+        "CastSound": "spell_burst_arcane.raud",
+        "AreaOfEffectRadius": 3,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "knockback",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 2,
+            "Scaling": {
+              "Attribute": "Strength",
+              "Shape": "threshold",
+              "Coefficient": 0.2,
+              "Divisor": 20,
+              "Cap": 5,
+              "ScalesDuration": false
+            }
+          },
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 3,
+            "Amount": 30,
+            "DamageType": "magic"
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/frost_warden_rime_bolt",
+        "Name": "Rime Bolt",
+        "Description": "36 magic damage, plus 1.2 per Intelligence (max 145).",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "ice_spirit_spell.rtex",
+        "ManaCost": 14,
+        "Cooldown": 7,
+        "TargetRange": 7,
+        "VisualEffect": "frost_hail_sheet.rtex",
+        "CastSound": "hail_stone_impact.raud",
+        "AreaOfEffectRadius": 1.2,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "single",
+            "Amount": 36,
+            "DamageType": "magic",
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "linear",
+              "Coefficient": 1.2,
+              "Divisor": 0,
+              "Cap": 145,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/frost_warden_frost_bulwark",
+        "Name": "Frost Bulwark",
+        "Description": "Ice plate grants 8 armor and 12% spell ward for 6 s, rising toward 9 s with Wisdom.",
+        "Role": "Tank",
+        "AbilityType": "instant_spell",
+        "IconPath": "heavy_armor_crawler.rtex",
+        "ManaCost": 20,
+        "Cooldown": 16,
+        "TargetRange": 0,
+        "VisualEffect": "frost_grain_sheet.rtex",
+        "CastSound": "crystal_formation_Construction.raud",
+        "AreaOfEffectRadius": 0,
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
+        "Effects": [
+          {
+            "Kind": "buff",
+            "Targets": "self",
+            "Delivery": "self",
+            "Duration": 6,
+            "Modifiers": [
+              {
+                "StatKey": "Armor",
+                "Type": "Flat",
+                "Value": 8,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              },
+              {
+                "StatKey": "SpellWard",
+                "Type": "Flat",
+                "Value": 0.12,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ],
+            "Scaling": {
+              "Attribute": "Wisdom",
+              "Shape": "saturating",
+              "Coefficient": 0,
+              "Divisor": 25,
+              "Cap": 9
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/frost_warden_glacier_break",
+        "Name": "Glacier Break",
+        "Description": "18 magic damage in a 3.2 radius and a 45% slow for 2.5 s, plus 0.3 s per 20 Intelligence (max 6 s).",
+        "Role": "Control",
+        "AbilityType": "target_spell",
+        "IconPath": "stone_gate.rtex",
+        "ManaCost": 22,
+        "Cooldown": 18,
+        "TargetRange": 6,
+        "VisualEffect": "frost_wave_sheet.rtex",
+        "CastSound": "stone_arch_Death.raud",
+        "AreaOfEffectRadius": 3.2,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 3.2,
+            "Amount": 18,
+            "DamageType": "magic"
+          },
+          {
+            "Kind": "debuff",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 3.2,
+            "Duration": 2.5,
+            "BuffId": "chilled",
+            "Modifiers": [
+              {
+                "StatKey": "MovementSpeed",
+                "Type": "Percentage",
+                "Value": -0.45,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ],
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "threshold",
+              "Coefficient": 0.3,
+              "Divisor": 20,
+              "Cap": 6
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/glacier_sentinel_ice_hammer",
+        "Name": "Ice Hammer",
+        "Description": "A 120 degree swing deals 2.2 physical damage per Strength (max 160).",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "spike_ring.rtex",
+        "ManaCost": 14,
+        "Cooldown": 8,
+        "TargetRange": 2.8,
+        "VisualEffect": "ice_spirit_spell.rtex",
+        "CastSound": "armor_jingle_metal.raud",
+        "AreaOfEffectRadius": 3,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "cone",
+            "Length": 3,
+            "AngleDegrees": 120,
+            "Amount": 50,
+            "DamageType": "physical",
+            "Scaling": {
+              "Attribute": "Strength",
+              "Shape": "conversion",
+              "Coefficient": 2.2,
+              "Divisor": 0,
+              "Cap": 160,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/glacier_sentinel_permafrost",
+        "Name": "Permafrost",
+        "Description": "Allies within 3 gain a 25 point shield for 7 s, plus 1 per 25 Vitality (max 120).",
+        "Role": "Tank",
+        "AbilityType": "instant_spell",
+        "IconPath": "gate_of_light.rtex",
+        "ManaCost": 20,
+        "Cooldown": 18,
+        "TargetRange": 0,
+        "VisualEffect": "crystal_lattice_vein.rtex",
+        "CastSound": "spell_cast_hum.raud",
+        "AreaOfEffectRadius": 3,
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
+        "Effects": [
+          {
+            "Kind": "shield",
+            "Targets": "allies",
+            "Delivery": "aura",
+            "Radius": 3,
+            "Amount": 25,
+            "Duration": 7,
+            "Scaling": {
+              "Attribute": "Vitality",
+              "Shape": "ratio",
+              "Coefficient": 0,
+              "Divisor": 25,
+              "Cap": 120,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/glacier_sentinel_avalanche",
+        "Name": "Avalanche",
+        "Description": "24 physical damage in a 4 radius, and everything inside is thrown back up to 6 units.",
+        "Role": "Control",
+        "AbilityType": "target_spell",
+        "IconPath": "magic_spell_core.rtex",
+        "ManaCost": 26,
+        "Cooldown": 20,
+        "TargetRange": 6,
+        "VisualEffect": "mineral_geology_quartz_core.rtex",
+        "CastSound": "cape_Damaged.raud",
+        "AreaOfEffectRadius": 4,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "knockback",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 4,
+            "Amount": 2,
+            "Scaling": {
+              "Attribute": "Strength",
+              "Shape": "ratio",
+              "Coefficient": 0,
+              "Divisor": 40,
+              "Cap": 6,
+              "ScalesDuration": false
+            }
+          },
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 4,
+            "Amount": 24,
+            "DamageType": "physical"
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/storm_caller_static_bolt",
+        "Name": "Static Bolt",
+        "Description": "A 6 unit bolt deals 30 magic damage, plus 14 per 20 Intelligence (max 150).",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "lightning_strike_1.rtex",
+        "ManaCost": 13,
+        "Cooldown": 6,
+        "TargetRange": 7.5,
+        "VisualEffect": "storm_bolt_sheet.rtex",
+        "CastSound": "storm_strike_crack.raud",
+        "AreaOfEffectRadius": 0.9,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "line",
+            "Radius": 0.9,
+            "Length": 6,
+            "Amount": 30,
+            "DamageType": "magic",
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "threshold",
+              "Coefficient": 14,
+              "Divisor": 20,
+              "Cap": 150,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/storm_caller_thunder_clap",
+        "Name": "Thunder Clap",
+        "Description": "18 magic damage around the caster and a 0.5 s stun, plus 0.1 s per 25 Intelligence (max 2 s).",
+        "Role": "Control",
+        "AbilityType": "instant_spell",
+        "IconPath": "energy_explosion.rtex",
+        "ManaCost": 20,
+        "Cooldown": 16,
+        "TargetRange": 0,
+        "VisualEffect": "storm_ray_sheet.rtex",
         "CastSound": "gladiator_Aggro.raud",
         "AreaOfEffectRadius": 3,
         "GridX": 1,
         "GridY": 0,
         "Hotkey": "E",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
         "Effects": [
           {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "aura",
             "Radius": 3,
-            "Amount": 30
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/cyclone_kick",
-        "Name": "Cyclone Kick",
-        "Description": "Heavy tactical spell of Tempest Chaser. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "gold_star_coin.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "mineral_geology_gem_glint.rtex",
-        "CastSound": "spell_weave_hum.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
-        "GridY": 0,
-        "Hotkey": "R",
-        "Effects": [
+            "Amount": 18,
+            "DamageType": "magic"
+          },
           {
-            "Kind": "damage",
+            "Kind": "debuff",
             "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/fireball",
-        "Name": "Bola de fuego",
-        "Description": "[X] Bola de fuego â€” DaÃ±o 50 en Ã¡rea (radio 4)",
-        "AbilityType": "target_spell",
-        "IconPath": "ancient_gate.rtex",
-        "ManaCost": 0,
-        "Cooldown": 12,
-        "TargetRange": 12,
-        "VisualEffect": "light_shafts_heavenly_touch.rtex",
-        "CastSound": "phoenix.raud",
-        "AreaOfEffectRadius": 4,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null,
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 4,
-            "Amount": 50
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/fortress_stance",
-        "Name": "Fortress Stance",
-        "Description": "Tactical defense spell of Vanguard Sentinel. Protects or boosts nearby allies.",
-        "AbilityType": "instant_spell",
-        "IconPath": "cyber_warrior.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
-        "TargetRange": 0,
-        "VisualEffect": "mineral_geology_quartz_core.rtex",
-        "CastSound": "scroll_of_town_portal.raud",
-        "AreaOfEffectRadius": 3,
-        "GridX": 1,
-        "GridY": 0,
-        "Hotkey": "E",
-        "Effects": [
-          {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
+            "Delivery": "aura",
             "Radius": 3,
-            "Amount": 30
+            "Duration": 0.5,
+            "BuffId": "stun",
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "threshold",
+              "Coefficient": 0.1,
+              "Divisor": 25,
+              "Cap": 2.0
+            }
           }
         ]
       },
       {
-        "TemplateID": "ability/frenzy_slash",
-        "Name": "Frenzy Slash",
-        "Description": "Basic ability of Blood Berserker. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "blood_heart.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "stone_pierce_sheet.rtex",
-        "CastSound": "pause_menu_toggle.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/frost_nova",
-        "Name": "Frost Nova",
-        "Description": "Heavy tactical spell of Frost Warden. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "flaming_skull_1.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "frost_grain_sheet.rtex",
-        "CastSound": "spell_burst_arcane.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
-        "GridY": 0,
-        "Hotkey": "R",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/gale_strike",
-        "Name": "Gale Strike",
-        "Description": "Basic ability of Tempest Chaser. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "lightning_strike_1.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "storm_bolt_sheet.rtex",
-        "CastSound": "stone_arch_Construction.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/glacial_barrier",
-        "Name": "Glacial Barrier",
-        "Description": "Tactical defense spell of Frost Warden. Protects or boosts nearby allies.",
+        "TemplateID": "ability/storm_caller_stormfront",
+        "Name": "Stormfront",
+        "Description": "Allies within 4 gain 25% attack speed and 6 spell power for 4 s, plus 0.25 s per 20 Intelligence (max 9 s).",
+        "Role": "Support",
         "AbilityType": "instant_spell",
-        "IconPath": "dark_hooded_warrior.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
+        "IconPath": "elder_sorcerer.rtex",
+        "ManaCost": 24,
+        "Cooldown": 20,
         "TargetRange": 0,
         "VisualEffect": "storm_strike_sheet.rtex",
-        "CastSound": "orc_camp_fire.raud",
-        "AreaOfEffectRadius": 3,
-        "GridX": 1,
-        "GridY": 0,
-        "Hotkey": "E",
-        "Effects": [
-          {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 3,
-            "Amount": 30
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/gloom_bolt",
-        "Name": "Gloom Bolt",
-        "Description": "Basic ability of Shadow Weaver. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "purple_magic_spell.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "storm_ray_sheet.rtex",
-        "CastSound": "spell_scroll_crackle.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/hardened_carapace",
-        "Name": "Hardened Carapace",
-        "Description": "Tactical defense spell of Shadow Strider. Protects or boosts nearby allies.",
-        "AbilityType": "instant_spell",
-        "IconPath": "orc_warlord_5.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
-        "TargetRange": 0,
-        "VisualEffect": "moon_orb_sheet.rtex",
-        "CastSound": "gladiator_Move.raud",
-        "AreaOfEffectRadius": 3,
-        "GridX": 1,
-        "GridY": 0,
-        "Hotkey": "E",
-        "Effects": [
-          {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 3,
-            "Amount": 30
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/hardened_crust",
-        "Name": "Hardened Crust",
-        "Description": "Tactical defense spell of Stone Guardian. Protects or boosts nearby allies.",
-        "AbilityType": "instant_spell",
-        "IconPath": "magic_spell_core.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
-        "TargetRange": 0,
-        "VisualEffect": "storm_eye_sheet.rtex",
-        "CastSound": "blade_grind_stone.raud",
-        "AreaOfEffectRadius": 3,
-        "GridX": 1,
-        "GridY": 0,
-        "Hotkey": "E",
-        "Effects": [
-          {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 3,
-            "Amount": 30
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/haste_field",
-        "Name": "Haste Field",
-        "Description": "Tactical defense spell of Chrono Weaver. Protects or boosts nearby allies.",
-        "AbilityType": "instant_spell",
-        "IconPath": "blue_dragon_warlord.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
-        "TargetRange": 0,
-        "VisualEffect": "iron_core_sheet.rtex",
-        "CastSound": "spell_pulse_hum.raud",
-        "AreaOfEffectRadius": 3,
-        "GridX": 1,
-        "GridY": 0,
-        "Hotkey": "E",
-        "Effects": [
-          {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 3,
-            "Amount": 30
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/heavy_strike",
-        "Name": "Heavy Strike",
-        "Description": "Basic ability of Iron Warlord. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "water_spell.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "stone_spike_sheet.rtex",
-        "CastSound": "hammer_crush_stone.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/holylight",
-        "Name": "Luz sagrada",
-        "Description": "[X] Luz sagrada â€” Cura 60 en Ã¡rea (radio 4)",
-        "AbilityType": "target_spell",
-        "IconPath": "green_power_hand.rtex",
-        "ManaCost": 0,
-        "Cooldown": 15,
-        "TargetRange": 12,
-        "VisualEffect": "weapon_fins_venom_flick.rtex",
-        "CastSound": "mystic_forest_whispers.raud",
+        "CastSound": "gladiator_Attack.raud",
         "AreaOfEffectRadius": 4,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
+        "Effects": [
+          {
+            "Kind": "buff",
+            "Targets": "allies",
+            "Delivery": "aura",
+            "Radius": 4,
+            "Duration": 4,
+            "Modifiers": [
+              {
+                "StatKey": "AttackSpeed",
+                "Type": "Percentage",
+                "Value": 0.25,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              },
+              {
+                "StatKey": "SpellPower",
+                "Type": "Flat",
+                "Value": 6,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ],
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "threshold",
+              "Coefficient": 0.25,
+              "Divisor": 20,
+              "Cap": 9
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/tempest_chaser_quick_slash",
+        "Name": "Quick Slash",
+        "Description": "A fast arc deals 28 physical damage, growing by 1 per 25 Agility (max 110).",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "cyber_warrior.rtex",
+        "ManaCost": 10,
+        "Cooldown": 4.5,
+        "TargetRange": 2.7,
+        "VisualEffect": "storm_eye_sheet.rtex",
+        "CastSound": "gladiator_LastHit.raud",
+        "AreaOfEffectRadius": 2.8,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "cone",
+            "Length": 2.8,
+            "AngleDegrees": 90,
+            "Amount": 28,
+            "DamageType": "physical",
+            "Scaling": {
+              "Attribute": "Agility",
+              "Shape": "ratio",
+              "Coefficient": 0,
+              "Divisor": 25,
+              "Cap": 110,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/tempest_chaser_gust_step",
+        "Name": "Gust Step",
+        "Description": "Blinks up to 7 units toward the target and rides the gust 40% faster for 1.2 s, plus 1 s per 25 Agility (max 3 s).",
+        "Role": "Mobility",
+        "AbilityType": "target_spell",
+        "IconPath": "forest_goblin.rtex",
+        "ManaCost": 14,
+        "Cooldown": 12,
+        "TargetRange": 8,
+        "VisualEffect": "storm_orb_sheet.rtex",
+        "CastSound": "griffin_Damaged.raud",
+        "AreaOfEffectRadius": 0,
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "teleport",
+            "Targets": "self",
+            "Delivery": "self",
+            "Amount": 7
+          },
+          {
+            "Kind": "buff",
+            "Targets": "self",
+            "Delivery": "self",
+            "Duration": 1.2,
+            "Modifiers": [
+              {
+                "StatKey": "MovementSpeed",
+                "Type": "Percentage",
+                "Value": 0.4,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ],
+            "Scaling": {
+              "Attribute": "Agility",
+              "Shape": "ratio",
+              "Coefficient": 0,
+              "Divisor": 25,
+              "Cap": 3
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/tempest_chaser_cyclone_rush",
+        "Name": "Cyclone Rush",
+        "Description": "A 3.2 radius cyclone deals up to 150 physical damage, scaling with Agility as it flattens.",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "sunstone_core_2.rtex",
+        "ManaCost": 22,
+        "Cooldown": 16,
+        "TargetRange": 3,
+        "VisualEffect": "wind_blade_sheet.rtex",
+        "CastSound": "gladiator_Move.raud",
+        "AreaOfEffectRadius": 3.2,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 3.2,
+            "Amount": 45,
+            "DamageType": "physical",
+            "Scaling": {
+              "Attribute": "Agility",
+              "Shape": "saturating",
+              "Coefficient": 0,
+              "Divisor": 30,
+              "Cap": 150,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/arcane_scholar_arcane_lance",
+        "Name": "Arcane Lance",
+        "Description": "A 7 unit lance deals 30 magic damage, plus 1 per 20 Intelligence (max 140).",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "golden_tower.rtex",
+        "ManaCost": 14,
+        "Cooldown": 6.5,
+        "TargetRange": 7,
+        "VisualEffect": "mana_orb_sheet.rtex",
+        "CastSound": "spell_cast_hum.raud",
+        "AreaOfEffectRadius": 0.8,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "line",
+            "Radius": 0.8,
+            "Length": 7,
+            "Amount": 30,
+            "DamageType": "magic",
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "ratio",
+              "Coefficient": 0,
+              "Divisor": 20,
+              "Cap": 140,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/arcane_scholar_mana_bloom",
+        "Name": "Mana Bloom",
+        "Description": "Allies within 4 gain 10 spell power, 10% cooldown reduction and 2 mana per second for 3 s, rising toward 9 s with Intelligence.",
+        "Role": "Support",
+        "AbilityType": "instant_spell",
+        "IconPath": "magic_chess_piece.rtex",
+        "ManaCost": 20,
+        "Cooldown": 18,
+        "TargetRange": 0,
+        "VisualEffect": "star_core_sheet.rtex",
+        "CastSound": "spell_weave_hum.raud",
+        "AreaOfEffectRadius": 4,
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
+        "Effects": [
+          {
+            "Kind": "buff",
+            "Targets": "allies",
+            "Delivery": "aura",
+            "Radius": 4,
+            "Duration": 3,
+            "Modifiers": [
+              {
+                "StatKey": "SpellPower",
+                "Type": "Flat",
+                "Value": 10,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              },
+              {
+                "StatKey": "CooldownReduction",
+                "Type": "Flat",
+                "Value": 0.1,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              },
+              {
+                "StatKey": "ManaRegen",
+                "Type": "Flat",
+                "Value": 2,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ],
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "saturating",
+              "Coefficient": 0,
+              "Divisor": 25,
+              "Cap": 9
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/arcane_scholar_arcane_cataclysm",
+        "Name": "Arcane Cataclysm",
+        "Description": "45 magic damage in a 4 radius, plus 15 per 20 Intelligence (max 190).",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "magic_observatory.rtex",
+        "ManaCost": 30,
+        "Cooldown": 24,
+        "TargetRange": 8,
+        "VisualEffect": "purple_magic_spell.rtex",
+        "CastSound": "spell_scroll_crackle.raud",
+        "AreaOfEffectRadius": 4,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 4,
+            "Amount": 45,
+            "DamageType": "magic",
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "threshold",
+              "Coefficient": 15,
+              "Divisor": 20,
+              "Cap": 190,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/rune_scribe_rune_dart",
+        "Name": "Rune Dart",
+        "Description": "An 8 unit rune line deals up to 150 magic damage, growing and flattening with Intelligence.",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "magic_damage.rtex",
+        "ManaCost": 12,
+        "Cooldown": 5.5,
+        "TargetRange": 8.5,
+        "VisualEffect": "magic_spell_core.rtex",
+        "CastSound": "spell_burst_arcane.raud",
+        "AreaOfEffectRadius": 0.7,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "line",
+            "Radius": 0.7,
+            "Length": 8,
+            "Amount": 40,
+            "DamageType": "magic",
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "saturating",
+              "Coefficient": 0,
+              "Divisor": 30,
+              "Cap": 150,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/rune_scribe_sigil_detonation",
+        "Name": "Sigil Detonation",
+        "Description": "20 magic damage in a 2.6 radius, and enemies inside lose 3 armor and 50% speed for 2.5 s, plus 1 s per 25 Intelligence (max 6 s).",
+        "Role": "Control",
+        "AbilityType": "target_spell",
+        "IconPath": "purple_energy_ring.rtex",
+        "ManaCost": 20,
+        "Cooldown": 15,
+        "TargetRange": 7,
+        "VisualEffect": "crystal_terrain.rtex",
+        "CastSound": "invigorate_aura_hum.raud",
+        "AreaOfEffectRadius": 2.6,
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2.6,
+            "Amount": 20,
+            "DamageType": "magic"
+          },
+          {
+            "Kind": "debuff",
+            "Targets": "enemies",
+            "Delivery": "radius",
+            "Radius": 2.6,
+            "Duration": 2.5,
+            "BuffId": "sigil",
+            "Modifiers": [
+              {
+                "StatKey": "Armor",
+                "Type": "Flat",
+                "Value": -3,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              },
+              {
+                "StatKey": "MovementSpeed",
+                "Type": "Percentage",
+                "Value": -0.5,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ],
+            "Scaling": {
+              "Attribute": "Intelligence",
+              "Shape": "ratio",
+              "Coefficient": 0,
+              "Divisor": 25,
+              "Cap": 6
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/rune_scribe_grand_inscription",
+        "Name": "Grand Inscription",
+        "Description": "Allies within 4 gain 4 armor, 10% tenacity and 2 health per second for 0.12 s per Wisdom (max 9 s).",
+        "Role": "Support",
+        "AbilityType": "instant_spell",
+        "IconPath": "castle_tower.rtex",
+        "ManaCost": 22,
+        "Cooldown": 22,
+        "TargetRange": 0,
+        "VisualEffect": "mineral_geology_gem_glint.rtex",
+        "CastSound": "magical_portal_hum.raud",
+        "AreaOfEffectRadius": 4,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
+        "Effects": [
+          {
+            "Kind": "buff",
+            "Targets": "allies",
+            "Delivery": "aura",
+            "Radius": 4,
+            "Duration": 4,
+            "Modifiers": [
+              {
+                "StatKey": "Armor",
+                "Type": "Flat",
+                "Value": 4,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              },
+              {
+                "StatKey": "Tenacity",
+                "Type": "Flat",
+                "Value": 0.1,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              },
+              {
+                "StatKey": "HpRegen",
+                "Type": "Flat",
+                "Value": 2,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ],
+            "Scaling": {
+              "Attribute": "Wisdom",
+              "Shape": "conversion",
+              "Coefficient": 0.12,
+              "Divisor": 0,
+              "Cap": 9
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/sun_priest_solar_spark",
+        "Name": "Solar Spark",
+        "Description": "A spark of sunlight deals 1.9 magic damage per point of Wisdom, capped at 125.",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "elf_king.rtex",
+        "ManaCost": 12,
+        "Cooldown": 6,
+        "TargetRange": 7,
+        "VisualEffect": "light_beam_sheet.rtex",
+        "CastSound": "invigorate_aura_hum.raud",
+        "AreaOfEffectRadius": 1.2,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "single",
+            "Amount": 32,
+            "DamageType": "magic",
+            "Scaling": {
+              "Attribute": "Wisdom",
+              "Shape": "conversion",
+              "Coefficient": 1.9,
+              "Divisor": 0,
+              "Cap": 125,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/sun_priest_sunlit_mend",
+        "Name": "Sunlit Mend",
+        "Description": "Heals every ally within 2 of the target for 35, plus 1 per Wisdom (max 110).",
+        "Role": "Support",
+        "AbilityType": "target_spell",
+        "IconPath": "forest_goblin_1.rtex",
+        "ManaCost": 18,
+        "Cooldown": 11,
+        "TargetRange": 6,
+        "VisualEffect": "light_shafts_heavenly_touch.rtex",
+        "CastSound": "spell_pulse_hum.raud",
+        "AreaOfEffectRadius": 2,
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E",
         "Effects": [
           {
             "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 2,
+            "Amount": 35,
+            "Scaling": {
+              "Attribute": "Wisdom",
+              "Shape": "linear",
+              "Coefficient": 1.0,
+              "Divisor": 0,
+              "Cap": 110,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/sun_priest_radiant_chorus",
+        "Name": "Radiant Chorus",
+        "Description": "Allies within 4 are healed for 20, plus 1 per 25 Wisdom (max 80), and regenerate 1.5 health per second for 6 s.",
+        "Role": "Support",
+        "AbilityType": "instant_spell",
+        "IconPath": "gold_star_coin.rtex",
+        "ManaCost": 24,
+        "Cooldown": 20,
+        "TargetRange": 0,
+        "VisualEffect": "light_shafts_phantom_ray.rtex",
+        "CastSound": "paladin_Damaged.raud",
+        "AreaOfEffectRadius": 4,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "aura",
+            "Radius": 4,
+            "Amount": 20,
+            "Scaling": {
+              "Attribute": "Wisdom",
+              "Shape": "ratio",
+              "Coefficient": 0,
+              "Divisor": 25,
+              "Cap": 80,
+              "ScalesDuration": false
+            }
+          },
+          {
+            "Kind": "buff",
+            "Targets": "allies",
+            "Delivery": "aura",
+            "Radius": 4,
+            "Duration": 6,
+            "Modifiers": [
+              {
+                "StatKey": "HpRegen",
+                "Type": "Flat",
+                "Value": 1.5,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/lightbringer_monk_palm_strike",
+        "Name": "Palm Strike",
+        "Description": "A focused palm deals 30 physical damage, plus 0.9 per Agility (max 115).",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "green_eyed_hooded_enemy.rtex",
+        "ManaCost": 10,
+        "Cooldown": 4.5,
+        "TargetRange": 2.8,
+        "VisualEffect": "sun_spike_sheet.rtex",
+        "CastSound": "mage_Damaged.raud",
+        "AreaOfEffectRadius": 1.2,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "single",
+            "Amount": 30,
+            "DamageType": "physical",
+            "Scaling": {
+              "Attribute": "Agility",
+              "Shape": "linear",
+              "Coefficient": 0.9,
+              "Divisor": 0,
+              "Cap": 115,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/lightbringer_monk_inner_light",
+        "Name": "Inner Light",
+        "Description": "Heals one ally for 30, plus 1.2 per Wisdom (max 100), and grants 3 armor for 5 s.",
+        "Role": "Support",
+        "AbilityType": "target_spell",
+        "IconPath": "flame_trident_1.rtex",
+        "ManaCost": 16,
+        "Cooldown": 14,
+        "TargetRange": 6,
+        "VisualEffect": "sun_scorch_sheet.rtex",
+        "CastSound": "quest_alert_tone.raud",
+        "AreaOfEffectRadius": 1.2,
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E",
+        "Effects": [
+          {
+            "Kind": "heal",
+            "Targets": "allies",
+            "Delivery": "single",
+            "Amount": 30,
+            "Scaling": {
+              "Attribute": "Wisdom",
+              "Shape": "linear",
+              "Coefficient": 1.2,
+              "Divisor": 0,
+              "Cap": 100,
+              "ScalesDuration": false
+            }
+          },
+          {
+            "Kind": "buff",
+            "Targets": "self",
+            "Delivery": "self",
+            "Duration": 5,
+            "Modifiers": [
+              {
+                "StatKey": "Armor",
+                "Type": "Flat",
+                "Value": 3,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/lightbringer_monk_sanctified_ground",
+        "Name": "Sanctified Ground",
+        "Description": "Consecrates the ground: allies within 3.5 gain 6 armor, 10% spell ward and 8% tenacity for 5 s, rising toward 8 s with Wisdom.",
+        "Role": "Tank",
+        "AbilityType": "target_spell",
+        "IconPath": "orc_tower.rtex",
+        "ManaCost": 20,
+        "Cooldown": 18,
+        "TargetRange": 5,
+        "VisualEffect": "magic_healing_light.rtex",
+        "CastSound": "scroll_of_town_portal.raud",
+        "AreaOfEffectRadius": 3.5,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
+        "Effects": [
+          {
+            "Kind": "buff",
+            "Targets": "allies",
+            "Delivery": "radius",
+            "Radius": 3.5,
+            "Duration": 5,
+            "Modifiers": [
+              {
+                "StatKey": "Armor",
+                "Type": "Flat",
+                "Value": 6,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              },
+              {
+                "StatKey": "SpellWard",
+                "Type": "Flat",
+                "Value": 0.1,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              },
+              {
+                "StatKey": "Tenacity",
+                "Type": "Flat",
+                "Value": 0.08,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ],
+            "Scaling": {
+              "Attribute": "Wisdom",
+              "Shape": "saturating",
+              "Coefficient": 0,
+              "Divisor": 20,
+              "Cap": 8
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/pack_alpha_savage_maul",
+        "Name": "Savage Maul",
+        "Description": "35 physical damage, plus 10 per 20 Strength (max 140), and the target is 15% slower for 3 s.",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "roof_lantern.rtex",
+        "ManaCost": 11,
+        "Cooldown": 5.5,
+        "TargetRange": 2.8,
+        "VisualEffect": "wind_gust_sheet.rtex",
+        "CastSound": "bear_Damaged.raud",
+        "AreaOfEffectRadius": 1.2,
+        "GridX": 0,
+        "GridY": 0,
+        "Hotkey": "W",
+        "Effects": [
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "single",
+            "Amount": 35,
+            "DamageType": "physical",
+            "Scaling": {
+              "Attribute": "Strength",
+              "Shape": "threshold",
+              "Coefficient": 10,
+              "Divisor": 20,
+              "Cap": 140,
+              "ScalesDuration": false
+            }
+          },
+          {
+            "Kind": "debuff",
+            "Targets": "enemies",
+            "Delivery": "single",
+            "Duration": 3,
+            "BuffId": "mauled",
+            "Modifiers": [
+              {
+                "StatKey": "MovementSpeed",
+                "Type": "Percentage",
+                "Value": -0.15,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/pack_alpha_howl",
+        "Name": "Howl",
+        "Description": "The pack gains 6 attack and 15% attack speed for 3 s, plus 0.2 s per 10 Fortune (max 8 s).",
+        "Role": "Support",
+        "AbilityType": "instant_spell",
+        "IconPath": "wooden_door.rtex",
+        "ManaCost": 18,
+        "Cooldown": 18,
+        "TargetRange": 0,
+        "VisualEffect": "moss_spore_sheet.rtex",
+        "CastSound": "griffin_Damaged.raud",
+        "AreaOfEffectRadius": 4,
+        "GridX": 1,
+        "GridY": 0,
+        "Hotkey": "E",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
+        "Effects": [
+          {
+            "Kind": "buff",
             "Targets": "allies",
             "Delivery": "radius",
             "Radius": 4,
-            "Amount": 60
+            "Duration": 3,
+            "Modifiers": [
+              {
+                "StatKey": "Attack",
+                "Type": "Flat",
+                "Value": 6,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              },
+              {
+                "StatKey": "AttackSpeed",
+                "Type": "Percentage",
+                "Value": 0.15,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ],
+            "Scaling": {
+              "Attribute": "Fortune",
+              "Shape": "threshold",
+              "Coefficient": 0.2,
+              "Divisor": 10,
+              "Cap": 8
+            }
           }
         ]
       },
       {
-        "TemplateID": "ability/ice_shard",
-        "Name": "Ice Shard",
-        "Description": "Basic ability of Frost Warden. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "stone_forge.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "frost_hail_sheet.rtex",
-        "CastSound": "quest_alert_tone.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/infernal_surge",
-        "Name": "Infernal Surge",
-        "Description": "Heavy tactical spell of Flame Archon. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "water_spell.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "flame_wisp_sheet.rtex",
-        "CastSound": "paladin_Damaged.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
-        "GridY": 0,
-        "Hotkey": "R",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/iron_will",
-        "Name": "Iron Will",
-        "Description": "Heavy tactical spell of Iron Warlord. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "infernal_warlord.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "mineral_geology_quartz_core.rtex",
-        "CastSound": "heavy_plate_clink.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
-        "GridY": 0,
-        "Hotkey": "R",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/lightning",
-        "Name": "Rayo",
-        "Description": "[X] Rayo â€” DaÃ±o 80 en Ã¡rea (radio 2)",
-        "AbilityType": "target_spell",
-        "IconPath": "dark_elf_warlord_1.rtex",
-        "ManaCost": 0,
-        "Cooldown": 18,
-        "TargetRange": 12,
-        "VisualEffect": "shadow_streak_sheet.rtex",
-        "CastSound": "fire_elemental_LastHit.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null,
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 80
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/mana_drain",
-        "Name": "Mana Drain",
-        "Description": "Heavy tactical spell of Arcane Scholar. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "crystal_terrain.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "ash_grain_sheet.rtex",
-        "CastSound": "soft_foot_scuff.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
-        "GridY": 0,
-        "Hotkey": "R",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/mantra_of_healing",
-        "Name": "Mantra Of Healing",
-        "Description": "Tactical defense spell of Lightbringer Monk. Protects or boosts nearby allies.",
-        "AbilityType": "instant_spell",
-        "IconPath": "blue_undead_warrior.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
-        "TargetRange": 0,
-        "VisualEffect": "moon_orb_sheet.rtex",
-        "CastSound": "invigorate_aura_hum.raud",
-        "AreaOfEffectRadius": 3,
-        "GridX": 1,
-        "GridY": 0,
-        "Hotkey": "E",
-        "Effects": [
-          {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 3,
-            "Amount": 30
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/poison_blade",
-        "Name": "Poison Blade",
-        "Description": "Basic ability of Nether Assassin. Deals 45 damage to enemy target.",
+        "TemplateID": "ability/pack_alpha_blood_hunt",
+        "Name": "Blood Hunt",
+        "Description": "Lopes up to 8 units to the target and bites for 30 physical damage, plus 0.8 per Agility (max 110).",
+        "Role": "Mobility",
         "AbilityType": "target_spell",
         "IconPath": "wooden_tower_house.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "storm_eye_sheet.rtex",
+        "ManaCost": 20,
+        "Cooldown": 20,
+        "TargetRange": 9,
+        "VisualEffect": "weapon_fins_venom_flick.rtex",
+        "CastSound": "scythe_sweep_sharp.raud",
+        "AreaOfEffectRadius": 1.2,
+        "GridX": 2,
+        "GridY": 0,
+        "Hotkey": "R",
+        "Effects": [
+          {
+            "Kind": "teleport",
+            "Targets": "self",
+            "Delivery": "self",
+            "Amount": 8
+          },
+          {
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "single",
+            "Amount": 30,
+            "DamageType": "physical",
+            "Scaling": {
+              "Attribute": "Agility",
+              "Shape": "linear",
+              "Coefficient": 0.8,
+              "Divisor": 0,
+              "Cap": 110,
+              "ScalesDuration": false
+            }
+          }
+        ]
+      },
+      {
+        "TemplateID": "ability/razor_dervish_whirling_cut",
+        "Name": "Whirling Cut",
+        "Description": "A wide slash deals 30 physical damage, plus 1 per 25 Agility (max 110).",
+        "Role": "Damage",
+        "AbilityType": "target_spell",
+        "IconPath": "blood_heart.rtex",
+        "ManaCost": 11,
+        "Cooldown": 5,
+        "TargetRange": 2.7,
+        "VisualEffect": "acid_rain_sheet.rtex",
         "CastSound": "blade_slash_whoosh.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/prism_beam",
-        "Name": "Prism Beam",
-        "Description": "Basic ability of Crystal Weaver. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "castle_tower.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "light_beam_sheet.rtex",
-        "CastSound": "other_Damaged.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/pyro_blast",
-        "Name": "Pyro Blast",
-        "Description": "Basic ability of Flame Archon. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "flame_trident_1.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "stone_burst_sheet.rtex",
-        "CastSound": "hammer_crush_stone.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/quick_roll",
-        "Name": "Quick Roll",
-        "Description": "Tactical defense spell of Dune Skirmisher. Protects or boosts nearby allies.",
-        "AbilityType": "instant_spell",
-        "IconPath": "forest_goblin_1.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
-        "TargetRange": 0,
-        "VisualEffect": "sun_scorch_sheet.rtex",
-        "CastSound": "gladiator.raud",
         "AreaOfEffectRadius": 3,
-        "GridX": 1,
+        "GridX": 0,
         "GridY": 0,
-        "Hotkey": "E",
+        "Hotkey": "W",
         "Effects": [
           {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 3,
-            "Amount": 30
+            "Kind": "damage",
+            "Targets": "enemies",
+            "Delivery": "cone",
+            "Length": 3,
+            "AngleDegrees": 160,
+            "Amount": 30,
+            "DamageType": "physical",
+            "Scaling": {
+              "Attribute": "Agility",
+              "Shape": "ratio",
+              "Coefficient": 0,
+              "Divisor": 25,
+              "Cap": 110,
+              "ScalesDuration": false
+            }
           }
         ]
       },
       {
-        "TemplateID": "ability/radiant_blessing",
-        "Name": "Radiant Blessing",
-        "Description": "Tactical defense spell of Sun Priest. Protects or boosts nearby allies.",
+        "TemplateID": "ability/razor_dervish_bleeding_waltz",
+        "Name": "Bleeding Waltz",
+        "Description": "Spins through nearby enemies for 12 physical damage and leaves them 30% slower for 2.5 s, plus 1 s per 30 Agility (max 6 s).",
+        "Role": "Control",
         "AbilityType": "instant_spell",
         "IconPath": "blue_orc_warrior.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
+        "ManaCost": 18,
+        "Cooldown": 14,
         "TargetRange": 0,
-        "VisualEffect": "void_orb_sheet.rtex",
-        "CastSound": "dark_forest_whisper.raud",
-        "AreaOfEffectRadius": 3,
+        "VisualEffect": "wind_blade_sheet.rtex",
+        "CastSound": "soft_foot_scuff.raud",
+        "AreaOfEffectRadius": 3.2,
         "GridX": 1,
         "GridY": 0,
         "Hotkey": "E",
-        "Effects": [
-          {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 3,
-            "Amount": 30
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/radiant_fist",
-        "Name": "Radiant Fist",
-        "Description": "Basic ability of Lightbringer Monk. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "golden_tower.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "storm_bolt_sheet.rtex",
-        "CastSound": "stone_wall_collapse.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": false
+        },
         "Effects": [
           {
             "Kind": "damage",
             "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/refractive_shield",
-        "Name": "Refractive Shield",
-        "Description": "Heavy tactical spell of Crystal Weaver. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "sorcerers_spellbook.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "wind_dart_sheet.rtex",
-        "CastSound": "grass_rustle_soft.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
-        "GridY": 0,
-        "Hotkey": "R",
-        "Effects": [
+            "Delivery": "aura",
+            "Radius": 3.2,
+            "Amount": 12,
+            "DamageType": "physical"
+          },
           {
-            "Kind": "damage",
+            "Kind": "debuff",
             "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
+            "Delivery": "aura",
+            "Radius": 3.2,
+            "Duration": 2.5,
+            "BuffId": "bleeding",
+            "Modifiers": [
+              {
+                "StatKey": "MovementSpeed",
+                "Type": "Percentage",
+                "Value": -0.3,
+                "PerLevelScaling": 0,
+                "WASMFunctionName": ""
+              }
+            ],
+            "Scaling": {
+              "Attribute": "Agility",
+              "Shape": "ratio",
+              "Coefficient": 0,
+              "Divisor": 30,
+              "Cap": 6
+            }
           }
         ]
       },
       {
-        "TemplateID": "ability/sanctuary_aura",
-        "Name": "Sanctuary Aura",
-        "Description": "Heavy tactical spell of Lightbringer Monk. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "battering_ram.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "mineral_geology_geode_burst.rtex",
-        "CastSound": "cape_Damaged.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
-        "GridY": 0,
-        "Hotkey": "R",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/sand_bolt",
-        "Name": "Sand Bolt",
-        "Description": "Basic ability of Dune Skirmisher. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "sunstone_core_2.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "mineral_geology_stone_fracture.rtex",
-        "CastSound": "stone_Construction.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/sandstorm_veil",
-        "Name": "Sandstorm Veil",
-        "Description": "Heavy tactical spell of Dune Skirmisher. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "gate_of_light.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "void_grain_sheet.rtex",
-        "CastSound": "ancient_ruins_Death.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
-        "GridY": 0,
-        "Hotkey": "R",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/sanguine_leap",
-        "Name": "Sanguine Leap",
-        "Description": "Heavy tactical spell of Blood Berserker. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "purple_energy_ring.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "mineral_geology_gem_dust.rtex",
-        "CastSound": "earth_elemental_Damaged.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
-        "GridY": 0,
-        "Hotkey": "R",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/searing_aura",
-        "Name": "Searing Aura",
-        "Description": "Basic ability of Shadow Strider. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "orc_tower.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "particle_dynamics_aura_pulse.rtex",
-        "CastSound": "scout_footstep_soft.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/seismic_pulse",
-        "Name": "Seismic Pulse",
-        "Description": "Heavy tactical spell of Stone Guardian. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "stone_lich.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "wind_dart_sheet.rtex",
-        "CastSound": "other_Damaged.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
-        "GridY": 0,
-        "Hotkey": "R",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/shadow_step",
-        "Name": "Shadow Step",
-        "Description": "Tactical defense spell of Nether Assassin. Protects or boosts nearby allies.",
+        "TemplateID": "ability/razor_dervish_thousand_edge",
+        "Name": "Thousand Edge",
+        "Description": "A storm of blades around the dervish, dealing up to 140 physical damage that flattens as Agility climbs.",
+        "Role": "Damage",
         "AbilityType": "instant_spell",
-        "IconPath": "fox_warrior.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
+        "IconPath": "dragon_lord_1.rtex",
+        "ManaCost": 22,
+        "Cooldown": 16,
         "TargetRange": 0,
-        "VisualEffect": "shadow_bolt_sheet.rtex",
-        "CastSound": "error_fail_thud.raud",
+        "VisualEffect": "stone_burst_sheet.rtex",
+        "CastSound": "gladiator_Move.raud",
         "AreaOfEffectRadius": 3,
-        "GridX": 1,
-        "GridY": 0,
-        "Hotkey": "E",
-        "Effects": [
-          {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 3,
-            "Amount": 30
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/shield_bash",
-        "Name": "Shield Bash",
-        "Description": "Basic ability of Vanguard Sentinel. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "green_eyed_hooded_enemy.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "storm_pulse_sheet.rtex",
-        "CastSound": "shield_rim_crack.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/smoke_screen",
-        "Name": "Smoke Screen",
-        "Description": "Heavy tactical spell of Nether Assassin. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "dragon_king_gauntlet.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "mineral_geology_quartz_glow.rtex",
-        "CastSound": "unicorn_Damaged.raud",
-        "AreaOfEffectRadius": 5,
         "GridX": 2,
         "GridY": 0,
         "Hotkey": "R",
@@ -4438,384 +5807,18 @@
           {
             "Kind": "damage",
             "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/solar_flare",
-        "Name": "Solar Flare",
-        "Description": "Basic ability of Sun Priest. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "magic_observatory.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "light_shafts_heavenly_touch.rtex",
-        "CastSound": "mage_Damaged.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/soothing_bloom",
-        "Name": "Soothing Bloom",
-        "Description": "Tactical defense spell of Verdant Druid. Protects or boosts nearby allies.",
-        "AbilityType": "instant_spell",
-        "IconPath": "ice_spirit_spell.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
-        "TargetRange": 0,
-        "VisualEffect": "dark_bloom_sheet.rtex",
-        "CastSound": "gladiator_LastHit.raud",
-        "AreaOfEffectRadius": 3,
-        "GridX": 1,
-        "GridY": 0,
-        "Hotkey": "E",
-        "Effects": [
-          {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
+            "Delivery": "aura",
             "Radius": 3,
-            "Amount": 30
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/soul_tether",
-        "Name": "Soul Tether",
-        "Description": "Heavy tactical spell of Shadow Weaver. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "elf_king.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "wind_gust_sheet.rtex",
-        "CastSound": "soul_drain_moan.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
-        "GridY": 0,
-        "Hotkey": "R",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/spell_shield",
-        "Name": "Spell Shield",
-        "Description": "Tactical defense spell of Arcane Scholar. Protects or boosts nearby allies.",
-        "AbilityType": "instant_spell",
-        "IconPath": "minimap_border.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
-        "TargetRange": 0,
-        "VisualEffect": "storm_eye_sheet.rtex",
-        "CastSound": "inventory_swap_slide.raud",
-        "AreaOfEffectRadius": 3,
-        "GridX": 1,
-        "GridY": 0,
-        "Hotkey": "E",
-        "Effects": [
-          {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 3,
-            "Amount": 30
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/star_fall",
-        "Name": "Star Fall",
-        "Description": "Basic ability of Astral Paragon. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "starlight_missile.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "stone_spike_sheet.rtex",
-        "CastSound": "bear_Damaged.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/stasis_bubble",
-        "Name": "Stasis Bubble",
-        "Description": "Heavy tactical spell of Chrono Weaver. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "eagle_ring_1.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "wind_spin_sheet.rtex",
-        "CastSound": "spell_shockwave_boom.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
-        "GridY": 0,
-        "Hotkey": "R",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/static_field",
-        "Name": "Static Field",
-        "Description": "Heavy tactical spell of Storm Caller. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "magic_healing_light.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "mineral_geology_dust_prism.rtex",
-        "CastSound": "ancient_ruins_Death.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
-        "GridY": 0,
-        "Hotkey": "R",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/tangle_vines",
-        "Name": "Tangle Vines",
-        "Description": "Basic ability of Verdant Druid. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "island_tower_complex.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "storm_ray_sheet.rtex",
-        "CastSound": "mage_Damaged.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/temporal_strike",
-        "Name": "Temporal Strike",
-        "Description": "Basic ability of Chrono Weaver. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "stone_gate.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "light_shafts_heavenly_touch.rtex",
-        "CastSound": "spell_cast_hum.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/thorn_armor",
-        "Name": "Thorn Armor",
-        "Description": "Heavy tactical spell of Verdant Druid. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "spike_ring.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "acid_rain_sheet.rtex",
-        "CastSound": "mage_Damaged.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
-        "GridY": 0,
-        "Hotkey": "R",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/tidal_pull",
-        "Name": "Tidal Pull",
-        "Description": "Heavy tactical spell of Coral Vanguard. Deals 90 damage in area.",
-        "AbilityType": "target_spell",
-        "IconPath": "magic_damage.rtex",
-        "ManaCost": 70,
-        "Cooldown": 22,
-        "TargetRange": 10,
-        "VisualEffect": "wind_cone_sheet.rtex",
-        "CastSound": "griffin_Damaged.raud",
-        "AreaOfEffectRadius": 5,
-        "GridX": 2,
-        "GridY": 0,
-        "Hotkey": "R",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 5,
-            "Amount": 90
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/veil_of_shadows",
-        "Name": "Veil Of Shadows",
-        "Description": "Tactical defense spell of Shadow Weaver. Protects or boosts nearby allies.",
-        "AbilityType": "instant_spell",
-        "IconPath": "stone_forge.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
-        "TargetRange": 0,
-        "VisualEffect": "ash_veil_sheet.rtex",
-        "CastSound": "gladiator_Attack.raud",
-        "AreaOfEffectRadius": 3,
-        "GridX": 1,
-        "GridY": 0,
-        "Hotkey": "E",
-        "Effects": [
-          {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 3,
-            "Amount": 30
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/wave_crash",
-        "Name": "Wave Crash",
-        "Description": "Basic ability of Coral Vanguard. Deals 45 damage to enemy target.",
-        "AbilityType": "target_spell",
-        "IconPath": "stone_gate.rtex",
-        "ManaCost": 25,
-        "Cooldown": 8,
-        "TargetRange": 8,
-        "VisualEffect": "frost_wave_sheet.rtex",
-        "CastSound": "stone_arch_Death.raud",
-        "AreaOfEffectRadius": 2,
-        "GridX": 0,
-        "GridY": 0,
-        "Hotkey": "W",
-        "Effects": [
-          {
-            "Kind": "damage",
-            "Targets": "enemies",
-            "Delivery": "radius",
-            "Radius": 2,
-            "Amount": 45
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/wind_barrier",
-        "Name": "Wind Barrier",
-        "Description": "Tactical defense spell of Tempest Chaser. Protects or boosts nearby allies.",
-        "AbilityType": "instant_spell",
-        "IconPath": "orc_warlock.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
-        "TargetRange": 0,
-        "VisualEffect": "star_core_sheet.rtex",
-        "CastSound": "gladiator_Damaged.raud",
-        "AreaOfEffectRadius": 3,
-        "GridX": 1,
-        "GridY": 0,
-        "Hotkey": "E",
-        "Effects": [
-          {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 3,
-            "Amount": 30
-          }
-        ]
-      },
-      {
-        "TemplateID": "ability/wind_step",
-        "Name": "Wind Step",
-        "Description": "Tactical defense spell of Storm Caller. Protects or boosts nearby allies.",
-        "AbilityType": "instant_spell",
-        "IconPath": "wooden_door.rtex",
-        "ManaCost": 45,
-        "Cooldown": 15,
-        "TargetRange": 0,
-        "VisualEffect": "wind_spin_sheet.rtex",
-        "CastSound": "armor_jingle_metal.raud",
-        "AreaOfEffectRadius": 3,
-        "GridX": 1,
-        "GridY": 0,
-        "Hotkey": "E",
-        "Effects": [
-          {
-            "Kind": "heal",
-            "Targets": "allies",
-            "Delivery": "radius",
-            "Radius": 3,
-            "Amount": 30
+            "Amount": 40,
+            "DamageType": "physical",
+            "Scaling": {
+              "Attribute": "Agility",
+              "Shape": "saturating",
+              "Coefficient": 0,
+              "Divisor": 25,
+              "Cap": 140,
+              "ScalesDuration": false
+            }
           }
         ]
       },
@@ -4898,38 +5901,6 @@
         "GridX": 0,
         "GridY": 2,
         "Hotkey": "Z"
-      },
-      {
-        "TemplateID": "ability/soul_siphon",
-        "Name": "Soul Siphon",
-        "Description": "Low health enemies in the area may be executed, granting wood.",
-        "AbilityType": "target_spell",
-        "IconPath": "infernal_dragon.rtex",
-        "ManaCost": 0,
-        "Cooldown": 0,
-        "TargetRange": 10,
-        "VisualEffect": "wind_blade_sheet.rtex",
-        "CastSound": "leather_tunic_rustle.raud",
-        "AreaOfEffectRadius": 3.5,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
-      },
-      {
-        "TemplateID": "ability/healing_wave",
-        "Name": "Healing Wave",
-        "Description": "Heals allied units in the area based on missing health.",
-        "AbilityType": "target_spell",
-        "IconPath": "energy_explosion.rtex",
-        "ManaCost": 0,
-        "Cooldown": 0,
-        "TargetRange": 10,
-        "VisualEffect": "mineral_geology_quartz_core.rtex",
-        "CastSound": "blacksmith_Construction.raud",
-        "AreaOfEffectRadius": 7,
-        "GridX": -1,
-        "GridY": -1,
-        "Hotkey": null
       },
       {
         "TemplateID": "ability/elixir_blood_debt",
@@ -8662,6 +9633,193 @@
     ],
     "Attachments": [],
     "Vfx": []
+  },
+  "CombatTuning": {
+    "DamageMatrix": [
+      {
+        "DamageType": "physical",
+        "ArmorType": "light",
+        "Multiplier": 1.0
+      },
+      {
+        "DamageType": "physical",
+        "ArmorType": "medium",
+        "Multiplier": 0.9
+      },
+      {
+        "DamageType": "physical",
+        "ArmorType": "heavy",
+        "Multiplier": 0.75
+      },
+      {
+        "DamageType": "physical",
+        "ArmorType": "unarmored",
+        "Multiplier": 1.2
+      },
+      {
+        "DamageType": "normal",
+        "ArmorType": "light",
+        "Multiplier": 1.0
+      },
+      {
+        "DamageType": "normal",
+        "ArmorType": "medium",
+        "Multiplier": 0.9
+      },
+      {
+        "DamageType": "normal",
+        "ArmorType": "heavy",
+        "Multiplier": 0.75
+      },
+      {
+        "DamageType": "normal",
+        "ArmorType": "unarmored",
+        "Multiplier": 1.2
+      },
+      {
+        "DamageType": "magic",
+        "ArmorType": "light",
+        "Multiplier": 1.1
+      },
+      {
+        "DamageType": "magic",
+        "ArmorType": "medium",
+        "Multiplier": 1.0
+      },
+      {
+        "DamageType": "magic",
+        "ArmorType": "heavy",
+        "Multiplier": 0.9
+      },
+      {
+        "DamageType": "magic",
+        "ArmorType": "unarmored",
+        "Multiplier": 1.05
+      },
+      {
+        "DamageType": "fire",
+        "ArmorType": "light",
+        "Multiplier": 1.1
+      },
+      {
+        "DamageType": "fire",
+        "ArmorType": "medium",
+        "Multiplier": 1.0
+      },
+      {
+        "DamageType": "fire",
+        "ArmorType": "heavy",
+        "Multiplier": 0.9
+      },
+      {
+        "DamageType": "fire",
+        "ArmorType": "unarmored",
+        "Multiplier": 1.05
+      },
+      {
+        "DamageType": "frost",
+        "ArmorType": "light",
+        "Multiplier": 1.1
+      },
+      {
+        "DamageType": "frost",
+        "ArmorType": "medium",
+        "Multiplier": 1.0
+      },
+      {
+        "DamageType": "frost",
+        "ArmorType": "heavy",
+        "Multiplier": 0.9
+      },
+      {
+        "DamageType": "frost",
+        "ArmorType": "unarmored",
+        "Multiplier": 1.05
+      },
+      {
+        "DamageType": "nature",
+        "ArmorType": "light",
+        "Multiplier": 1.1
+      },
+      {
+        "DamageType": "nature",
+        "ArmorType": "medium",
+        "Multiplier": 1.0
+      },
+      {
+        "DamageType": "nature",
+        "ArmorType": "heavy",
+        "Multiplier": 0.9
+      },
+      {
+        "DamageType": "nature",
+        "ArmorType": "unarmored",
+        "Multiplier": 1.05
+      },
+      {
+        "DamageType": "holy",
+        "ArmorType": "light",
+        "Multiplier": 1.1
+      },
+      {
+        "DamageType": "holy",
+        "ArmorType": "medium",
+        "Multiplier": 1.0
+      },
+      {
+        "DamageType": "holy",
+        "ArmorType": "heavy",
+        "Multiplier": 0.9
+      },
+      {
+        "DamageType": "holy",
+        "ArmorType": "unarmored",
+        "Multiplier": 1.05
+      },
+      {
+        "DamageType": "shadow",
+        "ArmorType": "light",
+        "Multiplier": 1.1
+      },
+      {
+        "DamageType": "shadow",
+        "ArmorType": "medium",
+        "Multiplier": 1.0
+      },
+      {
+        "DamageType": "shadow",
+        "ArmorType": "heavy",
+        "Multiplier": 0.9
+      },
+      {
+        "DamageType": "shadow",
+        "ArmorType": "unarmored",
+        "Multiplier": 1.05
+      },
+      {
+        "DamageType": "pure",
+        "ArmorType": "light",
+        "Multiplier": 1.0
+      },
+      {
+        "DamageType": "pure",
+        "ArmorType": "medium",
+        "Multiplier": 1.0
+      },
+      {
+        "DamageType": "pure",
+        "ArmorType": "heavy",
+        "Multiplier": 1.0
+      },
+      {
+        "DamageType": "pure",
+        "ArmorType": "unarmored",
+        "Multiplier": 1.0
+      }
+    ],
+    "UndefinedPairMultiplier": 1.0,
+    "ArmorTuningConstantK": 16.67,
+    "MinDamageFloor": 1.0
   },
   "CustomProceduralAnimations": [],
   "CustomWaterProfiles": [],

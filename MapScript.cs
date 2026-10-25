@@ -83,8 +83,6 @@ public partial class MapScript : IWasmModule
     private const float BuildingOffset = -15f;
     private const float TileSpacing = 6.5f;
     private const float BuildingSpacing = 4f;
-    private const float SoulSiphonRadius = 3f;
-    private const float HealingWaveRadius = 6f;
     private const int WaveIntervalSeconds = 45;
     private const int WaveCountdownVisibleSeconds = 30;
     private const int SpawnSlotCount = 12;
@@ -118,8 +116,6 @@ public partial class MapScript : IWasmModule
     private const string TargetDummyCommand = "-targetDummy";
     private const string UnlockTilesCommand = "-unlockTiles";
 
-    private const string SoulSiphonAbilityId = "ability/soul_siphon";
-    private const string HealingWaveAbilityId = "ability/healing_wave";
     private const string AntiSnowballPoisonBuffId = "anti_snowball_poison";
     private static readonly Vector3 ArenaCenter = Vector3.Zero;
 
@@ -1898,15 +1894,7 @@ public partial class MapScript : IWasmModule
             return;
         }
 
-        if (SlugsEqual(spellId, SoulSiphonAbilityId))
-        {
-            ApplySoulSiphon(caster, targetPosition);
-        }
-        else if (SlugsEqual(spellId, HealingWaveAbilityId))
-        {
-            ApplyHealingWave(caster, targetPosition);
-        }
-        else if (SlugsEqual(spellId, RerollItemAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? itemState))
+        if (SlugsEqual(spellId, RerollItemAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? itemState))
         {
             if (TryPayTileAbility(caster, itemState, spellId, playerIndex))
             {
@@ -2110,42 +2098,6 @@ public partial class MapScript : IWasmModule
         }
 
         DraftUnit(playerIndex, matchedUnitTypeId, targetCircle);
-    }
-
-    private void ApplySoulSiphon(UnitId caster, Vector3 targetPosition)
-    {
-        int casterTeam = _api.GetPlayer(caster.Player).Team;
-        int rewardedPlayerIndex = ResolveRealPlayerIndex(caster.Player);
-
-        foreach (UnitId target in _api.GetUnitsInRadius(targetPosition, SoulSiphonRadius))
-        {
-            if (target.IsDead || _api.GetPlayer(target.Player).Team == casterTeam)
-                continue;
-
-            float healthPercent = 100f * target.Health / target.MaxHealth;
-            float executeChance = 26f - healthPercent;
-            if (executeChance < 0f)
-                continue;
-
-            if (_api.RandomInt(1, 100) <= executeChance)
-            {
-                _api.KillUnit(target);
-                _api.GetPlayer(rewardedPlayerIndex).AdjustWood(1f);
-            }
-        }
-    }
-
-    private void ApplyHealingWave(UnitId caster, Vector3 targetPosition)
-    {
-        foreach (UnitId target in _api.GetUnitsInRadius(targetPosition, HealingWaveRadius))
-        {
-            if (target.IsDead || target.Player != caster.Player)
-                continue;
-
-            float healthPercent = 100f * target.Health / target.MaxHealth;
-            float healAmount = (100f - healthPercent) * target.MaxHealth / 4f;
-            _api.HealUnit(target, healAmount);
-        }
     }
 
     private void HandleUnitDied(UnitId dyingUnit, UnitId killer)

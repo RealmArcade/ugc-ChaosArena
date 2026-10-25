@@ -91,7 +91,13 @@ Chaos Arena authors its own values in M2 once the 60 abilities exist and there i
 Replace `metadata.json` units/abilities/items/upgrades with the 20/60/20/20/20 from `CORE_DATA_SET.md`. Regenerate `MapTemplates.g.cs`. Delete orphan templates and `MeleeRules.cs`.
 
 ### M2. Ability definitions and map tuning
-Author all 60 abilities on the E5 schema, each with role tag, scaling block and caps. Author the map's E8 tuning block.
+Shipped. The 60 kits from `CORE_DATA_SET.md` are authored on the E5 effect schema, and the 66 old reskins, the four orphan spells and `soul_siphon` / `healing_wave` (plus their dead script handlers) are gone.
+
+- Every ability carries `Role` (Damage, Control, Support, Tank, Mobility, Summon, Economy) and a scaling block with an attribute, a shape and a cap. The role leads the tooltip, so a draft reads as a job before it reads as a number.
+- One scaling block per ability, sixty in total. Twenty of them reach a *timer* rather than a magnitude — every aura buff, plus the marks, roots and slows whose whole identity is “how long” — and the other forty hold their duration fixed while the number grows. That split needed one engine field, `Scaling.ScalesDuration`, defaulting to true so E5's documented behaviour is unchanged; before it, a linearly scaled shield also stretched from 8 s to 26 s.
+- Mana and cooldowns gate the kits: 10–30 mana against the 96–160 pools that Vitality produces, and 4.5–24 s cooldowns, so an auto-battling clone casts a handful of times per fight rather than every tick. Support, tank and self-buff abilities declare `AutoCast.RequiresEnemyTarget: false`, otherwise the engine's enemy-seeking heuristic would never fire them.
+- Uniqueness is enforced on the whole effect package — kinds, deliveries, targets, attributes, shapes, numbers, status ids and stat modifiers — not on a single `(effect + delivery + shape)` triple. The literal triple rule cannot hold for 25 Damage-role abilities across five deliveries and six shapes without turning every melee hero's nuke into an aura; 47 of the 60 primary triples are distinct, and no two abilities anywhere share a full signature. The four heroes that repeat a role across slots differ in delivery (single versus zone, cone versus spin).
+- Chaos Arena authors its E8 tuning block: 36 damage-matrix rows covering every damage type the map actually uses (`physical`, `normal`, the five elemental names on unit attacks, `magic`, `pure`) against light / medium / heavy / unarmored armor. Physical is dull against heavy and sharp against unarmored; magic and the elemental types are the reverse; `pure` is flat. `ArmorTuningConstantK`, `MinDamageFloor` and `UndefinedPairMultiplier` are pinned to their engine defaults so the matrix is the only thing that moved.
 
 ### M3. Circle UX
 Circles hold three element-description abilities, one visible, plus the item icon with its stack count. No more 160-ability bars, no global `SetAbilityTooltip` writes.
@@ -121,7 +127,7 @@ E1 → E2 → E3 → E4 → E6 → E8 → E5 → M1 → M3 → M5 → E7/M6 → 
                                      (M2 follows E5, and M4 follows M2)
 ```
 
-E5 is done, so M2 — authoring the 60 abilities on the effect schema — is the remaining long pole.
+E5 and M2 are done, so M3 (circle UX) and M4 (clone loadout) are next: the kits exist but nothing has watched them fight yet.
 
 ## Commit discipline
 
