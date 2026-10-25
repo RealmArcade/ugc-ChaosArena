@@ -352,14 +352,14 @@ public partial class MapScript
                 if (state.Stacks % 6 != 0) return;
                 if (state.Procs >= state.Definition.MaxStacks) return;
                 state.Procs++;
-                QueueElixirDamage(attacker, victim, state.Definition.Amount, "normal");
+                QueueElixirDamage(attacker, victim, state.Definition.Amount, "physical");
                 break;
 
             case "elixir_executioner":
                 if (state.Procs >= state.Definition.MaxStacks) return;
                 if (victim.MaxHealth <= 0f || victim.Health / victim.MaxHealth >= 0.35f) return;
                 state.Procs++;
-                QueueElixirDamage(attacker, victim, state.Definition.Amount, "normal");
+                QueueElixirDamage(attacker, victim, state.Definition.Amount, "physical");
                 break;
         }
     }
@@ -384,7 +384,7 @@ public partial class MapScript
                 if (state.Procs >= state.Definition.MaxStacks) return;
                 if (!attacker.IsValid || attacker.IsDead) return;
                 state.Procs++;
-                QueueElixirDamage(victim, attacker, state.Definition.Amount, "normal");
+                QueueElixirDamage(victim, attacker, state.Definition.Amount, "physical");
                 break;
 
             case "elixir_phantom_step":

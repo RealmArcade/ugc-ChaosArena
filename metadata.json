@@ -2646,8 +2646,6 @@
         "CostStone": 0,
         "PopCost": 0,
         "ProductionTime": 0,
-        "AttackType": null,
-        "ArmorType": null,
         "Strength": 0,
         "Agility": 0,
         "Vitality": 0,
@@ -2658,7 +2656,6 @@
         "HpRegenCombatDelay": 0,
         "MaxMana": 0,
         "ManaRegen": 0,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 0,
@@ -2716,7 +2713,8 @@
         "ProceduralAnimation": null,
         "EnableProceduralAnimation": null,
         "DespawnShader": null,
-        "ConstructionRange": 4
+        "ConstructionRange": 4,
+        "MagicResistance": 0
       },
       {
         "TemplateID": "building/fire_element",
@@ -2734,8 +2732,6 @@
         "CostStone": 0,
         "PopCost": 0,
         "ProductionTime": 0,
-        "AttackType": null,
-        "ArmorType": null,
         "Strength": 0,
         "Agility": 0,
         "Vitality": 0,
@@ -2746,7 +2742,6 @@
         "HpRegenCombatDelay": 0,
         "MaxMana": 0,
         "ManaRegen": 0,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 0,
@@ -2804,7 +2799,8 @@
         "ProceduralAnimation": null,
         "EnableProceduralAnimation": null,
         "DespawnShader": null,
-        "ConstructionRange": 4
+        "ConstructionRange": 4,
+        "MagicResistance": 0
       },
       {
         "TemplateID": "building/water_element",
@@ -2822,8 +2818,6 @@
         "CostStone": 0,
         "PopCost": 0,
         "ProductionTime": 0,
-        "AttackType": null,
-        "ArmorType": null,
         "Strength": 0,
         "Agility": 0,
         "Vitality": 0,
@@ -2834,7 +2828,6 @@
         "HpRegenCombatDelay": 0,
         "MaxMana": 0,
         "ManaRegen": 0,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 0,
@@ -2892,7 +2885,8 @@
         "ProceduralAnimation": null,
         "EnableProceduralAnimation": null,
         "DespawnShader": null,
-        "ConstructionRange": 4
+        "ConstructionRange": 4,
+        "MagicResistance": 0
       },
       {
         "TemplateID": "building/altar",
@@ -2910,8 +2904,6 @@
         "CostStone": 0,
         "PopCost": 0,
         "ProductionTime": 0,
-        "AttackType": null,
-        "ArmorType": null,
         "Strength": 0,
         "Agility": 0,
         "Vitality": 0,
@@ -2922,7 +2914,6 @@
         "HpRegenCombatDelay": 0,
         "MaxMana": 0,
         "ManaRegen": 0,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 0,
@@ -2976,7 +2967,8 @@
         "ProceduralAnimation": null,
         "EnableProceduralAnimation": null,
         "DespawnShader": null,
-        "ConstructionRange": 4
+        "ConstructionRange": 4,
+        "MagicResistance": 0
       },
       {
         "TemplateID": "building/blacksmith",
@@ -2994,8 +2986,6 @@
         "CostStone": 0,
         "PopCost": 0,
         "ProductionTime": 0,
-        "AttackType": null,
-        "ArmorType": null,
         "Strength": 0,
         "Agility": 0,
         "Vitality": 0,
@@ -3006,7 +2996,6 @@
         "HpRegenCombatDelay": 0,
         "MaxMana": 0,
         "ManaRegen": 0,
-        "RatedArmor": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "DamageVariance": 0,
@@ -3081,7 +3070,8 @@
         "ProceduralAnimation": null,
         "EnableProceduralAnimation": null,
         "DespawnShader": null,
-        "ConstructionRange": 4
+        "ConstructionRange": 4,
+        "MagicResistance": 0
       }
     ],
     "Resources": [
@@ -4013,7 +4003,7 @@
       {
         "TemplateID": "ability/coral_vanguard_undertow",
         "Name": "Undertow",
-        "Description": "Rides the current for 3 s, plus 1 s per 30 Agility (max 7 s): 50% faster, and enemies within 3.5 are dragged 25% slower.",
+        "Description": "Rides the current for 3 s, plus 1 s per 30 Agility (max 7 s): 50% faster and 20% attack speed, and enemies within 3.5 are dragged 25% slower.",
         "Role": "Mobility",
         "AbilityType": "instant_spell",
         "IconPath": "blue_dragon_warlord.rtex",
@@ -5190,7 +5180,7 @@
       {
         "TemplateID": "ability/rune_scribe_grand_inscription",
         "Name": "Grand Inscription",
-        "Description": "Allies within 4 gain 4 armor, 10% tenacity and 2 health per second for 0.12 s per Wisdom (max 9 s).",
+        "Description": "Allies within 4 gain 4 armor, 10% tenacity and 2 health per second for 4 s, plus 0.12 s per Wisdom (max 9 s).",
         "Role": "Support",
         "AbilityType": "instant_spell",
         "IconPath": "castle_tower.rtex",
@@ -5239,10 +5229,11 @@
             ],
             "Scaling": {
               "Attribute": "Wisdom",
-              "Shape": "conversion",
+              "Shape": "linear",
               "Coefficient": 0.12,
               "Divisor": 0,
-              "Cap": 9
+              "Cap": 9,
+              "ScalesDuration": true
             }
           }
         ]
@@ -5436,8 +5427,8 @@
           },
           {
             "Kind": "buff",
-            "Targets": "self",
-            "Delivery": "self",
+            "Targets": "allies",
+            "Delivery": "single",
             "Duration": 5,
             "Modifiers": [
               {
@@ -6271,7 +6262,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "physical"
       },
       {
         "TemplateID": "weapon/vanguard_halberd",
@@ -6362,7 +6354,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "physical"
       },
       {
         "TemplateID": "weapon/pyro_orb",
@@ -6453,7 +6446,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "magic"
       },
       {
         "TemplateID": "weapon/glacial_icicle",
@@ -6544,7 +6538,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "magic"
       },
       {
         "TemplateID": "weapon/thunder_javelin",
@@ -6635,7 +6630,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "magic"
       },
       {
         "TemplateID": "weapon/bramble_thorn",
@@ -6726,7 +6722,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "magic"
       },
       {
         "TemplateID": "weapon/iron_cleaver",
@@ -6817,7 +6814,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "physical"
       },
       {
         "TemplateID": "weapon/arcane_seeker",
@@ -6908,7 +6906,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "magic"
       },
       {
         "TemplateID": "weapon/nether_stiletto",
@@ -6999,7 +6998,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "physical"
       },
       {
         "TemplateID": "weapon/solar_lance",
@@ -7090,7 +7090,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "magic"
       },
       {
         "TemplateID": "weapon/sanguine_scythe",
@@ -7181,7 +7182,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "physical"
       },
       {
         "TemplateID": "weapon/granite_crusher",
@@ -7272,7 +7274,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "physical"
       },
       {
         "TemplateID": "weapon/temporal_pendulum",
@@ -7363,7 +7366,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "magic"
       },
       {
         "TemplateID": "weapon/sandstorm_shortbow",
@@ -7454,7 +7458,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "physical"
       },
       {
         "TemplateID": "weapon/coral_harpoon",
@@ -7545,7 +7550,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "physical"
       },
       {
         "TemplateID": "weapon/prism_shard",
@@ -7636,7 +7642,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "magic"
       },
       {
         "TemplateID": "weapon/stellar_glaive",
@@ -7727,7 +7734,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "magic"
       },
       {
         "TemplateID": "weapon/radiant_cesti",
@@ -7818,7 +7826,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "physical"
       },
       {
         "TemplateID": "weapon/void_spindle",
@@ -7909,7 +7918,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "magic"
       },
       {
         "TemplateID": "weapon/zephyr_chakram",
@@ -8000,7 +8010,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "physical"
       },
       {
         "TemplateID": "weapon/orc_battleaxe",
@@ -8091,7 +8102,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "physical"
       },
       {
         "TemplateID": "weapon/knights_longsword",
@@ -8182,7 +8194,8 @@
           "X": 0,
           "Y": 0,
           "Z": 0
-        }
+        },
+        "DamageType": "physical"
       }
     ],
     "Upgrades": [
