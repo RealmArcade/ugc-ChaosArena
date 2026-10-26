@@ -154,26 +154,26 @@ public partial class MapScript : IWasmModule
 
     private static readonly string[] DraftableUnits =
     {
-        UnitIds.ShadowStrider,
-        UnitIds.VanguardSentinel,
-        UnitIds.FlameArchon,
-        UnitIds.FrostWarden,
-        UnitIds.StormCaller,
-        UnitIds.VerdantDruid,
-        UnitIds.IronWarlord,
-        UnitIds.ArcaneScholar,
-        UnitIds.NetherAssassin,
-        UnitIds.SunPriest,
-        UnitIds.BloodBerserker,
         UnitIds.StoneGuardian,
-        UnitIds.ChronoWeaver,
-        UnitIds.DuneSkirmisher,
-        UnitIds.CoralVanguard,
-        UnitIds.CrystalWeaver,
-        UnitIds.AstralParagon,
-        UnitIds.LightbringerMonk,
+        UnitIds.IronWarlord,
+        UnitIds.NetherAssassin,
         UnitIds.ShadowWeaver,
-        UnitIds.TempestChaser
+        UnitIds.VerdantDruid,
+        UnitIds.ThornbackBehemoth,
+        UnitIds.CoralVanguard,
+        UnitIds.Tidecaller,
+        UnitIds.FlameArchon,
+        UnitIds.MagmaSmith,
+        UnitIds.FrostWarden,
+        UnitIds.GlacierSentinel,
+        UnitIds.StormCaller,
+        UnitIds.TempestChaser,
+        UnitIds.ArcaneScholar,
+        UnitIds.RuneScribe,
+        UnitIds.SunPriest,
+        UnitIds.LightbringerMonk,
+        UnitIds.PackAlpha,
+        UnitIds.RazorDervish
     };
 
     private static readonly HashSet<string> DraftableUnitSet = new(DraftableUnits, StringComparer.OrdinalIgnoreCase);
