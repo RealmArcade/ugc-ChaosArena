@@ -69,7 +69,7 @@ public class PlayerState
     public Dictionary<string, Dictionary<int, float>> DamageDealtPerUnitTypePerWave { get; } = new();
 }
 
-public partial class MapScript : IWasmModule
+public partial class MapScript : IWasmModule, ILobbyScript
 {
     private const int RealPlayerSlotCount = 12;
     private const int ProxyPlayerOffset = 12;
@@ -100,6 +100,8 @@ public partial class MapScript : IWasmModule
     private const float StonePerKill = 1f;
     private const float StonePerIncomeTick = 1f;
     private const int StoneIncomeIntervalSeconds = 10;
+    private const float IdleSweepIntervalSeconds = 20f;
+    private const float IdleSweepMovementEpsilon = 0.75f;
 
     private const string RerollItemAbilityId = "ability/reroll_item";
     private const string RerollElementAbilityId = "ability/reroll_element";
@@ -114,6 +116,12 @@ public partial class MapScript : IWasmModule
 
     private const string AntiSnowballPoisonBuffId = "anti_snowball_poison";
     private static readonly Vector3 ArenaCenter = Vector3.Zero;
+
+    // The middle of the map an idle sweep sends units to. It is a region rather than a point, so a sweep spreads units
+    // across the arena instead of stacking every idle unit on the same spot.
+    private static readonly Coordinate ArenaCenterCoordinate = new(
+        new Vector3(-45f, 0f, -45f),
+        new Vector3(45f, 0f, 45f));
 
     private static readonly Vector3 ColorWhite = Vector3.One;
 
@@ -210,6 +218,8 @@ public partial class MapScript : IWasmModule
     private readonly List<(string PlayerName, string UnitTypeId, float Damage)> _damageLeaderboardEntries = new();
     private readonly Dictionary<int, float> waveUnitSpawnTimes = new();
     private readonly Dictionary<int, (int Player, string TemplateId)> _unitInfoCache = new();
+    private readonly Dictionary<int, Vector3> idleSweepPositionsByUnitId = new();
+    private readonly HashSet<int> unitsInCombatSinceIdleSweep = new();
     private readonly Dictionary<int, List<UnitId>> targetDummiesByPlayer = new();
     private readonly Dictionary<int, TargetDummyState> targetDummyStates = new();
     private UnitId gaiaTargetBuilder = UnitId.Invalid;
@@ -269,6 +279,7 @@ public partial class MapScript : IWasmModule
         _api.ScheduleRepeatingTimer(5f, UpdateLeaderboards);
         _api.ScheduleTimer(0f, UpdateLeaderboards);
         _api.ScheduleRepeatingTimer(TargetDummyHealthResetSeconds, RestoreGaiaTargetBuilderHealth);
+        _api.ScheduleRepeatingTimer(IdleSweepIntervalSeconds, SweepIdleUnitsTowardCenter);
     }
 
     public void Update(IGameAPI api, float delta)
@@ -1543,6 +1554,57 @@ public partial class MapScript : IWasmModule
         }
     }
 
+    /// <summary>
+    ///     Pulls units nobody is using into the middle of the map. A unit counts as idle when it has neither moved nor
+    ///     traded blows since the previous sweep, so a marching unit keeps its orders and a unit holding a fight of its
+    ///     own is left where it is.
+    /// </summary>
+    private void SweepIdleUnitsTowardCenter()
+    {
+        foreach (KeyValuePair<int, PlayerState> entry in playerStates)
+        {
+            PlayerState playerState = entry.Value;
+            if (playerState.Eliminated)
+                continue;
+
+            SweepIdleUnitsOfPlayer(entry.Key, playerState.Builder);
+            SweepIdleUnitsOfPlayer(entry.Key + ProxyPlayerOffset, UnitId.Invalid);
+        }
+
+        unitsInCombatSinceIdleSweep.Clear();
+    }
+
+    private void SweepIdleUnitsOfPlayer(int ownerPlayerIndex, UnitId builder)
+    {
+        foreach (UnitId unit in _api.GetUnitsOwnedByPlayer(ownerPlayerIndex))
+        {
+            if (!unit.IsValid || unit.IsDead || unit.IsBuilding)
+                continue;
+
+            int uniqueId = unit.UniqueId;
+            if ((builder.IsValid && uniqueId == builder.UniqueId)
+                || tileStatesByUnitId.ContainsKey(uniqueId)
+                || targetDummyStates.ContainsKey(uniqueId))
+                continue;
+
+            Vector3 position = unit.Position;
+            bool isIdle = !idleSweepPositionsByUnitId.TryGetValue(uniqueId, out Vector3 lastPosition)
+                || Vector3.DistanceSquared(lastPosition, position) <= IdleSweepMovementEpsilon * IdleSweepMovementEpsilon;
+            idleSweepPositionsByUnitId[uniqueId] = position;
+
+            if (!isIdle || unitsInCombatSinceIdleSweep.Contains(uniqueId))
+                continue;
+
+            unit.AttackMove(GetRandomArenaCenterPosition());
+        }
+    }
+
+    private Vector3 GetRandomArenaCenterPosition() =>
+        new(
+            _api.RandomFloat(ArenaCenterCoordinate.Min.X, ArenaCenterCoordinate.Max.X),
+            ArenaCenter.Y,
+            _api.RandomFloat(ArenaCenterCoordinate.Min.Z, ArenaCenterCoordinate.Max.Z));
+
     private bool TryResolveWaveTargetPlayerIndex(int playerIndex, out int targetPlayerIndex)
     {
         targetPlayerIndex = playerIndex;
@@ -2147,6 +2209,11 @@ public partial class MapScript : IWasmModule
 
     private void HandleUnitDamaged(UnitId victim, UnitId attacker, float damage)
     {
+        if (victim.IsValid)
+            unitsInCombatSinceIdleSweep.Add(victim.UniqueId);
+        if (attacker.IsValid)
+            unitsInCombatSinceIdleSweep.Add(attacker.UniqueId);
+
         bool isFriendlySource = attacker.IsValid && IsFriendlySource(attacker, victim);
 
         if (!isFriendlySource)
