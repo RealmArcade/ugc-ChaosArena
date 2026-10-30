@@ -401,13 +401,20 @@ public partial class MapScript : IWasmModule
         InitializePlayerAlliances(playerStates.Keys.ToList());
     }
 
-    private void HandleChatMessage(string message, UnitId senderUnit)
+    private void HandleChatMessage(string message, UnitId senderUnit, int senderPlayerIndex)
     {
         if (string.IsNullOrWhiteSpace(message)) return;
         string trimmed = message.Trim();
+        int senderSlot = ResolveRealPlayerIndex(senderPlayerIndex);
 
         if (trimmed.StartsWith("-kick", StringComparison.OrdinalIgnoreCase))
         {
+            if (!_api.IsHost(senderSlot))
+            {
+                _api.BroadcastMessage("-kick is only available to the host.");
+                return;
+            }
+
             var parts = trimmed.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             if (parts.Length > 1 && int.TryParse(parts[1], out int targetSlot))
             {
@@ -433,10 +440,16 @@ public partial class MapScript : IWasmModule
         }
         else if (trimmed.StartsWith(UnlockTilesCommand, StringComparison.OrdinalIgnoreCase))
         {
-            HandleUnlockTilesCommand();
+            HandleUnlockTilesCommand(senderSlot);
         }
         else if (trimmed.StartsWith("-addai", StringComparison.OrdinalIgnoreCase))
         {
+            if (!_api.IsHost(senderSlot))
+            {
+                _api.BroadcastMessage("-addai is only available to the host.");
+                return;
+            }
+
             var parts = trimmed.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             int targetSlot = -1;
             if (parts.Length > 1 && int.TryParse(parts[1], out int parsedSlot))
@@ -550,8 +563,14 @@ public partial class MapScript : IWasmModule
         gaiaTargetBuilder = UnitId.Invalid;
     }
 
-    private void HandleUnlockTilesCommand()
+    private void HandleUnlockTilesCommand(int senderSlot)
     {
+        if (!_api.IsHost(senderSlot))
+        {
+            _api.BroadcastMessage($"{UnlockTilesCommand} is only available to the host.");
+            return;
+        }
+
         if (!_api.CheatsEnabled)
         {
             _api.BroadcastMessage($"{UnlockTilesCommand} is only available when cheats are enabled.");
