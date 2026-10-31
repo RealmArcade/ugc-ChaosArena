@@ -8,6 +8,7 @@ public partial class MapScript
 
     public void LobbyInitialize(ILobbyAPI api)
     {
+        api.SetMaximumPlayerCount(RealPlayerSlotCount);
         api.SetTeamCount(ChaosArenaTeamCount);
     }
 
