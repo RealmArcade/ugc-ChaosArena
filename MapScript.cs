@@ -104,6 +104,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
     private const float IdleSweepMovementEpsilon = 0.75f;
 
     private const string RerollItemAbilityId = "ability/reroll_item";
+    private const string BuildCommandAbilityId = "ability/build";
     private const string RerollElementAbilityId = "ability/reroll_element";
     private const string RerollHeroAbilityId = "ability/reroll_hero";
     private const string RerollAllAbilityId = "ability/reroll_all";
@@ -255,6 +256,8 @@ public partial class MapScript : IWasmModule, ILobbyScript
         _api.OnConstructionFinished += HandleConstructionFinished;
         _api.OnPlayerChatMessage += HandleChatMessage;
         _api.OnPlayerLeft += HandlePlayerLeft;
+
+        RegisterInstructions();
 
         _api.ShowSummaryTable("Chaos Arena - Combat Statistics", true);
         _api.SetSummaryTableHeaders("Player", "Kills", "Placement", "Top Average Damage (Unit / Waves)");
@@ -821,22 +824,38 @@ public partial class MapScript : IWasmModule, ILobbyScript
         {
             PlayerId player = _api.GetPlayer(playerIndex);
             PlayerId proxyPlayer = _api.GetPlayer(playerIndex + ProxyPlayerOffset);
+
             proxyPlayer.SetActive(true);
             proxyPlayer.IsComputer = true;
-            int team = player.Team;
+            proxyPlayer.Team = player.Team;
 
+            // A board and the clones it sends are one side, whatever team it was drawn into.
             player.SetAllied(proxyPlayer, true);
-            proxyPlayer.SetAllied(player, true);
-            proxyPlayer.Team = team;
+        }
 
-            foreach (int otherPlayerIndex in activePlayerIndices)
+        for (int leftIndex = 0; leftIndex < activePlayerIndices.Count; leftIndex++)
+        {
+            int leftPlayerIndex = activePlayerIndices[leftIndex];
+            PlayerId leftPlayer = _api.GetPlayer(leftPlayerIndex);
+            PlayerId leftProxyPlayer = _api.GetPlayer(leftPlayerIndex + ProxyPlayerOffset);
+            int leftTeam = leftPlayer.Team;
+
+            for (int rightIndex = leftIndex + 1; rightIndex < activePlayerIndices.Count; rightIndex++)
             {
-                if (otherPlayerIndex == playerIndex || _api.GetPlayer(otherPlayerIndex).Team != team)
+                int rightPlayerIndex = activePlayerIndices[rightIndex];
+                PlayerId rightPlayer = _api.GetPlayer(rightPlayerIndex);
+
+                if (rightPlayer.Team != leftTeam)
                     continue;
 
-                PlayerId otherProxyPlayer = _api.GetPlayer(otherPlayerIndex + ProxyPlayerOffset);
-                otherProxyPlayer.SetAllied(proxyPlayer, true);
-                proxyPlayer.SetAllied(otherProxyPlayer, true);
+                PlayerId rightProxyPlayer = _api.GetPlayer(rightPlayerIndex + ProxyPlayerOffset);
+
+                // One side sees every unit of that side as an ally, whether the unit is a board or the clone of one,
+                // so two players on a team never send their waves into each other.
+                leftPlayer.SetAllied(rightPlayer, true);
+                leftPlayer.SetAllied(rightProxyPlayer, true);
+                leftProxyPlayer.SetAllied(rightPlayer, true);
+                leftProxyPlayer.SetAllied(rightProxyPlayer, true);
             }
         }
     }
@@ -1052,6 +1071,8 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
         foreach (string unitTypeId in DraftableUnits)
             unit.SetAbilityCooldown(unitTypeId, remainingSeconds);
+
+        unit.SetAbilityCooldown(BuildCommandAbilityId, remainingSeconds);
     }
 
     private float GetDraftCooldownRemainingSeconds(PlayerState playerState)
