@@ -1,4 +1,4 @@
-namespace Realm.Maps;
+﻿namespace Realm.Maps;
 
 using System;
 using System.Collections.Generic;
@@ -19,9 +19,7 @@ public enum TileKind
     Hero
 }
 
-public record UpgradeDefinition(string TechId, string AbilityId);
-
-public record UpgradeResearchRule(string TechId, float CostGold, int MaxLevel);
+public record UpgradeResearchRule(string TechId, float CostWood);
 
 public class TileState
 {
@@ -34,6 +32,9 @@ public class TileState
     public int LabelHandle { get; set; } = -1;
     public Vector3 AssignedDestination { get; set; }
     public bool RetargetedToCenter { get; set; }
+    public string? ElixirId { get; set; }
+
+    public Dictionary<string, int> AbilityReadyAtSeconds { get; } = new();
 }
 
 public class TargetDummyState
@@ -60,11 +61,15 @@ public class PlayerState
     public float SpawnAtSeconds { get; set; }
     public bool HasSpawnedThisRound { get; set; } = true;
     public bool IsCountdownVisible { get; set; }
+    public bool HasFieldedWave { get; set; }
+    public bool Eliminated { get; set; }
+    public int Placement { get; set; }
+    public int WaveTargetPlayerIndex { get; set; } = -1;
     public Dictionary<int, List<UnitId>> SpawnedUnitsPerWave { get; } = new();
     public Dictionary<string, Dictionary<int, float>> DamageDealtPerUnitTypePerWave { get; } = new();
 }
 
-public class MapScript : IWasmModule
+public partial class MapScript : IWasmModule, ILobbyScript
 {
     private const int RealPlayerSlotCount = 12;
     private const int ProxyPlayerOffset = 12;
@@ -74,8 +79,6 @@ public class MapScript : IWasmModule
     private const float BuildingOffset = -15f;
     private const float TileSpacing = 6.5f;
     private const float BuildingSpacing = 4f;
-    private const float SoulSiphonRadius = 3f;
-    private const float HealingWaveRadius = 6f;
     private const int WaveIntervalSeconds = 45;
     private const int WaveCountdownVisibleSeconds = 30;
     private const int SpawnSlotCount = 12;
@@ -93,28 +96,33 @@ public class MapScript : IWasmModule
     private const float TargetDummyRowOffset = 4f;
     private const float TargetDummyRowHeight = 5f;
     private const int TargetDummyHealthResetSeconds = 60;
+    private const float StoneCap = 40f;
+    private const float StonePerKill = 1f;
+    private const float StonePerIncomeTick = 1f;
+    private const int StoneIncomeIntervalSeconds = 10;
+    private const float IdleSweepIntervalSeconds = 20f;
+    private const float IdleSweepMovementEpsilon = 0.75f;
 
     private const string RerollItemAbilityId = "ability/reroll_item";
     private const string RerollElementAbilityId = "ability/reroll_element";
     private const string RerollHeroAbilityId = "ability/reroll_hero";
     private const string RerollAllAbilityId = "ability/reroll_all";
     private const string SwapTileUnitsAbilityId = "ability/swap_tile_units";
-    private const string UpgradeCriticalStrikeAbilityId = "ability/upgrade_critical_strike";
-
     private const string DebugCycleLevelAbilityId = "ability/debug_cycle_level";
     private const string DebugCycleItemAbilityId = "ability/debug_cycle_item";
     private const string DebugCycleElementAbilityId = "ability/debug_cycle_element";
     private const string TargetDummyCommand = "-targetDummy";
     private const string UnlockTilesCommand = "-unlockTiles";
 
-    private const string SoulSiphonAbilityId = "ability/soul_siphon";
-    private const string HealingWaveAbilityId = "ability/healing_wave";
     private const string AntiSnowballPoisonBuffId = "anti_snowball_poison";
-    private const string CriticalStrikeTechId = "upgrade/critical_strike";
-    private const string IronPlatingTechId = "upgrade/iron_plating";
-    private const string SwiftStrideTechId = "upgrade/swift_stride";
-
+    private const string BotDraftIntent = "Draft";
     private static readonly Vector3 ArenaCenter = Vector3.Zero;
+
+    // The middle of the map an idle sweep sends units to. It is a region rather than a point, so a sweep spreads units
+    // across the arena instead of stacking every idle unit on the same spot.
+    private static readonly Coordinate ArenaCenterCoordinate = new(
+        new Vector3(-45f, 0f, -45f),
+        new Vector3(45f, 0f, 45f));
 
     private static readonly Vector3 ColorWhite = Vector3.One;
 
@@ -131,56 +139,80 @@ public class MapScript : IWasmModule
 
     private static readonly string[] ItemPool =
     {
-        ItemIds.TitanBelt,
-        ItemIds.SwiftnessBoots,
-        ItemIds.CowlOfTheWise,
-        ItemIds.IronClaws,
-        ItemIds.GauntletsOfPower,
-        ItemIds.CrystalPendant,
-        ItemIds.VitalityRing,
-        ItemIds.RingOfProtection,
-        ItemIds.TomeOfKnowledge
+        "item/titan_belt",
+        "item/swiftness_boots",
+        "item/cowl_of_the_wise",
+        "item/iron_claws",
+        "item/gauntlets_of_power",
+        "item/crystal_pendant",
+        "item/vitality_ring",
+        "item/ring_of_protection",
+        "item/tome_of_knowledge",
+        "item/wardens_plate",
+        "item/bloodsign_talisman",
+        "item/glass_cannon",
+        "item/assassins_mark",
+        "item/bulwark_sigil",
+        "item/duelists_gloves",
+        "item/fortune_coin",
+        "item/ember_charm",
+        "item/travelers_cloak",
+        "item/band_of_focus",
+        "item/stoneheart",
     };
 
     private static readonly string[] DraftableUnits =
     {
-        UnitIds.ShadowStrider,
-        UnitIds.VanguardSentinel,
-        UnitIds.FlameArchon,
-        UnitIds.FrostWarden,
-        UnitIds.StormCaller,
-        UnitIds.VerdantDruid,
-        UnitIds.IronWarlord,
-        UnitIds.ArcaneScholar,
-        UnitIds.NetherAssassin,
-        UnitIds.SunPriest,
-        UnitIds.BloodBerserker,
         UnitIds.StoneGuardian,
-        UnitIds.ChronoWeaver,
-        UnitIds.DuneSkirmisher,
-        UnitIds.CoralVanguard,
-        UnitIds.CrystalWeaver,
-        UnitIds.AstralParagon,
-        UnitIds.LightbringerMonk,
+        UnitIds.IronWarlord,
+        UnitIds.NetherAssassin,
         UnitIds.ShadowWeaver,
-        UnitIds.TempestChaser
+        UnitIds.VerdantDruid,
+        UnitIds.ThornbackBehemoth,
+        UnitIds.CoralVanguard,
+        UnitIds.Tidecaller,
+        UnitIds.FlameArchon,
+        UnitIds.MagmaSmith,
+        UnitIds.FrostWarden,
+        UnitIds.GlacierSentinel,
+        UnitIds.StormCaller,
+        UnitIds.TempestChaser,
+        UnitIds.ArcaneScholar,
+        UnitIds.RuneScribe,
+        UnitIds.SunPriest,
+        UnitIds.LightbringerMonk,
+        UnitIds.PackAlpha,
+        UnitIds.RazorDervish
     };
 
     private static readonly HashSet<string> DraftableUnitSet = new(DraftableUnits, StringComparer.OrdinalIgnoreCase);
 
-    private static readonly UpgradeDefinition[] DraftableUpgrades =
-    {
-        new(CriticalStrikeTechId, UpgradeCriticalStrikeAbilityId),
-        new(IronPlatingTechId, string.Empty),
-        new(SwiftStrideTechId, string.Empty)
-    };
-
     private static readonly UpgradeResearchRule[] UpgradeResearchRules =
     {
-        new(CriticalStrikeTechId, 80, 3),
-        new(IronPlatingTechId, 70, 2),
-        new(SwiftStrideTechId, 60, 3)
+        new("upgrade/bs_sharpened_blades", 45),
+        new("upgrade/bs_brutal_edge", 95),
+        new("upgrade/bs_swift_hands", 70),
+        new("upgrade/bs_deadly_precision", 80),
+        new("upgrade/bs_piercing_rounds", 55),
+        new("upgrade/bs_arcane_resonance", 65),
+        new("upgrade/bs_overload", 50),
+        new("upgrade/bs_arcane_piercing", 70),
+        new("upgrade/bs_reinforced_plate", 50),
+        new("upgrade/bs_bulwark", 90),
+        new("upgrade/bs_second_wind", 45),
+        new("upgrade/bs_spell_ward", 60),
+        new("upgrade/bs_tenacity", 55),
+        new("upgrade/bs_evasion_drill", 70),
+        new("upgrade/bs_forced_march", 50),
+        new("upgrade/bs_battle_rhythm", 75),
+        new("upgrade/bs_bloodthirst", 65),
+        new("upgrade/bs_ritual_focus", 40),
+        new("upgrade/bs_field_medic", 60),
+        new("upgrade/bs_bounty_ledger", 65)
     };
+
+    private static readonly string[] BlacksmithUpgrades = UpgradeResearchRules.Select(rule => rule.TechId).ToArray();
+    private static readonly float[] BotDraftFeatureVector = new float[8];
 
     private readonly Dictionary<int, PlayerState> playerStates = new();
     private readonly Dictionary<int, TileState> tileStatesByUnitId = new();
@@ -188,8 +220,11 @@ public class MapScript : IWasmModule
     private readonly List<(string PlayerName, string UnitTypeId, float Damage)> _damageLeaderboardEntries = new();
     private readonly Dictionary<int, float> waveUnitSpawnTimes = new();
     private readonly Dictionary<int, (int Player, string TemplateId)> _unitInfoCache = new();
+    private readonly Dictionary<int, Vector3> idleSweepPositionsByUnitId = new();
+    private readonly HashSet<int> unitsInCombatSinceIdleSweep = new();
     private readonly Dictionary<int, List<UnitId>> targetDummiesByPlayer = new();
     private readonly Dictionary<int, TargetDummyState> targetDummyStates = new();
+    private readonly HashSet<int> botDraftDecisionsRegistered = new();
     private UnitId gaiaTargetBuilder = UnitId.Invalid;
     private bool debugAbilitiesRegistered;
     private int _tileUpdateTick;
@@ -199,7 +234,6 @@ public class MapScript : IWasmModule
     private float roundClockSeconds;
     private readonly List<float> spawnOffsetSlots = new();
     private readonly List<int> spawnSlotOrder = new();
-    private readonly List<int> roundTargetSlotOrder = new();
     private int gameSecondsElapsed;
     private int foodCap;
     private int nextFoodCapIncreaseSeconds;
@@ -211,6 +245,7 @@ public class MapScript : IWasmModule
         _api.DisableShroud();
 
         ConfigureDraftChoicesOnTiles();
+        ConfigureAltarAbilities();
         InitializePlayers();
 
         while (foodCap < FoodCapIncreaseMinutes.Length && gameSecondsElapsed >= nextFoodCapIncreaseSeconds)
@@ -219,12 +254,14 @@ public class MapScript : IWasmModule
         _api.OnUnitDied += HandleUnitDied;
         _api.OnUnitDamaged += HandleUnitDamaged;
         _api.OnSpellCast += HandleSpellCast;
+        _api.OnConsumableChanged += HandleConsumableChanged;
         _api.OnConstructionFinished += HandleConstructionFinished;
         _api.OnPlayerChatMessage += HandleChatMessage;
         _api.OnPlayerLeft += HandlePlayerLeft;
+        _api.OnBotCustomActionExecuted += HandleBotCustomAction;
 
         _api.ShowSummaryTable("Chaos Arena - Combat Statistics", true);
-        _api.SetSummaryTableHeaders("Player", "Kills", "Top Average Damage (Unit / Waves)");
+        _api.SetSummaryTableHeaders("Player", "Kills", "Placement", "Top Average Damage (Unit / Waves)");
 
         for (int slotIndex = 0; slotIndex < SpawnSlotCount; slotIndex++)
         {
@@ -232,12 +269,13 @@ public class MapScript : IWasmModule
             spawnSlotOrder.Add(slotIndex);
         }
 
-        for (int playerIndex = 1; playerIndex <= RealPlayerSlotCount; playerIndex++)
-            roundTargetSlotOrder.Add(playerIndex);
-
         _api.ScheduleRepeatingTimer(1f, HandleSpawnTimerTick);
         _api.ScheduleRepeatingTimer(1f, HandleGameTimerTick);
+        _api.ScheduleRepeatingTimer(1f, EvaluateEliminations);
+        _api.ScheduleRepeatingTimer(0.25f, FlushElixirDamage);
         _api.ScheduleRepeatingTimer(5f, GrantWoodPassive);
+        _api.ScheduleRepeatingTimer(StoneIncomeIntervalSeconds, GrantStoneIncome);
+        _api.ScheduleRepeatingTimer(1f, SweepProxyResources);
         _api.ScheduleRepeatingTimer(15f, ApplyNegativeHealthRegen);
         _api.ScheduleRepeatingTimer(60f, GrantPassiveExperience);
         _api.ScheduleRepeatingTimer(5f, UpdateSummaryTable);
@@ -245,6 +283,7 @@ public class MapScript : IWasmModule
         _api.ScheduleRepeatingTimer(5f, UpdateLeaderboards);
         _api.ScheduleTimer(0f, UpdateLeaderboards);
         _api.ScheduleRepeatingTimer(TargetDummyHealthResetSeconds, RestoreGaiaTargetBuilderHealth);
+        _api.ScheduleRepeatingTimer(IdleSweepIntervalSeconds, SweepIdleUnitsTowardCenter);
     }
 
     public void Update(IGameAPI api, float delta)
@@ -282,6 +321,10 @@ public class MapScript : IWasmModule
 
     private static int ResolveRealPlayerIndex(int playerIndex) =>
         IsProxyPlayerSlot(playerIndex) ? playerIndex - ProxyPlayerOffset : playerIndex;
+
+    private static bool IsFriendlySource(UnitId source, UnitId victim) =>
+        source.UniqueId == victim.UniqueId
+        || ResolveRealPlayerIndex(source.Player) == ResolveRealPlayerIndex(victim.Player);
 
     private static int GetNextDraftUnlockTimestamp(int draftedCount) =>
         draftedCount < FoodCapIncreaseMinutes.Length
@@ -357,6 +400,9 @@ public class MapScript : IWasmModule
         InitializePlayerBase(playerIndex);
         InitializePlayerDeck(playerIndex);
 
+        if (_api.GetPlayer(playerIndex).IsComputer)
+            _api.SetPlayerBotGenre(playerIndex, "custom");
+
         if (updateAlliances)
             InitializePlayerAlliances(playerStates.Keys.ToList());
     }
@@ -373,13 +419,20 @@ public class MapScript : IWasmModule
         InitializePlayerAlliances(playerStates.Keys.ToList());
     }
 
-    private void HandleChatMessage(string message, UnitId senderUnit)
+    private void HandleChatMessage(string message, UnitId senderUnit, int senderPlayerIndex)
     {
         if (string.IsNullOrWhiteSpace(message)) return;
         string trimmed = message.Trim();
+        int senderSlot = ResolveRealPlayerIndex(senderPlayerIndex);
 
         if (trimmed.StartsWith("-kick", StringComparison.OrdinalIgnoreCase))
         {
+            if (!_api.IsHost(senderSlot))
+            {
+                _api.BroadcastMessage("-kick is only available to the host.");
+                return;
+            }
+
             var parts = trimmed.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             if (parts.Length > 1 && int.TryParse(parts[1], out int targetSlot))
             {
@@ -405,10 +458,16 @@ public class MapScript : IWasmModule
         }
         else if (trimmed.StartsWith(UnlockTilesCommand, StringComparison.OrdinalIgnoreCase))
         {
-            HandleUnlockTilesCommand();
+            HandleUnlockTilesCommand(senderSlot);
         }
         else if (trimmed.StartsWith("-addai", StringComparison.OrdinalIgnoreCase))
         {
+            if (!_api.IsHost(senderSlot))
+            {
+                _api.BroadcastMessage("-addai is only available to the host.");
+                return;
+            }
+
             var parts = trimmed.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             int targetSlot = -1;
             if (parts.Length > 1 && int.TryParse(parts[1], out int parsedSlot))
@@ -522,8 +581,14 @@ public class MapScript : IWasmModule
         gaiaTargetBuilder = UnitId.Invalid;
     }
 
-    private void HandleUnlockTilesCommand()
+    private void HandleUnlockTilesCommand(int senderSlot)
     {
+        if (!_api.IsHost(senderSlot))
+        {
+            _api.BroadcastMessage($"{UnlockTilesCommand} is only available to the host.");
+            return;
+        }
+
         if (!_api.CheatsEnabled)
         {
             _api.BroadcastMessage($"{UnlockTilesCommand} is only available when cheats are enabled.");
@@ -626,11 +691,6 @@ public class MapScript : IWasmModule
 
             bool isActive = index == (int)state.Element;
             _api.SetAbilityState(dummy, abilityId, !isActive, !isActive);
-            string abilityName = _api.GetAbilityName(abilityId);
-            if (isActive)
-                _api.SetAbilityTooltip(abilityId, $"[{state.Element}] {abilityName}");
-            else
-                _api.SetAbilityTooltip(abilityId, $"[{(Element)index}] {abilityName} (disabled)");
         }
     }
 
@@ -895,13 +955,6 @@ public class MapScript : IWasmModule
 
         PlayerState playerState = playerStates[playerIndex];
         HashSet<string> offeredUnitTypeIds = new(playerState.Offers, StringComparer.OrdinalIgnoreCase);
-        HashSet<string> offeredAbilityIds = new(StringComparer.OrdinalIgnoreCase);
-
-        foreach (string offerTypeId in playerState.Offers)
-        {
-            foreach (string abilityId in _api.GetUnitTypeAbilities(offerTypeId))
-                offeredAbilityIds.Add(abilityId);
-        }
 
         if (playerState.Builder.IsValid && !playerState.Builder.IsDead)
         {
@@ -916,13 +969,25 @@ public class MapScript : IWasmModule
 
         foreach (UnitId unit in unitsToConfigure)
         {
+            Element circleElement = tileStatesByUnitId.TryGetValue(unit.UniqueId, out TileState? circleState)
+                ? circleState.Element
+                : Element.Water;
+            int elementSlot = (int)circleElement;
+
             foreach (string unitTypeId in DraftableUnits)
             {
-                foreach (string abilityId in _api.GetUnitTypeAbilities(unitTypeId))
+                bool isOffered = offeredUnitTypeIds.Contains(unitTypeId);
+                IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unitTypeId);
+
+                for (int index = 0; index < abilities.Count; index++)
                 {
-                    bool isOffered = offeredAbilityIds.Contains(abilityId);
-                    _api.SetAbilityState(unit, abilityId, !isOffered, !isOffered);
-                    if (isOffered)
+                    string abilityId = abilities[index];
+                    if (string.IsNullOrEmpty(abilityId))
+                        continue;
+
+                    bool isVisible = isOffered && index == elementSlot;
+                    _api.SetAbilityState(unit, abilityId, !isVisible, !isVisible);
+                    if (isVisible)
                         _api.SetAbilityManaCost(unit, abilityId, 0f);
                 }
             }
@@ -939,7 +1004,7 @@ public class MapScript : IWasmModule
             Vector3 position = playerState.TilePositions[0];
             playerState.TilePositions.RemoveAt(0);
 
-            Element initialElement = AllElements[Random.Shared.Next(AllElements.Length)];
+            Element initialElement = AllElements[_api.RandomInt(0, AllElements.Length - 1)];
             string circleTypeId = GetCircleUnitTypeId(initialElement);
             UnitId circle = _api.GetPlayer(playerIndex).SpawnUnit(circleTypeId, position);
             circle.Damage = 0f;
@@ -964,7 +1029,7 @@ public class MapScript : IWasmModule
             CreateTileLabel(state);
         }
 
-        UpdateDraftOfferAbilities(playerIndex);
+        RefreshPlayerTileAbilities(playerIndex);
         ApplyDraftCooldown(playerIndex);
     }
 
@@ -1059,6 +1124,9 @@ public class MapScript : IWasmModule
 
                 tileStatesByUnitId[newCircle.UniqueId] = state;
                 unit = newCircle;
+                ReapplyTileAbilityCooldowns(unit, state);
+
+                UpdateDraftOfferAbilities(playerIndex);
             }
         }
 
@@ -1076,7 +1144,7 @@ public class MapScript : IWasmModule
             return;
 
         IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unit.TemplateID);
-        // Ordered abilities: [0]=Water, [1]=Earth, [2]=Fire, [3]=Ultimate
+
         for (int i = 0; i < ElementalAbilityCount && i < abilities.Count; i++)
         {
             Element element = (Element)i;
@@ -1088,15 +1156,23 @@ public class MapScript : IWasmModule
             if (!isActive && !includeDisabledAbilities)
                 continue;
 
-            _api.SetAbilityState(unit, abilityId, !isActive, false);
-            string abilityName = _api.GetAbilityName(abilityId);
-            if (isActive)
-                _api.SetAbilityTooltip(abilityId, $"[{element}] {abilityName}");
-            else
-                _api.SetAbilityTooltip(abilityId, $"[{element}] {abilityName} (disabled)");
+            _api.SetAbilityState(unit, abilityId, !isActive, !isActive);
         }
 
         RecreateTileLabel(state);
+    }
+
+    private void EnableElementAutocast(UnitId unit, Element element)
+    {
+        IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unit.TemplateID);
+        for (int i = 0; i < ElementalAbilityCount && i < abilities.Count; i++)
+        {
+            string abilityId = abilities[i];
+            if (string.IsNullOrEmpty(abilityId))
+                continue;
+
+            _api.SetAbilityAutoCast(unit, abilityId, i == (int)element);
+        }
     }
 
     private static void ApplyHeroStats(UnitId unit, int level)
@@ -1121,7 +1197,7 @@ public class MapScript : IWasmModule
         unit.CommandsFrozen = true;
     }
 
-    private void ConfigureDraftedHero(UnitId hero, int level, IEnumerable<string> itemIds, Element element, Vector3 anchorPosition, int playerIndex)
+    private TileState ConfigureDraftedHero(UnitId hero, int level, IEnumerable<string> itemIds, Element element, Vector3 anchorPosition, int playerIndex)
     {
         ApplyHeroStats(hero, level);
 
@@ -1144,6 +1220,7 @@ public class MapScript : IWasmModule
 
         ApplyElement(hero, state, true);
         LockTileUnit(hero);
+        return state;
     }
 
     private IEnumerable<UnitId> GetPlayerPlacedHeroes(int playerIndex)
@@ -1186,7 +1263,8 @@ public class MapScript : IWasmModule
         List<string> itemIds = circle.GetItems().ToList();
         int circleLevel = 1;
         Element element = Element.Water;
-        if (tileStatesByUnitId.TryGetValue(circle.UniqueId, out TileState? circleState))
+        TileState? circleState = null;
+        if (tileStatesByUnitId.TryGetValue(circle.UniqueId, out circleState))
         {
             element = circleState.Element;
             circleLevel = circleState.CircleLevel;
@@ -1197,7 +1275,9 @@ public class MapScript : IWasmModule
         _api.DestroyUnit(circle, false, false);
 
         UnitId hero = _api.GetPlayer(playerIndex).SpawnUnit(unitTypeId, position);
-        ConfigureDraftedHero(hero, circleLevel, itemIds, element, position, playerIndex);
+        TileState heroState = ConfigureDraftedHero(hero, circleLevel, itemIds, element, position, playerIndex);
+        CarryTileAbilityCooldowns(heroState, circleState);
+        ReapplyTileAbilityCooldowns(hero, heroState);
 
         ResetPlayerSelection(playerIndex);
 
@@ -1215,34 +1295,84 @@ public class MapScript : IWasmModule
         if (playerState.Offers.Count == 0)
             return;
 
-        string chosenUnitTypeId = playerState.Offers[Random.Shared.Next(playerState.Offers.Count)];
+        if (botDraftDecisionsRegistered.Contains(playerIndex))
+            return;
+
         List<UnitId> circles = GetPlayerCircles(playerIndex).ToList();
         if (circles.Count == 0)
             return;
 
-        UnitId chosenCircle = circles[Random.Shared.Next(circles.Count)];
-        if (!chosenCircle.IsValid)
+        _api.ClearCustomBotDecisions(playerIndex);
+        foreach (string offer in playerState.Offers)
+        {
+            foreach (UnitId circle in circles)
+            {
+                if (!circle.IsValid)
+                    continue;
+
+                _api.RegisterCustomBotDecision(
+                    playerIndex,
+                    offer,
+                    BotDraftIntent,
+                    BotDraftFeatureVector,
+                    GetCircleAnchorPosition(circle));
+            }
+        }
+
+        botDraftDecisionsRegistered.Add(playerIndex);
+    }
+
+    private void HandleBotCustomAction(int playerIndex, string actionId, string intent, Vector3 position, string payload)
+    {
+        if (!string.Equals(intent, BotDraftIntent, StringComparison.OrdinalIgnoreCase))
             return;
 
-        DraftUnit(playerIndex, chosenUnitTypeId, chosenCircle);
+        botDraftDecisionsRegistered.Remove(playerIndex);
+
+        if (!playerStates.TryGetValue(playerIndex, out PlayerState? playerState))
+            return;
+
+        if (!playerState.Offers.Contains(actionId, StringComparer.OrdinalIgnoreCase))
+            return;
+
+        if (!TryFindPlayerCircleAt(playerIndex, position, out UnitId circle))
+            return;
+
+        DraftUnit(playerIndex, actionId, circle);
+    }
+
+    private Vector3 GetCircleAnchorPosition(UnitId circle) =>
+        tileStatesByUnitId.TryGetValue(circle.UniqueId, out TileState? state) ? state.AnchorPosition : circle.Position;
+
+    private bool TryFindPlayerCircleAt(int playerIndex, Vector3 position, out UnitId circle)
+    {
+        foreach (UnitId candidate in GetPlayerCircles(playerIndex))
+        {
+            if (Vector3.DistanceSquared(GetCircleAnchorPosition(candidate), position) <= 0.01f)
+            {
+                circle = candidate;
+                return true;
+            }
+        }
+
+        circle = UnitId.Invalid;
+        return false;
     }
 
     private void ApplyPlayerTechToProxy(PlayerId player, PlayerId proxyPlayer)
     {
-        foreach (UpgradeDefinition upgrade in DraftableUpgrades)
+        foreach (string techId in BlacksmithUpgrades)
         {
-            int techLevel = player.GetTechLevel(upgrade.TechId);
+            int techLevel = player.GetTechLevel(techId);
             if (techLevel > 0)
-                proxyPlayer.SetTechLevel(upgrade.TechId, techLevel);
+                proxyPlayer.SetTechLevel(techId, techLevel);
         }
     }
 
     private UnitId PerformHeroReroll(UnitId unit, int playerIndex)
     {
         PlayerId player = _api.GetPlayer(playerIndex);
-        HashSet<string> draftedUnitTypeIds = GetPlayerDraftedUnitTypeIds(playerIndex);
-        List<string> candidates = DraftableUnits.Where(id => !draftedUnitTypeIds.Contains(id)).ToList();
-        string? replacement = _api.PickRandom(candidates);
+        string? replacement = _api.PickRandom(GetHeroRerollCandidates(playerIndex));
 
         if (replacement == null)
         {
@@ -1263,17 +1393,28 @@ public class MapScript : IWasmModule
         _api.DestroyUnit(unit, false, false);
 
         UnitId newUnit = player.SpawnUnit(replacement, position);
-        ConfigureDraftedHero(newUnit, level, itemIds, state.Element, position, playerIndex);
+        ApplyHeroStats(newUnit, level);
+        foreach (string itemId in itemIds)
+            newUnit.AddItem(itemId, Math.Max(level, 1));
+
+        tileStatesByUnitId[newUnit.UniqueId] = state;
+        ApplyElement(newUnit, state, true);
+        LockTileUnit(newUnit);
+        ReapplyTileAbilityCooldowns(newUnit, state);
         SelectUnitForPlayer(playerIndex, newUnit);
         return newUnit;
     }
 
-    private void PerformAllReroll(UnitId unit, TileState state, int playerIndex)
+    private UnitId PerformAllReroll(UnitId unit, TileState state, int playerIndex)
     {
         PerformItemReroll(unit);
         UnitId currentUnit = PerformElementReroll(unit, state);
-        if (state.Kind == TileKind.Hero)
-            PerformHeroReroll(currentUnit, playerIndex);
+
+        if (state.Kind == TileKind.Hero && HasHeroRerollCandidate(playerIndex))
+            return PerformHeroReroll(currentUnit, playerIndex);
+
+        SelectUnitForPlayer(playerIndex, currentUnit);
+        return currentUnit;
     }
 
     private void SwapTileUnits(UnitId caster, UnitId target, int playerIndex)
@@ -1322,7 +1463,7 @@ public class MapScript : IWasmModule
             unit.SetItemCharges(itemId, charges);
         }
 
-        RefreshTileLabel(state);
+        RecreateTileLabel(state);
     }
 
     private void CreateTileLabel(TileState state)
@@ -1335,17 +1476,6 @@ public class MapScript : IWasmModule
             state.AnchorPosition + new Vector3(0f, 2.5f, 0f),
             GetTileLabelColor(state),
             TileLabelFontSize);
-    }
-
-    private void RefreshTileLabel(TileState state)
-    {
-        if (state.LabelHandle < 0)
-        {
-            CreateTileLabel(state);
-            return;
-        }
-
-        _api.SetStaticText(state.LabelHandle, GetTileLabelText(state));
     }
 
     private void RecreateTileLabel(TileState state)
@@ -1383,23 +1513,58 @@ public class MapScript : IWasmModule
 
     private void HandleSpawnTimerTick()
     {
+        if (matchComplete)
+            return;
+
+        if (gameSecondsElapsed >= MatchHardEndSeconds)
+        {
+            EndMatch("time limit reached");
+            return;
+        }
+
+        bool wavesOpen = gameSecondsElapsed < MatchWaveCutoffSeconds;
+        if (!wavesOpen && !wavesClosedAnnounced)
+        {
+            wavesClosedAnnounced = true;
+            _api.BroadcastMessage(
+                $"{MatchWaveCutoffSeconds / 60}:00 — no more waves. Your last wave is your match: "
+                + "the first player to lose every unit on the field is out.");
+        }
+
         roundClockSeconds += 1f;
 
         if (roundClockSeconds >= WaveIntervalSeconds)
         {
             roundClockSeconds -= WaveIntervalSeconds;
-            StartWaveRound();
+
+            if (wavesOpen)
+                StartWaveRound();
         }
 
         foreach (KeyValuePair<int, PlayerState> entry in playerStates)
         {
             PlayerState playerState = entry.Value;
 
+            if (playerState.Eliminated)
+                continue;
+
             if (!playerState.HasSpawnedThisRound && roundClockSeconds >= playerState.SpawnAtSeconds)
             {
                 playerState.HasSpawnedThisRound = true;
                 if (_api.GetPlayer(entry.Key).IsActive)
                     SpawnWaveForPlayer(entry.Key);
+            }
+
+            if (!wavesOpen)
+            {
+
+                if (playerState.IsCountdownVisible)
+                {
+                    playerState.IsCountdownVisible = false;
+                    _api.SetStaticTextVisible(playerState.CountdownTextHandle, false);
+                }
+
+                continue;
             }
 
             float secondsUntilSpawn = playerState.SpawnAtSeconds - roundClockSeconds;
@@ -1448,18 +1613,75 @@ public class MapScript : IWasmModule
         }
     }
 
-    private int ResolveRoundTargetPlayerIndex(int playerIndex) =>
-        roundTargetSlotOrder[(playerIndex - 1) % roundTargetSlotOrder.Count];
+    /// <summary>
+    ///     Pulls units nobody is using into the middle of the map. A unit counts as idle when it has neither moved nor
+    ///     traded blows since the previous sweep, so a marching unit keeps its orders and a unit holding a fight of its
+    ///     own is left where it is.
+    /// </summary>
+    private void SweepIdleUnitsTowardCenter()
+    {
+        foreach (KeyValuePair<int, PlayerState> entry in playerStates)
+        {
+            PlayerState playerState = entry.Value;
+            if (playerState.Eliminated)
+                continue;
+
+            SweepIdleUnitsOfPlayer(entry.Key, playerState.Builder);
+            SweepIdleUnitsOfPlayer(entry.Key + ProxyPlayerOffset, UnitId.Invalid);
+        }
+
+        unitsInCombatSinceIdleSweep.Clear();
+    }
+
+    private void SweepIdleUnitsOfPlayer(int ownerPlayerIndex, UnitId builder)
+    {
+        foreach (UnitId unit in _api.GetUnitsOwnedByPlayer(ownerPlayerIndex))
+        {
+            if (!unit.IsValid || unit.IsDead || unit.IsBuilding)
+                continue;
+
+            int uniqueId = unit.UniqueId;
+            if ((builder.IsValid && uniqueId == builder.UniqueId)
+                || tileStatesByUnitId.ContainsKey(uniqueId)
+                || targetDummyStates.ContainsKey(uniqueId))
+                continue;
+
+            Vector3 position = unit.Position;
+            bool isIdle = !idleSweepPositionsByUnitId.TryGetValue(uniqueId, out Vector3 lastPosition)
+                || Vector3.DistanceSquared(lastPosition, position) <= IdleSweepMovementEpsilon * IdleSweepMovementEpsilon;
+            idleSweepPositionsByUnitId[uniqueId] = position;
+
+            if (!isIdle || unitsInCombatSinceIdleSweep.Contains(uniqueId))
+                continue;
+
+            unit.AttackMove(GetRandomArenaCenterPosition());
+        }
+    }
+
+    private Vector3 GetRandomArenaCenterPosition() =>
+        new(
+            _api.RandomFloat(ArenaCenterCoordinate.Min.X, ArenaCenterCoordinate.Max.X),
+            ArenaCenter.Y,
+            _api.RandomFloat(ArenaCenterCoordinate.Min.Z, ArenaCenterCoordinate.Max.Z));
 
     private bool TryResolveWaveTargetPlayerIndex(int playerIndex, out int targetPlayerIndex)
     {
-        targetPlayerIndex = ResolveRoundTargetPlayerIndex(playerIndex);
-        if (targetPlayerIndex == playerIndex)
+        targetPlayerIndex = playerIndex;
+
+        if (!playerStates.TryGetValue(playerIndex, out PlayerState? playerState))
             return false;
 
-        if (!playerStates.ContainsKey(targetPlayerIndex) || !_api.GetPlayer(targetPlayerIndex).IsActive)
+        int candidateIndex = playerState.WaveTargetPlayerIndex;
+        if (candidateIndex == playerIndex)
             return false;
 
+        if (!playerStates.TryGetValue(candidateIndex, out PlayerState? targetState) || targetState.Eliminated)
+            return false;
+
+        if (!_api.GetPlayer(candidateIndex).IsActive)
+            return false;
+
+        targetPlayerIndex = candidateIndex;
         return true;
     }
 
@@ -1482,7 +1704,7 @@ public class MapScript : IWasmModule
         waveNumber++;
 
         _api.Shuffle(spawnSlotOrder);
-        _api.Shuffle(roundTargetSlotOrder);
+        ResolveRoundWaveTargets();
 
         int slotCursor = 0;
         foreach (int playerIndex in playerStates.Keys.OrderBy(index => index))
@@ -1490,7 +1712,7 @@ public class MapScript : IWasmModule
             PlayerState playerState = playerStates[playerIndex];
             playerState.SpawnedUnitsPerWave[waveNumber] = new List<UnitId>();
 
-            if (!_api.GetPlayer(playerIndex).IsActive)
+            if (playerState.Eliminated || !_api.GetPlayer(playerIndex).IsActive)
             {
                 playerState.HasSpawnedThisRound = true;
                 continue;
@@ -1505,6 +1727,9 @@ public class MapScript : IWasmModule
     private void SpawnWaveForPlayer(int playerIndex)
     {
         PlayerState playerState = playerStates[playerIndex];
+        if (playerState.Eliminated)
+            return;
+
         PlayerId player = _api.GetPlayer(playerIndex);
         int proxyPlayerIndex = playerIndex + ProxyPlayerOffset;
         PlayerId proxyPlayer = _api.GetPlayer(proxyPlayerIndex);
@@ -1526,15 +1751,6 @@ public class MapScript : IWasmModule
             ApplyHeroStats(clone, tileState?.CircleLevel ?? draftedUnit.Level);
             _api.EnableUnitAutoCombat(clone, true);
 
-            foreach (UpgradeDefinition upgrade in DraftableUpgrades)
-            {
-                if (string.IsNullOrEmpty(upgrade.AbilityId))
-                    continue;
-
-                int techLevel = player.GetTechLevel(upgrade.TechId);
-                _api.SetAbilityState(clone, upgrade.AbilityId, techLevel <= 0, techLevel <= 0);
-            }
-
             foreach (string itemId in draftedUnit.GetItems())
             {
                 int charges = draftedUnit.GetItemCharges(itemId);
@@ -1554,6 +1770,9 @@ public class MapScript : IWasmModule
             };
             waveUnitStatesByUnitId[clone.UniqueId] = cloneState;
             ApplyElement(clone, cloneState, false);
+            EnableElementAutocast(clone, element);
+
+            ApplyInheritedElixir(clone, tileState);
 
             HideDebugAbilities(clone);
             _api.SetUnitFacing(clone, ArenaCenter);
@@ -1561,6 +1780,9 @@ public class MapScript : IWasmModule
             playerState.SpawnedUnitsPerWave[waveNumber].Add(clone);
             waveUnitSpawnTimes[clone.UniqueId] = gameSecondsElapsed;
         }
+
+        if (playerState.SpawnedUnitsPerWave[waveNumber].Count > 0)
+            playerState.HasFieldedWave = true;
     }
 
     private void PerformComputerResearch(int playerIndex)
@@ -1569,13 +1791,13 @@ public class MapScript : IWasmModule
 
         foreach (UpgradeResearchRule rule in UpgradeResearchRules)
         {
-            if (player.GetTechLevel(rule.TechId) >= rule.MaxLevel)
+            if (player.GetTechLevel(rule.TechId) > 0)
                 continue;
 
-            if (player.Gold < rule.CostGold)
+            if (player.Wood < rule.CostWood)
                 continue;
 
-            player.AdjustGold(-rule.CostGold);
+            player.AdjustWood(-rule.CostWood);
             player.AddTechLevel(rule.TechId);
             return;
         }
@@ -1585,21 +1807,30 @@ public class MapScript : IWasmModule
     {
         gameSecondsElapsed++;
 
+        HandleElixirTick();
+
         while (foodCap < FoodCapIncreaseMinutes.Length && gameSecondsElapsed >= nextFoodCapIncreaseSeconds)
             IncreaseFoodCap();
 
         foreach (int playerIndex in playerStates.Keys)
         {
+            if (playerStates[playerIndex].Eliminated)
+                continue;
+
             if (_api.GetPlayer(playerIndex).IsComputer)
             {
                 PlayerState playerState = playerStates[playerIndex];
-                while (playerState.DraftedCount < foodCap && GetPlayerCircles(playerIndex).Any())
+                if (playerState.DraftedCount < foodCap && GetPlayerCircles(playerIndex).Any())
                 {
                     PerformComputerDraft(playerIndex);
                 }
 
                 if (gameSecondsElapsed % ComputerResearchIntervalSeconds == 0)
                     PerformComputerResearch(playerIndex);
+            }
+            else
+            {
+                TrySendElixirHint(playerIndex);
             }
         }
     }
@@ -1615,13 +1846,16 @@ public class MapScript : IWasmModule
 
         foreach (int playerIndex in playerStates.Keys.ToList())
         {
+            if (playerStates[playerIndex].Eliminated)
+                continue;
+
             PlayerId player = _api.GetPlayer(playerIndex);
             player.SetMaxPopulation(foodCap);
 
             if (player.IsComputer)
             {
                 PlayerState playerState = playerStates[playerIndex];
-                while (playerState.DraftedCount < foodCap && GetPlayerCircles(playerIndex).Any())
+                if (playerState.DraftedCount < foodCap && GetPlayerCircles(playerIndex).Any())
                 {
                     PerformComputerDraft(playerIndex);
                 }
@@ -1631,14 +1865,74 @@ public class MapScript : IWasmModule
 
     private void GrantWoodPassive()
     {
+        foreach (KeyValuePair<int, PlayerState> entry in playerStates)
+        {
+            if (!entry.Value.Eliminated)
+                _api.GetPlayer(entry.Key).AdjustWood(1f);
+        }
+    }
+
+    private void GrantStoneIncome()
+    {
+        foreach (KeyValuePair<int, PlayerState> entry in playerStates)
+        {
+            if (!entry.Value.Eliminated)
+                GrantStone(_api.GetPlayer(entry.Key), StonePerIncomeTick);
+        }
+    }
+
+    private static void GrantStone(PlayerId player, float amount)
+    {
+        if (amount <= 0f)
+            return;
+
+        player.SetStone(MathF.Min(player.Stone + amount, StoneCap));
+    }
+
+    private void SweepProxyResources()
+    {
         foreach (int playerIndex in playerStates.Keys)
-            _api.GetPlayer(playerIndex).AdjustWood(1f);
+        {
+            if (playerStates[playerIndex].Eliminated)
+                continue;
+
+            PlayerId proxyPlayer = _api.GetPlayer(playerIndex + ProxyPlayerOffset);
+            float gold = proxyPlayer.Gold;
+            float wood = proxyPlayer.Wood;
+            float stone = proxyPlayer.Stone;
+
+            if (gold <= 0f && wood <= 0f && stone <= 0f)
+                continue;
+
+            PlayerId player = _api.GetPlayer(playerIndex);
+
+            if (gold > 0f)
+            {
+                proxyPlayer.AdjustGold(-gold);
+                player.AdjustGold(gold);
+            }
+
+            if (wood > 0f)
+            {
+                proxyPlayer.AdjustWood(-wood);
+                player.AdjustWood(wood);
+            }
+
+            if (stone > 0f)
+            {
+                proxyPlayer.SetStone(0f);
+                GrantStone(player, stone);
+            }
+        }
     }
 
     private void GrantPassiveExperience()
     {
         foreach (PlayerState playerState in playerStates.Values)
         {
+            if (playerState.Eliminated)
+                continue;
+
             if (playerState.Builder.IsValid && !playerState.Builder.IsDead)
             {
                 var builder = playerState.Builder;
@@ -1706,6 +2000,20 @@ public class MapScript : IWasmModule
         int playerIndex = ResolveRealPlayerIndex(caster.Player);
         PlayerId player = _api.GetPlayer(playerIndex);
 
+        OnElixirCast(caster, spellId);
+
+        if (SlugsEqual(spellId, SoulSiphonAbilityId))
+        {
+            ApplySoulSiphon(caster, targetPosition, playerIndex);
+            return;
+        }
+
+        if (SlugsEqual(spellId, HealingWaveAbilityId))
+        {
+            ApplyHealingWave(caster, targetPosition, playerIndex);
+            return;
+        }
+
         if (SlugsEqual(spellId, DebugCycleLevelAbilityId))
         {
             CycleTargetDummyLevel(caster);
@@ -1724,43 +2032,58 @@ public class MapScript : IWasmModule
             return;
         }
 
-        UpgradeDefinition? upgrade = DraftableUpgrades.FirstOrDefault(u => !string.IsNullOrEmpty(u.AbilityId) && SlugsEqual(u.AbilityId, spellId));
-        if (upgrade != null)
+        if (SlugsEqual(spellId, RerollItemAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? itemState))
         {
-            player.AddTechLevel(upgrade.TechId);
-            _api.GetPlayer(playerIndex + ProxyPlayerOffset).AddTechLevel(upgrade.TechId);
-            string upgradeName = _api.GetAbilityName(upgrade.AbilityId);
-            player.SendMessage($"{upgradeName} upgraded (Level {player.GetTechLevel(upgrade.TechId)}).");
-            return;
-        }
-
-        if (SlugsEqual(spellId, SoulSiphonAbilityId))
-        {
-            ApplySoulSiphon(caster, targetPosition);
-        }
-        else if (SlugsEqual(spellId, HealingWaveAbilityId))
-        {
-            ApplyHealingWave(caster, targetPosition);
-        }
-        else if (SlugsEqual(spellId, RerollItemAbilityId))
-        {
-            PerformItemReroll(caster);
+            if (TryPayTileAbility(caster, itemState, spellId, playerIndex))
+            {
+                PerformItemReroll(caster);
+                RefreshTileAbilityVisibility(playerIndex);
+            }
         }
         else if (SlugsEqual(spellId, RerollElementAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? elementState))
         {
-            PerformElementReroll(caster, elementState);
+            if (TryPayTileAbility(caster, elementState, spellId, playerIndex))
+            {
+
+                UnitId rerolledUnit = PerformElementReroll(caster, elementState);
+                SelectUnitForPlayer(playerIndex, rerolledUnit);
+                RefreshTileAbilityVisibility(playerIndex);
+            }
         }
         else if (SlugsEqual(spellId, RerollHeroAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? heroState) && heroState.Kind == TileKind.Hero)
         {
-            PerformHeroReroll(caster, playerIndex);
+            if (!HasHeroRerollCandidate(playerIndex))
+            {
+                player.SendMessage("No other heroes are available to reroll into.");
+            }
+            else if (TryPayTileAbility(caster, heroState, spellId, playerIndex))
+            {
+                PerformHeroReroll(caster, playerIndex);
+                RefreshTileAbilityVisibility(playerIndex);
+            }
         }
         else if (SlugsEqual(spellId, RerollAllAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? allState))
         {
-            PerformAllReroll(caster, allState, playerIndex);
+            if (TryPayTileAbility(caster, allState, spellId, playerIndex))
+            {
+                PerformAllReroll(caster, allState, playerIndex);
+                RefreshTileAbilityVisibility(playerIndex);
+            }
         }
         else if (SlugsEqual(spellId, SwapTileUnitsAbilityId))
         {
-            HandleSwapAbilityCast(caster, targetPosition, playerIndex);
+            if (!tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? casterState))
+                return;
+
+            if (!TryGetSwapTarget(caster, targetPosition, playerIndex, out UnitId swapTarget))
+            {
+                player.SendMessage("Select another of your own tiles to swap with.");
+            }
+            else if (TryPayTileAbility(caster, casterState, spellId, playerIndex))
+            {
+                SwapTileUnits(caster, swapTarget, playerIndex);
+                RefreshTileAbilityVisibility(playerIndex);
+            }
         }
         else
         {
@@ -1784,22 +2107,6 @@ public class MapScript : IWasmModule
             StripSlugPrefix(first).Trim(),
             StripSlugPrefix(second).Trim(),
             StringComparison.OrdinalIgnoreCase);
-    }
-
-    private void HandleSwapAbilityCast(UnitId caster, Vector3 targetPosition, int playerIndex)
-    {
-        UnitId targetTileUnit = UnitId.Invalid;
-        foreach (UnitId u in _api.GetUnitsInRadius(targetPosition, 2f))
-        {
-            if (u.Player == playerIndex && u.UniqueId != caster.UniqueId && tileStatesByUnitId.ContainsKey(u.UniqueId))
-            {
-                targetTileUnit = u;
-                break;
-            }
-        }
-
-        if (targetTileUnit.IsValid)
-            SwapTileUnits(caster, targetTileUnit, playerIndex);
     }
 
     private void TryDraftFromAbilityCast(UnitId caster, string spellId)
@@ -1828,13 +2135,22 @@ public class MapScript : IWasmModule
         if (!draftTargetCircle.IsValid)
             return;
 
+        Element circleElement = tileStatesByUnitId.TryGetValue(draftTargetCircle.UniqueId, out TileState? draftCircleState)
+            ? draftCircleState.Element
+            : Element.Water;
+
         string? matchedUnitTypeId = null;
         foreach (string unitTypeId in DraftableUnits)
         {
-            var abilities = _api.GetUnitTypeAbilities(unitTypeId);
-            if (abilities.Any(a => a.Equals(spellId, StringComparison.OrdinalIgnoreCase)
-                || a.EndsWith($"/{spellId}", StringComparison.OrdinalIgnoreCase)
-                || spellId.EndsWith($"/{a}", StringComparison.OrdinalIgnoreCase)))
+            IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unitTypeId);
+            if (abilities.Count <= (int)circleElement)
+                continue;
+
+            string elementAbility = abilities[(int)circleElement];
+            if (string.IsNullOrEmpty(elementAbility))
+                continue;
+
+            if (SlugsEqual(elementAbility, spellId))
             {
                 matchedUnitTypeId = unitTypeId;
                 break;
@@ -1930,64 +2246,43 @@ public class MapScript : IWasmModule
         DraftUnit(playerIndex, matchedUnitTypeId, targetCircle);
     }
 
-    private void ApplySoulSiphon(UnitId caster, Vector3 targetPosition)
-    {
-        int casterTeam = _api.GetPlayer(caster.Player).Team;
-        int rewardedPlayerIndex = ResolveRealPlayerIndex(caster.Player);
-
-        foreach (UnitId target in _api.GetUnitsInRadius(targetPosition, SoulSiphonRadius))
-        {
-            if (target.IsDead || _api.GetPlayer(target.Player).Team == casterTeam)
-                continue;
-
-            float healthPercent = 100f * target.Health / target.MaxHealth;
-            float executeChance = 26f - healthPercent;
-            if (executeChance < 0f)
-                continue;
-
-            if (_api.RandomInt(1, 100) <= executeChance)
-            {
-                _api.KillUnit(target);
-                _api.GetPlayer(rewardedPlayerIndex).AdjustWood(1f);
-            }
-        }
-    }
-
-    private void ApplyHealingWave(UnitId caster, Vector3 targetPosition)
-    {
-        foreach (UnitId target in _api.GetUnitsInRadius(targetPosition, HealingWaveRadius))
-        {
-            if (target.IsDead || target.Player != caster.Player)
-                continue;
-
-            float healthPercent = 100f * target.Health / target.MaxHealth;
-            float healAmount = (100f - healthPercent) * target.MaxHealth / 4f;
-            _api.HealUnit(target, healAmount);
-        }
-    }
-
     private void HandleUnitDied(UnitId dyingUnit, UnitId killer)
     {
+        RemoveElixirState(dyingUnit);
         tileStatesByUnitId.Remove(dyingUnit.UniqueId);
         waveUnitStatesByUnitId.Remove(dyingUnit.UniqueId);
         waveUnitSpawnTimes.Remove(dyingUnit.UniqueId);
         _unitInfoCache.Remove(dyingUnit.UniqueId);
 
-        if (!killer.IsValid)
+        if (!killer.IsValid || IsFriendlySource(killer, dyingUnit))
             return;
 
+        OnElixirKill(killer);
+
         int killerPlayerIndex = ResolveRealPlayerIndex(killer.Player);
-        if (!playerStates.ContainsKey(killerPlayerIndex))
+        if (!playerStates.ContainsKey(killerPlayerIndex) || playerStates[killerPlayerIndex].Eliminated)
             return;
 
         PlayerId killerPlayer = _api.GetPlayer(killerPlayerIndex);
         killerPlayer.SetKills(killerPlayer.GetKills() + 1);
         killerPlayer.AdjustGold(1f);
+        GrantStone(killerPlayer, StonePerKill);
+        SweepProxyResources();
     }
 
     private void HandleUnitDamaged(UnitId victim, UnitId attacker, float damage)
     {
-        if (!attacker.IsValid)
+        if (victim.IsValid)
+            unitsInCombatSinceIdleSweep.Add(victim.UniqueId);
+        if (attacker.IsValid)
+            unitsInCombatSinceIdleSweep.Add(attacker.UniqueId);
+
+        bool isFriendlySource = attacker.IsValid && IsFriendlySource(attacker, victim);
+
+        if (!isFriendlySource)
+            RunElixirDamageHooks(victim, attacker, damage);
+
+        if (!attacker.IsValid || isFriendlySource)
             return;
 
         if (!_unitInfoCache.TryGetValue(attacker.UniqueId, out var info))
@@ -2014,19 +2309,38 @@ public class MapScript : IWasmModule
     {
         _api.ClearSummaryTable();
 
-        var rankedPlayers = playerStates.Keys
-            .Select(playerIndex => (PlayerIndex: playerIndex, Kills: _api.GetPlayer(playerIndex).GetKills()))
-            .OrderByDescending(entry => entry.Kills);
-
-        foreach ((int playerIndex, int kills) in rankedPlayers)
+        _standingsOrder.Clear();
+        for (int playerIndex = 1; playerIndex <= RealPlayerSlotCount; playerIndex++)
         {
-            string coloredPlayerName = _api.GetPlayer(playerIndex).ColoredName;
-            string topDamageBreakdown = GetTopDamageBreakdown(playerStates[playerIndex]);
+            if (playerStates.ContainsKey(playerIndex))
+                _standingsOrder.Add(playerIndex);
+        }
+
+        _standingsOrder.Sort((left, right) =>
+        {
+            int leftPlacement = playerStates[left].Placement;
+            int rightPlacement = playerStates[right].Placement;
+            int leftKey = leftPlacement > 0 ? leftPlacement : int.MaxValue;
+            int rightKey = rightPlacement > 0 ? rightPlacement : int.MaxValue;
+
+            if (leftKey != rightKey)
+                return leftKey.CompareTo(rightKey);
+
+            int killCompare = _api.GetPlayer(right).GetKills().CompareTo(_api.GetPlayer(left).GetKills());
+            return killCompare != 0 ? killCompare : left.CompareTo(right);
+        });
+
+        foreach (int playerIndex in _standingsOrder)
+        {
+            PlayerId player = _api.GetPlayer(playerIndex);
+            PlayerState playerState = playerStates[playerIndex];
+            string placementText = playerState.Placement > 0 ? FormatPlacement(playerState.Placement) : "-";
 
             _api.SetSummaryTableRow(
-                coloredPlayerName,
-                kills.ToString(),
-                topDamageBreakdown);
+                player.ColoredName,
+                player.GetKills().ToString(),
+                placementText,
+                GetTopDamageBreakdown(playerState));
         }
     }
 
@@ -2051,6 +2365,7 @@ public class MapScript : IWasmModule
         }
 
         UpdateDamageLeaderboard();
+        UpdatePlacementLeaderboard();
     }
 
     private void UpdateDamageLeaderboard()

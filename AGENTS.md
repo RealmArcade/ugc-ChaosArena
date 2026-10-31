@@ -13,13 +13,16 @@ Separate skill files are located in the `.agent/skills` folder.
 ## JSON Map Files
 
 ### metadata.json
-The primary map configuration file. Schema at `.vscode/map_schema.json` 
+The primary map configuration file. Schema at `.vscode/metadata.schema.json`, generated from the `MapMetadata` types in `Realm.Shared/Metadata`.
 
 ### manifest.json
-Tracks map asset registrations Schema at `.vscode/manifest_schema.json`.
+Tracks map asset registrations. Schema at `.vscode/manifest.schema.json`.
 
 ### terrain.json
-Defines the terrain layout: prop/unit/decal placements, map dimensions (`Width`, `Depth`), camera bounds, `Coordinates` (named map regions), and skybox path. Schema at `.vscode/terrain_schema.json`.
+Defines the terrain layout: prop/unit/decal placements, map dimensions (`Width`, `Depth`), camera bounds, `Coordinates` (named map regions), and skybox path. Schema at `.vscode/terrain.schema.json`.
+
+### Schema generation
+All three schemas are generated, never hand-written. `RealmJsonSchemaExporter` reflects over the metadata types (`MapMetadata`, `MapManifest`, `MapSaveData`) and the Realm tooling and editor write the results into the map's `.vscode` folder. Adding a property to a metadata type in `Realm.Shared/Metadata` makes it appear in the schema on the next generation pass, so a new field needs no schema edit and no map migration when it is optional. Do not edit the generated schema files by hand; regenerate them instead.
 
 ## Terrain Binary Files
 
