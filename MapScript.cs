@@ -115,6 +115,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
     private const string UnlockTilesCommand = "-unlockTiles";
 
     private const string AntiSnowballPoisonBuffId = "anti_snowball_poison";
+    private const string BotDraftIntent = "Draft";
     private static readonly Vector3 ArenaCenter = Vector3.Zero;
 
     // The middle of the map an idle sweep sends units to. It is a region rather than a point, so a sweep spreads units
@@ -211,6 +212,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
     };
 
     private static readonly string[] BlacksmithUpgrades = UpgradeResearchRules.Select(rule => rule.TechId).ToArray();
+    private static readonly float[] BotDraftFeatureVector = new float[8];
 
     private readonly Dictionary<int, PlayerState> playerStates = new();
     private readonly Dictionary<int, TileState> tileStatesByUnitId = new();
@@ -222,6 +224,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
     private readonly HashSet<int> unitsInCombatSinceIdleSweep = new();
     private readonly Dictionary<int, List<UnitId>> targetDummiesByPlayer = new();
     private readonly Dictionary<int, TargetDummyState> targetDummyStates = new();
+    private readonly HashSet<int> botDraftDecisionsRegistered = new();
     private UnitId gaiaTargetBuilder = UnitId.Invalid;
     private bool debugAbilitiesRegistered;
     private int _tileUpdateTick;
@@ -255,6 +258,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         _api.OnConstructionFinished += HandleConstructionFinished;
         _api.OnPlayerChatMessage += HandleChatMessage;
         _api.OnPlayerLeft += HandlePlayerLeft;
+        _api.OnBotCustomActionExecuted += HandleBotCustomAction;
 
         _api.ShowSummaryTable("Chaos Arena - Combat Statistics", true);
         _api.SetSummaryTableHeaders("Player", "Kills", "Placement", "Top Average Damage (Unit / Waves)");
@@ -395,6 +399,9 @@ public partial class MapScript : IWasmModule, ILobbyScript
         InitializePlayerTiles(playerIndex);
         InitializePlayerBase(playerIndex);
         InitializePlayerDeck(playerIndex);
+
+        if (_api.GetPlayer(playerIndex).IsComputer)
+            _api.SetPlayerBotGenre(playerIndex, "custom");
 
         if (updateAlliances)
             InitializePlayerAlliances(playerStates.Keys.ToList());
@@ -997,7 +1004,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
             Vector3 position = playerState.TilePositions[0];
             playerState.TilePositions.RemoveAt(0);
 
-            Element initialElement = AllElements[Random.Shared.Next(AllElements.Length)];
+            Element initialElement = AllElements[_api.RandomInt(0, AllElements.Length - 1)];
             string circleTypeId = GetCircleUnitTypeId(initialElement);
             UnitId circle = _api.GetPlayer(playerIndex).SpawnUnit(circleTypeId, position);
             circle.Damage = 0f;
@@ -1288,16 +1295,68 @@ public partial class MapScript : IWasmModule, ILobbyScript
         if (playerState.Offers.Count == 0)
             return;
 
-        string chosenUnitTypeId = playerState.Offers[Random.Shared.Next(playerState.Offers.Count)];
+        if (botDraftDecisionsRegistered.Contains(playerIndex))
+            return;
+
         List<UnitId> circles = GetPlayerCircles(playerIndex).ToList();
         if (circles.Count == 0)
             return;
 
-        UnitId chosenCircle = circles[Random.Shared.Next(circles.Count)];
-        if (!chosenCircle.IsValid)
+        _api.ClearCustomBotDecisions(playerIndex);
+        foreach (string offer in playerState.Offers)
+        {
+            foreach (UnitId circle in circles)
+            {
+                if (!circle.IsValid)
+                    continue;
+
+                _api.RegisterCustomBotDecision(
+                    playerIndex,
+                    offer,
+                    BotDraftIntent,
+                    BotDraftFeatureVector,
+                    GetCircleAnchorPosition(circle));
+            }
+        }
+
+        botDraftDecisionsRegistered.Add(playerIndex);
+    }
+
+    private void HandleBotCustomAction(int playerIndex, string actionId, string intent, Vector3 position, string payload)
+    {
+        if (!string.Equals(intent, BotDraftIntent, StringComparison.OrdinalIgnoreCase))
             return;
 
-        DraftUnit(playerIndex, chosenUnitTypeId, chosenCircle);
+        botDraftDecisionsRegistered.Remove(playerIndex);
+
+        if (!playerStates.TryGetValue(playerIndex, out PlayerState? playerState))
+            return;
+
+        if (!playerState.Offers.Contains(actionId, StringComparer.OrdinalIgnoreCase))
+            return;
+
+        if (!TryFindPlayerCircleAt(playerIndex, position, out UnitId circle))
+            return;
+
+        DraftUnit(playerIndex, actionId, circle);
+    }
+
+    private Vector3 GetCircleAnchorPosition(UnitId circle) =>
+        tileStatesByUnitId.TryGetValue(circle.UniqueId, out TileState? state) ? state.AnchorPosition : circle.Position;
+
+    private bool TryFindPlayerCircleAt(int playerIndex, Vector3 position, out UnitId circle)
+    {
+        foreach (UnitId candidate in GetPlayerCircles(playerIndex))
+        {
+            if (Vector3.DistanceSquared(GetCircleAnchorPosition(candidate), position) <= 0.01f)
+            {
+                circle = candidate;
+                return true;
+            }
+        }
+
+        circle = UnitId.Invalid;
+        return false;
     }
 
     private void ApplyPlayerTechToProxy(PlayerId player, PlayerId proxyPlayer)
@@ -1761,13 +1820,17 @@ public partial class MapScript : IWasmModule, ILobbyScript
             if (_api.GetPlayer(playerIndex).IsComputer)
             {
                 PlayerState playerState = playerStates[playerIndex];
-                while (playerState.DraftedCount < foodCap && GetPlayerCircles(playerIndex).Any())
+                if (playerState.DraftedCount < foodCap && GetPlayerCircles(playerIndex).Any())
                 {
                     PerformComputerDraft(playerIndex);
                 }
 
                 if (gameSecondsElapsed % ComputerResearchIntervalSeconds == 0)
                     PerformComputerResearch(playerIndex);
+            }
+            else
+            {
+                TrySendElixirHint(playerIndex);
             }
         }
     }
@@ -1792,7 +1855,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
             if (player.IsComputer)
             {
                 PlayerState playerState = playerStates[playerIndex];
-                while (playerState.DraftedCount < foodCap && GetPlayerCircles(playerIndex).Any())
+                if (playerState.DraftedCount < foodCap && GetPlayerCircles(playerIndex).Any())
                 {
                     PerformComputerDraft(playerIndex);
                 }

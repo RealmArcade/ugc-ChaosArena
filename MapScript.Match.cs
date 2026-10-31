@@ -92,9 +92,9 @@ public partial class MapScript
         _standingsOrder.AddRange(_standingPlayers);
         _standingsOrder.Sort(CompareStandingPlayers);
 
-        int placement = _standingsOrder.Count;
+        int placement = 1;
         foreach (int playerIndex in _standingsOrder)
-            playerStates[playerIndex].Placement = placement--;
+            playerStates[playerIndex].Placement = placement++;
 
         int winnerIndex = _standingsOrder.Count > 0 ? _standingsOrder[0] : -1;
 

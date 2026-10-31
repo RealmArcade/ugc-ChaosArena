@@ -19,7 +19,8 @@ public sealed record ElixirDefinition(
     string Id,
     ElixirHook Hook,
     float Amount,
-    int MaxStacks)
+    int MaxStacks,
+    float CostGold)
 {
     public string AbilityId => $"ability/{Id}";
     public string SourceId => $"elixir/{Id}";
@@ -47,31 +48,33 @@ public partial class MapScript
 
     private static readonly ElixirDefinition[] Elixirs =
     {
-        new("elixir_blood_debt", ElixirHook.HitDealt, 0.4f, 30),
-        new("elixir_siphon_sigil", ElixirHook.HitDealt, 5f, 25),
-        new("elixir_rending_edge", ElixirHook.HitDealt, 45f, 5),
-        new("elixir_executioner", ElixirHook.HitDealt, 12f, 20),
-        new("elixir_warded_hide", ElixirHook.HitTaken, 0.25f, 16),
-        new("elixir_retaliation", ElixirHook.HitTaken, 20f, 10),
-        new("elixir_phantom_step", ElixirHook.HitTaken, 0.02f, 10),
-        new("elixir_soul_harvest", ElixirHook.Kill, 0.04f, 10),
-        new("elixir_trophy_hunter", ElixirHook.Kill, 1f, 20),
-        new("elixir_feeding_frenzy", ElixirHook.Kill, 1f, 15),
-        new("elixir_void_pact", ElixirHook.Kill, 18f, 20),
-        new("elixir_arcane_echo", ElixirHook.Cast, 10f, 6),
-        new("elixir_swift_incantation", ElixirHook.Cast, 1.5f, 8),
-        new("elixir_ritual_echo", ElixirHook.Cast, 30f, 5),
-        new("elixir_opening_gambit", ElixirHook.WaveStart, 4f, 1),
-        new("elixir_vanguards_oath", ElixirHook.WaveStart, 8f, 1),
-        new("elixir_slow_regeneration", ElixirHook.Always, 2f, 90),
-        new("elixir_battle_trance", ElixirHook.Always, 1.5f, 8),
-        new("elixir_iron_constitution", ElixirHook.Always, 22f, 10),
-        new("elixir_flush", ElixirHook.Always, 0f, 0),
+        new("elixir_blood_debt", ElixirHook.HitDealt, 0.4f, 30, 40f),
+        new("elixir_siphon_sigil", ElixirHook.HitDealt, 5f, 25, 30f),
+        new("elixir_rending_edge", ElixirHook.HitDealt, 45f, 5, 45f),
+        new("elixir_executioner", ElixirHook.HitDealt, 12f, 20, 50f),
+        new("elixir_warded_hide", ElixirHook.HitTaken, 0.25f, 16, 35f),
+        new("elixir_retaliation", ElixirHook.HitTaken, 20f, 10, 40f),
+        new("elixir_phantom_step", ElixirHook.HitTaken, 0.02f, 10, 30f),
+        new("elixir_soul_harvest", ElixirHook.Kill, 0.04f, 10, 45f),
+        new("elixir_trophy_hunter", ElixirHook.Kill, 1f, 20, 30f),
+        new("elixir_feeding_frenzy", ElixirHook.Kill, 1f, 15, 45f),
+        new("elixir_void_pact", ElixirHook.Kill, 18f, 20, 40f),
+        new("elixir_arcane_echo", ElixirHook.Cast, 10f, 6, 40f),
+        new("elixir_swift_incantation", ElixirHook.Cast, 1.5f, 8, 45f),
+        new("elixir_ritual_echo", ElixirHook.Cast, 30f, 5, 50f),
+        new("elixir_opening_gambit", ElixirHook.WaveStart, 4f, 1, 35f),
+        new("elixir_vanguards_oath", ElixirHook.WaveStart, 8f, 1, 40f),
+        new("elixir_slow_regeneration", ElixirHook.Always, 2f, 90, 35f),
+        new("elixir_battle_trance", ElixirHook.Always, 1.5f, 8, 50f),
+        new("elixir_iron_constitution", ElixirHook.Always, 22f, 10, 45f),
+        new("elixir_flush", ElixirHook.Always, 0f, 0, 10f),
     };
 
     private static readonly Dictionary<string, ElixirDefinition> ElixirById = BuildElixirLookup();
 
     private readonly Dictionary<int, ElixirState> elixirStatesByUnitId = new();
+    private readonly HashSet<int> elixirHintSentPlayers = new();
+    private float cheapestElixirCostGold = float.MaxValue;
 
     private static Dictionary<string, ElixirDefinition> BuildElixirLookup()
     {
@@ -100,6 +103,7 @@ public partial class MapScript
         {
             _api.AddUnitTypeAbility(BuildingIds.Altar, elixir.AbilityId);
             PublishElixirTooltipValues(elixir);
+            TrackCheapestElixirCost(elixir);
         }
 
         _api.AddUnitTypeAbility(BuildingIds.Altar, SoulSiphonAbilityId);
@@ -124,20 +128,75 @@ public partial class MapScript
             return;
 
         int playerIndex = ResolveRealPlayerIndex(unit.Player);
+        PlayerId player = _api.GetPlayer(playerIndex);
 
         if (string.IsNullOrEmpty(consumableId))
         {
             ClearElixir(unit);
-            _api.GetPlayer(playerIndex).SendMessage($"{unit.Name} no longer carries an elixir.");
+            player.SendMessage($"{unit.Name} no longer carries an elixir.");
             return;
         }
 
         if (!TryResolveElixir(consumableId, out ElixirDefinition definition))
             return;
 
+        if (!IsElixirHeroTarget(unit))
+        {
+            player.AdjustGold(definition.CostGold);
+            player.SendMessage(
+                $"{_api.GetAbilityName(definition.AbilityId)} only binds to a drafted hero, not {_api.GetUnitName(unit.TemplateID)}. "
+                + $"{definition.CostGold:0} gold refunded. Select the Altar, pick an elixir card, then click the hero standing on its circle.");
+            return;
+        }
+
         ApplyElixir(unit, definition, playerIndex);
-        _api.GetPlayer(playerIndex).SendMessage(
-            $"{_api.GetAbilityName(definition.AbilityId)} bound to {unit.Name}. Every wave clone it spawns inherits it.");
+        player.SendMessage(
+            $"{_api.GetAbilityName(definition.AbilityId)} bound to {_api.GetUnitName(unit.TemplateID)} on the {unit.Name} circle. Every wave clone it spawns inherits it.");
+    }
+
+    private bool IsElixirHeroTarget(UnitId unit) =>
+        tileStatesByUnitId.TryGetValue(unit.UniqueId, out TileState? state)
+        && state.Kind == TileKind.Hero;
+
+    private void TrackCheapestElixirCost(ElixirDefinition elixir)
+    {
+        if (elixir.MaxStacks <= 0 || elixir.CostGold <= 0f || elixir.CostGold >= cheapestElixirCostGold)
+            return;
+
+        cheapestElixirCostGold = elixir.CostGold;
+    }
+
+    private void TrySendElixirHint(int playerIndex)
+    {
+        if (elixirHintSentPlayers.Contains(playerIndex))
+            return;
+
+        if (!playerStates.TryGetValue(playerIndex, out PlayerState? playerState))
+            return;
+
+        if (playerState.DraftedCount == 0)
+            return;
+
+        PlayerId player = _api.GetPlayer(playerIndex);
+        if (player.Gold < cheapestElixirCostGold)
+            return;
+
+        bool heroWithoutElixir = false;
+        foreach (UnitId hero in GetPlayerPlacedHeroes(playerIndex))
+        {
+            if (elixirStatesByUnitId.ContainsKey(hero.UniqueId))
+                continue;
+
+            heroWithoutElixir = true;
+            break;
+        }
+
+        if (!heroWithoutElixir)
+            return;
+
+        elixirHintSentPlayers.Add(playerIndex);
+        player.SendMessage(
+            $"Your hero can carry one elixir. Select the Altar, pick an elixir card, then click the hero standing on its circle. Cheapest is {cheapestElixirCostGold:0} gold.");
     }
 
     private void ApplyElixir(UnitId unit, ElixirDefinition definition, int playerIndex)

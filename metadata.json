@@ -10976,7 +10976,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_blood_debt"
       },
       {
@@ -10989,7 +10989,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_siphon_sigil"
       },
       {
@@ -11002,7 +11002,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_rending_edge"
       },
       {
@@ -11015,7 +11015,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_executioner"
       },
       {
@@ -11028,7 +11028,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_warded_hide"
       },
       {
@@ -11041,7 +11041,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_retaliation"
       },
       {
@@ -11054,7 +11054,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_phantom_step"
       },
       {
@@ -11067,7 +11067,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_soul_harvest"
       },
       {
@@ -11080,7 +11080,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_trophy_hunter"
       },
       {
@@ -11093,7 +11093,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_feeding_frenzy"
       },
       {
@@ -11106,7 +11106,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_void_pact"
       },
       {
@@ -11119,7 +11119,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_arcane_echo"
       },
       {
@@ -11132,7 +11132,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_swift_incantation"
       },
       {
@@ -11145,7 +11145,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_ritual_echo"
       },
       {
@@ -11158,7 +11158,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_opening_gambit"
       },
       {
@@ -11171,7 +11171,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_vanguards_oath"
       },
       {
@@ -11184,7 +11184,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_slow_regeneration"
       },
       {
@@ -11197,7 +11197,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_battle_trance"
       },
       {
@@ -11210,7 +11210,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": false,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_iron_constitution"
       },
       {
@@ -11223,7 +11223,7 @@
         "SlotGroup": "elixir",
         "MaxPerUnit": 1,
         "ClearsSlot": true,
-        "PurchaseRange": 4,
+        "PurchaseRange": 8,
         "CardId": "ability/elixir_flush"
       }
     ],
