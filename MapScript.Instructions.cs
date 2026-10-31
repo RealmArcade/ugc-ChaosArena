@@ -49,12 +49,12 @@ public partial class MapScript
             "A circle can reroll its item, its element or its hero, reroll all three at once, or swap its hero with "
             + "another circle. Every action is paid in [b]stone[/b] and then recharges for [b]30 seconds[/b] on that "
             + "tile:\n\n"
-            + "[b]Reroll item[/b] — 3 stone\n"
-            + "[b]Reroll element[/b] — 3 stone\n"
-            + "[b]Reroll hero[/b] — 5 stone\n"
-            + "[b]Reroll all[/b] — 8 stone\n"
+            + "[b]Reroll item[/b] — 10 stone\n"
+            + "[b]Reroll element[/b] — 25 stone\n"
+            + "[b]Reroll hero[/b] — 10 stone\n"
+            + "[b]Reroll all[/b] — 5 stone\n"
             + "[b]Swap units[/b] — 5 stone\n\n"
-            + "Stone arrives at 1 per kill and 1 every 10 seconds, up to 40.");
+            + "Stone is earned at 1 per kill.");
 
         _api.AddInstructionsSection(
             "Elixirs at the Altar",

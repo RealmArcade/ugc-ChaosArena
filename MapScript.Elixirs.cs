@@ -36,15 +36,6 @@ public sealed class ElixirState
 
 public partial class MapScript
 {
-    private const string SoulSiphonAbilityId = "ability/soul_siphon";
-    private const string HealingWaveAbilityId = "ability/healing_wave";
-    private const float SoulSiphonRadius = 4f;
-    private const float HealingWaveRadius = 7f;
-    private const float SoulSiphonThresholdPercent = 30f;
-    private const float SoulSiphonWoodPerExecution = 1f;
-    private const int SoulSiphonMaxExecutions = 3;
-    private const float HealingWaveMissingHealthFraction = 0.25f;
-
     private static readonly ElixirDefinition[] Elixirs =
     {
         new("elixir_blood_debt", ElixirHook.HitDealt, 0.4f, 30),
@@ -102,13 +93,6 @@ public partial class MapScript
             PublishElixirTooltipValues(elixir);
         }
 
-        _api.AddUnitTypeAbility(BuildingIds.Altar, SoulSiphonAbilityId);
-        _api.AddUnitTypeAbility(BuildingIds.Altar, HealingWaveAbilityId);
-
-        _api.SetAbilityTooltipValue(SoulSiphonAbilityId, "Threshold", SoulSiphonThresholdPercent);
-        _api.SetAbilityTooltipValue(SoulSiphonAbilityId, "Amount", SoulSiphonWoodPerExecution);
-        _api.SetAbilityTooltipValue(SoulSiphonAbilityId, "Cap", SoulSiphonMaxExecutions);
-        _api.SetAbilityTooltipValue(HealingWaveAbilityId, "Percent", HealingWaveMissingHealthFraction * 100f);
     }
 
     private void PublishElixirTooltipValues(ElixirDefinition elixir)
@@ -173,75 +157,6 @@ public partial class MapScript
 
         ApplyElixir(clone, definition, ResolveRealPlayerIndex(clone.Player));
         OnElixirWaveStart(clone);
-    }
-
-    private void ApplySoulSiphon(UnitId caster, Vector3 targetPosition, int playerIndex)
-    {
-        PlayerId player = _api.GetPlayer(playerIndex);
-        int executions = 0;
-        int wood = 0;
-
-        List<UnitId> candidates = new(_api.GetUnitsInRadius(targetPosition, SoulSiphonRadius).ToArray());
-        foreach (UnitId target in candidates)
-        {
-            if (executions >= SoulSiphonMaxExecutions)
-                break;
-
-            if (!target.IsValid || target.IsDead || target.Invulnerable)
-                continue;
-
-            if (ResolveRealPlayerIndex(target.Player) == playerIndex)
-                continue;
-
-            if (target.UniqueId == caster.UniqueId)
-                continue;
-
-            float healthPercent = target.MaxHealth > 0f ? 100f * target.Health / target.MaxHealth : 0f;
-            if (healthPercent > SoulSiphonThresholdPercent)
-                continue;
-
-            float executeChance = SoulSiphonThresholdPercent - healthPercent;
-            if (_api.RandomInt(0, 100) > executeChance)
-                continue;
-
-            _api.KillUnit(target);
-            executions++;
-            wood += (int)SoulSiphonWoodPerExecution;
-        }
-
-        if (wood <= 0)
-        {
-            player.SendMessage("Soul Siphon found no soul within reach.");
-            return;
-        }
-
-        player.AdjustWood(wood);
-        player.SendMessage($"Soul Siphon executed {executions} and recovered {wood} wood.");
-    }
-
-    private void ApplyHealingWave(UnitId caster, Vector3 targetPosition, int playerIndex)
-    {
-        int healed = 0;
-
-        List<UnitId> candidates = new(_api.GetUnitsInRadius(targetPosition, HealingWaveRadius).ToArray());
-        foreach (UnitId target in candidates)
-        {
-            if (!target.IsValid || target.IsDead)
-                continue;
-
-            if (ResolveRealPlayerIndex(target.Player) != playerIndex)
-                continue;
-
-            float missing = MathF.Max(0f, target.MaxHealth - target.Health);
-            if (missing <= 0f)
-                continue;
-
-            _api.HealUnit(target, missing * HealingWaveMissingHealthFraction);
-            healed++;
-        }
-
-        if (healed == 0)
-            _api.GetPlayer(playerIndex).SendMessage("Healing Wave found nothing to mend.");
     }
 
     private bool _elixirHookActive;

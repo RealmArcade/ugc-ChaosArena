@@ -12,10 +12,10 @@ public partial class MapScript
 
     private const float RefusedCastCooldownSeconds = 0.5f;
 
-    private const float RerollItemStoneCost = 3f;
-    private const float RerollElementStoneCost = 3f;
-    private const float RerollHeroStoneCost = 5f;
-    private const float RerollAllStoneCost = 8f;
+    private const float RerollItemStoneCost = 10f;
+    private const float RerollElementStoneCost = 25f;
+    private const float RerollHeroStoneCost = 10f;
+    private const float RerollAllStoneCost = 5f;
     private const float SwapTileStoneCost = 5f;
 
     private static float GetTileAbilityStoneCost(string abilitySlug)

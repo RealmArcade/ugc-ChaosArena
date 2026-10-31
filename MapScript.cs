@@ -96,10 +96,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
     private const float TargetDummyRowOffset = 4f;
     private const float TargetDummyRowHeight = 5f;
     private const int TargetDummyHealthResetSeconds = 60;
-    private const float StoneCap = 40f;
     private const float StonePerKill = 1f;
-    private const float StonePerIncomeTick = 1f;
-    private const int StoneIncomeIntervalSeconds = 10;
     private const float IdleSweepIntervalSeconds = 20f;
     private const float IdleSweepMovementEpsilon = 0.75f;
 
@@ -244,6 +241,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
         ConfigureDraftChoicesOnTiles();
         ConfigureAltarAbilities();
+        ConfigureAvatarAbilities();
         InitializePlayers();
 
         while (foodCap < FoodCapIncreaseMinutes.Length && gameSecondsElapsed >= nextFoodCapIncreaseSeconds)
@@ -273,7 +271,6 @@ public partial class MapScript : IWasmModule, ILobbyScript
         _api.ScheduleRepeatingTimer(1f, EvaluateEliminations);
         _api.ScheduleRepeatingTimer(0.25f, FlushElixirDamage);
         _api.ScheduleRepeatingTimer(5f, GrantWoodPassive);
-        _api.ScheduleRepeatingTimer(StoneIncomeIntervalSeconds, GrantStoneIncome);
         _api.ScheduleRepeatingTimer(1f, SweepProxyResources);
         _api.ScheduleRepeatingTimer(15f, ApplyNegativeHealthRegen);
         _api.ScheduleRepeatingTimer(60f, GrantPassiveExperience);
@@ -1830,21 +1827,12 @@ public partial class MapScript : IWasmModule, ILobbyScript
         }
     }
 
-    private void GrantStoneIncome()
-    {
-        foreach (KeyValuePair<int, PlayerState> entry in playerStates)
-        {
-            if (!entry.Value.Eliminated)
-                GrantStone(_api.GetPlayer(entry.Key), StonePerIncomeTick);
-        }
-    }
-
     private static void GrantStone(PlayerId player, float amount)
     {
         if (amount <= 0f)
             return;
 
-        player.SetStone(MathF.Min(player.Stone + amount, StoneCap));
+        player.SetStone(player.Stone + amount);
     }
 
     private void SweepProxyResources()
@@ -1962,13 +1950,13 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
         if (SlugsEqual(spellId, SoulSiphonAbilityId))
         {
-            ApplySoulSiphon(caster, targetPosition, playerIndex);
+            TryCastSoulSiphon(caster, targetPosition, playerIndex);
             return;
         }
 
         if (SlugsEqual(spellId, HealingWaveAbilityId))
         {
-            ApplyHealingWave(caster, targetPosition, playerIndex);
+            TryCastHealingWave(caster, targetPosition, playerIndex);
             return;
         }
 
