@@ -14,6 +14,7 @@ public partial class MapScript
     private const float SoulSiphonRadius = 4f;
     private const float SoulSiphonMaximumExecuteChance = 0.25f;
     private const float SoulSiphonWoodPerKill = 5f;
+    private const float SoulSiphonStonePerKill = 1f;
     private const string SoulSiphonProjectileId = "weapon/shadow_kunai";
     private const float SoulSiphonProjectileSpeed = 16f;
 
@@ -90,7 +91,7 @@ public partial class MapScript
                 continue;
 
             if (caster.IsValid && !caster.IsDead)
-                _api.DealTypedDamage(caster, target, target.Health + 1f, "magic");
+                _api.DealTypedDamage(caster, target, target.Health + 1f, "pure");
             else
                 _api.KillUnit(target);
 
@@ -104,8 +105,10 @@ public partial class MapScript
         }
 
         float wood = executions * SoulSiphonWoodPerKill;
+        float stone = executions * SoulSiphonStonePerKill;
         player.AdjustWood(wood);
-        player.SendMessage($"Soul Siphon executed {executions} and recovered {(int)wood} wood.");
+        player.AdjustStone(stone);
+        player.SendMessage($"Soul Siphon executed {executions}, recovered {(int)wood} wood and {(int)stone} stone.");
     }
 
     private void ResolveHealingWaveImpact(Vector3 targetPosition, int playerIndex)

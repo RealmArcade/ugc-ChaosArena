@@ -34,7 +34,10 @@
     "TestAiPlayerCount": 1,
     "TestRandomizeSlots": false,
     "TestRandomSeed": null,
-    "PlayablePlayerSlots": 12
+    "PlayablePlayerSlots": 12,
+    "ShowUnitHealthBar": null,
+    "ShowUnitManaBar": null,
+    "ShowUnitLevel": true
   },
   "Dependencies": [],
   "Templates": {
@@ -76,6 +79,7 @@
         "MagicResistance": 2.5,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 5,
         "DamageType": "physical",
         "CritChance": 0,
@@ -117,6 +121,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -200,6 +205,7 @@
         "MagicResistance": 2,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 6,
         "DamageType": "physical",
         "CritChance": 0,
@@ -241,6 +247,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -324,6 +331,7 @@
         "MagicResistance": 1.5,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 6,
         "DamageType": "physical",
         "CritChance": 0,
@@ -365,6 +373,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -448,6 +457,7 @@
         "MagicResistance": 3,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 5,
         "DamageType": "magic",
         "CritChance": 0,
@@ -489,6 +499,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -572,6 +583,7 @@
         "MagicResistance": 3,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 4,
         "DamageType": "magic",
         "CritChance": 0,
@@ -613,6 +625,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -696,6 +709,7 @@
         "MagicResistance": 2.5,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 5,
         "DamageType": "physical",
         "CritChance": 0,
@@ -737,6 +751,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -820,6 +835,7 @@
         "MagicResistance": 2,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 6,
         "DamageType": "physical",
         "CritChance": 0,
@@ -861,6 +877,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -944,6 +961,7 @@
         "MagicResistance": 3,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 7,
         "DamageType": "magic",
         "CritChance": 0,
@@ -985,6 +1003,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -1068,6 +1087,7 @@
         "MagicResistance": 3,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 5,
         "DamageType": "magic",
         "CritChance": 0,
@@ -1109,6 +1129,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -1192,6 +1213,7 @@
         "MagicResistance": 2,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 6,
         "DamageType": "physical",
         "CritChance": 0,
@@ -1233,6 +1255,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -1316,6 +1339,7 @@
         "MagicResistance": 3,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 8,
         "DamageType": "magic",
         "CritChance": 0,
@@ -1357,6 +1381,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -1440,6 +1465,7 @@
         "MagicResistance": 2.5,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 5,
         "DamageType": "physical",
         "CritChance": 0,
@@ -1481,6 +1507,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -1564,6 +1591,7 @@
         "MagicResistance": 3,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 5,
         "DamageType": "magic",
         "CritChance": 0,
@@ -1605,6 +1633,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -1688,6 +1717,7 @@
         "MagicResistance": 1.5,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 6,
         "DamageType": "physical",
         "CritChance": 0,
@@ -1729,6 +1759,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -1812,6 +1843,7 @@
         "MagicResistance": 3,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 5,
         "DamageType": "magic",
         "CritChance": 0,
@@ -1853,6 +1885,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -1936,6 +1969,7 @@
         "MagicResistance": 3,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 8,
         "DamageType": "magic",
         "CritChance": 0,
@@ -1977,6 +2011,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -2060,6 +2095,7 @@
         "MagicResistance": 3,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 4,
         "DamageType": "magic",
         "CritChance": 0,
@@ -2101,6 +2137,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -2184,6 +2221,7 @@
         "MagicResistance": 2.5,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 6,
         "DamageType": "physical",
         "CritChance": 0,
@@ -2225,6 +2263,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -2308,6 +2347,7 @@
         "MagicResistance": 2,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 6,
         "DamageType": "physical",
         "CritChance": 0,
@@ -2349,6 +2389,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -2432,6 +2473,7 @@
         "MagicResistance": 1.5,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 6,
         "DamageType": "physical",
         "CritChance": 0,
@@ -2473,6 +2515,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 25,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 9,
         "Targets": null,
@@ -2521,7 +2564,7 @@
       },
       {
         "TemplateID": "unit/builder",
-        "Name": "Builder",
+        "Name": "Avatar",
         "Description": "",
         "MaxHp": 100,
         "Damage": 0,
@@ -2549,6 +2592,7 @@
         "MagicResistance": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 0,
         "DamageType": "physical",
         "CritChance": 0,
@@ -2605,6 +2649,7 @@
           "ability/healing_wave"
         ],
         "XpBounty": 0,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 2,
         "Targets": null,
@@ -2646,7 +2691,7 @@
         "ProceduralAnimation": null,
         "EnableProceduralAnimation": null,
         "DespawnShader": null,
-        "ConstructionRange": 16,
+        "ConstructionRange": 22,
         "Attribution_ImportedFromMap": null
       }
     ],
@@ -2681,6 +2726,7 @@
         "MagicResistance": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 0,
         "DamageType": "physical",
         "CritChance": 0,
@@ -2717,6 +2763,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 0,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 16,
         "Targets": null,
@@ -2769,6 +2816,7 @@
         "MagicResistance": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 0,
         "DamageType": "physical",
         "CritChance": 0,
@@ -2805,6 +2853,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 0,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 16,
         "Targets": null,
@@ -2857,6 +2906,7 @@
         "MagicResistance": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 0,
         "DamageType": "physical",
         "CritChance": 0,
@@ -2893,6 +2943,7 @@
           "swap_tile_units"
         ],
         "XpBounty": 0,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 16,
         "Targets": null,
@@ -2945,6 +2996,7 @@
         "MagicResistance": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 0,
         "DamageType": "physical",
         "CritChance": 0,
@@ -2977,6 +3029,7 @@
         "IsHero": false,
         "Abilities": null,
         "XpBounty": 0,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 32,
         "Targets": null,
@@ -3029,6 +3082,7 @@
         "MagicResistance": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
         "DamageVariance": 0,
         "DamageType": "physical",
         "CritChance": 0,
@@ -3061,6 +3115,7 @@
         "IsHero": false,
         "Abilities": [],
         "XpBounty": 0,
+        "ExperiencePerLevel": 0,
         "PathingCapabilities": null,
         "PathingType": 32,
         "Targets": null,
@@ -6774,7 +6829,7 @@
         "Effects": null,
         "GridX": 0,
         "GridY": 1,
-        "Hotkey": "Q",
+        "Hotkey": "A",
         "Attribution_ImportedFromMap": null
       },
       {
@@ -6794,7 +6849,7 @@
         "Effects": null,
         "GridX": 1,
         "GridY": 1,
-        "Hotkey": "A",
+        "Hotkey": "S",
         "Attribution_ImportedFromMap": null
       },
       {
@@ -6814,7 +6869,7 @@
         "Effects": null,
         "GridX": 2,
         "GridY": 1,
-        "Hotkey": "S",
+        "Hotkey": "D",
         "Attribution_ImportedFromMap": null
       },
       {
@@ -6834,7 +6889,7 @@
         "Effects": null,
         "GridX": 3,
         "GridY": 1,
-        "Hotkey": "D",
+        "Hotkey": "F",
         "Attribution_ImportedFromMap": null
       },
       {
@@ -7260,7 +7315,7 @@
       {
         "TemplateID": "ability/soul_siphon",
         "Name": "Soul Siphon",
-        "Description": "A slow projectile marks a {{Ability.Radius}} radius. Every enemy inside has up to a {{Ability.Threshold}}% chance to be executed outright, scaling with the health it is missing. Each execution grants {{Ability.Amount}} wood.",
+        "Description": "A slow projectile marks a {{Ability.Radius}} radius. Every enemy inside has up to a {{Ability.Threshold}}% chance to be executed outright, scaling with the health it is missing. Each execution grants {{Ability.Amount}} wood and 1 stone.",
         "Role": "Economy",
         "AbilityType": "target_spell",
         "IconPath": "shadow_kunai.rtex",

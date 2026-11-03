@@ -29,7 +29,6 @@ public class TileState
     public int CircleLevel { get; set; } = 1;
     public Vector3 AnchorPosition { get; set; }
     public int PlayerIndex { get; set; }
-    public int LabelHandle { get; set; } = -1;
     public Vector3 AssignedDestination { get; set; }
     public bool RetargetedToCenter { get; set; }
     public string? ElixirId { get; set; }
@@ -84,7 +83,6 @@ public partial class MapScript : IWasmModule, ILobbyScript
     private const int SpawnSlotCount = 12;
     private const int TilesPerPlayer = 9;
     private const int CountdownFontSize = 216;
-    private const int TileLabelFontSize = 36;
     private const string AliveUnitsLeaderboardId = "alive_units";
     private const string DamageLeaderboardId = "damage";
     private const int ElementalAbilityCount = 3;
@@ -96,7 +94,6 @@ public partial class MapScript : IWasmModule, ILobbyScript
     private const float TargetDummyRowOffset = 4f;
     private const float TargetDummyRowHeight = 5f;
     private const int TargetDummyHealthResetSeconds = 60;
-    private const float StonePerKill = 1f;
     private const float IdleSweepIntervalSeconds = 20f;
     private const float IdleSweepMovementEpsilon = 0.75f;
 
@@ -131,6 +128,8 @@ public partial class MapScript : IWasmModule, ILobbyScript
     };
 
     private static readonly Element[] AllElements = Enum.GetValues<Element>();
+
+    private static readonly string[] ElementalAbilityHotkeys = { "Q", "W", "E" };
 
     private static readonly int[] FoodCapIncreaseMinutes = { 0, 1, 2, 3, 5, 8, 12, 17, 23 };
 
@@ -240,6 +239,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         _api.DisableShroud();
 
         ConfigureDraftChoicesOnTiles();
+        ConfigureElementalAbilitySlots();
         ConfigureAltarAbilities();
         ConfigureAvatarAbilities();
         InitializePlayers();
@@ -271,6 +271,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         _api.ScheduleRepeatingTimer(1f, EvaluateEliminations);
         _api.ScheduleRepeatingTimer(0.25f, FlushElixirDamage);
         _api.ScheduleRepeatingTimer(5f, GrantWoodPassive);
+        _api.ScheduleRepeatingTimer(10f, GrantStonePassive);
         _api.ScheduleRepeatingTimer(1f, SweepProxyResources);
         _api.ScheduleRepeatingTimer(15f, ApplyNegativeHealthRegen);
         _api.ScheduleRepeatingTimer(60f, GrantPassiveExperience);
@@ -368,6 +369,24 @@ public partial class MapScript : IWasmModule, ILobbyScript
                 _api.AddUnitTypeAbility(BuildingIds.EarthElement, abilityId);
                 _api.AddUnitTypeAbility(BuildingIds.FireElement, abilityId);
                 _api.AddUnitTypeAbility(BuildingIds.WaterElement, abilityId);
+            }
+        }
+    }
+
+    private void ConfigureElementalAbilitySlots()
+    {
+        foreach (string unitTypeId in DraftableUnits)
+        {
+            IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unitTypeId);
+
+            for (int slotIndex = 0; slotIndex < ElementalAbilityCount && slotIndex < abilities.Count; slotIndex++)
+            {
+                string abilityId = abilities[slotIndex];
+                if (string.IsNullOrEmpty(abilityId))
+                    continue;
+
+                _api.SetAbilityHotkey(abilityId, ElementalAbilityHotkeys[slotIndex]);
+                _api.SetAbilityGridPosition(abilityId, slotIndex, 0);
             }
         }
     }
@@ -784,7 +803,6 @@ public partial class MapScript : IWasmModule, ILobbyScript
                 _api.DestroyUnit(unit);
             }
 
-            DestroyPlayerTileLabels(playerIndex);
             DestroyTargetDummies(playerIndex);
             playerStates.Remove(playerIndex);
         }
@@ -951,7 +969,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
             string offerList = string.Join(", ", playerState.Offers.Select((typeId, index) =>
                 $"{index + 1}: {_api.GetUnitName(typeId)}"));
 
-            _api.GetPlayer(playerIndex).SendMessage($"Draft offers: {offerList}. Use the Builder [B] Build menu or select a Circle of Power / Altar to draft.");
+            _api.GetPlayer(playerIndex).SendMessage($"Draft offers: {offerList}. Use the Avatar's [B] Build menu or select a Circle of Power / Altar to draft.");
 
             UpdateDraftOfferAbilities(playerIndex);
         }
@@ -1035,7 +1053,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
             PerformItemReroll(circle);
             ApplyElement(circle, state, true);
-            CreateTileLabel(state);
+            ApplyTileBadge(circle, state);
         }
 
         RefreshPlayerTileAbilities(playerIndex);
@@ -1142,6 +1160,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         }
 
         ApplyElement(unit, state, true);
+        ApplyTileBadge(unit, state);
         return unit;
     }
 
@@ -1163,14 +1182,14 @@ public partial class MapScript : IWasmModule, ILobbyScript
             if (string.IsNullOrEmpty(abilityId))
                 continue;
 
-            bool isActive = element == state.Element;
-            if (!isActive && !includeDisabledAbilities)
+            if (element == state.Element)
+            {
+                _api.SetAbilityState(unit, abilityId, false, false);
                 continue;
+            }
 
-            _api.SetAbilityState(unit, abilityId, !isActive, !isActive);
+            _api.SetAbilityState(unit, abilityId, true, !includeDisabledAbilities);
         }
-
-        RecreateTileLabel(state);
     }
 
     private void EnableElementAutocast(UnitId unit, Element element)
@@ -1230,6 +1249,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         tileStatesByUnitId[hero.UniqueId] = state;
 
         ApplyElement(hero, state, true);
+        ApplyTileBadge(hero, state);
         LockTileUnit(hero);
         return state;
     }
@@ -1358,6 +1378,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
         tileStatesByUnitId[newUnit.UniqueId] = state;
         ApplyElement(newUnit, state, true);
+        ApplyTileBadge(newUnit, state);
         LockTileUnit(newUnit);
         ReapplyTileAbilityCooldowns(newUnit, state);
         SelectUnitForPlayer(playerIndex, newUnit);
@@ -1422,53 +1443,16 @@ public partial class MapScript : IWasmModule, ILobbyScript
             unit.SetItemCharges(itemId, charges);
         }
 
-        RecreateTileLabel(state);
+        ApplyTileBadge(unit, state);
     }
 
-    private void CreateTileLabel(TileState state)
+    private void ApplyTileBadge(UnitId unit, TileState state)
     {
-        if (state.LabelHandle >= 0 || state.Kind != TileKind.Hero)
-            return;
-
-        state.LabelHandle = _api.CreateStaticText(
-            GetTileLabelText(state),
-            state.AnchorPosition + new Vector3(0f, 2.5f, 0f),
-            GetTileLabelColor(state),
-            TileLabelFontSize);
+        _api.SetUnitOverheadBadge(
+            unit,
+            Math.Max(state.CircleLevel, 1),
+            ElementColors.TryGetValue(state.Element, out Vector3 color) ? color : Vector3.One);
     }
-
-    private void RecreateTileLabel(TileState state)
-    {
-        if (state.Kind != TileKind.Hero)
-            return;
-
-        if (state.LabelHandle >= 0)
-        {
-            _api.DestroyStaticText(state.LabelHandle);
-            state.LabelHandle = -1;
-        }
-
-        CreateTileLabel(state);
-    }
-
-    private void DestroyPlayerTileLabels(int playerIndex)
-    {
-        foreach (KeyValuePair<int, TileState> entry in tileStatesByUnitId)
-        {
-            TileState state = entry.Value;
-            if (state.PlayerIndex != playerIndex || state.LabelHandle < 0)
-                continue;
-
-            _api.DestroyStaticText(state.LabelHandle);
-            state.LabelHandle = -1;
-        }
-    }
-
-    private static string GetTileLabelText(TileState state) =>
-        Math.Max(state.CircleLevel, 1).ToString();
-
-    private static Vector3 GetTileLabelColor(TileState state) =>
-        ElementColors.TryGetValue(state.Element, out Vector3 color) ? color : Vector3.One;
 
     private void HandleSpawnTimerTick()
     {
@@ -1824,6 +1808,15 @@ public partial class MapScript : IWasmModule, ILobbyScript
         {
             if (!entry.Value.Eliminated)
                 _api.GetPlayer(entry.Key).AdjustWood(1f);
+        }
+    }
+
+    private void GrantStonePassive()
+    {
+        foreach (KeyValuePair<int, PlayerState> entry in playerStates)
+        {
+            if (!entry.Value.Eliminated)
+                _api.GetPlayer(entry.Key).AdjustStone(1f);
         }
     }
 
@@ -2212,7 +2205,6 @@ public partial class MapScript : IWasmModule, ILobbyScript
         PlayerId killerPlayer = _api.GetPlayer(killerPlayerIndex);
         killerPlayer.SetKills(killerPlayer.GetKills() + 1);
         killerPlayer.AdjustGold(1f);
-        GrantStone(killerPlayer, StonePerKill);
         SweepProxyResources();
     }
 

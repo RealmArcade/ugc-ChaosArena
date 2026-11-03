@@ -16,7 +16,7 @@ public partial class MapScript
             "Drafting Heroes",
             "Your board is nine Circles of Power. The first unlocks when the match starts and another at "
             + "[b]1:00, 2:00, 3:00, 5:00, 8:00, 12:00, 17:00 and 23:00[/b].\n\n"
-            + "Three heroes are always on offer. Draft one with the Builder's [b]Build[/b] menu [B], or by selecting "
+            + "Three heroes are always on offer. Draft one with the Avatar's [b]Build[/b] menu [B], or by selecting "
             + "a Circle of Power or the Altar.\n\n"
             + "A drafted hero stays on its circle and never fights there. It is the template: every wave clones it, and "
             + "the circle's level — its unlock order, 1 through 9 — is the level its clones start at.");
@@ -54,7 +54,7 @@ public partial class MapScript
             + "[b]Reroll hero[/b] — 10 stone\n"
             + "[b]Reroll all[/b] — 5 stone\n"
             + "[b]Swap units[/b] — 5 stone\n\n"
-            + "Stone is earned at 1 per kill.");
+            + "Stone arrives at 1 every 10 seconds, and every kill your Avatar lands with Soul Siphon brings 1 more.");
 
         _api.AddInstructionsSection(
             "Elixirs at the Altar",
@@ -62,14 +62,15 @@ public partial class MapScript
             + "permanent, scripted passive rather than a bundle of stats, and only the hero that took it is changed.\n\n"
             + "A hero carries one elixir at a time, and every clone it spawns inherits a fresh copy — an elixir paid "
             + "for once fights until the match ends.\n\n"
-            + "To change it, buy the flush consumable. It clears the elixir the hero carries so another can be applied.");
+            + "To change it, buy the flush consumable. It clears the elixir the hero carries so another can be applied.\n\n"
+            + "Gold arrives at 1 for whichever player lands the killing blow on a unit, and nothing else pays it.");
 
         _api.AddInstructionsSection(
             "Blacksmith Upgrades",
             "Blacksmith upgrades are bought with [b]wood[/b], each one only once, and they are team-wide: every clone "
             + "you send from then on carries them.\n\n"
-            + "Wood arrives at 1 every 5 seconds, so the full set is out of reach in one match. Buy the few that fit "
-            + "the army you are building.");
+            + "Wood arrives at 1 every 5 seconds, and every kill your Avatar lands with Soul Siphon brings 5 more, so "
+            + "the full set is out of reach in one match. Buy the few that fit the army you are building.");
 
         _api.AddInstructionsSection(
             "Victory and Placement",
