@@ -257,7 +257,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
         RegisterInstructions();
 
-        _api.ShowSummaryTable("Chaos Arena - Combat Statistics", true);
+        _api.ShowSummaryTable("Combat Statistics", true);
         _api.SetSummaryTableHeaders("Player", "Kills", "Placement", "Top Average Damage (Unit / Waves)");
 
         for (int slotIndex = 0; slotIndex < SpawnSlotCount; slotIndex++)
