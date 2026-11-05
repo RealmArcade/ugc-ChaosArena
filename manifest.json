@@ -1,6 +1,6 @@
 {
   "MapName": "Chaos Arena",
-  "Author": "Devin",
+  "Author": "Realm",
   "Version": "1.0.0",
   "Description": "Chaos Arena is a twelve-player auto-battler. Every player drafts nine heroes onto their board. Each location has a pre-defined loadout including a hero level, an inventory item, and an elemental power (Earth, Water, Fire). The board periodically sends out a wave of clones that marches to a rival's base or the arena centre. Snipe last hits with your Avatar's ability (and heal your soldiers to deny others' last hits). Spend gold and wood on upgrades. Use stone to reroll drafted heroes. Sudden death starts at 25:00, last player with a surviving soldier wins.",
   "Tags": [
@@ -880,7 +880,7 @@
       "Directory.Build.targets": "7424a53a847319e9ea56b8b31bc476b685d84b940eabfaa3a17ef2fa9bfe20b3",
       "LICENSE.md": "cf7660fe2a1e73d981dd627c1f47b53992d3135f14dd6fdd3b7d87cd4c1daa05",
       "MapScript.AvatarAbilities.cs": "63121d88cb33f389c9a178b402256483f7e4986fecd15726f3278248729fdbff",
-      "MapScript.cs": "4826fef1c830ab9535b1abc7e5eaf3eef1dec02721e80fe4be8ed41e784a1c9e",
+      "MapScript.cs": "6096619dd050b300f69601a76d59f7e23ebb786740b3c3bcefe01d9b32186ac5",
       "MapScript.csproj": "353c7d9c8546c315f38cd26598031e104fa8c73a741e21e444aac6bf807328cf",
       "MapScript.Elixirs.cs": "4a1452209a04b3da71fb571ef1759884b4f47ff7a63725370a6f41cde2f33e48",
       "MapScript.Instructions.cs": "ec22700ee324b3cdb3d5050e1495c872a40f6cb92e2e925ff4c377255fb5d929",
@@ -889,7 +889,7 @@
       "MapScript.Rerolls.cs": "0d583e112e297567b197a2a7de6010a2e0578c066b528575d90e5f5f879816e6",
       "MapScript.slnx": "6b5b77b660653b5cd34350fe244e9f2a3e7e344cf23d7efc339e451480582f3d",
       "MapTemplates.g.cs": "a42a413a3dcff84b4b374b997b4b661405c32cab2d921b32c5296dd5bfc6376d",
-      "metadata.json": "c382ade379bea476477c902dd51f027a28b6a2fcbfeb816f441d3c83b8e606ea",
+      "metadata.json": "12078e6179e0272268318cf1bf7c3c75a2e85479c9eaadb1dcdead61581e6344",
       "NuGet.config": "2211ce92e32f9c93bc98f9172c70cae0d41e5fe750e3a28a245eb754e6c3a389",
       "realm_lldb.py": "24c1f0029ccb844eb4d87264d6791ecc3c7938a725aa3997fe4970b36858782f",
       "terrain.json": "831d787af1a53286588d7d00e05a202d61d64518fb92e5449ab7a64f910086c8",
