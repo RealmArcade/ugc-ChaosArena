@@ -3276,7 +3276,7 @@
     "Abilities": [
       {
         "TemplateID": "ability/stone_guardian_granite_fist",
-        "Name": "Granite Fist",
+        "Name": "[color=#0000FF]Granite Fist[/color]",
         "Description": "One enemy takes {{Ability.Effect0.Amount}} physical damage, plus {{Ability.Effect0.Coefficient}} per point of Strength, up to {{Ability.Effect0.Cap}}.",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -3322,7 +3322,7 @@
       },
       {
         "TemplateID": "ability/stone_guardian_hardened_crust",
-        "Name": "Hardened Crust",
+        "Name": "[color=#00FF00]Hardened Crust[/color]",
         "Description": "Wraps itself in stone for {{Ability.Effect0.Duration}} s, absorbing {{Ability.Effect0.Amount}} damage plus {{Ability.Effect0.Coefficient}} per Vitality (max {{Ability.Effect0.Cap}}).",
         "Role": "Tank",
         "AbilityType": "instant_spell",
@@ -3374,7 +3374,7 @@
       },
       {
         "TemplateID": "ability/stone_guardian_seismic_rupture",
-        "Name": "Seismic Rupture",
+        "Name": "[color=#FF0000]Seismic Rupture[/color]",
         "Description": "Cracked ground deals {{Ability.Effect0.Amount}} damage plus {{Ability.Effect0.Coefficient}} per Strength (max {{Ability.Effect0.Cap}}) and applies {{Ability.Effect1.Modifier0:0%}} movement speed in a {{Ability.Effect0.Radius}} radius for {{Ability.Effect1.Duration}} s.",
         "Role": "Control",
         "AbilityType": "target_spell",
@@ -3446,7 +3446,7 @@
       },
       {
         "TemplateID": "ability/iron_warlord_cleaver_arc",
-        "Name": "Cleaver Arc",
+        "Name": "[color=#0000FF]Cleaver Arc[/color]",
         "Description": "A {{Ability.Effect0.Angle}} degree swing hits everything in front for {{Ability.Effect0.Amount}} physical damage, plus {{Ability.Effect0.Coefficient}} per Strength (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -3492,7 +3492,7 @@
       },
       {
         "TemplateID": "ability/iron_warlord_war_engine_roar",
-        "Name": "War Engine Roar",
+        "Name": "[color=#00FF00]War Engine Roar[/color]",
         "Description": "Allies within {{Ability.Effect0.Radius}} gain {{Ability.Effect0.Modifier0}} attack and {{Ability.Effect0.Modifier1}} armor for {{Ability.Effect0.Duration}} s, growing with Wisdom (max {{Ability.Effect0.Cap}} s).",
         "Role": "Support",
         "AbilityType": "instant_spell",
@@ -3559,7 +3559,7 @@
       },
       {
         "TemplateID": "ability/iron_warlord_earthsplitter",
-        "Name": "Earthsplitter",
+        "Name": "[color=#FF0000]Earthsplitter[/color]",
         "Description": "A {{Ability.Effect0.Length}} unit fissure deals {{Ability.Effect0.Amount}} physical damage and stuns for {{Ability.Effect1.Duration}} s, plus {{Ability.Effect1.Coefficient}} s per {{Ability.Effect1.Divisor}} Strength (max {{Ability.Effect1.Cap}} s).",
         "Role": "Control",
         "AbilityType": "target_spell",
@@ -3623,7 +3623,7 @@
       },
       {
         "TemplateID": "ability/nether_assassin_nether_sting",
-        "Name": "Nether Sting",
+        "Name": "[color=#0000FF]Nether Sting[/color]",
         "Description": "A single stab for up to {{Ability.Effect0.Cap}} physical damage, growing with Agility and diminishing as it climbs.",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -3669,7 +3669,7 @@
       },
       {
         "TemplateID": "ability/nether_assassin_shadow_mark",
-        "Name": "Shadow Mark",
+        "Name": "[color=#00FF00]Shadow Mark[/color]",
         "Description": "Marks one enemy for {{Ability.Effect0.Duration}} s, growing with Fortune (max {{Ability.Effect0.Cap}} s): {{Ability.Effect0.Modifier0}} armor and {{Ability.Effect0.Modifier1:0%}} movement speed.",
         "Role": "Control",
         "AbilityType": "target_spell",
@@ -3730,7 +3730,7 @@
       },
       {
         "TemplateID": "ability/nether_assassin_silent_verdict",
-        "Name": "Silent Verdict",
+        "Name": "[color=#FF0000]Silent Verdict[/color]",
         "Description": "Blinks up to {{Ability.Effect0.Amount}} units toward the target, then strikes {{Ability.Effect1.Modifier0:0%}} faster for {{Ability.Effect1.Duration}} s, plus {{Ability.Effect1.Coefficient}} s per {{Ability.Effect1.Divisor}} Agility (max {{Ability.Effect1.Cap}} s).",
         "Role": "Mobility",
         "AbilityType": "target_spell",
@@ -3802,7 +3802,7 @@
       },
       {
         "TemplateID": "ability/shadow_weaver_dusk_bolt",
-        "Name": "Dusk Bolt",
+        "Name": "[color=#0000FF]Dusk Bolt[/color]",
         "Description": "{{Ability.Effect0.Amount}} magic damage, growing with Intelligence, capped at {{Ability.Effect0.Cap}}.",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -3848,7 +3848,7 @@
       },
       {
         "TemplateID": "ability/shadow_weaver_void_bloom",
-        "Name": "Void Bloom",
+        "Name": "[color=#00FF00]Void Bloom[/color]",
         "Description": "{{Ability.Effect0.Amount}} magic damage in a {{Ability.Effect0.Radius}} radius and silences for {{Ability.Effect1.Duration}} s, plus {{Ability.Effect1.Coefficient}} s per Intelligence (max {{Ability.Effect1.Cap}} s).",
         "Role": "Control",
         "AbilityType": "target_spell",
@@ -3912,7 +3912,7 @@
       },
       {
         "TemplateID": "ability/shadow_weaver_devouring_dark",
-        "Name": "Devouring Dark",
+        "Name": "[color=#FF0000]Devouring Dark[/color]",
         "Description": "Allies within {{Ability.Effect0.Radius}} are healed for {{Ability.Effect0.Amount}}, plus {{Ability.Effect0.Coefficient}} per Intelligence (max {{Ability.Effect0.Cap}}).",
         "Role": "Support",
         "AbilityType": "instant_spell",
@@ -3964,7 +3964,7 @@
       },
       {
         "TemplateID": "ability/verdant_druid_thorn_lash",
-        "Name": "Thorn Lash",
+        "Name": "[color=#0000FF]Thorn Lash[/color]",
         "Description": "A {{Ability.Effect0.Angle}} degree whip of thorns deals up to {{Ability.Effect0.Cap}} magic damage, growing and flattening with Wisdom.",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -4010,7 +4010,7 @@
       },
       {
         "TemplateID": "ability/verdant_druid_verdant_surge",
-        "Name": "Verdant Surge",
+        "Name": "[color=#00FF00]Verdant Surge[/color]",
         "Description": "Heals every ally within {{Ability.Effect0.Radius}} for {{Ability.Effect0.Amount}}, growing with Wisdom (max {{Ability.Effect0.Cap}}).",
         "Role": "Support",
         "AbilityType": "target_spell",
@@ -4056,7 +4056,7 @@
       },
       {
         "TemplateID": "ability/verdant_druid_bloomtide",
-        "Name": "Bloomtide",
+        "Name": "[color=#FF0000]Bloomtide[/color]",
         "Description": "Allies within {{Ability.Effect0.Radius}} gain {{Ability.Effect0.Modifier0}} armor and {{Ability.Effect0.Modifier1}} health per second for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} s per Vitality (max {{Ability.Effect0.Cap}} s).",
         "Role": "Tank",
         "AbilityType": "instant_spell",
@@ -4123,7 +4123,7 @@
       },
       {
         "TemplateID": "ability/thornback_behemoth_bramble_slam",
-        "Name": "Bramble Slam",
+        "Name": "[color=#0000FF]Bramble Slam[/color]",
         "Description": "Slams the ground for {{Ability.Effect0.Amount}} physical damage in a {{Ability.Effect0.Radius}} radius, plus {{Ability.Effect0.Coefficient}} per Strength (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -4169,7 +4169,7 @@
       },
       {
         "TemplateID": "ability/thornback_behemoth_rooted_vigor",
-        "Name": "Rooted Vigor",
+        "Name": "[color=#00FF00]Rooted Vigor[/color]",
         "Description": "Every ally within {{Ability.Effect0.Radius}} gains a {{Ability.Effect0.Amount}} point shield for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} per Vitality (max {{Ability.Effect0.Cap}}).",
         "Role": "Tank",
         "AbilityType": "instant_spell",
@@ -4221,7 +4221,7 @@
       },
       {
         "TemplateID": "ability/thornback_behemoth_overgrowth",
-        "Name": "Overgrowth",
+        "Name": "[color=#FF0000]Overgrowth[/color]",
         "Description": "Roots everything within {{Ability.Effect0.Radius}} for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} s per Vitality (max {{Ability.Effect0.Cap}} s), then applies {{Ability.Effect1.Modifier0:0%}} movement speed for {{Ability.Effect1.Duration}} s.",
         "Role": "Control",
         "AbilityType": "instant_spell",
@@ -4306,7 +4306,7 @@
       },
       {
         "TemplateID": "ability/coral_vanguard_harpoon_jab",
-        "Name": "Harpoon Jab",
+        "Name": "[color=#0000FF]Harpoon Jab[/color]",
         "Description": "A {{Ability.Effect0.Length}} unit harpoon line deals {{Ability.Effect0.Amount}} physical damage, plus {{Ability.Effect0.Coefficient}} per Strength (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -4352,7 +4352,7 @@
       },
       {
         "TemplateID": "ability/coral_vanguard_tidal_sweep",
-        "Name": "Tidal Sweep",
+        "Name": "[color=#00FF00]Tidal Sweep[/color]",
         "Description": "A {{Ability.Effect0.Angle}} degree wave pushes enemies back up to {{Ability.Effect0.Cap}} units and deals {{Ability.Effect1.Amount}} physical damage.",
         "Role": "Control",
         "AbilityType": "target_spell",
@@ -4416,7 +4416,7 @@
       },
       {
         "TemplateID": "ability/coral_vanguard_undertow",
-        "Name": "Undertow",
+        "Name": "[color=#FF0000]Undertow[/color]",
         "Description": "Rides the current for {{Ability.Effect0.Duration}} s, growing with Agility (max {{Ability.Effect0.Cap}} s): {{Ability.Effect0.Modifier0:0%}} movement speed and {{Ability.Effect0.Modifier1:0%}} attack speed, while enemies within {{Ability.Effect1.Radius}} take {{Ability.Effect1.Modifier0:0%}} movement speed.",
         "Role": "Mobility",
         "AbilityType": "instant_spell",
@@ -4509,7 +4509,7 @@
       },
       {
         "TemplateID": "ability/tidecaller_wave_dart",
-        "Name": "Wave Dart",
+        "Name": "[color=#0000FF]Wave Dart[/color]",
         "Description": "{{Ability.Effect0.Amount}} magic damage, plus {{Ability.Effect0.Coefficient}} per {{Ability.Effect0.Divisor}} Intelligence (max {{Ability.Effect0.Cap}}), at long range.",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -4555,7 +4555,7 @@
       },
       {
         "TemplateID": "ability/tidecaller_riptide_crush",
-        "Name": "Riptide Crush",
+        "Name": "[color=#00FF00]Riptide Crush[/color]",
         "Description": "{{Ability.Effect0.Amount}} magic damage in a {{Ability.Effect0.Radius}} radius, and everything inside is stopped for {{Ability.Effect1.Duration}} s, plus {{Ability.Effect1.Coefficient}} s per {{Ability.Effect1.Divisor}} Wisdom (max {{Ability.Effect1.Cap}} s).",
         "Role": "Control",
         "AbilityType": "target_spell",
@@ -4627,7 +4627,7 @@
       },
       {
         "TemplateID": "ability/tidecaller_maelstrom",
-        "Name": "Maelstrom",
+        "Name": "[color=#FF0000]Maelstrom[/color]",
         "Description": "A {{Ability.Effect0.Radius}} radius whirlpool deals {{Ability.Effect0.Amount}} magic damage, growing with Intelligence (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -4673,7 +4673,7 @@
       },
       {
         "TemplateID": "ability/flame_archon_ember_lance",
-        "Name": "Ember Lance",
+        "Name": "[color=#0000FF]Ember Lance[/color]",
         "Description": "A {{Ability.Effect0.Length}} unit lance of fire deals {{Ability.Effect0.Coefficient}} magic damage per point of Intelligence, capped at {{Ability.Effect0.Cap}}.",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -4719,7 +4719,7 @@
       },
       {
         "TemplateID": "ability/flame_archon_firestorm",
-        "Name": "Firestorm",
+        "Name": "[color=#00FF00]Firestorm[/color]",
         "Description": "A {{Ability.Effect0.Angle}} degree cone deals {{Ability.Effect0.Amount}} magic damage, plus {{Ability.Effect0.Coefficient}} per Intelligence (max {{Ability.Effect0.Cap}}), and applies {{Ability.Effect1.Modifier0:0%}} movement speed for {{Ability.Effect1.Duration}} s.",
         "Role": "Control",
         "AbilityType": "target_spell",
@@ -4791,7 +4791,7 @@
       },
       {
         "TemplateID": "ability/flame_archon_pyroclasm",
-        "Name": "Pyroclasm",
+        "Name": "[color=#FF0000]Pyroclasm[/color]",
         "Description": "Detonates for {{Ability.Effect0.Coefficient}} magic damage per Intelligence (max {{Ability.Effect0.Cap}}) in a {{Ability.Effect0.Radius}} radius.",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -4837,7 +4837,7 @@
       },
       {
         "TemplateID": "ability/magma_smith_forge_hammer",
-        "Name": "Forge Hammer",
+        "Name": "[color=#0000FF]Forge Hammer[/color]",
         "Description": "A {{Ability.Effect0.Angle}} degree hammer blow deals {{Ability.Effect0.Amount}} physical damage, plus {{Ability.Effect0.Coefficient}} per {{Ability.Effect0.Divisor}} Strength (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -4883,7 +4883,7 @@
       },
       {
         "TemplateID": "ability/magma_smith_molten_quench",
-        "Name": "Molten Quench",
+        "Name": "[color=#00FF00]Molten Quench[/color]",
         "Description": "Quenches itself for {{Ability.Effect0.Duration}} s with a {{Ability.Effect0.Amount}} point shield, plus {{Ability.Effect0.Coefficient}} per Strength (max {{Ability.Effect0.Cap}}), and {{Ability.Effect1.Modifier0}} armor.",
         "Role": "Tank",
         "AbilityType": "instant_spell",
@@ -4961,7 +4961,7 @@
       },
       {
         "TemplateID": "ability/magma_smith_eruption",
-        "Name": "Eruption",
+        "Name": "[color=#FF0000]Eruption[/color]",
         "Description": "The ground bursts for {{Ability.Effect1.Amount}} magic damage in a {{Ability.Effect0.Radius}} radius and throws enemies back up to {{Ability.Effect0.Cap}} units.",
         "Role": "Control",
         "AbilityType": "target_spell",
@@ -5025,7 +5025,7 @@
       },
       {
         "TemplateID": "ability/frost_warden_rime_bolt",
-        "Name": "Rime Bolt",
+        "Name": "[color=#0000FF]Rime Bolt[/color]",
         "Description": "{{Ability.Effect0.Amount}} magic damage, plus {{Ability.Effect0.Coefficient}} per Intelligence (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -5071,7 +5071,7 @@
       },
       {
         "TemplateID": "ability/frost_warden_frost_bulwark",
-        "Name": "Frost Bulwark",
+        "Name": "[color=#00FF00]Frost Bulwark[/color]",
         "Description": "Ice plate grants {{Ability.Effect0.Modifier0}} armor and {{Ability.Effect0.Modifier1}} magic resistance for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} s per Wisdom (max {{Ability.Effect0.Cap}} s).",
         "Role": "Tank",
         "AbilityType": "instant_spell",
@@ -5138,7 +5138,7 @@
       },
       {
         "TemplateID": "ability/frost_warden_glacier_break",
-        "Name": "Glacier Break",
+        "Name": "[color=#FF0000]Glacier Break[/color]",
         "Description": "{{Ability.Effect0.Amount}} magic damage in a {{Ability.Effect0.Radius}} radius and {{Ability.Effect1.Modifier0:0%}} movement speed for {{Ability.Effect1.Duration}} s, plus {{Ability.Effect1.Coefficient}} s per {{Ability.Effect1.Divisor}} Intelligence (max {{Ability.Effect1.Cap}} s).",
         "Role": "Control",
         "AbilityType": "target_spell",
@@ -5210,7 +5210,7 @@
       },
       {
         "TemplateID": "ability/glacier_sentinel_ice_hammer",
-        "Name": "Ice Hammer",
+        "Name": "[color=#0000FF]Ice Hammer[/color]",
         "Description": "A {{Ability.Effect0.Angle}} degree swing deals {{Ability.Effect0.Coefficient}} physical damage per Strength (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -5256,7 +5256,7 @@
       },
       {
         "TemplateID": "ability/glacier_sentinel_permafrost",
-        "Name": "Permafrost",
+        "Name": "[color=#00FF00]Permafrost[/color]",
         "Description": "Allies within {{Ability.Effect0.Radius}} gain a {{Ability.Effect0.Amount}} point shield for {{Ability.Effect0.Duration}} s, growing with Vitality (max {{Ability.Effect0.Cap}}).",
         "Role": "Tank",
         "AbilityType": "instant_spell",
@@ -5308,7 +5308,7 @@
       },
       {
         "TemplateID": "ability/glacier_sentinel_avalanche",
-        "Name": "Avalanche",
+        "Name": "[color=#FF0000]Avalanche[/color]",
         "Description": "{{Ability.Effect1.Amount}} physical damage in a {{Ability.Effect0.Radius}} radius, and everything inside is thrown back up to {{Ability.Effect0.Cap}} units.",
         "Role": "Control",
         "AbilityType": "target_spell",
@@ -5372,7 +5372,7 @@
       },
       {
         "TemplateID": "ability/storm_caller_static_bolt",
-        "Name": "Static Bolt",
+        "Name": "[color=#0000FF]Static Bolt[/color]",
         "Description": "A {{Ability.Effect0.Length}} unit bolt deals {{Ability.Effect0.Amount}} magic damage, plus {{Ability.Effect0.Coefficient}} per {{Ability.Effect0.Divisor}} Intelligence (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -5418,7 +5418,7 @@
       },
       {
         "TemplateID": "ability/storm_caller_thunder_clap",
-        "Name": "Thunder Clap",
+        "Name": "[color=#00FF00]Thunder Clap[/color]",
         "Description": "{{Ability.Effect0.Amount}} magic damage around the caster and a {{Ability.Effect1.Duration}} s stun, plus {{Ability.Effect1.Coefficient}} s per {{Ability.Effect1.Divisor}} Intelligence (max {{Ability.Effect1.Cap}} s).",
         "Role": "Control",
         "AbilityType": "instant_spell",
@@ -5488,7 +5488,7 @@
       },
       {
         "TemplateID": "ability/storm_caller_stormfront",
-        "Name": "Stormfront",
+        "Name": "[color=#FF0000]Stormfront[/color]",
         "Description": "Allies within {{Ability.Effect0.Radius}} gain {{Ability.Effect0.Modifier0:0%}} attack speed and {{Ability.Effect0.Modifier1:0%}} spell power for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} s per {{Ability.Effect0.Divisor}} Intelligence (max {{Ability.Effect0.Cap}} s).",
         "Role": "Support",
         "AbilityType": "instant_spell",
@@ -5555,7 +5555,7 @@
       },
       {
         "TemplateID": "ability/tempest_chaser_quick_slash",
-        "Name": "Quick Slash",
+        "Name": "[color=#0000FF]Quick Slash[/color]",
         "Description": "A fast arc deals {{Ability.Effect0.Amount}} physical damage, growing with Agility (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -5601,7 +5601,7 @@
       },
       {
         "TemplateID": "ability/tempest_chaser_gust_step",
-        "Name": "Gust Step",
+        "Name": "[color=#00FF00]Gust Step[/color]",
         "Description": "Blinks up to {{Ability.Effect0.Amount}} units toward the target and rides the gust {{Ability.Effect1.Modifier0:0%}} faster for {{Ability.Effect1.Duration}} s, growing with Agility (max {{Ability.Effect1.Cap}} s).",
         "Role": "Mobility",
         "AbilityType": "target_spell",
@@ -5673,7 +5673,7 @@
       },
       {
         "TemplateID": "ability/tempest_chaser_cyclone_rush",
-        "Name": "Cyclone Rush",
+        "Name": "[color=#FF0000]Cyclone Rush[/color]",
         "Description": "A {{Ability.Effect0.Radius}} radius cyclone deals up to {{Ability.Effect0.Cap}} physical damage, scaling with Agility as it flattens.",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -5719,7 +5719,7 @@
       },
       {
         "TemplateID": "ability/arcane_scholar_arcane_lance",
-        "Name": "Arcane Lance",
+        "Name": "[color=#0000FF]Arcane Lance[/color]",
         "Description": "A {{Ability.Effect0.Length}} unit lance deals {{Ability.Effect0.Amount}} magic damage, growing with Intelligence (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -5765,7 +5765,7 @@
       },
       {
         "TemplateID": "ability/arcane_scholar_mana_bloom",
-        "Name": "Mana Bloom",
+        "Name": "[color=#00FF00]Mana Bloom[/color]",
         "Description": "Allies within {{Ability.Effect0.Radius}} gain {{Ability.Effect0.Modifier0:0%}} spell power, {{Ability.Effect0.Modifier1:0%}} cooldown reduction and {{Ability.Effect0.Modifier2}} mana per second for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} s per Intelligence (max {{Ability.Effect0.Cap}} s).",
         "Role": "Support",
         "AbilityType": "instant_spell",
@@ -5839,7 +5839,7 @@
       },
       {
         "TemplateID": "ability/arcane_scholar_arcane_cataclysm",
-        "Name": "Arcane Cataclysm",
+        "Name": "[color=#FF0000]Arcane Cataclysm[/color]",
         "Description": "{{Ability.Effect0.Amount}} magic damage in a {{Ability.Effect0.Radius}} radius, plus {{Ability.Effect0.Coefficient}} per {{Ability.Effect0.Divisor}} Intelligence (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -5885,7 +5885,7 @@
       },
       {
         "TemplateID": "ability/rune_scribe_rune_dart",
-        "Name": "Rune Dart",
+        "Name": "[color=#0000FF]Rune Dart[/color]",
         "Description": "An {{Ability.Effect0.Length}} unit rune line deals up to {{Ability.Effect0.Cap}} magic damage, growing and flattening with Intelligence.",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -5931,7 +5931,7 @@
       },
       {
         "TemplateID": "ability/rune_scribe_sigil_detonation",
-        "Name": "Sigil Detonation",
+        "Name": "[color=#00FF00]Sigil Detonation[/color]",
         "Description": "{{Ability.Effect0.Amount}} magic damage in a {{Ability.Effect0.Radius}} radius, and enemies inside are at {{Ability.Effect1.Modifier0}} armor and {{Ability.Effect1.Modifier1:0%}} movement speed for {{Ability.Effect1.Duration}} s, growing with Intelligence (max {{Ability.Effect1.Cap}} s).",
         "Role": "Control",
         "AbilityType": "target_spell",
@@ -6010,7 +6010,7 @@
       },
       {
         "TemplateID": "ability/rune_scribe_grand_inscription",
-        "Name": "Grand Inscription",
+        "Name": "[color=#FF0000]Grand Inscription[/color]",
         "Description": "Allies within {{Ability.Effect0.Radius}} gain {{Ability.Effect0.Modifier0}} armor, {{Ability.Effect0.Modifier1:0%}} tenacity and {{Ability.Effect0.Modifier2}} health per second for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} s per Wisdom (max {{Ability.Effect0.Cap}} s).",
         "Role": "Support",
         "AbilityType": "instant_spell",
@@ -6084,7 +6084,7 @@
       },
       {
         "TemplateID": "ability/sun_priest_solar_spark",
-        "Name": "Solar Spark",
+        "Name": "[color=#0000FF]Solar Spark[/color]",
         "Description": "A spark of sunlight deals {{Ability.Effect0.Coefficient}} magic damage per point of Wisdom, capped at {{Ability.Effect0.Cap}}.",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -6130,7 +6130,7 @@
       },
       {
         "TemplateID": "ability/sun_priest_sunlit_mend",
-        "Name": "Sunlit Mend",
+        "Name": "[color=#00FF00]Sunlit Mend[/color]",
         "Description": "Heals every ally within {{Ability.Effect0.Radius}} of the target for {{Ability.Effect0.Amount}}, plus {{Ability.Effect0.Coefficient}} per Wisdom (max {{Ability.Effect0.Cap}}).",
         "Role": "Support",
         "AbilityType": "target_spell",
@@ -6176,7 +6176,7 @@
       },
       {
         "TemplateID": "ability/sun_priest_radiant_chorus",
-        "Name": "Radiant Chorus",
+        "Name": "[color=#FF0000]Radiant Chorus[/color]",
         "Description": "Allies within {{Ability.Effect0.Radius}} are healed for {{Ability.Effect0.Amount}}, growing with Wisdom (max {{Ability.Effect0.Cap}}), and regenerate {{Ability.Effect1.Modifier0}} health per second for {{Ability.Effect1.Duration}} s.",
         "Role": "Support",
         "AbilityType": "instant_spell",
@@ -6254,7 +6254,7 @@
       },
       {
         "TemplateID": "ability/lightbringer_monk_palm_strike",
-        "Name": "Palm Strike",
+        "Name": "[color=#0000FF]Palm Strike[/color]",
         "Description": "A focused palm deals {{Ability.Effect0.Amount}} physical damage, plus {{Ability.Effect0.Coefficient}} per Agility (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -6300,7 +6300,7 @@
       },
       {
         "TemplateID": "ability/lightbringer_monk_inner_light",
-        "Name": "Inner Light",
+        "Name": "[color=#00FF00]Inner Light[/color]",
         "Description": "Heals one ally for {{Ability.Effect0.Amount}}, plus {{Ability.Effect0.Coefficient}} per Wisdom (max {{Ability.Effect0.Cap}}), and grants {{Ability.Effect1.Modifier0}} armor for {{Ability.Effect1.Duration}} s.",
         "Role": "Support",
         "AbilityType": "target_spell",
@@ -6372,7 +6372,7 @@
       },
       {
         "TemplateID": "ability/lightbringer_monk_sanctified_ground",
-        "Name": "Sanctified Ground",
+        "Name": "[color=#FF0000]Sanctified Ground[/color]",
         "Description": "Consecrates the ground: allies within {{Ability.Effect0.Radius}} gain {{Ability.Effect0.Modifier0}} armor, {{Ability.Effect0.Modifier1}} magic resistance and {{Ability.Effect0.Modifier2:0%}} tenacity for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} s per Wisdom (max {{Ability.Effect0.Cap}} s).",
         "Role": "Tank",
         "AbilityType": "target_spell",
@@ -6446,7 +6446,7 @@
       },
       {
         "TemplateID": "ability/pack_alpha_savage_maul",
-        "Name": "Savage Maul",
+        "Name": "[color=#0000FF]Savage Maul[/color]",
         "Description": "{{Ability.Effect0.Amount}} physical damage, plus {{Ability.Effect0.Coefficient}} per {{Ability.Effect0.Divisor}} Strength (max {{Ability.Effect0.Cap}}), and the target takes {{Ability.Effect1.Modifier0:0%}} movement speed for {{Ability.Effect1.Duration}} s.",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -6518,7 +6518,7 @@
       },
       {
         "TemplateID": "ability/pack_alpha_howl",
-        "Name": "Howl",
+        "Name": "[color=#00FF00]Howl[/color]",
         "Description": "The pack gains {{Ability.Effect0.Modifier0}} attack and {{Ability.Effect0.Modifier1:0%}} attack speed for {{Ability.Effect0.Duration}} s, plus {{Ability.Effect0.Coefficient}} s per {{Ability.Effect0.Divisor}} Fortune (max {{Ability.Effect0.Cap}} s).",
         "Role": "Support",
         "AbilityType": "instant_spell",
@@ -6585,7 +6585,7 @@
       },
       {
         "TemplateID": "ability/pack_alpha_blood_hunt",
-        "Name": "Blood Hunt",
+        "Name": "[color=#FF0000]Blood Hunt[/color]",
         "Description": "Lopes up to {{Ability.Effect0.Amount}} units to the target and bites for {{Ability.Effect1.Amount}} physical damage, plus {{Ability.Effect1.Coefficient}} per Agility (max {{Ability.Effect1.Cap}}).",
         "Role": "Mobility",
         "AbilityType": "target_spell",
@@ -6649,7 +6649,7 @@
       },
       {
         "TemplateID": "ability/razor_dervish_whirling_cut",
-        "Name": "Whirling Cut",
+        "Name": "[color=#0000FF]Whirling Cut[/color]",
         "Description": "A wide slash deals {{Ability.Effect0.Amount}} physical damage, growing with Agility (max {{Ability.Effect0.Cap}}).",
         "Role": "Damage",
         "AbilityType": "target_spell",
@@ -6695,7 +6695,7 @@
       },
       {
         "TemplateID": "ability/razor_dervish_bleeding_waltz",
-        "Name": "Bleeding Waltz",
+        "Name": "[color=#00FF00]Bleeding Waltz[/color]",
         "Description": "Spins through nearby enemies for {{Ability.Effect0.Amount}} physical damage and leaves them at {{Ability.Effect1.Modifier0:0%}} movement speed for {{Ability.Effect1.Duration}} s, growing with Agility (max {{Ability.Effect1.Cap}} s).",
         "Role": "Control",
         "AbilityType": "instant_spell",
@@ -6773,7 +6773,7 @@
       },
       {
         "TemplateID": "ability/razor_dervish_thousand_edge",
-        "Name": "Thousand Edge",
+        "Name": "[color=#FF0000]Thousand Edge[/color]",
         "Description": "A storm of blades around the dervish, dealing up to {{Ability.Effect0.Cap}} physical damage that flattens as Agility climbs.",
         "Role": "Damage",
         "AbilityType": "instant_spell",
