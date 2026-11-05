@@ -671,7 +671,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
     {
         var state = new TargetDummyState { UnitTypeId = unitTypeId };
 
-        ApplyHeroStats(dummy, state.Level);
+        ApplyTileLevel(dummy, state.Level);
         dummy.HideHealthAndManaBars = true;
 
         targetDummyStates[dummy.UniqueId] = state;
@@ -725,7 +725,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
             return;
 
         state.Level = state.Level >= TargetDummyMaxLevel ? 1 : state.Level + 1;
-        ApplyHeroStats(dummy, state.Level);
+        ApplyTileLevel(dummy, state.Level);
         ApplyTargetDummyItem(dummy, state);
         RefreshTargetDummyName(dummy, state);
     }
@@ -1052,6 +1052,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
             tileStatesByUnitId[circle.UniqueId] = state;
 
             PerformItemReroll(circle);
+            ApplyTileLevel(circle, state.CircleLevel);
             ApplyElement(circle, state, true);
             ApplyTileBadge(circle, state);
         }
@@ -1151,6 +1152,8 @@ public partial class MapScript : IWasmModule, ILobbyScript
                     newCircle.AddItem(itemId, charges);
                 }
 
+                ApplyTileLevel(newCircle, state.CircleLevel);
+
                 tileStatesByUnitId[newCircle.UniqueId] = state;
                 unit = newCircle;
                 ReapplyTileAbilityCooldowns(unit, state);
@@ -1205,10 +1208,13 @@ public partial class MapScript : IWasmModule, ILobbyScript
         }
     }
 
-    private static void ApplyHeroStats(UnitId unit, int level)
+    /// <summary>
+    ///     A tile's level belongs to the tile, not to the model standing on it: a circle holds its item at the tile's
+    ///     level, so the unit carries that same level and the two never disagree.
+    /// </summary>
+    private static void ApplyTileLevel(UnitId unit, int level)
     {
-        if (unit.IsHero)
-            unit.Level = Math.Max(level, 1);
+        unit.Level = Math.Max(level, 1);
     }
 
     private void LockTileUnit(UnitId unit)
@@ -1229,7 +1235,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
     private TileState ConfigureDraftedHero(UnitId hero, int level, IEnumerable<string> itemIds, Element element, Vector3 anchorPosition, int playerIndex)
     {
-        ApplyHeroStats(hero, level);
+        ApplyTileLevel(hero, level);
 
         foreach (string itemId in itemIds)
         {
@@ -1372,7 +1378,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         _api.DestroyUnit(unit, false, false);
 
         UnitId newUnit = player.SpawnUnit(replacement, position);
-        ApplyHeroStats(newUnit, level);
+        ApplyTileLevel(newUnit, level);
         foreach (string itemId in itemIds)
             newUnit.AddItem(itemId, Math.Max(level, 1));
 
@@ -1427,9 +1433,12 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
     private void ApplyTileLevelToUnit(UnitId unit, TileState state)
     {
+        int level = Math.Max(state.CircleLevel, 1);
+
+        ApplyTileLevel(unit, level);
+
         if (state.Kind == TileKind.Hero)
         {
-            ApplyHeroStats(unit, state.CircleLevel);
             LockTileUnit(unit);
         }
         else if (state.Kind == TileKind.Circle)
@@ -1439,8 +1448,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
         foreach (string itemId in unit.GetItems().ToList())
         {
-            int charges = Math.Max(state.CircleLevel, 1);
-            unit.SetItemCharges(itemId, charges);
+            unit.SetItemCharges(itemId, level);
         }
 
         ApplyTileBadge(unit, state);
@@ -1691,7 +1699,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
             Vector3 spawnPosition = ToCoordinatePosition(playerState.SpawnPosition, unitOffset);
 
             UnitId clone = proxyPlayer.SpawnUnit(draftedUnit.TemplateID, spawnPosition, executeSpawnShader: true, bypassPopulation: true);
-            ApplyHeroStats(clone, tileState?.CircleLevel ?? draftedUnit.Level);
+            ApplyTileLevel(clone, tileState?.CircleLevel ?? draftedUnit.Level);
             _api.EnableUnitAutoCombat(clone, true);
 
             foreach (string itemId in draftedUnit.GetItems())
