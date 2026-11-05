@@ -36,7 +36,7 @@
       "12 Players"
     ],
     "MapType": null,
-    "TestAiPlayerCount": 1,
+    "TestAiPlayerCount": 11,
     "TestRandomizeSlots": false,
     "TestRandomSeed": null,
     "PlayablePlayerSlots": 12,
@@ -47,384 +47,6 @@
   "Dependencies": [],
   "Templates": {
     "Units": [
-      {
-        "TemplateID": "unit/stone_guardian",
-        "Name": "Stone Guardian",
-        "Description": "A living monolith of packed granite that plants itself at the front line and refuses to move.",
-        "MaxHp": 1295,
-        "Damage": 66,
-        "Range": 2.44,
-        "Armor": 6,
-        "Speed": 3,
-        "AttackCooldown": 1.45,
-        "ScanRadius": 0,
-        "CostGold": 0,
-        "CostWood": 0,
-        "CostStone": 0,
-        "PopCost": 1,
-        "ProductionTime": 0,
-        "Strength": 22,
-        "Agility": 8,
-        "Vitality": 20,
-        "Intelligence": 9,
-        "Wisdom": 10,
-        "Fortune": 10,
-        "LevelGrowth": {
-          "StrengthPerLevel": 1.5,
-          "AgilityPerLevel": 0.5,
-          "VitalityPerLevel": 2,
-          "IntelligencePerLevel": 0.4,
-          "WisdomPerLevel": 0.4,
-          "FortunePerLevel": 0.2
-        },
-        "HpRegen": 1.3,
-        "HpRegenCombatDelay": 3,
-        "MaxMana": 0,
-        "ManaRegen": 1.17,
-        "MagicResistance": 2.5,
-        "FlatArmorPenetration": 0,
-        "PercentArmorPenetration": 0,
-        "FlatMagicPenetration": 0,
-        "DamageVariance": 5,
-        "DamageType": "physical",
-        "CritChance": 0,
-        "CritMultiplier": 1.75,
-        "SplashType": "RadialStep",
-        "SplashInnerRadius": 1.2,
-        "SplashMediumRadius": 2,
-        "SplashOuterRadius": 2.9,
-        "SplashInnerRatio": 1,
-        "SplashMediumRatio": 0.6,
-        "SplashOuterRatio": 0.3,
-        "FriendlyFire": false,
-        "PushPriority": 0,
-        "MovementType": "Ground",
-        "SightRange": 15,
-        "AcquisitionRange": 15,
-        "GoldBounty": 10,
-        "ModelPath": "stone_warrior_warrior.rmesh",
-        "PortraitModelPath": "armored_warrior_unit.rmesh",
-        "VisualMode": "Mesh",
-        "Scale": 2.95,
-        "YOffset": 0.909,
-        "CollisionCircle": 0.89,
-        "Brightness": 0.5,
-        "Tint": null,
-        "NormalizeLuminance": true,
-        "IgnorePlayerColor": false,
-        "DespillPlayerColor": true,
-        "BuildOptions": null,
-        "IsHero": true,
-        "Abilities": [
-          "stone_guardian_granite_fist",
-          "stone_guardian_hardened_crust",
-          "stone_guardian_seismic_rupture",
-          "reroll_item",
-          "reroll_element",
-          "reroll_hero",
-          "reroll_all",
-          "swap_tile_units"
-        ],
-        "XpBounty": 25,
-        "ExperiencePerLevel": 0,
-        "PathingCapabilities": null,
-        "PathingType": 9,
-        "Targets": null,
-        "Weapons": [
-          "weapon/granite_crusher"
-        ],
-        "ProjectileModelPath": null,
-        "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
-          "Death": [
-            "Death - Death From Standing Idle.ranim"
-          ],
-          "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
-          ],
-          "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
-          ],
-          "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
-          ],
-          "Walk": [
-            "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
-          ]
-        },
-        "ObjectAttachments": null,
-        "PseudoSockets": null,
-        "Sounds": null,
-        "StartingItems": null,
-        "ShopItems": null,
-        "Upgrades": null,
-        "StatusEffects": null,
-        "SoundEvents": null,
-        "SpawnShader": null,
-        "DeathShader": null,
-        "ProceduralAnimation": null,
-        "EnableProceduralAnimation": null,
-        "DespawnShader": null,
-        "ConstructionRange": 4,
-        "Attribution_ImportedFromMap": null
-      },
-      {
-        "TemplateID": "unit/iron_warlord",
-        "Name": "Iron Warlord",
-        "Description": "A siege-armoured field commander who wades into the melee with a cleaver the size of a door.",
-        "MaxHp": 1062,
-        "Damage": 71,
-        "Range": 2.82,
-        "Armor": 5,
-        "Speed": 3,
-        "AttackCooldown": 1.35,
-        "ScanRadius": 0,
-        "CostGold": 0,
-        "CostWood": 0,
-        "CostStone": 0,
-        "PopCost": 1,
-        "ProductionTime": 0,
-        "Strength": 18,
-        "Agility": 12,
-        "Vitality": 15,
-        "Intelligence": 10,
-        "Wisdom": 11,
-        "Fortune": 10,
-        "LevelGrowth": {
-          "StrengthPerLevel": 1.5,
-          "AgilityPerLevel": 0.5,
-          "VitalityPerLevel": 2,
-          "IntelligencePerLevel": 0.4,
-          "WisdomPerLevel": 0.4,
-          "FortunePerLevel": 0.2
-        },
-        "HpRegen": 1,
-        "HpRegenCombatDelay": 3,
-        "MaxMana": 60,
-        "ManaRegen": 0.98,
-        "MagicResistance": 2,
-        "FlatArmorPenetration": 0,
-        "PercentArmorPenetration": 0,
-        "FlatMagicPenetration": 0,
-        "DamageVariance": 6,
-        "DamageType": "physical",
-        "CritChance": 0,
-        "CritMultiplier": 1.75,
-        "SplashType": "RadialStep",
-        "SplashInnerRadius": 0.8,
-        "SplashMediumRadius": 1.5,
-        "SplashOuterRadius": 2.2,
-        "SplashInnerRatio": 1,
-        "SplashMediumRatio": 0.6,
-        "SplashOuterRatio": 0.3,
-        "FriendlyFire": false,
-        "PushPriority": 0,
-        "MovementType": "Ground",
-        "SightRange": 15,
-        "AcquisitionRange": 15,
-        "GoldBounty": 10,
-        "ModelPath": "golden_warrior_hero.rmesh",
-        "PortraitModelPath": "heavy_armored_warrior.rmesh",
-        "VisualMode": "Mesh",
-        "Scale": 2.75,
-        "YOffset": 0.909,
-        "CollisionCircle": 0.83,
-        "Brightness": 0.5,
-        "Tint": null,
-        "NormalizeLuminance": true,
-        "IgnorePlayerColor": false,
-        "DespillPlayerColor": true,
-        "BuildOptions": null,
-        "IsHero": true,
-        "Abilities": [
-          "iron_warlord_cleaver_arc",
-          "iron_warlord_war_engine_roar",
-          "iron_warlord_earthsplitter",
-          "reroll_item",
-          "reroll_element",
-          "reroll_hero",
-          "reroll_all",
-          "swap_tile_units"
-        ],
-        "XpBounty": 25,
-        "ExperiencePerLevel": 0,
-        "PathingCapabilities": null,
-        "PathingType": 9,
-        "Targets": null,
-        "Weapons": [
-          "weapon/iron_cleaver"
-        ],
-        "ProjectileModelPath": null,
-        "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
-          "Death": [
-            "Death - Death From Standing Idle.ranim"
-          ],
-          "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
-          ],
-          "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
-          ],
-          "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
-          ],
-          "Walk": [
-            "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
-          ]
-        },
-        "ObjectAttachments": null,
-        "PseudoSockets": null,
-        "Sounds": null,
-        "StartingItems": null,
-        "ShopItems": null,
-        "Upgrades": null,
-        "StatusEffects": null,
-        "SoundEvents": null,
-        "SpawnShader": null,
-        "DeathShader": null,
-        "ProceduralAnimation": null,
-        "EnableProceduralAnimation": null,
-        "DespawnShader": null,
-        "ConstructionRange": 4,
-        "Attribution_ImportedFromMap": null
-      },
-      {
-        "TemplateID": "unit/nether_assassin",
-        "Name": "Nether Assassin",
-        "Description": "A contract killer from the space between worlds who deletes a single target and vanishes into the wound.",
-        "MaxHp": 549,
-        "Damage": 80,
-        "Range": 2.88,
-        "Armor": 2.5,
-        "Speed": 3,
-        "AttackCooldown": 0.95,
-        "ScanRadius": 0,
-        "CostGold": 0,
-        "CostWood": 0,
-        "CostStone": 0,
-        "PopCost": 1,
-        "ProductionTime": 0,
-        "Strength": 14,
-        "Agility": 20,
-        "Vitality": 12,
-        "Intelligence": 10,
-        "Wisdom": 10,
-        "Fortune": 20,
-        "LevelGrowth": {
-          "StrengthPerLevel": 1,
-          "AgilityPerLevel": 1.6,
-          "VitalityPerLevel": 0.8,
-          "IntelligencePerLevel": 0.6,
-          "WisdomPerLevel": 0.4,
-          "FortunePerLevel": 0.8
-        },
-        "HpRegen": 0.6,
-        "HpRegenCombatDelay": 3,
-        "MaxMana": 44,
-        "ManaRegen": 1.03,
-        "MagicResistance": 1.5,
-        "FlatArmorPenetration": 0,
-        "PercentArmorPenetration": 0,
-        "FlatMagicPenetration": 0,
-        "DamageVariance": 6,
-        "DamageType": "physical",
-        "CritChance": 0,
-        "CritMultiplier": 1.75,
-        "SplashType": "None",
-        "SplashInnerRadius": 0,
-        "SplashMediumRadius": 0,
-        "SplashOuterRadius": 0,
-        "SplashInnerRatio": 1,
-        "SplashMediumRatio": 0.6,
-        "SplashOuterRatio": 0.3,
-        "FriendlyFire": false,
-        "PushPriority": 0,
-        "MovementType": "Ground",
-        "SightRange": 15,
-        "AcquisitionRange": 15,
-        "GoldBounty": 10,
-        "ModelPath": "fantasy_warrior_unit_9.rmesh",
-        "PortraitModelPath": "demon_huntress_unit.rmesh",
-        "VisualMode": "Mesh",
-        "Scale": 2.35,
-        "YOffset": 0.909,
-        "CollisionCircle": 0.71,
-        "Brightness": 0.5,
-        "Tint": null,
-        "NormalizeLuminance": true,
-        "IgnorePlayerColor": false,
-        "DespillPlayerColor": true,
-        "BuildOptions": null,
-        "IsHero": true,
-        "Abilities": [
-          "nether_assassin_nether_sting",
-          "nether_assassin_shadow_mark",
-          "nether_assassin_silent_verdict",
-          "reroll_item",
-          "reroll_element",
-          "reroll_hero",
-          "reroll_all",
-          "swap_tile_units"
-        ],
-        "XpBounty": 25,
-        "ExperiencePerLevel": 0,
-        "PathingCapabilities": null,
-        "PathingType": 9,
-        "Targets": null,
-        "Weapons": [
-          "weapon/nether_stiletto"
-        ],
-        "ProjectileModelPath": null,
-        "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
-          "Death": [
-            "Death - Death From Standing Idle.ranim"
-          ],
-          "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
-          ],
-          "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
-          ],
-          "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
-          ],
-          "Walk": [
-            "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
-          ]
-        },
-        "ObjectAttachments": null,
-        "PseudoSockets": null,
-        "Sounds": null,
-        "StartingItems": null,
-        "ShopItems": null,
-        "Upgrades": null,
-        "StatusEffects": null,
-        "SoundEvents": null,
-        "SpawnShader": null,
-        "DeathShader": null,
-        "ProceduralAnimation": null,
-        "EnableProceduralAnimation": null,
-        "DespawnShader": null,
-        "ConstructionRange": 4,
-        "Attribution_ImportedFromMap": null
-      },
       {
         "TemplateID": "unit/shadow_weaver",
         "Name": "Shadow Weaver",
@@ -513,530 +135,26 @@
         ],
         "ProjectileModelPath": null,
         "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
-          "Death": [
-            "Death - Death From Standing Idle.ranim"
-          ],
           "Attack": [
             "Upward Thrust - Upward Weapon Thrust.ranim"
-          ],
-          "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
           ],
           "Dance": [
             "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
           ],
-          "Walk": [
-            "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
-          ]
-        },
-        "ObjectAttachments": null,
-        "PseudoSockets": null,
-        "Sounds": null,
-        "StartingItems": null,
-        "ShopItems": null,
-        "Upgrades": null,
-        "StatusEffects": null,
-        "SoundEvents": null,
-        "SpawnShader": null,
-        "DeathShader": null,
-        "ProceduralAnimation": null,
-        "EnableProceduralAnimation": null,
-        "DespawnShader": null,
-        "ConstructionRange": 4,
-        "Attribution_ImportedFromMap": null
-      },
-      {
-        "TemplateID": "unit/verdant_druid",
-        "Name": "Verdant Druid",
-        "Description": "A grove-keeper who grows a battlefield garden one wound at a time.",
-        "MaxHp": 823,
-        "Damage": 53,
-        "Range": 3.26,
-        "Armor": 3,
-        "Speed": 3,
-        "AttackCooldown": 1.3,
-        "ScanRadius": 0,
-        "CostGold": 0,
-        "CostWood": 0,
-        "CostStone": 0,
-        "PopCost": 1,
-        "ProductionTime": 0,
-        "Strength": 11,
-        "Agility": 11,
-        "Vitality": 16,
-        "Intelligence": 18,
-        "Wisdom": 20,
-        "Fortune": 11,
-        "LevelGrowth": {
-          "StrengthPerLevel": 0.8,
-          "AgilityPerLevel": 0.4,
-          "VitalityPerLevel": 1.8,
-          "IntelligencePerLevel": 1.2,
-          "WisdomPerLevel": 1,
-          "FortunePerLevel": 0.3
-        },
-        "HpRegen": 1.2,
-        "HpRegenCombatDelay": 3,
-        "MaxMana": 32,
-        "ManaRegen": 0.9,
-        "MagicResistance": 3,
-        "FlatArmorPenetration": 0,
-        "PercentArmorPenetration": 0,
-        "FlatMagicPenetration": 0,
-        "DamageVariance": 4,
-        "DamageType": "magic",
-        "CritChance": 0,
-        "CritMultiplier": 1.75,
-        "SplashType": "None",
-        "SplashInnerRadius": 0,
-        "SplashMediumRadius": 0,
-        "SplashOuterRadius": 0,
-        "SplashInnerRatio": 1,
-        "SplashMediumRatio": 0.6,
-        "SplashOuterRatio": 0.3,
-        "FriendlyFire": false,
-        "PushPriority": 0,
-        "MovementType": "Ground",
-        "SightRange": 15,
-        "AcquisitionRange": 15,
-        "GoldBounty": 10,
-        "ModelPath": "forest_spirit_warrior.rmesh",
-        "PortraitModelPath": "armored_warrior_hero_4.rmesh",
-        "VisualMode": "Mesh",
-        "Scale": 2.45,
-        "YOffset": 0.909,
-        "CollisionCircle": 0.74,
-        "Brightness": 0.5,
-        "Tint": null,
-        "NormalizeLuminance": true,
-        "IgnorePlayerColor": false,
-        "DespillPlayerColor": true,
-        "BuildOptions": null,
-        "IsHero": true,
-        "Abilities": [
-          "verdant_druid_thorn_lash",
-          "verdant_druid_verdant_surge",
-          "verdant_druid_bloomtide",
-          "reroll_item",
-          "reroll_element",
-          "reroll_hero",
-          "reroll_all",
-          "swap_tile_units"
-        ],
-        "XpBounty": 25,
-        "ExperiencePerLevel": 0,
-        "PathingCapabilities": null,
-        "PathingType": 9,
-        "Targets": null,
-        "Weapons": [
-          "weapon/bramble_thorn"
-        ],
-        "ProjectileModelPath": null,
-        "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
           "Death": [
             "Death - Death From Standing Idle.ranim"
           ],
-          "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
           ],
           "Spell_Cast": [
             "Magic Spell Casting - Casting A Spell With One Hand.ranim"
           ],
-          "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
-          ],
           "Walk": [
             "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
-          ]
-        },
-        "ObjectAttachments": null,
-        "PseudoSockets": null,
-        "Sounds": null,
-        "StartingItems": null,
-        "ShopItems": null,
-        "Upgrades": null,
-        "StatusEffects": null,
-        "SoundEvents": null,
-        "SpawnShader": null,
-        "DeathShader": null,
-        "ProceduralAnimation": null,
-        "EnableProceduralAnimation": null,
-        "DespawnShader": null,
-        "ConstructionRange": 4,
-        "Attribution_ImportedFromMap": null
-      },
-      {
-        "TemplateID": "unit/thornback_behemoth",
-        "Name": "Thornback Behemoth",
-        "Description": "A bramble-plated beast that heals faster the longer you keep hitting it.",
-        "MaxHp": 1260,
-        "Damage": 67,
-        "Range": 2.5,
-        "Armor": 6,
-        "Speed": 3,
-        "AttackCooldown": 1.5,
-        "ScanRadius": 0,
-        "CostGold": 0,
-        "CostWood": 0,
-        "CostStone": 0,
-        "PopCost": 1,
-        "ProductionTime": 0,
-        "Strength": 21,
-        "Agility": 8,
-        "Vitality": 20,
-        "Intelligence": 8,
-        "Wisdom": 12,
-        "Fortune": 10,
-        "LevelGrowth": {
-          "StrengthPerLevel": 0.8,
-          "AgilityPerLevel": 0.4,
-          "VitalityPerLevel": 1.8,
-          "IntelligencePerLevel": 1.2,
-          "WisdomPerLevel": 1,
-          "FortunePerLevel": 0.3
-        },
-        "HpRegen": 1.3,
-        "HpRegenCombatDelay": 3,
-        "MaxMana": 10,
-        "ManaRegen": 0.99,
-        "MagicResistance": 2.5,
-        "FlatArmorPenetration": 0,
-        "PercentArmorPenetration": 0,
-        "FlatMagicPenetration": 0,
-        "DamageVariance": 5,
-        "DamageType": "physical",
-        "CritChance": 0,
-        "CritMultiplier": 1.75,
-        "SplashType": "RadialStep",
-        "SplashInnerRadius": 1.1,
-        "SplashMediumRadius": 1.9,
-        "SplashOuterRadius": 2.7,
-        "SplashInnerRatio": 1,
-        "SplashMediumRatio": 0.6,
-        "SplashOuterRatio": 0.3,
-        "FriendlyFire": false,
-        "PushPriority": 0,
-        "MovementType": "Ground",
-        "SightRange": 15,
-        "AcquisitionRange": 15,
-        "GoldBounty": 10,
-        "ModelPath": "armored_beast_warrior_1.rmesh",
-        "PortraitModelPath": "armored_knight_unit.rmesh",
-        "VisualMode": "Mesh",
-        "Scale": 2.95,
-        "YOffset": 0.909,
-        "CollisionCircle": 0.89,
-        "Brightness": 0.5,
-        "Tint": null,
-        "NormalizeLuminance": true,
-        "IgnorePlayerColor": false,
-        "DespillPlayerColor": true,
-        "BuildOptions": null,
-        "IsHero": true,
-        "Abilities": [
-          "thornback_behemoth_bramble_slam",
-          "thornback_behemoth_rooted_vigor",
-          "thornback_behemoth_overgrowth",
-          "reroll_item",
-          "reroll_element",
-          "reroll_hero",
-          "reroll_all",
-          "swap_tile_units"
-        ],
-        "XpBounty": 25,
-        "ExperiencePerLevel": 0,
-        "PathingCapabilities": null,
-        "PathingType": 9,
-        "Targets": null,
-        "Weapons": [
-          "weapon/orc_battleaxe"
-        ],
-        "ProjectileModelPath": null,
-        "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
-          "Death": [
-            "Death - Death From Standing Idle.ranim"
-          ],
-          "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
-          ],
-          "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
-          ],
-          "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
-          ],
-          "Walk": [
-            "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
-          ]
-        },
-        "ObjectAttachments": null,
-        "PseudoSockets": null,
-        "Sounds": null,
-        "StartingItems": null,
-        "ShopItems": null,
-        "Upgrades": null,
-        "StatusEffects": null,
-        "SoundEvents": null,
-        "SpawnShader": null,
-        "DeathShader": null,
-        "ProceduralAnimation": null,
-        "EnableProceduralAnimation": null,
-        "DespawnShader": null,
-        "ConstructionRange": 4,
-        "Attribution_ImportedFromMap": null
-      },
-      {
-        "TemplateID": "unit/coral_vanguard",
-        "Name": "Coral Vanguard",
-        "Description": "A reef-plated harpooner who fights the way surf meets rock: slowly, then all at once.",
-        "MaxHp": 1013,
-        "Damage": 69,
-        "Range": 3.24,
-        "Armor": 4.5,
-        "Speed": 3,
-        "AttackCooldown": 1.3,
-        "ScanRadius": 0,
-        "CostGold": 0,
-        "CostWood": 0,
-        "CostStone": 0,
-        "PopCost": 1,
-        "ProductionTime": 0,
-        "Strength": 17,
-        "Agility": 12,
-        "Vitality": 17,
-        "Intelligence": 14,
-        "Wisdom": 12,
-        "Fortune": 10,
-        "LevelGrowth": {
-          "StrengthPerLevel": 1.2,
-          "AgilityPerLevel": 0.5,
-          "VitalityPerLevel": 1.6,
-          "IntelligencePerLevel": 1,
-          "WisdomPerLevel": 0.7,
-          "FortunePerLevel": 0.3
-        },
-        "HpRegen": 1,
-        "HpRegenCombatDelay": 3,
-        "MaxMana": 4,
-        "ManaRegen": 0.93,
-        "MagicResistance": 2,
-        "FlatArmorPenetration": 0,
-        "PercentArmorPenetration": 0,
-        "FlatMagicPenetration": 0,
-        "DamageVariance": 6,
-        "DamageType": "physical",
-        "CritChance": 0,
-        "CritMultiplier": 1.75,
-        "SplashType": "None",
-        "SplashInnerRadius": 0,
-        "SplashMediumRadius": 0,
-        "SplashOuterRadius": 0,
-        "SplashInnerRatio": 1,
-        "SplashMediumRatio": 0.6,
-        "SplashOuterRatio": 0.3,
-        "FriendlyFire": false,
-        "PushPriority": 0,
-        "MovementType": "Ground",
-        "SightRange": 15,
-        "AcquisitionRange": 15,
-        "GoldBounty": 10,
-        "ModelPath": "blue_dragon_knight.rmesh",
-        "PortraitModelPath": "armored_warrior_unit_5.rmesh",
-        "VisualMode": "Mesh",
-        "Scale": 2.75,
-        "YOffset": 0.909,
-        "CollisionCircle": 0.83,
-        "Brightness": 0.5,
-        "Tint": null,
-        "NormalizeLuminance": true,
-        "IgnorePlayerColor": false,
-        "DespillPlayerColor": true,
-        "BuildOptions": null,
-        "IsHero": true,
-        "Abilities": [
-          "coral_vanguard_harpoon_jab",
-          "coral_vanguard_tidal_sweep",
-          "coral_vanguard_undertow",
-          "reroll_item",
-          "reroll_element",
-          "reroll_hero",
-          "reroll_all",
-          "swap_tile_units"
-        ],
-        "XpBounty": 25,
-        "ExperiencePerLevel": 0,
-        "PathingCapabilities": null,
-        "PathingType": 9,
-        "Targets": null,
-        "Weapons": [
-          "weapon/coral_harpoon"
-        ],
-        "ProjectileModelPath": null,
-        "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
-          "Death": [
-            "Death - Death From Standing Idle.ranim"
-          ],
-          "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
-          ],
-          "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
-          ],
-          "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
-          ],
-          "Walk": [
-            "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
-          ]
-        },
-        "ObjectAttachments": null,
-        "PseudoSockets": null,
-        "Sounds": null,
-        "StartingItems": null,
-        "ShopItems": null,
-        "Upgrades": null,
-        "StatusEffects": null,
-        "SoundEvents": null,
-        "SpawnShader": null,
-        "DeathShader": null,
-        "ProceduralAnimation": null,
-        "EnableProceduralAnimation": null,
-        "DespawnShader": null,
-        "ConstructionRange": 4,
-        "Attribution_ImportedFromMap": null
-      },
-      {
-        "TemplateID": "unit/tidecaller",
-        "Name": "Tidecaller",
-        "Description": "A storm-priest of the shallows who calls whole waves inland and lets them find the enemy.",
-        "MaxHp": 650,
-        "Damage": 91,
-        "Range": 6.1,
-        "Armor": 2,
-        "Speed": 3,
-        "AttackCooldown": 1.4,
-        "ScanRadius": 0,
-        "CostGold": 0,
-        "CostWood": 0,
-        "CostStone": 0,
-        "PopCost": 1,
-        "ProductionTime": 0,
-        "Strength": 8,
-        "Agility": 10,
-        "Vitality": 13,
-        "Intelligence": 29,
-        "Wisdom": 15,
-        "Fortune": 10,
-        "LevelGrowth": {
-          "StrengthPerLevel": 1.2,
-          "AgilityPerLevel": 0.5,
-          "VitalityPerLevel": 1.6,
-          "IntelligencePerLevel": 1,
-          "WisdomPerLevel": 0.7,
-          "FortunePerLevel": 0.3
-        },
-        "HpRegen": 0.6,
-        "HpRegenCombatDelay": 3,
-        "MaxMana": 66,
-        "ManaRegen": 0.69,
-        "MagicResistance": 3,
-        "FlatArmorPenetration": 0,
-        "PercentArmorPenetration": 0,
-        "FlatMagicPenetration": 0,
-        "DamageVariance": 7,
-        "DamageType": "magic",
-        "CritChance": 0,
-        "CritMultiplier": 1.75,
-        "SplashType": "None",
-        "SplashInnerRadius": 0,
-        "SplashMediumRadius": 0,
-        "SplashOuterRadius": 0,
-        "SplashInnerRatio": 1,
-        "SplashMediumRatio": 0.6,
-        "SplashOuterRatio": 0.3,
-        "FriendlyFire": false,
-        "PushPriority": 0,
-        "MovementType": "Ground",
-        "SightRange": 15,
-        "AcquisitionRange": 15,
-        "GoldBounty": 10,
-        "ModelPath": "bearded_scout_unit.rmesh",
-        "PortraitModelPath": "bearded_warrior_scout.rmesh",
-        "VisualMode": "Mesh",
-        "Scale": 2.4,
-        "YOffset": 0.909,
-        "CollisionCircle": 0.72,
-        "Brightness": 0.5,
-        "Tint": null,
-        "NormalizeLuminance": true,
-        "IgnorePlayerColor": false,
-        "DespillPlayerColor": true,
-        "BuildOptions": null,
-        "IsHero": true,
-        "Abilities": [
-          "tidecaller_wave_dart",
-          "tidecaller_riptide_crush",
-          "tidecaller_maelstrom",
-          "reroll_item",
-          "reroll_element",
-          "reroll_hero",
-          "reroll_all",
-          "swap_tile_units"
-        ],
-        "XpBounty": 25,
-        "ExperiencePerLevel": 0,
-        "PathingCapabilities": null,
-        "PathingType": 9,
-        "Targets": null,
-        "Weapons": [
-          "weapon/thunder_javelin"
-        ],
-        "ProjectileModelPath": null,
-        "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
-          "Death": [
-            "Death - Death From Standing Idle.ranim"
-          ],
-          "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
-          ],
-          "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
-          ],
-          "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
-          ],
-          "Walk": [
-            "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1143,152 +261,26 @@
         ],
         "ProjectileModelPath": null,
         "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
-          "Death": [
-            "Death - Death From Standing Idle.ranim"
-          ],
           "Attack": [
             "Upward Thrust - Upward Weapon Thrust.ranim"
-          ],
-          "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
           ],
           "Dance": [
             "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
           ],
-          "Walk": [
-            "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
-          ]
-        },
-        "ObjectAttachments": null,
-        "PseudoSockets": null,
-        "Sounds": null,
-        "StartingItems": null,
-        "ShopItems": null,
-        "Upgrades": null,
-        "StatusEffects": null,
-        "SoundEvents": null,
-        "SpawnShader": null,
-        "DeathShader": null,
-        "ProceduralAnimation": null,
-        "EnableProceduralAnimation": null,
-        "DespawnShader": null,
-        "ConstructionRange": 4,
-        "Attribution_ImportedFromMap": null
-      },
-      {
-        "TemplateID": "unit/magma_smith",
-        "Name": "Magma Smith",
-        "Description": "A forge-slave who quenched a thousand blades and then decided to become one.",
-        "MaxHp": 994,
-        "Damage": 73,
-        "Range": 2.7,
-        "Armor": 4.5,
-        "Speed": 3,
-        "AttackCooldown": 1.35,
-        "ScanRadius": 0,
-        "CostGold": 0,
-        "CostWood": 0,
-        "CostStone": 0,
-        "PopCost": 1,
-        "ProductionTime": 0,
-        "Strength": 18,
-        "Agility": 11,
-        "Vitality": 16,
-        "Intelligence": 12,
-        "Wisdom": 11,
-        "Fortune": 10,
-        "LevelGrowth": {
-          "StrengthPerLevel": 0.6,
-          "AgilityPerLevel": 0.5,
-          "VitalityPerLevel": 0.9,
-          "IntelligencePerLevel": 1.8,
-          "WisdomPerLevel": 1,
-          "FortunePerLevel": 0.4
-        },
-        "HpRegen": 1,
-        "HpRegenCombatDelay": 3,
-        "MaxMana": 42,
-        "ManaRegen": 1.02,
-        "MagicResistance": 2,
-        "FlatArmorPenetration": 0,
-        "PercentArmorPenetration": 0,
-        "FlatMagicPenetration": 0,
-        "DamageVariance": 6,
-        "DamageType": "physical",
-        "CritChance": 0,
-        "CritMultiplier": 1.75,
-        "SplashType": "RadialStep",
-        "SplashInnerRadius": 0.8,
-        "SplashMediumRadius": 1.5,
-        "SplashOuterRadius": 2.3,
-        "SplashInnerRatio": 1,
-        "SplashMediumRatio": 0.6,
-        "SplashOuterRatio": 0.3,
-        "FriendlyFire": false,
-        "PushPriority": 0,
-        "MovementType": "Ground",
-        "SightRange": 15,
-        "AcquisitionRange": 15,
-        "GoldBounty": 10,
-        "ModelPath": "horned_warrior_unit.rmesh",
-        "PortraitModelPath": "warrior_hero_unit_1.rmesh",
-        "VisualMode": "Mesh",
-        "Scale": 2.75,
-        "YOffset": 0.909,
-        "CollisionCircle": 0.83,
-        "Brightness": 0.5,
-        "Tint": null,
-        "NormalizeLuminance": true,
-        "IgnorePlayerColor": false,
-        "DespillPlayerColor": true,
-        "BuildOptions": null,
-        "IsHero": true,
-        "Abilities": [
-          "magma_smith_forge_hammer",
-          "magma_smith_molten_quench",
-          "magma_smith_eruption",
-          "reroll_item",
-          "reroll_element",
-          "reroll_hero",
-          "reroll_all",
-          "swap_tile_units"
-        ],
-        "XpBounty": 25,
-        "ExperiencePerLevel": 0,
-        "PathingCapabilities": null,
-        "PathingType": 9,
-        "Targets": null,
-        "Weapons": [
-          "weapon/orc_battleaxe"
-        ],
-        "ProjectileModelPath": null,
-        "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
           "Death": [
             "Death - Death From Standing Idle.ranim"
           ],
-          "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
           ],
           "Spell_Cast": [
             "Magic Spell Casting - Casting A Spell With One Hand.ranim"
           ],
-          "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
-          ],
           "Walk": [
             "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1395,152 +387,26 @@
         ],
         "ProjectileModelPath": null,
         "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
-          "Death": [
-            "Death - Death From Standing Idle.ranim"
-          ],
           "Attack": [
             "Upward Thrust - Upward Weapon Thrust.ranim"
-          ],
-          "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
           ],
           "Dance": [
             "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
           ],
-          "Walk": [
-            "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
-          ]
-        },
-        "ObjectAttachments": null,
-        "PseudoSockets": null,
-        "Sounds": null,
-        "StartingItems": null,
-        "ShopItems": null,
-        "Upgrades": null,
-        "StatusEffects": null,
-        "SoundEvents": null,
-        "SpawnShader": null,
-        "DeathShader": null,
-        "ProceduralAnimation": null,
-        "EnableProceduralAnimation": null,
-        "DespawnShader": null,
-        "ConstructionRange": 4,
-        "Attribution_ImportedFromMap": null
-      },
-      {
-        "TemplateID": "unit/glacier_sentinel",
-        "Name": "Glacier Sentinel",
-        "Description": "A slow avalanche wearing armour, sent ahead of the line because nothing can get past it.",
-        "MaxHp": 1283,
-        "Damage": 66,
-        "Range": 2.8,
-        "Armor": 6,
-        "Speed": 3,
-        "AttackCooldown": 1.55,
-        "ScanRadius": 0,
-        "CostGold": 0,
-        "CostWood": 0,
-        "CostStone": 0,
-        "PopCost": 1,
-        "ProductionTime": 0,
-        "Strength": 21,
-        "Agility": 8,
-        "Vitality": 20,
-        "Intelligence": 12,
-        "Wisdom": 13,
-        "Fortune": 10,
-        "LevelGrowth": {
-          "StrengthPerLevel": 0.6,
-          "AgilityPerLevel": 0.5,
-          "VitalityPerLevel": 1,
-          "IntelligencePerLevel": 1.7,
-          "WisdomPerLevel": 1.1,
-          "FortunePerLevel": 0.3
-        },
-        "HpRegen": 1.3,
-        "HpRegenCombatDelay": 3,
-        "MaxMana": 20,
-        "ManaRegen": 0.93,
-        "MagicResistance": 2.5,
-        "FlatArmorPenetration": 0,
-        "PercentArmorPenetration": 0,
-        "FlatMagicPenetration": 0,
-        "DamageVariance": 5,
-        "DamageType": "physical",
-        "CritChance": 0,
-        "CritMultiplier": 1.75,
-        "SplashType": "RadialStep",
-        "SplashInnerRadius": 1.1,
-        "SplashMediumRadius": 1.9,
-        "SplashOuterRadius": 2.8,
-        "SplashInnerRatio": 1,
-        "SplashMediumRatio": 0.6,
-        "SplashOuterRatio": 0.3,
-        "FriendlyFire": false,
-        "PushPriority": 0,
-        "MovementType": "Ground",
-        "SightRange": 15,
-        "AcquisitionRange": 15,
-        "GoldBounty": 10,
-        "ModelPath": "frost_spirit_warrior.rmesh",
-        "PortraitModelPath": "frost_spirit_warrior.rmesh",
-        "VisualMode": "Mesh",
-        "Scale": 2.95,
-        "YOffset": 0.909,
-        "CollisionCircle": 0.89,
-        "Brightness": 0.5,
-        "Tint": null,
-        "NormalizeLuminance": true,
-        "IgnorePlayerColor": false,
-        "DespillPlayerColor": true,
-        "BuildOptions": null,
-        "IsHero": true,
-        "Abilities": [
-          "glacier_sentinel_ice_hammer",
-          "glacier_sentinel_permafrost",
-          "glacier_sentinel_avalanche",
-          "reroll_item",
-          "reroll_element",
-          "reroll_hero",
-          "reroll_all",
-          "swap_tile_units"
-        ],
-        "XpBounty": 25,
-        "ExperiencePerLevel": 0,
-        "PathingCapabilities": null,
-        "PathingType": 9,
-        "Targets": null,
-        "Weapons": [
-          "weapon/prism_shard"
-        ],
-        "ProjectileModelPath": null,
-        "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
           "Death": [
             "Death - Death From Standing Idle.ranim"
           ],
-          "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
           ],
           "Spell_Cast": [
             "Magic Spell Casting - Casting A Spell With One Hand.ranim"
           ],
-          "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
-          ],
           "Walk": [
             "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1647,152 +513,26 @@
         ],
         "ProjectileModelPath": null,
         "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
-          "Death": [
-            "Death - Death From Standing Idle.ranim"
-          ],
           "Attack": [
             "Upward Thrust - Upward Weapon Thrust.ranim"
-          ],
-          "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
           ],
           "Dance": [
             "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
           ],
-          "Walk": [
-            "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
-          ]
-        },
-        "ObjectAttachments": null,
-        "PseudoSockets": null,
-        "Sounds": null,
-        "StartingItems": null,
-        "ShopItems": null,
-        "Upgrades": null,
-        "StatusEffects": null,
-        "SoundEvents": null,
-        "SpawnShader": null,
-        "DeathShader": null,
-        "ProceduralAnimation": null,
-        "EnableProceduralAnimation": null,
-        "DespawnShader": null,
-        "ConstructionRange": 4,
-        "Attribution_ImportedFromMap": null
-      },
-      {
-        "TemplateID": "unit/tempest_chaser",
-        "Name": "Tempest Chaser",
-        "Description": "A runaway acolyte who rides her own gale into melee and out again before it lands.",
-        "MaxHp": 685,
-        "Damage": 72,
-        "Range": 4.36,
-        "Armor": 2.5,
-        "Speed": 3,
-        "AttackCooldown": 1.05,
-        "ScanRadius": 0,
-        "CostGold": 0,
-        "CostWood": 0,
-        "CostStone": 0,
-        "PopCost": 1,
-        "ProductionTime": 0,
-        "Strength": 12,
-        "Agility": 20,
-        "Vitality": 12,
-        "Intelligence": 13,
-        "Wisdom": 11,
-        "Fortune": 16,
-        "LevelGrowth": {
-          "StrengthPerLevel": 0.5,
-          "AgilityPerLevel": 1.4,
-          "VitalityPerLevel": 0.8,
-          "IntelligencePerLevel": 1.4,
-          "WisdomPerLevel": 0.6,
-          "FortunePerLevel": 0.6
-        },
-        "HpRegen": 0.7,
-        "HpRegenCombatDelay": 3,
-        "MaxMana": 44,
-        "ManaRegen": 1.01,
-        "MagicResistance": 1.5,
-        "FlatArmorPenetration": 0,
-        "PercentArmorPenetration": 0,
-        "FlatMagicPenetration": 0,
-        "DamageVariance": 6,
-        "DamageType": "physical",
-        "CritChance": 0,
-        "CritMultiplier": 1.75,
-        "SplashType": "None",
-        "SplashInnerRadius": 0,
-        "SplashMediumRadius": 0,
-        "SplashOuterRadius": 0,
-        "SplashInnerRatio": 1,
-        "SplashMediumRatio": 0.6,
-        "SplashOuterRatio": 0.3,
-        "FriendlyFire": false,
-        "PushPriority": 0,
-        "MovementType": "Ground",
-        "SightRange": 15,
-        "AcquisitionRange": 15,
-        "GoldBounty": 10,
-        "ModelPath": "female_warrior_scout.rmesh",
-        "PortraitModelPath": "armored_warrior_hero_3.rmesh",
-        "VisualMode": "Mesh",
-        "Scale": 2.4,
-        "YOffset": 0.909,
-        "CollisionCircle": 0.72,
-        "Brightness": 0.5,
-        "Tint": null,
-        "NormalizeLuminance": true,
-        "IgnorePlayerColor": false,
-        "DespillPlayerColor": true,
-        "BuildOptions": null,
-        "IsHero": true,
-        "Abilities": [
-          "tempest_chaser_quick_slash",
-          "tempest_chaser_gust_step",
-          "tempest_chaser_cyclone_rush",
-          "reroll_item",
-          "reroll_element",
-          "reroll_hero",
-          "reroll_all",
-          "swap_tile_units"
-        ],
-        "XpBounty": 25,
-        "ExperiencePerLevel": 0,
-        "PathingCapabilities": null,
-        "PathingType": 9,
-        "Targets": null,
-        "Weapons": [
-          "weapon/sandstorm_shortbow"
-        ],
-        "ProjectileModelPath": null,
-        "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
           "Death": [
             "Death - Death From Standing Idle.ranim"
           ],
-          "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
           ],
           "Spell_Cast": [
             "Magic Spell Casting - Casting A Spell With One Hand.ranim"
           ],
-          "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
-          ],
           "Walk": [
             "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1899,26 +639,26 @@
         ],
         "ProjectileModelPath": null,
         "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
-          "Death": [
-            "Death - Death From Standing Idle.ranim"
-          ],
           "Attack": [
             "Upward Thrust - Upward Weapon Thrust.ranim"
-          ],
-          "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
           ],
           "Dance": [
             "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
           ],
-          "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
           ],
           "Labor": [
             "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1938,292 +678,40 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "TemplateID": "unit/rune_scribe",
-        "Name": "Rune Scribe",
-        "Description": "A battlefield cartographer who circles whole formations in ink and then sets the ink alight.",
-        "MaxHp": 633,
-        "Damage": 102,
-        "Range": 6.4,
-        "Armor": 2,
+        "TemplateID": "unit/nether_assassin",
+        "Name": "Nether Assassin",
+        "Description": "A contract killer from the space between worlds who deletes a single target and vanishes into the wound.",
+        "MaxHp": 549,
+        "Damage": 80,
+        "Range": 2.88,
+        "Armor": 2.5,
         "Speed": 3,
-        "AttackCooldown": 1.45,
+        "AttackCooldown": 0.95,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
         "CostStone": 0,
         "PopCost": 1,
         "ProductionTime": 0,
-        "Strength": 7,
-        "Agility": 9,
+        "Strength": 14,
+        "Agility": 20,
         "Vitality": 12,
-        "Intelligence": 30,
-        "Wisdom": 14,
-        "Fortune": 10,
+        "Intelligence": 10,
+        "Wisdom": 10,
+        "Fortune": 20,
         "LevelGrowth": {
-          "StrengthPerLevel": 0.4,
-          "AgilityPerLevel": 0.5,
+          "StrengthPerLevel": 1,
+          "AgilityPerLevel": 1.6,
           "VitalityPerLevel": 0.8,
-          "IntelligencePerLevel": 2,
-          "WisdomPerLevel": 1.2,
-          "FortunePerLevel": 0.3
+          "IntelligencePerLevel": 0.6,
+          "WisdomPerLevel": 0.4,
+          "FortunePerLevel": 0.8
         },
         "HpRegen": 0.6,
         "HpRegenCombatDelay": 3,
-        "MaxMana": 64,
-        "ManaRegen": 0.54,
-        "MagicResistance": 3,
-        "FlatArmorPenetration": 0,
-        "PercentArmorPenetration": 0,
-        "FlatMagicPenetration": 0,
-        "DamageVariance": 8,
-        "DamageType": "magic",
-        "CritChance": 0,
-        "CritMultiplier": 1.75,
-        "SplashType": "None",
-        "SplashInnerRadius": 0,
-        "SplashMediumRadius": 0,
-        "SplashOuterRadius": 0,
-        "SplashInnerRatio": 1,
-        "SplashMediumRatio": 0.6,
-        "SplashOuterRatio": 0.3,
-        "FriendlyFire": false,
-        "PushPriority": 0,
-        "MovementType": "Ground",
-        "SightRange": 15,
-        "AcquisitionRange": 15,
-        "GoldBounty": 10,
-        "ModelPath": "fantasy_warrior_hero_3.rmesh",
-        "PortraitModelPath": "bearded_warrior_unit_1.rmesh",
-        "VisualMode": "Mesh",
-        "Scale": 2.4,
-        "YOffset": 0.909,
-        "CollisionCircle": 0.72,
-        "Brightness": 0.5,
-        "Tint": null,
-        "NormalizeLuminance": true,
-        "IgnorePlayerColor": false,
-        "DespillPlayerColor": true,
-        "BuildOptions": null,
-        "IsHero": true,
-        "Abilities": [
-          "rune_scribe_rune_dart",
-          "rune_scribe_sigil_detonation",
-          "rune_scribe_grand_inscription",
-          "reroll_item",
-          "reroll_element",
-          "reroll_hero",
-          "reroll_all",
-          "swap_tile_units"
-        ],
-        "XpBounty": 25,
-        "ExperiencePerLevel": 0,
-        "PathingCapabilities": null,
-        "PathingType": 9,
-        "Targets": null,
-        "Weapons": [
-          "weapon/void_spindle"
-        ],
-        "ProjectileModelPath": null,
-        "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
-          "Death": [
-            "Death - Death From Standing Idle.ranim"
-          ],
-          "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
-          ],
-          "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
-          ],
-          "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
-          ],
-          "Walk": [
-            "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
-          ]
-        },
-        "ObjectAttachments": null,
-        "PseudoSockets": null,
-        "Sounds": null,
-        "StartingItems": null,
-        "ShopItems": null,
-        "Upgrades": null,
-        "StatusEffects": null,
-        "SoundEvents": null,
-        "SpawnShader": null,
-        "DeathShader": null,
-        "ProceduralAnimation": null,
-        "EnableProceduralAnimation": null,
-        "DespawnShader": null,
-        "ConstructionRange": 4,
-        "Attribution_ImportedFromMap": null
-      },
-      {
-        "TemplateID": "unit/sun_priest",
-        "Name": "Sun Priest",
-        "Description": "A field chaplain who keeps a whole line standing with nothing but sunlight and stubbornness.",
-        "MaxHp": 829,
-        "Damage": 54,
-        "Range": 4.6,
-        "Armor": 2.5,
-        "Speed": 3,
-        "AttackCooldown": 1.45,
-        "ScanRadius": 0,
-        "CostGold": 0,
-        "CostWood": 0,
-        "CostStone": 0,
-        "PopCost": 1,
-        "ProductionTime": 0,
-        "Strength": 9,
-        "Agility": 10,
-        "Vitality": 16,
-        "Intelligence": 20,
-        "Wisdom": 23,
-        "Fortune": 10,
-        "LevelGrowth": {
-          "StrengthPerLevel": 0.7,
-          "AgilityPerLevel": 0.4,
-          "VitalityPerLevel": 1.2,
-          "IntelligencePerLevel": 1.2,
-          "WisdomPerLevel": 1.8,
-          "FortunePerLevel": 0.4
-        },
-        "HpRegen": 1.2,
-        "HpRegenCombatDelay": 3,
-        "MaxMana": 32,
-        "ManaRegen": 0.91,
-        "MagicResistance": 3,
-        "FlatArmorPenetration": 0,
-        "PercentArmorPenetration": 0,
-        "FlatMagicPenetration": 0,
-        "DamageVariance": 4,
-        "DamageType": "magic",
-        "CritChance": 0,
-        "CritMultiplier": 1.75,
-        "SplashType": "None",
-        "SplashInnerRadius": 0,
-        "SplashMediumRadius": 0,
-        "SplashOuterRadius": 0,
-        "SplashInnerRatio": 1,
-        "SplashMediumRatio": 0.6,
-        "SplashOuterRatio": 0.3,
-        "FriendlyFire": false,
-        "PushPriority": 0,
-        "MovementType": "Ground",
-        "SightRange": 15,
-        "AcquisitionRange": 15,
-        "GoldBounty": 10,
-        "ModelPath": "warrior_hero_unit_8.rmesh",
-        "PortraitModelPath": "paladin_hero_unit.rmesh",
-        "VisualMode": "Mesh",
-        "Scale": 2.45,
-        "YOffset": 0.909,
-        "CollisionCircle": 0.74,
-        "Brightness": 0.5,
-        "Tint": null,
-        "NormalizeLuminance": true,
-        "IgnorePlayerColor": false,
-        "DespillPlayerColor": true,
-        "BuildOptions": null,
-        "IsHero": true,
-        "Abilities": [
-          "sun_priest_solar_spark",
-          "sun_priest_sunlit_mend",
-          "sun_priest_radiant_chorus",
-          "reroll_item",
-          "reroll_element",
-          "reroll_hero",
-          "reroll_all",
-          "swap_tile_units"
-        ],
-        "XpBounty": 25,
-        "ExperiencePerLevel": 0,
-        "PathingCapabilities": null,
-        "PathingType": 9,
-        "Targets": null,
-        "Weapons": [
-          "weapon/solar_lance"
-        ],
-        "ProjectileModelPath": null,
-        "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
-          "Death": [
-            "Death - Death From Standing Idle.ranim"
-          ],
-          "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
-          ],
-          "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
-          ],
-          "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
-          ],
-          "Walk": [
-            "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
-          ]
-        },
-        "ObjectAttachments": null,
-        "PseudoSockets": null,
-        "Sounds": null,
-        "StartingItems": null,
-        "ShopItems": null,
-        "Upgrades": null,
-        "StatusEffects": null,
-        "SoundEvents": null,
-        "SpawnShader": null,
-        "DeathShader": null,
-        "ProceduralAnimation": null,
-        "EnableProceduralAnimation": null,
-        "DespawnShader": null,
-        "ConstructionRange": 4,
-        "Attribution_ImportedFromMap": null
-      },
-      {
-        "TemplateID": "unit/lightbringer_monk",
-        "Name": "Lightbringer Monk",
-        "Description": "A bare-knuckle ascetic whose open palm hits like a closing door.",
-        "MaxHp": 1036,
-        "Damage": 69,
-        "Range": 2.8,
-        "Armor": 4,
-        "Speed": 3,
-        "AttackCooldown": 1.15,
-        "ScanRadius": 0,
-        "CostGold": 0,
-        "CostWood": 0,
-        "CostStone": 0,
-        "PopCost": 1,
-        "ProductionTime": 0,
-        "Strength": 16,
-        "Agility": 16,
-        "Vitality": 15,
-        "Intelligence": 13,
-        "Wisdom": 16,
-        "Fortune": 12,
-        "LevelGrowth": {
-          "StrengthPerLevel": 0.7,
-          "AgilityPerLevel": 0.4,
-          "VitalityPerLevel": 1.2,
-          "IntelligencePerLevel": 1.2,
-          "WisdomPerLevel": 1.8,
-          "FortunePerLevel": 0.4
-        },
-        "HpRegen": 1,
-        "HpRegenCombatDelay": 3,
-        "MaxMana": 20,
-        "ManaRegen": 0.87,
-        "MagicResistance": 2.5,
+        "MaxMana": 44,
+        "ManaRegen": 1.03,
+        "MagicResistance": 1.5,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
         "FlatMagicPenetration": 0,
@@ -2244,12 +732,12 @@
         "SightRange": 15,
         "AcquisitionRange": 15,
         "GoldBounty": 10,
-        "ModelPath": "warrior_hero_unit.rmesh",
-        "PortraitModelPath": "armored_warrior_hero_2.rmesh",
+        "ModelPath": "fantasy_warrior_unit_9.rmesh",
+        "PortraitModelPath": "demon_huntress_unit.rmesh",
         "VisualMode": "Mesh",
-        "Scale": 2.75,
+        "Scale": 2.35,
         "YOffset": 0.909,
-        "CollisionCircle": 0.83,
+        "CollisionCircle": 0.71,
         "Brightness": 0.5,
         "Tint": null,
         "NormalizeLuminance": true,
@@ -2258,9 +746,9 @@
         "BuildOptions": null,
         "IsHero": true,
         "Abilities": [
-          "lightbringer_monk_palm_strike",
-          "lightbringer_monk_inner_light",
-          "lightbringer_monk_sanctified_ground",
+          "nether_assassin_nether_sting",
+          "nether_assassin_shadow_mark",
+          "nether_assassin_silent_verdict",
           "reroll_item",
           "reroll_element",
           "reroll_hero",
@@ -2273,156 +761,30 @@
         "PathingType": 9,
         "Targets": null,
         "Weapons": [
-          "weapon/radiant_cesti"
+          "weapon/nether_stiletto"
         ],
         "ProjectileModelPath": null,
         "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
-          "Death": [
-            "Death - Death From Standing Idle.ranim"
-          ],
           "Attack": [
             "Upward Thrust - Upward Weapon Thrust.ranim"
-          ],
-          "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
           ],
           "Dance": [
             "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
           ],
-          "Walk": [
-            "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
-          ]
-        },
-        "ObjectAttachments": null,
-        "PseudoSockets": null,
-        "Sounds": null,
-        "StartingItems": null,
-        "ShopItems": null,
-        "Upgrades": null,
-        "StatusEffects": null,
-        "SoundEvents": null,
-        "SpawnShader": null,
-        "DeathShader": null,
-        "ProceduralAnimation": null,
-        "EnableProceduralAnimation": null,
-        "DespawnShader": null,
-        "ConstructionRange": 4,
-        "Attribution_ImportedFromMap": null
-      },
-      {
-        "TemplateID": "unit/pack_alpha",
-        "Name": "Pack Alpha",
-        "Description": "The biggest thing in the hunting pack, and the reason the rest of the pack still listens.",
-        "MaxHp": 977,
-        "Damage": 72,
-        "Range": 2.8,
-        "Armor": 4,
-        "Speed": 3,
-        "AttackCooldown": 1.25,
-        "ScanRadius": 0,
-        "CostGold": 0,
-        "CostWood": 0,
-        "CostStone": 0,
-        "PopCost": 1,
-        "ProductionTime": 0,
-        "Strength": 18,
-        "Agility": 14,
-        "Vitality": 16,
-        "Intelligence": 8,
-        "Wisdom": 11,
-        "Fortune": 12,
-        "LevelGrowth": {
-          "StrengthPerLevel": 1.4,
-          "AgilityPerLevel": 1,
-          "VitalityPerLevel": 1.4,
-          "IntelligencePerLevel": 0.4,
-          "WisdomPerLevel": 0.4,
-          "FortunePerLevel": 0.6
-        },
-        "HpRegen": 1,
-        "HpRegenCombatDelay": 3,
-        "MaxMana": 22,
-        "ManaRegen": 0.85,
-        "MagicResistance": 2,
-        "FlatArmorPenetration": 0,
-        "PercentArmorPenetration": 0,
-        "FlatMagicPenetration": 0,
-        "DamageVariance": 6,
-        "DamageType": "physical",
-        "CritChance": 0,
-        "CritMultiplier": 1.75,
-        "SplashType": "RadialStep",
-        "SplashInnerRadius": 0.7,
-        "SplashMediumRadius": 1.4,
-        "SplashOuterRadius": 2.1,
-        "SplashInnerRatio": 1,
-        "SplashMediumRatio": 0.6,
-        "SplashOuterRatio": 0.3,
-        "FriendlyFire": false,
-        "PushPriority": 0,
-        "MovementType": "Ground",
-        "SightRange": 15,
-        "AcquisitionRange": 15,
-        "GoldBounty": 10,
-        "ModelPath": "minotaur_warrior_1.rmesh",
-        "PortraitModelPath": "orc_warrior.rmesh",
-        "VisualMode": "Mesh",
-        "Scale": 2.75,
-        "YOffset": 0.909,
-        "CollisionCircle": 0.83,
-        "Brightness": 0.5,
-        "Tint": null,
-        "NormalizeLuminance": true,
-        "IgnorePlayerColor": false,
-        "DespillPlayerColor": true,
-        "BuildOptions": null,
-        "IsHero": true,
-        "Abilities": [
-          "pack_alpha_savage_maul",
-          "pack_alpha_howl",
-          "pack_alpha_blood_hunt",
-          "reroll_item",
-          "reroll_element",
-          "reroll_hero",
-          "reroll_all",
-          "swap_tile_units"
-        ],
-        "XpBounty": 25,
-        "ExperiencePerLevel": 0,
-        "PathingCapabilities": null,
-        "PathingType": 9,
-        "Targets": null,
-        "Weapons": [
-          "weapon/orc_battleaxe"
-        ],
-        "ProjectileModelPath": null,
-        "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
           "Death": [
             "Death - Death From Standing Idle.ranim"
           ],
-          "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
           ],
           "Spell_Cast": [
             "Magic Spell Casting - Casting A Spell With One Hand.ranim"
           ],
-          "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
-          ],
           "Walk": [
             "Standard Walk - Standard Walk.ranim"
-          ],
-          "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -2529,26 +891,656 @@
         ],
         "ProjectileModelPath": null,
         "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
-          "Death": [
-            "Death - Death From Standing Idle.ranim"
-          ],
           "Attack": [
             "Upward Thrust - Upward Weapon Thrust.ranim"
-          ],
-          "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
           ],
           "Dance": [
             "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
           ],
-          "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
           ],
           "Labor": [
             "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ]
+        },
+        "ObjectAttachments": null,
+        "PseudoSockets": null,
+        "Sounds": null,
+        "StartingItems": null,
+        "ShopItems": null,
+        "Upgrades": null,
+        "StatusEffects": null,
+        "SoundEvents": null,
+        "SpawnShader": null,
+        "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
+        "DespawnShader": null,
+        "ConstructionRange": 4,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "TemplateID": "unit/tidecaller",
+        "Name": "Tidecaller",
+        "Description": "A storm-priest of the shallows who calls whole waves inland and lets them find the enemy.",
+        "MaxHp": 650,
+        "Damage": 91,
+        "Range": 6.1,
+        "Armor": 2,
+        "Speed": 3,
+        "AttackCooldown": 1.4,
+        "ScanRadius": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
+        "PopCost": 1,
+        "ProductionTime": 0,
+        "Strength": 8,
+        "Agility": 10,
+        "Vitality": 13,
+        "Intelligence": 29,
+        "Wisdom": 15,
+        "Fortune": 10,
+        "LevelGrowth": {
+          "StrengthPerLevel": 1.2,
+          "AgilityPerLevel": 0.5,
+          "VitalityPerLevel": 1.6,
+          "IntelligencePerLevel": 1,
+          "WisdomPerLevel": 0.7,
+          "FortunePerLevel": 0.3
+        },
+        "HpRegen": 0.6,
+        "HpRegenCombatDelay": 3,
+        "MaxMana": 66,
+        "ManaRegen": 0.69,
+        "MagicResistance": 3,
+        "FlatArmorPenetration": 0,
+        "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
+        "DamageVariance": 7,
+        "DamageType": "magic",
+        "CritChance": 0,
+        "CritMultiplier": 1.75,
+        "SplashType": "None",
+        "SplashInnerRadius": 0,
+        "SplashMediumRadius": 0,
+        "SplashOuterRadius": 0,
+        "SplashInnerRatio": 1,
+        "SplashMediumRatio": 0.6,
+        "SplashOuterRatio": 0.3,
+        "FriendlyFire": false,
+        "PushPriority": 0,
+        "MovementType": "Ground",
+        "SightRange": 15,
+        "AcquisitionRange": 15,
+        "GoldBounty": 10,
+        "ModelPath": "bearded_scout_unit.rmesh",
+        "PortraitModelPath": "bearded_warrior_scout.rmesh",
+        "VisualMode": "Mesh",
+        "Scale": 2.4,
+        "YOffset": 0.909,
+        "CollisionCircle": 0.72,
+        "Brightness": 0.5,
+        "Tint": null,
+        "NormalizeLuminance": true,
+        "IgnorePlayerColor": false,
+        "DespillPlayerColor": true,
+        "BuildOptions": null,
+        "IsHero": true,
+        "Abilities": [
+          "tidecaller_wave_dart",
+          "tidecaller_riptide_crush",
+          "tidecaller_maelstrom",
+          "reroll_item",
+          "reroll_element",
+          "reroll_hero",
+          "reroll_all",
+          "swap_tile_units"
+        ],
+        "XpBounty": 25,
+        "ExperiencePerLevel": 0,
+        "PathingCapabilities": null,
+        "PathingType": 9,
+        "Targets": null,
+        "Weapons": [
+          "weapon/thunder_javelin"
+        ],
+        "ProjectileModelPath": null,
+        "Animations": {
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ]
+        },
+        "ObjectAttachments": null,
+        "PseudoSockets": null,
+        "Sounds": null,
+        "StartingItems": null,
+        "ShopItems": null,
+        "Upgrades": null,
+        "StatusEffects": null,
+        "SoundEvents": null,
+        "SpawnShader": null,
+        "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
+        "DespawnShader": null,
+        "ConstructionRange": 4,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "TemplateID": "unit/tempest_chaser",
+        "Name": "Tempest Chaser",
+        "Description": "A runaway acolyte who rides her own gale into melee and out again before it lands.",
+        "MaxHp": 685,
+        "Damage": 72,
+        "Range": 4.36,
+        "Armor": 2.5,
+        "Speed": 3,
+        "AttackCooldown": 1.05,
+        "ScanRadius": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
+        "PopCost": 1,
+        "ProductionTime": 0,
+        "Strength": 12,
+        "Agility": 20,
+        "Vitality": 12,
+        "Intelligence": 13,
+        "Wisdom": 11,
+        "Fortune": 16,
+        "LevelGrowth": {
+          "StrengthPerLevel": 0.5,
+          "AgilityPerLevel": 1.4,
+          "VitalityPerLevel": 0.8,
+          "IntelligencePerLevel": 1.4,
+          "WisdomPerLevel": 0.6,
+          "FortunePerLevel": 0.6
+        },
+        "HpRegen": 0.7,
+        "HpRegenCombatDelay": 3,
+        "MaxMana": 44,
+        "ManaRegen": 1.01,
+        "MagicResistance": 1.5,
+        "FlatArmorPenetration": 0,
+        "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
+        "DamageVariance": 6,
+        "DamageType": "physical",
+        "CritChance": 0,
+        "CritMultiplier": 1.75,
+        "SplashType": "None",
+        "SplashInnerRadius": 0,
+        "SplashMediumRadius": 0,
+        "SplashOuterRadius": 0,
+        "SplashInnerRatio": 1,
+        "SplashMediumRatio": 0.6,
+        "SplashOuterRatio": 0.3,
+        "FriendlyFire": false,
+        "PushPriority": 0,
+        "MovementType": "Ground",
+        "SightRange": 15,
+        "AcquisitionRange": 15,
+        "GoldBounty": 10,
+        "ModelPath": "female_warrior_scout.rmesh",
+        "PortraitModelPath": "armored_warrior_hero_3.rmesh",
+        "VisualMode": "Mesh",
+        "Scale": 2.4,
+        "YOffset": 0.909,
+        "CollisionCircle": 0.72,
+        "Brightness": 0.5,
+        "Tint": null,
+        "NormalizeLuminance": true,
+        "IgnorePlayerColor": false,
+        "DespillPlayerColor": true,
+        "BuildOptions": null,
+        "IsHero": true,
+        "Abilities": [
+          "tempest_chaser_quick_slash",
+          "tempest_chaser_gust_step",
+          "tempest_chaser_cyclone_rush",
+          "reroll_item",
+          "reroll_element",
+          "reroll_hero",
+          "reroll_all",
+          "swap_tile_units"
+        ],
+        "XpBounty": 25,
+        "ExperiencePerLevel": 0,
+        "PathingCapabilities": null,
+        "PathingType": 9,
+        "Targets": null,
+        "Weapons": [
+          "weapon/sandstorm_shortbow"
+        ],
+        "ProjectileModelPath": null,
+        "Animations": {
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ]
+        },
+        "ObjectAttachments": null,
+        "PseudoSockets": null,
+        "Sounds": null,
+        "StartingItems": null,
+        "ShopItems": null,
+        "Upgrades": null,
+        "StatusEffects": null,
+        "SoundEvents": null,
+        "SpawnShader": null,
+        "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
+        "DespawnShader": null,
+        "ConstructionRange": 4,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "TemplateID": "unit/rune_scribe",
+        "Name": "Rune Scribe",
+        "Description": "A battlefield cartographer who circles whole formations in ink and then sets the ink alight.",
+        "MaxHp": 633,
+        "Damage": 102,
+        "Range": 6.4,
+        "Armor": 2,
+        "Speed": 3,
+        "AttackCooldown": 1.45,
+        "ScanRadius": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
+        "PopCost": 1,
+        "ProductionTime": 0,
+        "Strength": 7,
+        "Agility": 9,
+        "Vitality": 12,
+        "Intelligence": 30,
+        "Wisdom": 14,
+        "Fortune": 10,
+        "LevelGrowth": {
+          "StrengthPerLevel": 0.4,
+          "AgilityPerLevel": 0.5,
+          "VitalityPerLevel": 0.8,
+          "IntelligencePerLevel": 2,
+          "WisdomPerLevel": 1.2,
+          "FortunePerLevel": 0.3
+        },
+        "HpRegen": 0.6,
+        "HpRegenCombatDelay": 3,
+        "MaxMana": 64,
+        "ManaRegen": 0.54,
+        "MagicResistance": 3,
+        "FlatArmorPenetration": 0,
+        "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
+        "DamageVariance": 8,
+        "DamageType": "magic",
+        "CritChance": 0,
+        "CritMultiplier": 1.75,
+        "SplashType": "None",
+        "SplashInnerRadius": 0,
+        "SplashMediumRadius": 0,
+        "SplashOuterRadius": 0,
+        "SplashInnerRatio": 1,
+        "SplashMediumRatio": 0.6,
+        "SplashOuterRatio": 0.3,
+        "FriendlyFire": false,
+        "PushPriority": 0,
+        "MovementType": "Ground",
+        "SightRange": 15,
+        "AcquisitionRange": 15,
+        "GoldBounty": 10,
+        "ModelPath": "fantasy_warrior_hero_3.rmesh",
+        "PortraitModelPath": "bearded_warrior_unit_1.rmesh",
+        "VisualMode": "Mesh",
+        "Scale": 2.4,
+        "YOffset": 0.909,
+        "CollisionCircle": 0.72,
+        "Brightness": 0.5,
+        "Tint": null,
+        "NormalizeLuminance": true,
+        "IgnorePlayerColor": false,
+        "DespillPlayerColor": true,
+        "BuildOptions": null,
+        "IsHero": true,
+        "Abilities": [
+          "rune_scribe_rune_dart",
+          "rune_scribe_sigil_detonation",
+          "rune_scribe_grand_inscription",
+          "reroll_item",
+          "reroll_element",
+          "reroll_hero",
+          "reroll_all",
+          "swap_tile_units"
+        ],
+        "XpBounty": 25,
+        "ExperiencePerLevel": 0,
+        "PathingCapabilities": null,
+        "PathingType": 9,
+        "Targets": null,
+        "Weapons": [
+          "weapon/void_spindle"
+        ],
+        "ProjectileModelPath": null,
+        "Animations": {
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ]
+        },
+        "ObjectAttachments": null,
+        "PseudoSockets": null,
+        "Sounds": null,
+        "StartingItems": null,
+        "ShopItems": null,
+        "Upgrades": null,
+        "StatusEffects": null,
+        "SoundEvents": null,
+        "SpawnShader": null,
+        "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
+        "DespawnShader": null,
+        "ConstructionRange": 4,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "TemplateID": "unit/verdant_druid",
+        "Name": "Verdant Druid",
+        "Description": "A grove-keeper who grows a battlefield garden one wound at a time.",
+        "MaxHp": 823,
+        "Damage": 53,
+        "Range": 3.26,
+        "Armor": 3,
+        "Speed": 3,
+        "AttackCooldown": 1.3,
+        "ScanRadius": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
+        "PopCost": 1,
+        "ProductionTime": 0,
+        "Strength": 11,
+        "Agility": 11,
+        "Vitality": 16,
+        "Intelligence": 18,
+        "Wisdom": 20,
+        "Fortune": 11,
+        "LevelGrowth": {
+          "StrengthPerLevel": 0.8,
+          "AgilityPerLevel": 0.4,
+          "VitalityPerLevel": 1.8,
+          "IntelligencePerLevel": 1.2,
+          "WisdomPerLevel": 1,
+          "FortunePerLevel": 0.3
+        },
+        "HpRegen": 1.2,
+        "HpRegenCombatDelay": 3,
+        "MaxMana": 32,
+        "ManaRegen": 0.9,
+        "MagicResistance": 3,
+        "FlatArmorPenetration": 0,
+        "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
+        "DamageVariance": 4,
+        "DamageType": "magic",
+        "CritChance": 0,
+        "CritMultiplier": 1.75,
+        "SplashType": "None",
+        "SplashInnerRadius": 0,
+        "SplashMediumRadius": 0,
+        "SplashOuterRadius": 0,
+        "SplashInnerRatio": 1,
+        "SplashMediumRatio": 0.6,
+        "SplashOuterRatio": 0.3,
+        "FriendlyFire": false,
+        "PushPriority": 0,
+        "MovementType": "Ground",
+        "SightRange": 15,
+        "AcquisitionRange": 15,
+        "GoldBounty": 10,
+        "ModelPath": "forest_spirit_warrior.rmesh",
+        "PortraitModelPath": "armored_warrior_hero_4.rmesh",
+        "VisualMode": "Mesh",
+        "Scale": 2.45,
+        "YOffset": 0.909,
+        "CollisionCircle": 0.74,
+        "Brightness": 0.5,
+        "Tint": null,
+        "NormalizeLuminance": true,
+        "IgnorePlayerColor": false,
+        "DespillPlayerColor": true,
+        "BuildOptions": null,
+        "IsHero": true,
+        "Abilities": [
+          "verdant_druid_thorn_lash",
+          "verdant_druid_verdant_surge",
+          "verdant_druid_bloomtide",
+          "reroll_item",
+          "reroll_element",
+          "reroll_hero",
+          "reroll_all",
+          "swap_tile_units"
+        ],
+        "XpBounty": 25,
+        "ExperiencePerLevel": 0,
+        "PathingCapabilities": null,
+        "PathingType": 9,
+        "Targets": null,
+        "Weapons": [
+          "weapon/bramble_thorn"
+        ],
+        "ProjectileModelPath": null,
+        "Animations": {
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ]
+        },
+        "ObjectAttachments": null,
+        "PseudoSockets": null,
+        "Sounds": null,
+        "StartingItems": null,
+        "ShopItems": null,
+        "Upgrades": null,
+        "StatusEffects": null,
+        "SoundEvents": null,
+        "SpawnShader": null,
+        "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
+        "DespawnShader": null,
+        "ConstructionRange": 4,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "TemplateID": "unit/sun_priest",
+        "Name": "Sun Priest",
+        "Description": "A field chaplain who keeps a whole line standing with nothing but sunlight and stubbornness.",
+        "MaxHp": 829,
+        "Damage": 54,
+        "Range": 4.6,
+        "Armor": 2.5,
+        "Speed": 3,
+        "AttackCooldown": 1.45,
+        "ScanRadius": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
+        "PopCost": 1,
+        "ProductionTime": 0,
+        "Strength": 9,
+        "Agility": 10,
+        "Vitality": 16,
+        "Intelligence": 20,
+        "Wisdom": 23,
+        "Fortune": 10,
+        "LevelGrowth": {
+          "StrengthPerLevel": 0.7,
+          "AgilityPerLevel": 0.4,
+          "VitalityPerLevel": 1.2,
+          "IntelligencePerLevel": 1.2,
+          "WisdomPerLevel": 1.8,
+          "FortunePerLevel": 0.4
+        },
+        "HpRegen": 1.2,
+        "HpRegenCombatDelay": 3,
+        "MaxMana": 32,
+        "ManaRegen": 0.91,
+        "MagicResistance": 3,
+        "FlatArmorPenetration": 0,
+        "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
+        "DamageVariance": 4,
+        "DamageType": "magic",
+        "CritChance": 0,
+        "CritMultiplier": 1.75,
+        "SplashType": "None",
+        "SplashInnerRadius": 0,
+        "SplashMediumRadius": 0,
+        "SplashOuterRadius": 0,
+        "SplashInnerRatio": 1,
+        "SplashMediumRatio": 0.6,
+        "SplashOuterRatio": 0.3,
+        "FriendlyFire": false,
+        "PushPriority": 0,
+        "MovementType": "Ground",
+        "SightRange": 15,
+        "AcquisitionRange": 15,
+        "GoldBounty": 10,
+        "ModelPath": "warrior_hero_unit_8.rmesh",
+        "PortraitModelPath": "paladin_hero_unit.rmesh",
+        "VisualMode": "Mesh",
+        "Scale": 2.45,
+        "YOffset": 0.909,
+        "CollisionCircle": 0.74,
+        "Brightness": 0.5,
+        "Tint": null,
+        "NormalizeLuminance": true,
+        "IgnorePlayerColor": false,
+        "DespillPlayerColor": true,
+        "BuildOptions": null,
+        "IsHero": true,
+        "Abilities": [
+          "sun_priest_solar_spark",
+          "sun_priest_sunlit_mend",
+          "sun_priest_radiant_chorus",
+          "reroll_item",
+          "reroll_element",
+          "reroll_hero",
+          "reroll_all",
+          "swap_tile_units"
+        ],
+        "XpBounty": 25,
+        "ExperiencePerLevel": 0,
+        "PathingCapabilities": null,
+        "PathingType": 9,
+        "Targets": null,
+        "Weapons": [
+          "weapon/solar_lance"
+        ],
+        "ProjectileModelPath": null,
+        "Animations": {
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -2661,26 +1653,26 @@
         "Weapons": null,
         "ProjectileModelPath": null,
         "Animations": {
-          "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
-          ],
-          "Death": [
-            "Death - Death From Standing Idle.ranim"
-          ],
           "Attack": [
             "Upward Thrust - Upward Weapon Thrust.ranim"
-          ],
-          "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
           ],
           "Dance": [
             "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
           ],
-          "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
           ],
           "Labor": [
             "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -2697,6 +1689,1014 @@
         "EnableProceduralAnimation": null,
         "DespawnShader": null,
         "ConstructionRange": 22,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "TemplateID": "unit/iron_warlord",
+        "Name": "Iron Warlord",
+        "Description": "A siege-armoured field commander who wades into the melee with a cleaver the size of a door.",
+        "MaxHp": 1062,
+        "Damage": 71,
+        "Range": 2.82,
+        "Armor": 5,
+        "Speed": 3,
+        "AttackCooldown": 1.35,
+        "ScanRadius": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
+        "PopCost": 1,
+        "ProductionTime": 0,
+        "Strength": 18,
+        "Agility": 12,
+        "Vitality": 15,
+        "Intelligence": 10,
+        "Wisdom": 11,
+        "Fortune": 10,
+        "LevelGrowth": {
+          "StrengthPerLevel": 1.5,
+          "AgilityPerLevel": 0.5,
+          "VitalityPerLevel": 2,
+          "IntelligencePerLevel": 0.4,
+          "WisdomPerLevel": 0.4,
+          "FortunePerLevel": 0.2
+        },
+        "HpRegen": 1,
+        "HpRegenCombatDelay": 3,
+        "MaxMana": 60,
+        "ManaRegen": 0.98,
+        "MagicResistance": 2,
+        "FlatArmorPenetration": 0,
+        "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
+        "DamageVariance": 6,
+        "DamageType": "physical",
+        "CritChance": 0,
+        "CritMultiplier": 1.75,
+        "SplashType": "RadialStep",
+        "SplashInnerRadius": 0.8,
+        "SplashMediumRadius": 1.5,
+        "SplashOuterRadius": 2.2,
+        "SplashInnerRatio": 1,
+        "SplashMediumRatio": 0.6,
+        "SplashOuterRatio": 0.3,
+        "FriendlyFire": false,
+        "PushPriority": 0,
+        "MovementType": "Ground",
+        "SightRange": 15,
+        "AcquisitionRange": 15,
+        "GoldBounty": 10,
+        "ModelPath": "golden_warrior_hero.rmesh",
+        "PortraitModelPath": "heavy_armored_warrior.rmesh",
+        "VisualMode": "Mesh",
+        "Scale": 2.75,
+        "YOffset": 0.909,
+        "CollisionCircle": 0.83,
+        "Brightness": 0.5,
+        "Tint": null,
+        "NormalizeLuminance": true,
+        "IgnorePlayerColor": false,
+        "DespillPlayerColor": true,
+        "BuildOptions": null,
+        "IsHero": true,
+        "Abilities": [
+          "iron_warlord_cleaver_arc",
+          "iron_warlord_war_engine_roar",
+          "iron_warlord_earthsplitter",
+          "reroll_item",
+          "reroll_element",
+          "reroll_hero",
+          "reroll_all",
+          "swap_tile_units"
+        ],
+        "XpBounty": 25,
+        "ExperiencePerLevel": 0,
+        "PathingCapabilities": null,
+        "PathingType": 9,
+        "Targets": null,
+        "Weapons": [
+          "weapon/iron_cleaver"
+        ],
+        "ProjectileModelPath": null,
+        "Animations": {
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ]
+        },
+        "ObjectAttachments": null,
+        "PseudoSockets": null,
+        "Sounds": null,
+        "StartingItems": null,
+        "ShopItems": null,
+        "Upgrades": null,
+        "StatusEffects": null,
+        "SoundEvents": null,
+        "SpawnShader": null,
+        "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
+        "DespawnShader": null,
+        "ConstructionRange": 4,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "TemplateID": "unit/coral_vanguard",
+        "Name": "Coral Vanguard",
+        "Description": "A reef-plated harpooner who fights the way surf meets rock: slowly, then all at once.",
+        "MaxHp": 1013,
+        "Damage": 69,
+        "Range": 3.24,
+        "Armor": 4.5,
+        "Speed": 3,
+        "AttackCooldown": 1.3,
+        "ScanRadius": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
+        "PopCost": 1,
+        "ProductionTime": 0,
+        "Strength": 17,
+        "Agility": 12,
+        "Vitality": 17,
+        "Intelligence": 14,
+        "Wisdom": 12,
+        "Fortune": 10,
+        "LevelGrowth": {
+          "StrengthPerLevel": 1.2,
+          "AgilityPerLevel": 0.5,
+          "VitalityPerLevel": 1.6,
+          "IntelligencePerLevel": 1,
+          "WisdomPerLevel": 0.7,
+          "FortunePerLevel": 0.3
+        },
+        "HpRegen": 1,
+        "HpRegenCombatDelay": 3,
+        "MaxMana": 4,
+        "ManaRegen": 0.93,
+        "MagicResistance": 2,
+        "FlatArmorPenetration": 0,
+        "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
+        "DamageVariance": 6,
+        "DamageType": "physical",
+        "CritChance": 0,
+        "CritMultiplier": 1.75,
+        "SplashType": "None",
+        "SplashInnerRadius": 0,
+        "SplashMediumRadius": 0,
+        "SplashOuterRadius": 0,
+        "SplashInnerRatio": 1,
+        "SplashMediumRatio": 0.6,
+        "SplashOuterRatio": 0.3,
+        "FriendlyFire": false,
+        "PushPriority": 0,
+        "MovementType": "Ground",
+        "SightRange": 15,
+        "AcquisitionRange": 15,
+        "GoldBounty": 10,
+        "ModelPath": "blue_dragon_knight.rmesh",
+        "PortraitModelPath": "armored_warrior_unit_5.rmesh",
+        "VisualMode": "Mesh",
+        "Scale": 2.75,
+        "YOffset": 0.909,
+        "CollisionCircle": 0.83,
+        "Brightness": 0.5,
+        "Tint": null,
+        "NormalizeLuminance": true,
+        "IgnorePlayerColor": false,
+        "DespillPlayerColor": true,
+        "BuildOptions": null,
+        "IsHero": true,
+        "Abilities": [
+          "coral_vanguard_harpoon_jab",
+          "coral_vanguard_tidal_sweep",
+          "coral_vanguard_undertow",
+          "reroll_item",
+          "reroll_element",
+          "reroll_hero",
+          "reroll_all",
+          "swap_tile_units"
+        ],
+        "XpBounty": 25,
+        "ExperiencePerLevel": 0,
+        "PathingCapabilities": null,
+        "PathingType": 9,
+        "Targets": null,
+        "Weapons": [
+          "weapon/coral_harpoon"
+        ],
+        "ProjectileModelPath": null,
+        "Animations": {
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ]
+        },
+        "ObjectAttachments": null,
+        "PseudoSockets": null,
+        "Sounds": null,
+        "StartingItems": null,
+        "ShopItems": null,
+        "Upgrades": null,
+        "StatusEffects": null,
+        "SoundEvents": null,
+        "SpawnShader": null,
+        "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
+        "DespawnShader": null,
+        "ConstructionRange": 4,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "TemplateID": "unit/magma_smith",
+        "Name": "Magma Smith",
+        "Description": "A forge-slave who quenched a thousand blades and then decided to become one.",
+        "MaxHp": 994,
+        "Damage": 73,
+        "Range": 2.7,
+        "Armor": 4.5,
+        "Speed": 3,
+        "AttackCooldown": 1.35,
+        "ScanRadius": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
+        "PopCost": 1,
+        "ProductionTime": 0,
+        "Strength": 18,
+        "Agility": 11,
+        "Vitality": 16,
+        "Intelligence": 12,
+        "Wisdom": 11,
+        "Fortune": 10,
+        "LevelGrowth": {
+          "StrengthPerLevel": 0.6,
+          "AgilityPerLevel": 0.5,
+          "VitalityPerLevel": 0.9,
+          "IntelligencePerLevel": 1.8,
+          "WisdomPerLevel": 1,
+          "FortunePerLevel": 0.4
+        },
+        "HpRegen": 1,
+        "HpRegenCombatDelay": 3,
+        "MaxMana": 42,
+        "ManaRegen": 1.02,
+        "MagicResistance": 2,
+        "FlatArmorPenetration": 0,
+        "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
+        "DamageVariance": 6,
+        "DamageType": "physical",
+        "CritChance": 0,
+        "CritMultiplier": 1.75,
+        "SplashType": "RadialStep",
+        "SplashInnerRadius": 0.8,
+        "SplashMediumRadius": 1.5,
+        "SplashOuterRadius": 2.3,
+        "SplashInnerRatio": 1,
+        "SplashMediumRatio": 0.6,
+        "SplashOuterRatio": 0.3,
+        "FriendlyFire": false,
+        "PushPriority": 0,
+        "MovementType": "Ground",
+        "SightRange": 15,
+        "AcquisitionRange": 15,
+        "GoldBounty": 10,
+        "ModelPath": "horned_warrior_unit.rmesh",
+        "PortraitModelPath": "warrior_hero_unit_1.rmesh",
+        "VisualMode": "Mesh",
+        "Scale": 2.75,
+        "YOffset": 0.909,
+        "CollisionCircle": 0.83,
+        "Brightness": 0.5,
+        "Tint": null,
+        "NormalizeLuminance": true,
+        "IgnorePlayerColor": false,
+        "DespillPlayerColor": true,
+        "BuildOptions": null,
+        "IsHero": true,
+        "Abilities": [
+          "magma_smith_forge_hammer",
+          "magma_smith_molten_quench",
+          "magma_smith_eruption",
+          "reroll_item",
+          "reroll_element",
+          "reroll_hero",
+          "reroll_all",
+          "swap_tile_units"
+        ],
+        "XpBounty": 25,
+        "ExperiencePerLevel": 0,
+        "PathingCapabilities": null,
+        "PathingType": 9,
+        "Targets": null,
+        "Weapons": [
+          "weapon/orc_battleaxe"
+        ],
+        "ProjectileModelPath": null,
+        "Animations": {
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ]
+        },
+        "ObjectAttachments": null,
+        "PseudoSockets": null,
+        "Sounds": null,
+        "StartingItems": null,
+        "ShopItems": null,
+        "Upgrades": null,
+        "StatusEffects": null,
+        "SoundEvents": null,
+        "SpawnShader": null,
+        "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
+        "DespawnShader": null,
+        "ConstructionRange": 4,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "TemplateID": "unit/lightbringer_monk",
+        "Name": "Lightbringer Monk",
+        "Description": "A bare-knuckle ascetic whose open palm hits like a closing door.",
+        "MaxHp": 1036,
+        "Damage": 69,
+        "Range": 2.8,
+        "Armor": 4,
+        "Speed": 3,
+        "AttackCooldown": 1.15,
+        "ScanRadius": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
+        "PopCost": 1,
+        "ProductionTime": 0,
+        "Strength": 16,
+        "Agility": 16,
+        "Vitality": 15,
+        "Intelligence": 13,
+        "Wisdom": 16,
+        "Fortune": 12,
+        "LevelGrowth": {
+          "StrengthPerLevel": 0.7,
+          "AgilityPerLevel": 0.4,
+          "VitalityPerLevel": 1.2,
+          "IntelligencePerLevel": 1.2,
+          "WisdomPerLevel": 1.8,
+          "FortunePerLevel": 0.4
+        },
+        "HpRegen": 1,
+        "HpRegenCombatDelay": 3,
+        "MaxMana": 20,
+        "ManaRegen": 0.87,
+        "MagicResistance": 2.5,
+        "FlatArmorPenetration": 0,
+        "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
+        "DamageVariance": 6,
+        "DamageType": "physical",
+        "CritChance": 0,
+        "CritMultiplier": 1.75,
+        "SplashType": "None",
+        "SplashInnerRadius": 0,
+        "SplashMediumRadius": 0,
+        "SplashOuterRadius": 0,
+        "SplashInnerRatio": 1,
+        "SplashMediumRatio": 0.6,
+        "SplashOuterRatio": 0.3,
+        "FriendlyFire": false,
+        "PushPriority": 0,
+        "MovementType": "Ground",
+        "SightRange": 15,
+        "AcquisitionRange": 15,
+        "GoldBounty": 10,
+        "ModelPath": "warrior_hero_unit.rmesh",
+        "PortraitModelPath": "armored_warrior_hero_2.rmesh",
+        "VisualMode": "Mesh",
+        "Scale": 2.75,
+        "YOffset": 0.909,
+        "CollisionCircle": 0.83,
+        "Brightness": 0.5,
+        "Tint": null,
+        "NormalizeLuminance": true,
+        "IgnorePlayerColor": false,
+        "DespillPlayerColor": true,
+        "BuildOptions": null,
+        "IsHero": true,
+        "Abilities": [
+          "lightbringer_monk_palm_strike",
+          "lightbringer_monk_inner_light",
+          "lightbringer_monk_sanctified_ground",
+          "reroll_item",
+          "reroll_element",
+          "reroll_hero",
+          "reroll_all",
+          "swap_tile_units"
+        ],
+        "XpBounty": 25,
+        "ExperiencePerLevel": 0,
+        "PathingCapabilities": null,
+        "PathingType": 9,
+        "Targets": null,
+        "Weapons": [
+          "weapon/radiant_cesti"
+        ],
+        "ProjectileModelPath": null,
+        "Animations": {
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ]
+        },
+        "ObjectAttachments": null,
+        "PseudoSockets": null,
+        "Sounds": null,
+        "StartingItems": null,
+        "ShopItems": null,
+        "Upgrades": null,
+        "StatusEffects": null,
+        "SoundEvents": null,
+        "SpawnShader": null,
+        "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
+        "DespawnShader": null,
+        "ConstructionRange": 4,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "TemplateID": "unit/pack_alpha",
+        "Name": "Pack Alpha",
+        "Description": "The biggest thing in the hunting pack, and the reason the rest of the pack still listens.",
+        "MaxHp": 977,
+        "Damage": 72,
+        "Range": 2.8,
+        "Armor": 4,
+        "Speed": 3,
+        "AttackCooldown": 1.25,
+        "ScanRadius": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
+        "PopCost": 1,
+        "ProductionTime": 0,
+        "Strength": 18,
+        "Agility": 14,
+        "Vitality": 16,
+        "Intelligence": 8,
+        "Wisdom": 11,
+        "Fortune": 12,
+        "LevelGrowth": {
+          "StrengthPerLevel": 1.4,
+          "AgilityPerLevel": 1,
+          "VitalityPerLevel": 1.4,
+          "IntelligencePerLevel": 0.4,
+          "WisdomPerLevel": 0.4,
+          "FortunePerLevel": 0.6
+        },
+        "HpRegen": 1,
+        "HpRegenCombatDelay": 3,
+        "MaxMana": 22,
+        "ManaRegen": 0.85,
+        "MagicResistance": 2,
+        "FlatArmorPenetration": 0,
+        "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
+        "DamageVariance": 6,
+        "DamageType": "physical",
+        "CritChance": 0,
+        "CritMultiplier": 1.75,
+        "SplashType": "RadialStep",
+        "SplashInnerRadius": 0.7,
+        "SplashMediumRadius": 1.4,
+        "SplashOuterRadius": 2.1,
+        "SplashInnerRatio": 1,
+        "SplashMediumRatio": 0.6,
+        "SplashOuterRatio": 0.3,
+        "FriendlyFire": false,
+        "PushPriority": 0,
+        "MovementType": "Ground",
+        "SightRange": 15,
+        "AcquisitionRange": 15,
+        "GoldBounty": 10,
+        "ModelPath": "minotaur_warrior_1.rmesh",
+        "PortraitModelPath": "orc_warrior.rmesh",
+        "VisualMode": "Mesh",
+        "Scale": 2.75,
+        "YOffset": 0.909,
+        "CollisionCircle": 0.83,
+        "Brightness": 0.5,
+        "Tint": null,
+        "NormalizeLuminance": true,
+        "IgnorePlayerColor": false,
+        "DespillPlayerColor": true,
+        "BuildOptions": null,
+        "IsHero": true,
+        "Abilities": [
+          "pack_alpha_savage_maul",
+          "pack_alpha_howl",
+          "pack_alpha_blood_hunt",
+          "reroll_item",
+          "reroll_element",
+          "reroll_hero",
+          "reroll_all",
+          "swap_tile_units"
+        ],
+        "XpBounty": 25,
+        "ExperiencePerLevel": 0,
+        "PathingCapabilities": null,
+        "PathingType": 9,
+        "Targets": null,
+        "Weapons": [
+          "weapon/orc_battleaxe"
+        ],
+        "ProjectileModelPath": null,
+        "Animations": {
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ]
+        },
+        "ObjectAttachments": null,
+        "PseudoSockets": null,
+        "Sounds": null,
+        "StartingItems": null,
+        "ShopItems": null,
+        "Upgrades": null,
+        "StatusEffects": null,
+        "SoundEvents": null,
+        "SpawnShader": null,
+        "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
+        "DespawnShader": null,
+        "ConstructionRange": 4,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "TemplateID": "unit/stone_guardian",
+        "Name": "Stone Guardian",
+        "Description": "A living monolith of packed granite that plants itself at the front line and refuses to move.",
+        "MaxHp": 1295,
+        "Damage": 66,
+        "Range": 2.44,
+        "Armor": 6,
+        "Speed": 3,
+        "AttackCooldown": 1.45,
+        "ScanRadius": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
+        "PopCost": 1,
+        "ProductionTime": 0,
+        "Strength": 22,
+        "Agility": 8,
+        "Vitality": 20,
+        "Intelligence": 9,
+        "Wisdom": 10,
+        "Fortune": 10,
+        "LevelGrowth": {
+          "StrengthPerLevel": 1.5,
+          "AgilityPerLevel": 0.5,
+          "VitalityPerLevel": 2,
+          "IntelligencePerLevel": 0.4,
+          "WisdomPerLevel": 0.4,
+          "FortunePerLevel": 0.2
+        },
+        "HpRegen": 1.3,
+        "HpRegenCombatDelay": 3,
+        "MaxMana": 0,
+        "ManaRegen": 1.17,
+        "MagicResistance": 2.5,
+        "FlatArmorPenetration": 0,
+        "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
+        "DamageVariance": 5,
+        "DamageType": "physical",
+        "CritChance": 0,
+        "CritMultiplier": 1.75,
+        "SplashType": "RadialStep",
+        "SplashInnerRadius": 1.2,
+        "SplashMediumRadius": 2,
+        "SplashOuterRadius": 2.9,
+        "SplashInnerRatio": 1,
+        "SplashMediumRatio": 0.6,
+        "SplashOuterRatio": 0.3,
+        "FriendlyFire": false,
+        "PushPriority": 0,
+        "MovementType": "Ground",
+        "SightRange": 15,
+        "AcquisitionRange": 15,
+        "GoldBounty": 10,
+        "ModelPath": "stone_warrior_warrior.rmesh",
+        "PortraitModelPath": "armored_warrior_unit.rmesh",
+        "VisualMode": "Mesh",
+        "Scale": 2.95,
+        "YOffset": 0.909,
+        "CollisionCircle": 0.89,
+        "Brightness": 0.5,
+        "Tint": null,
+        "NormalizeLuminance": true,
+        "IgnorePlayerColor": false,
+        "DespillPlayerColor": true,
+        "BuildOptions": null,
+        "IsHero": true,
+        "Abilities": [
+          "stone_guardian_granite_fist",
+          "stone_guardian_hardened_crust",
+          "stone_guardian_seismic_rupture",
+          "reroll_item",
+          "reroll_element",
+          "reroll_hero",
+          "reroll_all",
+          "swap_tile_units"
+        ],
+        "XpBounty": 25,
+        "ExperiencePerLevel": 0,
+        "PathingCapabilities": null,
+        "PathingType": 9,
+        "Targets": null,
+        "Weapons": [
+          "weapon/granite_crusher"
+        ],
+        "ProjectileModelPath": null,
+        "Animations": {
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ]
+        },
+        "ObjectAttachments": null,
+        "PseudoSockets": null,
+        "Sounds": null,
+        "StartingItems": null,
+        "ShopItems": null,
+        "Upgrades": null,
+        "StatusEffects": null,
+        "SoundEvents": null,
+        "SpawnShader": null,
+        "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
+        "DespawnShader": null,
+        "ConstructionRange": 4,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "TemplateID": "unit/thornback_behemoth",
+        "Name": "Thornback Behemoth",
+        "Description": "A bramble-plated beast that heals faster the longer you keep hitting it.",
+        "MaxHp": 1260,
+        "Damage": 67,
+        "Range": 2.5,
+        "Armor": 6,
+        "Speed": 3,
+        "AttackCooldown": 1.5,
+        "ScanRadius": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
+        "PopCost": 1,
+        "ProductionTime": 0,
+        "Strength": 21,
+        "Agility": 8,
+        "Vitality": 20,
+        "Intelligence": 8,
+        "Wisdom": 12,
+        "Fortune": 10,
+        "LevelGrowth": {
+          "StrengthPerLevel": 0.8,
+          "AgilityPerLevel": 0.4,
+          "VitalityPerLevel": 1.8,
+          "IntelligencePerLevel": 1.2,
+          "WisdomPerLevel": 1,
+          "FortunePerLevel": 0.3
+        },
+        "HpRegen": 1.3,
+        "HpRegenCombatDelay": 3,
+        "MaxMana": 10,
+        "ManaRegen": 0.99,
+        "MagicResistance": 2.5,
+        "FlatArmorPenetration": 0,
+        "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
+        "DamageVariance": 5,
+        "DamageType": "physical",
+        "CritChance": 0,
+        "CritMultiplier": 1.75,
+        "SplashType": "RadialStep",
+        "SplashInnerRadius": 1.1,
+        "SplashMediumRadius": 1.9,
+        "SplashOuterRadius": 2.7,
+        "SplashInnerRatio": 1,
+        "SplashMediumRatio": 0.6,
+        "SplashOuterRatio": 0.3,
+        "FriendlyFire": false,
+        "PushPriority": 0,
+        "MovementType": "Ground",
+        "SightRange": 15,
+        "AcquisitionRange": 15,
+        "GoldBounty": 10,
+        "ModelPath": "armored_beast_warrior_1.rmesh",
+        "PortraitModelPath": "armored_knight_unit.rmesh",
+        "VisualMode": "Mesh",
+        "Scale": 2.95,
+        "YOffset": 0.909,
+        "CollisionCircle": 0.89,
+        "Brightness": 0.5,
+        "Tint": null,
+        "NormalizeLuminance": true,
+        "IgnorePlayerColor": false,
+        "DespillPlayerColor": true,
+        "BuildOptions": null,
+        "IsHero": true,
+        "Abilities": [
+          "thornback_behemoth_bramble_slam",
+          "thornback_behemoth_rooted_vigor",
+          "thornback_behemoth_overgrowth",
+          "reroll_item",
+          "reroll_element",
+          "reroll_hero",
+          "reroll_all",
+          "swap_tile_units"
+        ],
+        "XpBounty": 25,
+        "ExperiencePerLevel": 0,
+        "PathingCapabilities": null,
+        "PathingType": 9,
+        "Targets": null,
+        "Weapons": [
+          "weapon/orc_battleaxe"
+        ],
+        "ProjectileModelPath": null,
+        "Animations": {
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ]
+        },
+        "ObjectAttachments": null,
+        "PseudoSockets": null,
+        "Sounds": null,
+        "StartingItems": null,
+        "ShopItems": null,
+        "Upgrades": null,
+        "StatusEffects": null,
+        "SoundEvents": null,
+        "SpawnShader": null,
+        "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
+        "DespawnShader": null,
+        "ConstructionRange": 4,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "TemplateID": "unit/glacier_sentinel",
+        "Name": "Glacier Sentinel",
+        "Description": "A slow avalanche wearing armour, sent ahead of the line because nothing can get past it.",
+        "MaxHp": 1283,
+        "Damage": 66,
+        "Range": 2.8,
+        "Armor": 6,
+        "Speed": 3,
+        "AttackCooldown": 1.55,
+        "ScanRadius": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
+        "PopCost": 1,
+        "ProductionTime": 0,
+        "Strength": 21,
+        "Agility": 8,
+        "Vitality": 20,
+        "Intelligence": 12,
+        "Wisdom": 13,
+        "Fortune": 10,
+        "LevelGrowth": {
+          "StrengthPerLevel": 0.6,
+          "AgilityPerLevel": 0.5,
+          "VitalityPerLevel": 1,
+          "IntelligencePerLevel": 1.7,
+          "WisdomPerLevel": 1.1,
+          "FortunePerLevel": 0.3
+        },
+        "HpRegen": 1.3,
+        "HpRegenCombatDelay": 3,
+        "MaxMana": 20,
+        "ManaRegen": 0.93,
+        "MagicResistance": 2.5,
+        "FlatArmorPenetration": 0,
+        "PercentArmorPenetration": 0,
+        "FlatMagicPenetration": 0,
+        "DamageVariance": 5,
+        "DamageType": "physical",
+        "CritChance": 0,
+        "CritMultiplier": 1.75,
+        "SplashType": "RadialStep",
+        "SplashInnerRadius": 1.1,
+        "SplashMediumRadius": 1.9,
+        "SplashOuterRadius": 2.8,
+        "SplashInnerRatio": 1,
+        "SplashMediumRatio": 0.6,
+        "SplashOuterRatio": 0.3,
+        "FriendlyFire": false,
+        "PushPriority": 0,
+        "MovementType": "Ground",
+        "SightRange": 15,
+        "AcquisitionRange": 15,
+        "GoldBounty": 10,
+        "ModelPath": "frost_spirit_warrior.rmesh",
+        "PortraitModelPath": "frost_spirit_warrior.rmesh",
+        "VisualMode": "Mesh",
+        "Scale": 2.95,
+        "YOffset": 0.909,
+        "CollisionCircle": 0.89,
+        "Brightness": 0.5,
+        "Tint": null,
+        "NormalizeLuminance": true,
+        "IgnorePlayerColor": false,
+        "DespillPlayerColor": true,
+        "BuildOptions": null,
+        "IsHero": true,
+        "Abilities": [
+          "glacier_sentinel_ice_hammer",
+          "glacier_sentinel_permafrost",
+          "glacier_sentinel_avalanche",
+          "reroll_item",
+          "reroll_element",
+          "reroll_hero",
+          "reroll_all",
+          "swap_tile_units"
+        ],
+        "XpBounty": 25,
+        "ExperiencePerLevel": 0,
+        "PathingCapabilities": null,
+        "PathingType": 9,
+        "Targets": null,
+        "Weapons": [
+          "weapon/prism_shard"
+        ],
+        "ProjectileModelPath": null,
+        "Animations": {
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ]
+        },
+        "ObjectAttachments": null,
+        "PseudoSockets": null,
+        "Sounds": null,
+        "StartingItems": null,
+        "ShopItems": null,
+        "Upgrades": null,
+        "StatusEffects": null,
+        "SoundEvents": null,
+        "SpawnShader": null,
+        "DeathShader": null,
+        "ProceduralAnimation": null,
+        "EnableProceduralAnimation": null,
+        "DespawnShader": null,
+        "ConstructionRange": 4,
         "Attribution_ImportedFromMap": null
       }
     ],
@@ -3282,6 +3282,9 @@
         "AbilityType": "target_spell",
         "IconPath": "heavy_knight.rtex",
         "ManaCost": 14,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 6,
         "TargetRange": 3.2,
         "VisualEffect": "mineral_geology_crust_crack.rtex",
@@ -3328,6 +3331,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "dragon_king_gauntlet.rtex",
         "ManaCost": 18,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 14,
         "TargetRange": 0,
         "VisualEffect": "stone_burst_sheet.rtex",
@@ -3380,6 +3386,9 @@
         "AbilityType": "target_spell",
         "IconPath": "red_cloth_shield.rtex",
         "ManaCost": 22,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 16,
         "TargetRange": 6,
         "VisualEffect": "stone_spike_sheet.rtex",
@@ -3452,6 +3461,9 @@
         "AbilityType": "target_spell",
         "IconPath": "orc_warlord_5.rtex",
         "ManaCost": 15,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 7,
         "TargetRange": 2.9,
         "VisualEffect": "iron_wall_sheet.rtex",
@@ -3498,6 +3510,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "orc_warlock.rtex",
         "ManaCost": 20,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 18,
         "TargetRange": 0,
         "VisualEffect": "mineral_geology_stone_fracture.rtex",
@@ -3565,6 +3580,9 @@
         "AbilityType": "target_spell",
         "IconPath": "stone_lich.rtex",
         "ManaCost": 24,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 20,
         "TargetRange": 5.5,
         "VisualEffect": "stone_pierce_sheet.rtex",
@@ -3629,6 +3647,9 @@
         "AbilityType": "target_spell",
         "IconPath": "dark_hooded_warrior.rtex",
         "ManaCost": 12,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 5,
         "TargetRange": 2.9,
         "VisualEffect": "shadow_streak_sheet.rtex",
@@ -3675,6 +3696,9 @@
         "AbilityType": "target_spell",
         "IconPath": "flaming_skull_1.rtex",
         "ManaCost": 16,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 12,
         "TargetRange": 7,
         "VisualEffect": "shadow_bolt_sheet.rtex",
@@ -3736,6 +3760,9 @@
         "AbilityType": "target_spell",
         "IconPath": "dark_elf_warlord_1.rtex",
         "ManaCost": 20,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 18,
         "TargetRange": 8,
         "VisualEffect": "void_orb_sheet.rtex",
@@ -3808,6 +3835,9 @@
         "AbilityType": "target_spell",
         "IconPath": "purple_magic_spell.rtex",
         "ManaCost": 16,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 7,
         "TargetRange": 6.5,
         "VisualEffect": "void_grain_sheet.rtex",
@@ -3854,6 +3884,9 @@
         "AbilityType": "target_spell",
         "IconPath": "cosmic_orb.rtex",
         "ManaCost": 24,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 16,
         "TargetRange": 5.5,
         "VisualEffect": "dark_bloom_sheet.rtex",
@@ -3918,6 +3951,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "sorcerers_spellbook.rtex",
         "ManaCost": 20,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 14,
         "TargetRange": 0,
         "VisualEffect": "dark_orb_sheet.rtex",
@@ -3970,6 +4006,9 @@
         "AbilityType": "target_spell",
         "IconPath": "fox_warrior.rtex",
         "ManaCost": 13,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 6,
         "TargetRange": 3.4,
         "VisualEffect": "moss_spore_sheet.rtex",
@@ -4016,6 +4055,9 @@
         "AbilityType": "target_spell",
         "IconPath": "magic_healing_light.rtex",
         "ManaCost": 18,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 12,
         "TargetRange": 6,
         "VisualEffect": "acid_rain_sheet.rtex",
@@ -4062,6 +4104,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "green_power_hand.rtex",
         "ManaCost": 22,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 20,
         "TargetRange": 0,
         "VisualEffect": "particle_dynamics_aura_pulse.rtex",
@@ -4129,6 +4174,9 @@
         "AbilityType": "target_spell",
         "IconPath": "battering_ram.rtex",
         "ManaCost": 14,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 8,
         "TargetRange": 2.8,
         "VisualEffect": "magic_healing_light.rtex",
@@ -4175,6 +4223,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "blue_magic_shield_2.rtex",
         "ManaCost": 20,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 16,
         "TargetRange": 0,
         "VisualEffect": "mineral_geology_gem_dust.rtex",
@@ -4227,6 +4278,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "crystal_terrain.rtex",
         "ManaCost": 22,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 20,
         "TargetRange": 0,
         "VisualEffect": "stone_spike_sheet.rtex",
@@ -4312,6 +4366,9 @@
         "AbilityType": "target_spell",
         "IconPath": "water_spell.rtex",
         "ManaCost": 13,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 6,
         "TargetRange": 5,
         "VisualEffect": "water_spell.rtex",
@@ -4358,6 +4415,9 @@
         "AbilityType": "target_spell",
         "IconPath": "blue_undead_warrior.rtex",
         "ManaCost": 18,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 13,
         "TargetRange": 3,
         "VisualEffect": "frost_wave_sheet.rtex",
@@ -4422,6 +4482,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "blue_dragon_warlord.rtex",
         "ManaCost": 16,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 16,
         "TargetRange": 0,
         "VisualEffect": "frost_grain_sheet.rtex",
@@ -4515,6 +4578,9 @@
         "AbilityType": "target_spell",
         "IconPath": "starlight_missile.rtex",
         "ManaCost": 12,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 6,
         "TargetRange": 8,
         "VisualEffect": "storm_orb_sheet.rtex",
@@ -4561,6 +4627,9 @@
         "AbilityType": "target_spell",
         "IconPath": "island_tower_complex.rtex",
         "ManaCost": 20,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 15,
         "TargetRange": 6,
         "VisualEffect": "spirit_orb_sheet.rtex",
@@ -4633,6 +4702,9 @@
         "AbilityType": "target_spell",
         "IconPath": "ancient_gate.rtex",
         "ManaCost": 26,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 20,
         "TargetRange": 7,
         "VisualEffect": "storm_eye_sheet.rtex",
@@ -4679,6 +4751,9 @@
         "AbilityType": "target_spell",
         "IconPath": "fire_elemental_red_panda.rtex",
         "ManaCost": 15,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 7,
         "TargetRange": 7,
         "VisualEffect": "lava_flash_sheet.rtex",
@@ -4725,6 +4800,9 @@
         "AbilityType": "target_spell",
         "IconPath": "infernal_dragon.rtex",
         "ManaCost": 22,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 15,
         "TargetRange": 5,
         "VisualEffect": "flame_wisp_sheet.rtex",
@@ -4797,6 +4875,9 @@
         "AbilityType": "target_spell",
         "IconPath": "infernal_warlord.rtex",
         "ManaCost": 28,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 22,
         "TargetRange": 7,
         "VisualEffect": "ash_veil_sheet.rtex",
@@ -4843,6 +4924,9 @@
         "AbilityType": "target_spell",
         "IconPath": "lightning_hammer_1.rtex",
         "ManaCost": 14,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 7,
         "TargetRange": 3,
         "VisualEffect": "ash_grain_sheet.rtex",
@@ -4889,6 +4973,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "eagle_ring_1.rtex",
         "ManaCost": 18,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 15,
         "TargetRange": 0,
         "VisualEffect": "infernal_dragon.rtex",
@@ -4967,6 +5054,9 @@
         "AbilityType": "target_spell",
         "IconPath": "stone_forge.rtex",
         "ManaCost": 24,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 18,
         "TargetRange": 3.5,
         "VisualEffect": "flame_trident_1.rtex",
@@ -5031,6 +5121,9 @@
         "AbilityType": "target_spell",
         "IconPath": "ice_spirit_spell.rtex",
         "ManaCost": 14,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 7,
         "TargetRange": 7,
         "VisualEffect": "frost_hail_sheet.rtex",
@@ -5077,6 +5170,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "heavy_armor_crawler.rtex",
         "ManaCost": 20,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 16,
         "TargetRange": 0,
         "VisualEffect": "frost_grain_sheet.rtex",
@@ -5144,6 +5240,9 @@
         "AbilityType": "target_spell",
         "IconPath": "stone_gate.rtex",
         "ManaCost": 22,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 18,
         "TargetRange": 6,
         "VisualEffect": "frost_wave_sheet.rtex",
@@ -5216,6 +5315,9 @@
         "AbilityType": "target_spell",
         "IconPath": "spike_ring.rtex",
         "ManaCost": 14,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 8,
         "TargetRange": 2.8,
         "VisualEffect": "ice_spirit_spell.rtex",
@@ -5262,6 +5364,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "gate_of_light.rtex",
         "ManaCost": 20,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 18,
         "TargetRange": 0,
         "VisualEffect": "crystal_lattice_vein.rtex",
@@ -5314,6 +5419,9 @@
         "AbilityType": "target_spell",
         "IconPath": "magic_spell_core.rtex",
         "ManaCost": 26,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 20,
         "TargetRange": 6,
         "VisualEffect": "mineral_geology_quartz_core.rtex",
@@ -5378,6 +5486,9 @@
         "AbilityType": "target_spell",
         "IconPath": "lightning_strike_1.rtex",
         "ManaCost": 13,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 6,
         "TargetRange": 7.5,
         "VisualEffect": "storm_bolt_sheet.rtex",
@@ -5424,6 +5535,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "energy_explosion.rtex",
         "ManaCost": 20,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 16,
         "TargetRange": 0,
         "VisualEffect": "storm_ray_sheet.rtex",
@@ -5494,6 +5608,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "elder_sorcerer.rtex",
         "ManaCost": 24,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 20,
         "TargetRange": 0,
         "VisualEffect": "storm_strike_sheet.rtex",
@@ -5561,6 +5678,9 @@
         "AbilityType": "target_spell",
         "IconPath": "cyber_warrior.rtex",
         "ManaCost": 10,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 4.5,
         "TargetRange": 2.7,
         "VisualEffect": "storm_eye_sheet.rtex",
@@ -5607,6 +5727,9 @@
         "AbilityType": "target_spell",
         "IconPath": "forest_goblin.rtex",
         "ManaCost": 14,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 12,
         "TargetRange": 8,
         "VisualEffect": "storm_orb_sheet.rtex",
@@ -5679,6 +5802,9 @@
         "AbilityType": "target_spell",
         "IconPath": "sunstone_core_2.rtex",
         "ManaCost": 22,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 16,
         "TargetRange": 3,
         "VisualEffect": "wind_blade_sheet.rtex",
@@ -5725,6 +5851,9 @@
         "AbilityType": "target_spell",
         "IconPath": "golden_tower.rtex",
         "ManaCost": 14,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 6.5,
         "TargetRange": 7,
         "VisualEffect": "mana_orb_sheet.rtex",
@@ -5771,6 +5900,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "magic_chess_piece.rtex",
         "ManaCost": 20,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 18,
         "TargetRange": 0,
         "VisualEffect": "star_core_sheet.rtex",
@@ -5845,6 +5977,9 @@
         "AbilityType": "target_spell",
         "IconPath": "magic_observatory.rtex",
         "ManaCost": 30,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 24,
         "TargetRange": 8,
         "VisualEffect": "purple_magic_spell.rtex",
@@ -5891,6 +6026,9 @@
         "AbilityType": "target_spell",
         "IconPath": "magic_damage.rtex",
         "ManaCost": 12,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 5.5,
         "TargetRange": 8.5,
         "VisualEffect": "magic_spell_core.rtex",
@@ -5937,6 +6075,9 @@
         "AbilityType": "target_spell",
         "IconPath": "purple_energy_ring.rtex",
         "ManaCost": 20,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 15,
         "TargetRange": 7,
         "VisualEffect": "crystal_terrain.rtex",
@@ -6016,6 +6157,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "castle_tower.rtex",
         "ManaCost": 22,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 22,
         "TargetRange": 0,
         "VisualEffect": "mineral_geology_gem_glint.rtex",
@@ -6090,6 +6234,9 @@
         "AbilityType": "target_spell",
         "IconPath": "elf_king.rtex",
         "ManaCost": 12,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 6,
         "TargetRange": 7,
         "VisualEffect": "light_beam_sheet.rtex",
@@ -6136,6 +6283,9 @@
         "AbilityType": "target_spell",
         "IconPath": "forest_goblin_1.rtex",
         "ManaCost": 18,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 11,
         "TargetRange": 6,
         "VisualEffect": "light_shafts_heavenly_touch.rtex",
@@ -6182,6 +6332,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "gold_star_coin.rtex",
         "ManaCost": 24,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 20,
         "TargetRange": 0,
         "VisualEffect": "light_shafts_phantom_ray.rtex",
@@ -6260,6 +6413,9 @@
         "AbilityType": "target_spell",
         "IconPath": "green_eyed_hooded_enemy.rtex",
         "ManaCost": 10,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 4.5,
         "TargetRange": 2.8,
         "VisualEffect": "sun_spike_sheet.rtex",
@@ -6306,6 +6462,9 @@
         "AbilityType": "target_spell",
         "IconPath": "flame_trident_1.rtex",
         "ManaCost": 16,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 14,
         "TargetRange": 6,
         "VisualEffect": "sun_scorch_sheet.rtex",
@@ -6378,6 +6537,9 @@
         "AbilityType": "target_spell",
         "IconPath": "orc_tower.rtex",
         "ManaCost": 20,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 18,
         "TargetRange": 5,
         "VisualEffect": "magic_healing_light.rtex",
@@ -6452,6 +6614,9 @@
         "AbilityType": "target_spell",
         "IconPath": "roof_lantern.rtex",
         "ManaCost": 11,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 5.5,
         "TargetRange": 2.8,
         "VisualEffect": "wind_gust_sheet.rtex",
@@ -6524,6 +6689,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "wooden_door.rtex",
         "ManaCost": 18,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 18,
         "TargetRange": 0,
         "VisualEffect": "moss_spore_sheet.rtex",
@@ -6591,6 +6759,9 @@
         "AbilityType": "target_spell",
         "IconPath": "wooden_tower_house.rtex",
         "ManaCost": 20,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 20,
         "TargetRange": 9,
         "VisualEffect": "weapon_fins_venom_flick.rtex",
@@ -6655,6 +6826,9 @@
         "AbilityType": "target_spell",
         "IconPath": "blood_heart.rtex",
         "ManaCost": 11,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 5,
         "TargetRange": 2.7,
         "VisualEffect": "acid_rain_sheet.rtex",
@@ -6701,6 +6875,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "blue_orc_warrior.rtex",
         "ManaCost": 18,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 14,
         "TargetRange": 0,
         "VisualEffect": "wind_blade_sheet.rtex",
@@ -6779,6 +6956,9 @@
         "AbilityType": "instant_spell",
         "IconPath": "dragon_lord_1.rtex",
         "ManaCost": 22,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 16,
         "TargetRange": 0,
         "VisualEffect": "stone_burst_sheet.rtex",
@@ -6823,9 +7003,11 @@
         "Description": "Rerolls this tile's item into another random item. 10 stone, 30 s cooldown.",
         "Role": null,
         "AbilityType": "instant_spell",
-        "CostStone": 10,
         "IconPath": "dragon_lord_1.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 10,
         "Cooldown": 0,
         "TargetRange": 0,
         "VisualEffect": "storm_strike_sheet.rtex",
@@ -6844,9 +7026,11 @@
         "Description": "Rerolls this tile's element. 25 stone, 30 s cooldown.",
         "Role": null,
         "AbilityType": "instant_spell",
-        "CostStone": 25,
         "IconPath": "purple_magic_spell.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 25,
         "Cooldown": 0,
         "TargetRange": 0,
         "VisualEffect": "light_shafts_phantom_ray.rtex",
@@ -6865,9 +7049,11 @@
         "Description": "Rerolls this tile into a different undrafted hero, keeping level, item and element. 10 stone, 30 s cooldown.",
         "Role": null,
         "AbilityType": "instant_spell",
-        "CostStone": 10,
         "IconPath": "sorcerers_spellbook.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 10,
         "Cooldown": 0,
         "TargetRange": 0,
         "VisualEffect": "lava_flash_sheet.rtex",
@@ -6886,9 +7072,11 @@
         "Description": "Rerolls this tile's item, element and hero. 5 stone, 30 s cooldown.",
         "Role": null,
         "AbilityType": "instant_spell",
-        "CostStone": 5,
         "IconPath": "fire_elemental_red_panda.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 5,
         "Cooldown": 0,
         "TargetRange": 0,
         "VisualEffect": "iron_wall_sheet.rtex",
@@ -6907,9 +7095,11 @@
         "Description": "Swaps this tile with another of your tiles, exchanging levels and positions. 5 stone, 30 s cooldown.",
         "Role": null,
         "AbilityType": "target_spell",
-        "CostStone": 5,
         "IconPath": "golden_tower.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 5,
         "Cooldown": 0,
         "TargetRange": 30,
         "VisualEffect": "storm_pulse_sheet.rtex",
@@ -6930,6 +7120,9 @@
         "AbilityType": "target_spell",
         "IconPath": "blood_heart.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "flame_trident_1.rtex",
@@ -6950,6 +7143,9 @@
         "AbilityType": "target_spell",
         "IconPath": "purple_energy_ring.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "purple_magic_spell.rtex",
@@ -6970,6 +7166,9 @@
         "AbilityType": "target_spell",
         "IconPath": "glowing_magic_sword_1.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "wind_blade_sheet.rtex",
@@ -6990,6 +7189,9 @@
         "AbilityType": "target_spell",
         "IconPath": "flaming_skull_1.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "energy_explosion.rtex",
@@ -7010,6 +7212,9 @@
         "AbilityType": "target_spell",
         "IconPath": "red_cloth_shield.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "blue_magic_shield_2.rtex",
@@ -7030,6 +7235,9 @@
         "AbilityType": "target_spell",
         "IconPath": "spike_ring.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "storm_strike_sheet.rtex",
@@ -7050,6 +7258,9 @@
         "AbilityType": "target_spell",
         "IconPath": "eagle_ring_1.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "forest_wind_rustle.raud",
@@ -7070,6 +7281,9 @@
         "AbilityType": "target_spell",
         "IconPath": "stone_lich.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "ice_spirit_spell.rtex",
@@ -7090,6 +7304,9 @@
         "AbilityType": "target_spell",
         "IconPath": "gold_star_coin.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "magic_healing_light.rtex",
@@ -7110,6 +7327,9 @@
         "AbilityType": "target_spell",
         "IconPath": "orc_warlord_5.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "infernal_dragon.rtex",
@@ -7130,6 +7350,9 @@
         "AbilityType": "target_spell",
         "IconPath": "cosmic_orb.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "energy_explosion.rtex",
@@ -7150,6 +7373,9 @@
         "AbilityType": "target_spell",
         "IconPath": "sorcerers_spellbook.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "magic_spell_core.rtex",
@@ -7170,6 +7396,9 @@
         "AbilityType": "target_spell",
         "IconPath": "purple_magic_spell.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "storm_strike_sheet.rtex",
@@ -7190,6 +7419,9 @@
         "AbilityType": "target_spell",
         "IconPath": "magic_observatory.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "energy_explosion.rtex",
@@ -7210,6 +7442,9 @@
         "AbilityType": "target_spell",
         "IconPath": "heavy_knight.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "blue_magic_shield_2.rtex",
@@ -7230,6 +7465,9 @@
         "AbilityType": "target_spell",
         "IconPath": "blue_dragon_warlord.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "wind_blade_sheet.rtex",
@@ -7250,6 +7488,9 @@
         "AbilityType": "target_spell",
         "IconPath": "magic_healing_light.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "magic_healing_light.rtex",
@@ -7270,6 +7511,9 @@
         "AbilityType": "target_spell",
         "IconPath": "starlight_missile.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "magic_spell_core.rtex",
@@ -7290,6 +7534,9 @@
         "AbilityType": "target_spell",
         "IconPath": "stone_gate.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "crystal_terrain.rtex",
@@ -7310,6 +7557,9 @@
         "AbilityType": "target_spell",
         "IconPath": "water_spell.rtex",
         "ManaCost": 0,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
         "VisualEffect": "water_spell.rtex",
@@ -7330,8 +7580,11 @@
         "AbilityType": "target_spell",
         "IconPath": "purple_magic_spell.rtex",
         "ManaCost": 100,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 15,
-        "TargetRange": 12,
+        "TargetRange": 250,
         "VisualEffect": "mineral_geology_crust_crack.rtex",
         "CastSound": "hammer_crush_stone.raud",
         "AutoCast": null,
@@ -7350,8 +7603,11 @@
         "AbilityType": "target_spell",
         "IconPath": "magic_healing_light.rtex",
         "ManaCost": 75,
+        "CostGold": 0,
+        "CostWood": 0,
+        "CostStone": 0,
         "Cooldown": 20,
-        "TargetRange": 12,
+        "TargetRange": 250,
         "VisualEffect": "holy_light_burst.rtex",
         "CastSound": "forest_wind_rustle.raud",
         "AutoCast": null,
@@ -12040,5 +12296,12 @@
       "Attribution_ImportedFromMap": null
     }
   },
-  "gdshader": {}
+  "gdshader": {},
+  "Attributions": [],
+  "Contributors": [
+    "Devin"
+  ],
+  "EngineVersion": "0.0.1_Pre-Alpha",
+  "author_key": "4ssK6y+6xJ7ktzPdU1M5Nkce6cWmj0TKdN1SQJz6+kY=",
+  "signature": "JdUn8R+aglZuWzC7McmHm79AeDbb0pSGrRpSsh+UjutMmRlL1/vHPe0h+KuQHBPqUCJsL1jOwSqj06/Ook9cCQ=="
 }

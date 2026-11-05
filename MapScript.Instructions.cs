@@ -19,7 +19,7 @@ public partial class MapScript
             + "A drafted hero stays on its circle and never moves. It is the template: every wave clones it and enters the battle.");
 
         _api.AddInstructionsSection(
-            "Water, Earth and Fire",
+            "Elements (Water, Earth and Fire)",
             "Every circle holds one element. The element determines which of "
             + "the hero's three abilities the clone casts.");
 
