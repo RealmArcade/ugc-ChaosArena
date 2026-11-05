@@ -9,27 +9,27 @@ namespace Realm.Maps;
 
 public static class UnitIds
 {
-	public const string StoneGuardian = "unit/stone_guardian";
-	public const string IronWarlord = "unit/iron_warlord";
-	public const string NetherAssassin = "unit/nether_assassin";
 	public const string ShadowWeaver = "unit/shadow_weaver";
-	public const string VerdantDruid = "unit/verdant_druid";
-	public const string ThornbackBehemoth = "unit/thornback_behemoth";
-	public const string CoralVanguard = "unit/coral_vanguard";
-	public const string Tidecaller = "unit/tidecaller";
 	public const string FlameArchon = "unit/flame_archon";
-	public const string MagmaSmith = "unit/magma_smith";
 	public const string FrostWarden = "unit/frost_warden";
-	public const string GlacierSentinel = "unit/glacier_sentinel";
 	public const string StormCaller = "unit/storm_caller";
-	public const string TempestChaser = "unit/tempest_chaser";
 	public const string ArcaneScholar = "unit/arcane_scholar";
+	public const string NetherAssassin = "unit/nether_assassin";
+	public const string RazorDervish = "unit/razor_dervish";
+	public const string Tidecaller = "unit/tidecaller";
+	public const string TempestChaser = "unit/tempest_chaser";
 	public const string RuneScribe = "unit/rune_scribe";
+	public const string VerdantDruid = "unit/verdant_druid";
 	public const string SunPriest = "unit/sun_priest";
+	public const string Builder = "unit/builder";
+	public const string IronWarlord = "unit/iron_warlord";
+	public const string CoralVanguard = "unit/coral_vanguard";
+	public const string MagmaSmith = "unit/magma_smith";
 	public const string LightbringerMonk = "unit/lightbringer_monk";
 	public const string PackAlpha = "unit/pack_alpha";
-	public const string RazorDervish = "unit/razor_dervish";
-	public const string Builder = "unit/builder";
+	public const string StoneGuardian = "unit/stone_guardian";
+	public const string ThornbackBehemoth = "unit/thornback_behemoth";
+	public const string GlacierSentinel = "unit/glacier_sentinel";
 }
 
 public static class BuildingIds

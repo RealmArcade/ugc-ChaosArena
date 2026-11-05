@@ -9,21 +9,17 @@ public partial class MapScript
     private const string SoulSiphonAbilityId = "ability/soul_siphon";
     private const string HealingWaveAbilityId = "ability/healing_wave";
 
-    private const float SoulSiphonManaCost = 100f;
-    private const float SoulSiphonCooldownSeconds = 15f;
     private const float SoulSiphonRadius = 4f;
     private const float SoulSiphonMaximumExecuteChance = 0.25f;
     private const float SoulSiphonWoodPerKill = 5f;
     private const float SoulSiphonStonePerKill = 1f;
     private const string SoulSiphonProjectileId = "weapon/shadow_kunai";
-    private const float SoulSiphonProjectileSpeed = 16f;
+    private const float SoulSiphonProjectileSpeed = 25f;
 
-    private const float HealingWaveManaCost = 75f;
-    private const float HealingWaveCooldownSeconds = 20f;
     private const float HealingWaveRadius = 3.5f;
     private const float HealingWaveMissingHealthFraction = 0.25f;
     private const string HealingWaveProjectileId = "weapon/prism_shard";
-    private const float HealingWaveProjectileSpeed = 26f;
+    private const float HealingWaveProjectileSpeed = 40f;
 
     private void ConfigureAvatarAbilities()
     {
@@ -37,7 +33,7 @@ public partial class MapScript
 
     private bool TryCastSoulSiphon(UnitId caster, Vector3 targetPosition, int playerIndex)
     {
-        if (!TrySpendAvatarAbility(caster, SoulSiphonAbilityId, SoulSiphonManaCost, SoulSiphonCooldownSeconds, playerIndex))
+        if (!CanRunAvatarAbility(caster))
             return false;
 
         Vector3 castPosition = caster.Position;
@@ -51,7 +47,7 @@ public partial class MapScript
 
     private bool TryCastHealingWave(UnitId caster, Vector3 targetPosition, int playerIndex)
     {
-        if (!TrySpendAvatarAbility(caster, HealingWaveAbilityId, HealingWaveManaCost, HealingWaveCooldownSeconds, playerIndex))
+        if (!CanRunAvatarAbility(caster))
             return false;
 
         Vector3 castPosition = caster.Position;
@@ -135,30 +131,13 @@ public partial class MapScript
             _api.GetPlayer(playerIndex).SendMessage("Healing Wave found nothing to mend.");
     }
 
-    private bool TrySpendAvatarAbility(UnitId caster, string abilityId, float manaCost, float cooldownSeconds, int playerIndex)
+    /// <summary>
+    ///     OnSpellCast only fires after the engine's spell command has already validated the cast, spent the mana and armed
+    ///     the ability cooldown, so the script must not charge or gate the cast a second time: doing so refused casts the
+    ///     player could afford, double-spent mana and left a cooldown behind on a cast that never happened.
+    /// </summary>
+    private bool CanRunAvatarAbility(UnitId caster)
     {
-        if (!caster.IsValid || caster.IsDead)
-            return false;
-
-        PlayerId player = _api.GetPlayer(playerIndex);
-        string abilityName = _api.GetAbilityName(abilityId);
-
-        float remainingSeconds = _api.GetAbilityCooldown(caster, abilityId);
-        if (remainingSeconds > 0f)
-        {
-            player.SendMessage($"{abilityName} is recharging: {MathF.Ceiling(remainingSeconds)}s left.");
-            return false;
-        }
-
-        if (caster.Mana < manaCost)
-        {
-            player.SendMessage($"{abilityName} needs {(int)manaCost} mana; you have {(int)caster.Mana}.");
-            WriteUnitAbilityCooldown(caster, StripSlugPrefix(abilityId), RefusedCastCooldownSeconds);
-            return false;
-        }
-
-        caster.Mana = MathF.Max(0f, caster.Mana - manaCost);
-        _api.SetAbilityCooldown(caster, abilityId, cooldownSeconds);
-        return true;
+        return caster.IsValid && !caster.IsDead;
     }
 }

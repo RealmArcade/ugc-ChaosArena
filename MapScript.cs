@@ -969,7 +969,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
             string offerList = string.Join(", ", playerState.Offers.Select((typeId, index) =>
                 $"{index + 1}: {_api.GetUnitName(typeId)}"));
 
-            _api.GetPlayer(playerIndex).SendMessage($"Draft offers: {offerList}. Use the Avatar's [B] Build menu or select a Circle of Power / Altar to draft.");
+            _api.GetPlayer(playerIndex).SendMessage($"Draft offers: {offerList}. Use the Avatar's [b]Build[/b] menu or select a Circle of Power / Altar to draft.");
 
             UpdateDraftOfferAbilities(playerIndex);
         }

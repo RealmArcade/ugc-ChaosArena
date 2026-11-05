@@ -15,7 +15,7 @@ public partial class MapScript
             "Drafting Heroes",
             "Each circle is a draft location with a pre-defined loadout including a hero level, an inventory item, and an elemental power (Earth, Water, Fire)."
             + "You can draft additional heroes periodically throughout the match, maxing at 9 heroes.\n\n"
-            + "Three heroes are offered each draft. Pick one with the Avatar's [b]Build[/b] menu [B] and place it onto an elemental circle\n\n"
+            + "Three heroes are offered each draft. Pick one with the Avatar's [b]Build[/b] menu and place it onto an elemental circle\n\n"
             + "A drafted hero stays on its circle and never moves. It is the template: every wave clones it and enters the battle.");
 
         _api.AddInstructionsSection(
