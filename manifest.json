@@ -1,9 +1,14 @@
 {
   "MapName": "Chaos Arena",
-  "Author": "",
+  "Author": "Realm",
   "Version": "1.0.0",
-  "Description": "",
-  "Tags": [],
+  "MapDescription": "Chaos Arena is a twelve-player auto-battler. Every player drafts nine heroes onto their board. Each location has a pre-defined loadout including a hero level, an inventory item, and an elemental power (Earth, Water, Fire). The board periodically sends out a wave of clones that marches to a rival's base or the arena centre. Snipe last hits with your Avatar's ability (and heal your soldiers to deny others' last hits). Spend gold and wood on upgrades. Use stone to reroll drafted heroes. Sudden death starts at 25:00, last player with a surviving soldier wins.",
+  "Tags": [
+    "Auto Battler",
+    "Free For All",
+    "PvP",
+    "12 Players"
+  ],
   "Maintainers": [],
   "GreenlitReferences": [],
   "Attribution_SourceMap": [],
