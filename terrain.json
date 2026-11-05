@@ -12,6 +12,13 @@
   "SkyboxPath": "Assets/skyboxes/jade_shrine.rtex",
   "Coordinates": [
     {
+      "Name": "ArenaCenter",
+      "MinX": -32,
+      "MinZ": -32,
+      "MaxX": 32,
+      "MaxZ": 32
+    },
+    {
       "Name": "PlayerStart1",
       "MinX": -2,
       "MinZ": 116,

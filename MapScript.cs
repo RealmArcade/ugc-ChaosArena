@@ -94,8 +94,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
     private const float TargetDummyRowOffset = 4f;
     private const float TargetDummyRowHeight = 5f;
     private const int TargetDummyHealthResetSeconds = 60;
-    private const float IdleSweepIntervalSeconds = 20f;
-    private const float IdleSweepMovementEpsilon = 0.75f;
+    private const float IdleSweepIntervalSeconds = 5f;
 
     private const string RerollItemAbilityId = "ability/reroll_item";
     private const string BuildCommandAbilityId = "ability/build";
@@ -111,12 +110,6 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
     private const string AntiSnowballPoisonBuffId = "anti_snowball_poison";
     private static readonly Vector3 ArenaCenter = Vector3.Zero;
-
-    // The middle of the map an idle sweep sends units to. It is a region rather than a point, so a sweep spreads units
-    // across the arena instead of stacking every idle unit on the same spot.
-    private static readonly Coordinate ArenaCenterCoordinate = new(
-        new Vector3(-45f, 0f, -45f),
-        new Vector3(45f, 0f, 45f));
 
     private static readonly Vector3 ColorWhite = Vector3.One;
 
@@ -215,8 +208,6 @@ public partial class MapScript : IWasmModule, ILobbyScript
     private readonly List<(string PlayerName, string UnitTypeId, float Damage)> _damageLeaderboardEntries = new();
     private readonly Dictionary<int, float> waveUnitSpawnTimes = new();
     private readonly Dictionary<int, (int Player, string TemplateId)> _unitInfoCache = new();
-    private readonly Dictionary<int, Vector3> idleSweepPositionsByUnitId = new();
-    private readonly HashSet<int> unitsInCombatSinceIdleSweep = new();
     private readonly Dictionary<int, List<UnitId>> targetDummiesByPlayer = new();
     private readonly Dictionary<int, TargetDummyState> targetDummyStates = new();
     private UnitId gaiaTargetBuilder = UnitId.Invalid;
@@ -224,6 +215,10 @@ public partial class MapScript : IWasmModule, ILobbyScript
     private int _tileUpdateTick;
 
     private IGameAPI _api = null!;
+
+    // The region an idle sweep sends units into, taken from the map's own ArenaCenter coordinate rather than a box the
+    // script repeats. It is a region rather than a point, so a sweep spreads units instead of stacking them.
+    private Coordinate arenaCenterCoordinate;
     private int waveNumber;
     private float roundClockSeconds;
     private readonly List<float> spawnOffsetSlots = new();
@@ -235,6 +230,8 @@ public partial class MapScript : IWasmModule, ILobbyScript
     public void Initialize(IGameAPI gameApi)
     {
         _api = gameApi;
+
+        arenaCenterCoordinate = _api.GetCoordinate("ArenaCenter");
 
         _api.DisableShroud();
 
@@ -1568,51 +1565,41 @@ public partial class MapScript : IWasmModule, ILobbyScript
             if (Vector3.DistanceSquared(unit.Position, state.AssignedDestination) > arrivalRadiusSquared)
                 continue;
 
-            unit.AttackMove(ArenaCenter);
-            state.AssignedDestination = ArenaCenter;
+            Vector3 arenaPosition = GetRandomArenaCenterPosition();
+            unit.AttackMove(arenaPosition);
+            state.AssignedDestination = arenaPosition;
             state.RetargetedToCenter = true;
         }
     }
 
     /// <summary>
-    ///     Pulls units nobody is using into the middle of the map. A unit counts as idle when it has neither moved nor
-    ///     traded blows since the previous sweep, so a marching unit keeps its orders and a unit holding a fight of its
-    ///     own is left where it is.
+    ///     Pulls the units nobody is using into the middle of the map. Only the clones a wave fielded are swept: a real
+    ///     player's units are theirs to order, and moving them would fight the orders they were given.
     /// </summary>
     private void SweepIdleUnitsTowardCenter()
     {
         foreach (KeyValuePair<int, PlayerState> entry in playerStates)
         {
-            PlayerState playerState = entry.Value;
-            if (playerState.Eliminated)
+            if (entry.Value.Eliminated)
                 continue;
 
-            SweepIdleUnitsOfPlayer(entry.Key, playerState.Builder);
-            SweepIdleUnitsOfPlayer(entry.Key + ProxyPlayerOffset, UnitId.Invalid);
+            SweepIdleUnitsOfPlayer(entry.Key + ProxyPlayerOffset);
         }
-
-        unitsInCombatSinceIdleSweep.Clear();
     }
 
-    private void SweepIdleUnitsOfPlayer(int ownerPlayerIndex, UnitId builder)
+    /// <summary>
+    ///     Sends the idle units a player owns into the arena. Idleness comes from the engine's own idle query, which is
+    ///     the set the player gets from the idle-unit selection, so a unit still holding an order is never swept.
+    /// </summary>
+    private void SweepIdleUnitsOfPlayer(int ownerPlayerIndex)
     {
-        foreach (UnitId unit in _api.GetUnitsOwnedByPlayer(ownerPlayerIndex))
+        foreach (UnitId unit in _api.GetIdleUnitsOwnedByPlayer(ownerPlayerIndex))
         {
             if (!unit.IsValid || unit.IsDead || unit.IsBuilding)
                 continue;
 
             int uniqueId = unit.UniqueId;
-            if ((builder.IsValid && uniqueId == builder.UniqueId)
-                || tileStatesByUnitId.ContainsKey(uniqueId)
-                || targetDummyStates.ContainsKey(uniqueId))
-                continue;
-
-            Vector3 position = unit.Position;
-            bool isIdle = !idleSweepPositionsByUnitId.TryGetValue(uniqueId, out Vector3 lastPosition)
-                || Vector3.DistanceSquared(lastPosition, position) <= IdleSweepMovementEpsilon * IdleSweepMovementEpsilon;
-            idleSweepPositionsByUnitId[uniqueId] = position;
-
-            if (!isIdle || unitsInCombatSinceIdleSweep.Contains(uniqueId))
+            if (tileStatesByUnitId.ContainsKey(uniqueId) || targetDummyStates.ContainsKey(uniqueId))
                 continue;
 
             unit.AttackMove(GetRandomArenaCenterPosition());
@@ -1621,9 +1608,9 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
     private Vector3 GetRandomArenaCenterPosition() =>
         new(
-            _api.RandomFloat(ArenaCenterCoordinate.Min.X, ArenaCenterCoordinate.Max.X),
+            _api.RandomFloat(arenaCenterCoordinate.Min.X, arenaCenterCoordinate.Max.X),
             ArenaCenter.Y,
-            _api.RandomFloat(ArenaCenterCoordinate.Min.Z, ArenaCenterCoordinate.Max.Z));
+            _api.RandomFloat(arenaCenterCoordinate.Min.Z, arenaCenterCoordinate.Max.Z));
 
     private bool TryResolveWaveTargetPlayerIndex(int playerIndex, out int targetPlayerIndex)
     {
@@ -2217,11 +2204,6 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
     private void HandleUnitDamaged(UnitId victim, UnitId attacker, float damage)
     {
-        if (victim.IsValid)
-            unitsInCombatSinceIdleSweep.Add(victim.UniqueId);
-        if (attacker.IsValid)
-            unitsInCombatSinceIdleSweep.Add(attacker.UniqueId);
-
         bool isFriendlySource = attacker.IsValid && IsFriendlySource(attacker, victim);
 
         if (!isFriendlySource)
