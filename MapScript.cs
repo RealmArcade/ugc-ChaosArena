@@ -1353,6 +1353,16 @@ public partial class MapScript : IWasmModule, ILobbyScript
         }
     }
 
+    // The army fights under the proxy player, so a blacksmith purchase only reaches it once the proxy carries the same
+    // research level. Copying once a second also covers the wave that is already on the field when the upgrade is bought.
+    private void SyncPlayerTechToProxies()
+    {
+        foreach (int playerIndex in playerStates.Keys)
+        {
+            ApplyPlayerTechToProxy(_api.GetPlayer(playerIndex), _api.GetPlayer(playerIndex + ProxyPlayerOffset));
+        }
+    }
+
     private UnitId PerformHeroReroll(UnitId unit, int playerIndex)
     {
         PlayerId player = _api.GetPlayer(playerIndex);
@@ -1758,6 +1768,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         gameSecondsElapsed++;
 
         HandleElixirTick();
+        SyncPlayerTechToProxies();
 
         while (foodCap < FoodCapIncreaseMinutes.Length && gameSecondsElapsed >= nextFoodCapIncreaseSeconds)
             IncreaseFoodCap();
