@@ -250,6 +250,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         _api.OnUnitDied += HandleUnitDied;
         _api.OnUnitDamaged += HandleUnitDamaged;
         _api.OnSpellCast += HandleSpellCast;
+        _api.OnSpellImpact += HandleSpellImpact;
         _api.OnConsumableChanged += HandleConsumableChanged;
         _api.OnConstructionFinished += HandleConstructionFinished;
         _api.OnPlayerChatMessage += HandleChatMessage;
@@ -1958,18 +1959,6 @@ public partial class MapScript : IWasmModule, ILobbyScript
         PlayerId player = _api.GetPlayer(playerIndex);
 
         OnElixirCast(caster, spellId);
-
-        if (SlugsEqual(spellId, SoulSiphonAbilityId))
-        {
-            TryCastSoulSiphon(caster, targetPosition, playerIndex);
-            return;
-        }
-
-        if (SlugsEqual(spellId, HealingWaveAbilityId))
-        {
-            TryCastHealingWave(caster, targetPosition, playerIndex);
-            return;
-        }
 
         if (SlugsEqual(spellId, DebugCycleLevelAbilityId))
         {

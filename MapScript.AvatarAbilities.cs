@@ -13,13 +13,9 @@ public partial class MapScript
     private const float SoulSiphonMaximumExecuteChance = 0.25f;
     private const float SoulSiphonWoodPerKill = 5f;
     private const float SoulSiphonStonePerKill = 1f;
-    private const string SoulSiphonProjectileId = "weapon/shadow_kunai";
-    private const float SoulSiphonProjectileSpeed = 25f;
 
     private const float HealingWaveRadius = 3.5f;
     private const float HealingWaveMissingHealthFraction = 0.25f;
-    private const string HealingWaveProjectileId = "weapon/prism_shard";
-    private const float HealingWaveProjectileSpeed = 40f;
 
     private void ConfigureAvatarAbilities()
     {
@@ -31,32 +27,23 @@ public partial class MapScript
         _api.SetAbilityTooltipValue(HealingWaveAbilityId, "Percent", HealingWaveMissingHealthFraction * 100f);
     }
 
-    private bool TryCastSoulSiphon(UnitId caster, Vector3 targetPosition, int playerIndex)
+    /// <summary>
+    ///     The abilities on the Avatar fly their own projectile, named by the ability template's ProjectileId, so the
+    ///     engine owns the flight and tells the map where it landed. Nothing here has to know a speed or how long the
+    ///     trip takes.
+    /// </summary>
+    private void HandleSpellImpact(UnitId caster, string abilityId, Vector3 position, int playerIndex)
     {
-        if (!CanRunAvatarAbility(caster))
-            return false;
+        if (SlugsEqual(abilityId, SoulSiphonAbilityId))
+        {
+            ResolveSoulSiphonImpact(caster, position, ResolveRealPlayerIndex(playerIndex));
+            return;
+        }
 
-        Vector3 castPosition = caster.Position;
-        _api.SpawnProjectile(SoulSiphonProjectileId, castPosition, targetPosition, SoulSiphonProjectileSpeed);
-
-        float travelSeconds = Vector3.Distance(castPosition, targetPosition) / SoulSiphonProjectileSpeed;
-        _api.ScheduleTimer(MathF.Max(0.05f, travelSeconds),
-            () => ResolveSoulSiphonImpact(caster, targetPosition, playerIndex));
-        return true;
-    }
-
-    private bool TryCastHealingWave(UnitId caster, Vector3 targetPosition, int playerIndex)
-    {
-        if (!CanRunAvatarAbility(caster))
-            return false;
-
-        Vector3 castPosition = caster.Position;
-        _api.SpawnProjectile(HealingWaveProjectileId, castPosition, targetPosition, HealingWaveProjectileSpeed);
-
-        float travelSeconds = Vector3.Distance(castPosition, targetPosition) / HealingWaveProjectileSpeed;
-        _api.ScheduleTimer(MathF.Max(0.05f, travelSeconds),
-            () => ResolveHealingWaveImpact(targetPosition, playerIndex));
-        return true;
+        if (SlugsEqual(abilityId, HealingWaveAbilityId))
+        {
+            ResolveHealingWaveImpact(position, ResolveRealPlayerIndex(playerIndex));
+        }
     }
 
     private void ResolveSoulSiphonImpact(UnitId caster, Vector3 targetPosition, int playerIndex)
@@ -129,15 +116,5 @@ public partial class MapScript
 
         if (healed == 0)
             _api.GetPlayer(playerIndex).SendMessage("Healing Wave found nothing to mend.");
-    }
-
-    /// <summary>
-    ///     OnSpellCast only fires after the engine's spell command has already validated the cast, spent the mana and armed
-    ///     the ability cooldown, so the script must not charge or gate the cast a second time: doing so refused casts the
-    ///     player could afford, double-spent mana and left a cooldown behind on a cast that never happened.
-    /// </summary>
-    private bool CanRunAvatarAbility(UnitId caster)
-    {
-        return caster.IsValid && !caster.IsDead;
     }
 }
