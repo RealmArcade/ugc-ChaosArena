@@ -1085,9 +1085,8 @@ public partial class MapScript : IWasmModule, ILobbyScript
         if (!unit.IsValid || unit.IsDead)
             return;
 
-        foreach (string unitTypeId in DraftableUnits)
-            unit.SetAbilityCooldown(unitTypeId, remainingSeconds);
-
+        // Only the Build command gets a timer: a unit replicates a limited number of cooldowns, and nothing reads a
+        // per-draft-option one, so filling the table with them pushed the Build timer past what the client receives.
         unit.SetAbilityCooldown(BuildCommandAbilityId, remainingSeconds);
     }
 
