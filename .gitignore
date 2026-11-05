@@ -2,5 +2,6 @@
 bin/
 obj/
 *.jit.elf
+.vscode/*_schema.json
 realm_lldb.py
 *.pdb
