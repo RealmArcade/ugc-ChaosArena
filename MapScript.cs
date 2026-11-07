@@ -213,6 +213,8 @@ public partial class MapScript : IWasmModule, ILobbyScript
     private UnitId gaiaTargetBuilder = UnitId.Invalid;
     private bool debugAbilitiesRegistered;
     private int _tileUpdateTick;
+    private readonly int[] tileLayoutOrder = new int[TilesPerPlayer];
+    private readonly Element[] tileElementsByLevel = new Element[TilesPerPlayer];
 
     private IGameAPI _api = null!;
 
@@ -239,6 +241,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         ConfigureElementalAbilitySlots();
         ConfigureAltarAbilities();
         ConfigureAvatarAbilities();
+        PrepareSharedTileLottery();
         InitializePlayers();
 
         while (foodCap < FoodCapIncreaseMinutes.Length && gameSecondsElapsed >= nextFoodCapIncreaseSeconds)
@@ -877,19 +880,49 @@ public partial class MapScript : IWasmModule, ILobbyScript
     {
         PlayerState playerState = playerStates[playerIndex];
         Vector3 tileCenter = GetPlayerOffset(playerState.BasePosition, TileOffset);
+        Vector3 facing = GetArenaFacing(playerState.BasePosition);
+        Vector3 across = new Vector3(-facing.Z, 0f, facing.X);
 
-        for (int columnIndex = -1; columnIndex <= 1; columnIndex++)
+        for (int orderIndex = 0; orderIndex < TilesPerPlayer; orderIndex++)
         {
-            for (int rowIndex = -1; rowIndex <= 1; rowIndex++)
-            {
-                playerState.TilePositions.Add(new Vector3(
-                    tileCenter.X + columnIndex * TileSpacing,
-                    tileCenter.Y,
-                    tileCenter.Z + rowIndex * TileSpacing));
-            }
+            int layoutIndex = tileLayoutOrder[orderIndex];
+            int columnIndex = layoutIndex % 3 - 1;
+            int rowIndex = layoutIndex / 3 - 1;
+
+            playerState.TilePositions.Add(new Vector3(
+                tileCenter.X + across.X * columnIndex * TileSpacing + facing.X * rowIndex * TileSpacing,
+                tileCenter.Y,
+                tileCenter.Z + across.Z * columnIndex * TileSpacing + facing.Z * rowIndex * TileSpacing));
+        }
+    }
+
+    // Both seats unlock the same cell and the same element at the same level, so where a hero can be placed is a
+    // shared draw of the match rather than a lottery one player wins.
+    private void PrepareSharedTileLottery()
+    {
+        var lottery = new SeededRandom(SeededRandom.Shared.Seed);
+        for (int layoutIndex = 0; layoutIndex < TilesPerPlayer; layoutIndex++)
+            tileLayoutOrder[layoutIndex] = layoutIndex;
+
+        for (int swapIndex = TilesPerPlayer - 1; swapIndex > 0; swapIndex--)
+        {
+            int otherIndex = lottery.Next(swapIndex + 1);
+            (tileLayoutOrder[swapIndex], tileLayoutOrder[otherIndex]) = (tileLayoutOrder[otherIndex], tileLayoutOrder[swapIndex]);
         }
 
-        _api.Shuffle(playerState.TilePositions);
+        for (int level = 0; level < TilesPerPlayer; level++)
+            tileElementsByLevel[level] = AllElements[lottery.Next(AllElements.Length)];
+    }
+
+    private static Vector3 GetArenaFacing(Vector3 basePosition)
+    {
+        float relativeX = basePosition.X - ArenaCenter.X;
+        float relativeZ = basePosition.Z - ArenaCenter.Z;
+
+        if (MathF.Abs(relativeX) >= MathF.Abs(relativeZ))
+            return new Vector3(relativeX > 0f ? -1f : 1f, 0f, 0f);
+
+        return new Vector3(0f, 0f, relativeZ > 0f ? -1f : 1f);
     }
 
     private void InitializePlayerBase(int playerIndex)
@@ -1029,7 +1062,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
             Vector3 position = playerState.TilePositions[0];
             playerState.TilePositions.RemoveAt(0);
 
-            Element initialElement = AllElements[Random.Shared.Next(AllElements.Length)];
+            Element initialElement = tileElementsByLevel[tileLevel - 1];
             string circleTypeId = GetCircleUnitTypeId(initialElement);
             UnitId circle = _api.GetPlayer(playerIndex).SpawnUnit(circleTypeId, position);
             circle.Damage = 0f;
