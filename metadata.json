@@ -599,7 +599,7 @@
 						"Scaling": {
 							"Attribute": "Agility",
 							"Cap": 130,
-							"Coefficient": 0,
+							"Coefficient": 0.9,
 							"Divisor": 15,
 							"ScalesDuration": false,
 							"Shape": "saturating"
@@ -790,7 +790,7 @@
 						"Scaling": {
 							"Attribute": "Intelligence",
 							"Cap": 120,
-							"Coefficient": 0,
+							"Coefficient": 0.9,
 							"Divisor": 20,
 							"ScalesDuration": false,
 							"Shape": "ratio"
@@ -964,7 +964,7 @@
 						"Scaling": {
 							"Attribute": "Wisdom",
 							"Cap": 120,
-							"Coefficient": 0,
+							"Coefficient": 0.9,
 							"Divisor": 30,
 							"ScalesDuration": false,
 							"Shape": "saturating"
@@ -1014,7 +1014,7 @@
 						"Scaling": {
 							"Attribute": "Wisdom",
 							"Cap": 90,
-							"Coefficient": 0,
+							"Coefficient": 0.9,
 							"Divisor": 30,
 							"ScalesDuration": false,
 							"Shape": "ratio"
@@ -1545,7 +1545,7 @@
 						"Scaling": {
 							"Attribute": "Intelligence",
 							"Cap": 150,
-							"Coefficient": 12,
+							"Coefficient": 1.2,
 							"Divisor": 20,
 							"ScalesDuration": false,
 							"Shape": "threshold"
@@ -1671,7 +1671,7 @@
 						"Scaling": {
 							"Attribute": "Intelligence",
 							"Cap": 160,
-							"Coefficient": 0,
+							"Coefficient": 0.9,
 							"Divisor": 25,
 							"ScalesDuration": false,
 							"Shape": "ratio"
@@ -1897,7 +1897,7 @@
 						"Scaling": {
 							"Attribute": "Strength",
 							"Cap": 140,
-							"Coefficient": 10,
+							"Coefficient": 1,
 							"Divisor": 20,
 							"ScalesDuration": false,
 							"Shape": "threshold"
@@ -2350,7 +2350,7 @@
 						"Scaling": {
 							"Attribute": "Vitality",
 							"Cap": 120,
-							"Coefficient": 0,
+							"Coefficient": 0.9,
 							"Divisor": 25,
 							"ScalesDuration": false,
 							"Shape": "ratio"
@@ -2468,7 +2468,7 @@
 						"Scaling": {
 							"Attribute": "Intelligence",
 							"Cap": 150,
-							"Coefficient": 14,
+							"Coefficient": 1.4,
 							"Divisor": 20,
 							"ScalesDuration": false,
 							"Shape": "threshold"
@@ -2663,7 +2663,7 @@
 						"Scaling": {
 							"Attribute": "Agility",
 							"Cap": 110,
-							"Coefficient": 0,
+							"Coefficient": 0.9,
 							"Divisor": 25,
 							"ScalesDuration": false,
 							"Shape": "ratio"
@@ -2789,7 +2789,7 @@
 						"Scaling": {
 							"Attribute": "Agility",
 							"Cap": 150,
-							"Coefficient": 0,
+							"Coefficient": 0.9,
 							"Divisor": 30,
 							"ScalesDuration": false,
 							"Shape": "saturating"
@@ -2839,7 +2839,7 @@
 						"Scaling": {
 							"Attribute": "Intelligence",
 							"Cap": 140,
-							"Coefficient": 0,
+							"Coefficient": 0.9,
 							"Divisor": 20,
 							"ScalesDuration": false,
 							"Shape": "ratio"
@@ -2967,7 +2967,7 @@
 						"Scaling": {
 							"Attribute": "Intelligence",
 							"Cap": 190,
-							"Coefficient": 15,
+							"Coefficient": 1.5,
 							"Divisor": 20,
 							"ScalesDuration": false,
 							"Shape": "threshold"
@@ -3017,7 +3017,7 @@
 						"Scaling": {
 							"Attribute": "Intelligence",
 							"Cap": 150,
-							"Coefficient": 0,
+							"Coefficient": 0.9,
 							"Divisor": 30,
 							"ScalesDuration": false,
 							"Shape": "saturating"
@@ -3334,7 +3334,7 @@
 						"Scaling": {
 							"Attribute": "Wisdom",
 							"Cap": 80,
-							"Coefficient": 0,
+							"Coefficient": 0.9,
 							"Divisor": 25,
 							"ScalesDuration": false,
 							"Shape": "ratio"
@@ -3614,7 +3614,7 @@
 						"Scaling": {
 							"Attribute": "Strength",
 							"Cap": 140,
-							"Coefficient": 10,
+							"Coefficient": 1,
 							"Divisor": 20,
 							"ScalesDuration": false,
 							"Shape": "threshold"
@@ -3829,7 +3829,7 @@
 						"Scaling": {
 							"Attribute": "Agility",
 							"Cap": 110,
-							"Coefficient": 0,
+							"Coefficient": 0.9,
 							"Divisor": 25,
 							"ScalesDuration": false,
 							"Shape": "ratio"
@@ -3961,7 +3961,7 @@
 						"Scaling": {
 							"Attribute": "Agility",
 							"Cap": 140,
-							"Coefficient": 0,
+							"Coefficient": 0.9,
 							"Divisor": 25,
 							"ScalesDuration": false,
 							"Shape": "saturating"
@@ -5968,7 +5968,7 @@
 						"Standard Walk - Standard Walk.ranim"
 					]
 				},
-				"Armor": 2.5,
+				"Armor": 3,
 				"AttackCooldown": 1.3,
 				"Attribution_ImportedFromMap": null,
 				"Brightness": 0.5,
@@ -6009,7 +6009,7 @@
 				},
 				"MagicResistance": 3,
 				"ManaRegen": 0.94,
-				"MaxHp": 556,
+				"MaxHp": 700,
 				"MaxMana": 76,
 				"ModelPath": "paladin_hero_unit.rmesh",
 				"MovementType": "Ground",
@@ -6094,7 +6094,7 @@
 						"Standard Walk - Standard Walk.ranim"
 					]
 				},
-				"Armor": 2,
+				"Armor": 2.5,
 				"AttackCooldown": 1.3,
 				"Attribution_ImportedFromMap": null,
 				"Brightness": 0.5,
@@ -6135,7 +6135,7 @@
 				},
 				"MagicResistance": 3,
 				"ManaRegen": 0.77,
-				"MaxHp": 538,
+				"MaxHp": 675,
 				"MaxMana": 104,
 				"ModelPath": "blood_knight_warrior.rmesh",
 				"MovementType": "Ground",
@@ -6346,7 +6346,7 @@
 						"Standard Walk - Standard Walk.ranim"
 					]
 				},
-				"Armor": 2,
+				"Armor": 2.5,
 				"AttackCooldown": 1.3,
 				"Attribution_ImportedFromMap": null,
 				"Brightness": 0.5,
@@ -6387,7 +6387,7 @@
 				},
 				"MagicResistance": 3,
 				"ManaRegen": 0.68,
-				"MaxHp": 540,
+				"MaxHp": 675,
 				"MaxMana": 66,
 				"ModelPath": "chinese_warrior_female.rmesh",
 				"MovementType": "Ground",
@@ -7228,7 +7228,7 @@
 						"Standard Walk - Standard Walk.ranim"
 					]
 				},
-				"Armor": 3,
+				"Armor": 3.5,
 				"AttackCooldown": 1.3,
 				"Attribution_ImportedFromMap": null,
 				"Brightness": 0.5,
@@ -7269,7 +7269,7 @@
 				},
 				"MagicResistance": 3,
 				"ManaRegen": 0.9,
-				"MaxHp": 823,
+				"MaxHp": 1030,
 				"MaxMana": 32,
 				"ModelPath": "forest_spirit_warrior.rmesh",
 				"MovementType": "Ground",
@@ -8242,7 +8242,7 @@
 						"Standard Walk - Standard Walk.ranim"
 					]
 				},
-				"Armor": 6,
+				"Armor": 5,
 				"AttackCooldown": 1.45,
 				"Attribution_ImportedFromMap": null,
 				"Brightness": 0.5,
@@ -8283,7 +8283,7 @@
 				},
 				"MagicResistance": 2.5,
 				"ManaRegen": 1.17,
-				"MaxHp": 1295,
+				"MaxHp": 1101,
 				"MaxMana": 0,
 				"ModelPath": "stone_warrior_warrior.rmesh",
 				"MovementType": "Ground",
@@ -8368,7 +8368,7 @@
 						"Standard Walk - Standard Walk.ranim"
 					]
 				},
-				"Armor": 6,
+				"Armor": 5,
 				"AttackCooldown": 1.5,
 				"Attribution_ImportedFromMap": null,
 				"Brightness": 0.5,
@@ -8409,7 +8409,7 @@
 				},
 				"MagicResistance": 2.5,
 				"ManaRegen": 0.99,
-				"MaxHp": 1260,
+				"MaxHp": 1071,
 				"MaxMana": 10,
 				"ModelPath": "armored_beast_warrior_1.rmesh",
 				"MovementType": "Ground",
@@ -8494,7 +8494,7 @@
 						"Standard Walk - Standard Walk.ranim"
 					]
 				},
-				"Armor": 6,
+				"Armor": 5,
 				"AttackCooldown": 1.55,
 				"Attribution_ImportedFromMap": null,
 				"Brightness": 0.5,
@@ -8535,7 +8535,7 @@
 				},
 				"MagicResistance": 2.5,
 				"ManaRegen": 0.93,
-				"MaxHp": 1283,
+				"MaxHp": 1091,
 				"MaxMana": 20,
 				"ModelPath": "frost_spirit_warrior.rmesh",
 				"MovementType": "Ground",
