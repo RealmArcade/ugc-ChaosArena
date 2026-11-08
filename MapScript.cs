@@ -215,6 +215,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
     private int _tileUpdateTick;
     private readonly int[] tileLayoutOrder = new int[TilesPerPlayer];
     private readonly Element[] tileElementsByLevel = new Element[TilesPerPlayer];
+    private readonly List<string> sharedHeroDraftOrder = new();
 
     private IGameAPI _api = null!;
 
@@ -242,6 +243,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         ConfigureAltarAbilities();
         ConfigureAvatarAbilities();
         PrepareSharedTileLottery();
+        PrepareSharedHeroDraftOrder();
         InitializePlayers();
 
         while (foodCap < FoodCapIncreaseMinutes.Length && gameSecondsElapsed >= nextFoodCapIncreaseSeconds)
@@ -914,6 +916,20 @@ public partial class MapScript : IWasmModule, ILobbyScript
             tileElementsByLevel[level] = AllElements[lottery.Next(AllElements.Length)];
     }
 
+    private void PrepareSharedHeroDraftOrder()
+    {
+        var lottery = new SeededRandom(SeededRandom.Shared.Seed);
+        sharedHeroDraftOrder.Clear();
+        sharedHeroDraftOrder.AddRange(DraftableUnits);
+
+        for (int swapIndex = sharedHeroDraftOrder.Count - 1; swapIndex > 0; swapIndex--)
+        {
+            int otherIndex = lottery.Next(swapIndex + 1);
+            (sharedHeroDraftOrder[swapIndex], sharedHeroDraftOrder[otherIndex]) =
+                (sharedHeroDraftOrder[otherIndex], sharedHeroDraftOrder[swapIndex]);
+        }
+    }
+
     private static Vector3 GetArenaFacing(Vector3 basePosition)
     {
         float relativeX = basePosition.X - ArenaCenter.X;
@@ -968,8 +984,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
     private void InitializePlayerDeck(int playerIndex)
     {
         PlayerState playerState = playerStates[playerIndex];
-        playerState.Deck.AddRange(DraftableUnits);
-        _api.Shuffle(playerState.Deck);
+        playerState.Deck.AddRange(sharedHeroDraftOrder);
         DrawDraftOffers(playerIndex);
     }
 
@@ -978,19 +993,8 @@ public partial class MapScript : IWasmModule, ILobbyScript
         PlayerState playerState = playerStates[playerIndex];
         playerState.Offers.Clear();
 
-        if (playerState.Deck.Count < 3)
-        {
-            HashSet<string> placedHeroTypes = GetPlayerPlacedHeroes(playerIndex).Select(u => u.TemplateID).ToHashSet(StringComparer.OrdinalIgnoreCase);
-            List<string> replenishments = DraftableUnits.Where(u => !placedHeroTypes.Contains(u) && !playerState.Deck.Contains(u)).ToList();
-            _api.Shuffle(replenishments);
-            playerState.Deck.AddRange(replenishments);
-        }
-
-        for (int drawIndex = 0; drawIndex < 3 && playerState.Deck.Count > 0; drawIndex++)
-        {
-            playerState.Offers.Add(playerState.Deck[0]);
-            playerState.Deck.RemoveAt(0);
-        }
+        for (int drawIndex = 0; drawIndex < 3 && drawIndex < playerState.Deck.Count; drawIndex++)
+            playerState.Offers.Add(playerState.Deck[drawIndex]);
 
         if (playerState.Offers.Count == 0)
             return;
@@ -1323,6 +1327,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         PlayerState playerState = playerStates[playerIndex];
 
         playerState.Offers.Clear();
+        playerState.Deck.Remove(unitTypeId);
         playerState.DraftedCount++;
         playerState.NextDraftSeconds = GetNextDraftUnlockTimestamp(playerState.DraftedCount);
 
