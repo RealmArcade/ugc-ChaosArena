@@ -255,6 +255,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         _api.OnSpellImpact += HandleSpellImpact;
         _api.OnConsumableChanged += HandleConsumableChanged;
         _api.OnConstructionFinished += HandleConstructionFinished;
+        _api.OnBotCustomActionExecuted += HandleBotCustomActionExecuted;
         _api.OnPlayerChatMessage += HandleChatMessage;
         _api.OnPlayerLeft += HandlePlayerLeft;
 
@@ -916,6 +917,13 @@ public partial class MapScript : IWasmModule, ILobbyScript
             tileElementsByLevel[level] = AllElements[lottery.Next(AllElements.Length)];
     }
 
+    private const string DraftDecisionActionPrefix = "draft/";
+    private const string DraftDecisionIntent = "Interact";
+    private const int DraftDecisionFeatureCount = 2;
+    private const int DraftDecisionDurabilityFeatureIndex = 0;
+    private const int DraftDecisionDamageFeatureIndex = 1;
+    private const float DeclaredDurabilityArmorScale = 10f;
+
     private void PrepareSharedHeroDraftOrder()
     {
         var lottery = new SeededRandom(SeededRandom.Shared.Seed);
@@ -1358,7 +1366,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         ApplyDraftCooldown(playerIndex);
     }
 
-    private void PerformComputerDraft(int playerIndex)
+    private void RequestComputerDraft(int playerIndex)
     {
         PlayerState playerState = playerStates[playerIndex];
         if (playerState.Offers.Count == 0)
@@ -1367,12 +1375,85 @@ public partial class MapScript : IWasmModule, ILobbyScript
         if (playerState.Offers.Count == 0)
             return;
 
-        string chosenUnitTypeId = playerState.Offers[Random.Shared.Next(playerState.Offers.Count)];
-        List<UnitId> circles = GetPlayerCircles(playerIndex).ToList();
-        if (circles.Count == 0)
+        UnitId draftCircle = PickDraftCircle(playerIndex);
+        if (!draftCircle.IsValid)
             return;
 
-        UnitId chosenCircle = circles[Random.Shared.Next(circles.Count)];
+        Span<float> offerDurability = stackalloc float[playerState.Offers.Count];
+        Span<float> offerDamage = stackalloc float[playerState.Offers.Count];
+        float strongestDurability = 0f;
+        float strongestDamage = 0f;
+
+        for (int offerIndex = 0; offerIndex < playerState.Offers.Count; offerIndex++)
+        {
+            string offeredUnitTypeId = playerState.Offers[offerIndex];
+            float maxHealth = _api.GetUnitTypeStat(offeredUnitTypeId, "MaxHp");
+            float armor = _api.GetUnitTypeStat(offeredUnitTypeId, "Armor");
+            float damage = _api.GetUnitTypeStat(offeredUnitTypeId, "Damage");
+            float attackCooldown = _api.GetUnitTypeStat(offeredUnitTypeId, "AttackCooldown");
+
+            offerDurability[offerIndex] = maxHealth * (1f + armor / DeclaredDurabilityArmorScale);
+            offerDamage[offerIndex] = attackCooldown > 0f ? damage / attackCooldown : 0f;
+
+            if (offerDurability[offerIndex] > strongestDurability) strongestDurability = offerDurability[offerIndex];
+            if (offerDamage[offerIndex] > strongestDamage) strongestDamage = offerDamage[offerIndex];
+        }
+
+        _api.ClearCustomBotDecisions(playerIndex);
+
+        for (int offerIndex = 0; offerIndex < playerState.Offers.Count; offerIndex++)
+        {
+            float[] features = new float[DraftDecisionFeatureCount];
+            features[DraftDecisionDurabilityFeatureIndex] = strongestDurability > 0f ? offerDurability[offerIndex] / strongestDurability : 0f;
+            features[DraftDecisionDamageFeatureIndex] = strongestDamage > 0f ? offerDamage[offerIndex] / strongestDamage : 0f;
+
+            _api.RegisterCustomBotDecision(
+                playerIndex,
+                DraftDecisionActionPrefix + playerState.Offers[offerIndex],
+                DraftDecisionIntent,
+                features,
+                draftCircle.Position,
+                string.Empty);
+        }
+
+    }
+
+    private UnitId PickDraftCircle(int playerIndex)
+    {
+        UnitId bestCircle = UnitId.Invalid;
+        int bestLevel = int.MinValue;
+
+        foreach (UnitId circle in GetPlayerCircles(playerIndex))
+        {
+            if (!tileStatesByUnitId.TryGetValue(circle.UniqueId, out TileState? circleState))
+                continue;
+
+            bool higherLevel = circleState.CircleLevel > bestLevel;
+            bool sameLevelEarlierId = circleState.CircleLevel == bestLevel && (!bestCircle.IsValid || circle.UniqueId < bestCircle.UniqueId);
+
+            if (higherLevel || sameLevelEarlierId)
+            {
+                bestCircle = circle;
+                bestLevel = circleState.CircleLevel;
+            }
+        }
+
+        return bestCircle;
+    }
+
+    private void HandleBotCustomActionExecuted(int playerIndex, string actionId, string intent, Vector3 position, string payload)
+    {
+        if (!actionId.StartsWith(DraftDecisionActionPrefix, StringComparison.Ordinal))
+            return;
+
+        if (!playerStates.TryGetValue(playerIndex, out PlayerState? playerState) || playerState.DraftedCount >= foodCap)
+            return;
+
+        string chosenUnitTypeId = actionId[DraftDecisionActionPrefix.Length..];
+        if (!playerState.Offers.Contains(chosenUnitTypeId))
+            return;
+
+        UnitId chosenCircle = PickDraftCircle(playerIndex);
         if (!chosenCircle.IsValid)
             return;
 
@@ -1807,10 +1888,8 @@ public partial class MapScript : IWasmModule, ILobbyScript
             if (_api.GetPlayer(playerIndex).IsComputer)
             {
                 PlayerState playerState = playerStates[playerIndex];
-                while (playerState.DraftedCount < foodCap && GetPlayerCircles(playerIndex).Any())
-                {
-                    PerformComputerDraft(playerIndex);
-                }
+                if (playerState.DraftedCount < foodCap)
+                    RequestComputerDraft(playerIndex);
 
                 if (gameSecondsElapsed % ComputerResearchIntervalSeconds == 0)
                     PerformComputerResearch(playerIndex);
@@ -1838,10 +1917,8 @@ public partial class MapScript : IWasmModule, ILobbyScript
             if (player.IsComputer)
             {
                 PlayerState playerState = playerStates[playerIndex];
-                while (playerState.DraftedCount < foodCap && GetPlayerCircles(playerIndex).Any())
-                {
-                    PerformComputerDraft(playerIndex);
-                }
+                if (playerState.DraftedCount < foodCap)
+                    RequestComputerDraft(playerIndex);
             }
         }
     }

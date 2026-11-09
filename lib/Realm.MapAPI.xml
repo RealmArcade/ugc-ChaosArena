@@ -1750,6 +1750,16 @@
             <param name="unitTypeId">The unit or building type identifier.</param>
             <returns>A read-only list of ability identifiers configured for the unit type (never null).</returns>
         </member>
+        <member name="M:Realm.MapAPI.IGameAPI.GetUnitTypeStat(System.String,System.String)">
+            <summary>
+            Retrieves one declared template statistic of a unit or building type, exactly as the map's unit definitions
+            write it and before any per-unit upgrade, item or buff modifies it. A map uses it to value a type without
+            spawning one, for example to let a bot compare two heroes it is choosing between.
+            </summary>
+            <param name="unitTypeId">The unit or building type identifier.</param>
+            <param name="statName">The declared statistic name: for example <c>MaxHp</c>, <c>Armor</c>, <c>Damage</c>, <c>AttackCooldown</c>, <c>Speed</c>, <c>Range</c>, <c>MaxMana</c>, <c>ManaRegen</c> or one of the attribute names such as <c>Strength</c>.</param>
+            <returns>The declared value, or zero when the type or the statistic name is unknown.</returns>
+        </member>
         <member name="M:Realm.MapAPI.IGameAPI.GetUnitName(System.String)">
             <summary>
             Retrieves the authored display name for the specified unit or building type.
@@ -2078,7 +2088,7 @@
             Parameters are: playerIndex, actionId, intent, targetPosition, payload.
             </summary>
         </member>
-        <member name="M:Realm.MapAPI.IGameAPI.TrainBotProfile(System.String,System.Int32,System.Int32,System.Int32,System.String)">
+        <member name="M:Realm.MapAPI.IGameAPI.TrainBotProfile(System.String,System.Int32,System.Int32,System.Int32,System.String,System.Int32)">
             <summary>
             Executes an automated self-play genetic training simulation on CPU and returns the resulting serialized bot profile JSON.
             </summary>
@@ -2087,6 +2097,7 @@
             <param name="populationSize">The candidate population size per generation.</param>
             <param name="matchesPerEvaluation">The number of evaluation matches each candidate plays per generation.</param>
             <param name="genre">The AI sub-genre provider identifier (e.g. "rts", "tower_defense", "auto_battler").</param>
+            <param name="seed">The deterministic seed that drives the training run. Zero selects the fixed default seed, so two runs over the same content produce the same profile.</param>
             <returns>The serialized JSON string of the best evolved bot profile.</returns>
         </member>
         <member name="M:Realm.MapAPI.IGameAPI.SetEnvironmentPreset(System.String)">
