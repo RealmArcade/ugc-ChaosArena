@@ -968,16 +968,13 @@ public partial class MapScript : IWasmModule, ILobbyScript
                 $"{index + 1}: {_api.GetUnitName(typeId)}"));
 
             _api.GetPlayer(playerIndex).SendMessage($"Draft offers: {offerList}. Use the Avatar's [b]Build[/b] menu or select a Circle of Power / Altar to draft.");
-
-            UpdateDraftOfferAbilities(playerIndex);
         }
+
+        UpdateDraftOfferAbilities(playerIndex);
     }
 
     private void UpdateDraftOfferAbilities(int playerIndex)
     {
-        if (_api.GetPlayer(playerIndex).IsComputer)
-            return;
-
         PlayerState playerState = playerStates[playerIndex];
         HashSet<string> offeredUnitTypeIds = new(playerState.Offers, StringComparer.OrdinalIgnoreCase);
 
