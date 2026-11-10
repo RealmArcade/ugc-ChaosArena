@@ -1962,7 +1962,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
             return;
         }
 
-        if (SlugsEqual(spellId, RerollItemAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? itemState))
+        if (SlugsEqual(spellId, RerollItemAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? itemState) && itemState.Kind == TileKind.Hero)
         {
             if (TryPayTileAbility(caster, itemState, spellId, playerIndex))
             {
@@ -1970,7 +1970,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
                 RefreshTileAbilityVisibility(playerIndex);
             }
         }
-        else if (SlugsEqual(spellId, RerollElementAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? elementState))
+        else if (SlugsEqual(spellId, RerollElementAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? elementState) && elementState.Kind == TileKind.Hero)
         {
             if (TryPayTileAbility(caster, elementState, spellId, playerIndex))
             {
@@ -1992,7 +1992,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
                 RefreshTileAbilityVisibility(playerIndex);
             }
         }
-        else if (SlugsEqual(spellId, RerollAllAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? allState))
+        else if (SlugsEqual(spellId, RerollAllAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? allState) && allState.Kind == TileKind.Hero)
         {
             if (TryPayTileAbility(caster, allState, spellId, playerIndex))
             {
@@ -2002,7 +2002,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         }
         else if (SlugsEqual(spellId, SwapTileUnitsAbilityId))
         {
-            if (!tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? casterState))
+            if (!tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? casterState) || casterState.Kind != TileKind.Hero)
                 return;
 
             if (!TryGetSwapTarget(caster, targetPosition, playerIndex, out UnitId swapTarget))
