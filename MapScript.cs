@@ -1344,7 +1344,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
             string offeredUnitTypeId = playerState.Offers[offerIndex];
             float maxHealth = _api.GetUnitTypeStat(offeredUnitTypeId, "MaxHp");
             float armor = _api.GetUnitTypeStat(offeredUnitTypeId, "Armor");
-            float damage = _api.GetUnitTypeStat(offeredUnitTypeId, "Damage");
+            float damage = _api.GetUnitTypeStat(offeredUnitTypeId, "Attack");
             float attackCooldown = _api.GetUnitTypeStat(offeredUnitTypeId, "AttackCooldown");
 
             offerDurability[offerIndex] = maxHealth * (1f + armor / DeclaredDurabilityArmorScale);
