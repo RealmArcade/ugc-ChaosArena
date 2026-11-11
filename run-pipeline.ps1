@@ -12,9 +12,9 @@
 
 [CmdletBinding()]
 param (
-    [string]$MapDirectory = "C:\Users\Admin\source\repos\ugc-ChaosArena",
-    [string]$EngineDirectory = "C:\Users\Admin\source\repos\Realm",
-    [string]$WasiSdkPath = "C:\Users\Admin\.wasi-sdk\wasi-sdk-29.0",
+    [string]$MapDirectory = "",
+    [string]$EngineDirectory = "",
+    [string]$WasiSdkPath = "",
     [int]$MatchCount = 4000,
     [int]$SeedCount = 400,
     [int]$Parallel = 8,
@@ -24,11 +24,20 @@ param (
     [int]$MinimumPicksPerTile = 30,
     [int]$BotMatchCount = 2000,
     [int]$ProfileDuelMatchCount = 400,
-    [string]$OutputReportPath = "C:\Users\Admin\Documents\Realm-Notes\chaos-arena-balance-report.json"
+    [string]$OutputReportPath = ""
 )
 
 $ErrorActionPreference = "Stop"
 $invariant = [System.Globalization.CultureInfo]::InvariantCulture
+if (-not $MapDirectory) { $MapDirectory = $PSScriptRoot }
+if (-not (Test-Path (Join-Path $MapDirectory "metadata.json"))) { throw "MapDirectory does not hold metadata.json, pass -MapDirectory." }
+if (-not $EngineDirectory) { throw "Pass -EngineDirectory with the path of the Realm checkout that holds Realm.Tools.MatchRunner." }
+if (-not (Test-Path (Join-Path $EngineDirectory "Realm.Tools.MatchRunner"))) { throw "EngineDirectory does not hold Realm.Tools.MatchRunner, pass -EngineDirectory." }
+if (-not $WasiSdkPath) { $WasiSdkPath = $env:WASI_SDK_PATH }
+if (-not $WasiSdkPath -or -not (Test-Path $WasiSdkPath)) { throw "Pass -WasiSdkPath or set WASI_SDK_PATH to a wasi-sdk directory." }
+if (-not $OutputReportPath) { $OutputReportPath = Join-Path $MapDirectory "balance\chaos-arena-balance-report.json" }
+$outputDirectory = Split-Path -Parent $OutputReportPath
+if ($outputDirectory -and -not (Test-Path $outputDirectory)) { New-Item -ItemType Directory -Path $outputDirectory -Force | Out-Null }
 
 function Get-EquityStatus {
     param ([double]$Rate, [int]$Sample, [int]$MinimumSample, [double]$Tolerance)
