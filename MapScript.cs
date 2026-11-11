@@ -235,7 +235,6 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
         _api.DisableShroud();
 
-        ConfigureDraftChoicesOnTiles();
         ConfigureElementalAbilitySlots();
         ConfigureAltarAbilities();
         ConfigureAvatarAbilities();
@@ -356,19 +355,6 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
         if (unit.IsValid && !unit.IsDead)
             _api.GetPlayer(playerIndex).SelectUnit(unit);
-    }
-
-    private void ConfigureDraftChoicesOnTiles()
-    {
-        foreach (string unitTypeId in DraftableUnits)
-        {
-            foreach (string abilityId in _api.GetUnitTypeAbilities(unitTypeId))
-            {
-                _api.AddUnitTypeAbility(BuildingIds.EarthElement, abilityId);
-                _api.AddUnitTypeAbility(BuildingIds.FireElement, abilityId);
-                _api.AddUnitTypeAbility(BuildingIds.WaterElement, abilityId);
-            }
-        }
     }
 
     private void ConfigureElementalAbilitySlots()
@@ -984,34 +970,6 @@ public partial class MapScript : IWasmModule, ILobbyScript
             {
                 bool isOffered = offeredUnitTypeIds.Contains(unitTypeId);
                 _api.SetAbilityState(playerState.Builder, unitTypeId, !isOffered, !isOffered);
-            }
-        }
-
-        var unitsToConfigure = GetPlayerCircles(playerIndex).ToList();
-
-        foreach (UnitId unit in unitsToConfigure)
-        {
-            Element circleElement = tileStatesByUnitId.TryGetValue(unit.UniqueId, out TileState? circleState)
-                ? circleState.Element
-                : Element.Water;
-            int elementSlot = (int)circleElement;
-
-            foreach (string unitTypeId in DraftableUnits)
-            {
-                bool isOffered = offeredUnitTypeIds.Contains(unitTypeId);
-                IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unitTypeId);
-
-                for (int index = 0; index < abilities.Count; index++)
-                {
-                    string abilityId = abilities[index];
-                    if (string.IsNullOrEmpty(abilityId))
-                        continue;
-
-                    bool isVisible = isOffered && index == elementSlot;
-                    _api.SetAbilityState(unit, abilityId, !isVisible, !isVisible);
-                    if (isVisible)
-                        _api.SetAbilityManaCost(unit, abilityId, 0f);
-                }
             }
         }
     }
