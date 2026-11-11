@@ -167,11 +167,11 @@ public partial class MapScript
 
             bool isHero = entry.Value.Kind == TileKind.Hero;
 
-            SetTileAbilityHidden(unit, RerollItemAbilityId, tilesLocked);
-            SetTileAbilityHidden(unit, RerollElementAbilityId, tilesLocked);
-            SetTileAbilityHidden(unit, RerollAllAbilityId, tilesLocked);
+            SetTileAbilityHidden(unit, RerollItemAbilityId, tilesLocked || !isHero);
+            SetTileAbilityHidden(unit, RerollElementAbilityId, tilesLocked || !isHero);
+            SetTileAbilityHidden(unit, RerollAllAbilityId, tilesLocked || !isHero);
             SetTileAbilityHidden(unit, RerollHeroAbilityId, tilesLocked || !isHero || !canRerollHero);
-            SetTileAbilityHidden(unit, SwapTileUnitsAbilityId, tilesLocked || !canSwap);
+            SetTileAbilityHidden(unit, SwapTileUnitsAbilityId, tilesLocked || !isHero || !canSwap);
         }
     }
 

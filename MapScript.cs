@@ -1,4 +1,4 @@
-﻿namespace Realm.Maps;
+namespace Realm.Maps;
 
 using System;
 using System.Collections.Generic;
@@ -238,7 +238,6 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
         _api.DisableShroud();
 
-        ConfigureDraftChoicesOnTiles();
         ConfigureElementalAbilitySlots();
         ConfigureAltarAbilities();
         ConfigureAvatarAbilities();
@@ -364,19 +363,6 @@ public partial class MapScript : IWasmModule, ILobbyScript
             _api.GetPlayer(playerIndex).SelectUnit(unit);
     }
 
-    private void ConfigureDraftChoicesOnTiles()
-    {
-        foreach (string unitTypeId in DraftableUnits)
-        {
-            foreach (string abilityId in _api.GetUnitTypeAbilities(unitTypeId))
-            {
-                _api.AddUnitTypeAbility(BuildingIds.EarthElement, abilityId);
-                _api.AddUnitTypeAbility(BuildingIds.FireElement, abilityId);
-                _api.AddUnitTypeAbility(BuildingIds.WaterElement, abilityId);
-            }
-        }
-    }
-
     private void ConfigureElementalAbilitySlots()
     {
         foreach (string unitTypeId in DraftableUnits)
@@ -435,7 +421,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         InitializePlayerAlliances(playerStates.Keys.ToList());
     }
 
-    private void HandleChatMessage(string message, UnitId senderUnit, int senderPlayerIndex)
+    private void HandleChatMessage(string message, int senderPlayerIndex)
     {
         if (string.IsNullOrWhiteSpace(message)) return;
         string trimmed = message.Trim();
@@ -470,7 +456,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         }
         else if (trimmed.StartsWith(TargetDummyCommand, StringComparison.OrdinalIgnoreCase))
         {
-            HandleTargetDummyCommand(senderUnit);
+            HandleTargetDummyCommand(senderPlayerIndex);
         }
         else if (trimmed.StartsWith(UnlockTilesCommand, StringComparison.OrdinalIgnoreCase))
         {
@@ -521,7 +507,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         }
     }
 
-    private void HandleTargetDummyCommand(UnitId senderUnit)
+    private void HandleTargetDummyCommand(int senderPlayerIndex)
     {
         if (!_api.CheatsEnabled)
         {
@@ -529,8 +515,8 @@ public partial class MapScript : IWasmModule, ILobbyScript
             return;
         }
 
-        int playerIndex = ResolveRealPlayerIndex(senderUnit.Player);
-        if (!senderUnit.IsValid || !IsRealPlayerSlot(playerIndex) || !playerStates.ContainsKey(playerIndex))
+        int playerIndex = ResolveRealPlayerIndex(senderPlayerIndex);
+        if (!IsRealPlayerSlot(playerIndex) || !playerStates.ContainsKey(playerIndex))
         {
             _api.BroadcastMessage($"Usage: {TargetDummyCommand} (select one of your units first)");
             return;
@@ -1013,16 +999,13 @@ public partial class MapScript : IWasmModule, ILobbyScript
                 $"{index + 1}: {_api.GetUnitName(typeId)}"));
 
             _api.GetPlayer(playerIndex).SendMessage($"Draft offers: {offerList}. Use the Avatar's [b]Build[/b] menu or select a Circle of Power / Altar to draft.");
-
-            UpdateDraftOfferAbilities(playerIndex);
         }
+
+        UpdateDraftOfferAbilities(playerIndex);
     }
 
     private void UpdateDraftOfferAbilities(int playerIndex)
     {
-        if (_api.GetPlayer(playerIndex).IsComputer)
-            return;
-
         PlayerState playerState = playerStates[playerIndex];
         HashSet<string> offeredUnitTypeIds = new(playerState.Offers, StringComparer.OrdinalIgnoreCase);
 
@@ -1032,34 +1015,6 @@ public partial class MapScript : IWasmModule, ILobbyScript
             {
                 bool isOffered = offeredUnitTypeIds.Contains(unitTypeId);
                 _api.SetAbilityState(playerState.Builder, unitTypeId, !isOffered, !isOffered);
-            }
-        }
-
-        var unitsToConfigure = GetPlayerCircles(playerIndex).ToList();
-
-        foreach (UnitId unit in unitsToConfigure)
-        {
-            Element circleElement = tileStatesByUnitId.TryGetValue(unit.UniqueId, out TileState? circleState)
-                ? circleState.Element
-                : Element.Water;
-            int elementSlot = (int)circleElement;
-
-            foreach (string unitTypeId in DraftableUnits)
-            {
-                bool isOffered = offeredUnitTypeIds.Contains(unitTypeId);
-                IReadOnlyList<string> abilities = _api.GetUnitTypeAbilities(unitTypeId);
-
-                for (int index = 0; index < abilities.Count; index++)
-                {
-                    string abilityId = abilities[index];
-                    if (string.IsNullOrEmpty(abilityId))
-                        continue;
-
-                    bool isVisible = isOffered && index == elementSlot;
-                    _api.SetAbilityState(unit, abilityId, !isVisible, !isVisible);
-                    if (isVisible)
-                        _api.SetAbilityManaCost(unit, abilityId, 0f);
-                }
             }
         }
     }
@@ -2080,7 +2035,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
             return;
         }
 
-        if (SlugsEqual(spellId, RerollItemAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? itemState))
+        if (SlugsEqual(spellId, RerollItemAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? itemState) && itemState.Kind == TileKind.Hero)
         {
             if (TryPayTileAbility(caster, itemState, spellId, playerIndex))
             {
@@ -2088,7 +2043,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
                 RefreshTileAbilityVisibility(playerIndex);
             }
         }
-        else if (SlugsEqual(spellId, RerollElementAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? elementState))
+        else if (SlugsEqual(spellId, RerollElementAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? elementState) && elementState.Kind == TileKind.Hero)
         {
             if (TryPayTileAbility(caster, elementState, spellId, playerIndex))
             {
@@ -2110,7 +2065,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
                 RefreshTileAbilityVisibility(playerIndex);
             }
         }
-        else if (SlugsEqual(spellId, RerollAllAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? allState))
+        else if (SlugsEqual(spellId, RerollAllAbilityId) && tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? allState) && allState.Kind == TileKind.Hero)
         {
             if (TryPayTileAbility(caster, allState, spellId, playerIndex))
             {
@@ -2120,7 +2075,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         }
         else if (SlugsEqual(spellId, SwapTileUnitsAbilityId))
         {
-            if (!tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? casterState))
+            if (!tileStatesByUnitId.TryGetValue(caster.UniqueId, out TileState? casterState) || casterState.Kind != TileKind.Hero)
                 return;
 
             if (!TryGetSwapTarget(caster, targetPosition, playerIndex, out UnitId swapTarget))

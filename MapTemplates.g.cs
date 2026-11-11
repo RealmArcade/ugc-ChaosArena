@@ -142,6 +142,9 @@ public static class AbilityIds
 	public const string ElixirFlush = "ability/elixir_flush";
 	public const string SoulSiphon = "ability/soul_siphon";
 	public const string HealingWave = "ability/healing_wave";
+	public const string EarthElementDraft = "ability/earth_element_draft";
+	public const string WaterElementDraft = "ability/water_element_draft";
+	public const string FireElementDraft = "ability/fire_element_draft";
 }
 
 public static class WeaponIds

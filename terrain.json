@@ -102,5 +102,6 @@
       "MaxX": -104,
       "MaxZ": -50
     }
-  ]
+  ],
+  "SpawnAnchors": []
 }
