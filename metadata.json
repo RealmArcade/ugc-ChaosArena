@@ -3362,7 +3362,7 @@
         "CastSound": "heavy_mace_smash.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
@@ -3544,7 +3544,7 @@
         "CastSound": "fortress_gate_bash.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
@@ -3992,7 +3992,7 @@
         "CastSound": "spell_pulse_hum.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
@@ -4148,7 +4148,7 @@
         "CastSound": "mystic_forest_whispers.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
@@ -4269,7 +4269,7 @@
         "CastSound": "stone_arch_Construction.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
@@ -4325,7 +4325,7 @@
         "CastSound": "bear_Damaged.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
@@ -4532,7 +4532,7 @@
         "CastSound": "hail_stone_impact.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
@@ -5031,7 +5031,7 @@
         "CastSound": "firelord.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
@@ -5231,7 +5231,7 @@
         "CastSound": "crystal_formation_Construction.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
@@ -5428,7 +5428,7 @@
         "CastSound": "spell_cast_hum.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
@@ -5602,7 +5602,7 @@
         "CastSound": "gladiator_Aggro.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
@@ -5676,7 +5676,7 @@
         "CastSound": "gladiator_Attack.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
@@ -5973,7 +5973,7 @@
         "CastSound": "spell_weave_hum.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
@@ -6234,7 +6234,7 @@
         "CastSound": "magical_portal_hum.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
@@ -6412,7 +6412,7 @@
         "CastSound": "paladin_Damaged.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
@@ -6620,7 +6620,7 @@
         "CastSound": "scroll_of_town_portal.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
@@ -6774,7 +6774,7 @@
         "CastSound": "griffin_Damaged.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
@@ -6963,7 +6963,7 @@
         "CastSound": "soft_foot_scuff.raud",
         "AutoCast": {
           "Enabled": true,
-          "RequiresEnemyTarget": false,
+          "TargetRule": "Self",
           "AllyHealthPercentBelow": 1,
           "ManaReserve": 0,
           "MinManaPercent": 0
