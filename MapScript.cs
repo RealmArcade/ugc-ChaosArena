@@ -1368,7 +1368,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
                 DraftDecisionIntent,
                 features,
                 draftCircle.Position,
-                string.Empty);
+                playerState.Offers[offerIndex]);
         }
 
     }
