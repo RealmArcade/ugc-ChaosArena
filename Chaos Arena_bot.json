@@ -1,0 +1,24 @@
+{
+  "SchemaVersion": "1.0.0",
+  "MapName": "Chaos Arena",
+  "Genre": "custom",
+  "GameBuildNumber": "v0.0.6",
+  "ProfileId": "Chaos Arena_MeasuredSurvivabilityPrior",
+  "Author": "weight-sweep",
+  "DecisionIntervalSeconds": 1,
+  "AggressionMultiplier": 1,
+  "ActionTemperature": 0.05,
+  "Weights": [
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "FitnessScore": 0.6,
+  "TrainedEpochs": 0,
+  "CustomParameters": {}
+}

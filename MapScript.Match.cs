@@ -12,6 +12,7 @@ public partial class MapScript
     private const string PlacementLeaderboardId = "placement";
 
     private readonly List<int> _standingPlayers = new();
+    private readonly List<int> _eliminationCandidates = new();
     private readonly List<int> _waveTargetRoster = new();
     private readonly List<int> _standingsOrder = new();
 
@@ -28,6 +29,7 @@ public partial class MapScript
         if (_standingPlayers.Count <= 1)
             return;
 
+        _eliminationCandidates.Clear();
         for (int standingIndex = 0; standingIndex < _standingPlayers.Count; standingIndex++)
         {
             int playerIndex = _standingPlayers[standingIndex];
@@ -39,10 +41,56 @@ public partial class MapScript
             if (CountLivingUnits(playerIndex) > 0)
                 continue;
 
+            _eliminationCandidates.Add(playerIndex);
+        }
+
+        if (_eliminationCandidates.Count == 0)
+            return;
+
+        int survivorIndex = _eliminationCandidates.Count > 1 ? ChooseSimultaneousSurvivor() : -1;
+        for (int candidateIndex = 0; candidateIndex < _eliminationCandidates.Count; candidateIndex++)
+        {
+            int playerIndex = _eliminationCandidates[candidateIndex];
+            if (playerIndex == survivorIndex)
+                continue;
+
             EliminatePlayer(playerIndex);
             if (matchComplete)
                 return;
         }
+    }
+
+    private int ChooseSimultaneousSurvivor()
+    {
+        int bestKills = int.MinValue;
+        int bestCount = 0;
+
+        for (int candidateIndex = 0; candidateIndex < _eliminationCandidates.Count; candidateIndex++)
+        {
+            int kills = _api.GetPlayer(_eliminationCandidates[candidateIndex]).GetKills();
+            if (kills > bestKills)
+            {
+                bestKills = kills;
+                bestCount = 1;
+                continue;
+            }
+
+            if (kills == bestKills)
+                bestCount++;
+        }
+
+        int pick = Random.Shared.Next(bestCount);
+        for (int candidateIndex = 0; candidateIndex < _eliminationCandidates.Count; candidateIndex++)
+        {
+            int playerIndex = _eliminationCandidates[candidateIndex];
+            if (_api.GetPlayer(playerIndex).GetKills() != bestKills)
+                continue;
+
+            if (pick-- == 0)
+                return playerIndex;
+        }
+
+        return _eliminationCandidates[0];
     }
 
     private void EliminatePlayer(int playerIndex)

@@ -1,4 +1,4 @@
-﻿namespace Realm.Maps;
+namespace Realm.Maps;
 
 using System;
 using System.Collections.Generic;
@@ -213,6 +213,9 @@ public partial class MapScript : IWasmModule, ILobbyScript
     private UnitId gaiaTargetBuilder = UnitId.Invalid;
     private bool debugAbilitiesRegistered;
     private int _tileUpdateTick;
+    private readonly int[] tileLayoutOrder = new int[TilesPerPlayer];
+    private readonly Element[] tileElementsByLevel = new Element[TilesPerPlayer];
+    private readonly List<string> sharedHeroDraftOrder = new();
 
     private IGameAPI _api = null!;
 
@@ -238,6 +241,8 @@ public partial class MapScript : IWasmModule, ILobbyScript
         ConfigureElementalAbilitySlots();
         ConfigureAltarAbilities();
         ConfigureAvatarAbilities();
+        PrepareSharedTileLottery();
+        PrepareSharedHeroDraftOrder();
         InitializePlayers();
 
         while (foodCap < FoodCapIncreaseMinutes.Length && gameSecondsElapsed >= nextFoodCapIncreaseSeconds)
@@ -249,6 +254,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         _api.OnSpellImpact += HandleSpellImpact;
         _api.OnConsumableChanged += HandleConsumableChanged;
         _api.OnConstructionFinished += HandleConstructionFinished;
+        _api.OnBotCustomActionExecuted += HandleBotCustomActionExecuted;
         _api.OnPlayerChatMessage += HandleChatMessage;
         _api.OnPlayerLeft += HandlePlayerLeft;
 
@@ -415,7 +421,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         InitializePlayerAlliances(playerStates.Keys.ToList());
     }
 
-    private void HandleChatMessage(string message, UnitId senderUnit, int senderPlayerIndex)
+    private void HandleChatMessage(string message, int senderPlayerIndex)
     {
         if (string.IsNullOrWhiteSpace(message)) return;
         string trimmed = message.Trim();
@@ -450,7 +456,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         }
         else if (trimmed.StartsWith(TargetDummyCommand, StringComparison.OrdinalIgnoreCase))
         {
-            HandleTargetDummyCommand(senderUnit);
+            HandleTargetDummyCommand(senderPlayerIndex);
         }
         else if (trimmed.StartsWith(UnlockTilesCommand, StringComparison.OrdinalIgnoreCase))
         {
@@ -501,7 +507,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         }
     }
 
-    private void HandleTargetDummyCommand(UnitId senderUnit)
+    private void HandleTargetDummyCommand(int senderPlayerIndex)
     {
         if (!_api.CheatsEnabled)
         {
@@ -509,8 +515,8 @@ public partial class MapScript : IWasmModule, ILobbyScript
             return;
         }
 
-        int playerIndex = ResolveRealPlayerIndex(senderUnit.Player);
-        if (!senderUnit.IsValid || !IsRealPlayerSlot(playerIndex) || !playerStates.ContainsKey(playerIndex))
+        int playerIndex = ResolveRealPlayerIndex(senderPlayerIndex);
+        if (!IsRealPlayerSlot(playerIndex) || !playerStates.ContainsKey(playerIndex))
         {
             _api.BroadcastMessage($"Usage: {TargetDummyCommand} (select one of your units first)");
             return;
@@ -863,19 +869,70 @@ public partial class MapScript : IWasmModule, ILobbyScript
     {
         PlayerState playerState = playerStates[playerIndex];
         Vector3 tileCenter = GetPlayerOffset(playerState.BasePosition, TileOffset);
+        Vector3 facing = GetArenaFacing(playerState.BasePosition);
+        Vector3 across = new Vector3(-facing.Z, 0f, facing.X);
 
-        for (int columnIndex = -1; columnIndex <= 1; columnIndex++)
+        for (int orderIndex = 0; orderIndex < TilesPerPlayer; orderIndex++)
         {
-            for (int rowIndex = -1; rowIndex <= 1; rowIndex++)
-            {
-                playerState.TilePositions.Add(new Vector3(
-                    tileCenter.X + columnIndex * TileSpacing,
-                    tileCenter.Y,
-                    tileCenter.Z + rowIndex * TileSpacing));
-            }
+            int layoutIndex = tileLayoutOrder[orderIndex];
+            int columnIndex = layoutIndex % 3 - 1;
+            int rowIndex = layoutIndex / 3 - 1;
+
+            playerState.TilePositions.Add(new Vector3(
+                tileCenter.X + across.X * columnIndex * TileSpacing + facing.X * rowIndex * TileSpacing,
+                tileCenter.Y,
+                tileCenter.Z + across.Z * columnIndex * TileSpacing + facing.Z * rowIndex * TileSpacing));
+        }
+    }
+
+    // Both seats unlock the same cell and the same element at the same level, so where a hero can be placed is a
+    // shared draw of the match rather than a lottery one player wins.
+    private void PrepareSharedTileLottery()
+    {
+        var lottery = new SeededRandom(SeededRandom.Shared.Seed);
+        for (int layoutIndex = 0; layoutIndex < TilesPerPlayer; layoutIndex++)
+            tileLayoutOrder[layoutIndex] = layoutIndex;
+
+        for (int swapIndex = TilesPerPlayer - 1; swapIndex > 0; swapIndex--)
+        {
+            int otherIndex = lottery.Next(swapIndex + 1);
+            (tileLayoutOrder[swapIndex], tileLayoutOrder[otherIndex]) = (tileLayoutOrder[otherIndex], tileLayoutOrder[swapIndex]);
         }
 
-        _api.Shuffle(playerState.TilePositions);
+        for (int level = 0; level < TilesPerPlayer; level++)
+            tileElementsByLevel[level] = AllElements[lottery.Next(AllElements.Length)];
+    }
+
+    private const string DraftDecisionActionPrefix = "draft/";
+    private const string DraftDecisionIntent = "Interact";
+    private const int DraftDecisionFeatureCount = 2;
+    private const int DraftDecisionDurabilityFeatureIndex = 0;
+    private const int DraftDecisionDamageFeatureIndex = 1;
+    private const float DeclaredDurabilityArmorScale = 10f;
+
+    private void PrepareSharedHeroDraftOrder()
+    {
+        var lottery = new SeededRandom(SeededRandom.Shared.Seed);
+        sharedHeroDraftOrder.Clear();
+        sharedHeroDraftOrder.AddRange(DraftableUnits);
+
+        for (int swapIndex = sharedHeroDraftOrder.Count - 1; swapIndex > 0; swapIndex--)
+        {
+            int otherIndex = lottery.Next(swapIndex + 1);
+            (sharedHeroDraftOrder[swapIndex], sharedHeroDraftOrder[otherIndex]) =
+                (sharedHeroDraftOrder[otherIndex], sharedHeroDraftOrder[swapIndex]);
+        }
+    }
+
+    private static Vector3 GetArenaFacing(Vector3 basePosition)
+    {
+        float relativeX = basePosition.X - ArenaCenter.X;
+        float relativeZ = basePosition.Z - ArenaCenter.Z;
+
+        if (MathF.Abs(relativeX) >= MathF.Abs(relativeZ))
+            return new Vector3(relativeX > 0f ? -1f : 1f, 0f, 0f);
+
+        return new Vector3(0f, 0f, relativeZ > 0f ? -1f : 1f);
     }
 
     private void InitializePlayerBase(int playerIndex)
@@ -921,8 +978,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
     private void InitializePlayerDeck(int playerIndex)
     {
         PlayerState playerState = playerStates[playerIndex];
-        playerState.Deck.AddRange(DraftableUnits);
-        _api.Shuffle(playerState.Deck);
+        playerState.Deck.AddRange(sharedHeroDraftOrder);
         DrawDraftOffers(playerIndex);
     }
 
@@ -931,19 +987,8 @@ public partial class MapScript : IWasmModule, ILobbyScript
         PlayerState playerState = playerStates[playerIndex];
         playerState.Offers.Clear();
 
-        if (playerState.Deck.Count < 3)
-        {
-            HashSet<string> placedHeroTypes = GetPlayerPlacedHeroes(playerIndex).Select(u => u.TemplateID).ToHashSet(StringComparer.OrdinalIgnoreCase);
-            List<string> replenishments = DraftableUnits.Where(u => !placedHeroTypes.Contains(u) && !playerState.Deck.Contains(u)).ToList();
-            _api.Shuffle(replenishments);
-            playerState.Deck.AddRange(replenishments);
-        }
-
-        for (int drawIndex = 0; drawIndex < 3 && playerState.Deck.Count > 0; drawIndex++)
-        {
-            playerState.Offers.Add(playerState.Deck[0]);
-            playerState.Deck.RemoveAt(0);
-        }
+        for (int drawIndex = 0; drawIndex < 3 && drawIndex < playerState.Deck.Count; drawIndex++)
+            playerState.Offers.Add(playerState.Deck[drawIndex]);
 
         if (playerState.Offers.Count == 0)
             return;
@@ -984,7 +1029,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
             Vector3 position = playerState.TilePositions[0];
             playerState.TilePositions.RemoveAt(0);
 
-            Element initialElement = AllElements[Random.Shared.Next(AllElements.Length)];
+            Element initialElement = tileElementsByLevel[tileLevel - 1];
             string circleTypeId = GetCircleUnitTypeId(initialElement);
             UnitId circle = _api.GetPlayer(playerIndex).SpawnUnit(circleTypeId, position);
             circle.Damage = 0f;
@@ -1245,6 +1290,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         PlayerState playerState = playerStates[playerIndex];
 
         playerState.Offers.Clear();
+        playerState.Deck.Remove(unitTypeId);
         playerState.DraftedCount++;
         playerState.NextDraftSeconds = GetNextDraftUnlockTimestamp(playerState.DraftedCount);
 
@@ -1275,7 +1321,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         ApplyDraftCooldown(playerIndex);
     }
 
-    private void PerformComputerDraft(int playerIndex)
+    private void RequestComputerDraft(int playerIndex)
     {
         PlayerState playerState = playerStates[playerIndex];
         if (playerState.Offers.Count == 0)
@@ -1284,12 +1330,85 @@ public partial class MapScript : IWasmModule, ILobbyScript
         if (playerState.Offers.Count == 0)
             return;
 
-        string chosenUnitTypeId = playerState.Offers[Random.Shared.Next(playerState.Offers.Count)];
-        List<UnitId> circles = GetPlayerCircles(playerIndex).ToList();
-        if (circles.Count == 0)
+        UnitId draftCircle = PickDraftCircle(playerIndex);
+        if (!draftCircle.IsValid)
             return;
 
-        UnitId chosenCircle = circles[Random.Shared.Next(circles.Count)];
+        Span<float> offerDurability = stackalloc float[playerState.Offers.Count];
+        Span<float> offerDamage = stackalloc float[playerState.Offers.Count];
+        float strongestDurability = 0f;
+        float strongestDamage = 0f;
+
+        for (int offerIndex = 0; offerIndex < playerState.Offers.Count; offerIndex++)
+        {
+            string offeredUnitTypeId = playerState.Offers[offerIndex];
+            float maxHealth = _api.GetUnitTypeStat(offeredUnitTypeId, "MaxHp");
+            float armor = _api.GetUnitTypeStat(offeredUnitTypeId, "Armor");
+            float damage = _api.GetUnitTypeStat(offeredUnitTypeId, "Attack");
+            float attackCooldown = _api.GetUnitTypeStat(offeredUnitTypeId, "AttackCooldown");
+
+            offerDurability[offerIndex] = maxHealth * (1f + armor / DeclaredDurabilityArmorScale);
+            offerDamage[offerIndex] = attackCooldown > 0f ? damage / attackCooldown : 0f;
+
+            if (offerDurability[offerIndex] > strongestDurability) strongestDurability = offerDurability[offerIndex];
+            if (offerDamage[offerIndex] > strongestDamage) strongestDamage = offerDamage[offerIndex];
+        }
+
+        _api.ClearCustomBotDecisions(playerIndex);
+
+        for (int offerIndex = 0; offerIndex < playerState.Offers.Count; offerIndex++)
+        {
+            float[] features = new float[DraftDecisionFeatureCount];
+            features[DraftDecisionDurabilityFeatureIndex] = strongestDurability > 0f ? offerDurability[offerIndex] / strongestDurability : 0f;
+            features[DraftDecisionDamageFeatureIndex] = strongestDamage > 0f ? offerDamage[offerIndex] / strongestDamage : 0f;
+
+            _api.RegisterCustomBotDecision(
+                playerIndex,
+                DraftDecisionActionPrefix + playerState.Offers[offerIndex],
+                DraftDecisionIntent,
+                features,
+                draftCircle.Position,
+                string.Empty);
+        }
+
+    }
+
+    private UnitId PickDraftCircle(int playerIndex)
+    {
+        UnitId bestCircle = UnitId.Invalid;
+        int bestLevel = int.MinValue;
+
+        foreach (UnitId circle in GetPlayerCircles(playerIndex))
+        {
+            if (!tileStatesByUnitId.TryGetValue(circle.UniqueId, out TileState? circleState))
+                continue;
+
+            bool higherLevel = circleState.CircleLevel > bestLevel;
+            bool sameLevelEarlierId = circleState.CircleLevel == bestLevel && (!bestCircle.IsValid || circle.UniqueId < bestCircle.UniqueId);
+
+            if (higherLevel || sameLevelEarlierId)
+            {
+                bestCircle = circle;
+                bestLevel = circleState.CircleLevel;
+            }
+        }
+
+        return bestCircle;
+    }
+
+    private void HandleBotCustomActionExecuted(int playerIndex, string actionId, string intent, Vector3 position, string payload)
+    {
+        if (!actionId.StartsWith(DraftDecisionActionPrefix, StringComparison.Ordinal))
+            return;
+
+        if (!playerStates.TryGetValue(playerIndex, out PlayerState? playerState) || playerState.DraftedCount >= foodCap)
+            return;
+
+        string chosenUnitTypeId = actionId[DraftDecisionActionPrefix.Length..];
+        if (!playerState.Offers.Contains(chosenUnitTypeId))
+            return;
+
+        UnitId chosenCircle = PickDraftCircle(playerIndex);
         if (!chosenCircle.IsValid)
             return;
 
@@ -1724,10 +1843,8 @@ public partial class MapScript : IWasmModule, ILobbyScript
             if (_api.GetPlayer(playerIndex).IsComputer)
             {
                 PlayerState playerState = playerStates[playerIndex];
-                while (playerState.DraftedCount < foodCap && GetPlayerCircles(playerIndex).Any())
-                {
-                    PerformComputerDraft(playerIndex);
-                }
+                if (playerState.DraftedCount < foodCap)
+                    RequestComputerDraft(playerIndex);
 
                 if (gameSecondsElapsed % ComputerResearchIntervalSeconds == 0)
                     PerformComputerResearch(playerIndex);
@@ -1755,10 +1872,8 @@ public partial class MapScript : IWasmModule, ILobbyScript
             if (player.IsComputer)
             {
                 PlayerState playerState = playerStates[playerIndex];
-                while (playerState.DraftedCount < foodCap && GetPlayerCircles(playerIndex).Any())
-                {
-                    PerformComputerDraft(playerIndex);
-                }
+                if (playerState.DraftedCount < foodCap)
+                    RequestComputerDraft(playerIndex);
             }
         }
     }
