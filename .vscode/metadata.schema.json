@@ -367,15 +367,6 @@
               "null"
             ],
             "properties": {
-              "TemplateID": {
-                "type": "string"
-              },
-              "Name": {
-                "type": "string"
-              },
-              "Description": {
-                "type": "string"
-              },
               "MaxHp": {
                 "type": "number"
               },
@@ -452,6 +443,9 @@
                     "type": "number"
                   },
                   "FortunePerLevel": {
+                    "type": "number"
+                  },
+                  "BountyMultiplierPerLevel": {
                     "type": "number"
                   }
                 }
@@ -534,48 +528,6 @@
               "RespawnSeconds": {
                 "type": "number"
               },
-              "ModelPath": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "PortraitModelPath": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "VisualMode": {
-                "type": "string"
-              },
-              "Scale": {
-                "type": "number"
-              },
-              "YOffset": {
-                "type": "number"
-              },
-              "CollisionCircle": {
-                "type": "number"
-              },
-              "Brightness": {
-                "type": "number"
-              },
-              "Tint": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "NormalizeLuminance": {
-                "type": "boolean"
-              },
-              "IgnorePlayerColor": {
-                "type": "boolean"
-              },
-              "DespillPlayerColor": {
-                "type": "boolean"
-              },
               "BuildOptions": {
                 "type": [
                   "array",
@@ -589,6 +541,9 @@
                 }
               },
               "IsHero": {
+                "type": "boolean"
+              },
+              "IncludeInDefaultHotkeySelection": {
                 "type": "boolean"
               },
               "Abilities": {
@@ -612,6 +567,9 @@
               "MaxLevel": {
                 "type": "integer"
               },
+              "Level": {
+                "type": "integer"
+              },
               "PathingCapabilities": {
                 "type": [
                   "array",
@@ -623,9 +581,6 @@
                     "null"
                   ]
                 }
-              },
-              "PathingType": {
-                "type": "integer"
               },
               "Targets": {
                 "type": [
@@ -850,51 +805,6 @@
                   }
                 }
               },
-              "PseudoSockets": {
-                "type": [
-                  "array",
-                  "null"
-                ],
-                "items": {
-                  "type": [
-                    "object",
-                    "null"
-                  ],
-                  "properties": {
-                    "SocketId": {
-                      "type": "string"
-                    },
-                    "Position": {
-                      "type": "object",
-                      "properties": {
-                        "X": {
-                          "type": "number"
-                        },
-                        "Y": {
-                          "type": "number"
-                        },
-                        "Z": {
-                          "type": "number"
-                        }
-                      }
-                    },
-                    "RotationDegrees": {
-                      "type": "object",
-                      "properties": {
-                        "X": {
-                          "type": "number"
-                        },
-                        "Y": {
-                          "type": "number"
-                        },
-                        "Z": {
-                          "type": "number"
-                        }
-                      }
-                    }
-                  }
-                }
-              },
               "Sounds": {
                 "type": [
                   "object",
@@ -1053,6 +963,66 @@
                   ]
                 }
               },
+              "ConstructionRange": {
+                "type": "number"
+              },
+              "TemplateID": {
+                "type": "string"
+              },
+              "Name": {
+                "type": "string"
+              },
+              "Description": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "ModelPath": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "PortraitModelPath": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "VisualMode": {
+                "type": "string"
+              },
+              "Scale": {
+                "type": "number"
+              },
+              "YOffset": {
+                "type": "number"
+              },
+              "CollisionCircle": {
+                "type": "number"
+              },
+              "Brightness": {
+                "type": "number"
+              },
+              "Tint": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "NormalizeLuminance": {
+                "type": "boolean"
+              },
+              "IgnorePlayerColor": {
+                "type": "boolean"
+              },
+              "DespillPlayerColor": {
+                "type": "boolean"
+              },
+              "PathingType": {
+                "type": "integer"
+              },
               "SpawnShader": {
                 "type": [
                   "string",
@@ -1077,14 +1047,56 @@
                   "null"
                 ]
               },
+              "PseudoSockets": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "SocketId": {
+                      "type": "string"
+                    },
+                    "Position": {
+                      "type": "object",
+                      "properties": {
+                        "X": {
+                          "type": "number"
+                        },
+                        "Y": {
+                          "type": "number"
+                        },
+                        "Z": {
+                          "type": "number"
+                        }
+                      }
+                    },
+                    "RotationDegrees": {
+                      "type": "object",
+                      "properties": {
+                        "X": {
+                          "type": "number"
+                        },
+                        "Y": {
+                          "type": "number"
+                        },
+                        "Z": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
               "DespawnShader": {
                 "type": [
                   "string",
                   "null"
                 ]
-              },
-              "ConstructionRange": {
-                "type": "number"
               },
               "Attribution_ImportedFromMap": {
                 "type": [
@@ -2086,7 +2098,40 @@
               "CostGold": {
                 "type": "number"
               },
+              "CostWood": {
+                "type": "number"
+              },
+              "CostStone": {
+                "type": "number"
+              },
+              "TargetScope": {
+                "type": "string"
+              },
+              "SlotGroup": {
+                "type": "string"
+              },
+              "MaxPerUnit": {
+                "type": "integer"
+              },
+              "ClearsSlot": {
+                "type": "boolean"
+              },
+              "PurchaseRange": {
+                "type": "number"
+              },
               "UseAbility": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "AbilityId": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "CardId": {
                 "type": [
                   "string",
                   "null"
@@ -2117,6 +2162,12 @@
                 "type": "integer"
               },
               "IconPath": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "ModelPath": {
                 "type": [
                   "string",
                   "null"
@@ -2191,51 +2242,7 @@
         "Consumables": {
           "type": "array",
           "items": {
-            "type": [
-              "object",
-              "null"
-            ],
-            "properties": {
-              "TemplateID": {
-                "type": "string"
-              },
-              "AbilityId": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "CostGold": {
-                "type": "number"
-              },
-              "CostWood": {
-                "type": "number"
-              },
-              "CostStone": {
-                "type": "number"
-              },
-              "TargetScope": {
-                "type": "string"
-              },
-              "SlotGroup": {
-                "type": "string"
-              },
-              "MaxPerUnit": {
-                "type": "integer"
-              },
-              "ClearsSlot": {
-                "type": "boolean"
-              },
-              "PurchaseRange": {
-                "type": "number"
-              },
-              "CardId": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              }
-            }
+            "$ref": "#/properties/Templates/properties/Items/items"
           }
         },
         "Attachments": {

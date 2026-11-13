@@ -4,3 +4,5 @@ obj/
 *.jit.elf
 realm_lldb.py
 *.pdb
+MapScript.debug.json
+authority.pid
