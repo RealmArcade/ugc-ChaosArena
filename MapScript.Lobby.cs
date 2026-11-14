@@ -6,18 +6,57 @@ public partial class MapScript
 {
     private const int ChaosArenaTeamCount = 12;
 
+    private const uint ProxyAllyMinimapColorRgba = 0xFFFFFFFF;
+
+    private readonly uint[] _syncedProxyColors = new uint[RealPlayerSlotCount + 1];
+
     public void LobbyInitialize(ILobbyAPI api)
     {
         // A Chaos Arena lobby seats the twelve players the arena is built for, and its board is played with everything in
         // view. This map has no draft and no building deck of its own, so it declares no match setting of its own: its host
         // is offered the three settings every map has and nothing else.
         api.SetOpenSlotCount(RealPlayerSlotCount);
+
+        // Every player slot after the twelfth belongs to the proxy player this map drives for it, so the lobby reserves
+        // them: nobody is admitted into one and the host cannot open one, whatever the rows on screen are clicked.
+        api.SetPlayerSlotLimit(RealPlayerSlotCount);
         api.SetTeamCount(ChaosArenaTeamCount);
         api.SetShroudModeDefault(MatchShroudMode.None);
     }
 
     public void LobbyUpdate(ILobbyAPI api, float deltaSeconds)
     {
+        SyncProxyPlayerColors(api);
+    }
+
+    /// <summary>
+    ///     Keeps each proxy player in the colour of the seat whose army it carries, so a player watching their clones fight
+    ///     reads them as their own, and shows those clones as self on the allied-colour minimap rather than as an ally.
+    /// </summary>
+    /// <param name="api">The lobby the map is filling.</param>
+    private void SyncProxyPlayerColors(ILobbyAPI api)
+    {
+        for (int playerIndex = 1; playerIndex <= RealPlayerSlotCount; playerIndex++)
+        {
+            uint seatColor = api.GetPlayerColor(playerIndex);
+            int proxyPlayerIndex = playerIndex + ProxyPlayerOffset;
+
+            if (seatColor == 0)
+            {
+                if (_syncedProxyColors[playerIndex] == 0) continue;
+
+                _syncedProxyColors[playerIndex] = 0;
+                api.SetPlayerColor(proxyPlayerIndex, 0);
+                api.SetPlayerMinimapColor(proxyPlayerIndex, MinimapColorMode.TeamColors, 0);
+                continue;
+            }
+
+            if (_syncedProxyColors[playerIndex] == seatColor) continue;
+
+            _syncedProxyColors[playerIndex] = seatColor;
+            api.SetPlayerColor(proxyPlayerIndex, seatColor);
+            api.SetPlayerMinimapColor(proxyPlayerIndex, MinimapColorMode.TeamColors, ProxyAllyMinimapColorRgba);
+        }
     }
 
     public bool TryGetStartWarning(ILobbyAPI api, out string message)
