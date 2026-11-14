@@ -9,10 +9,11 @@ public partial class MapScript
     public void LobbyInitialize(ILobbyAPI api)
     {
         // A Chaos Arena lobby seats the twelve players the arena is built for, and its board is played with everything in
-        // view. Every other match setting is left to the core game's defaults, so this map states nothing about them.
-        api.SetMaximumPlayerCount(RealPlayerSlotCount);
+        // view. This map has no draft and no building deck of its own, so it declares no match setting of its own: its host
+        // is offered the three settings every map has and nothing else.
+        api.SetOpenSlotCount(RealPlayerSlotCount);
         api.SetTeamCount(ChaosArenaTeamCount);
-        api.SetShroudModeDefault(MatchShroudMode.Revealed);
+        api.SetShroudModeDefault(MatchShroudMode.None);
     }
 
     public void LobbyUpdate(ILobbyAPI api, float deltaSeconds)
