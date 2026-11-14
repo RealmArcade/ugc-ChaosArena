@@ -5372,11 +5372,17 @@
         "CostWood": 0,
         "CostStone": 0,
         "Cooldown": 8,
-        "TargetRange": 2.8,
+        "TargetRange": 5,
         "VisualEffect": "ice_spirit_spell.rtex",
         "ProjectileId": null,
         "CastSound": "armor_jingle_metal.raud",
-        "AutoCast": null,
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": true,
+          "AllyHealthPercentBelow": 1,
+          "ManaReserve": 0,
+          "MinManaPercent": 0
+        },
         "AreaOfEffectRadius": 3,
         "Effects": [
           {
@@ -5478,11 +5484,17 @@
         "CostWood": 0,
         "CostStone": 0,
         "Cooldown": 20,
-        "TargetRange": 6,
+        "TargetRange": 10,
         "VisualEffect": "mineral_geology_quartz_core.rtex",
         "ProjectileId": null,
         "CastSound": "cape_Damaged.raud",
-        "AutoCast": null,
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": true,
+          "AllyHealthPercentBelow": 1,
+          "ManaReserve": 0,
+          "MinManaPercent": 0
+        },
         "AreaOfEffectRadius": 4,
         "Effects": [
           {
@@ -5917,11 +5929,17 @@
         "CostWood": 0,
         "CostStone": 0,
         "Cooldown": 6.5,
-        "TargetRange": 7,
+        "TargetRange": 12,
         "VisualEffect": "mana_orb_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "spell_cast_hum.raud",
-        "AutoCast": null,
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": true,
+          "AllyHealthPercentBelow": 1,
+          "ManaReserve": 0,
+          "MinManaPercent": 0
+        },
         "AreaOfEffectRadius": 0.8,
         "Effects": [
           {
@@ -6045,11 +6063,17 @@
         "CostWood": 0,
         "CostStone": 0,
         "Cooldown": 24,
-        "TargetRange": 8,
+        "TargetRange": 12,
         "VisualEffect": "purple_magic_spell.rtex",
         "ProjectileId": null,
         "CastSound": "spell_scroll_crackle.raud",
-        "AutoCast": null,
+        "AutoCast": {
+          "Enabled": true,
+          "RequiresEnemyTarget": true,
+          "AllyHealthPercentBelow": 1,
+          "ManaReserve": 0,
+          "MinManaPercent": 0
+        },
         "AreaOfEffectRadius": 4,
         "Effects": [
           {
