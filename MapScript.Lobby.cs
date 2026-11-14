@@ -6,8 +6,6 @@ public partial class MapScript
 {
     private const int ChaosArenaTeamCount = 12;
 
-    private const uint ProxyAllyMinimapColorRgba = 0xFFFFFFFF;
-
     private readonly uint[] _syncedProxyColors = new uint[RealPlayerSlotCount + 1];
 
     public void LobbyInitialize(ILobbyAPI api)
@@ -22,6 +20,13 @@ public partial class MapScript
         api.SetPlayerSlotLimit(RealPlayerSlotCount);
         api.SetTeamCount(ChaosArenaTeamCount);
         api.SetShroudModeDefault(MatchShroudMode.None);
+
+        // Every proxy player carries one seat's army, so each screen's allied-colour minimap draws its own army as
+        // itself and every other army by that seat's standing on that screen.
+        for (int playerIndex = 1; playerIndex <= RealPlayerSlotCount; playerIndex++)
+        {
+            api.SetPlayerProxyOwner(playerIndex + ProxyPlayerOffset, playerIndex);
+        }
     }
 
     public void LobbyUpdate(ILobbyAPI api, float deltaSeconds)
@@ -31,7 +36,7 @@ public partial class MapScript
 
     /// <summary>
     ///     Keeps each proxy player in the colour of the seat whose army it carries, so a player watching their clones fight
-    ///     reads them as their own, and shows those clones as self on the allied-colour minimap rather than as an ally.
+    ///     reads them as their own, and the minimap that paints every player in its own colour draws both as one side.
     /// </summary>
     /// <param name="api">The lobby the map is filling.</param>
     private void SyncProxyPlayerColors(ILobbyAPI api)
@@ -47,7 +52,6 @@ public partial class MapScript
 
                 _syncedProxyColors[playerIndex] = 0;
                 api.SetPlayerColor(proxyPlayerIndex, 0);
-                api.SetPlayerMinimapColor(proxyPlayerIndex, MinimapColorMode.TeamColors, 0);
                 continue;
             }
 
@@ -55,7 +59,6 @@ public partial class MapScript
 
             _syncedProxyColors[playerIndex] = seatColor;
             api.SetPlayerColor(proxyPlayerIndex, seatColor);
-            api.SetPlayerMinimapColor(proxyPlayerIndex, MinimapColorMode.TeamColors, ProxyAllyMinimapColorRgba);
         }
     }
 
