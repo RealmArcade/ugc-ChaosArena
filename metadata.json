@@ -1637,7 +1637,7 @@
         "Damage": 0,
         "Range": 0,
         "Armor": 0,
-        "Speed": 0,
+        "Speed": 8,
         "AttackCooldown": 0,
         "ScanRadius": 0,
         "CostGold": 0,
@@ -1654,8 +1654,8 @@
         "LevelGrowth": null,
         "HpRegen": 0,
         "HpRegenCombatDelay": 0,
-        "MaxMana": 0,
-        "ManaRegen": 0,
+        "MaxMana": 300,
+        "ManaRegen": 6,
         "MagicResistance": 0,
         "FlatArmorPenetration": 0,
         "PercentArmorPenetration": 0,
@@ -1678,10 +1678,34 @@
         "AcquisitionRange": 15,
         "GoldBounty": 0,
         "RespawnSeconds": 0,
-        "BuildOptions": null,
-        "IsHero": false,
+        "BuildOptions": [
+          "unit/stone_guardian",
+          "unit/iron_warlord",
+          "unit/nether_assassin",
+          "unit/shadow_weaver",
+          "unit/verdant_druid",
+          "unit/thornback_behemoth",
+          "unit/coral_vanguard",
+          "unit/tidecaller",
+          "unit/flame_archon",
+          "unit/magma_smith",
+          "unit/frost_warden",
+          "unit/glacier_sentinel",
+          "unit/storm_caller",
+          "unit/tempest_chaser",
+          "unit/arcane_scholar",
+          "unit/rune_scribe",
+          "unit/sun_priest",
+          "unit/lightbringer_monk",
+          "unit/pack_alpha",
+          "unit/razor_dervish"
+        ],
+        "IsHero": true,
         "IncludeInDefaultHotkeySelection": true,
-        "Abilities": null,
+        "Abilities": [
+          "ability/soul_siphon",
+          "ability/healing_wave"
+        ],
         "XpBounty": 0,
         "ExperiencePerLevel": 0,
         "MaxLevel": 0,
@@ -1690,7 +1714,29 @@
         "Targets": null,
         "Weapons": null,
         "ProjectileModelPath": null,
-        "Animations": null,
+        "Animations": {
+          "Attack": [
+            "Upward Thrust - Upward Weapon Thrust.ranim"
+          ],
+          "Dance": [
+            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+          ],
+          "Death": [
+            "Death - Death From Standing Idle.ranim"
+          ],
+          "Idle": [
+            "Bored - Standing Around Bored Idle.ranim"
+          ],
+          "Labor": [
+            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+          ],
+          "Spell_Cast": [
+            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+          ],
+          "Walk": [
+            "Standard Walk - Standard Walk.ranim"
+          ]
+        },
         "ObjectAttachments": null,
         "Sounds": null,
         "StartingItems": null,
@@ -1698,27 +1744,27 @@
         "Upgrades": null,
         "StatusEffects": null,
         "SoundEvents": null,
-        "ConstructionRange": 4,
+        "ConstructionRange": 22,
         "TemplateID": "unit/builder",
-        "Name": "builder",
+        "Name": "Avatar",
         "Description": "",
         "ModelPath": "fantasy_warrior_unit_1.rmesh",
-        "PortraitModelPath": "",
+        "PortraitModelPath": null,
         "IconPath": null,
         "VisualMode": "Mesh",
         "Scale": 2.5,
-        "YOffset": 2.3000002,
-        "CollisionCircle": 1,
+        "YOffset": 2.2726,
+        "CollisionCircle": 0,
         "Brightness": 0.5,
-        "Tint": "#ffffff",
+        "Tint": null,
         "NormalizeLuminance": true,
         "IgnorePlayerColor": false,
         "DespillPlayerColor": false,
-        "PathingType": 8,
+        "PathingType": 2,
         "SpawnShader": null,
         "DeathShader": null,
         "ProceduralAnimation": null,
-        "EnableProceduralAnimation": false,
+        "EnableProceduralAnimation": null,
         "PseudoSockets": null,
         "DespawnShader": null,
         "Attribution_ImportedFromMap": null
