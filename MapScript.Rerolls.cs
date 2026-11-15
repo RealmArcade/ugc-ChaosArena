@@ -18,6 +18,10 @@ public partial class MapScript
     private const float RerollAllStoneCost = 5f;
     private const float SwapTileStoneCost = 5f;
 
+    // A click belongs to the tile it is nearest to: every point inside half a tile's spacing is closer to that tile than
+    // to any other, so a swap aimed anywhere on a tile's ground finds it instead of demanding a click on its centre.
+    private const float SwapTargetSearchRadius = TileSpacing * 0.5f;
+
     private static float GetTileAbilityStoneCost(string abilitySlug)
     {
         if (SlugsEqual(abilitySlug, RerollItemAbilityId)) return RerollItemStoneCost;
@@ -123,7 +127,9 @@ public partial class MapScript
     private bool TryGetSwapTarget(UnitId caster, Vector3 targetPosition, int playerIndex, out UnitId target)
     {
         target = UnitId.Invalid;
-        foreach (UnitId candidate in _api.GetUnitsInRadius(targetPosition, 2f))
+        float nearestDistanceSquared = float.MaxValue;
+
+        foreach (UnitId candidate in _api.GetUnitsInRadius(targetPosition, SwapTargetSearchRadius))
         {
             if (!candidate.IsValid || candidate.Player != playerIndex)
                 continue;
@@ -131,11 +137,15 @@ public partial class MapScript
             if (candidate.UniqueId == caster.UniqueId || !tileStatesByUnitId.ContainsKey(candidate.UniqueId))
                 continue;
 
+            float distanceSquared = Vector3.DistanceSquared(candidate.Position, targetPosition);
+            if (distanceSquared >= nearestDistanceSquared)
+                continue;
+
+            nearestDistanceSquared = distanceSquared;
             target = candidate;
-            return true;
         }
 
-        return false;
+        return target.IsValid;
     }
 
     private void RefreshPlayerTileAbilities(int playerIndex)

@@ -456,7 +456,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         }
         else if (trimmed.StartsWith(TargetDummyCommand, StringComparison.OrdinalIgnoreCase))
         {
-            HandleTargetDummyCommand(senderPlayerIndex);
+            HandleTargetDummyCommand(senderSlot);
         }
         else if (trimmed.StartsWith(UnlockTilesCommand, StringComparison.OrdinalIgnoreCase))
         {
@@ -507,7 +507,7 @@ public partial class MapScript : IWasmModule, ILobbyScript
         }
     }
 
-    private void HandleTargetDummyCommand(int senderPlayerIndex)
+    private void HandleTargetDummyCommand(int playerIndex)
     {
         if (!_api.CheatsEnabled)
         {
@@ -515,10 +515,9 @@ public partial class MapScript : IWasmModule, ILobbyScript
             return;
         }
 
-        int playerIndex = ResolveRealPlayerIndex(senderPlayerIndex);
         if (!IsRealPlayerSlot(playerIndex) || !playerStates.ContainsKey(playerIndex))
         {
-            _api.BroadcastMessage($"Usage: {TargetDummyCommand} (select one of your units first)");
+            _api.BroadcastMessage($"Usage: {TargetDummyCommand} (only a seated player may use it)");
             return;
         }
 

@@ -93,6 +93,12 @@ public partial class MapScript
             PublishElixirTooltipValues(elixir);
         }
 
+        // An elixir belongs to a drafted hero, and a circle is only the tile a hero will be drafted onto: a purchase that
+        // lands on one is refused rather than kept on a placeholder nothing ever sends into a wave.
+        foreach (Element element in AllElements)
+        {
+            _api.SetUnitTypeReceivesConsumables(GetCircleUnitTypeId(element), false);
+        }
     }
 
     private void PublishElixirTooltipValues(ElixirDefinition elixir)
@@ -109,10 +115,12 @@ public partial class MapScript
 
         int playerIndex = ResolveRealPlayerIndex(unit.Player);
 
+        string draftedUnitName = DraftedUnitName(unit);
+
         if (string.IsNullOrEmpty(consumableId))
         {
             ClearElixir(unit);
-            _api.GetPlayer(playerIndex).SendMessage($"{unit.Name} no longer carries an elixir.");
+            _api.GetPlayer(playerIndex).SendMessage($"{draftedUnitName} no longer carries an elixir.");
             return;
         }
 
@@ -121,7 +129,18 @@ public partial class MapScript
 
         ApplyElixir(unit, definition, playerIndex);
         _api.GetPlayer(playerIndex).SendMessage(
-            $"{_api.GetAbilityName(definition.AbilityId)} bound to {unit.Name}. Every wave clone it spawns inherits it.");
+            $"{_api.GetAbilityName(definition.AbilityId)} bound to {draftedUnitName}. Every wave clone it spawns inherits it.");
+    }
+
+    /// <summary>
+    ///     The name a message calls a tile's unit by. A tile wears its element as its own name so the board reads as
+    ///     three colours, but the thing an elixir is bound to is the drafted hero standing on it, so a message names the
+    ///     hero rather than the element it happens to sit on.
+    /// </summary>
+    private string DraftedUnitName(UnitId unit)
+    {
+        string name = _api.GetUnitName(unit.TemplateID);
+        return string.IsNullOrWhiteSpace(name) ? unit.Name : name;
     }
 
     private void ApplyElixir(UnitId unit, ElixirDefinition definition, int playerIndex)

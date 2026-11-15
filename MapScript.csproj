@@ -52,4 +52,7 @@
   <ItemGroup>
     <Using Include="Realm.Maps" />
   </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <IlcDwarfVersion>5</IlcDwarfVersion>
+  </PropertyGroup>
 </Project>

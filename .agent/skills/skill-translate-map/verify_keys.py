@@ -6,8 +6,10 @@ locale/<code>.json when the map loads, so the *English text itself* is the key.
 
 Commands:
   list [--locale CODE]      Print the strings to translate as a JSON batch.
-  verify                    Check every locale/*.json against metadata.json.
-  prune                     Remove entries whose key no longer exists in metadata.json.
+  verify                    Check every locale/*.json against metadata.json and the
+                            instruction text the map script publishes.
+  prune                     Remove entries whose key no longer exists in metadata.json
+                            or in the instruction text the map script publishes.
   merge CODE FILE           Merge a JSON batch of translations into locale/CODE.json.
 
 Options:
@@ -47,6 +49,13 @@ TAG_STRIP_RE = re.compile(r"\[[^\[\]]*\]")
 ROLE_RE = re.compile(r"^\[([^\[\]=/]{1,24})\] ")
 
 MAXIMUM_REPORTED_ENTRIES = 20
+
+# Instruction pages a map script publishes are shown through the same lookup, so
+# their title and body are keys too. A map may publish them in English only, so
+# they are optional parts rather than required ones.
+INSTRUCTION_CALL = "AddInstructionsSection("
+
+ESCAPES = {"n": "\n", "r": "\r", "t": "\t", "0": "\0", "\\": "\\", '"': '"', "'": "'"}
 
 
 def fail(message):
@@ -158,6 +167,148 @@ def collect_sources(metadata):
     return required, optional, alternatives, roles
 
 
+def matching_paren(text, open_paren):
+    depth = 0
+    index = open_paren
+    in_string = False
+    while index < len(text):
+        character = text[index]
+        if in_string:
+            if character == "\\":
+                index += 2
+                continue
+            if character == '"':
+                in_string = False
+        elif character == '"':
+            in_string = True
+        elif character == "(":
+            depth += 1
+        elif character == ")":
+            depth -= 1
+            if depth == 0:
+                return index
+        index += 1
+    return -1
+
+
+def split_arguments(text):
+    arguments = []
+    current = []
+    depth = 0
+    in_string = False
+    index = 0
+    while index < len(text):
+        character = text[index]
+        if in_string:
+            current.append(character)
+            if character == "\\" and index + 1 < len(text):
+                current.append(text[index + 1])
+                index += 2
+                continue
+            if character == '"':
+                in_string = False
+        elif character == '"':
+            in_string = True
+            current.append(character)
+        elif character in "([{":
+            depth += 1
+            current.append(character)
+        elif character in ")]}":
+            depth -= 1
+            current.append(character)
+        elif character == "," and depth == 0:
+            arguments.append("".join(current))
+            current = []
+        else:
+            current.append(character)
+        index += 1
+    arguments.append("".join(current))
+    return arguments
+
+
+def decode_literal(literal):
+    if len(literal) < 2 or not literal.startswith('"') or not literal.endswith('"'):
+        return None
+    body = literal[1:-1]
+    decoded = []
+    index = 0
+    while index < len(body):
+        character = body[index]
+        if character != "\\" or index + 1 >= len(body):
+            decoded.append(character)
+            index += 1
+            continue
+        escape = body[index + 1]
+        if escape == "u" and index + 5 < len(body):
+            decoded.append(chr(int(body[index + 2:index + 6], 16)))
+            index += 6
+            continue
+        decoded.append(ESCAPES.get(escape, escape))
+        index += 2
+    return "".join(decoded)
+
+
+def evaluate_expression(expression):
+    """The text a C# argument builds out of literals joined with +."""
+    pieces = []
+    for part in split_concatenation(expression):
+        literal = decode_literal(part.strip())
+        if literal is None:
+            return None
+        pieces.append(literal)
+    return "".join(pieces)
+
+
+def split_concatenation(expression):
+    parts = []
+    current = []
+    in_string = False
+    index = 0
+    while index < len(expression):
+        character = expression[index]
+        if in_string:
+            current.append(character)
+            if character == "\\" and index + 1 < len(expression):
+                current.append(expression[index + 1])
+                index += 2
+                continue
+            if character == '"':
+                in_string = False
+        elif character == '"':
+            in_string = True
+            current.append(character)
+        elif character == "+":
+            parts.append("".join(current))
+            current = []
+        else:
+            current.append(character)
+        index += 1
+    parts.append("".join(current))
+    return parts
+
+
+def collect_script_text(map_path):
+    """Titles and bodies of the instruction sections this map's script publishes."""
+    keys = set()
+    for source in sorted(map_path.glob("MapScript*.cs")):
+        text = source.read_text(encoding="utf-8", errors="replace")
+        search_from = 0
+        while True:
+            start = text.find(INSTRUCTION_CALL, search_from)
+            if start < 0:
+                break
+            open_paren = start + len(INSTRUCTION_CALL) - 1
+            close_paren = matching_paren(text, open_paren)
+            if close_paren < 0:
+                break
+            for argument in split_arguments(text[open_paren + 1:close_paren])[:2]:
+                value = evaluate_expression(argument)
+                if value and value.strip():
+                    keys.add(value)
+            search_from = close_paren + 1
+    return keys
+
+
 def token_signature(text):
     return " ".join(sorted(TOKEN_RE.findall(text)))
 
@@ -265,10 +416,14 @@ def command_list(map_path, locale):
 
 def command_verify(map_path):
     required, optional, alternatives, _ = collect_sources(load_metadata(map_path))
+    script_keys = collect_script_text(map_path)
+    optional |= script_keys
     paths = catalog_paths(map_path)
 
     print(f"map: {map_path}")
     print(f"metadata.json: {len(required)} keys required, {len(optional)} optional parts")
+    if script_keys:
+        print(f"map scripts: {len(script_keys)} instruction text key(s), optional")
     if not paths:
         print()
         print("no locale/*.json yet: every player reads the English text.")
@@ -340,7 +495,7 @@ def command_verify(map_path):
 
 def command_prune(map_path):
     required, optional, _, _ = collect_sources(load_metadata(map_path))
-    known = set(required) | optional
+    known = set(required) | optional | collect_script_text(map_path)
 
     removed_total = 0
     for path in catalog_paths(map_path):
