@@ -800,11 +800,31 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
     private Vector3 GetPlayerBasePosition(int playerIndex)
     {
+        int startIndex = GetSeatStartIndex(playerIndex);
+        Vector3 startPosition = _api.GetCoordinate($"PlayerStart{startIndex}").Center;
+        if (startPosition != Vector3.Zero)
+            return startPosition;
+
         Vector3 startLocation = _api.GetPlayer(playerIndex).StartLocation;
         if (startLocation != Vector3.Zero)
             return startLocation;
 
         return _api.GetCoordinate($"PlayerStart{playerIndex}").Center;
+    }
+
+    private int GetSeatStartIndex(int playerIndex)
+    {
+        List<int> activePlayerIndices = _api.GetActivePlayerIndices()
+            .Where(IsRealPlayerSlot)
+            .OrderBy(index => index)
+            .ToList();
+
+        int seatCount = activePlayerIndices.Count;
+        int seatRank = activePlayerIndices.IndexOf(playerIndex);
+        if (seatCount <= 0 || seatRank < 0)
+            return playerIndex;
+
+        return 1 + seatRank * RealPlayerSlotCount / seatCount;
     }
 
     private static Vector3 GetPlayerOffset(Vector3 basePosition, float delta)
