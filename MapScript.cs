@@ -924,9 +924,11 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
     private const string DraftDecisionActionPrefix = "draft/";
     private const string DraftDecisionIntent = "Interact";
-    private const int DraftDecisionFeatureCount = 2;
+    private const int DraftDecisionFeatureCount = 4;
     private const int DraftDecisionDurabilityFeatureIndex = 0;
     private const int DraftDecisionDamageFeatureIndex = 1;
+    private const int DraftDecisionReachFeatureIndex = 2;
+    private const int DraftDecisionCastingFeatureIndex = 3;
     private const float DeclaredDurabilityArmorScale = 10f;
 
     private void PrepareSharedHeroDraftOrder()
@@ -1355,8 +1357,12 @@ public partial class MapScript : IWasmModule, ILobbyScript
 
         Span<float> offerDurability = stackalloc float[playerState.Offers.Count];
         Span<float> offerDamage = stackalloc float[playerState.Offers.Count];
+        Span<float> offerReach = stackalloc float[playerState.Offers.Count];
+        Span<float> offerCasting = stackalloc float[playerState.Offers.Count];
         float strongestDurability = 0f;
         float strongestDamage = 0f;
+        float strongestReach = 0f;
+        float strongestCasting = 0f;
 
         for (int offerIndex = 0; offerIndex < playerState.Offers.Count; offerIndex++)
         {
@@ -1365,12 +1371,18 @@ public partial class MapScript : IWasmModule, ILobbyScript
             float armor = _api.GetUnitTypeStat(offeredUnitTypeId, "Armor");
             float damage = _api.GetUnitTypeStat(offeredUnitTypeId, "Attack");
             float attackCooldown = _api.GetUnitTypeStat(offeredUnitTypeId, "AttackCooldown");
+            float reach = _api.GetUnitTypeStat(offeredUnitTypeId, "Range");
+            float maxMana = _api.GetUnitTypeStat(offeredUnitTypeId, "MaxMana");
 
             offerDurability[offerIndex] = maxHealth * (1f + armor / DeclaredDurabilityArmorScale);
             offerDamage[offerIndex] = attackCooldown > 0f ? damage / attackCooldown : 0f;
+            offerReach[offerIndex] = reach;
+            offerCasting[offerIndex] = maxMana;
 
             if (offerDurability[offerIndex] > strongestDurability) strongestDurability = offerDurability[offerIndex];
             if (offerDamage[offerIndex] > strongestDamage) strongestDamage = offerDamage[offerIndex];
+            if (offerReach[offerIndex] > strongestReach) strongestReach = offerReach[offerIndex];
+            if (offerCasting[offerIndex] > strongestCasting) strongestCasting = offerCasting[offerIndex];
         }
 
         _api.ClearCustomBotDecisions(playerIndex);
@@ -1380,6 +1392,8 @@ public partial class MapScript : IWasmModule, ILobbyScript
             float[] features = new float[DraftDecisionFeatureCount];
             features[DraftDecisionDurabilityFeatureIndex] = strongestDurability > 0f ? offerDurability[offerIndex] / strongestDurability : 0f;
             features[DraftDecisionDamageFeatureIndex] = strongestDamage > 0f ? offerDamage[offerIndex] / strongestDamage : 0f;
+            features[DraftDecisionReachFeatureIndex] = strongestReach > 0f ? offerReach[offerIndex] / strongestReach : 0f;
+            features[DraftDecisionCastingFeatureIndex] = strongestCasting > 0f ? offerCasting[offerIndex] / strongestCasting : 0f;
 
             _api.RegisterCustomBotDecision(
                 playerIndex,
