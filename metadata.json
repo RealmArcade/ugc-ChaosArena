@@ -13298,10 +13298,6 @@
     "icon/victory_flag": {
       "TexturePath": null,
       "Attribution_ImportedFromMap": null
-    },
-    "icon/wood_logs": {
-      "TexturePath": null,
-      "Attribution_ImportedFromMap": null
     }
   },
   "skyboxes": {
