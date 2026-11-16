@@ -914,20 +914,20 @@
       ".gitignore": "a37fd08b342aa46e733a0072320ff737cecd240644a8dead1ffcdced48b0756a",
       "AGENTS.md": "c76920c0a65a28cf41a048d8176cbc6a00586d8a3eabe8f9277d595071e28bf8",
       "Attribution_SourceMapAttribute.cs": "3b1e37e546f2b74e8d42baf0dbc3b82301dc1931a0cb82e6e86e79d7e497a4dc",
-      "authority.pid": "435de9a3905aa304cc67fa18169f77b8b73a0982191d6d477d230bf8d21e8de0",
+      "authority.pid": "d02b833cd43d337e41f94dc245f7c6fc682351f652fda0b52c69c4c297aef5a5",
       "Directory.Build.targets": "7424a53a847319e9ea56b8b31bc476b685d84b940eabfaa3a17ef2fa9bfe20b3",
       "LICENSE.md": "d3834b5021d97985e5b2a7a12a32387f4ba9cfd6a7756f2d60313a3d0da5ae02",
       "MapScript.AvatarAbilities.cs": "63121d88cb33f389c9a178b402256483f7e4986fecd15726f3278248729fdbff",
       "MapScript.cs": "b308056a193975310096f385cdc266542dc1cfb7546d569acb98eea4aadd24fa",
       "MapScript.csproj": "6f81d7cd9fdc555782deb3757fbecfa3f520132faf8b58bd28a831bce7863bb3",
-      "MapScript.debug.json": "5e0edfa5deae564f1fe3ca8b3dcb96301c24554c70a35534ead9cb3cad0fa506",
-      "MapScript.Elixirs.cs": "a796346149a73591c196243937d24ad4a1cdbb0e12fc748a1600f168eea9bb0f",
+      "MapScript.debug.json": "b6e6e8cbbb62fc3841d9475c3dc8fa47be669989bd810288c1605caf450c9da5",
+      "MapScript.Elixirs.cs": "34391c0116207c590eb3abc4f0e2ad98235cfa2393c64c34dcf062fa80c104ea",
       "MapScript.Instructions.cs": "ec22700ee324b3cdb3d5050e1495c872a40f6cb92e2e925ff4c377255fb5d929",
       "MapScript.Lobby.cs": "0a8a34f7eb4fad883028439a43141ec69ad382e5122babb380611da9822f7a9b",
       "MapScript.Match.cs": "c2d0715eeffe0ef0e839c9a402c75aa19f1e29b0382fe3f6f98ed22eda47dd77",
       "MapScript.Rerolls.cs": "5f5bc6dd866917d0b3bb8e0c7dadf12df9d837185e3c55dee12c62b7cf286c29",
       "MapScript.slnx": "6b5b77b660653b5cd34350fe244e9f2a3e7e344cf23d7efc339e451480582f3d",
-      "metadata.json": "a44b705c37410e56cc4b11cf0534ed306169237750decfd3003d338343465116",
+      "metadata.json": "3f1e9b36fa92235ee0d302de4953567b9113666f3b3ca82c663eaf81066e5fd8",
       "NuGet.config": "2211ce92e32f9c93bc98f9172c70cae0d41e5fe750e3a28a245eb754e6c3a389",
       "realm_lldb.py": "8c2ede242f81282b56d6da596abee0557513c10b7da3097d7912266299a9b5c9",
       "terrain.json": "f81bbcea10d63c921297584ce092df2e8a81b5a17c4694a31d15a5a04e2b8e9c",
@@ -963,8 +963,8 @@
       ".agent/skills/skill-assign-asset/SKILL.md": "5ca270e410943f32dd99d6c078b6648196b27a78659204c4f19fb2bf5fa3716c",
       ".agent/skills/skill-translate-map/SKILL.md": "d3c499ee4dc4868d7519dc670f010fd8186c5c5c102c927d409bd259b5330966",
       ".agent/skills/skill-translate-map/verify_keys.py": "b9722cb8810984214a93a9e3474117aa568356548fe6aae9be1aeaf82a5ae479",
-      "bin/script/authority.pid": "435de9a3905aa304cc67fa18169f77b8b73a0982191d6d477d230bf8d21e8de0",
-      "bin/script/MapScript.debug.json": "5e0edfa5deae564f1fe3ca8b3dcb96301c24554c70a35534ead9cb3cad0fa506"
+      "bin/script/authority.pid": "d02b833cd43d337e41f94dc245f7c6fc682351f652fda0b52c69c4c297aef5a5",
+      "bin/script/MapScript.debug.json": "b6e6e8cbbb62fc3841d9475c3dc8fa47be669989bd810288c1605caf450c9da5"
     }
   }
 }
