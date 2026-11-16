@@ -130,25 +130,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing 1H Magic Attack 02 - One Handed Casting Spell Sweep Right To Left.ranim"
           ],
           "Dance": [
             "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Dying - Dying With Front Hit To The Head And Fall On One Knee.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Nervously Look Around - Nervously Looking Around Left To Right -  Loop.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Pulling A Rope - Mime Pulling A Rope.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Casting Spell - Conjuring Magic And Throwing.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Sneak Walk - Male Ninja Sneak Walk.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -162,12 +162,12 @@
         "TemplateID": "unit/shadow_weaver",
         "Name": "Shadow Weaver",
         "Description": "A seamstress of the dark who stitches enemies to the floor and pulls the thread out.",
-        "ModelPath": "paladin_hero_unit.rmesh",
-        "PortraitModelPath": "fantasy_warrior_unit_9.rmesh",
-        "IconPath": "dark_mage.rtex",
+        "ModelPath": "shadow_weaver.rmesh",
+        "PortraitModelPath": "shadow_weaver.rmesh",
+        "IconPath": "shadow_weaver.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.3,
-        "YOffset": 2.2541,
+        "YOffset": 2.2938,
         "CollisionCircle": 0.69,
         "Brightness": 0.5,
         "Tint": null,
@@ -265,22 +265,22 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing 2H Magic Attack 01 - Two Handed Casting Spell Fowards.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Salsa Dancing - Male Salsa Variation Eight.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Falling Back Death - Dying Falling Backward.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Standing Idle - Standing Idle Ready To Cast Spell.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Pulling Lever - Pulling A Lever Down.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Standing 2H Magic Area Attack 02 - Two Handed Casting Spell Pull In Blast Out.ranim"
           ],
           "Walk": [
             "Standard Walk - Standard Walk.ranim"
@@ -297,17 +297,17 @@
         "TemplateID": "unit/flame_archon",
         "Name": "Flame Archon",
         "Description": "An elemental adjudicator of fire that passes sentences already burning.",
-        "ModelPath": "blood_knight_warrior.rmesh",
-        "PortraitModelPath": "fantasy_warrior_armor_1.rmesh",
-        "IconPath": "flame_knight.rtex",
+        "ModelPath": "flame_archon.rmesh",
+        "PortraitModelPath": "flame_archon.rmesh",
+        "IconPath": "flame_archon.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.3,
-        "YOffset": 2.4985,
+        "YOffset": 2.0802,
         "CollisionCircle": 0.69,
         "Brightness": 0.5,
         "Tint": null,
         "NormalizeLuminance": true,
-        "IgnorePlayerColor": true,
+        "IgnorePlayerColor": false,
         "DespillPlayerColor": true,
         "PathingType": 9,
         "SpawnShader": null,
@@ -400,25 +400,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing 1H Magic Attack 01 - One Handed Casting Spell Fowards.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Dancing - Ballet Dance Variation One.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Dying - Dying Rear Impact Falling On Two Knees.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Idle - Looking Over Both Shoulders.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Push - Pushing Heavy Object.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Standing 1H Cast Spell 01 - One Handed Casting Spell Upwards.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Slow Run - Slow Run Forward.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -432,12 +432,12 @@
         "TemplateID": "unit/frost_warden",
         "Name": "Frost Warden",
         "Description": "A jailer of the long winter who pins a target in place with a single thrown icicle.",
-        "ModelPath": "frost_knight_warrior.rmesh",
-        "PortraitModelPath": "frost_knight_warrior.rmesh",
-        "IconPath": "ice_skeleton_king.rtex",
+        "ModelPath": "frost_warden.rmesh",
+        "PortraitModelPath": "frost_warden.rmesh",
+        "IconPath": "frost_warden.rtex",
         "VisualMode": "Mesh",
-        "Scale": 2.3,
-        "YOffset": 2.2791,
+        "Scale": 2.52,
+        "YOffset": 2.3411,
         "CollisionCircle": 0.69,
         "Brightness": 0.5,
         "Tint": null,
@@ -535,25 +535,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing 2H Magic Attack 02 - Two Handed Casting Spell Fowards.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Breakdance 1990 - Breakdance Single Handstand Spin.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Standing React Death Backward - Death Falling Backwards.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Standing Idle 02 - Standing Idle Looking Around.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Gathering Objects - Squatting Down To Gather Objects.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Standing 2H Cast Spell 01 - Two Handed Casting Spell Upward Pull.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Standard Run - Standard Running.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -567,17 +567,17 @@
         "TemplateID": "unit/storm_caller",
         "Name": "Storm Caller",
         "Description": "A lightning-rod ascetic who stands still and lets the weather do the arguing.",
-        "ModelPath": "chinese_warrior_female.rmesh",
-        "PortraitModelPath": "chinese_warrior_female.rmesh",
-        "IconPath": "storm_warden.rtex",
+        "ModelPath": "storm_caller.rmesh",
+        "PortraitModelPath": "storm_caller.rmesh",
+        "IconPath": "storm_caller.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.3,
-        "YOffset": 1.7658,
+        "YOffset": 2.2644,
         "CollisionCircle": 0.69,
         "Brightness": 0.5,
         "Tint": null,
         "NormalizeLuminance": true,
-        "IgnorePlayerColor": true,
+        "IgnorePlayerColor": false,
         "DespillPlayerColor": true,
         "PathingType": 9,
         "SpawnShader": null,
@@ -670,25 +670,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing 1H Magic Attack 03 - One Handed Casting Spell Upward Sweep.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Swing Dancing - Dance Swing Charleston.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Dying - Dying Front Head Impact To Two Knees.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Sad Idle - Sad Idle Variation 1.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Lifting - Pick Up Object And Examine.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Two Hand Spell Casting - Casting A Spell With Two Hands.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Walking - Male Hurried Walk.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -702,12 +702,12 @@
         "TemplateID": "unit/arcane_scholar",
         "Name": "Arcane Scholar",
         "Description": "A disgraced academic who writes killing formulas in the air and reads them aloud to death.",
-        "ModelPath": "ancient_warrior_hero.rmesh",
-        "PortraitModelPath": "armored_warrior_8.rmesh",
-        "IconPath": "wizard_on_stone.rtex",
+        "ModelPath": "arcane_scholar.rmesh",
+        "PortraitModelPath": "arcane_scholar.rmesh",
+        "IconPath": "arcane_scholar.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.3,
-        "YOffset": 2.3299,
+        "YOffset": 2.2252,
         "CollisionCircle": 0.69,
         "Brightness": 0.5,
         "Tint": null,
@@ -805,28 +805,59 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Double Dagger Stab - Static Double Dagger Stab With Outward Grip.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Tut Hip Hop Dance - Tut Hip Hop Dance Variation One.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Knocked Out - Knocked Out Falling To Stomach.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Knife Idle - Knife On The Rear Hand, Reverse Grip.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Box Idle - Carrying A Box.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Spell Casting - Casting A Ressurection Or Summon Spell.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Running - Running With Intention.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/magic_dagger": {
+                "PositionX": -0.00038,
+                "PositionY": 0.00998,
+                "PositionZ": -0.14001,
+                "PitchX": -85.92,
+                "YawY": -2.03,
+                "RollZ": 2.18,
+                "Scale": 0.2753,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -837,12 +868,12 @@
         "TemplateID": "unit/nether_assassin",
         "Name": "Nether Assassin",
         "Description": "A contract killer from the space between worlds who deletes a single target and vanishes into the wound.",
-        "ModelPath": "fantasy_warrior_unit_9.rmesh",
-        "PortraitModelPath": "demon_huntress_unit.rmesh",
-        "IconPath": "demon_claw_hand.rtex",
+        "ModelPath": "nether_assassin.rmesh",
+        "PortraitModelPath": "nether_assassin.rmesh",
+        "IconPath": "nether_assassin.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.35,
-        "YOffset": 1.627,
+        "YOffset": 2.0693,
         "CollisionCircle": 0.71,
         "Brightness": 0.5,
         "Tint": null,
@@ -940,28 +971,59 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing Melee Attack 360 High - Left To Right Spin Attack With Axe.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Flair - Breakdance Flair.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Falling Forward Death - Dying Falling Forward.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Fight Idle - Male Fight Idle Empty Stance.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Harvesting - Harvesting With A Sythe.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Great Sword Casting - Great Sword Spell Casting.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Sprint - Standard Sprint.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/ornate_scythe_blade": {
+                "PositionX": -0.35846,
+                "PositionY": 0.05345,
+                "PositionZ": -0.7132,
+                "PitchX": -63.06,
+                "YawY": -55.74,
+                "RollZ": 81.52,
+                "Scale": 0.9939,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -972,12 +1034,12 @@
         "TemplateID": "unit/razor_dervish",
         "Name": "Razor Dervish",
         "Description": "A spinning storm of edged steel that grinds down anything foolish enough to stand beside it.",
-        "ModelPath": "fantasy_warrior_unit_3.rmesh",
-        "PortraitModelPath": "armored_warrior_female.rmesh",
-        "IconPath": "magic_hand_1.rtex",
+        "ModelPath": "razor_dervish.rmesh",
+        "PortraitModelPath": "razor_dervish.rmesh",
+        "IconPath": "razor_dervish.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.35,
-        "YOffset": 2.1441,
+        "YOffset": 2.4127,
         "CollisionCircle": 0.71,
         "Brightness": 0.5,
         "Tint": null,
@@ -1075,25 +1137,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Bayonet Stab - Advancing And Stabbing With Rifle Bayonet Or Spear.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Samba Dancing - Samba Gandy Variation 1.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Dying - Dying Shot To The Chest Falling On Two Knees.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Breathing Idle - Breathing Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Wheelbarrow Walk - Walking With A Full Wheelbarrow.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Wide Arm Spell Casting - Casting A Magic Spell Wide With Two Arms.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Pike Walk - Pike Walk.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1107,17 +1169,17 @@
         "TemplateID": "unit/tidecaller",
         "Name": "Tidecaller",
         "Description": "A storm-priest of the shallows who calls whole waves inland and lets them find the enemy.",
-        "ModelPath": "bearded_scout_unit.rmesh",
-        "PortraitModelPath": "bearded_warrior_scout.rmesh",
-        "IconPath": "trident_of_power.rtex",
+        "ModelPath": "tidecaller.rmesh",
+        "PortraitModelPath": "tidecaller.rmesh",
+        "IconPath": "tidecaller.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.4,
-        "YOffset": 2.2492,
+        "YOffset": 2.0931,
         "CollisionCircle": 0.72,
         "Brightness": 0.5,
         "Tint": null,
         "NormalizeLuminance": true,
-        "IgnorePlayerColor": true,
+        "IgnorePlayerColor": false,
         "DespillPlayerColor": true,
         "PathingType": 9,
         "SpawnShader": null,
@@ -1210,25 +1272,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Kicking - Butterfly Kick Advancing.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Hip Hop Dancing - Female Hip Hop 'Running Man' Dancing.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Standing React Death Left - Death Falling To The Left.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Happy Idle - Happy Idle Variation 1.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Pushing - Pushing An Object Forward.ranim"
           ],
           "Spell_Cast": [
             "Magic Spell Casting - Casting A Spell With One Hand.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Fast Run - Running Fast.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1242,17 +1304,17 @@
         "TemplateID": "unit/tempest_chaser",
         "Name": "Tempest Chaser",
         "Description": "A runaway acolyte who rides her own gale into melee and out again before it lands.",
-        "ModelPath": "female_warrior_scout.rmesh",
-        "PortraitModelPath": "armored_warrior_hero_3.rmesh",
-        "IconPath": "golden_hummingbird.rtex",
+        "ModelPath": "tempest_chaser.rmesh",
+        "PortraitModelPath": "tempest_chaser.rmesh",
+        "IconPath": "tempest_chaser.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.4,
-        "YOffset": 2.3826,
+        "YOffset": 2.4258,
         "CollisionCircle": 0.72,
         "Brightness": 0.5,
         "Tint": null,
         "NormalizeLuminance": true,
-        "IgnorePlayerColor": false,
+        "IgnorePlayerColor": true,
         "DespillPlayerColor": true,
         "PathingType": 9,
         "SpawnShader": null,
@@ -1345,25 +1407,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing 2H Magic Attack 03 - Two Handed Casting Spell Forwards Sustained.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Macarena Dance - Dancing The Macarena.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Dying - Dying With Front Impact To The Head And Fall On One Knee.ranim"
           ],
           "Idle": [
             "Bored - Standing Around Bored Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Dig And Plant Seeds - Kneeling Digging And Planting Seeds.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Standing 2H Magic Area Attack 01 - Two Handed Casting Spell Towards Ground.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Walking - Careful Walk.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1377,12 +1439,12 @@
         "TemplateID": "unit/rune_scribe",
         "Name": "Rune Scribe",
         "Description": "A battlefield cartographer who circles whole formations in ink and then sets the ink alight.",
-        "ModelPath": "fantasy_warrior_hero_3.rmesh",
-        "PortraitModelPath": "bearded_warrior_unit_1.rmesh",
-        "IconPath": "scroll_of_magic.rtex",
+        "ModelPath": "rune_scribe.rmesh",
+        "PortraitModelPath": "rune_scribe.rmesh",
+        "IconPath": "rune_scribe.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.4,
-        "YOffset": 2.2589,
+        "YOffset": 2.2324,
         "CollisionCircle": 0.72,
         "Brightness": 0.5,
         "Tint": null,
@@ -1480,25 +1542,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Thrust Slash - Thrust And Slash With Blade.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Dancing - Boogaloo.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Dying - Death Hit From The Back Falling On One Knee.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Neutral Idle - Neutral Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Plant Tree - Standing Planting A Tree.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Magic Heal - Casting A Healing Spell With One Hand.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Jogging - Jogging.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1512,12 +1574,12 @@
         "TemplateID": "unit/verdant_druid",
         "Name": "Verdant Druid",
         "Description": "A grove-keeper who grows a battlefield garden one wound at a time.",
-        "ModelPath": "forest_spirit_warrior.rmesh",
-        "PortraitModelPath": "armored_warrior_hero_4.rmesh",
-        "IconPath": "glowing_mushroom.rtex",
+        "ModelPath": "verdant_druid.rmesh",
+        "PortraitModelPath": "verdant_druid.rmesh",
+        "IconPath": "verdant_druid.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.45,
-        "YOffset": 2.4723,
+        "YOffset": 1.9156,
         "CollisionCircle": 0.74,
         "Brightness": 0.5,
         "Tint": null,
@@ -1615,25 +1677,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing 2H Magic Attack 04 - Two Handed Casting Spell Forwards Sustained.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Dancing - Ballet Dance Variation Two.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Standing React Death Forward - Death Falling Forwards.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Standing Idle - Standing Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Plant A Plant - Kneeling Planting A Plant.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Praying - Standing Praying While Swaying.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Walking - Male Standard Walk.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1647,12 +1709,12 @@
         "TemplateID": "unit/sun_priest",
         "Name": "Sun Priest",
         "Description": "A field chaplain who keeps a whole line standing with nothing but sunlight and stubbornness.",
-        "ModelPath": "warrior_hero_unit_8.rmesh",
-        "PortraitModelPath": "paladin_hero_unit.rmesh",
-        "IconPath": "golden_hero_helmet.rtex",
+        "ModelPath": "sun_priest.rmesh",
+        "PortraitModelPath": "sun_priest.rmesh",
+        "IconPath": "sun_priest.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.45,
-        "YOffset": 2.4166,
+        "YOffset": 2.3747,
         "CollisionCircle": 0.74,
         "Brightness": 0.5,
         "Tint": null,
@@ -1752,28 +1814,59 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Bash - Overhead Bashing Swing.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Chicken Dance - Doing The Chicken Dance.ranim"
           ],
           "Death": [
             "Death - Death From Standing Idle.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Wiping Sweat - Wiping Sweat Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Standing Melee Attack Downward - Downward Attack With Axe.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Praying - Buckled Stand And Praying.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Standing Walk Forward - Walking Forwards.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/wooden_hammer": {
+                "PositionX": -0.14921,
+                "PositionY": 0.02225,
+                "PositionZ": -0.29687,
+                "PitchX": -63.06,
+                "YawY": -55.74,
+                "RollZ": 81.52,
+                "Scale": 0.456,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -1784,12 +1877,12 @@
         "TemplateID": "unit/builder",
         "Name": "Avatar",
         "Description": "",
-        "ModelPath": "fantasy_warrior_unit_1.rmesh",
+        "ModelPath": "builder.rmesh",
         "PortraitModelPath": null,
-        "IconPath": null,
+        "IconPath": "builder.rtex",
         "VisualMode": "Mesh",
-        "Scale": 2.5,
-        "YOffset": 2.2726,
+        "Scale": 3.17,
+        "YOffset": 2.1943,
         "CollisionCircle": 0,
         "Brightness": 0.5,
         "Tint": null,
@@ -1887,28 +1980,59 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Great Sword Slash - Great Sword Power Slash.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Swing Dancing - Swing Dance Charleston Crazy Legs.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Two Handed Sword Death - Falling Back Death.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Great Sword Idle - Great Sword Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Pushing - Pushing A Heavy Object.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Sword And Shield Casting - Sword And Shield Spell Casting.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Great Sword Walk - Great Sword Walk.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/short_blade_axe": {
+                "PositionX": -0.31499,
+                "PositionY": 0.04697,
+                "PositionZ": -0.62672,
+                "PitchX": -63.06,
+                "YawY": -55.74,
+                "RollZ": 81.52,
+                "Scale": 0.9599,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -1919,12 +2043,12 @@
         "TemplateID": "unit/iron_warlord",
         "Name": "Iron Warlord",
         "Description": "A siege-armoured field commander who wades into the melee with a cleaver the size of a door.",
-        "ModelPath": "golden_warrior_hero.rmesh",
-        "PortraitModelPath": "heavy_armored_warrior.rmesh",
-        "IconPath": "dwarf_warlord.rtex",
+        "ModelPath": "iron_warlord.rmesh",
+        "PortraitModelPath": "iron_warlord.rmesh",
+        "IconPath": "iron_warlord.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.75,
-        "YOffset": 2.8183,
+        "YOffset": 2.7219,
         "CollisionCircle": 0.83,
         "Brightness": 0.5,
         "Tint": null,
@@ -2022,25 +2146,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Two Hand Sword Combo - Two Handed Sword Combo Attack.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Salsa Dancing - Salsa Dancing Twirl And Clap.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Two Handed Sword Death - Falling Forward Death.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "2hand Idle - Two Handed Weapon Stance.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Wheelbarrow Dump - Dumping A Wheelbarrow.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Standing 2H Magic Attack 05 - Two Handed Casting Spell Pull Up And Clap Hands.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Running - Male Weighted Run.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -2054,12 +2178,12 @@
         "TemplateID": "unit/coral_vanguard",
         "Name": "Coral Vanguard",
         "Description": "A reef-plated harpooner who fights the way surf meets rock: slowly, then all at once.",
-        "ModelPath": "blue_dragon_knight.rmesh",
-        "PortraitModelPath": "armored_warrior_unit_5.rmesh",
-        "IconPath": "blue_magic_crystal.rtex",
+        "ModelPath": "coral_vanguard.rmesh",
+        "PortraitModelPath": "coral_vanguard.rmesh",
+        "IconPath": "coral_vanguard.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.75,
-        "YOffset": 2.3379,
+        "YOffset": 2.6324,
         "CollisionCircle": 0.83,
         "Brightness": 0.5,
         "Tint": null,
@@ -2157,28 +2281,59 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing Melee Combo Attack Ver. 1 - Two Hit Combo Attack With Axe.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Twist Dance - Doing The Twist Dance.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Sword And Shield Death - Sword And Shield Falling Forward Death.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Standing Idle Looking Ver. 2 - Looking Around With Axe.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Standing Melee Attack Horizontal - Right To Left Attack With Axe.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Standing Taunt Chest Thump - Banging Axe On Chest.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Standing Walk Forward - Walking Forward With Axe.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/lava_hammer": {
+                "PositionX": -0.38254,
+                "PositionY": 0.01431,
+                "PositionZ": 0.00531,
+                "PitchX": 0.79,
+                "YawY": 0.77,
+                "RollZ": 87.86,
+                "Scale": 0.5866,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -2189,12 +2344,12 @@
         "TemplateID": "unit/magma_smith",
         "Name": "Magma Smith",
         "Description": "A forge-slave who quenched a thousand blades and then decided to become one.",
-        "ModelPath": "horned_warrior_unit.rmesh",
-        "PortraitModelPath": "warrior_hero_unit_1.rmesh",
-        "IconPath": "engineer_goggles.rtex",
+        "ModelPath": "magma_smith.rmesh",
+        "PortraitModelPath": "magma_smith.rmesh",
+        "IconPath": "magma_smith.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.75,
-        "YOffset": 2.5781,
+        "YOffset": 2.5858,
         "CollisionCircle": 0.83,
         "Brightness": 0.5,
         "Tint": null,
@@ -2292,28 +2447,59 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Combo Punch - Eight Punch Combo.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Breakdance Uprock - Breakdance Uprock.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Knocked Out - Knocked Out Falling To Back.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Unarmed Idle 01 - Unarmed Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Lifting Object - Lifting A Heavy Object With Both Hands.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Standing Idle 03 - Playing With Magic.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Unarmed Walk Forward - Walking Forward.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/spear_of_light": {
+                "PositionX": -0.34815,
+                "PositionY": 0.05192,
+                "PositionZ": -0.69269,
+                "PitchX": -63.06,
+                "YawY": -55.74,
+                "RollZ": 81.52,
+                "Scale": 1.0513,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -2324,12 +2510,12 @@
         "TemplateID": "unit/lightbringer_monk",
         "Name": "Lightbringer Monk",
         "Description": "A bare-knuckle ascetic whose open palm hits like a closing door.",
-        "ModelPath": "warrior_hero_unit.rmesh",
-        "PortraitModelPath": "armored_warrior_hero_2.rmesh",
-        "IconPath": "purple_lightning_fist.rtex",
+        "ModelPath": "lightbringer_monk.rmesh",
+        "PortraitModelPath": "lightbringer_monk.rmesh",
+        "IconPath": "lightbringer_monk.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.75,
-        "YOffset": 2.762,
+        "YOffset": 2.7674,
         "CollisionCircle": 0.83,
         "Brightness": 0.5,
         "Tint": null,
@@ -2427,28 +2613,59 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Two Hand Club Combo - Two Handed Club Combo Attack.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Samba Dancing - Defile De Samba Parade Variation.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Mutant Dying - Mutant Dying Falling Onto Back.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Orc Idle - Male Orc Standing Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Pull Heavy Object - Pulling A Heavy Object.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Roar - Belting Out A Load Roar.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Orc Walk - Male Orc Walk Forward.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/stone_beast_axe": {
+                "PositionX": -0.24868,
+                "PositionY": 0.03708,
+                "PositionZ": -0.49478,
+                "PitchX": -63.06,
+                "YawY": -55.74,
+                "RollZ": 81.52,
+                "Scale": 0.755,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -2459,12 +2676,12 @@
         "TemplateID": "unit/pack_alpha",
         "Name": "Pack Alpha",
         "Description": "The biggest thing in the hunting pack, and the reason the rest of the pack still listens.",
-        "ModelPath": "minotaur_warrior_1.rmesh",
-        "PortraitModelPath": "orc_warrior.rmesh",
-        "IconPath": "nest_with_eggs.rtex",
+        "ModelPath": "pack_alpha.rmesh",
+        "PortraitModelPath": "pack_alpha.rmesh",
+        "IconPath": "pack_alpha.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.75,
-        "YOffset": 1.8481,
+        "YOffset": 2.5265,
         "CollisionCircle": 0.83,
         "Brightness": 0.5,
         "Tint": null,
@@ -2562,28 +2779,59 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Great Sword Slash - Great Sword Downward Slash.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Locking Hip Hop Dance - Locking Hip Hop Dance Variation Two.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Sword And Shield Death - Sword And Shield Falling Back Death.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Standing Block Idle - Blocking With Both Arms Out.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Pull Plant - Standing Pulling Up A Plant.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Great Sword Power Up - Great Sword Powering Up.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Mutant Walking - Mutant Brutal Walk.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/stone_hammer": {
+                "PositionX": -0.28184,
+                "PositionY": 0.04203,
+                "PositionZ": -0.56075,
+                "PitchX": -63.06,
+                "YawY": -55.74,
+                "RollZ": 81.52,
+                "Scale": 0.8697,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -2594,17 +2842,17 @@
         "TemplateID": "unit/stone_guardian",
         "Name": "Stone Guardian",
         "Description": "A living monolith of packed granite that plants itself at the front line and refuses to move.",
-        "ModelPath": "stone_warrior_warrior.rmesh",
-        "PortraitModelPath": "armored_warrior_unit.rmesh",
-        "IconPath": "eye_of_the_mountain.rtex",
+        "ModelPath": "stone_guardian.rmesh",
+        "PortraitModelPath": "stone_guardian.rmesh",
+        "IconPath": "stone_guardian.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.95,
-        "YOffset": 2.3868,
+        "YOffset": 1.8801,
         "CollisionCircle": 0.89,
         "Brightness": 0.5,
         "Tint": null,
         "NormalizeLuminance": true,
-        "IgnorePlayerColor": false,
+        "IgnorePlayerColor": true,
         "DespillPlayerColor": true,
         "PathingType": 9,
         "SpawnShader": null,
@@ -2697,28 +2945,59 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing Melee Attack Backhand - Backhanded Upward Attack With Axe.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Belly Dance - Belly Dancing Variation One.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Flying Back Death - Dying Flying Backward.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Great Sword Idle - Great Sword Admiring Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Digging - Digging Hole With Shovel.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Standing Taunt Battlecry - Battlecry With Axe.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Mutant Run - Mutant Running.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/thorn_blade": {
+                "PositionX": -0.37791,
+                "PositionY": -0.07001,
+                "PositionZ": 0.15489,
+                "PitchX": 21.95,
+                "YawY": 26.25,
+                "RollZ": 100.49,
+                "Scale": 0.8657,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -2729,12 +3008,12 @@
         "TemplateID": "unit/thornback_behemoth",
         "Name": "Thornback Behemoth",
         "Description": "A bramble-plated beast that heals faster the longer you keep hitting it.",
-        "ModelPath": "armored_beast_warrior_1.rmesh",
-        "PortraitModelPath": "armored_knight_unit.rmesh",
-        "IconPath": "forest_giant.rtex",
+        "ModelPath": "thornback_behemoth.rmesh",
+        "PortraitModelPath": "thornback_behemoth.rmesh",
+        "IconPath": "thornback_behemoth.rtex",
         "VisualMode": "Mesh",
-        "Scale": 2.95,
-        "YOffset": 2.0093,
+        "Scale": 3.63,
+        "YOffset": 2.2481,
         "CollisionCircle": 0.89,
         "Brightness": 0.5,
         "Tint": null,
@@ -2832,28 +3111,59 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Sword And Shield Slash - Sword And Shield Power Slash.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "House Dancing - House Dance Variation Two.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Standing React Death Right - Death Falling To The Right.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Warrior Idle - Warrior Stretching Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Wheelbarrow Walk - Walking With An Empty Wheelbarrow.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Sword And Shield Power Up - Sword And Shield Powering Up.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Slow Jog - Jogging Slowly Varying Angles Of Twist.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/enchanted_ice_sword": {
+                "PositionX": -0.32328,
+                "PositionY": 0.04821,
+                "PositionZ": -0.64322,
+                "PitchX": -63.06,
+                "YawY": -55.74,
+                "RollZ": 81.52,
+                "Scale": 0.9776,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -2864,12 +3174,12 @@
         "TemplateID": "unit/glacier_sentinel",
         "Name": "Glacier Sentinel",
         "Description": "A slow avalanche wearing armour, sent ahead of the line because nothing can get past it.",
-        "ModelPath": "frost_spirit_warrior.rmesh",
-        "PortraitModelPath": "frost_spirit_warrior.rmesh",
-        "IconPath": "crystal_shield.rtex",
+        "ModelPath": "glacier_sentinel.rmesh",
+        "PortraitModelPath": "glacier_sentinel.rmesh",
+        "IconPath": "glacier_sentinel.rtex",
         "VisualMode": "Mesh",
         "Scale": 2.95,
-        "YOffset": 2.7256,
+        "YOffset": 2.9523,
         "CollisionCircle": 0.89,
         "Brightness": 0.5,
         "Tint": null,
@@ -3236,12 +3546,12 @@
         "TemplateID": "building/altar",
         "Name": "Altar",
         "Description": "Sanctum where legendary champions are summoned and offered for draft.",
-        "ModelPath": "clock_tower_building.rmesh",
+        "ModelPath": "altar.rmesh",
         "PortraitModelPath": null,
-        "IconPath": null,
+        "IconPath": "altar.rtex",
         "VisualMode": "Mesh",
         "Scale": 1.5,
-        "YOffset": 1.5,
+        "YOffset": 1.4138,
         "CollisionCircle": 1.5,
         "Brightness": 0.5,
         "Tint": null,
@@ -3348,12 +3658,12 @@
         "TemplateID": "building/blacksmith",
         "Name": "Blacksmith",
         "Description": "Armory where combat enhancements and critical strike tech are researched.",
-        "ModelPath": "timber_framed_house.rmesh",
+        "ModelPath": "blacksmith.rmesh",
         "PortraitModelPath": null,
-        "IconPath": null,
+        "IconPath": "blacksmith.rtex",
         "VisualMode": "Mesh",
         "Scale": 1.5,
-        "YOffset": 1.5,
+        "YOffset": 1.2509,
         "CollisionCircle": 1.5,
         "Brightness": 0.5,
         "Tint": null,
@@ -3389,9 +3699,9 @@
         "TemplateID": "resource/coniferous_tree_1",
         "Name": "Tree",
         "Description": "",
-        "ModelPath": "bull_horn_ornament.rmesh",
-        "PortraitModelPath": "fantasy_tower_3.rmesh",
-        "IconPath": null,
+        "ModelPath": "coniferous_tree_1.rmesh",
+        "PortraitModelPath": "coniferous_tree_1.rmesh",
+        "IconPath": "coniferous_tree_1.rtex",
         "VisualMode": "Mesh",
         "YOffset": 2.7491,
         "CollisionCircle": 1,
@@ -3427,9 +3737,9 @@
         "TemplateID": "resource/palm_tree",
         "Name": "Palm Tree",
         "Description": "",
-        "ModelPath": "frost_pine_tree.rmesh",
-        "PortraitModelPath": "banana_plant.rmesh",
-        "IconPath": null,
+        "ModelPath": "palm_tree.rmesh",
+        "PortraitModelPath": "palm_tree.rmesh",
+        "IconPath": "palm_tree.rtex",
         "VisualMode": "Mesh",
         "YOffset": 2.7498,
         "CollisionCircle": 1,
@@ -3454,9 +3764,9 @@
         "TemplateID": "prop/crystal_cluster_29",
         "Name": "Crystals",
         "Description": "",
-        "ModelPath": "crystal_shard_prop_16.rmesh",
-        "PortraitModelPath": "crystal_cluster_41.rmesh",
-        "IconPath": null,
+        "ModelPath": "crystal_cluster_29.rmesh",
+        "PortraitModelPath": "crystal_cluster_29.rmesh",
+        "IconPath": "crystal_cluster_29.rtex",
         "VisualMode": "Mesh",
         "YOffset": 1.2500001,
         "CollisionCircle": 1,
@@ -3479,9 +3789,9 @@
         "TemplateID": "prop/spiked_wooden_stake",
         "Name": "Spike Pole",
         "Description": "",
-        "ModelPath": "wooden_fence.rmesh",
-        "PortraitModelPath": "spiked_fence_segment.rmesh",
-        "IconPath": null,
+        "ModelPath": "spiked_wooden_stake.rmesh",
+        "PortraitModelPath": "spiked_wooden_stake.rmesh",
+        "IconPath": "spiked_wooden_stake.rtex",
         "VisualMode": "Mesh",
         "YOffset": 1.2000002,
         "CollisionCircle": 0.45000002,
@@ -3514,7 +3824,7 @@
         "CostStone": 0,
         "Cooldown": 6,
         "TargetRange": 3.2,
-        "VisualEffect": "mineral_geology_crust_crack.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/enchanted_dart_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "hammer_crush_stone.raud",
         "PlacementTemplateId": null,
@@ -3566,7 +3876,7 @@
         "CostStone": 0,
         "Cooldown": 14,
         "TargetRange": 0,
-        "VisualEffect": "stone_burst_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/iron_fang_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "heavy_mace_smash.raud",
         "PlacementTemplateId": null,
@@ -3624,7 +3934,7 @@
         "CostStone": 0,
         "Cooldown": 16,
         "TargetRange": 6,
-        "VisualEffect": "stone_spike_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/blaze_streak_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "blade_grind_stone.raud",
         "PlacementTemplateId": null,
@@ -3702,7 +4012,7 @@
         "CostStone": 0,
         "Cooldown": 7,
         "TargetRange": 2.9,
-        "VisualEffect": "iron_wall_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/soul_bind_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "stone_wall_collapse.raud",
         "PlacementTemplateId": null,
@@ -3754,7 +4064,7 @@
         "CostStone": 0,
         "Cooldown": 18,
         "TargetRange": 0,
-        "VisualEffect": "mineral_geology_stone_fracture.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/moss_spore_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "fortress_gate_bash.raud",
         "PlacementTemplateId": null,
@@ -3827,7 +4137,7 @@
         "CostStone": 0,
         "Cooldown": 20,
         "TargetRange": 5.5,
-        "VisualEffect": "stone_pierce_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/sun_strike_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "armor_jingle_metal.raud",
         "PlacementTemplateId": null,
@@ -3897,7 +4207,7 @@
         "CostStone": 0,
         "Cooldown": 5,
         "TargetRange": 2.9,
-        "VisualEffect": "shadow_streak_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/tide_wave_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "soul_drain_moan.raud",
         "PlacementTemplateId": null,
@@ -3949,7 +4259,7 @@
         "CostStone": 0,
         "Cooldown": 12,
         "TargetRange": 7,
-        "VisualEffect": "shadow_bolt_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/iron_edge_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "dark_forest_whisper.raud",
         "PlacementTemplateId": null,
@@ -4016,7 +4326,7 @@
         "CostStone": 0,
         "Cooldown": 18,
         "TargetRange": 8,
-        "VisualEffect": "void_orb_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/ash_veil_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "mystic_forest_whispers.raud",
         "PlacementTemplateId": null,
@@ -4094,7 +4404,7 @@
         "CostStone": 0,
         "Cooldown": 7,
         "TargetRange": 6.5,
-        "VisualEffect": "void_grain_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/frost_veil_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "soft_foot_scuff.raud",
         "PlacementTemplateId": null,
@@ -4146,7 +4456,7 @@
         "CostStone": 0,
         "Cooldown": 16,
         "TargetRange": 5.5,
-        "VisualEffect": "dark_bloom_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/earth_arc_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "scout_footstep_soft.raud",
         "PlacementTemplateId": null,
@@ -4216,7 +4526,7 @@
         "CostStone": 0,
         "Cooldown": 14,
         "TargetRange": 0,
-        "VisualEffect": "dark_orb_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/star_fall_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "spell_pulse_hum.raud",
         "PlacementTemplateId": null,
@@ -4274,7 +4584,7 @@
         "CostStone": 0,
         "Cooldown": 6,
         "TargetRange": 3.4,
-        "VisualEffect": "moss_spore_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/acid_burst_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "grass_rustle_soft.raud",
         "PlacementTemplateId": null,
@@ -4326,7 +4636,7 @@
         "CostStone": 0,
         "Cooldown": 12,
         "TargetRange": 6,
-        "VisualEffect": "acid_rain_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/stone_burst_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "forest_wind_rustle.raud",
         "PlacementTemplateId": null,
@@ -4378,7 +4688,7 @@
         "CostStone": 0,
         "Cooldown": 20,
         "TargetRange": 0,
-        "VisualEffect": "particle_dynamics_aura_pulse.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/star_core_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "mystic_forest_whispers.raud",
         "PlacementTemplateId": null,
@@ -4451,7 +4761,7 @@
         "CostStone": 0,
         "Cooldown": 8,
         "TargetRange": 2.8,
-        "VisualEffect": "magic_healing_light.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/arcane_spike_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "invigorate_aura_hum.raud",
         "PlacementTemplateId": null,
@@ -4503,7 +4813,7 @@
         "CostStone": 0,
         "Cooldown": 16,
         "TargetRange": 0,
-        "VisualEffect": "mineral_geology_gem_dust.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/stone_edge_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "stone_arch_Construction.raud",
         "PlacementTemplateId": null,
@@ -4561,7 +4871,7 @@
         "CostStone": 0,
         "Cooldown": 20,
         "TargetRange": 0,
-        "VisualEffect": "stone_spike_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/fire_lance_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "bear_Damaged.raud",
         "PlacementTemplateId": null,
@@ -4653,7 +4963,7 @@
         "CostStone": 0,
         "Cooldown": 6,
         "TargetRange": 5,
-        "VisualEffect": "water_spell.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/shadow_grin_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "grass_rustle_soft.raud",
         "PlacementTemplateId": null,
@@ -4705,7 +5015,7 @@
         "CostStone": 0,
         "Cooldown": 13,
         "TargetRange": 3,
-        "VisualEffect": "frost_wave_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/earth_grain_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "spell_shockwave_boom.raud",
         "PlacementTemplateId": null,
@@ -4775,7 +5085,7 @@
         "CostStone": 0,
         "Cooldown": 16,
         "TargetRange": 0,
-        "VisualEffect": "frost_grain_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/star_dust_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "hail_stone_impact.raud",
         "PlacementTemplateId": null,
@@ -4874,7 +5184,7 @@
         "CostStone": 0,
         "Cooldown": 6,
         "TargetRange": 8,
-        "VisualEffect": "storm_orb_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/frost_wave_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "crystal_formation_Construction.raud",
         "PlacementTemplateId": null,
@@ -4926,7 +5236,7 @@
         "CostStone": 0,
         "Cooldown": 15,
         "TargetRange": 6,
-        "VisualEffect": "spirit_orb_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/iron_shield_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "magical_portal_hum.raud",
         "PlacementTemplateId": null,
@@ -5004,7 +5314,7 @@
         "CostStone": 0,
         "Cooldown": 20,
         "TargetRange": 7,
-        "VisualEffect": "storm_eye_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/fire_ball_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "spell_weave_hum.raud",
         "PlacementTemplateId": null,
@@ -5056,7 +5366,7 @@
         "CostStone": 0,
         "Cooldown": 7,
         "TargetRange": 7,
-        "VisualEffect": "lava_flash_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/mist_wisp_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "fire_elemental_LastHit.raud",
         "PlacementTemplateId": null,
@@ -5108,7 +5418,7 @@
         "CostStone": 0,
         "Cooldown": 15,
         "TargetRange": 5,
-        "VisualEffect": "flame_wisp_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/stone_pulse_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "forest_fire_crackl.raud",
         "PlacementTemplateId": null,
@@ -5186,7 +5496,7 @@
         "CostStone": 0,
         "Cooldown": 22,
         "TargetRange": 7,
-        "VisualEffect": "ash_veil_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/fire_beam_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "phoenix.raud",
         "PlacementTemplateId": null,
@@ -5238,7 +5548,7 @@
         "CostStone": 0,
         "Cooldown": 7,
         "TargetRange": 3,
-        "VisualEffect": "ash_grain_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/leaf_whirl_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "orc_camp_fire.raud",
         "PlacementTemplateId": null,
@@ -5290,7 +5600,7 @@
         "CostStone": 0,
         "Cooldown": 15,
         "TargetRange": 0,
-        "VisualEffect": "infernal_dragon.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/earth_core_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "firelord.raud",
         "PlacementTemplateId": null,
@@ -5374,7 +5684,7 @@
         "CostStone": 0,
         "Cooldown": 18,
         "TargetRange": 3.5,
-        "VisualEffect": "flame_trident_1.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/ash_burst_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "spell_burst_arcane.raud",
         "PlacementTemplateId": null,
@@ -5444,7 +5754,7 @@
         "CostStone": 0,
         "Cooldown": 7,
         "TargetRange": 7,
-        "VisualEffect": "frost_hail_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/frost_grain_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "hail_stone_impact.raud",
         "PlacementTemplateId": null,
@@ -5496,7 +5806,7 @@
         "CostStone": 0,
         "Cooldown": 16,
         "TargetRange": 0,
-        "VisualEffect": "frost_grain_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/iron_core_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "crystal_formation_Construction.raud",
         "PlacementTemplateId": null,
@@ -5569,7 +5879,7 @@
         "CostStone": 0,
         "Cooldown": 18,
         "TargetRange": 6,
-        "VisualEffect": "frost_wave_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/sun_scorch_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "stone_arch_Death.raud",
         "PlacementTemplateId": null,
@@ -5646,8 +5956,8 @@
         "CostWood": 0,
         "CostStone": 0,
         "Cooldown": 8,
-        "TargetRange": 5,
-        "VisualEffect": "ice_spirit_spell.rtex",
+        "TargetRange": 2.8,
+        "VisualEffect": "Assets/vfx_spritesheets/wind_blade_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "armor_jingle_metal.raud",
         "PlacementTemplateId": null,
@@ -5705,7 +6015,7 @@
         "CostStone": 0,
         "Cooldown": 18,
         "TargetRange": 0,
-        "VisualEffect": "crystal_lattice_vein.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/iron_shred_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "spell_cast_hum.raud",
         "PlacementTemplateId": null,
@@ -5762,8 +6072,8 @@
         "CostWood": 0,
         "CostStone": 0,
         "Cooldown": 20,
-        "TargetRange": 10,
-        "VisualEffect": "mineral_geology_quartz_core.rtex",
+        "TargetRange": 6,
+        "VisualEffect": "Assets/vfx_spritesheets/thunder_clap_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "cape_Damaged.raud",
         "PlacementTemplateId": null,
@@ -5839,7 +6149,7 @@
         "CostStone": 0,
         "Cooldown": 6,
         "TargetRange": 7.5,
-        "VisualEffect": "storm_bolt_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/frost_bite_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "storm_strike_crack.raud",
         "PlacementTemplateId": null,
@@ -5891,7 +6201,7 @@
         "CostStone": 0,
         "Cooldown": 16,
         "TargetRange": 0,
-        "VisualEffect": "storm_ray_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/earth_spike_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "gladiator_Aggro.raud",
         "PlacementTemplateId": null,
@@ -5967,7 +6277,7 @@
         "CostStone": 0,
         "Cooldown": 20,
         "TargetRange": 0,
-        "VisualEffect": "storm_strike_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/ash_grain_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "gladiator_Attack.raud",
         "PlacementTemplateId": null,
@@ -6040,7 +6350,7 @@
         "CostStone": 0,
         "Cooldown": 4.5,
         "TargetRange": 2.7,
-        "VisualEffect": "storm_eye_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/obsidian_edge_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "gladiator_LastHit.raud",
         "PlacementTemplateId": null,
@@ -6092,7 +6402,7 @@
         "CostStone": 0,
         "Cooldown": 12,
         "TargetRange": 8,
-        "VisualEffect": "storm_orb_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/iron_wall_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "griffin_Damaged.raud",
         "PlacementTemplateId": null,
@@ -6170,7 +6480,7 @@
         "CostStone": 0,
         "Cooldown": 16,
         "TargetRange": 3,
-        "VisualEffect": "wind_blade_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/lava_flash_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "gladiator_Move.raud",
         "PlacementTemplateId": null,
@@ -6221,8 +6531,8 @@
         "CostWood": 0,
         "CostStone": 0,
         "Cooldown": 6.5,
-        "TargetRange": 12,
-        "VisualEffect": "mana_orb_sheet.rtex",
+        "TargetRange": 7,
+        "VisualEffect": "Assets/vfx_spritesheets/frost_hail_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "spell_cast_hum.raud",
         "PlacementTemplateId": null,
@@ -6280,7 +6590,7 @@
         "CostStone": 0,
         "Cooldown": 18,
         "TargetRange": 0,
-        "VisualEffect": "star_core_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/stone_pierce_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "spell_weave_hum.raud",
         "PlacementTemplateId": null,
@@ -6359,8 +6669,8 @@
         "CostWood": 0,
         "CostStone": 0,
         "Cooldown": 24,
-        "TargetRange": 12,
-        "VisualEffect": "purple_magic_spell.rtex",
+        "TargetRange": 8,
+        "VisualEffect": "Assets/vfx_spritesheets/solar_flare_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "spell_scroll_crackle.raud",
         "PlacementTemplateId": null,
@@ -6418,7 +6728,7 @@
         "CostStone": 0,
         "Cooldown": 5.5,
         "TargetRange": 8.5,
-        "VisualEffect": "magic_spell_core.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/void_shard_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "spell_burst_arcane.raud",
         "PlacementTemplateId": null,
@@ -6470,7 +6780,7 @@
         "CostStone": 0,
         "Cooldown": 15,
         "TargetRange": 7,
-        "VisualEffect": "crystal_terrain.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/earth_meld_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "invigorate_aura_hum.raud",
         "PlacementTemplateId": null,
@@ -6555,7 +6865,7 @@
         "CostStone": 0,
         "Cooldown": 22,
         "TargetRange": 0,
-        "VisualEffect": "mineral_geology_gem_glint.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/sun_spike_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "magical_portal_hum.raud",
         "PlacementTemplateId": null,
@@ -6635,7 +6945,7 @@
         "CostStone": 0,
         "Cooldown": 6,
         "TargetRange": 7,
-        "VisualEffect": "light_beam_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/acid_spore_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "invigorate_aura_hum.raud",
         "PlacementTemplateId": null,
@@ -6687,7 +6997,7 @@
         "CostStone": 0,
         "Cooldown": 11,
         "TargetRange": 6,
-        "VisualEffect": "light_shafts_heavenly_touch.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/iron_strike_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "spell_pulse_hum.raud",
         "PlacementTemplateId": null,
@@ -6739,7 +7049,7 @@
         "CostStone": 0,
         "Cooldown": 20,
         "TargetRange": 0,
-        "VisualEffect": "light_shafts_phantom_ray.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/flame_wisp_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "paladin_Damaged.raud",
         "PlacementTemplateId": null,
@@ -6823,7 +7133,7 @@
         "CostStone": 0,
         "Cooldown": 4.5,
         "TargetRange": 2.8,
-        "VisualEffect": "sun_spike_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/storm_strike_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "mage_Damaged.raud",
         "PlacementTemplateId": null,
@@ -6875,7 +7185,7 @@
         "CostStone": 0,
         "Cooldown": 14,
         "TargetRange": 6,
-        "VisualEffect": "sun_scorch_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/iron_bolt_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "quest_alert_tone.raud",
         "PlacementTemplateId": null,
@@ -6953,7 +7263,7 @@
         "CostStone": 0,
         "Cooldown": 18,
         "TargetRange": 5,
-        "VisualEffect": "magic_healing_light.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/magma_orb_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "scroll_of_town_portal.raud",
         "PlacementTemplateId": null,
@@ -7033,7 +7343,7 @@
         "CostStone": 0,
         "Cooldown": 5.5,
         "TargetRange": 2.8,
-        "VisualEffect": "wind_gust_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/void_rip_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "bear_Damaged.raud",
         "PlacementTemplateId": null,
@@ -7111,7 +7421,7 @@
         "CostStone": 0,
         "Cooldown": 18,
         "TargetRange": 0,
-        "VisualEffect": "moss_spore_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/rock_burst_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "griffin_Damaged.raud",
         "PlacementTemplateId": null,
@@ -7184,7 +7494,7 @@
         "CostStone": 0,
         "Cooldown": 20,
         "TargetRange": 9,
-        "VisualEffect": "weapon_fins_venom_flick.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/fire_spin_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "scythe_sweep_sharp.raud",
         "PlacementTemplateId": null,
@@ -7254,7 +7564,7 @@
         "CostStone": 0,
         "Cooldown": 5,
         "TargetRange": 2.7,
-        "VisualEffect": "acid_rain_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/tide_crack_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "blade_slash_whoosh.raud",
         "PlacementTemplateId": null,
@@ -7306,7 +7616,7 @@
         "CostStone": 0,
         "Cooldown": 14,
         "TargetRange": 0,
-        "VisualEffect": "wind_blade_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/iron_shard_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "soft_foot_scuff.raud",
         "PlacementTemplateId": null,
@@ -7390,7 +7700,7 @@
         "CostStone": 0,
         "Cooldown": 16,
         "TargetRange": 0,
-        "VisualEffect": "stone_burst_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/solar_beam_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "gladiator_Move.raud",
         "PlacementTemplateId": null,
@@ -7442,7 +7752,7 @@
         "CostStone": 10,
         "Cooldown": 0,
         "TargetRange": 0,
-        "VisualEffect": "storm_strike_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/wild_fire_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "forest_wind_rustle.raud",
         "PlacementTemplateId": null,
@@ -7467,7 +7777,7 @@
         "CostStone": 25,
         "Cooldown": 0,
         "TargetRange": 0,
-        "VisualEffect": "light_shafts_phantom_ray.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/ghost_flare_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "scythe_sweep_sharp.raud",
         "PlacementTemplateId": null,
@@ -7492,7 +7802,7 @@
         "CostStone": 10,
         "Cooldown": 0,
         "TargetRange": 0,
-        "VisualEffect": "lava_flash_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/light_shard_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "item_hover_tink.raud",
         "PlacementTemplateId": null,
@@ -7517,7 +7827,7 @@
         "CostStone": 5,
         "Cooldown": 0,
         "TargetRange": 0,
-        "VisualEffect": "iron_wall_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/dark_shade_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "forest_fire_crackl.raud",
         "PlacementTemplateId": null,
@@ -7542,7 +7852,7 @@
         "CostStone": 5,
         "Cooldown": 0,
         "TargetRange": 30,
-        "VisualEffect": "storm_pulse_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/moon_flare_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "storm_strike_crack.raud",
         "PlacementTemplateId": null,
@@ -7567,7 +7877,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "flame_trident_1.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/wild_arc_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "leather_tunic_rustle.raud",
         "PlacementTemplateId": null,
@@ -7592,7 +7902,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "purple_magic_spell.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/mana_shard_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "forest_wind_rustle.raud",
         "PlacementTemplateId": null,
@@ -7617,7 +7927,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "wind_blade_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/void_orb_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "leather_tunic_rustle.raud",
         "PlacementTemplateId": null,
@@ -7642,7 +7952,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "energy_explosion.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/doom_fire_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "leather_tunic_rustle.raud",
         "PlacementTemplateId": null,
@@ -7667,7 +7977,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "blue_magic_shield_2.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/void_gate_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "forest_wind_rustle.raud",
         "PlacementTemplateId": null,
@@ -7692,7 +8002,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "storm_strike_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/wind_dart_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "leather_tunic_rustle.raud",
         "PlacementTemplateId": null,
@@ -7717,7 +8027,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "forest_wind_rustle.raud",
+        "VisualEffect": "Assets/vfx_spritesheets/wind_whirl_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "forest_wind_rustle.raud",
         "PlacementTemplateId": null,
@@ -7742,7 +8052,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "ice_spirit_spell.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/glow_orb_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "forest_wind_rustle.raud",
         "PlacementTemplateId": null,
@@ -7767,7 +8077,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "magic_healing_light.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/shadow_streak_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "leather_tunic_rustle.raud",
         "PlacementTemplateId": null,
@@ -7792,7 +8102,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "infernal_dragon.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/grave_bolt_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "leather_tunic_rustle.raud",
         "PlacementTemplateId": null,
@@ -7810,14 +8120,14 @@
         "Description": "Each kill grants +{{Ability.Amount:0}} maximum health, up to +{{Ability.Cap:0}}. {{Consumable.Cost:0}} gold. One elixir per hero.",
         "Role": null,
         "AbilityType": "target_spell",
-        "IconPath": "cosmic_orb.rtex",
+        "IconPath": "elixir_void_pact.rtex",
         "ManaCost": 0,
         "CostGold": 0,
         "CostWood": 0,
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "energy_explosion.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/wind_spin_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "forest_wind_rustle.raud",
         "PlacementTemplateId": null,
@@ -7842,7 +8152,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "magic_spell_core.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/void_grain_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "forest_wind_rustle.raud",
         "PlacementTemplateId": null,
@@ -7860,14 +8170,14 @@
         "Description": "Each cast cuts the caster's other cooldowns by {{Ability.Amount:0.#}} seconds, up to {{Ability.Procs:0}} times. {{Consumable.Cost:0}} gold. One elixir per hero.",
         "Role": null,
         "AbilityType": "target_spell",
-        "IconPath": "purple_magic_spell.rtex",
+        "IconPath": "elixir_swift_incantation.rtex",
         "ManaCost": 0,
         "CostGold": 0,
         "CostWood": 0,
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "storm_strike_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/void_touch_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "forest_wind_rustle.raud",
         "PlacementTemplateId": null,
@@ -7892,7 +8202,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "energy_explosion.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/light_beam_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "forest_wind_rustle.raud",
         "PlacementTemplateId": null,
@@ -7917,7 +8227,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "blue_magic_shield_2.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/spirit_fire_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "leather_tunic_rustle.raud",
         "PlacementTemplateId": null,
@@ -7942,7 +8252,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "wind_blade_sheet.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/wind_cone_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "leather_tunic_rustle.raud",
         "PlacementTemplateId": null,
@@ -7960,14 +8270,14 @@
         "Description": "Regenerates {{Ability.Amount:0}} health per second, up to {{Ability.Cap:0}} health. {{Consumable.Cost:0}} gold. One elixir per hero.",
         "Role": null,
         "AbilityType": "target_spell",
-        "IconPath": "magic_healing_light.rtex",
+        "IconPath": "elixir_slow_regeneration.rtex",
         "ManaCost": 0,
         "CostGold": 0,
         "CostWood": 0,
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "magic_healing_light.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/spirit_shade_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "forest_wind_rustle.raud",
         "PlacementTemplateId": null,
@@ -7992,7 +8302,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "magic_spell_core.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/dark_orb_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "forest_wind_rustle.raud",
         "PlacementTemplateId": null,
@@ -8017,7 +8327,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "crystal_terrain.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/wind_shear_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "forest_wind_rustle.raud",
         "PlacementTemplateId": null,
@@ -8042,7 +8352,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 60,
-        "VisualEffect": "water_spell.rtex",
+        "VisualEffect": "Assets/vfx_spritesheets/void_core_sheet.rtex",
         "ProjectileId": null,
         "CastSound": "forest_wind_rustle.raud",
         "PlacementTemplateId": null,
@@ -8067,7 +8377,7 @@
         "CostStone": 0,
         "Cooldown": 15,
         "TargetRange": 250,
-        "VisualEffect": "mineral_geology_crust_crack.rtex",
+        "VisualEffect": null,
         "ProjectileId": "weapon/shadow_kunai",
         "CastSound": "hammer_crush_stone.raud",
         "PlacementTemplateId": null,
@@ -8092,7 +8402,7 @@
         "CostStone": 0,
         "Cooldown": 20,
         "TargetRange": 250,
-        "VisualEffect": "holy_light_burst.rtex",
+        "VisualEffect": null,
         "ProjectileId": "weapon/prism_shard",
         "CastSound": "forest_wind_rustle.raud",
         "PlacementTemplateId": null,
@@ -8117,7 +8427,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 0,
-        "VisualEffect": null,
+        "VisualEffect": "Assets/vfx_spritesheets/magic_missile_sheet.rtex",
         "ProjectileId": null,
         "CastSound": null,
         "PlacementTemplateId": null,
@@ -8142,7 +8452,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 0,
-        "VisualEffect": null,
+        "VisualEffect": "Assets/vfx_spritesheets/spirit_glow_sheet.rtex",
         "ProjectileId": null,
         "CastSound": null,
         "PlacementTemplateId": null,
@@ -8167,7 +8477,7 @@
         "CostStone": 0,
         "Cooldown": 0,
         "TargetRange": 0,
-        "VisualEffect": null,
+        "VisualEffect": "Assets/vfx_spritesheets/wind_blast_sheet.rtex",
         "ProjectileId": null,
         "CastSound": null,
         "PlacementTemplateId": null,
@@ -8382,7 +8692,7 @@
         "ProjectileSpeed": 16,
         "VisualEffect": "weapon_fins_arcane_wing.rtex",
         "AttackSound": "arcane_surge_swell.raud",
-        "ProjectileModelPath": "gargoyle_arch.rmesh",
+        "ProjectileModelPath": "lava_projectile.rmesh",
         "ImpactVisualEffect": "magma_orb_sheet.rtex",
         "ImpactParticleEffect": null,
         "ImpactParticleScale": 1,
@@ -8477,7 +8787,7 @@
         "ProjectileSpeed": 20,
         "VisualEffect": "weapon_fins_venom_flick.rtex",
         "AttackSound": "blade_clash_huff.raud",
-        "ProjectileModelPath": "mace_weapon_4.rmesh",
+        "ProjectileModelPath": "ice_crystal_shard_5.rmesh",
         "ImpactVisualEffect": "weapon_fins_arcane_wing.rtex",
         "ImpactParticleEffect": null,
         "ImpactParticleScale": 1,
@@ -8572,7 +8882,7 @@
         "ProjectileSpeed": 26,
         "VisualEffect": "acid_burst_sheet.rtex",
         "AttackSound": "griffin.raud",
-        "ProjectileModelPath": "rock_mace_weapon.rmesh",
+        "ProjectileModelPath": "spear_projectile_2.rmesh",
         "ImpactVisualEffect": "weapon_fins_iron_shard.rtex",
         "ImpactParticleEffect": null,
         "ImpactParticleScale": 1,
@@ -8667,7 +8977,7 @@
         "ProjectileSpeed": 17,
         "VisualEffect": "weapon_fins_venom_flick.rtex",
         "AttackSound": "pike.raud",
-        "ProjectileModelPath": "fantasy_weaponry.rmesh",
+        "ProjectileModelPath": "emerald_shard_2.rmesh",
         "ImpactVisualEffect": "weapon_fins_venom_flick.rtex",
         "ImpactParticleEffect": null,
         "ImpactParticleScale": 1,
@@ -8762,7 +9072,7 @@
         "ProjectileSpeed": 0,
         "VisualEffect": "dark_orb_sheet.rtex",
         "AttackSound": "warhammer_Damaged.raud",
-        "ProjectileModelPath": "curved_dagger_blade.rmesh",
+        "ProjectileModelPath": null,
         "ImpactVisualEffect": "iron_shield_sheet.rtex",
         "ImpactParticleEffect": null,
         "ImpactParticleScale": 1,
@@ -8857,7 +9167,7 @@
         "ProjectileSpeed": 15,
         "VisualEffect": "fire_spin_sheet.rtex",
         "AttackSound": "griffin_Aggro.raud",
-        "ProjectileModelPath": "chinese_warrior_female.rmesh",
+        "ProjectileModelPath": "magical_orb_projectile_1.rmesh",
         "ImpactVisualEffect": "wind_cone_sheet.rtex",
         "ImpactParticleEffect": null,
         "ImpactParticleScale": 1,
@@ -8952,7 +9262,7 @@
         "ProjectileSpeed": 0,
         "VisualEffect": "weapon_fins_arcane_wing.rtex",
         "AttackSound": "healing_glow_pulse.raud",
-        "ProjectileModelPath": "frost_axe_weapon.rmesh",
+        "ProjectileModelPath": null,
         "ImpactVisualEffect": "weapon_fins_arcane_wing.rtex",
         "ImpactParticleEffect": null,
         "ImpactParticleScale": 1,
@@ -9047,7 +9357,7 @@
         "ProjectileSpeed": 24,
         "VisualEffect": "solar_beam_sheet.rtex",
         "AttackSound": "notification_alert_low.raud",
-        "ProjectileModelPath": "crystal_lance_spear.rmesh",
+        "ProjectileModelPath": "crystal_shard_120.rmesh",
         "ImpactVisualEffect": "fire_lance_sheet.rtex",
         "ImpactParticleEffect": null,
         "ImpactParticleScale": 1,
@@ -9142,7 +9452,7 @@
         "ProjectileSpeed": 0,
         "VisualEffect": "weapon_fins_iron_shard.rtex",
         "AttackSound": "fireball.raud",
-        "ProjectileModelPath": "banner_pole_1.rmesh",
+        "ProjectileModelPath": null,
         "ImpactVisualEffect": "weapon_fins_iron_shard.rtex",
         "ImpactParticleEffect": null,
         "ImpactParticleScale": 1,
@@ -9237,7 +9547,7 @@
         "ProjectileSpeed": 0,
         "VisualEffect": "earth_spike_sheet.rtex",
         "AttackSound": "earthquake_shock_thud.raud",
-        "ProjectileModelPath": "mace_weapon_4.rmesh",
+        "ProjectileModelPath": null,
         "ImpactVisualEffect": "earth_meld_sheet.rtex",
         "ImpactParticleEffect": null,
         "ImpactParticleScale": 1,
@@ -9427,7 +9737,7 @@
         "ProjectileSpeed": 23,
         "VisualEffect": "weapon_fins_venom_flick.rtex",
         "AttackSound": "march_cadence_step.raud",
-        "ProjectileModelPath": "arched_gateway.rmesh",
+        "ProjectileModelPath": "wooden_arrow.rmesh",
         "ImpactVisualEffect": "earth_arc_sheet.rtex",
         "ImpactParticleEffect": null,
         "ImpactParticleScale": 1,
@@ -9522,7 +9832,7 @@
         "ProjectileSpeed": 19,
         "VisualEffect": "weapon_fins_arcane_wing.rtex",
         "AttackSound": "warchief_LastHit.raud",
-        "ProjectileModelPath": "halberd_spear_weapon.rmesh",
+        "ProjectileModelPath": "crystal_bolt_projectile.rmesh",
         "ImpactVisualEffect": "weapon_fins_arcane_wing.rtex",
         "ImpactParticleEffect": null,
         "ImpactParticleScale": 1,
@@ -9617,7 +9927,7 @@
         "ProjectileSpeed": 18,
         "VisualEffect": "crystal_lattice_quartz_flare.rtex",
         "AttackSound": "crystal_cave_shimmer.raud",
-        "ProjectileModelPath": "crystal_shard_143.rmesh",
+        "ProjectileModelPath": null,
         "ImpactVisualEffect": "mineral_geology_prism_dust.rtex",
         "ImpactParticleEffect": null,
         "ImpactParticleScale": 1,
@@ -9807,7 +10117,7 @@
         "ProjectileSpeed": 0,
         "VisualEffect": "particle_dynamics_spirit_wisp.rtex",
         "AttackSound": "spirit_bind_moan.raud",
-        "ProjectileModelPath": "crystal_mace_weapon_1.rmesh",
+        "ProjectileModelPath": null,
         "ImpactVisualEffect": "light_shafts_spirit_path.rtex",
         "ImpactParticleEffect": null,
         "ImpactParticleScale": 1,
@@ -9902,7 +10212,7 @@
         "ProjectileSpeed": 21,
         "VisualEffect": "void_orb_sheet.rtex",
         "AttackSound": "void_gate_ripple.raud",
-        "ProjectileModelPath": "frost_axe_weapon.rmesh",
+        "ProjectileModelPath": "magic_projectile_4.rmesh",
         "ImpactVisualEffect": "void_touch_sheet.rtex",
         "ImpactParticleEffect": null,
         "ImpactParticleScale": 1,
@@ -9997,7 +10307,7 @@
         "ProjectileSpeed": 20,
         "VisualEffect": "stone_edge_sheet.rtex",
         "AttackSound": "cloak_Damaged.raud",
-        "ProjectileModelPath": "armored_warrior_hero_2.rmesh",
+        "ProjectileModelPath": "poly_crystal.rmesh",
         "ImpactVisualEffect": "stone_edge_sheet.rtex",
         "ImpactParticleEffect": null,
         "ImpactParticleScale": 1,
@@ -10092,7 +10402,7 @@
         "ProjectileSpeed": 0,
         "VisualEffect": "weapon_fins_arcane_wing.rtex",
         "AttackSound": "click_confirm_heavy.raud",
-        "ProjectileModelPath": "mace_weapon_3.rmesh",
+        "ProjectileModelPath": null,
         "ImpactVisualEffect": "spectral_refraction_beam.rtex",
         "ImpactParticleEffect": null,
         "ImpactParticleScale": 1,
@@ -11223,7 +11533,7 @@
         "TemplateID": "upgrade/bs_evasion_drill",
         "Name": "Evasion Drill",
         "Description": "Grants a chance to dodge incoming attacks.",
-        "IconPath": "magical_gate.rtex",
+        "IconPath": "bs_evasion_drill.rtex",
         "Hotkey": null,
         "CostGold": 0,
         "CostWood": 70,
@@ -11271,7 +11581,7 @@
         "TemplateID": "upgrade/bs_battle_rhythm",
         "Name": "Battle Rhythm",
         "Description": "Reduces ability cooldowns.",
-        "IconPath": "golden_hammers.rtex",
+        "IconPath": "bs_battle_rhythm.rtex",
         "Hotkey": null,
         "CostGold": 0,
         "CostWood": 75,
@@ -11295,7 +11605,7 @@
         "TemplateID": "upgrade/bs_bloodthirst",
         "Name": "Bloodthirst",
         "Description": "Heals a fraction of damage dealt.",
-        "IconPath": "eagle_ring.rtex",
+        "IconPath": "bs_bloodthirst.rtex",
         "Hotkey": null,
         "CostGold": 0,
         "CostWood": 65,
@@ -12752,8 +13062,1525 @@
         "Attribution_ImportedFromMap": null
       }
     ],
-    "Attachments": [],
-    "Vfx": []
+    "Attachments": [
+      {
+        "AttachmentId": "attachment/short_blade_axe",
+        "Name": "Warlord's Cleaver",
+        "ModelPath": "short_blade_axe.rmesh",
+        "Scale": 0.9599,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/magic_dagger",
+        "Name": "Nether Stiletto",
+        "ModelPath": "magic_dagger.rmesh",
+        "Scale": 0.2753,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/ornate_scythe_blade",
+        "Name": "Sanguine Scythe",
+        "ModelPath": "ornate_scythe_blade.rmesh",
+        "Scale": 0.9939,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/lava_hammer",
+        "Name": "Magma Smith's Hammer",
+        "ModelPath": "lava_hammer.rmesh",
+        "Scale": 0.5866,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/spear_of_light",
+        "Name": "Radiant Spear",
+        "ModelPath": "spear_of_light.rmesh",
+        "Scale": 1.0513,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/stone_beast_axe",
+        "Name": "Pack Alpha's Axe",
+        "ModelPath": "stone_beast_axe.rmesh",
+        "Scale": 0.755,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/stone_hammer",
+        "Name": "Granite Maul",
+        "ModelPath": "stone_hammer.rmesh",
+        "Scale": 0.8697,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/thorn_blade",
+        "Name": "Bramble Blade",
+        "ModelPath": "thorn_blade.rmesh",
+        "Scale": 0.8657,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/wooden_hammer",
+        "Name": "Builder's Mallet",
+        "ModelPath": "wooden_hammer.rmesh",
+        "Scale": 0.456,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/enchanted_ice_sword",
+        "Name": "Avalanche Greatsword",
+        "ModelPath": "enchanted_ice_sword.rmesh",
+        "Scale": 0.9776,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      }
+    ],
+    "Vfx": [
+      {
+        "VfxId": "vfx/aura_elixir_blood_debt",
+        "Name": "Blood Debt Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "holy_sigil.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#ff3b1f",
+        "SecondaryColor": "#7a0a05",
+        "CoreColor": "#ffd9c2",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_siphon_sigil",
+        "Name": "Siphon Sigil Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "magic_rune.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#41ff8c",
+        "SecondaryColor": "#0d5c31",
+        "CoreColor": "#e6ffee",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_rending_edge",
+        "Name": "Rending Edge Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "ward_sigil.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#ff5544",
+        "SecondaryColor": "#6b0f0f",
+        "CoreColor": "#ffd0c8",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_executioner",
+        "Name": "Executioner Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "iron_sigil.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#d8342a",
+        "SecondaryColor": "#4d1410",
+        "CoreColor": "#ffc9b8",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_warded_hide",
+        "Name": "Warded Hide Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "rune_etch.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#b9c6d8",
+        "SecondaryColor": "#4a5568",
+        "CoreColor": "#ffffff",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_retaliation",
+        "Name": "Retaliation Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "elf_glyph.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#ff9a3c",
+        "SecondaryColor": "#7a3608",
+        "CoreColor": "#ffe9c7",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_phantom_step",
+        "Name": "Phantom Step Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "soul_trace.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#9fe8ff",
+        "SecondaryColor": "#3a6f8f",
+        "CoreColor": "#ffffff",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_soul_harvest",
+        "Name": "Soul Harvest Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "floating_garden_soul_bloom.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#c07bff",
+        "SecondaryColor": "#3f1a6b",
+        "CoreColor": "#f2e2ff",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_feeding_frenzy",
+        "Name": "Feeding Frenzy Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "crystal_plains_talisman_glow.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#ff4f8a",
+        "SecondaryColor": "#5d0b2c",
+        "CoreColor": "#ffdceb",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_void_pact",
+        "Name": "Void Pact Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "ancient_tomb_curse_glyph.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#7b4dff",
+        "SecondaryColor": "#20123f",
+        "CoreColor": "#d9ccff",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_arcane_echo",
+        "Name": "Arcane Echo Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "mythic_glyph.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#3fa9ff",
+        "SecondaryColor": "#0c2c52",
+        "CoreColor": "#d6ecff",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_swift_incantation",
+        "Name": "Swift Incantation Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "holy_glyph.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#33e0d0",
+        "SecondaryColor": "#0b4a44",
+        "CoreColor": "#dcfffb",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_ritual_echo",
+        "Name": "Ritual Echo Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "holy_aura.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#ffcf5a",
+        "SecondaryColor": "#7d5506",
+        "CoreColor": "#fff3cf",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_slow_regeneration",
+        "Name": "Slow Regeneration Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "spirit_aura.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#48d97a",
+        "SecondaryColor": "#0e4b26",
+        "CoreColor": "#e2ffe9",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_battle_trance",
+        "Name": "Battle Trance Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "rune_glow.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#ff7a1a",
+        "SecondaryColor": "#5e2404",
+        "CoreColor": "#ffe0bd",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      }
+    ]
   },
   "CombatTuning": {
     "ResistTuningConstantK": 16.67,
@@ -13380,10 +15207,6 @@
   "noise_textures": {},
   "icons": {
     "icon/victory_flag": {
-      "TexturePath": null,
-      "Attribution_ImportedFromMap": null
-    },
-    "icon/wood_logs": {
       "TexturePath": null,
       "Attribution_ImportedFromMap": null
     }
