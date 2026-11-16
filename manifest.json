@@ -340,7 +340,15 @@
       "mace_weapon_3.rmesh": "6c92b42f1ccda209c7c36193861a314ba368199b1c8214f815d1c122daa292c7",
       "mace_weapon_4.rmesh": "715ca8bea199053c8b3900961d0c574426c66dc6cd97cc27761ab307d6c3216b",
       "magic_staff_weapon_1.rmesh": "46bc598625d6fc02a3533c13169dd1b957d17a6a80e092aed21281642ddd54b2",
-      "rock_mace_weapon.rmesh": "f90a5ccf4474cf9bee07cbfde32b40d67189371a0b72a058d48097fdbda55714"
+      "rock_mace_weapon.rmesh": "f90a5ccf4474cf9bee07cbfde32b40d67189371a0b72a058d48097fdbda55714",
+      "crystal_projectile_2.rmesh": "b840fce82aad347a4c5069d0d3312d8c10aa61d0166fe21e3c9852aa7d0fc6fd",
+      "folded_paper_projectile.rmesh": "3ce7458b620192ed91950ff74b9a6f4e37e8ac6c45660d36a91af55e4c26b699",
+      "lava_projectile.rmesh": "bf27c20c4579273761dcc7d8067c3362af8fa19a6d208e0bad4696c833b323b3",
+      "magic_arrow_projectile.rmesh": "fe632e49564ada63530146cd0aabd1075a5e0715df4984ac8c6a96c88e0da663",
+      "magic_projectile_4.rmesh": "3f71a1aa1e796611291dba4abbeaa293feae30acfb972d35c6818e3dbc494f1a",
+      "magical_orb_projectile_1.rmesh": "85fa702080a6fe699d8d6ec703ee7439c270be7f3306d625cb671f70a063faf2",
+      "magma_shard_projectile.rmesh": "a96c92dc27001cc7732c4133ba072d3c3c096fb5eca6e1fb236dc5c0cfbadc10",
+      "spear_projectile_2.rmesh": "ced34d966949ce69865c9d29876943946e094f1796bf2e493c5d2590588e7637"
     },
     "Music": {
       "dragon_tavern.raud": "a1f23039849a6f788c5b1540b1acfa0437bf52243a3b838076bc0a8f3b566c70"
@@ -358,7 +366,20 @@
       "gargoyle_arch.rmesh": "dc9ff27c9c71a48fffef130ade2bd9dd1047af401a592cf8edbd376a9a001c8d",
       "spiked_wooden_stake.rmesh": "ef71da42fa9bf03c13f07762ad8cf33334dd519d5a1ee5bbc266076d07252d63",
       "coniferous_tree_1.rmesh": "70aa52e415a2f4304687f13efb02ba16f03c1c78450795d6aa0b87026114c49e",
-      "palm_tree.rmesh": "28286ddd9de7e16f3f8c1dd09d4a3c26ce107432885d6b9c261974fd35477f4a"
+      "palm_tree.rmesh": "28286ddd9de7e16f3f8c1dd09d4a3c26ce107432885d6b9c261974fd35477f4a",
+      "crystal_shard_109.rmesh": "4aff0932cd97e7fec6890e66ab30e3e7d5a732bf718e0e009d9412bcbc0d8cd8",
+      "crystal_shard_120.rmesh": "777c9739dc96d402056a18759a731d6a5513f13f6734e5e155fe33ac57ce029a",
+      "emerald_shard_2.rmesh": "bb1dc9b2c091cc3f2de16b6dc2d43111797da5f7813fb4411edcbe8769cbe8f8",
+      "ice_crystal_shard_5.rmesh": "d0b48fc5bb3f4d1c7a08b6270362abf5ac36edb134753522b4a9b3785167e5b5",
+      "low_poly_crystal_shard_2.rmesh": "3f34e1629f5469f27ca0a5dde118b590737b5072240cf71803406d0b3c2e1cb4",
+      "low_poly_grenade.rmesh": "a57e58de8adca462ef1610ff8eb65a5e866b40864a6c92d0d6b1f51d742a5492",
+      "magic_shard_crystal_2.rmesh": "a11c54fccbb026590594ad8a0a7b34e276324b9a2d1a97a1c92207a7cafc6804",
+      "magical_shard_crystal_1.rmesh": "6f1a0efb128032e45036639a8aed31358c950fcb468ea8e66142d11085d0e8ee",
+      "magma_crystal_5.rmesh": "472ecbcebd561734f7060f0e9c6aa85a5149d929a0647a897557434e381dfb57",
+      "poly_crystal.rmesh": "c7a7f103932bb07ff40c57b5624b3d18c4a0c10a91212f780e0dcfa5c783ceaa",
+      "rocket_missile.rmesh": "1a79452be4f17d0f07b0063815271e6560f9359aff9761fab870826ba61991f0",
+      "spiky_ball.rmesh": "65857e69ce154b15799410f13745ea1b33f2bf329acadea1d5e09935803ebd7f",
+      "wooden_arrow.rmesh": "07b70937cef7fbce67d705e9c5a3a12024a1f64cea8546b0cd3be209952b66b7"
     },
     "Ribbon": {
       "arcane_rune_ether_trace.rtex": "c44bed6b3e233d48f77fc35e73aecd364038655dd546afb0ca313bf9522df090",
@@ -798,7 +819,13 @@
       "wind_gust_sheet.rtex": "d79f0199c52eab90f552f84fe3255bfcf50c9a88ece13a8884fb22c78b60e85d",
       "wind_shear_sheet.rtex": "6366402c6c43faf39c4a21ab8c2f4c14b7b5b48e353372cd9ad03743d15f515b",
       "wind_spin_sheet.rtex": "0cc101296c530a3996de942508a4d52c097a616bb9965993c46a6bf0088eca25",
-      "wind_whirl_sheet.rtex": "bce380f0a478534dc03024d319d2494c40dab3582225a231ad3cde750b88554e"
+      "wind_whirl_sheet.rtex": "bce380f0a478534dc03024d319d2494c40dab3582225a231ad3cde750b88554e",
+      "acid_haze_sheet.rtex": "adb21954abf1becc16da9c2fb9b83a01c6e2d795ba1052391089c1ad04822e2c",
+      "acid_spore_sheet.rtex": "fbcb3b4120f873dd35f12e31d5d5fc143db5f38836fbd4a4cd885c2e94040ac4",
+      "ghost_flare_sheet.rtex": "3ab0ec60a43b99c16facdc3a91e7d6bc46ee9248c12d02f77c5b156dabd71451",
+      "tide_wave_sheet.rtex": "417a8e257a429296f7a656d4a166e332d8836c0aa93722a567b0f13b684ddfba",
+      "wild_fire_sheet.rtex": "744c4cf7a1524f04ba9cb794da64a34d5a282f3f6456ff92468587638a06daf7",
+      "void_glyph_sheet.rtex": "15510ea43c221969decdcbf53251780c82e7dc922976eb392c568922bfadb824"
     },
     "Terrain": {
       "abyssal_trench_void_clay.rtex": "064401b38722dc19bb221dd752669264307817843d994c563b23df744dc79574",
@@ -862,20 +889,20 @@
       ".gitignore": "a37fd08b342aa46e733a0072320ff737cecd240644a8dead1ffcdced48b0756a",
       "AGENTS.md": "c76920c0a65a28cf41a048d8176cbc6a00586d8a3eabe8f9277d595071e28bf8",
       "Attribution_SourceMapAttribute.cs": "3b1e37e546f2b74e8d42baf0dbc3b82301dc1931a0cb82e6e86e79d7e497a4dc",
-      "authority.pid": "4e6aa035fc9b08bd5a4bf5d4618d25f0ca69f841fbd9218037da7132f72d2f85",
+      "authority.pid": "435de9a3905aa304cc67fa18169f77b8b73a0982191d6d477d230bf8d21e8de0",
       "Directory.Build.targets": "7424a53a847319e9ea56b8b31bc476b685d84b940eabfaa3a17ef2fa9bfe20b3",
       "LICENSE.md": "d3834b5021d97985e5b2a7a12a32387f4ba9cfd6a7756f2d60313a3d0da5ae02",
       "MapScript.AvatarAbilities.cs": "63121d88cb33f389c9a178b402256483f7e4986fecd15726f3278248729fdbff",
       "MapScript.cs": "b308056a193975310096f385cdc266542dc1cfb7546d569acb98eea4aadd24fa",
       "MapScript.csproj": "6f81d7cd9fdc555782deb3757fbecfa3f520132faf8b58bd28a831bce7863bb3",
-      "MapScript.debug.json": "09ba8358bab84cd46e874f82d8409834620d8e5de1e65546b5087f0b51db22b6",
+      "MapScript.debug.json": "5e0edfa5deae564f1fe3ca8b3dcb96301c24554c70a35534ead9cb3cad0fa506",
       "MapScript.Elixirs.cs": "a796346149a73591c196243937d24ad4a1cdbb0e12fc748a1600f168eea9bb0f",
       "MapScript.Instructions.cs": "ec22700ee324b3cdb3d5050e1495c872a40f6cb92e2e925ff4c377255fb5d929",
       "MapScript.Lobby.cs": "0a8a34f7eb4fad883028439a43141ec69ad382e5122babb380611da9822f7a9b",
       "MapScript.Match.cs": "c2d0715eeffe0ef0e839c9a402c75aa19f1e29b0382fe3f6f98ed22eda47dd77",
       "MapScript.Rerolls.cs": "5f5bc6dd866917d0b3bb8e0c7dadf12df9d837185e3c55dee12c62b7cf286c29",
       "MapScript.slnx": "6b5b77b660653b5cd34350fe244e9f2a3e7e344cf23d7efc339e451480582f3d",
-      "metadata.json": "77914f338fce8d120ab21d9a79a075ef2d371ae60b5ef4dd1024771f73277c71",
+      "metadata.json": "a44b705c37410e56cc4b11cf0534ed306169237750decfd3003d338343465116",
       "NuGet.config": "2211ce92e32f9c93bc98f9172c70cae0d41e5fe750e3a28a245eb754e6c3a389",
       "realm_lldb.py": "8c2ede242f81282b56d6da596abee0557513c10b7da3097d7912266299a9b5c9",
       "terrain.json": "f81bbcea10d63c921297584ce092df2e8a81b5a17c4694a31d15a5a04e2b8e9c",
@@ -911,8 +938,8 @@
       ".agent/skills/skill-assign-asset/SKILL.md": "5ca270e410943f32dd99d6c078b6648196b27a78659204c4f19fb2bf5fa3716c",
       ".agent/skills/skill-translate-map/SKILL.md": "d3c499ee4dc4868d7519dc670f010fd8186c5c5c102c927d409bd259b5330966",
       ".agent/skills/skill-translate-map/verify_keys.py": "b9722cb8810984214a93a9e3474117aa568356548fe6aae9be1aeaf82a5ae479",
-      "bin/script/authority.pid": "4e6aa035fc9b08bd5a4bf5d4618d25f0ca69f841fbd9218037da7132f72d2f85",
-      "bin/script/MapScript.debug.json": "09ba8358bab84cd46e874f82d8409834620d8e5de1e65546b5087f0b51db22b6"
+      "bin/script/authority.pid": "435de9a3905aa304cc67fa18169f77b8b73a0982191d6d477d230bf8d21e8de0",
+      "bin/script/MapScript.debug.json": "5e0edfa5deae564f1fe3ca8b3dcb96301c24554c70a35534ead9cb3cad0fa506"
     }
   }
 }
