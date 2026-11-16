@@ -25,10 +25,7 @@
     },
     "Building": {
       "altar.rmesh": "153dfbb77d04ea1014b79844740dad81c49b739f08158980586ab4cea540dd9a",
-      "blacksmith.rmesh": "8ce3b37e76c47723d3cf7cdb7f3308a3919322df5e131008ab01a13ddffa510c",
-      "earth_element.rmesh": "0260fcbbc9f0b84924edac80b7b4a252faad0a8f1364c3aebc37a4dd6e31f069",
-      "fire_element.rmesh": "95f77d7fcb8e8a4b3a5999a3a3a0c8ca9e79ff3c6991e8328e8aa4cd78438f04",
-      "water_element.rmesh": "fc1ed148b39ebab4f577f0a29cd065272ca0e569696d706d9ead31b338fe185f"
+      "blacksmith.rmesh": "8ce3b37e76c47723d3cf7cdb7f3308a3919322df5e131008ab01a13ddffa510c"
     },
     "Character": {
       "armored_knight_unit.rmesh": "df56f0131276d696263ce0b2a3e0c1cace5860d0bc3f9ffcc1d5331ab4b00880",
@@ -87,7 +84,6 @@
       "dragon_king_gauntlet.rtex": "685a5a4b9609664de246e9f0b68c069d1cf07b13625dfbcbd57a08a8b6b9033a",
       "dragon_lord_1.rtex": "87004712d76e9c90e9e87cde417629dec37e95262c5086b6ff88a63fbd505e02",
       "eagle_battle_hawk.rtex": "f5c1641c59623b31833c6d9987481d8f3f9071bc5000ced2693a3b4ccb44a34c",
-      "eagle_ring.rtex": "03ed1cb913fac758b6644c6949d349d4be0a0cfc74952946d4921a7df4bcaec0",
       "eagle_ring_1.rtex": "08b1b577fa9e69dd86a88724ad28b32780675459f943fcecadb3352f9bb43bcd",
       "elder_sorcerer.rtex": "5c4407ef32a6b6e71c3a3dd0957ee80fc1adc500d4e907029b694a4121c80ef5",
       "elf_king.rtex": "38595562a0ce2f8b0959819ffaded07231f16d1bb308b372756d594de4e92914",
@@ -107,7 +103,6 @@
       "glowing_magic_sword.rtex": "dd083594b3852589d15bc1de41fbbaa3833cddd0fb8628ab6439ba6258e23d08",
       "glowing_magic_sword_1.rtex": "6c934bfadfc2812a13021b2dae6c22404979e32cfada4d39ea9bc1e4295af5c4",
       "golden_boots.rtex": "13f3c59735ca4ccee104ffaf5093d1c7d9e7aa7c5314ce5acfca0a1d227379f2",
-      "golden_hammers.rtex": "92d22c6baadca36d137b1c6247c39ae2b5a1a1c4d2f0000b2ec301838ffaca04",
       "golden_pyramid.rtex": "351a3344b660c0306486fc2dc789b2936ecba3db788571f73a5d91d4e4620760",
       "golden_ring.rtex": "565b5c153bd9bf4056eefaee7199c4f5637a2f0a67f822842540bf31bd7c2b60",
       "golden_tower.rtex": "89a800f2af60414a1d58208bba4c821e56493642a540d43343727a6f068b41e6",
@@ -128,7 +123,6 @@
       "lightning_hammer_1.rtex": "4d69764b82b986bb90be9ff6bba203db82e4e3441ad823527ed226d1682a90ce",
       "lightning_spell.rtex": "766d2885d8d9f8a512631465be8956c506127f4b1d95523a009ebc01137c6471",
       "lightning_strike_1.rtex": "257d6e48995b3e3bf5c8ab3e922006b43b66123c013fcad8a7503eaa6a110316",
-      "magical_gate.rtex": "f6fb2c2f5817fd2a6303f359e7d49026414d77a0481659b9aaf757aa8834cba2",
       "magic_chess_piece.rtex": "7c9bd5bda0685f37d9ca6af1eb447ac2b1d6a02f5cd8faf472029b9b25e39b1b",
       "magic_damage.rtex": "c0870e097866f391ec1836688aa0e2bedb9ffca7715f417f84c621a451842e24",
       "magic_healing_light.rtex": "2d86e3019114f71a59abf5678fc8bcbd8d45a08e4d58a353f894cd44ec61b294",
@@ -165,8 +159,6 @@
       "coniferous_tree_1.rtex": "d37167dd9460b3cd4782539882f0bf8114ce8d79ef64a8a993180b8f6f3347f5",
       "coral_vanguard.rtex": "633d3a05ba732a9fde995182b5bdaa3cfdcaf2d10e322de55ff74f0a5ee3a9fa",
       "crystal_cluster_29.rtex": "46d8fa4dbf9371e9c490a89659632afa686ad4ff3ef8843c8d02fe8477e72331",
-      "earth_element.rtex": "d485c5d7ddfcf5935bced16186a0c0c691d9bdf19d927b4ef2609690038e42b2",
-      "fire_element.rtex": "b0fb4ee3186ddb1779d17bfb3033c95c5783c3cf35c15f637f46d1cbfaba8d57",
       "flame_archon.rtex": "8aa3a1a82c763be668c33758b1602a0bf0fe25621e681f0c66d89db5b988f851",
       "frost_warden.rtex": "f0aeb016ebbb2a2e51091d801a118fa774c4d85ff392c5cc4905e79df977da32",
       "glacier_sentinel.rtex": "cc9afcd95d5e8451ab21a275842539b28a6479a4cb21f314bcebcf81f1ef9fc2",
@@ -187,7 +179,12 @@
       "thornback_behemoth.rtex": "3b4e1798804f6f2cb624f74c4085afa9f62d5f072898c7c264ec5229661381fa",
       "tidecaller.rtex": "fb8822a56e6489f8ee577d6b65da7c80b8b2a6778242607d4cbe522403e3beae",
       "verdant_druid.rtex": "e8e0f6b66f7a0e9981b3422913fece53c98a0bf461be73a31b7f6a867b5d47b2",
-      "water_element.rtex": "d09d73a31a03251118cc8b9c313ac87ff0e6f060bf4d68eadf24a417569b999b"
+      "bs_evasion_drill.rtex": "f3d3fa905a4cb2598bfef9bbaa115c384aa8cc1897c0686ba94b2ddba550bc7d",
+      "bs_battle_rhythm.rtex": "d19521d63c40d6c863a6202c9dc0a307ed9057651a9274ebacc6550732d5d326",
+      "bs_bloodthirst.rtex": "8b788d50682f56733f91d16648fc742245425e65c57804159769b9559a899545",
+      "elixir_void_pact.rtex": "96bfaa371b220881436c31d161e2fdb26ef8f8c5de1cbc4f2ed3b408ce8ca008",
+      "elixir_swift_incantation.rtex": "f47266b608857c247328bc0f1f0bbceebf136dca974f0916cf8b760a8ea10520",
+      "elixir_slow_regeneration.rtex": "1e21fddfe44c8e7d53f1732ae6cdf1387a9241f618733b77854c644df1ec9d6b"
     },
     "Item": {
       "crystal_bolt_projectile.rmesh": "0cdc19d84fd32470ea8a235f68d7693b2a7c114979f62ad1a9c31a77500d40b9",
@@ -738,7 +735,7 @@
       "MapScript.Match.cs": "c2d0715eeffe0ef0e839c9a402c75aa19f1e29b0382fe3f6f98ed22eda47dd77",
       "MapScript.Rerolls.cs": "5f5bc6dd866917d0b3bb8e0c7dadf12df9d837185e3c55dee12c62b7cf286c29",
       "MapScript.slnx": "6b5b77b660653b5cd34350fe244e9f2a3e7e344cf23d7efc339e451480582f3d",
-      "metadata.json": "d2c2351394360892d879f93a213e040d4864bf87b943e6d221121eecb07be51b",
+      "metadata.json": "7da9c31c354fcb3e6dba76a1151b1d7c5ffed056c70dda3555d7c934023a25d3",
       "NuGet.config": "2211ce92e32f9c93bc98f9172c70cae0d41e5fe750e3a28a245eb754e6c3a389",
       "realm_lldb.py": "8c2ede242f81282b56d6da596abee0557513c10b7da3097d7912266299a9b5c9",
       "terrain.json": "f81bbcea10d63c921297584ce092df2e8a81b5a17c4694a31d15a5a04e2b8e9c",
