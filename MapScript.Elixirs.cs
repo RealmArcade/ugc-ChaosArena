@@ -19,7 +19,8 @@ public sealed record ElixirDefinition(
     string Id,
     ElixirHook Hook,
     float Amount,
-    int MaxStacks)
+    int MaxStacks,
+    string? AuraVfxId = null)
 {
     public string AbilityId => $"ability/{Id}";
     public string SourceId => $"elixir/{Id}";
@@ -38,24 +39,24 @@ public partial class MapScript
 {
     private static readonly ElixirDefinition[] Elixirs =
     {
-        new("elixir_blood_debt", ElixirHook.HitDealt, 0.4f, 30),
-        new("elixir_siphon_sigil", ElixirHook.HitDealt, 5f, 25),
-        new("elixir_rending_edge", ElixirHook.HitDealt, 45f, 5),
-        new("elixir_executioner", ElixirHook.HitDealt, 12f, 20),
-        new("elixir_warded_hide", ElixirHook.HitTaken, 0.25f, 16),
-        new("elixir_retaliation", ElixirHook.HitTaken, 20f, 10),
-        new("elixir_phantom_step", ElixirHook.HitTaken, 0.02f, 10),
-        new("elixir_soul_harvest", ElixirHook.Kill, 0.04f, 10),
+        new("elixir_blood_debt", ElixirHook.HitDealt, 0.4f, 30, VfxIds.AuraElixirBloodDebt),
+        new("elixir_siphon_sigil", ElixirHook.HitDealt, 5f, 25, VfxIds.AuraElixirSiphonSigil),
+        new("elixir_rending_edge", ElixirHook.HitDealt, 45f, 5, VfxIds.AuraElixirRendingEdge),
+        new("elixir_executioner", ElixirHook.HitDealt, 12f, 20, VfxIds.AuraElixirExecutioner),
+        new("elixir_warded_hide", ElixirHook.HitTaken, 0.25f, 16, VfxIds.AuraElixirWardedHide),
+        new("elixir_retaliation", ElixirHook.HitTaken, 20f, 10, VfxIds.AuraElixirRetaliation),
+        new("elixir_phantom_step", ElixirHook.HitTaken, 0.02f, 10, VfxIds.AuraElixirPhantomStep),
+        new("elixir_soul_harvest", ElixirHook.Kill, 0.04f, 10, VfxIds.AuraElixirSoulHarvest),
         new("elixir_trophy_hunter", ElixirHook.Kill, 1f, 20),
-        new("elixir_feeding_frenzy", ElixirHook.Kill, 1f, 15),
-        new("elixir_void_pact", ElixirHook.Kill, 18f, 20),
-        new("elixir_arcane_echo", ElixirHook.Cast, 10f, 6),
-        new("elixir_swift_incantation", ElixirHook.Cast, 1.5f, 8),
-        new("elixir_ritual_echo", ElixirHook.Cast, 30f, 5),
+        new("elixir_feeding_frenzy", ElixirHook.Kill, 1f, 15, VfxIds.AuraElixirFeedingFrenzy),
+        new("elixir_void_pact", ElixirHook.Kill, 18f, 20, VfxIds.AuraElixirVoidPact),
+        new("elixir_arcane_echo", ElixirHook.Cast, 10f, 6, VfxIds.AuraElixirArcaneEcho),
+        new("elixir_swift_incantation", ElixirHook.Cast, 1.5f, 8, VfxIds.AuraElixirSwiftIncantation),
+        new("elixir_ritual_echo", ElixirHook.Cast, 30f, 5, VfxIds.AuraElixirRitualEcho),
         new("elixir_opening_gambit", ElixirHook.WaveStart, 4f, 1),
         new("elixir_vanguards_oath", ElixirHook.WaveStart, 8f, 1),
-        new("elixir_slow_regeneration", ElixirHook.Always, 2f, 90),
-        new("elixir_battle_trance", ElixirHook.Always, 1.5f, 8),
+        new("elixir_slow_regeneration", ElixirHook.Always, 2f, 90, VfxIds.AuraElixirSlowRegeneration),
+        new("elixir_battle_trance", ElixirHook.Always, 1.5f, 8, VfxIds.AuraElixirBattleTrance),
         new("elixir_iron_constitution", ElixirHook.Always, 22f, 10),
         new("elixir_flush", ElixirHook.Always, 0f, 0),
     };
@@ -150,6 +151,21 @@ public partial class MapScript
 
         if (tileStatesByUnitId.TryGetValue(unit.UniqueId, out TileState? tileState))
             tileState.ElixirId = definition.Id;
+
+        AttachElixirAura(unit, definition);
+    }
+
+    private readonly HashSet<int> unitsCarryingAnAura = new();
+
+    private void AttachElixirAura(UnitId unit, ElixirDefinition definition)
+    {
+        if (definition.AuraVfxId == null)
+            return;
+
+        if (!unitsCarryingAnAura.Add(unit.UniqueId))
+            return;
+
+        _api.AttachPersistentAura(unit, definition.AuraVfxId, 1.6f);
     }
 
     private void ClearElixir(UnitId unit)

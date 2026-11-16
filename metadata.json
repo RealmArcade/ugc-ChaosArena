@@ -808,7 +808,38 @@
             "Running - Running With Intention.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/magic_dagger": {
+                "PositionX": -0.09118,
+                "PositionY": 0.0136,
+                "PositionZ": -0.18142,
+                "PitchX": -63.06,
+                "YawY": -55.74,
+                "RollZ": 81.52,
+                "Scale": 0.2753,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -940,7 +971,38 @@
             "Sprint - Standard Sprint.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/ornate_scythe_blade": {
+                "PositionX": -0.35846,
+                "PositionY": 0.05345,
+                "PositionZ": -0.7132,
+                "PitchX": -63.06,
+                "YawY": -55.74,
+                "RollZ": 81.52,
+                "Scale": 0.9939,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -1737,7 +1799,38 @@
             "Standing Walk Forward - Walking Forwards.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/wooden_hammer": {
+                "PositionX": -0.14921,
+                "PositionY": 0.02225,
+                "PositionZ": -0.29687,
+                "PitchX": -63.06,
+                "YawY": -55.74,
+                "RollZ": 81.52,
+                "Scale": 0.456,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -1869,7 +1962,38 @@
             "Great Sword Walk - Great Sword Walk.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/short_blade_axe": {
+                "PositionX": -0.31499,
+                "PositionY": 0.04697,
+                "PositionZ": -0.62672,
+                "PitchX": -63.06,
+                "YawY": -55.74,
+                "RollZ": 81.52,
+                "Scale": 0.9599,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -2133,7 +2257,38 @@
             "Standing Walk Forward - Walking Forward With Axe.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/lava_hammer": {
+                "PositionX": -0.19065,
+                "PositionY": 0.02843,
+                "PositionZ": -0.37933,
+                "PitchX": -63.06,
+                "YawY": -55.74,
+                "RollZ": 81.52,
+                "Scale": 0.5866,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -2265,7 +2420,38 @@
             "Unarmed Walk Forward - Walking Forward.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/spear_of_light": {
+                "PositionX": -0.34815,
+                "PositionY": 0.05192,
+                "PositionZ": -0.69269,
+                "PitchX": -63.06,
+                "YawY": -55.74,
+                "RollZ": 81.52,
+                "Scale": 1.0513,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -2397,7 +2583,38 @@
             "Orc Walk - Male Orc Walk Forward.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/stone_beast_axe": {
+                "PositionX": -0.24868,
+                "PositionY": 0.03708,
+                "PositionZ": -0.49478,
+                "PitchX": -63.06,
+                "YawY": -55.74,
+                "RollZ": 81.52,
+                "Scale": 0.755,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -2529,7 +2746,38 @@
             "Mutant Walking - Mutant Brutal Walk.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/stone_hammer": {
+                "PositionX": -0.28184,
+                "PositionY": 0.04203,
+                "PositionZ": -0.56075,
+                "PitchX": -63.06,
+                "YawY": -55.74,
+                "RollZ": 81.52,
+                "Scale": 0.8697,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -2661,7 +2909,38 @@
             "Mutant Run - Mutant Running.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/thorn_blade": {
+                "PositionX": -0.28184,
+                "PositionY": 0.04203,
+                "PositionZ": -0.56075,
+                "PitchX": -63.06,
+                "YawY": -55.74,
+                "RollZ": 81.52,
+                "Scale": 0.8657,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -2793,7 +3072,38 @@
             "Slow Jog - Jogging Slowly Varying Angles Of Twist.ranim"
           ]
         },
-        "ObjectAttachments": null,
+        "ObjectAttachments": {
+          "right_hand": [
+            {
+              "attachment/enchanted_ice_sword": {
+                "PositionX": -0.32328,
+                "PositionY": 0.04821,
+                "PositionZ": -0.64322,
+                "PitchX": -63.06,
+                "YawY": -55.74,
+                "RollZ": 81.52,
+                "Scale": 0.9776,
+                "ScaleX": 0,
+                "ScaleY": 0,
+                "ScaleZ": 0,
+                "NormalOffset": 0,
+                "ParentAttachmentId": null
+              }
+            }
+          ],
+          "left_hand": null,
+          "chest": null,
+          "root": null,
+          "head": null,
+          "left_foot": null,
+          "right_foot": null,
+          "ground": null,
+          "center": null,
+          "overhead": null,
+          "pivot": null,
+          "custom_sockets": null,
+          "CustomSocketLists": null
+        },
         "Sounds": null,
         "StartingItems": null,
         "ShopItems": null,
@@ -12668,8 +12978,1525 @@
         "Attribution_ImportedFromMap": null
       }
     ],
-    "Attachments": [],
-    "Vfx": []
+    "Attachments": [
+      {
+        "AttachmentId": "attachment/short_blade_axe",
+        "Name": "Warlord's Cleaver",
+        "ModelPath": "short_blade_axe.rmesh",
+        "Scale": 0.9599,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/magic_dagger",
+        "Name": "Nether Stiletto",
+        "ModelPath": "magic_dagger.rmesh",
+        "Scale": 0.2753,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/ornate_scythe_blade",
+        "Name": "Sanguine Scythe",
+        "ModelPath": "ornate_scythe_blade.rmesh",
+        "Scale": 0.9939,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/lava_hammer",
+        "Name": "Magma Smith's Hammer",
+        "ModelPath": "lava_hammer.rmesh",
+        "Scale": 0.5866,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/spear_of_light",
+        "Name": "Radiant Spear",
+        "ModelPath": "spear_of_light.rmesh",
+        "Scale": 1.0513,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/stone_beast_axe",
+        "Name": "Pack Alpha's Axe",
+        "ModelPath": "stone_beast_axe.rmesh",
+        "Scale": 0.755,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/stone_hammer",
+        "Name": "Granite Maul",
+        "ModelPath": "stone_hammer.rmesh",
+        "Scale": 0.8697,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/thorn_blade",
+        "Name": "Bramble Blade",
+        "ModelPath": "thorn_blade.rmesh",
+        "Scale": 0.8657,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/wooden_hammer",
+        "Name": "Builder's Mallet",
+        "ModelPath": "wooden_hammer.rmesh",
+        "Scale": 0.456,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "AttachmentId": "attachment/enchanted_ice_sword",
+        "Name": "Avalanche Greatsword",
+        "ModelPath": "enchanted_ice_sword.rmesh",
+        "Scale": 0.9776,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "DefaultHand": "RightHand",
+        "ChildVfxId": null,
+        "IgnorePlayerColor": false,
+        "ChildVfxPosition": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxRotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ChildVfxScale": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "BillboardIcon": null,
+        "Attribution_ImportedFromMap": null
+      }
+    ],
+    "Vfx": [
+      {
+        "VfxId": "vfx/aura_elixir_blood_debt",
+        "Name": "Blood Debt Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "holy_sigil.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#ff3b1f",
+        "SecondaryColor": "#7a0a05",
+        "CoreColor": "#ffd9c2",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_siphon_sigil",
+        "Name": "Siphon Sigil Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "magic_rune.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#41ff8c",
+        "SecondaryColor": "#0d5c31",
+        "CoreColor": "#e6ffee",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_rending_edge",
+        "Name": "Rending Edge Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "ward_sigil.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#ff5544",
+        "SecondaryColor": "#6b0f0f",
+        "CoreColor": "#ffd0c8",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_executioner",
+        "Name": "Executioner Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "iron_sigil.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#d8342a",
+        "SecondaryColor": "#4d1410",
+        "CoreColor": "#ffc9b8",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_warded_hide",
+        "Name": "Warded Hide Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "rune_etch.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#b9c6d8",
+        "SecondaryColor": "#4a5568",
+        "CoreColor": "#ffffff",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_retaliation",
+        "Name": "Retaliation Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "elf_glyph.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#ff9a3c",
+        "SecondaryColor": "#7a3608",
+        "CoreColor": "#ffe9c7",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_phantom_step",
+        "Name": "Phantom Step Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "soul_trace.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#9fe8ff",
+        "SecondaryColor": "#3a6f8f",
+        "CoreColor": "#ffffff",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_soul_harvest",
+        "Name": "Soul Harvest Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "floating_garden_soul_bloom.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#c07bff",
+        "SecondaryColor": "#3f1a6b",
+        "CoreColor": "#f2e2ff",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_feeding_frenzy",
+        "Name": "Feeding Frenzy Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "crystal_plains_talisman_glow.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#ff4f8a",
+        "SecondaryColor": "#5d0b2c",
+        "CoreColor": "#ffdceb",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_void_pact",
+        "Name": "Void Pact Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "ancient_tomb_curse_glyph.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#7b4dff",
+        "SecondaryColor": "#20123f",
+        "CoreColor": "#d9ccff",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_arcane_echo",
+        "Name": "Arcane Echo Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "mythic_glyph.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#3fa9ff",
+        "SecondaryColor": "#0c2c52",
+        "CoreColor": "#d6ecff",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_swift_incantation",
+        "Name": "Swift Incantation Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "holy_glyph.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#33e0d0",
+        "SecondaryColor": "#0b4a44",
+        "CoreColor": "#dcfffb",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_ritual_echo",
+        "Name": "Ritual Echo Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "holy_aura.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#ffcf5a",
+        "SecondaryColor": "#7d5506",
+        "CoreColor": "#fff3cf",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_slow_regeneration",
+        "Name": "Slow Regeneration Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "spirit_aura.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#48d97a",
+        "SecondaryColor": "#0e4b26",
+        "CoreColor": "#e2ffe9",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      },
+      {
+        "VfxId": "vfx/aura_elixir_battle_trance",
+        "Name": "Battle Trance Aura",
+        "PrimitiveType": "VortexDisc",
+        "ParticleConfig": null,
+        "Stages": null,
+        "BlendMode": "Additive",
+        "PlacementMode": "Free",
+        "TintWithPlayerColor": false,
+        "TargetSocket": "Chest",
+        "BaseTexture": "rune_glow.rtex",
+        "NoiseTexture": "",
+        "ProceduralMotionId": "",
+        "BaseUvScroll": {
+          "X": 0.2,
+          "Y": 0
+        },
+        "BaseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "UseFlipbook": false,
+        "FlipbookColumns": 1,
+        "FlipbookRows": 1,
+        "FlipbookFps": 12,
+        "FlipbookSubframeBlend": true,
+        "NoiseUvScroll": {
+          "X": -0.15,
+          "Y": 0.25
+        },
+        "NoiseUvScale": {
+          "X": 1,
+          "Y": 1
+        },
+        "DistortionStrength": 0.15,
+        "BaseColor": "#ff7a1a",
+        "SecondaryColor": "#5e2404",
+        "CoreColor": "#ffe0bd",
+        "ColorMixRatio": 1,
+        "EmissionBoost": 2.8,
+        "CoreThreshold": 0.6,
+        "LuminanceToAlpha": true,
+        "LuminanceThreshold": 0.06,
+        "LuminanceSmoothness": 0.1,
+        "UseGrayscale": true,
+        "InvertMask": false,
+        "HighPassCutoff": 0,
+        "EnableRadialFalloff": true,
+        "RadialFalloffStart": 0.65,
+        "RadialFalloffEnd": 1,
+        "EnableLengthFade": false,
+        "LengthFadeStart": 0,
+        "LengthFadeEnd": 1,
+        "ErosionProgress": 0,
+        "EnableFresnel": false,
+        "FresnelPower": 2.5,
+        "FresnelIntensity": 1.5,
+        "EnableDepthFade": false,
+        "DepthFadeDistance": 0.35,
+        "SurfaceNormalOffset": 0.02,
+        "PositionOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        },
+        "ScaleOffset": {
+          "X": 1,
+          "Y": 1,
+          "Z": 1
+        },
+        "Attribution_ImportedFromMap": null
+      }
+    ]
   },
   "CombatTuning": {
     "ResistTuningConstantK": 16.67,

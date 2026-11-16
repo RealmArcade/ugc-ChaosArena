@@ -348,7 +348,17 @@
       "magic_projectile_4.rmesh": "3f71a1aa1e796611291dba4abbeaa293feae30acfb972d35c6818e3dbc494f1a",
       "magical_orb_projectile_1.rmesh": "85fa702080a6fe699d8d6ec703ee7439c270be7f3306d625cb671f70a063faf2",
       "magma_shard_projectile.rmesh": "a96c92dc27001cc7732c4133ba072d3c3c096fb5eca6e1fb236dc5c0cfbadc10",
-      "spear_projectile_2.rmesh": "ced34d966949ce69865c9d29876943946e094f1796bf2e493c5d2590588e7637"
+      "spear_projectile_2.rmesh": "ced34d966949ce69865c9d29876943946e094f1796bf2e493c5d2590588e7637",
+      "short_blade_axe.rmesh": "60ee8a0935626934308b1b2d682483f2a1e4a0e659431c00dc7212dc8f3d0675",
+      "magic_dagger.rmesh": "464c55861e071bac403bd24edea4c3fb76da27000d17eaeca2f6d775686fb187",
+      "ornate_scythe_blade.rmesh": "9f6112ebe979a669ed01d093be18fc599ccc686ea73e41752df2084bb9b6d769",
+      "lava_hammer.rmesh": "187bfa1f937d55fdcf15b7ee840c89cc8b23ff48327186855e1fdf7b36b99c90",
+      "spear_of_light.rmesh": "439aa10982410481b4b10a847f941b0d9af57b7975325f62a586bc4c5b595c54",
+      "stone_beast_axe.rmesh": "14b3a38c34cd64ab77ad0b110d6eeee390535f519d64fd3df4d94dfd54f1888b",
+      "stone_hammer.rmesh": "df489e1e0932a05ab94c1db8ad0964f673aedab660d41bbf973c8b39cf2fdf9e",
+      "thorn_blade.rmesh": "9e242f922f93a48eb595067383ec2ef92784bdb0e17f699fd01d9abb5067188c",
+      "wooden_hammer.rmesh": "4838fc2c89939ab053ccc117e03458c6ac9f26e4ced6376f1ec27a401bc77799",
+      "enchanted_ice_sword.rmesh": "939f2e7ec886fb8b2beca3a228a5889adf50b24c4277d1b36c5be02b04289bb9"
     },
     "Music": {
       "dragon_tavern.raud": "a1f23039849a6f788c5b1540b1acfa0437bf52243a3b838076bc0a8f3b566c70"
@@ -866,7 +876,22 @@
       "mineral_geology_spark_crystal.rtex": "8cd6a055a4d7d03f73758e09205e6cd6d3e9b29a242b1271bcab6f5fbdba13f1",
       "mineral_geology_stone_fracture.rtex": "95abb8123a71b021eceec6f435320b419093fe9af28c457f71772381c662f3bf",
       "particle_dynamics_aura_pulse.rtex": "57939af75055d2a2a639e9d845dd51c8b7f3158d5a7c8d6309ef6add357ef481",
-      "particle_dynamics_spirit_wisp.rtex": "0fe243a8af55ae0cab3e73894b258e0825087dbb58c1a29dd6d40f3152cac991"
+      "particle_dynamics_spirit_wisp.rtex": "0fe243a8af55ae0cab3e73894b258e0825087dbb58c1a29dd6d40f3152cac991",
+      "holy_sigil.rtex": "e5eb4888b3a0313addef32c78b340a0628c243d245cd873a97dff81c328ef82a",
+      "magic_rune.rtex": "f7a9118ff8bf380b98f30a3764b8ca76ae2900132d6ba1cfa56289b6e1eb79c0",
+      "ward_sigil.rtex": "4b02f36d4101e3e9cdf14d654de7a19d2cfa42b82bea9e3b85511e6670552b66",
+      "iron_sigil.rtex": "5f0548c5ba49c0ad48e839c27e5c5f54cf1b6b72ae49871ca67533b5e87bb577",
+      "rune_etch.rtex": "80b70a99c7f74198aa7d6bc1bd2ce51d20ee27ba3ccc151ee8113f4213d33458",
+      "elf_glyph.rtex": "7511e91f826e1d06a4a1f44b79594ed7715a2dadd2c30ea27b4a5c6d1a220581",
+      "soul_trace.rtex": "09fa8b7bb89031a5b9b7cd95ff5218278b397239e28c8c1516ecd41f9f4f6aca",
+      "floating_garden_soul_bloom.rtex": "80b745f93555e4a799102b58f7a62921b261fa04c6abec66b225493b71b99020",
+      "crystal_plains_talisman_glow.rtex": "78614f97e3216fed22781ab38a06d3dc06ac4820e681cf8e50c03df6c4866b29",
+      "ancient_tomb_curse_glyph.rtex": "4d85d0d48507e786c4a7c0018c84737e806f15d37bb8fa5aec942bc7a652b0ee",
+      "mythic_glyph.rtex": "4398232821bcf9b05143939aa541428135d8246be18f15cc5a76f85db5c81f78",
+      "holy_glyph.rtex": "2c07a8019dabee21b4199e66f99fdac4cba24f0de43760e3919cb78dce242320",
+      "holy_aura.rtex": "5aa471d5cbd7e361c3a1d0a9673dcc0d8f59d25190d9eb1861699dde5cc21b35",
+      "spirit_aura.rtex": "cee5193c209af508d20932186408570a674cb6360b293a62936f3571d0b3302b",
+      "rune_glow.rtex": "4b6a9bcc7e207adf6a5c14a70b9b10ba5a4640f9fb40372806babde716aeee1d"
     },
     "vfx_vertical": {
       "cross_quads_force_quad.rtex": "28277306b1b4b09574a3474d0f41e09f54159d5a7bc33af5c5b0df7a73108a21",

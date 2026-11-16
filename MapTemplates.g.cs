@@ -243,6 +243,21 @@ public static class ItemIds
 
 public static class VfxIds
 {
+	public const string AuraElixirBloodDebt = "vfx/aura_elixir_blood_debt";
+	public const string AuraElixirSiphonSigil = "vfx/aura_elixir_siphon_sigil";
+	public const string AuraElixirRendingEdge = "vfx/aura_elixir_rending_edge";
+	public const string AuraElixirExecutioner = "vfx/aura_elixir_executioner";
+	public const string AuraElixirWardedHide = "vfx/aura_elixir_warded_hide";
+	public const string AuraElixirRetaliation = "vfx/aura_elixir_retaliation";
+	public const string AuraElixirPhantomStep = "vfx/aura_elixir_phantom_step";
+	public const string AuraElixirSoulHarvest = "vfx/aura_elixir_soul_harvest";
+	public const string AuraElixirFeedingFrenzy = "vfx/aura_elixir_feeding_frenzy";
+	public const string AuraElixirVoidPact = "vfx/aura_elixir_void_pact";
+	public const string AuraElixirArcaneEcho = "vfx/aura_elixir_arcane_echo";
+	public const string AuraElixirSwiftIncantation = "vfx/aura_elixir_swift_incantation";
+	public const string AuraElixirRitualEcho = "vfx/aura_elixir_ritual_echo";
+	public const string AuraElixirSlowRegeneration = "vfx/aura_elixir_slow_regeneration";
+	public const string AuraElixirBattleTrance = "vfx/aura_elixir_battle_trance";
 }
 
 public static class WaterProfileIds
