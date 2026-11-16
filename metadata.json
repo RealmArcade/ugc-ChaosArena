@@ -127,25 +127,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing 1H Magic Attack 02 - One Handed Casting Spell Sweep Right To Left.ranim"
           ],
           "Dance": [
             "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Dying - Dying With Front Hit To The Head And Fall On One Knee.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Nervously Look Around - Nervously Looking Around Left To Right -  Loop.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Pulling A Rope - Mime Pulling A Rope.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Casting Spell - Conjuring Magic And Throwing.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Sneak Walk - Male Ninja Sneak Walk.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -259,22 +259,22 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing 2H Magic Attack 01 - Two Handed Casting Spell Fowards.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Salsa Dancing - Male Salsa Variation Eight.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Falling Back Death - Dying Falling Backward.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Standing Idle - Standing Idle Ready To Cast Spell.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Pulling Lever - Pulling A Lever Down.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Standing 2H Magic Area Attack 02 - Two Handed Casting Spell Pull In Blast Out.ranim"
           ],
           "Walk": [
             "Standard Walk - Standard Walk.ranim"
@@ -391,25 +391,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing 1H Magic Attack 01 - One Handed Casting Spell Fowards.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Dancing - Ballet Dance Variation One.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Dying - Dying Rear Impact Falling On Two Knees.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Idle - Looking Over Both Shoulders.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Push - Pushing Heavy Object.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Standing 1H Cast Spell 01 - One Handed Casting Spell Upwards.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Slow Run - Slow Run Forward.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -523,25 +523,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing 2H Magic Attack 02 - Two Handed Casting Spell Fowards.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Breakdance 1990 - Breakdance Single Handstand Spin.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Standing React Death Backward - Death Falling Backwards.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Standing Idle 02 - Standing Idle Looking Around.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Gathering Objects - Squatting Down To Gather Objects.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Standing 2H Cast Spell 01 - Two Handed Casting Spell Upward Pull.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Standard Run - Standard Running.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -655,25 +655,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing 1H Magic Attack 03 - One Handed Casting Spell Upward Sweep.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Swing Dancing - Dance Swing Charleston.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Dying - Dying Front Head Impact To Two Knees.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Sad Idle - Sad Idle Variation 1.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Lifting - Pick Up Object And Examine.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Two Hand Spell Casting - Casting A Spell With Two Hands.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Walking - Male Hurried Walk.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -787,25 +787,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Double Dagger Stab - Static Double Dagger Stab With Outward Grip.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Tut Hip Hop Dance - Tut Hip Hop Dance Variation One.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Knocked Out - Knocked Out Falling To Stomach.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Knife Idle - Knife On The Rear Hand, Reverse Grip.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Box Idle - Carrying A Box.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Spell Casting - Casting A Ressurection Or Summon Spell.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Running - Running With Intention.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -919,25 +919,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing Melee Attack 360 High - Left To Right Spin Attack With Axe.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Flair - Breakdance Flair.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Falling Forward Death - Dying Falling Forward.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Fight Idle - Male Fight Idle Empty Stance.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Harvesting - Harvesting With A Sythe.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Great Sword Casting - Great Sword Spell Casting.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Sprint - Standard Sprint.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1051,25 +1051,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Bayonet Stab - Advancing And Stabbing With Rifle Bayonet Or Spear.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Samba Dancing - Samba Gandy Variation 1.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Dying - Dying Shot To The Chest Falling On Two Knees.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Breathing Idle - Breathing Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Wheelbarrow Walk - Walking With A Full Wheelbarrow.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Wide Arm Spell Casting - Casting A Magic Spell Wide With Two Arms.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Pike Walk - Pike Walk.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1183,25 +1183,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Kicking - Butterfly Kick Advancing.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Hip Hop Dancing - Female Hip Hop 'Running Man' Dancing.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Standing React Death Left - Death Falling To The Left.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Happy Idle - Happy Idle Variation 1.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Pushing - Pushing An Object Forward.ranim"
           ],
           "Spell_Cast": [
             "Magic Spell Casting - Casting A Spell With One Hand.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Fast Run - Running Fast.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1315,25 +1315,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing 2H Magic Attack 03 - Two Handed Casting Spell Forwards Sustained.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Macarena Dance - Dancing The Macarena.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Dying - Dying With Front Impact To The Head And Fall On One Knee.ranim"
           ],
           "Idle": [
             "Bored - Standing Around Bored Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Dig And Plant Seeds - Kneeling Digging And Planting Seeds.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Standing 2H Magic Area Attack 01 - Two Handed Casting Spell Towards Ground.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Walking - Careful Walk.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1447,25 +1447,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Thrust Slash - Thrust And Slash With Blade.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Dancing - Boogaloo.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Dying - Death Hit From The Back Falling On One Knee.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Neutral Idle - Neutral Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Plant Tree - Standing Planting A Tree.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Magic Heal - Casting A Healing Spell With One Hand.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Jogging - Jogging.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1579,25 +1579,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing 2H Magic Attack 04 - Two Handed Casting Spell Forwards Sustained.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Dancing - Ballet Dance Variation Two.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Standing React Death Forward - Death Falling Forwards.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Standing Idle - Standing Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Plant A Plant - Kneeling Planting A Plant.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Praying - Standing Praying While Swaying.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Walking - Male Standard Walk.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1716,25 +1716,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Bash - Overhead Bashing Swing.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Chicken Dance - Doing The Chicken Dance.ranim"
           ],
           "Death": [
             "Death - Death From Standing Idle.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Wiping Sweat - Wiping Sweat Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Standing Melee Attack Downward - Downward Attack With Axe.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Praying - Buckled Stand And Praying.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Standing Walk Forward - Walking Forwards.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1848,25 +1848,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Great Sword Slash - Great Sword Power Slash.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Swing Dancing - Swing Dance Charleston Crazy Legs.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Two Handed Sword Death - Falling Back Death.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Great Sword Idle - Great Sword Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Pushing - Pushing A Heavy Object.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Sword And Shield Casting - Sword And Shield Spell Casting.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Great Sword Walk - Great Sword Walk.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -1980,25 +1980,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Two Hand Sword Combo - Two Handed Sword Combo Attack.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Salsa Dancing - Salsa Dancing Twirl And Clap.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Two Handed Sword Death - Falling Forward Death.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "2hand Idle - Two Handed Weapon Stance.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Wheelbarrow Dump - Dumping A Wheelbarrow.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Standing 2H Magic Attack 05 - Two Handed Casting Spell Pull Up And Clap Hands.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Running - Male Weighted Run.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -2112,25 +2112,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing Melee Combo Attack Ver. 1 - Two Hit Combo Attack With Axe.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Twist Dance - Doing The Twist Dance.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Sword And Shield Death - Sword And Shield Falling Forward Death.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Standing Idle Looking Ver. 2 - Looking Around With Axe.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Standing Melee Attack Horizontal - Right To Left Attack With Axe.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Standing Taunt Chest Thump - Banging Axe On Chest.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Standing Walk Forward - Walking Forward With Axe.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -2244,25 +2244,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Combo Punch - Eight Punch Combo.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Breakdance Uprock - Breakdance Uprock.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Knocked Out - Knocked Out Falling To Back.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Unarmed Idle 01 - Unarmed Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Lifting Object - Lifting A Heavy Object With Both Hands.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Standing Idle 03 - Playing With Magic.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Unarmed Walk Forward - Walking Forward.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -2376,25 +2376,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Two Hand Club Combo - Two Handed Club Combo Attack.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Samba Dancing - Defile De Samba Parade Variation.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Mutant Dying - Mutant Dying Falling Onto Back.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Orc Idle - Male Orc Standing Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Pull Heavy Object - Pulling A Heavy Object.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Roar - Belting Out A Load Roar.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Orc Walk - Male Orc Walk Forward.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -2508,25 +2508,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Great Sword Slash - Great Sword Downward Slash.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Locking Hip Hop Dance - Locking Hip Hop Dance Variation Two.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Sword And Shield Death - Sword And Shield Falling Back Death.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Standing Block Idle - Blocking With Both Arms Out.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Pull Plant - Standing Pulling Up A Plant.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Great Sword Power Up - Great Sword Powering Up.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Mutant Walking - Mutant Brutal Walk.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -2640,25 +2640,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Standing Melee Attack Backhand - Backhanded Upward Attack With Axe.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "Belly Dance - Belly Dancing Variation One.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Flying Back Death - Dying Flying Backward.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Great Sword Idle - Great Sword Admiring Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Digging - Digging Hole With Shovel.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Standing Taunt Battlecry - Battlecry With Axe.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Mutant Run - Mutant Running.ranim"
           ]
         },
         "ObjectAttachments": null,
@@ -2772,25 +2772,25 @@
         "ProjectileModelPath": null,
         "Animations": {
           "Attack": [
-            "Upward Thrust - Upward Weapon Thrust.ranim"
+            "Sword And Shield Slash - Sword And Shield Power Slash.ranim"
           ],
           "Dance": [
-            "Northern Soul Floor Spin - Northern Soul Dance Spin On Floor.ranim"
+            "House Dancing - House Dance Variation Two.ranim"
           ],
           "Death": [
-            "Death - Death From Standing Idle.ranim"
+            "Standing React Death Right - Death Falling To The Right.ranim"
           ],
           "Idle": [
-            "Bored - Standing Around Bored Idle.ranim"
+            "Warrior Idle - Warrior Stretching Idle.ranim"
           ],
           "Labor": [
-            "Heavy Weapon Swing - Two Handed Heavy Weapon Swing.ranim"
+            "Wheelbarrow Walk - Walking With An Empty Wheelbarrow.ranim"
           ],
           "Spell_Cast": [
-            "Magic Spell Casting - Casting A Spell With One Hand.ranim"
+            "Sword And Shield Power Up - Sword And Shield Powering Up.ranim"
           ],
           "Walk": [
-            "Standard Walk - Standard Walk.ranim"
+            "Slow Jog - Jogging Slowly Varying Angles Of Twist.ranim"
           ]
         },
         "ObjectAttachments": null,
