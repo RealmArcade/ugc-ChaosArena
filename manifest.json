@@ -164,7 +164,7 @@
       "Wiping Sweat - Wiping Sweat Idle.ranim": "cb8488aa342bf26dd8fd55f4880d9df6b62e0efd3d9c6de87baa3426060ef3d8"
     },
     "Building": {
-      "altar.rmesh": "153dfbb77d04ea1014b79844740dad81c49b739f08158980586ab4cea540dd9a",
+      "altar.rmesh": "e59dc981e25beb4007dfa450412973c14a4e635a8ccca71a60082a502dc20d4f",
       "blacksmith.rmesh": "85da4d92fe0c8c967de98c4d519e9720f1d1f7c9801c78468612f3294690caf4"
     },
     "Character": {
@@ -179,8 +179,8 @@
       "glacier_sentinel.rmesh": "7091e194df2847c90b7f7ea94cf9b98ca2d8e614372a27557269ff1f8611c2d6",
       "iron_warlord.rmesh": "120ec526f6a8ab6e1553c0ed825a0d882cbe2b76fc82fceb4498bc8d3e70be35",
       "lightbringer_monk.rmesh": "4acf821ea4d7291e1019a4beda2b8e7fdecfff2828d9732ac7e44efafa32c870",
-      "magma_smith.rmesh": "b8a7d7c689301c8f23af5dcfdb648b73080990a1c0512a45a44671d3cc1e0238",
-      "nether_assassin.rmesh": "43add109e0ed3dd87c7b08a490cf7da0afc6c0b5f7f326d447e3557b2577b142",
+      "magma_smith.rmesh": "d66f5ec73c07c406601c1ffc53e08e43283ad6dd98efceed54f5a62ab0819712",
+      "nether_assassin.rmesh": "b5b1c07136d0cd7a2ad5fa964274a11faaba8be705c21b85e14a0ce2e395d55e",
       "pack_alpha.rmesh": "9338de6111c41fbce3acd90de6b3ecfc1491932d45da43cc053f345a90ee8eb0",
       "razor_dervish.rmesh": "0fd8325be34e31316da7e27d0cd8622b87e6570fd173b58fb0bdf3e494e845e1",
       "rune_scribe.rmesh": "c11e25f24f037bc5f87687a01c9f945c57439e2d30965793077ff77aae42b231",
@@ -189,7 +189,7 @@
       "storm_caller.rmesh": "0b3ab3efeb9edc8c19a3107b30800b9864c528b8aded29c376c8204053d46d2b",
       "sun_priest.rmesh": "35e8dabda707f8bd2a1d411d5092257bf0c40b4a13285126ccfaace101bc6f36",
       "tempest_chaser.rmesh": "629d1551aa2873375206a96a964019a24fcee43ee462455669c682c653412f5e",
-      "thornback_behemoth.rmesh": "5d518374436334acd0d280a223bc03cbc001e86148e8055777a75b3680709ee0",
+      "thornback_behemoth.rmesh": "ec4865308c5cb079edfc81c6c4a5b862ce2191dccdd466b6039e88e901c87838",
       "tidecaller.rmesh": "a94bb1a156ca5bcde7d6c8884ce78339daf020bfa361ad111cb9eef6c7605924",
       "verdant_druid.rmesh": "07a8400544f95671d7781a7123b7640229cfac16ef00a7cf1ed5e0b0da756d70"
     },

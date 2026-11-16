@@ -812,12 +812,12 @@
           "right_hand": [
             {
               "attachment/magic_dagger": {
-                "PositionX": -0.09118,
-                "PositionY": 0.0136,
-                "PositionZ": -0.18142,
-                "PitchX": -63.06,
-                "YawY": -55.74,
-                "RollZ": 81.52,
+                "PositionX": -0.00038,
+                "PositionY": 0.00998,
+                "PositionZ": -0.14001,
+                "PitchX": -85.92,
+                "YawY": -2.03,
+                "RollZ": 2.18,
                 "Scale": 0.2753,
                 "ScaleX": 0,
                 "ScaleY": 0,
@@ -2261,12 +2261,12 @@
           "right_hand": [
             {
               "attachment/lava_hammer": {
-                "PositionX": -0.19065,
-                "PositionY": 0.02843,
-                "PositionZ": -0.37933,
-                "PitchX": -63.06,
-                "YawY": -55.74,
-                "RollZ": 81.52,
+                "PositionX": -0.38254,
+                "PositionY": 0.01431,
+                "PositionZ": 0.00531,
+                "PitchX": 0.79,
+                "YawY": 0.77,
+                "RollZ": 87.86,
                 "Scale": 0.5866,
                 "ScaleX": 0,
                 "ScaleY": 0,
@@ -2913,12 +2913,12 @@
           "right_hand": [
             {
               "attachment/thorn_blade": {
-                "PositionX": -0.28184,
-                "PositionY": 0.04203,
-                "PositionZ": -0.56075,
-                "PitchX": -63.06,
-                "YawY": -55.74,
-                "RollZ": 81.52,
+                "PositionX": -0.37791,
+                "PositionY": -0.07001,
+                "PositionZ": 0.15489,
+                "PitchX": 21.95,
+                "YawY": 26.25,
+                "RollZ": 100.49,
                 "Scale": 0.8657,
                 "ScaleX": 0,
                 "ScaleY": 0,
@@ -3491,7 +3491,7 @@
         "IconPath": "altar.rtex",
         "VisualMode": "Mesh",
         "Scale": 1.5,
-        "YOffset": 1.3693,
+        "YOffset": 1.4138,
         "CollisionCircle": 1.5,
         "Brightness": 0.5,
         "Tint": null,
