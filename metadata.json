@@ -3293,7 +3293,7 @@
         "IconPath": "blacksmith.rtex",
         "VisualMode": "Mesh",
         "Scale": 1.5,
-        "YOffset": 0.7411,
+        "YOffset": 1.2509,
         "CollisionCircle": 1.5,
         "Brightness": 0.5,
         "Tint": null,

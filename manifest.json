@@ -25,7 +25,7 @@
     },
     "Building": {
       "altar.rmesh": "153dfbb77d04ea1014b79844740dad81c49b739f08158980586ab4cea540dd9a",
-      "blacksmith.rmesh": "8ce3b37e76c47723d3cf7cdb7f3308a3919322df5e131008ab01a13ddffa510c"
+      "blacksmith.rmesh": "85da4d92fe0c8c967de98c4d519e9720f1d1f7c9801c78468612f3294690caf4"
     },
     "Character": {
       "armored_knight_unit.rmesh": "df56f0131276d696263ce0b2a3e0c1cace5860d0bc3f9ffcc1d5331ab4b00880",
@@ -735,7 +735,7 @@
       "MapScript.Match.cs": "c2d0715eeffe0ef0e839c9a402c75aa19f1e29b0382fe3f6f98ed22eda47dd77",
       "MapScript.Rerolls.cs": "5f5bc6dd866917d0b3bb8e0c7dadf12df9d837185e3c55dee12c62b7cf286c29",
       "MapScript.slnx": "6b5b77b660653b5cd34350fe244e9f2a3e7e344cf23d7efc339e451480582f3d",
-      "metadata.json": "77747956e88105e80274d49e1ad70e5c77992ea1f829a54982d7a8cc66eaccdd",
+      "metadata.json": "c5f70aad988934c3e47dd742c39c5f4476342786980f2758ef87b02b70b13b5b",
       "NuGet.config": "2211ce92e32f9c93bc98f9172c70cae0d41e5fe750e3a28a245eb754e6c3a389",
       "realm_lldb.py": "8c2ede242f81282b56d6da596abee0557513c10b7da3097d7912266299a9b5c9",
       "terrain.json": "f81bbcea10d63c921297584ce092df2e8a81b5a17c4694a31d15a5a04e2b8e9c",
