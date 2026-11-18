@@ -47,17 +47,11 @@ public partial class MapScript
         if (_eliminationCandidates.Count == 0)
             return;
 
-        if (_eliminationCandidates.Count == 1)
-        {
-            EliminatePlayer(_eliminationCandidates[0]);
-            return;
-        }
-
-        int survivingKills = HighestKillCount();
+        int sparedKills = _eliminationCandidates.Count > 1 ? HighestKillCount() : int.MinValue;
         for (int candidateIndex = 0; candidateIndex < _eliminationCandidates.Count; candidateIndex++)
         {
             int playerIndex = _eliminationCandidates[candidateIndex];
-            if (_api.GetPlayer(playerIndex).GetKills() == survivingKills)
+            if (_api.GetPlayer(playerIndex).GetKills() == sparedKills)
                 continue;
 
             EliminatePlayer(playerIndex);
@@ -158,7 +152,24 @@ public partial class MapScript
             return livingCompare;
 
         int killCompare = _api.GetPlayer(right).GetKills().CompareTo(_api.GetPlayer(left).GetKills());
-        return killCompare != 0 ? killCompare : left.CompareTo(right);
+        if (killCompare != 0)
+            return killCompare;
+
+        int damageCompare = TotalDamageDealt(right).CompareTo(TotalDamageDealt(left));
+        return damageCompare != 0 ? damageCompare : left.CompareTo(right);
+    }
+
+    private float TotalDamageDealt(int playerIndex)
+    {
+        float totalDamage = 0f;
+
+        foreach (KeyValuePair<string, Dictionary<int, float>> unitEntry in playerStates[playerIndex].DamageDealtPerUnitTypePerWave)
+        {
+            foreach (KeyValuePair<int, float> waveDamage in unitEntry.Value)
+                totalDamage += waveDamage.Value;
+        }
+
+        return totalDamage;
     }
 
     private int CountLivingUnits(int playerIndex)
