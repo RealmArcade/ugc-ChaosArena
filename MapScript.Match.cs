@@ -47,11 +47,17 @@ public partial class MapScript
         if (_eliminationCandidates.Count == 0)
             return;
 
-        int survivorIndex = _eliminationCandidates.Count > 1 ? ChooseSimultaneousSurvivor() : -1;
+        if (_eliminationCandidates.Count == 1)
+        {
+            EliminatePlayer(_eliminationCandidates[0]);
+            return;
+        }
+
+        int survivingKills = HighestKillCount();
         for (int candidateIndex = 0; candidateIndex < _eliminationCandidates.Count; candidateIndex++)
         {
             int playerIndex = _eliminationCandidates[candidateIndex];
-            if (playerIndex == survivorIndex)
+            if (_api.GetPlayer(playerIndex).GetKills() == survivingKills)
                 continue;
 
             EliminatePlayer(playerIndex);
@@ -60,37 +66,18 @@ public partial class MapScript
         }
     }
 
-    private int ChooseSimultaneousSurvivor()
+    private int HighestKillCount()
     {
-        int bestKills = int.MinValue;
-        int bestCount = 0;
+        int highestKills = int.MinValue;
 
         for (int candidateIndex = 0; candidateIndex < _eliminationCandidates.Count; candidateIndex++)
         {
             int kills = _api.GetPlayer(_eliminationCandidates[candidateIndex]).GetKills();
-            if (kills > bestKills)
-            {
-                bestKills = kills;
-                bestCount = 1;
-                continue;
-            }
-
-            if (kills == bestKills)
-                bestCount++;
+            if (kills > highestKills)
+                highestKills = kills;
         }
 
-        int pick = Random.Shared.Next(bestCount);
-        for (int candidateIndex = 0; candidateIndex < _eliminationCandidates.Count; candidateIndex++)
-        {
-            int playerIndex = _eliminationCandidates[candidateIndex];
-            if (_api.GetPlayer(playerIndex).GetKills() != bestKills)
-                continue;
-
-            if (pick-- == 0)
-                return playerIndex;
-        }
-
-        return _eliminationCandidates[0];
+        return highestKills;
     }
 
     private void EliminatePlayer(int playerIndex)
