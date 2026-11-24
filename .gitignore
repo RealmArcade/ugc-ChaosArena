@@ -2,7 +2,13 @@
 bin/
 obj/
 *.jit.elf
+.vscode/*_schema.json
 realm_lldb.py
 *.pdb
+*.rmap
+Chaos Arena_bot_v2.json
+Chaos Arena_bot_v2.run.json
+Chaos Arena_bot.run.json
+balance/
 MapScript.debug.json
 authority.pid

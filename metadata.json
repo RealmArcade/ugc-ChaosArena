@@ -50,12 +50,12 @@
   "Templates": {
     "Units": [
       {
-        "MaxHp": 556,
-        "Damage": 63,
+        "MaxHp": 801,
+        "Damage": 72,
         "Range": 3.98,
-        "Armor": 2.5,
+        "Armor": 3,
         "Speed": 3,
-        "AttackCooldown": 1.3,
+        "AttackCooldown": 1.1362,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -182,12 +182,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 538,
-        "Damage": 68,
+        "MaxHp": 716,
+        "Damage": 72,
         "Range": 5.28,
-        "Armor": 2,
+        "Armor": 2.5,
         "Speed": 3,
-        "AttackCooldown": 1.3,
+        "AttackCooldown": 1.2259,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -314,12 +314,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 540,
-        "Damage": 67,
+        "MaxHp": 613,
+        "Damage": 61,
         "Range": 5.14,
-        "Armor": 2,
+        "Armor": 2.5,
         "Speed": 3,
-        "AttackCooldown": 1.3,
+        "AttackCooldown": 1.4313,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -446,12 +446,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 547,
-        "Damage": 62,
+        "MaxHp": 470,
+        "Damage": 53,
         "Range": 5.2,
         "Armor": 2,
         "Speed": 3,
-        "AttackCooldown": 1.3,
+        "AttackCooldown": 1.495,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -578,12 +578,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 549,
-        "Damage": 80,
+        "MaxHp": 589,
+        "Damage": 86,
         "Range": 2.88,
         "Armor": 2.5,
         "Speed": 3,
-        "AttackCooldown": 0.95,
+        "AttackCooldown": 0.8854,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -741,8 +741,8 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 599,
-        "Damage": 80,
+        "MaxHp": 583,
+        "Damage": 78,
         "Range": 2.6,
         "Armor": 2.5,
         "Speed": 3,
@@ -904,12 +904,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 650,
-        "Damage": 91,
+        "MaxHp": 575,
+        "Damage": 80,
         "Range": 6.1,
         "Armor": 2,
         "Speed": 3,
-        "AttackCooldown": 1.4,
+        "AttackCooldown": 1.5834,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -1036,12 +1036,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 685,
-        "Damage": 72,
+        "MaxHp": 826,
+        "Damage": 87,
         "Range": 4.36,
         "Armor": 2.5,
         "Speed": 3,
-        "AttackCooldown": 1.05,
+        "AttackCooldown": 0.8925,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -1168,12 +1168,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 633,
-        "Damage": 102,
+        "MaxHp": 648,
+        "Damage": 104,
         "Range": 6.4,
         "Armor": 2,
         "Speed": 3,
-        "AttackCooldown": 1.45,
+        "AttackCooldown": 1.4167,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -1300,12 +1300,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 823,
-        "Damage": 53,
+        "MaxHp": 1173,
+        "Damage": 60,
         "Range": 3.26,
-        "Armor": 3,
+        "Armor": 3.5,
         "Speed": 3,
-        "AttackCooldown": 1.3,
+        "AttackCooldown": 1.1414,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -1432,12 +1432,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 829,
-        "Damage": 54,
+        "MaxHp": 889,
+        "Damage": 58,
         "Range": 4.6,
         "Armor": 2.5,
         "Speed": 3,
-        "AttackCooldown": 1.45,
+        "AttackCooldown": 1.3529,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -1564,12 +1564,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 636,
-        "Damage": 96,
+        "MaxHp": 667,
+        "Damage": 101,
         "Range": 5.2,
         "Armor": 3,
         "Speed": 3,
-        "AttackCooldown": 1.25,
+        "AttackCooldown": 1.1913,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -1696,12 +1696,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 1062,
-        "Damage": 71,
+        "MaxHp": 997,
+        "Damage": 67,
         "Range": 2.82,
         "Armor": 5,
         "Speed": 3,
-        "AttackCooldown": 1.35,
+        "AttackCooldown": 1.4378,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -1859,12 +1859,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 1013,
-        "Damage": 69,
+        "MaxHp": 1070,
+        "Damage": 73,
         "Range": 3.24,
         "Armor": 4.5,
         "Speed": 3,
-        "AttackCooldown": 1.3,
+        "AttackCooldown": 1.2311,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -1991,12 +1991,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 994,
-        "Damage": 73,
+        "MaxHp": 1098,
+        "Damage": 81,
         "Range": 2.7,
         "Armor": 4.5,
         "Speed": 3,
-        "AttackCooldown": 1.35,
+        "AttackCooldown": 1.2218,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -2154,12 +2154,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 1036,
-        "Damage": 69,
+        "MaxHp": 852,
+        "Damage": 57,
         "Range": 2.8,
         "Armor": 4,
         "Speed": 3,
-        "AttackCooldown": 1.15,
+        "AttackCooldown": 1.3225,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -2317,12 +2317,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 977,
-        "Damage": 72,
+        "MaxHp": 904,
+        "Damage": 67,
         "Range": 2.8,
         "Armor": 4,
         "Speed": 3,
-        "AttackCooldown": 1.25,
+        "AttackCooldown": 1.3512,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -2480,12 +2480,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 1295,
-        "Damage": 66,
+        "MaxHp": 903,
+        "Damage": 54,
         "Range": 2.44,
-        "Armor": 6,
+        "Armor": 5,
         "Speed": 3,
-        "AttackCooldown": 1.45,
+        "AttackCooldown": 2.1275,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -2522,7 +2522,7 @@
         "SplashType": "RadialStep",
         "SplashInnerRadius": 1.2,
         "SplashMediumRadius": 2,
-        "SplashOuterRadius": 2.9,
+        "SplashOuterRadius": 2.4,
         "SplashInnerRatio": 1,
         "SplashMediumRatio": 0.6,
         "SplashOuterRatio": 0.3,
@@ -2643,12 +2643,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 1283,
-        "Damage": 66,
+        "MaxHp": 1048,
+        "Damage": 63,
         "Range": 2.8,
-        "Armor": 6,
+        "Armor": 5,
         "Speed": 3,
-        "AttackCooldown": 1.55,
+        "AttackCooldown": 1.612,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -2974,12 +2974,12 @@
         "Attribution_ImportedFromMap": null
       },
       {
-        "MaxHp": 1260,
-        "Damage": 67,
+        "MaxHp": 1010,
+        "Damage": 63,
         "Range": 2.5,
-        "Armor": 6,
+        "Armor": 5,
         "Speed": 3,
-        "AttackCooldown": 1.5,
+        "AttackCooldown": 2.014,
         "ScanRadius": 0,
         "CostGold": 0,
         "CostWood": 0,
@@ -3016,7 +3016,7 @@
         "SplashType": "RadialStep",
         "SplashInnerRadius": 1.1,
         "SplashMediumRadius": 1.9,
-        "SplashOuterRadius": 2.7,
+        "SplashOuterRadius": 2.2,
         "SplashInnerRatio": 1,
         "SplashMediumRatio": 0.6,
         "SplashOuterRatio": 0.3,
@@ -4174,7 +4174,7 @@
             "Scaling": {
               "Attribute": "Agility",
               "Shape": "saturating",
-              "Coefficient": 0,
+              "Coefficient": 0.9,
               "Divisor": 15,
               "Cap": 130,
               "Offset": 0,
@@ -4371,7 +4371,7 @@
             "Scaling": {
               "Attribute": "Intelligence",
               "Shape": "ratio",
-              "Coefficient": 0,
+              "Coefficient": 0.9,
               "Divisor": 20,
               "Cap": 120,
               "Offset": 0,
@@ -4551,7 +4551,7 @@
             "Scaling": {
               "Attribute": "Wisdom",
               "Shape": "saturating",
-              "Coefficient": 0,
+              "Coefficient": 0.9,
               "Divisor": 30,
               "Cap": 120,
               "Offset": 0,
@@ -4603,7 +4603,7 @@
             "Scaling": {
               "Attribute": "Wisdom",
               "Shape": "ratio",
-              "Coefficient": 0,
+              "Coefficient": 0.9,
               "Divisor": 30,
               "Cap": 90,
               "Offset": 0,
@@ -5151,7 +5151,7 @@
             "Scaling": {
               "Attribute": "Intelligence",
               "Shape": "threshold",
-              "Coefficient": 12,
+              "Coefficient": 1.2,
               "Divisor": 20,
               "Cap": 150,
               "Offset": 0,
@@ -5281,7 +5281,7 @@
             "Scaling": {
               "Attribute": "Intelligence",
               "Shape": "ratio",
-              "Coefficient": 0,
+              "Coefficient": 0.9,
               "Divisor": 25,
               "Cap": 160,
               "Offset": 0,
@@ -5515,7 +5515,7 @@
             "Scaling": {
               "Attribute": "Strength",
               "Shape": "threshold",
-              "Coefficient": 10,
+              "Coefficient": 1,
               "Divisor": 20,
               "Cap": 140,
               "Offset": 0,
@@ -5902,7 +5902,13 @@
         "ProjectileId": null,
         "CastSound": "armor_jingle_metal.raud",
         "PlacementTemplateId": null,
-        "AutoCast": null,
+        "AutoCast": {
+          "Enabled": true,
+          "TargetRule": "NearestEnemy",
+          "AllyHealthPercentBelow": 1,
+          "ManaReserve": 0,
+          "MinManaPercent": 0
+        },
         "AreaOfEffectRadius": 3,
         "Effects": [
           {
@@ -5982,7 +5988,7 @@
             "Scaling": {
               "Attribute": "Vitality",
               "Shape": "ratio",
-              "Coefficient": 0,
+              "Coefficient": 0.9,
               "Divisor": 25,
               "Cap": 120,
               "Offset": 0,
@@ -6012,7 +6018,13 @@
         "ProjectileId": null,
         "CastSound": "cape_Damaged.raud",
         "PlacementTemplateId": null,
-        "AutoCast": null,
+        "AutoCast": {
+          "Enabled": true,
+          "TargetRule": "NearestEnemy",
+          "AllyHealthPercentBelow": 1,
+          "ManaReserve": 0,
+          "MinManaPercent": 0
+        },
         "AreaOfEffectRadius": 4,
         "Effects": [
           {
@@ -6104,7 +6116,7 @@
             "Scaling": {
               "Attribute": "Intelligence",
               "Shape": "threshold",
-              "Coefficient": 14,
+              "Coefficient": 1.4,
               "Divisor": 20,
               "Cap": 150,
               "Offset": 0,
@@ -6305,7 +6317,7 @@
             "Scaling": {
               "Attribute": "Agility",
               "Shape": "ratio",
-              "Coefficient": 0,
+              "Coefficient": 0.9,
               "Divisor": 25,
               "Cap": 110,
               "Offset": 0,
@@ -6435,7 +6447,7 @@
             "Scaling": {
               "Attribute": "Agility",
               "Shape": "saturating",
-              "Coefficient": 0,
+              "Coefficient": 0.9,
               "Divisor": 30,
               "Cap": 150,
               "Offset": 0,
@@ -6465,7 +6477,13 @@
         "ProjectileId": null,
         "CastSound": "spell_cast_hum.raud",
         "PlacementTemplateId": null,
-        "AutoCast": null,
+        "AutoCast": {
+          "Enabled": true,
+          "TargetRule": "NearestEnemy",
+          "AllyHealthPercentBelow": 1,
+          "ManaReserve": 0,
+          "MinManaPercent": 0
+        },
         "AreaOfEffectRadius": 0.8,
         "Effects": [
           {
@@ -6487,7 +6505,7 @@
             "Scaling": {
               "Attribute": "Intelligence",
               "Shape": "ratio",
-              "Coefficient": 0,
+              "Coefficient": 0.9,
               "Divisor": 20,
               "Cap": 140,
               "Offset": 0,
@@ -6597,7 +6615,13 @@
         "ProjectileId": null,
         "CastSound": "spell_scroll_crackle.raud",
         "PlacementTemplateId": null,
-        "AutoCast": null,
+        "AutoCast": {
+          "Enabled": true,
+          "TargetRule": "NearestEnemy",
+          "AllyHealthPercentBelow": 1,
+          "ManaReserve": 0,
+          "MinManaPercent": 0
+        },
         "AreaOfEffectRadius": 4,
         "Effects": [
           {
@@ -6619,7 +6643,7 @@
             "Scaling": {
               "Attribute": "Intelligence",
               "Shape": "threshold",
-              "Coefficient": 15,
+              "Coefficient": 1.5,
               "Divisor": 20,
               "Cap": 190,
               "Offset": 0,
@@ -6671,7 +6695,7 @@
             "Scaling": {
               "Attribute": "Intelligence",
               "Shape": "saturating",
-              "Coefficient": 0,
+              "Coefficient": 0.9,
               "Divisor": 30,
               "Cap": 150,
               "Offset": 0,
@@ -6998,7 +7022,7 @@
             "Scaling": {
               "Attribute": "Wisdom",
               "Shape": "ratio",
-              "Coefficient": 0,
+              "Coefficient": 0.9,
               "Divisor": 25,
               "Cap": 80,
               "Offset": 0,
@@ -7286,7 +7310,7 @@
             "Scaling": {
               "Attribute": "Strength",
               "Shape": "threshold",
-              "Coefficient": 10,
+              "Coefficient": 1,
               "Divisor": 20,
               "Cap": 140,
               "Offset": 0,
@@ -7507,7 +7531,7 @@
             "Scaling": {
               "Attribute": "Agility",
               "Shape": "ratio",
-              "Coefficient": 0,
+              "Coefficient": 0.9,
               "Divisor": 25,
               "Cap": 110,
               "Offset": 0,
@@ -7643,7 +7667,7 @@
             "Scaling": {
               "Attribute": "Agility",
               "Shape": "saturating",
-              "Coefficient": 0,
+              "Coefficient": 0.9,
               "Divisor": 25,
               "Cap": 140,
               "Offset": 0,

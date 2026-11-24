@@ -1,0 +1,31 @@
+{
+  "SchemaVersion": "1.0.0",
+  "MapName": "Chaos Arena",
+  "Genre": "hero_arena",
+  "GameBuildNumber": "v0.0.6",
+  "ProfileId": "Chaos Arena_AutoTrained",
+  "Author": "SelfPlayTrainer",
+  "DecisionIntervalSeconds": 1,
+  "AggressionMultiplier": 1,
+  "ActionTemperature": 0.05,
+  "MistakeChance": 0,
+  "Weights": [
+    0.6961755,
+    -0.33442262,
+    -0.08505672,
+    0.008023545,
+    -0.047019668,
+    0.6671021,
+    -1.052731,
+    -0.39116794
+  ],
+  "MapCandidateWeights": [
+    0.08621863,
+    0.4063943,
+    0.10294254,
+    -0.15746014
+  ],
+  "FitnessScore": 0.5729167,
+  "TrainedEpochs": 1,
+  "CustomParameters": {}
+}
